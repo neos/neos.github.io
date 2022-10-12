@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\ObjectManagement\DependencyInjection\ProxyClassBuilder | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (8.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_ObjectManagement_DependencyInjection_ProxyClassBuilder" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/ObjectManagement.html">ObjectManagement</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/ObjectManagement/DependencyInjection.html">DependencyInjection</a></li><li class="backslash">\</li><li>ProxyClassBuilder</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ProxyClassBuilder    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>ProxyClassBuilder</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A Proxy Class Builder which integrates Dependency Injection.</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_reflectionService">
+                                        protected                                        <a href="../../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$reflectionService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_compiler">
+                                        protected                                        <a href="../../../../Neos/Flow/ObjectManagement/Proxy/Compiler.html"><abbr title="Neos\Flow\ObjectManagement\Proxy\Compiler">Compiler</abbr></a>
+                                                                                
+                                    </td>
+                <td>$compiler</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_logger">
+                                        protected                                        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$logger</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_configurationManager">
+                                        protected                                        <a href="../../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a>
+                                                                                
+                                    </td>
+                <td>$configurationManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_objectManager">
+                                        protected                                        <a href="../../../../Neos/Flow/ObjectManagement/CompileTimeObjectManager.html"><abbr title="Neos\Flow\ObjectManagement\CompileTimeObjectManager">CompileTimeObjectManager</abbr></a>
+                                                                                
+                                    </td>
+                <td>$objectManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_objectConfigurations">
+                                        protected                                        <a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a>[]
+                                                                                
+                                    </td>
+                <td>$objectConfigurations</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectReflectionService">injectReflectionService</a>(<a href="../../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a> $reflectionService)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectCompiler">injectCompiler</a>(<a href="../../../../Neos/Flow/ObjectManagement/Proxy/Compiler.html"><abbr title="Neos\Flow\ObjectManagement\Proxy\Compiler">Compiler</abbr></a> $compiler)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectConfigurationManager">injectConfigurationManager</a>(<a href="../../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a> $configurationManager)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectLogger">injectLogger</a>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        
+                                            <p><p>Injects the (system) logger based on PSR-3.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectObjectManager">injectObjectManager</a>(<a href="../../../../Neos/Flow/ObjectManagement/CompileTimeObjectManager.html"><abbr title="Neos\Flow\ObjectManagement\CompileTimeObjectManager">CompileTimeObjectManager</abbr></a> $objectManager)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_build">build</a>()
+        
+                                            <p><p>Analyzes the Object Configuration provided by the compiler and builds the necessary PHP code for the proxy classes
+to realize dependency injection.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildSetInstanceCode">buildSetInstanceCode</a>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration)
+        
+                                            <p><p>Renders additional code which registers the instance of the proxy class at the Object Manager
+before constructor injection is executed. Used in constructors and wakeup methods.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildSerializeRelatedEntitiesCode">buildSerializeRelatedEntitiesCode</a>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration)
+        
+                                            <p><p>Renders code to create identifier/type information from related entities in an object.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildConstructorInjectionCode">buildConstructorInjectionCode</a>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration)
+        
+                                            <p><p>Renders additional code for the __construct() method of the Proxy Class which realizes constructor injection.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildPropertyInjectionCode">buildPropertyInjectionCode</a>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration)
+        
+                                            <p><p>Builds the code necessary to inject setter based dependencies.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildPropertyInjectionCodeByConfiguration">buildPropertyInjectionCodeByConfiguration</a>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration, string $propertyName, <a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $propertyConfiguration)
+        
+                                            <p><p>Builds code which injects an object which was specified by its object configuration</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildPropertyInjectionCodeByString">buildPropertyInjectionCodeByString</a>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration, <a href="../../../../Neos/Flow/ObjectManagement/Configuration/ConfigurationProperty.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\ConfigurationProperty">ConfigurationProperty</abbr></a> $propertyConfiguration, string $propertyName, string $propertyObjectName)
+        
+                                            <p><p>Builds code which injects an object which was specified by its object name</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildPropertyInjectionCodeByConfigurationTypeAndPath">buildPropertyInjectionCodeByConfigurationTypeAndPath</a>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration, string $propertyName, string $configurationType, string $configurationPath = null)
+        
+                                            <p><p>Builds code which assigns the value stored in the specified configuration into the given class property.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildLazyPropertyInjectionCode">buildLazyPropertyInjectionCode</a>(string $propertyObjectName, string $propertyClassName, string $propertyName, string $preparedSetterArgument)
+        
+                                            <p><p>Builds code which injects a DependencyProxy instead of the actual dependency</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildSetterInjectionCode">buildSetterInjectionCode</a>(string $className, string $propertyName, string $preparedSetterArgument)
+        
+                                            <p><p>Builds a code snippet which tries to inject the specified property first through calling the related
+inject<em>() method and then the set</em>() method. If neither exists and the property doesn't exist either,
+an empty array is returned.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildLifecycleInitializationCode">buildLifecycleInitializationCode</a>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration, int $cause)
+        
+                                            <p><p>Builds code which calls the lifecycle initialization method, if any.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildLifecycleShutdownCode">buildLifecycleShutdownCode</a>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration, int $cause)
+        
+                                            <p><p>Builds code which registers the lifecycle shutdown method, if any.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildMethodParametersCode">buildMethodParametersCode</a>(array $argumentConfigurations)
+        
+                                            <p><p>FIXME: Not yet completely refactored to new proxy mechanism</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildCustomFactoryCall">buildCustomFactoryCall</a>(string $customFactoryObjectName, string $customFactoryMethodName, array $arguments)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_compileStaticMethods">compileStaticMethods</a>(string $className, <a href="../../../../Neos/Flow/ObjectManagement/Proxy/ProxyClass.html"><abbr title="Neos\Flow\ObjectManagement\Proxy\ProxyClass">ProxyClass</abbr></a> $proxyClass)
+        
+                                            <p><p>Compile the result of methods marked with CompileStatic into the proxy class</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_injectReflectionService">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L72">at line 72</a></div>
+        <code>                    void
+    <strong>injectReflectionService</strong>(<a href="../../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a> $reflectionService)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a></td>
+                <td>$reflectionService</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectCompiler">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L81">at line 81</a></div>
+        <code>                    void
+    <strong>injectCompiler</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Proxy/Compiler.html"><abbr title="Neos\Flow\ObjectManagement\Proxy\Compiler">Compiler</abbr></a> $compiler)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Proxy/Compiler.html"><abbr title="Neos\Flow\ObjectManagement\Proxy\Compiler">Compiler</abbr></a></td>
+                <td>$compiler</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectConfigurationManager">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L90">at line 90</a></div>
+        <code>                    void
+    <strong>injectConfigurationManager</strong>(<a href="../../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a> $configurationManager)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a></td>
+                <td>$configurationManager</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectLogger">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L102">at line 102</a></div>
+        <code>                    void
+    <strong>injectLogger</strong>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the (system) logger based on PSR-3.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+                <td>$logger</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectObjectManager">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L111">at line 111</a></div>
+        <code>                    void
+    <strong>injectObjectManager</strong>(<a href="../../../../Neos/Flow/ObjectManagement/CompileTimeObjectManager.html"><abbr title="Neos\Flow\ObjectManagement\CompileTimeObjectManager">CompileTimeObjectManager</abbr></a> $objectManager)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/CompileTimeObjectManager.html"><abbr title="Neos\Flow\ObjectManagement\CompileTimeObjectManager">CompileTimeObjectManager</abbr></a></td>
+                <td>$objectManager</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_build">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L122">at line 122</a></div>
+        <code>                    void
+    <strong>build</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Analyzes the Object Configuration provided by the compiler and builds the necessary PHP code for the proxy classes
+to realize dependency injection.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildSetInstanceCode">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L196">at line 196</a></div>
+        <code>            protected        string
+    <strong>buildSetInstanceCode</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Renders additional code which registers the instance of the proxy class at the Object Manager
+before constructor injection is executed. Used in constructors and wakeup methods.</p></p>                <p><p>This also makes sure that object creation does not end in an endless loop due to bi-directional dependencies.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a></td>
+                <td>$objectConfiguration</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildSerializeRelatedEntitiesCode">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L221">at line 221</a></div>
+        <code>            protected        string
+    <strong>buildSerializeRelatedEntitiesCode</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Renders code to create identifier/type information from related entities in an object.</p></p>                <p><p>Used in sleep methods.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a></td>
+                <td>$objectConfiguration</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildConstructorInjectionCode">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L249">at line 249</a></div>
+        <code>            protected        string
+    <strong>buildConstructorInjectionCode</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Renders additional code for the __construct() method of the Proxy Class which realizes constructor injection.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a></td>
+                <td>$objectConfiguration</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The built code</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Exception/UnknownObjectException.html"><abbr title="Neos\Flow\ObjectManagement\Exception\UnknownObjectException">UnknownObjectException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildPropertyInjectionCode">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L344">at line 344</a></div>
+        <code>            protected        string
+    <strong>buildPropertyInjectionCode</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Builds the code necessary to inject setter based dependencies.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a></td>
+                <td>$objectConfiguration</td>
+                <td><p>(needed to produce helpful exception message)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The built code</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Exception/UnknownObjectException.html"><abbr title="Neos\Flow\ObjectManagement\Exception\UnknownObjectException">UnknownObjectException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildPropertyInjectionCodeByConfiguration">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L406">at line 406</a></div>
+        <code>            protected        array
+    <strong>buildPropertyInjectionCodeByConfiguration</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration, string $propertyName, <a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $propertyConfiguration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Builds code which injects an object which was specified by its object configuration</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a></td>
+                <td>$objectConfiguration</td>
+                <td><p>Configuration of the object to inject into</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td><p>Name of the property to inject</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a></td>
+                <td>$propertyConfiguration</td>
+                <td><p>Configuration of the object to inject</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>PHP code</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Exception/UnknownObjectException.html"><abbr title="Neos\Flow\ObjectManagement\Exception\UnknownObjectException">UnknownObjectException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildPropertyInjectionCodeByString">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L443">at line 443</a></div>
+        <code>                    array
+    <strong>buildPropertyInjectionCodeByString</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration, <a href="../../../../Neos/Flow/ObjectManagement/Configuration/ConfigurationProperty.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\ConfigurationProperty">ConfigurationProperty</abbr></a> $propertyConfiguration, string $propertyName, string $propertyObjectName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Builds code which injects an object which was specified by its object name</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a></td>
+                <td>$objectConfiguration</td>
+                <td><p>Configuration of the object to inject into</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Configuration/ConfigurationProperty.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\ConfigurationProperty">ConfigurationProperty</abbr></a></td>
+                <td>$propertyConfiguration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td><p>Name of the property to inject</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyObjectName</td>
+                <td><p>Object name of the object to inject</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>PHP code</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Exception/UnknownObjectException.html"><abbr title="Neos\Flow\ObjectManagement\Exception\UnknownObjectException">UnknownObjectException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildPropertyInjectionCodeByConfigurationTypeAndPath">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L486">at line 486</a></div>
+        <code>                    array
+    <strong>buildPropertyInjectionCodeByConfigurationTypeAndPath</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration, string $propertyName, string $configurationType, string $configurationPath = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Builds code which assigns the value stored in the specified configuration into the given class property.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a></td>
+                <td>$objectConfiguration</td>
+                <td><p>Configuration of the object to inject into</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td><p>Name of the property to inject</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$configurationType</td>
+                <td><p>the configuration type of the injected property (one of the ConfigurationManager::CONFIGURATION<em>TYPE</em>* constants)</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$configurationPath</td>
+                <td><p>Path with &quot;.&quot; as separator specifying the setting value to inject or NULL if the complete configuration array should be injected</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>PHP code</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildLazyPropertyInjectionCode">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L511">at line 511</a></div>
+        <code>            protected        array
+    <strong>buildLazyPropertyInjectionCode</strong>(string $propertyObjectName, string $propertyClassName, string $propertyName, string $preparedSetterArgument)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Builds code which injects a DependencyProxy instead of the actual dependency</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$propertyObjectName</td>
+                <td><p>Object name of the dependency to inject</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyClassName</td>
+                <td><p>Class name of the dependency to inject</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td><p>Name of the property in the class to inject into</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$preparedSetterArgument</td>
+                <td><p>PHP code to use for retrieving the value to inject</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>PHP code</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildSetterInjectionCode">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L531">at line 531</a></div>
+        <code>            protected        array
+    <strong>buildSetterInjectionCode</strong>(string $className, string $propertyName, string $preparedSetterArgument)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Builds a code snippet which tries to inject the specified property first through calling the related
+inject<em>() method and then the set</em>() method. If neither exists and the property doesn't exist either,
+an empty array is returned.</p></p>                <p><p>If neither inject<em>() nor set</em>() exists, but the property does exist, NULL is returned</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td><p>Name of the class to inject into</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td><p>Name of the property to inject</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$preparedSetterArgument</td>
+                <td><p>PHP code to use for retrieving the value to inject</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>PHP code</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildLifecycleInitializationCode">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L554">at line 554</a></div>
+        <code>            protected        string
+    <strong>buildLifecycleInitializationCode</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration, int $cause)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Builds code which calls the lifecycle initialization method, if any.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a></td>
+                <td>$objectConfiguration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$cause</td>
+                <td><p>a ObjectManagerInterface::INITIALIZATIONCAUSE_* constant which is the cause of the initialization command being called.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildLifecycleShutdownCode">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L582">at line 582</a></div>
+        <code>            protected        string
+    <strong>buildLifecycleShutdownCode</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration, int $cause)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Builds code which registers the lifecycle shutdown method, if any.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a></td>
+                <td>$objectConfiguration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$cause</td>
+                <td><p>a ObjectManagerInterface::INITIALIZATIONCAUSE_* constant which is the cause of the initialization command being called.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildMethodParametersCode">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L610">at line 610</a></div>
+        <code>            protected        string
+    <strong>buildMethodParametersCode</strong>(array $argumentConfigurations)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>FIXME: Not yet completely refactored to new proxy mechanism</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$argumentConfigurations</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildCustomFactoryCall">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L658">at line 658</a></div>
+        <code>            protected        string
+    <strong>buildCustomFactoryCall</strong>(string $customFactoryObjectName, string $customFactoryMethodName, array $arguments)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$customFactoryObjectName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$customFactoryMethodName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_compileStaticMethods">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L672">at line 672</a></div>
+        <code>            protected        void
+    <strong>compileStaticMethods</strong>(string $className, <a href="../../../../Neos/Flow/ObjectManagement/Proxy/ProxyClass.html"><abbr title="Neos\Flow\ObjectManagement\Proxy\ProxyClass">ProxyClass</abbr></a> $proxyClass)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Compile the result of methods marked with CompileStatic into the proxy class</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Proxy/ProxyClass.html"><abbr title="Neos\Flow\ObjectManagement\Proxy\ProxyClass">ProxyClass</abbr></a></td>
+                <td>$proxyClass</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Exception.html"><abbr title="Neos\Flow\ObjectManagement\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

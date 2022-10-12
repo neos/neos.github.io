@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Error\DebugExceptionHandler | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (8.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Error_DebugExceptionHandler" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow/Error.html">Error</a></li><li class="backslash">\</li><li>DebugExceptionHandler</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>DebugExceptionHandler    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>DebugExceptionHandler</strong>        extends <a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html"><abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/DebugExceptionHandler.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A basic but solid exception handler which catches everything which
+falls through the other exception handlers and provides useful debugging
+information.</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_logger">
+                                        protected                                        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$logger</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#property_logger">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_throwableStorage">
+                                        protected                                        <a href="../../../Neos/Flow/Log/ThrowableStorageInterface.html"><abbr title="Neos\Flow\Log\ThrowableStorageInterface">ThrowableStorageInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$throwableStorage</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#property_throwableStorage">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_options">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$options</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#property_options">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_renderingOptions">
+                                        protected                                        
+                                                                                
+                                    </td>
+                <td>$renderingOptions</td>
+                <td class="last"><p>Merged custom error view options from defaultRenderingOptions and of the first matching renderingGroup</p></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#property_renderingOptions">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_htmlExceptionTemplate">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$htmlExceptionTemplate</td>
+                <td class="last"><p>The template for the HTML Exception output.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectLogger">injectLogger</a>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_injectLogger">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectThrowableStorage">injectThrowableStorage</a>(<a href="../../../Neos/Flow/Log/ThrowableStorageInterface.html"><abbr title="Neos\Flow\Log\ThrowableStorageInterface">ThrowableStorageInterface</abbr></a> $throwableStorage)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_injectThrowableStorage">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setOptions">setOptions</a>(array $options)
+        
+                                            <p><p>Sets options of this exception handler.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_setOptions">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>()
+        
+                                            <p><p>Constructs this exception handler - registers itself as the default exception handler.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method___construct">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_handleException">handleException</a>(object $exception)
+        
+                                            <p><p>Handles the given exception</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_handleException">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_echoExceptionWeb">echoExceptionWeb</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception)
+        
+                                            <p><p>Formats and echoes the exception as XHTML.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/Mvc/View/ViewInterface.html"><abbr title="Neos\Flow\Mvc\View\ViewInterface">ViewInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildView">buildView</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception, array $renderingOptions)
+        
+                                            <p><p>Prepares a view for rendering the custom error page.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_buildView">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resolveCustomRenderingOptions">resolveCustomRenderingOptions</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception)
+        
+                                            <p><p>Checks if custom rendering rules apply to the given $exception and returns those.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_resolveCustomRenderingOptions">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resolveRenderingGroup">resolveRenderingGroup</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_resolveRenderingGroup">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_useCustomErrorView">useCustomErrorView</a>()
+        
+                                            <p><p>If a renderingGroup was successfully resolved via resolveRenderingGroup
+We will use a custom error view.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_useCustomErrorView">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_echoExceptionCli">echoExceptionCli</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception, bool $exceptionWasLogged)
+        
+                                            <p><p>Formats and echoes the exception and its previous exceptions (if any) for the command line</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_echoExceptionCli">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_renderNestedExceptonsCli">renderNestedExceptonsCli</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception, string $exceptionMessage)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_renderNestedExceptonsCli">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_renderSingleExceptionCli">renderSingleExceptionCli</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception)
+        
+                                            <p><p>Renders a single exception including message, code and affected file</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_renderSingleExceptionCli">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_renderExceptionDetailCli">renderExceptionDetailCli</a>(string $label, string $value)
+        
+                                            <p><p>Renders the given $value word-wrapped and prefixed with $label</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_renderExceptionDetailCli">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_splitExceptionMessage">splitExceptionMessage</a>(string $exceptionMessage)
+        
+                                            <p><p>Splits the given string into subject and body according to following rules:</p>
+<ul>
+<li>If the string is empty or does not contain more than one sentence nor line breaks, the subject will be equal to the string and body will be an empty string</li>
+<li>Otherwise the subject is everything until the first line break or end of sentence, the body contains the rest</li>
+</ul></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_splitExceptionMessage">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_renderStatically">renderStatically</a>(int $statusCode, <a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception)
+        
+                                            <p><p>Returns the statically rendered exception message</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_injectLogger">
+        <div class="location">in <a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_injectLogger">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/AbstractExceptionHandler.php#L68">at line 68</a></div>
+        <code>                    void
+    <strong>injectLogger</strong>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+                <td>$logger</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectThrowableStorage">
+        <div class="location">in <a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_injectThrowableStorage">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/AbstractExceptionHandler.php#L76">at line 76</a></div>
+        <code>                    
+    <strong>injectThrowableStorage</strong>(<a href="../../../Neos/Flow/Log/ThrowableStorageInterface.html"><abbr title="Neos\Flow\Log\ThrowableStorageInterface">ThrowableStorageInterface</abbr></a> $throwableStorage)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Log/ThrowableStorageInterface.html"><abbr title="Neos\Flow\Log\ThrowableStorageInterface">ThrowableStorageInterface</abbr></a></td>
+                <td>$throwableStorage</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setOptions">
+        <div class="location">in <a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_setOptions">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/AbstractExceptionHandler.php#L87">at line 87</a></div>
+        <code>                    void
+    <strong>setOptions</strong>(array $options)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets options of this exception handler.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$options</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">in <a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method___construct">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/AbstractExceptionHandler.php#L97">at line 97</a></div>
+        <code>                    
+    <strong>__construct</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructs this exception handler - registers itself as the default exception handler.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_handleException">
+        <div class="location">in <a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_handleException">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/AbstractExceptionHandler.php#L108">at line 108</a></div>
+        <code>                    void
+    <strong>handleException</strong>(object $exception)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Handles the given exception</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$exception</td>
+                <td><p>The exception object - can be \Exception, or some type of \Throwable in PHP 7</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_echoExceptionWeb">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/DebugExceptionHandler.php#L65">at line 65</a></div>
+        <code>            protected        void
+    <strong>echoExceptionWeb</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Formats and echoes the exception as XHTML.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a></td>
+                <td>$exception</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildView">
+        <div class="location">in <a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_buildView">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/AbstractExceptionHandler.php#L147">at line 147</a></div>
+        <code>            protected        <a href="../../../Neos/Flow/Mvc/View/ViewInterface.html"><abbr title="Neos\Flow\Mvc\View\ViewInterface">ViewInterface</abbr></a>
+    <strong>buildView</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception, array $renderingOptions)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Prepares a view for rendering the custom error page.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a></td>
+                <td>$exception</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$renderingOptions</td>
+                <td><p>Rendering options as defined in the settings</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/Mvc/View/ViewInterface.html"><abbr title="Neos\Flow\Mvc\View\ViewInterface">ViewInterface</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resolveCustomRenderingOptions">
+        <div class="location">in <a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_resolveCustomRenderingOptions">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/AbstractExceptionHandler.php#L193">at line 193</a></div>
+        <code>            protected        array
+    <strong>resolveCustomRenderingOptions</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if custom rendering rules apply to the given $exception and returns those.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a></td>
+                <td>$exception</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>the custom rendering options, or NULL if no custom rendering is defined for this exception</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resolveRenderingGroup">
+        <div class="location">in <a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_resolveRenderingGroup">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/AbstractExceptionHandler.php#L211">at line 211</a></div>
+        <code>            protected        string
+    <strong>resolveRenderingGroup</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a></td>
+                <td>$exception</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>name of the resolved renderingGroup or NULL if no group could be resolved</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_useCustomErrorView">
+        <div class="location">in <a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_useCustomErrorView">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/AbstractExceptionHandler.php#L237">at line 237</a></div>
+        <code>            protected        bool
+    <strong>useCustomErrorView</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>If a renderingGroup was successfully resolved via resolveRenderingGroup
+We will use a custom error view.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_echoExceptionCli">
+        <div class="location">in <a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_echoExceptionCli">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/AbstractExceptionHandler.php#L249">at line 249</a></div>
+        <code>            protected        void
+    <strong>echoExceptionCli</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception, bool $exceptionWasLogged)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Formats and echoes the exception and its previous exceptions (if any) for the command line</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a></td>
+                <td>$exception</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$exceptionWasLogged</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_renderNestedExceptonsCli">
+        <div class="location">in <a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_renderNestedExceptonsCli">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/AbstractExceptionHandler.php#L274">at line 274</a></div>
+        <code>            protected        string
+    <strong>renderNestedExceptonsCli</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception, string $exceptionMessage)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a></td>
+                <td>$exception</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$exceptionMessage</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_renderSingleExceptionCli">
+        <div class="location">in <a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_renderSingleExceptionCli">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/AbstractExceptionHandler.php#L294">at line 294</a></div>
+        <code>            protected        string
+    <strong>renderSingleExceptionCli</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Renders a single exception including message, code and affected file</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a></td>
+                <td>$exception</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_renderExceptionDetailCli">
+        <div class="location">in <a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_renderExceptionDetailCli">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/AbstractExceptionHandler.php#L321">at line 321</a></div>
+        <code>            protected        string
+    <strong>renderExceptionDetailCli</strong>(string $label, string $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Renders the given $value word-wrapped and prefixed with $label</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$label</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_splitExceptionMessage">
+        <div class="location">in <a href="../../../Neos/Flow/Error/AbstractExceptionHandler.html#method_splitExceptionMessage">
+<abbr title="Neos\Flow\Error\AbstractExceptionHandler">AbstractExceptionHandler</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/AbstractExceptionHandler.php#L337">at line 337</a></div>
+        <code>            protected        array
+    <strong>splitExceptionMessage</strong>(string $exceptionMessage)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Splits the given string into subject and body according to following rules:</p>
+<ul>
+<li>If the string is empty or does not contain more than one sentence nor line breaks, the subject will be equal to the string and body will be an empty string</li>
+<li>Otherwise the subject is everything until the first line break or end of sentence, the body contains the rest</li>
+</ul></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$exceptionMessage</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>in the format array('subject' =&gt; '<subject>', 'body' =&gt; '<body>');</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_renderStatically">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Error/DebugExceptionHandler.php#L92">at line 92</a></div>
+        <code>            protected        void
+    <strong>renderStatically</strong>(int $statusCode, <a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $exception)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the statically rendered exception message</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$statusCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a></td>
+                <td>$exception</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Mvc\Controller\AbstractController | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (8.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Mvc_Controller_AbstractController" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Mvc.html">Mvc</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Mvc/Controller.html">Controller</a></li><li class="backslash">\</li><li>AbstractController</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>AbstractController    
+            </h1>
+    </div>
+
+    
+    <p>    abstract     class
+    <strong>AbstractController</strong>        implements
+        <a href="../../../../Neos/Flow/Mvc/Controller/ControllerInterface.html"><abbr title="Neos\Flow\Mvc\Controller\ControllerInterface">ControllerInterface</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Controller/AbstractController.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>An abstract base class for HTTP based controllers</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_uriBuilder">
+                                        protected                                        <a href="../../../../Neos/Flow/Mvc/Routing/UriBuilder.html"><abbr title="Neos\Flow\Mvc\Routing\UriBuilder">UriBuilder</abbr></a>
+                                                                                
+                                    </td>
+                <td>$uriBuilder</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_validatorResolver">
+                                        protected                                        <a href="../../../../Neos/Flow/Validation/ValidatorResolver.html"><abbr title="Neos\Flow\Validation\ValidatorResolver">ValidatorResolver</abbr></a>
+                                                                                
+                                    </td>
+                <td>$validatorResolver</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_request">
+                                        protected                                        <a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a>
+                                                                                
+                                    </td>
+                <td>$request</td>
+                <td class="last"><p>The current action request directed to this controller</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_response">
+                                        protected                                        <a href="../../../../Neos/Flow/Mvc/ActionResponse.html"><abbr title="Neos\Flow\Mvc\ActionResponse">ActionResponse</abbr></a>
+                                                                                
+                                    </td>
+                <td>$response</td>
+                <td class="last"><p>The response which will be returned by this action controller</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_arguments">
+                                        protected                                        <a href="../../../../Neos/Flow/Mvc/Controller/Arguments.html"><abbr title="Neos\Flow\Mvc\Controller\Arguments">Arguments</abbr></a>
+                                                                                
+                                    </td>
+                <td>$arguments</td>
+                <td class="last"><p>Arguments passed to the controller</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_controllerContext">
+                                        protected                                        <a href="../../../../Neos/Flow/Mvc/Controller/ControllerContext.html"><abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr></a>
+                                                                                
+                                    </td>
+                <td>$controllerContext</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_persistenceManager">
+                                        protected                                        <a href="../../../../Neos/Flow/Persistence/PersistenceManagerInterface.html"><abbr title="Neos\Flow\Persistence\PersistenceManagerInterface">PersistenceManagerInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$persistenceManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_supportedMediaTypes">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$supportedMediaTypes</td>
+                <td class="last"><p>A list of IANA media types which are supported by this controller</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_negotiatedMediaType">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$negotiatedMediaType</td>
+                <td class="last"><p>The media type that was negotiated by this controller</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initializeController">initializeController</a>(<a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a> $request, <a href="../../../../Neos/Flow/Mvc/ActionResponse.html"><abbr title="Neos\Flow\Mvc\ActionResponse">ActionResponse</abbr></a> $response)
+        
+                                            <p><p>Initializes the controller</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Flow/Mvc/Controller/ControllerContext.html"><abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getControllerContext">getControllerContext</a>()
+        
+                                            <p><p>Returns this controller's context.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addFlashMessage">addFlashMessage</a>(string $messageBody, string $messageTitle = &#039;&#039;, string $severity = Error\Message::SEVERITY_OK, array $messageArguments = [], int $messageCode = null)
+        
+                                            <p><p>Creates a Message object and adds it to the FlashMessageContainer.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_forward">forward</a>(string $actionName, string $controllerName = null, string $packageKey = null, array $arguments = [])
+        
+                                            <p><p>Forwards the request to another action and / or controller.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_forwardToRequest">forwardToRequest</a>(<a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a> $request)
+        
+                                            <p><p>Forwards the request to another action and / or controller.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_redirect">redirect</a>(string $actionName, string $controllerName = null, string $packageKey = null, array $arguments = [], int $delay = 0, int $statusCode = 303, string $format = null)
+        
+                                            <p><p>Redirects the request to another action and / or controller.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_redirectToRequest">redirectToRequest</a>(<a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a> $request, int $delay = 0, int $statusCode = 303)
+        
+                                            <p><p>Redirects the request to another action and / or controller.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_redirectToUri">redirectToUri</a>(mixed $uri, int $delay = 0, int $statusCode = 303)
+        
+                                            <p><p>Redirects to another URI</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_throwStatus">throwStatus</a>(int $statusCode, string $statusMessage = null, string $content = null)
+        
+                                            <p><p>Sends the specified HTTP status immediately.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_mapRequestArgumentsToControllerArguments">mapRequestArgumentsToControllerArguments</a>()
+        
+                                            <p><p>Maps arguments delivered by the request object to the local controller arguments.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_initializeController">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Controller/AbstractController.php#L107">at line 107</a></div>
+        <code>            protected        
+    <strong>initializeController</strong>(<a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a> $request, <a href="../../../../Neos/Flow/Mvc/ActionResponse.html"><abbr title="Neos\Flow\Mvc\ActionResponse">ActionResponse</abbr></a> $response)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Initializes the controller</p></p>                <p><p>This method should be called by the concrete processRequest() method.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a></td>
+                <td>$request</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/ActionResponse.html"><abbr title="Neos\Flow\Mvc\ActionResponse">ActionResponse</abbr></a></td>
+                <td>$response</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Exception/UnsupportedRequestTypeException.html"><abbr title="Neos\Flow\Mvc\Exception\UnsupportedRequestTypeException">UnsupportedRequestTypeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getControllerContext">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Controller/AbstractController.php#L136">at line 136</a></div>
+        <code>                    <a href="../../../../Neos/Flow/Mvc/Controller/ControllerContext.html"><abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr></a>
+    <strong>getControllerContext</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns this controller's context.</p></p>                <p><p>Note that the context is only available after processRequest() has been called.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Flow/Mvc/Controller/ControllerContext.html"><abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr></a></td>
+            <td><p>The current controller context</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addFlashMessage">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Controller/AbstractController.php#L156">at line 156</a></div>
+        <code>                    void
+    <strong>addFlashMessage</strong>(string $messageBody, string $messageTitle = &#039;&#039;, string $severity = Error\Message::SEVERITY_OK, array $messageArguments = [], int $messageCode = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates a Message object and adds it to the FlashMessageContainer.</p></p>                <p><p>This method should be used to add FlashMessages rather than interacting with the container directly.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$messageBody</td>
+                <td><p>text of the FlashMessage</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$messageTitle</td>
+                <td><p>optional header of the FlashMessage</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$severity</td>
+                <td><p>severity of the FlashMessage (one of the Message::SEVERITY_* constants)</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$messageArguments</td>
+                <td><p>arguments to be passed to the FlashMessage</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$messageCode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td><p>if the message body is no string</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../../../../Neos/Error/Messages/Message.html"><abbr title="Neos\Error\Messages\Message">Message</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_forward">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Controller/AbstractController.php#L192">at line 192</a></div>
+        <code>            protected        
+    <strong>forward</strong>(string $actionName, string $controllerName = null, string $packageKey = null, array $arguments = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Forwards the request to another action and / or controller.</p></p>                <p><p>Request is directly transferred to the other action / controller</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$actionName</td>
+                <td><p>Name of the action to forward to</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$controllerName</td>
+                <td><p>Unqualified object name of the controller to forward to. If not specified, the current controller is used.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$packageKey</td>
+                <td><p>Key of the package containing the controller to forward to. May also contain the sub package, concatenated with backslash (Vendor.Foo\Bar\Baz). If not specified, the current package is assumed.</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td><p>Arguments to pass to the target action</p></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Exception/ForwardException.html"><abbr title="Neos\Flow\Mvc\Exception\ForwardException">ForwardException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Flow\Mvc\Controller\redirect()">redirect()</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_forwardToRequest">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Controller/AbstractController.php#L237">at line 237</a></div>
+        <code>            protected        void
+    <strong>forwardToRequest</strong>(<a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a> $request)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Forwards the request to another action and / or controller.</p></p>                <p><p>Request is directly transfered to the other action / controller</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a></td>
+                <td>$request</td>
+                <td><p>The request to redirect to</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Exception/ForwardException.html"><abbr title="Neos\Flow\Mvc\Exception\ForwardException">ForwardException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Flow\Mvc\Controller\redirectToRequest()">redirectToRequest()</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_redirect">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Controller/AbstractController.php#L267">at line 267</a></div>
+        <code>            protected        void
+    <strong>redirect</strong>(string $actionName, string $controllerName = null, string $packageKey = null, array $arguments = [], int $delay = 0, int $statusCode = 303, string $format = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Redirects the request to another action and / or controller.</p></p>                <p><p>Redirect will be sent to the client which then performs another request to the new URI.</p>
+<p>NOTE: This method only supports web requests and will throw an exception
+if used with other request types.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$actionName</td>
+                <td><p>Name of the action to forward to</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$controllerName</td>
+                <td><p>Unqualified object name of the controller to forward to. If not specified, the current controller is used.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$packageKey</td>
+                <td><p>Key of the package containing the controller to forward to. If not specified, the current package is assumed.</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td><p>Array of arguments for the target action</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$delay</td>
+                <td><p>(optional) The delay in seconds. Default is no delay.</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$statusCode</td>
+                <td><p>(optional) The HTTP status code for the redirect. Default is &quot;303 See Other&quot;</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$format</td>
+                <td><p>The format to use for the redirect URI</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Exception/StopActionException.html"><abbr title="Neos\Flow\Mvc\Exception\StopActionException">StopActionException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Flow\Mvc\Controller\forward()">forward()</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_redirectToRequest">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Controller/AbstractController.php#L301">at line 301</a></div>
+        <code>            protected        void
+    <strong>redirectToRequest</strong>(<a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a> $request, int $delay = 0, int $statusCode = 303)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Redirects the request to another action and / or controller.</p></p>                <p><p>Redirect will be sent to the client which then performs another request to the new URI.</p>
+<p>NOTE: This method only supports web requests and will throw an exception
+if used with other request types.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a></td>
+                <td>$request</td>
+                <td><p>The request to redirect to</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$delay</td>
+                <td><p>(optional) The delay in seconds. Default is no delay.</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$statusCode</td>
+                <td><p>(optional) The HTTP status code for the redirect. Default is &quot;303 See Other&quot;</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Exception/StopActionException.html"><abbr title="Neos\Flow\Mvc\Exception\StopActionException">StopActionException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Flow\Mvc\Controller\forwardToRequest()">forwardToRequest()</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_redirectToUri">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Controller/AbstractController.php#L322">at line 322</a></div>
+        <code>            protected        
+    <strong>redirectToUri</strong>(mixed $uri, int $delay = 0, int $statusCode = 303)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Redirects to another URI</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$uri</td>
+                <td><p>Either a string representation of a URI or a \Neos\Flow\Http\Uri object</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$delay</td>
+                <td><p>(optional) The delay in seconds. Default is no delay.</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$statusCode</td>
+                <td><p>(optional) The HTTP status code for the redirect. Default is &quot;303 See Other&quot;</p></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Exception/UnsupportedRequestTypeException.html"><abbr title="Neos\Flow\Mvc\Exception\UnsupportedRequestTypeException">UnsupportedRequestTypeException</abbr></a></td>
+                <td><p>If the request is not a web request</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Exception/StopActionException.html"><abbr title="Neos\Flow\Mvc\Exception\StopActionException">StopActionException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_throwStatus">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Controller/AbstractController.php#L348">at line 348</a></div>
+        <code>            protected        
+    <strong>throwStatus</strong>(int $statusCode, string $statusMessage = null, string $content = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sends the specified HTTP status immediately.</p></p>                <p><p>NOTE: This method only supports web requests and will throw an exception if used with other request types.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$statusCode</td>
+                <td><p>The HTTP status code</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$statusMessage</td>
+                <td><p>A custom HTTP status message</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$content</td>
+                <td><p>Body content which further explains the status</p></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Exception/StopActionException.html"><abbr title="Neos\Flow\Mvc\Exception\StopActionException">StopActionException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mapRequestArgumentsToControllerArguments">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Controller/AbstractController.php#L369">at line 369</a></div>
+        <code>            protected        void
+    <strong>mapRequestArgumentsToControllerArguments</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Maps arguments delivered by the request object to the local controller arguments.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Exception/RequiredArgumentMissingException.html"><abbr title="Neos\Flow\Mvc\Exception\RequiredArgumentMissingException">RequiredArgumentMissingException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

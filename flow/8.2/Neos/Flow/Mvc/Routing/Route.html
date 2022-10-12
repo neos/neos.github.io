@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Mvc\Routing\Route | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (8.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Mvc_Routing_Route" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Mvc.html">Mvc</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Mvc/Routing.html">Routing</a></li><li class="backslash">\</li><li>Route</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Route    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Route</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Implementation of a standard route</p></p>                    </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        ROUTEPART_TYPE_STATIC
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ROUTEPART_TYPE_DYNAMIC
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_EXTRACTROUTEPARTS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_name">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$name</td>
+                <td class="last"><p>Route name</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_defaults">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$defaults</td>
+                <td class="last"><p>Default values</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_uriPattern">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$uriPattern</td>
+                <td class="last"><p>URI Pattern of this route</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_lowerCase">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$lowerCase</td>
+                <td class="last"><p>Specifies whether Route Parts of this Route should be converted to lower case when resolved.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_appendExceedingArguments">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$appendExceedingArguments</td>
+                <td class="last"><p>Specifies whether Route Values, that are not part of the Routes configuration, should be appended as query string</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_matchResults">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$matchResults</td>
+                <td class="last"><p>Contains the routing results (indexed by &quot;package&quot;, &quot;controller&quot; and
+&quot;action&quot;) after a successful call of matches()</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_matchedTags">
+                                        protected                                        <a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteTags.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteTags">RouteTags</abbr></a>|null
+                                                                                
+                                    </td>
+                <td>$matchedTags</td>
+                <td class="last"><p>The tags that have been associated with this route during request matching, or NULL if no tags were set</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_resolvedUriConstraints">
+                                        protected                                        <a href="../../../../Neos/Flow/Mvc/Routing/Dto/UriConstraints.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\UriConstraints">UriConstraints</abbr></a>|null
+                                                                                
+                                    </td>
+                <td>$resolvedUriConstraints</td>
+                <td class="last"><p>The merged UriConstraints of all Route Parts after resolving</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_resolvedTags">
+                                        protected                                        <a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteTags.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteTags">RouteTags</abbr></a>|null
+                                                                                
+                                    </td>
+                <td>$resolvedTags</td>
+                <td class="last"><p>The tags that have been associated with this route during resolving, or NULL if no tags were set</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_routePartsConfiguration">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$routePartsConfiguration</td>
+                <td class="last"><p>Contains associative array of Route Part options
+(key: Route Part name, value: array of Route Part options)</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_routeParts">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$routeParts</td>
+                <td class="last"><p>Container for Route Parts.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_httpMethods">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$httpMethods</td>
+                <td class="last"><p>If not empty only the specified HTTP verbs are accepted by this route</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_isParsed">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$isParsed</td>
+                <td class="last"><p>Indicates whether this route is parsed.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_objectManager">
+                                        protected                                        <a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$objectManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_persistenceManager">
+                                        protected                                        <a href="../../../../Neos/Flow/Persistence/PersistenceManagerInterface.html"><abbr title="Neos\Flow\Persistence\PersistenceManagerInterface">PersistenceManagerInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$persistenceManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setName">setName</a>(string $name)
+        
+                                            <p><p>Sets Route name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getName">getName</a>()
+        
+                                            <p><p>Returns the name of this Route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setDefaults">setDefaults</a>(array $defaults)
+        
+                                            <p><p>Sets default values for this Route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getDefaults">getDefaults</a>()
+        
+                                            <p><p>Returns default values for this Route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setUriPattern">setUriPattern</a>(string $uriPattern)
+        
+                                            <p><p>Sets the URI pattern this route should match with</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getUriPattern">getUriPattern</a>()
+        
+                                            <p><p>Returns the URI pattern this route should match with</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setLowerCase">setLowerCase</a>(bool $lowerCase)
+        
+                                            <p><p>Specifies whether Route parts of this route should be converted to lower case when resolved.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isLowerCase">isLowerCase</a>()
+        
+                                            <p><p>Getter for $this-&gt;lowerCase.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setAppendExceedingArguments">setAppendExceedingArguments</a>(bool $appendExceedingArguments)
+        
+                                            <p><p>Specifies whether Route values, that are not part of the Route configuration, should be appended to the
+Resulting URI as query string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getAppendExceedingArguments">getAppendExceedingArguments</a>()
+        
+                                            <p><p>Returns true if exceeding arguments should be appended to the URI as query string, otherwise false</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setRoutePartsConfiguration">setRoutePartsConfiguration</a>(array $routePartsConfiguration)
+        
+                                            <p><p>By default all Dynamic Route Parts are resolved by
+\Neos\Flow\Mvc\Routing\DynamicRoutePart.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getRoutePartsConfiguration">getRoutePartsConfiguration</a>()
+        
+                                            <p><p>Returns the route parts configuration of this route</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setHttpMethods">setHttpMethods</a>(array $httpMethods)
+        
+                                            <p><p>Limits the HTTP verbs that are accepted by this route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getHttpMethods">getHttpMethods</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasHttpMethodConstraints">hasHttpMethodConstraints</a>()
+        
+                                            <p><p>Whether or not this route is limited to one or more HTTP verbs</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getMatchResults">getMatchResults</a>()
+        
+                                            <p><p>Returns an array with the Route match results.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteTags.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteTags">RouteTags</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getMatchedTags">getMatchedTags</a>()
+        
+                                            <p><p>Returns the tags that have been associated with this route during request matching, or NULL if no tags were set</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Flow/Mvc/Routing/Dto/UriConstraints.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\UriConstraints">UriConstraints</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getResolvedUriConstraints">getResolvedUriConstraints</a>()
+        
+                                            <p><p>Returns the merged UriConstraints of all Route Parts after resolving, or NULL if no constraints were set yet</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteTags.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteTags">RouteTags</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getResolvedTags">getResolvedTags</a>()
+        
+                                            <p><p>Returns the tags that have been associated with this route during resolving, or NULL if no tags were set</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_matches">matches</a>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteContext">RouteContext</abbr></a> $routeContext)
+        
+                                            <p><p>Checks whether $routeContext corresponds to this Route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resolves">resolves</a>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/ResolveContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\ResolveContext">ResolveContext</abbr></a> $resolveContext)
+        
+                                            <p><p>Checks whether $routeValues can be resolved to a corresponding uri.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_compareAndRemoveMatchingDefaultValues">compareAndRemoveMatchingDefaultValues</a>(array $defaults, array $routeValues)
+        
+                                            <p><p>Recursively iterates through the defaults of this route.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_extractInternalArguments">extractInternalArguments</a>(array $arguments)
+        
+                                            <p><p>Removes all internal arguments (prefixed with two underscores) from the given $arguments
+and returns them as array</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_containsObject">containsObject</a>(mixed $subject)
+        
+                                            <p><p>Checks if the given subject contains an object</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parse">parse</a>()
+        
+                                            <p><p>Iterates through all segments in $this-&gt;uriPattern and creates
+appropriate RoutePart instances.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_setName">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L152">at line 152</a></div>
+        <code>                    void
+    <strong>setName</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets Route name.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>The Route name</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getName">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L162">at line 162</a></div>
+        <code>                    string
+    <strong>getName</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the name of this Route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>Route name.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDefaults">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L174">at line 174</a></div>
+        <code>                    void
+    <strong>setDefaults</strong>(array $defaults)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets default values for this Route.</p></p>                <p><p>This array is merged with the actual matchResults when match() is called.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$defaults</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDefaults">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L184">at line 184</a></div>
+        <code>                    array
+    <strong>getDefaults</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns default values for this Route.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Route defaults</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setUriPattern">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L196">at line 196</a></div>
+        <code>                    void
+    <strong>setUriPattern</strong>(string $uriPattern)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the URI pattern this route should match with</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$uriPattern</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUriPattern">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L210">at line 210</a></div>
+        <code>                    string
+    <strong>getUriPattern</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the URI pattern this route should match with</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>the URI pattern</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setLowerCase">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L222">at line 222</a></div>
+        <code>                    void
+    <strong>setLowerCase</strong>(bool $lowerCase)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Specifies whether Route parts of this route should be converted to lower case when resolved.</p></p>                <p><p>This setting can be overwritten for all dynamic Route parts.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$lowerCase</td>
+                <td><p>true: Route parts are converted to lower case by default. false: Route parts are not altered.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isLowerCase">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L233">at line 233</a></div>
+        <code>                    bool
+    <strong>isLowerCase</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Getter for $this-&gt;lowerCase.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if this Route part will be converted to lower case, otherwise false.</p></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Flow\Mvc\Routing\setLowerCase()">setLowerCase()</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setAppendExceedingArguments">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L247">at line 247</a></div>
+        <code>                    void
+    <strong>setAppendExceedingArguments</strong>(bool $appendExceedingArguments)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Specifies whether Route values, that are not part of the Route configuration, should be appended to the
+Resulting URI as query string.</p></p>                <p><p>If set to false, the route won't resolve if there are route values left after iterating through all Route Part
+handlers and removing the matching default values.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$appendExceedingArguments</td>
+                <td><p>true: exceeding arguments will be appended to the resulting URI</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAppendExceedingArguments">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L257">at line 257</a></div>
+        <code>                    bool
+    <strong>getAppendExceedingArguments</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns true if exceeding arguments should be appended to the URI as query string, otherwise false</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setRoutePartsConfiguration">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L276">at line 276</a></div>
+        <code>                    void
+    <strong>setRoutePartsConfiguration</strong>(array $routePartsConfiguration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>By default all Dynamic Route Parts are resolved by
+\Neos\Flow\Mvc\Routing\DynamicRoutePart.</p></p>                <p><p>But you can specify different classes to handle particular Route Parts.</p>
+<p>Note: Route Part handlers must implement
+\Neos\Flow\Mvc\Routing\DynamicRoutePartInterface.</p>
+<p>Usage: setRoutePartsConfiguration(array('@controller' =&gt;
+array('handler' =&gt; \Neos\Package\Subpackage\MyRoutePartHandler::class)));</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$routePartsConfiguration</td>
+                <td><p>Route Parts configuration options</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRoutePartsConfiguration">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L286">at line 286</a></div>
+        <code>                    array
+    <strong>getRoutePartsConfiguration</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the route parts configuration of this route</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>$routePartsConfiguration</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setHttpMethods">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L298">at line 298</a></div>
+        <code>                    void
+    <strong>setHttpMethods</strong>(array $httpMethods)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Limits the HTTP verbs that are accepted by this route.</p></p>                <p><p>If empty all HTTP verbs are accepted</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$httpMethods</td>
+                <td><p>non-associative array in the format array('GET', 'POST', ...)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getHttpMethods">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L306">at line 306</a></div>
+        <code>                    array
+    <strong>getHttpMethods</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasHttpMethodConstraints">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L316">at line 316</a></div>
+        <code>                    bool
+    <strong>hasHttpMethodConstraints</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Whether or not this route is limited to one or more HTTP verbs</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMatchResults">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L327">at line 327</a></div>
+        <code>                    array
+    <strong>getMatchResults</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an array with the Route match results.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>An array of Route Parts and their values for further handling by the Router</p></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../../../../Neos/Flow/Mvc/Routing/Router.html"><abbr title="Neos\Flow\Mvc\Routing\Router">Router</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMatchedTags">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L337">at line 337</a></div>
+        <code>                    <a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteTags.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteTags">RouteTags</abbr></a>|null
+    <strong>getMatchedTags</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the tags that have been associated with this route during request matching, or NULL if no tags were set</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteTags.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteTags">RouteTags</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getResolvedUriConstraints">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L347">at line 347</a></div>
+        <code>                    <a href="../../../../Neos/Flow/Mvc/Routing/Dto/UriConstraints.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\UriConstraints">UriConstraints</abbr></a>|null
+    <strong>getResolvedUriConstraints</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the merged UriConstraints of all Route Parts after resolving, or NULL if no constraints were set yet</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Flow/Mvc/Routing/Dto/UriConstraints.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\UriConstraints">UriConstraints</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getResolvedTags">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L357">at line 357</a></div>
+        <code>                    <a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteTags.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteTags">RouteTags</abbr></a>|null
+    <strong>getResolvedTags</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the tags that have been associated with this route during resolving, or NULL if no tags were set</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteTags.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteTags">RouteTags</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_matches">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L372">at line 372</a></div>
+        <code>                    bool
+    <strong>matches</strong>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteContext">RouteContext</abbr></a> $routeContext)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks whether $routeContext corresponds to this Route.</p></p>                <p><p>If all Route Parts match successfully true is returned an $this-&gt;matchResults contains an array
+combining Route default values and calculated matchResults from the individual Route Parts.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteContext">RouteContext</abbr></a></td>
+                <td>$routeContext</td>
+                <td><p>The Route Context containing the current HTTP request object and, optional, Routing RouteParameters</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if this Route corresponds to the given $routeContext, otherwise false</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Exception/InvalidRoutePartValueException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidRoutePartValueException">InvalidRoutePartValueException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Flow\Mvc\Routing\getMatchResults()">getMatchResults()</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resolves">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L456">at line 456</a></div>
+        <code>                    bool
+    <strong>resolves</strong>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/ResolveContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\ResolveContext">ResolveContext</abbr></a> $resolveContext)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks whether $routeValues can be resolved to a corresponding uri.</p></p>                <p><p>If all Route Parts can resolve one or more of the $routeValues, true is
+returned and $this-&gt;resolvedUriConstraints contains an instance of UriConstraints that can be applied
+to a template URI transforming it accordingly (Router::resolve())</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Routing/Dto/ResolveContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\ResolveContext">ResolveContext</abbr></a></td>
+                <td>$resolveContext</td>
+                <td><p>context for this resolve invokation</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if this Route corresponds to the given $routeValues, otherwise false</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Exception/InvalidRoutePartValueException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidRoutePartValueException">InvalidRoutePartValueException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_compareAndRemoveMatchingDefaultValues">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L561">at line 561</a></div>
+        <code>            protected        bool
+    <strong>compareAndRemoveMatchingDefaultValues</strong>(array $defaults, array $routeValues)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Recursively iterates through the defaults of this route.</p></p>                <p><p>If a route value is equal to a default value, it's removed
+from $routeValues.
+If a value exists but is not equal to is corresponding default,
+iteration is interrupted and false is returned.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$defaults</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$routeValues</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>false if one of the $routeValues is not equal to it's default value. Otherwise true</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_extractInternalArguments">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L596">at line 596</a></div>
+        <code>            protected        array
+    <strong>extractInternalArguments</strong>(array $arguments)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes all internal arguments (prefixed with two underscores) from the given $arguments
+and returns them as array</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>the internal arguments</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_containsObject">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L624">at line 624</a></div>
+        <code>            protected        bool
+    <strong>containsObject</strong>(mixed $subject)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if the given subject contains an object</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$subject</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>If it contains an object or not</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parse">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Mvc/Routing/Route.php#L647">at line 647</a></div>
+        <code>                    void
+    <strong>parse</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Iterates through all segments in $this-&gt;uriPattern and creates
+appropriate RoutePart instances.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Mvc\Exception\InvalidRoutePartHandlerException|\Neos\Flow\Mvc\Exception\InvalidRouteSetupException|\Neos\Flow\Mvc\Exception\InvalidUriPatternException">InvalidUriPatternException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

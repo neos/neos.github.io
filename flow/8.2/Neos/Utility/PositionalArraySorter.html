@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Utility\PositionalArraySorter | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/typeahead.min.js"></script>
+        <script src="../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (8.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Utility_PositionalArraySorter" data-root-path="../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../Neos/Utility.html">Utility</a></li><li class="backslash">\</li><li>PositionalArraySorter</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>PositionalArraySorter    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>PositionalArraySorter</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Utility.Arrays/Classes/PositionalArraySorter.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Flexible array sorter that sorts an array according to a &quot;position&quot; meta data.</p></p>            <p><p>The expected format for the $subject is:</p>
+<p>array(
+array(
+'foo' =&gt; 'bar'
+'position' =&gt; '<position-string>',
+),
+array(
+'foo' =&gt; 'baz'
+'position' =&gt; '<position-string>',
+),
+)</p>
+<p>The <position-string> supports one of the following syntax:
+start (<weight>)
+end (<weight>)
+before <key> (<weight>)
+after <key> (<weight>)</p>
+<numerical-order>
+
+where "weight" is the priority that defines which of two conflicting positions overrules the other,
+"key" is a string that references another key in the $subject
+and "numerical-order" is an integer that defines the order independently from the other keys.
+
+With the $positionPropertyPath parameter the property path to the position string can be changed.</p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_subject">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$subject</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_positionPropertyPath">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$positionPropertyPath</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_startKeys">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$startKeys</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_middleKeys">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$middleKeys</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_endKeys">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$endKeys</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_beforeKeys">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$beforeKeys</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_afterKeys">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$afterKeys</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(array $subject, string $positionPropertyPath = &#039;position&#039;)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_toArray">toArray</a>()
+        
+                                            <p><p>Returns a sorted copy of the subject array</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getSortedKeys">getSortedKeys</a>()
+        
+                                            <p><p>Returns the keys of $this-&gt;subject sorted according to the position meta data</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_extractMiddleKeys">extractMiddleKeys</a>(array $arrayKeysWithPosition)
+        
+                                            <p><p>Extracts all &quot;middle&quot; keys from $arrayKeysWithPosition. Those are all keys with a numeric position.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_extractStartKeys">extractStartKeys</a>(array $arrayKeysWithPosition)
+        
+                                            <p><p>Extracts all &quot;start&quot; keys from $arrayKeysWithPosition. Those are all keys with a position starting with &quot;start&quot;
+The result is a multi-dimensional arrays where the KEY of each array is a PRIORITY and the VALUE is an array of matching KEYS
+This also removes matching keys from the given $arrayKeysWithPosition</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_extractEndKeys">extractEndKeys</a>(array $arrayKeysWithPosition)
+        
+                                            <p><p>Extracts all &quot;end&quot; keys from $arrayKeysWithPosition. Those are all keys with a position starting with &quot;end&quot;
+The result is a multi-dimensional arrays where the KEY of each array is a PRIORITY and the VALUE is an array of matching KEYS
+This also removes matching keys from the given $arrayKeysWithPosition</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_extractBeforeKeys">extractBeforeKeys</a>(array $arrayKeysWithPosition, array $existingKeys)
+        
+                                            <p><p>Extracts all &quot;before&quot; keys from $arrayKeysWithPosition. Those are all keys with a position starting with &quot;before&quot;
+The result is a multi-dimensional arrays where the KEY of each array is a PRIORITY and the VALUE is an array of matching KEYS
+This also removes matching keys from the given $arrayKeysWithPosition</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_extractAfterKeys">extractAfterKeys</a>(array $arrayKeysWithPosition, array $existingKeys)
+        
+                                            <p><p>Extracts all &quot;after&quot; keys from $arrayKeysWithPosition. Those are all keys with a position starting with &quot;after&quot;
+The result is a multi-dimensional arrays where the KEY of each array is a PRIORITY and the VALUE is an array of matching KEYS
+This also removes matching keys from the given $arrayKeysWithPosition</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_collectArrayKeysAndPositions">collectArrayKeysAndPositions</a>()
+        
+                                            <p><p>Collect the array keys inside $this-&gt;subject with each position meta-argument.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_generateSortedKeysMap">generateSortedKeysMap</a>()
+        
+                                            <p><p>Flattens start-, middle-, end-, before- and afterKeys to a single dimension and merges them together to a single array</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Utility.Arrays/Classes/PositionalArraySorter.php#L83">at line 83</a></div>
+        <code>                    
+    <strong>__construct</strong>(array $subject, string $positionPropertyPath = &#039;position&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$subject</td>
+                <td><p>The source array to sort</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$positionPropertyPath</td>
+                <td><p>optional property path to the string that contains the position</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toArray">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Utility.Arrays/Classes/PositionalArraySorter.php#L94">at line 94</a></div>
+        <code>                    array
+    <strong>toArray</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a sorted copy of the subject array</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSortedKeys">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Utility.Arrays/Classes/PositionalArraySorter.php#L113">at line 113</a></div>
+        <code>                    array
+    <strong>getSortedKeys</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the keys of $this-&gt;subject sorted according to the position meta data</p></p>                <p><p>TODO Detect circles in after / before dependencies (#52185)</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>an ordered list of keys</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Neos/Utility/Exception/InvalidPositionException.html"><abbr title="Neos\Utility\Exception\InvalidPositionException">InvalidPositionException</abbr></a></td>
+                <td><p>if the positional string has an unsupported format</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_extractMiddleKeys">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Utility.Arrays/Classes/PositionalArraySorter.php#L139">at line 139</a></div>
+        <code>            protected        void
+    <strong>extractMiddleKeys</strong>(array $arrayKeysWithPosition)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Extracts all &quot;middle&quot; keys from $arrayKeysWithPosition. Those are all keys with a numeric position.</p></p>                <p><p>The result is a multi-dimensional arrays where the KEY of each array is a PRIORITY and the VALUE is an array of matching KEYS
+This also removes matching keys from the given $arrayKeysWithPosition</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$arrayKeysWithPosition</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_extractStartKeys">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Utility.Arrays/Classes/PositionalArraySorter.php#L160">at line 160</a></div>
+        <code>            protected        void
+    <strong>extractStartKeys</strong>(array $arrayKeysWithPosition)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Extracts all &quot;start&quot; keys from $arrayKeysWithPosition. Those are all keys with a position starting with &quot;start&quot;
+The result is a multi-dimensional arrays where the KEY of each array is a PRIORITY and the VALUE is an array of matching KEYS
+This also removes matching keys from the given $arrayKeysWithPosition</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$arrayKeysWithPosition</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_extractEndKeys">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Utility.Arrays/Classes/PositionalArraySorter.php#L185">at line 185</a></div>
+        <code>            protected        void
+    <strong>extractEndKeys</strong>(array $arrayKeysWithPosition)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Extracts all &quot;end&quot; keys from $arrayKeysWithPosition. Those are all keys with a position starting with &quot;end&quot;
+The result is a multi-dimensional arrays where the KEY of each array is a PRIORITY and the VALUE is an array of matching KEYS
+This also removes matching keys from the given $arrayKeysWithPosition</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$arrayKeysWithPosition</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_extractBeforeKeys">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Utility.Arrays/Classes/PositionalArraySorter.php#L211">at line 211</a></div>
+        <code>            protected        void
+    <strong>extractBeforeKeys</strong>(array $arrayKeysWithPosition, array $existingKeys)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Extracts all &quot;before&quot; keys from $arrayKeysWithPosition. Those are all keys with a position starting with &quot;before&quot;
+The result is a multi-dimensional arrays where the KEY of each array is a PRIORITY and the VALUE is an array of matching KEYS
+This also removes matching keys from the given $arrayKeysWithPosition</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$arrayKeysWithPosition</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$existingKeys</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_extractAfterKeys">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Utility.Arrays/Classes/PositionalArraySorter.php#L242">at line 242</a></div>
+        <code>            protected        void
+    <strong>extractAfterKeys</strong>(array $arrayKeysWithPosition, array $existingKeys)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Extracts all &quot;after&quot; keys from $arrayKeysWithPosition. Those are all keys with a position starting with &quot;after&quot;
+The result is a multi-dimensional arrays where the KEY of each array is a PRIORITY and the VALUE is an array of matching KEYS
+This also removes matching keys from the given $arrayKeysWithPosition</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$arrayKeysWithPosition</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$existingKeys</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_collectArrayKeysAndPositions">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Utility.Arrays/Classes/PositionalArraySorter.php#L270">at line 270</a></div>
+        <code>            protected        array
+    <strong>collectArrayKeysAndPositions</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Collect the array keys inside $this-&gt;subject with each position meta-argument.</p></p>                <p><p>If there is no position but the array is numerically ordered, we use the array index as position.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>an associative array where each key of $subject has a position string assigned</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_generateSortedKeysMap">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Utility.Arrays/Classes/PositionalArraySorter.php#L297">at line 297</a></div>
+        <code>            protected        array
+    <strong>generateSortedKeysMap</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flattens start-, middle-, end-, before- and afterKeys to a single dimension and merges them together to a single array</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

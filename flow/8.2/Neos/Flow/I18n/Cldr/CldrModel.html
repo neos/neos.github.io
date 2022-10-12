@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\I18n\Cldr\CldrModel | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (8.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_I18n_Cldr_CldrModel" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/I18n.html">I18n</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/I18n/Cldr.html">Cldr</a></li><li class="backslash">\</li><li>CldrModel</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>CldrModel    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>CldrModel</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/I18n/Cldr/CldrModel.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A model representing data from one or few CLDR files.</p></p>            <p><p>When more than one file path is provided to the constructor, data from
+all files will be parsed and merged according to the inheritance rules defined
+in CLDR specification. Aliases are also resolved correctly.</p></p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_cldrBasePath">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$cldrBasePath</td>
+                <td class="last"><p>An absolute path to the directory where CLDR resides. It is changed only
+in tests.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cache">
+                                        protected                                        <a href="../../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a>
+                                                                                
+                                    </td>
+                <td>$cache</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cacheKey">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$cacheKey</td>
+                <td class="last"><p>Key used to store / retrieve cached data</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cldrParser">
+                                        protected                                        <a href="../../../../Neos/Flow/I18n/Cldr/CldrParser.html"><abbr title="Neos\Flow\I18n\Cldr\CldrParser">CldrParser</abbr></a>
+                                                                                
+                                    </td>
+                <td>$cldrParser</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_sourcePaths">
+                                        protected                                        string[]
+                                                                                
+                                    </td>
+                <td>$sourcePaths</td>
+                <td class="last"><p>Absolute path or path to the files represented by this class' instance.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_parsedData">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$parsedData</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(array $sourcePaths)
+        
+                                            <p><p>Contructs the model</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectCache">injectCache</a>(<a href="../../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a> $cache)
+        
+                                            <p><p>Injects the Flow_I18n_Cldr_CldrModelCache cache</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectParser">injectParser</a>(<a href="../../../../Neos/Flow/I18n/Cldr/CldrParser.html"><abbr title="Neos\Flow\I18n\Cldr\CldrParser">CldrParser</abbr></a> $parser)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initializeObject">initializeObject</a>()
+        
+                                            <p><p>When it's called, CLDR file is parsed or cache is loaded, if available.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getRawData">getRawData</a>(string $path)
+        
+                                            <p><p>Returns multi-dimensional array representing desired node and it's children,
+or a string value if the path points to a leaf.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getRawArray">getRawArray</a>(string $path)
+        
+                                            <p><p>Returns multi-dimensional array representing desired node and it's children.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getElement">getElement</a>(string $path)
+        
+                                            <p><p>Returns string value from a path given.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findNodesWithinPath">findNodesWithinPath</a>(string $path, string $nodeName)
+        
+                                            <p><p>Returns all nodes with given name found within given path</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getNodeName">getNodeName</a>(string $nodeString)
+        
+                                            <p><p>Returns node name extracted from node string</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getAttributeValue">getAttributeValue</a>(string $nodeString, string $attributeName)
+        
+                                            <p><p>Parses the node string and returns a value of attribute for name provided.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseFiles">parseFiles</a>(array $sourcePaths)
+        
+                                            <p><p>Parses given CLDR files using CldrParser and merges parsed data.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_mergeTwoParsedFiles">mergeTwoParsedFiles</a>(mixed $firstParsedData, mixed $secondParsedData)
+        
+                                            <p><p>Merges two sets of data from two separate CLDR files into one array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resolveAliases">resolveAliases</a>(mixed $data, string $currentPath)
+        
+                                            <p><p>Resolves any 'alias' nodes in parsed CLDR data.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/I18n/Cldr/CldrModel.php#L72">at line 72</a></div>
+        <code>                    
+    <strong>__construct</strong>(array $sourcePaths)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Contructs the model</p></p>                <p><p>Accepts array of absolute paths to CLDR files. This array can have one
+element (if model represents one CLDR file) or many elements (if group
+of CLDR files is going to be represented by this model).</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$sourcePaths</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectCache">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/I18n/Cldr/CldrModel.php#L85">at line 85</a></div>
+        <code>                    void
+    <strong>injectCache</strong>(<a href="../../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a> $cache)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the Flow_I18n_Cldr_CldrModelCache cache</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a></td>
+                <td>$cache</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectParser">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/I18n/Cldr/CldrModel.php#L94">at line 94</a></div>
+        <code>                    void
+    <strong>injectParser</strong>(<a href="../../../../Neos/Flow/I18n/Cldr/CldrParser.html"><abbr title="Neos\Flow\I18n\Cldr\CldrParser">CldrParser</abbr></a> $parser)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/I18n/Cldr/CldrParser.html"><abbr title="Neos\Flow\I18n\Cldr\CldrParser">CldrParser</abbr></a></td>
+                <td>$parser</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initializeObject">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/I18n/Cldr/CldrModel.php#L106">at line 106</a></div>
+        <code>                    void
+    <strong>initializeObject</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>When it's called, CLDR file is parsed or cache is loaded, if available.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/I18n/Cldr/Exception/InvalidCldrDataException.html"><abbr title="Neos\Flow\I18n\Cldr\Exception\InvalidCldrDataException">InvalidCldrDataException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Cache/Exception.html"><abbr title="Neos\Cache\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRawData">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/I18n/Cldr/CldrModel.php#L135">at line 135</a></div>
+        <code>                    mixed
+    <strong>getRawData</strong>(string $path)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns multi-dimensional array representing desired node and it's children,
+or a string value if the path points to a leaf.</p></p>                <p><p>Syntax for paths is very simple. It's a group of array indices joined
+with a slash. It tries to emulate XPath query syntax to some extent.
+Examples:</p>
+<p>plurals/pluralRules
+dates/calendars/calendar[@type=&quot;gregorian&quot;]</p>
+<p>Please see the documentation for CldrParser for details about parsed data
+structure.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>A path to the node to get</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Array or string of matching data, or false on failure</p></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../../../../Neos/Flow/I18n/Cldr/CldrParser.html"><abbr title="Neos\Flow\I18n\Cldr\CldrParser">CldrParser</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRawArray">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/I18n/Cldr/CldrModel.php#L166">at line 166</a></div>
+        <code>                    mixed
+    <strong>getRawArray</strong>(string $path)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns multi-dimensional array representing desired node and it's children.</p></p>                <p><p>This method will return false if the path points to a leaf (i.e. a string,
+not an array).</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>A path to the node to get</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Array of matching data, or false on failure</p></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../../../../Neos/Flow/I18n/Cldr/CldrParser.html"><abbr title="Neos\Flow\I18n\Cldr\CldrParser">CldrParser</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+                                            <a href="../../../../Neos/Flow/I18n/Cldr/CldrModel.html#method_getRawData">
+<abbr title="Neos\Flow\I18n\Cldr\CldrModel">CldrModel</abbr>::getRawData</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getElement">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/I18n/Cldr/CldrModel.php#L185">at line 185</a></div>
+        <code>                    mixed
+    <strong>getElement</strong>(string $path)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns string value from a path given.</p></p>                <p><p>Path must point to leaf. Syntax for paths is same as for getRawData.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>A path to the element to get</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>String with desired element, or false on failure</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findNodesWithinPath">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/I18n/Cldr/CldrModel.php#L203">at line 203</a></div>
+        <code>                    mixed
+    <strong>findNodesWithinPath</strong>(string $path, string $nodeName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns all nodes with given name found within given path</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>A path to search in</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeName</td>
+                <td><p>A name of the nodes to return</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>String with desired element, or false on failure</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getNodeName">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/I18n/Cldr/CldrModel.php#L231">at line 231</a></div>
+        <code>        static            string
+    <strong>getNodeName</strong>(string $nodeString)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns node name extracted from node string</p></p>                <p><p>The internal representation of CLDR uses array keys like:
+'calendar[@type=&quot;gregorian&quot;]'
+This method helps to extract the node name from such keys.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$nodeString</td>
+                <td><p>String with node name and optional attribute(s)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>Name of the node</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAttributeValue">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/I18n/Cldr/CldrModel.php#L260">at line 260</a></div>
+        <code>        static            mixed
+    <strong>getAttributeValue</strong>(string $nodeString, string $attributeName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses the node string and returns a value of attribute for name provided.</p></p>                <p><p>An internal representation of CLDR data used by this class is a simple
+multi dimensional array where keys are nodes' names. If node has attributes,
+they are all stored as one string (e.g. 'calendar[@type=&quot;gregorian&quot;]' or
+'calendar[@type=&quot;gregorian&quot;][@alt=&quot;proposed-x1001&quot;').</p>
+<p>This convenient method extracts a value of desired attribute by its name
+(in example above, in order to get the value 'gregorian', 'type' should
+be passed as the second parameter to this method).</p>
+<p>Note: this method does not validate the input!</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$nodeString</td>
+                <td><p>A node key to parse</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$attributeName</td>
+                <td><p>Name of the attribute to find</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Value of desired attribute, or false if there is no such attribute</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseFiles">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/I18n/Cldr/CldrModel.php#L281">at line 281</a></div>
+        <code>            protected        array
+    <strong>parseFiles</strong>(array $sourcePaths)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses given CLDR files using CldrParser and merges parsed data.</p></p>                <p><p>Merging is done with inheritance in mind, as defined in CLDR specification.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$sourcePaths</td>
+                <td><p>Absolute paths to CLDR files (can be one file)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Parsed and merged data</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mergeTwoParsedFiles">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/I18n/Cldr/CldrModel.php#L309">at line 309</a></div>
+        <code>            protected        array
+    <strong>mergeTwoParsedFiles</strong>(mixed $firstParsedData, mixed $secondParsedData)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Merges two sets of data from two separate CLDR files into one array.</p></p>                <p><p>Merging is done with inheritance in mind, as defined in CLDR specification.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$firstParsedData</td>
+                <td><p>Part of data from first file (either array or string)</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$secondParsedData</td>
+                <td><p>Part of data from second file (either array or string)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Data merged from two files</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resolveAliases">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/I18n/Cldr/CldrModel.php#L340">at line 340</a></div>
+        <code>            protected        mixed
+    <strong>resolveAliases</strong>(mixed $data, string $currentPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resolves any 'alias' nodes in parsed CLDR data.</p></p>                <p><p>CLDR uses 'alias' tag which denotes places where data should be copied
+from. This tag has 'source' attribute pointing (by relative XPath query)
+to the source node - it should be copied with all it's children.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$data</td>
+                <td><p>Part of internal array to resolve aliases for (string if leaf, array otherwise)</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$currentPath</td>
+                <td><p>Path to currently analyzed part of data</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Modified (or unchanged) $data</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/I18n/Cldr/Exception/InvalidCldrDataException.html"><abbr title="Neos\Flow\I18n\Cldr\Exception\InvalidCldrDataException">InvalidCldrDataException</abbr></a></td>
+                <td><p>When found alias tag which has unexpected structure</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
