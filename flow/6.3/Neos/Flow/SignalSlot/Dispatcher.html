@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\SignalSlot\Dispatcher | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (6.3)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_SignalSlot_Dispatcher" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow/SignalSlot.html">SignalSlot</a></li><li class="backslash">\</li><li>Dispatcher</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Dispatcher    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Dispatcher</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/SignalSlot/Dispatcher.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A dispatcher which dispatches signals by calling its registered slot methods
+and passing them the method arguments which were originally passed to the
+signal method.</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_objectManager">
+                                        protected                                        <a href="../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$objectManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_slots">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$slots</td>
+                <td class="last"><p>Information about all slots connected a certain signal.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectObjectManager">injectObjectManager</a>(<a href="../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a> $objectManager)
+        
+                                            <p><p>Injects the object manager</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_connect">connect</a>(string $signalClassName, string $signalName, mixed $slotClassNameOrObject, string $slotMethodName = &#039;&#039;, bool $passSignalInformation = true)
+        
+                                            <p><p>Connects a signal with a slot.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_dispatch">dispatch</a>(string $signalClassName, string $signalName, array $signalArguments = [])
+        
+                                            <p><p>Dispatches a signal by calling the registered Slot methods</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getSlots">getSlots</a>(string $signalClassName, string $signalName)
+        
+                                            <p><p>Returns all slots which are connected with the given signal</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getSignals">getSignals</a>()
+        
+                                            <p><p>Returns all signals with its slots</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_injectObjectManager">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/SignalSlot/Dispatcher.php#L46">at line 46</a></div>
+        <code>                    void
+    <strong>injectObjectManager</strong>(<a href="../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a> $objectManager)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the object manager</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a></td>
+                <td>$objectManager</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_connect">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/SignalSlot/Dispatcher.php#L64">at line 64</a></div>
+        <code>                    void
+    <strong>connect</strong>(string $signalClassName, string $signalName, mixed $slotClassNameOrObject, string $slotMethodName = &#039;&#039;, bool $passSignalInformation = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Connects a signal with a slot.</p></p>                <p><p>One slot can be connected with multiple signals by calling this method multiple times.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$signalClassName</td>
+                <td><p>Name of the class containing the signal</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$signalName</td>
+                <td><p>Name of the signal</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$slotClassNameOrObject</td>
+                <td><p>Name of the class containing the slot or the instantiated class or a Closure object</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$slotMethodName</td>
+                <td><p>Name of the method to be used as a slot. If $slotClassNameOrObject is a Closure object, this parameter is ignored</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$passSignalInformation</td>
+                <td><p>If set to true, the last argument passed to the slot will be information about the signal (EmitterClassName::signalName)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dispatch">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/SignalSlot/Dispatcher.php#L103">at line 103</a></div>
+        <code>                    void
+    <strong>dispatch</strong>(string $signalClassName, string $signalName, array $signalArguments = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Dispatches a signal by calling the registered Slot methods</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$signalClassName</td>
+                <td><p>Name of the class containing the signal</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$signalName</td>
+                <td><p>Name of the signal</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$signalArguments</td>
+                <td><p>arguments passed to the signal method</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/SignalSlot/Exception/InvalidSlotException.html"><abbr title="Neos\Flow\SignalSlot\Exception\InvalidSlotException">InvalidSlotException</abbr></a></td>
+                <td><p>if the slot is not valid</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSlots">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/SignalSlot/Dispatcher.php#L152">at line 152</a></div>
+        <code>                    array
+    <strong>getSlots</strong>(string $signalClassName, string $signalName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns all slots which are connected with the given signal</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$signalClassName</td>
+                <td><p>Name of the class containing the signal</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$signalName</td>
+                <td><p>Name of the signal</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>An array of arrays with slot information</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSignals">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/SignalSlot/Dispatcher.php#L163">at line 163</a></div>
+        <code>                    array
+    <strong>getSignals</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns all signals with its slots</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>An array of arrays with slot information</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

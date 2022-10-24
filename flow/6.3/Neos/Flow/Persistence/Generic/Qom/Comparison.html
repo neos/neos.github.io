@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Persistence\Generic\Qom\Comparison | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
+        <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../../js/typeahead.min.js"></script>
+        <script src="../../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (6.3)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Persistence_Generic_Qom_Comparison" data-root-path="../../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/Flow/Persistence.html">Persistence</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/Flow/Persistence/Generic.html">Generic</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/Flow/Persistence/Generic/Qom.html">Qom</a></li><li class="backslash">\</li><li>Comparison</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Comparison    <small><span class="label label-danger">deprecated</span></small>
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Comparison</strong>        extends <a href="../../../../../Neos/Flow/Persistence/Generic/Qom/Constraint.html"><abbr title="Neos\Flow\Persistence\Generic\Qom\Constraint">Constraint</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/Persistence/Generic/Qom/Comparison.php">View source</a>)
+</p>
+
+        
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>since</td>
+                    <td>Flow 6.0</td>
+                </tr>
+                    </p>
+    
+        
+
+            <div class="description">
+            <p><p>Filters tuples based on the outcome of a binary operation.</p></p>            <p><p>For any comparison, operand2 always evaluates to a scalar value. In contrast,
+operand1 may evaluate to an array of values (for example, the value of a multi-valued
+property), in which case the comparison is separately performed for each element
+of the array, and the Comparison constraint is satisfied as a whole if the
+comparison against any element of the array is satisfied.</p>
+<p>If operand1 and operand2 evaluate to values of different property types, the
+value of operand2 is converted to the property type of the value of operand1.
+If the type conversion fails, the query is invalid.</p>
+<p>If operator is not supported for the property type of operand1, the query is invalid.</p>
+<p>If operand1 evaluates to null (for example, if the operand evaluates the value
+of a property which does not exist), the constraint is not satisfied.</p>
+<p>The OPERATOR_EQUAL_TO operator is satisfied only if the value of operand1
+equals the value of operand2.</p>
+<p>The OPERATOR_NOT_EQUAL_TO operator is satisfied unless the value of
+operand1 equals the value of operand2.</p>
+<p>The OPERATOR_LESS_THAN operator is satisfied only if the value of
+operand1 is ordered before the value of operand2.</p>
+<p>The OPERATOR_LESS_THAN_OR_EQUAL_TO operator is satisfied unless the value
+of operand1 is ordered after the value of operand2.</p>
+<p>The OPERATOR_GREATER_THAN operator is satisfied only if the value of
+operand1 is ordered after the value of operand2.</p>
+<p>The OPERATOR_GREATER_THAN_OR_EQUAL_TO operator is satisfied unless the
+value of operand1 is ordered before the value of operand2.</p>
+<p>The OPERATOR_LIKE operator is satisfied only if the value of operand1
+matches the pattern specified by the value of operand2, where in the pattern:</p>
+<ul>
+<li>the character &quot;%&quot; matches zero or more characters, and</li>
+<li>the character &quot;_&quot; (underscore) matches exactly one character, and</li>
+<li>the string &quot;\x&quot; matches the character &quot;x&quot;, and
+all other characters match themselves.</li>
+</ul></p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_operand1">
+                                        protected                                        <a href="../../../../../Neos/Flow/Persistence/Generic/Qom/DynamicOperand.html"><abbr title="Neos\Flow\Persistence\Generic\Qom\DynamicOperand">DynamicOperand</abbr></a>
+                                                                                
+                                    </td>
+                <td>$operand1</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_operator">
+                                        protected                                        int
+                                                                                
+                                    </td>
+                <td>$operator</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_operand2">
+                                        protected                                        mixed
+                                                                                
+                                    </td>
+                <td>$operand2</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../../../Neos/Flow/Persistence/Generic/Qom/DynamicOperand.html"><abbr title="Neos\Flow\Persistence\Generic\Qom\DynamicOperand">DynamicOperand</abbr></a> $operand1, int $operator, mixed $operand2 = null)
+        
+                                            <p><p>Constructs this Comparison instance</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/Flow/Persistence/Generic/Qom/DynamicOperand.html"><abbr title="Neos\Flow\Persistence\Generic\Qom\DynamicOperand">DynamicOperand</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getOperand1">getOperand1</a>()
+        
+                                            <p><p>Gets the first operand.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getOperator">getOperator</a>()
+        
+                                            <p><p>Gets the operator.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getOperand2">getOperand2</a>()
+        
+                                            <p><p>Gets the second operand.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/Persistence/Generic/Qom/Comparison.php#L85">at line 85</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../../../Neos/Flow/Persistence/Generic/Qom/DynamicOperand.html"><abbr title="Neos\Flow\Persistence\Generic\Qom\DynamicOperand">DynamicOperand</abbr></a> $operand1, int $operator, mixed $operand2 = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructs this Comparison instance</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/Flow/Persistence/Generic/Qom/DynamicOperand.html"><abbr title="Neos\Flow\Persistence\Generic\Qom\DynamicOperand">DynamicOperand</abbr></a></td>
+                <td>$operand1</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$operator</td>
+                <td><p>one of \Neos\Flow\Persistence\QueryInterface.OPERATOR_*</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$operand2</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getOperand1">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/Persistence/Generic/Qom/Comparison.php#L99">at line 99</a></div>
+        <code>                    <a href="../../../../../Neos/Flow/Persistence/Generic/Qom/DynamicOperand.html"><abbr title="Neos\Flow\Persistence\Generic\Qom\DynamicOperand">DynamicOperand</abbr></a>
+    <strong>getOperand1</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets the first operand.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/Flow/Persistence/Generic/Qom/DynamicOperand.html"><abbr title="Neos\Flow\Persistence\Generic\Qom\DynamicOperand">DynamicOperand</abbr></a></td>
+            <td><p>the operand; non-null</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getOperator">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/Persistence/Generic/Qom/Comparison.php#L110">at line 110</a></div>
+        <code>                    int
+    <strong>getOperator</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets the operator.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>one of \Neos\Flow\Persistence\QueryInterface.OPERATOR_*</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getOperand2">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/Persistence/Generic/Qom/Comparison.php#L121">at line 121</a></div>
+        <code>                    mixed
+    <strong>getOperand2</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets the second operand.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

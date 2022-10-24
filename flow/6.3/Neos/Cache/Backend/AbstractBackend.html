@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Cache\Backend\AbstractBackend | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (6.3)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Cache_Backend_AbstractBackend" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Cache.html">Cache</a></li><li class="backslash">\</li><li><a href="../../../Neos/Cache/Backend.html">Backend</a></li><li class="backslash">\</li><li>AbstractBackend</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>AbstractBackend    
+            </h1>
+    </div>
+
+    
+    <p>    abstract     class
+    <strong>AbstractBackend</strong>        implements
+        <a href="../../../Neos/Cache/Backend/BackendInterface.html"><abbr title="Neos\Cache\Backend\BackendInterface">BackendInterface</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Cache/Classes/Backend/AbstractBackend.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>An abstract caching backend</p></p>                    </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        DATETIME_EXPIRYTIME_UNLIMITED
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        UNLIMITED_LIFETIME
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_cache">
+                                        protected                                        <a href="../../../Neos/Cache/Frontend/FrontendInterface.html"><abbr title="Neos\Cache\Frontend\FrontendInterface">FrontendInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$cache</td>
+                <td class="last"><p>Reference to the cache frontend which uses this backend</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cacheIdentifier">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$cacheIdentifier</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_identifierPrefix">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$identifierPrefix</td>
+                <td class="last"><p>A prefix to seperate stored by appliaction context and cache</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_defaultLifetime">
+                                        protected                                        int
+                                                                                
+                                    </td>
+                <td>$defaultLifetime</td>
+                <td class="last"><p>Default lifetime of a cache entry in seconds</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_environmentConfiguration">
+                                        protected                                        <a href="../../../Neos/Cache/EnvironmentConfiguration.html"><abbr title="Neos\Cache\EnvironmentConfiguration">EnvironmentConfiguration</abbr></a>
+                                                                                
+                                    </td>
+                <td>$environmentConfiguration</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../Neos/Cache/EnvironmentConfiguration.html"><abbr title="Neos\Cache\EnvironmentConfiguration">EnvironmentConfiguration</abbr></a> $environmentConfiguration = null, array $options = [])
+        
+                                            <p><p>Constructs this backend</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setProperties">setProperties</a>(array $properties, bool $throwExceptionIfPropertyNotSettable = true)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setProperty">setProperty</a>(string $propertyName, mixed $propertyValue)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setCache">setCache</a>(<a href="../../../Neos/Cache/Frontend/FrontendInterface.html"><abbr title="Neos\Cache\Frontend\FrontendInterface">FrontendInterface</abbr></a> $cache)
+        
+                                            <p><p>Sets a reference to the cache frontend which uses this backend</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setDefaultLifetime">setDefaultLifetime</a>(int|string $defaultLifetime)
+        
+                                            <p><p>Sets the default lifetime for this cache backend</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_calculateExpiryTime">calculateExpiryTime</a>(int $lifetime = null)
+        
+                                            <p><p>Calculates the expiry time by the given lifetime. If no lifetime is
+specified, the default lifetime is used.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPrefixedIdentifier">getPrefixedIdentifier</a>(string $entryIdentifier)
+        
+                                            <p><p>Returns the internally used, prefixed entry identifier for the given public
+entry identifier.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Cache/Classes/Backend/AbstractBackend.php#L64">at line 64</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../Neos/Cache/EnvironmentConfiguration.html"><abbr title="Neos\Cache\EnvironmentConfiguration">EnvironmentConfiguration</abbr></a> $environmentConfiguration = null, array $options = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructs this backend</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Cache/EnvironmentConfiguration.html"><abbr title="Neos\Cache\EnvironmentConfiguration">EnvironmentConfiguration</abbr></a></td>
+                <td>$environmentConfiguration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$options</td>
+                <td><p>Configuration options - depends on the actual backend</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setProperties">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Cache/Classes/Backend/AbstractBackend.php#L79">at line 79</a></div>
+        <code>            protected        void
+    <strong>setProperties</strong>(array $properties, bool $throwExceptionIfPropertyNotSettable = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$properties</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$throwExceptionIfPropertyNotSettable</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setProperty">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Cache/Classes/Backend/AbstractBackend.php#L98">at line 98</a></div>
+        <code>            protected        bool
+    <strong>setProperty</strong>(string $propertyName, mixed $propertyValue)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$propertyValue</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCache">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Cache/Classes/Backend/AbstractBackend.php#L116">at line 116</a></div>
+        <code>                    void
+    <strong>setCache</strong>(<a href="../../../Neos/Cache/Frontend/FrontendInterface.html"><abbr title="Neos\Cache\Frontend\FrontendInterface">FrontendInterface</abbr></a> $cache)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets a reference to the cache frontend which uses this backend</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Cache/Frontend/FrontendInterface.html"><abbr title="Neos\Cache\Frontend\FrontendInterface">FrontendInterface</abbr></a></td>
+                <td>$cache</td>
+                <td><p>The frontend for this backend</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDefaultLifetime">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Cache/Classes/Backend/AbstractBackend.php#L132">at line 132</a></div>
+        <code>                    void
+    <strong>setDefaultLifetime</strong>(int|string $defaultLifetime)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the default lifetime for this cache backend</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int|string</td>
+                <td>$defaultLifetime</td>
+                <td><p>Default lifetime of this cache backend in seconds. 0 means unlimited lifetime.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_calculateExpiryTime">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Cache/Classes/Backend/AbstractBackend.php#L147">at line 147</a></div>
+        <code>            protected        <a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a>
+    <strong>calculateExpiryTime</strong>(int $lifetime = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Calculates the expiry time by the given lifetime. If no lifetime is
+specified, the default lifetime is used.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$lifetime</td>
+                <td><p>The lifetime in seconds</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a></td>
+            <td><p>The expiry time</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPrefixedIdentifier">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Cache/Classes/Backend/AbstractBackend.php#L175">at line 175</a></div>
+        <code>                    string
+    <strong>getPrefixedIdentifier</strong>(string $entryIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the internally used, prefixed entry identifier for the given public
+entry identifier.</p></p>                <p><p>While Flow applications will mostly refer to the simple entry identifier, it
+may be necessary to know the actual identifier used by the cache backend
+in order to share cache entries with other applications. This method allows
+for retrieving it.</p>
+<p>Note that, in case of the AbstractBackend, this method is returns just the
+given entry identifier.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$entryIdentifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

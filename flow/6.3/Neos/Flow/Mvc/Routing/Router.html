@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Mvc\Routing\Router | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (6.3)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Mvc_Routing_Router" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Mvc.html">Mvc</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Mvc/Routing.html">Routing</a></li><li class="backslash">\</li><li>Router</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Router    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Router</strong>        implements
+        <a href="../../../../Neos/Flow/Mvc/Routing/RouterInterface.html"><abbr title="Neos\Flow\Mvc\Routing\RouterInterface">RouterInterface</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/Mvc/Routing/Router.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>The default web router</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_logger">
+                                        protected                                        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$logger</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_configurationManager">
+                                        protected                                        <a href="../../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a>
+                                                                                
+                                    </td>
+                <td>$configurationManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_routerCachingService">
+                                        protected                                        <a href="../../../../Neos/Flow/Mvc/Routing/RouterCachingService.html"><abbr title="Neos\Flow\Mvc\Routing\RouterCachingService">RouterCachingService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$routerCachingService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_routesConfiguration">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$routesConfiguration</td>
+                <td class="last"><p>Array containing the configuration for all routes</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_routes">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$routes</td>
+                <td class="last"><p>Array of routes to match against</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_routesCreated">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$routesCreated</td>
+                <td class="last"><p>true if route object have been created, otherwise false</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_lastMatchedRoute">
+                                        protected                                        <a href="../../../../Neos/Flow/Mvc/Routing/Route.html"><abbr title="Neos\Flow\Mvc\Routing\Route">Route</abbr></a>
+                                                                                
+                                    </td>
+                <td>$lastMatchedRoute</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_lastResolvedRoute">
+                                        protected                                        <a href="../../../../Neos/Flow/Mvc/Routing/Route.html"><abbr title="Neos\Flow\Mvc\Routing\Route">Route</abbr></a>
+                                                                                
+                                    </td>
+                <td>$lastResolvedRoute</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectLogger">injectLogger</a>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        
+                                            <p><p>Injects the (system) logger based on PSR-3.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setRoutesConfiguration">setRoutesConfiguration</a>(array $routesConfiguration = null)
+        
+                                            <p><p>Sets the routes configuration.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_route">route</a>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteContext">RouteContext</abbr></a> $routeContext)
+        
+                                            <p><p>Iterates through all configured routes and calls matches() on them.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Flow/Mvc/Routing/Route.html"><abbr title="Neos\Flow\Mvc\Routing\Route">Route</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getLastMatchedRoute">getLastMatchedRoute</a>()
+        
+                                            <p><p>Returns the route that has been matched with the last route() call.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getRoutes">getRoutes</a>()
+        
+                                            <p><p>Returns a list of configured routes</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addRoute">addRoute</a>(<a href="../../../../Neos/Flow/Mvc/Routing/Route.html"><abbr title="Neos\Flow\Mvc\Routing\Route">Route</abbr></a> $route)
+        
+                                            <p><p>Manually adds a route to the beginning of the configured routes</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resolve">resolve</a>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/ResolveContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\ResolveContext">ResolveContext</abbr></a> $resolveContext)
+        
+                                            <p><p>Builds the corresponding uri (excluding protocol and host) by iterating
+through all configured routes and calling their respective resolves()
+method. If no matching route is found, an empty string is returned.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Flow/Mvc/Routing/Route.html"><abbr title="Neos\Flow\Mvc\Routing\Route">Route</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getLastResolvedRoute">getLastResolvedRoute</a>()
+        
+                                            <p><p>Returns the route that has been resolved with the last resolve() call.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createRoutesFromConfiguration">createRoutesFromConfiguration</a>()
+        
+                                            <p><p>Creates \Neos\Flow\Mvc\Routing\Route objects from the injected routes
+configuration.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initializeRoutesConfiguration">initializeRoutesConfiguration</a>()
+        
+                                            <p><p>Checks if a routes configuration was set and otherwise loads the configuration from the configuration manager.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_injectLogger">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/Mvc/Routing/Router.php#L89">at line 89</a></div>
+        <code>                    void
+    <strong>injectLogger</strong>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the (system) logger based on PSR-3.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+                <td>$logger</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setRoutesConfiguration">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/Mvc/Routing/Router.php#L100">at line 100</a></div>
+        <code>                    void
+    <strong>setRoutesConfiguration</strong>(array $routesConfiguration = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the routes configuration.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$routesConfiguration</td>
+                <td><p>The routes configuration or NULL if it should be fetched from configuration</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_route">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/Mvc/Routing/Router.php#L117">at line 117</a></div>
+        <code>                    array
+    <strong>route</strong>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteContext">RouteContext</abbr></a> $routeContext)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Iterates through all configured routes and calls matches() on them.</p></p>                <p><p>Returns the matchResults of the matching route or NULL if no matching
+route could be found.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteContext">RouteContext</abbr></a></td>
+                <td>$routeContext</td>
+                <td><p>The Route Context containing the current HTTP Request and, optional, Routing RouteParameters</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The results of the matching route</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Exception/InvalidRouteSetupException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidRouteSetupException">InvalidRouteSetupException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Exception/NoMatchingRouteException.html"><abbr title="Neos\Flow\Mvc\Exception\NoMatchingRouteException">NoMatchingRouteException</abbr></a></td>
+                <td><p>if no route matched the given $routeContext</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Exception/InvalidRoutePartValueException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidRoutePartValueException">InvalidRoutePartValueException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLastMatchedRoute">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/Mvc/Routing/Router.php#L148">at line 148</a></div>
+        <code>                    <a href="../../../../Neos/Flow/Mvc/Routing/Route.html"><abbr title="Neos\Flow\Mvc\Routing\Route">Route</abbr></a>
+    <strong>getLastMatchedRoute</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the route that has been matched with the last route() call.</p></p>                <p><p>Returns NULL if no route matched or route() has not been called yet</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Flow/Mvc/Routing/Route.html"><abbr title="Neos\Flow\Mvc\Routing\Route">Route</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRoutes">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/Mvc/Routing/Router.php#L158">at line 158</a></div>
+        <code>                    array
+    <strong>getRoutes</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a list of configured routes</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addRoute">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/Mvc/Routing/Router.php#L170">at line 170</a></div>
+        <code>                    void
+    <strong>addRoute</strong>(<a href="../../../../Neos/Flow/Mvc/Routing/Route.html"><abbr title="Neos\Flow\Mvc\Routing\Route">Route</abbr></a> $route)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Manually adds a route to the beginning of the configured routes</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Routing/Route.html"><abbr title="Neos\Flow\Mvc\Routing\Route">Route</abbr></a></td>
+                <td>$route</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resolve">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/Mvc/Routing/Router.php#L186">at line 186</a></div>
+        <code>                    <abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr>
+    <strong>resolve</strong>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/ResolveContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\ResolveContext">ResolveContext</abbr></a> $resolveContext)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Builds the corresponding uri (excluding protocol and host) by iterating
+through all configured routes and calling their respective resolves()
+method. If no matching route is found, an empty string is returned.</p></p>                <p><p>Note: calls of this message are cached by RouterCachingAspect</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Routing/Dto/ResolveContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\ResolveContext">ResolveContext</abbr></a></td>
+                <td>$resolveContext</td>
+                <td><p>The Resolve Context containing the route values, the request URI and some flags to be resolved</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr></td>
+            <td><p>The resolved Uri</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Exception/NoMatchingRouteException.html"><abbr title="Neos\Flow\Mvc\Exception\NoMatchingRouteException">NoMatchingRouteException</abbr></a></td>
+                <td><p>if no route could resolve the given $resolveContext</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLastResolvedRoute">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/Mvc/Routing/Router.php#L216">at line 216</a></div>
+        <code>                    <a href="../../../../Neos/Flow/Mvc/Routing/Route.html"><abbr title="Neos\Flow\Mvc\Routing\Route">Route</abbr></a>
+    <strong>getLastResolvedRoute</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the route that has been resolved with the last resolve() call.</p></p>                <p><p>Returns NULL if no route was found or resolve() has not been called yet</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Flow/Mvc/Routing/Route.html"><abbr title="Neos\Flow\Mvc\Routing\Route">Route</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createRoutesFromConfiguration">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/Mvc/Routing/Router.php#L228">at line 228</a></div>
+        <code>            protected        void
+    <strong>createRoutesFromConfiguration</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates \Neos\Flow\Mvc\Routing\Route objects from the injected routes
+configuration.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Exception/InvalidRouteSetupException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidRouteSetupException">InvalidRouteSetupException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initializeRoutesConfiguration">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/6.3/Neos.Flow/Classes/Mvc/Routing/Router.php#L277">at line 277</a></div>
+        <code>            protected        void
+    <strong>initializeRoutesConfiguration</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if a routes configuration was set and otherwise loads the configuration from the configuration manager.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
