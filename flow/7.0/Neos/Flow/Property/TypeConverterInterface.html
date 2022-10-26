@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Property\TypeConverterInterface | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (7.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Property_TypeConverterInterface" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">interface</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow/Property.html">Property</a></li><li class="backslash">\</li><li>TypeConverterInterface</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>TypeConverterInterface    
+            </h1>
+    </div>
+
+    
+    <p>        interface
+    <strong>TypeConverterInterface</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Property/TypeConverterInterface.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Interface for type converters, which can convert from a simple type to an object or another simple type.</p></p>            <p><p>All Type Converters should have NO INTERNAL STATE, such that they can be used as singletons and multiple times in succession (as this improves performance dramatically).</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getSupportedSourceTypes">getSupportedSourceTypes</a>()
+        
+                                            <p><p>Returns the list of source types the TypeConverter can handle.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getSupportedTargetType">getSupportedTargetType</a>()
+        
+                                            <p><p>Return the target type this TypeConverter converts to.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getTargetTypeForSource">getTargetTypeForSource</a>(mixed $source, string $originalTargetType, <a href="../../../Neos/Flow/Property/PropertyMappingConfigurationInterface.html"><abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr></a> $configuration = null)
+        
+                                            <p><p>Returns the type for a given source, depending on e.g. the __type setting or other properties.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPriority">getPriority</a>()
+        
+                                            <p><p>Return the priority of this TypeConverter. TypeConverters with a high priority are chosen before low priority.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_canConvertFrom">canConvertFrom</a>(mixed $source, string $targetType)
+        
+                                            <p><p>Here, the TypeConverter can do some additional runtime checks to see whether
+it can handle the given source data and the given target type.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getSourceChildPropertiesToBeConverted">getSourceChildPropertiesToBeConverted</a>(mixed $source)
+        
+                                            <p><p>Return a list of sub-properties inside the source object.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getTypeOfChildProperty">getTypeOfChildProperty</a>(string $targetType, string $propertyName, <a href="../../../Neos/Flow/Property/PropertyMappingConfigurationInterface.html"><abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr></a> $configuration)
+        
+                                            <p><p>Return the type of a given sub-property inside the $targetType</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed|null|<a href="../../../Neos/Error/Messages/Error.html"><abbr title="Neos\Error\Messages\Error">Error</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_convertFrom">convertFrom</a>(mixed $source, string $targetType, array $convertedChildProperties = [], <a href="../../../Neos/Flow/Property/PropertyMappingConfigurationInterface.html"><abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr></a> $configuration = null)
+        
+                                            <p><p>Actually convert from $source to $targetType, taking into account the fully
+built $convertedChildProperties and $configuration.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_getSupportedSourceTypes">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Property/TypeConverterInterface.php#L32">at line 32</a></div>
+        <code>                    string[]
+    <strong>getSupportedSourceTypes</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the list of source types the TypeConverter can handle.</p></p>                <p><p>Must be PHP simple types, classes or object is not allowed.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSupportedTargetType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Property/TypeConverterInterface.php#L41">at line 41</a></div>
+        <code>                    string
+    <strong>getSupportedTargetType</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return the target type this TypeConverter converts to.</p></p>                <p><p>Can be a simple type or a class name.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTargetTypeForSource">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Property/TypeConverterInterface.php#L52">at line 52</a></div>
+        <code>                    string
+    <strong>getTargetTypeForSource</strong>(mixed $source, string $originalTargetType, <a href="../../../Neos/Flow/Property/PropertyMappingConfigurationInterface.html"><abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr></a> $configuration = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the type for a given source, depending on e.g. the __type setting or other properties.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$source</td>
+                <td><p>the source data</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$originalTargetType</td>
+                <td><p>the type we originally want to convert to</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Property/PropertyMappingConfigurationInterface.html"><abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr></a></td>
+                <td>$configuration</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPriority">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Property/TypeConverterInterface.php#L60">at line 60</a></div>
+        <code>                    int
+    <strong>getPriority</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return the priority of this TypeConverter. TypeConverters with a high priority are chosen before low priority.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_canConvertFrom">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Property/TypeConverterInterface.php#L71">at line 71</a></div>
+        <code>                    bool
+    <strong>canConvertFrom</strong>(mixed $source, string $targetType)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Here, the TypeConverter can do some additional runtime checks to see whether
+it can handle the given source data and the given target type.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$source</td>
+                <td><p>the source data</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$targetType</td>
+                <td><p>the type to convert to.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if this TypeConverter can convert from $source to $targetType, false otherwise.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSourceChildPropertiesToBeConverted">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Property/TypeConverterInterface.php#L81">at line 81</a></div>
+        <code>                    array
+    <strong>getSourceChildPropertiesToBeConverted</strong>(mixed $source)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return a list of sub-properties inside the source object.</p></p>                <p><p>The &quot;key&quot; is the sub-property name, and the &quot;value&quot; is the value of the sub-property.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$source</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTypeOfChildProperty">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Property/TypeConverterInterface.php#L92">at line 92</a></div>
+        <code>                    string
+    <strong>getTypeOfChildProperty</strong>(string $targetType, string $propertyName, <a href="../../../Neos/Flow/Property/PropertyMappingConfigurationInterface.html"><abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr></a> $configuration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return the type of a given sub-property inside the $targetType</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$targetType</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Property/PropertyMappingConfigurationInterface.html"><abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr></a></td>
+                <td>$configuration</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>the type of $propertyName in $targetType</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_convertFrom">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Property/TypeConverterInterface.php#L113">at line 113</a></div>
+        <code>                    mixed|null|<a href="../../../Neos/Error/Messages/Error.html"><abbr title="Neos\Error\Messages\Error">Error</abbr></a>
+    <strong>convertFrom</strong>(mixed $source, string $targetType, array $convertedChildProperties = [], <a href="../../../Neos/Flow/Property/PropertyMappingConfigurationInterface.html"><abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr></a> $configuration = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Actually convert from $source to $targetType, taking into account the fully
+built $convertedChildProperties and $configuration.</p></p>                <p><p>The return value can be one of three types:</p>
+<ul>
+<li>an arbitrary object, or a simple type (which has been created while mapping).
+This is the normal case.</li>
+<li>NULL, indicating that this object should <em>not</em> be mapped (i.e. a &quot;File Upload&quot; Converter could return NULL if no file has been uploaded, and a silent failure should occur.</li>
+<li>An instance of \Neos\Error\Messages\Error -- This will be a user-visible error message later on.
+Furthermore, it should throw an Exception if an unexpected failure (like a security error) occurred or a configuration issue happened.</li>
+</ul></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$source</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$targetType</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$convertedChildProperties</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Property/PropertyMappingConfigurationInterface.html"><abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr></a></td>
+                <td>$configuration</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed|null|<a href="../../../Neos/Error/Messages/Error.html"><abbr title="Neos\Error\Messages\Error">Error</abbr></a></td>
+            <td><p>the target type, or an error object if a user-error occurred</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Property/Exception/TypeConverterException.html"><abbr title="Neos\Flow\Property\Exception\TypeConverterException">TypeConverterException</abbr></a></td>
+                <td><p>thrown in case a developer error occurred</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

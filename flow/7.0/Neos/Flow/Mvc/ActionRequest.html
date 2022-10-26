@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Mvc\ActionRequest | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (7.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Mvc_ActionRequest" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow/Mvc.html">Mvc</a></li><li class="backslash">\</li><li>ActionRequest</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ActionRequest    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>ActionRequest</strong>        implements
+        <a href="../../../Neos/Flow/Mvc/RequestInterface.html"><abbr title="Neos\Flow\Mvc\RequestInterface">RequestInterface</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Represents an internal request targeted to a controller action</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_objectManager">
+                                        protected                                        <a href="../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$objectManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_hashService">
+                                        protected                                        <a href="../../../Neos/Flow/Security/Cryptography/HashService.html"><abbr title="Neos\Flow\Security\Cryptography\HashService">HashService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$hashService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_packageManager">
+                                        protected                                        <a href="../../../Neos/Flow/Package/PackageManager.html"><abbr title="Neos\Flow\Package\PackageManager">PackageManager</abbr></a>
+                                                                                
+                                    </td>
+                <td>$packageManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_controllerPackageKey">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$controllerPackageKey</td>
+                <td class="last"><p>Package key of the controller which is supposed to handle this request.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_controllerSubpackageKey">
+                                        protected                                        string|null
+                                                                                
+                                    </td>
+                <td>$controllerSubpackageKey</td>
+                <td class="last"><p>Subpackage key of the controller which is supposed to handle this request.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_controllerName">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$controllerName</td>
+                <td class="last"><p>Object name of the controller which is supposed to handle this request.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_controllerActionName">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$controllerActionName</td>
+                <td class="last"><p>Name of the action the controller is supposed to take.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_arguments">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$arguments</td>
+                <td class="last"><p>The arguments for this request. They must be only simple types, no
+objects allowed.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_internalArguments">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$internalArguments</td>
+                <td class="last"><p>Framework-internal arguments for this request, such as __referrer.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_pluginArguments">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$pluginArguments</td>
+                <td class="last"><p>Arguments and configuration for plugins – including widgets – which are
+sub controllers to the controller referred to by this request.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_argumentNamespace">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$argumentNamespace</td>
+                <td class="last"><p>An optional namespace for arguments of this request. Used, for example, in
+plugins and widgets.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_format">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$format</td>
+                <td class="last"><p>The requested representation format</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_dispatched">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$dispatched</td>
+                <td class="last"><p>If this request has been changed and needs to be dispatched again</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_parentRequest">
+                                        protected                                        <a href="../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a>
+                                                                                
+                                    </td>
+                <td>$parentRequest</td>
+                <td class="last"><p>The parent request – either another ActionRequest or Http Request</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_rootRequest">
+                                        protected                                        <abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$rootRequest</td>
+                <td class="last"><p>Cached pointer to the root request (usually an HTTP request)</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_referringRequest">
+                                        protected                                        <a href="../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a>
+                                                                                
+                                    </td>
+                <td>$referringRequest</td>
+                <td class="last"><p>Cached pointer to a request referring to this one (if any)</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a>|<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $parentRequest)
+        
+                                            <p><p>Constructs this action request</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_fromHttpRequest">fromHttpRequest</a>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createSubRequest">createSubRequest</a>()
+        
+                                            <p><p>Create a sub request from this action request.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Neos\Flow\Mvc\Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getParentRequest">getParentRequest</a>()
+        
+                                            <p><p>Returns the parent request</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getHttpRequest">getHttpRequest</a>()
+        
+                                            <p><p>Returns the top level request: the HTTP request object</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/Mvc/RequestInterface.html"><abbr title="Neos\Flow\Mvc\RequestInterface">RequestInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getMainRequest">getMainRequest</a>()
+        
+                                            <p><p>Returns the top level ActionRequest: the one just below the HTTP request</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isMainRequest">isMainRequest</a>()
+        
+                                            <p><p>Checks if this request is the uppermost ActionRequest, just one below the
+HTTP request.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Neos\Flow\Mvc\Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getReferringRequest">getReferringRequest</a>()
+        
+                                            <p><p>Returns an ActionRequest which referred to this request, if any.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setDispatched">setDispatched</a>(bool $flag)
+        
+                                            <p><p>Sets the dispatched flag</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isDispatched">isDispatched</a>()
+        
+                                            <p><p>If this request has been dispatched and addressed by the responsible
+controller and the response is ready to be sent.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getControllerObjectName">getControllerObjectName</a>()
+        
+                                            <p><p>Returns the object name of the controller defined by the package key and
+controller name</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setControllerObjectName">setControllerObjectName</a>(string $unknownCasedControllerObjectName)
+        
+                                            <p><p>Explicitly sets the object name of the controller</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setControllerPackageKey">setControllerPackageKey</a>(string $packageKey)
+        
+                                            <p><p>Sets the package key of the controller.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getControllerPackageKey">getControllerPackageKey</a>()
+        
+                                            <p><p>Returns the package key of the specified controller.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setControllerSubpackageKey">setControllerSubpackageKey</a>(string|null $subpackageKey)
+        
+                                            <p><p>Sets the subpackage key of the controller.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getControllerSubpackageKey">getControllerSubpackageKey</a>()
+        
+                                            <p><p>Returns the subpackage key of the specified controller.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setControllerName">setControllerName</a>(string $controllerName)
+        
+                                            <p><p>Sets the name of the controller which is supposed to handle the request.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getControllerName">getControllerName</a>()
+        
+                                            <p><p>Returns the object name of the controller supposed to handle this request, if one
+was set already (if not, the name of the default controller is returned)</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setControllerActionName">setControllerActionName</a>(string $actionName)
+        
+                                            <p><p>Sets the name of the action contained in this request.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getControllerActionName">getControllerActionName</a>()
+        
+                                            <p><p>Returns the name of the action the controller is supposed to execute.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setArgument">setArgument</a>(string $argumentName, mixed $value)
+        
+                                            <p><p>Sets the value of the specified argument</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getArgument">getArgument</a>(string $argumentName)
+        
+                                            <p><p>Returns the value of the specified argument</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasArgument">hasArgument</a>(string $argumentName)
+        
+                                            <p><p>Checks if an argument of the given name exists (is set)</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setArguments">setArguments</a>(array $arguments)
+        
+                                            <p><p>Sets the specified arguments.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getArguments">getArguments</a>()
+        
+                                            <p><p>Returns an Array of arguments and their values</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|object
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getInternalArgument">getInternalArgument</a>(string $argumentName)
+        
+                                            <p><p>Returns the value of the specified internal argument.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getInternalArguments">getInternalArguments</a>()
+        
+                                            <p><p>Returns the internal arguments of the request, that is, all arguments whose
+name starts with two underscores.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setArgumentNamespace">setArgumentNamespace</a>(string $namespace)
+        
+                                            <p><p>Sets a namespace for the arguments of this request.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getArgumentNamespace">getArgumentNamespace</a>()
+        
+                                            <p><p>Returns the argument namespace, if any.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPluginArguments">getPluginArguments</a>()
+        
+                                            <p><p>Returns an array of plugin argument configurations</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setFormat">setFormat</a>(string $format)
+        
+                                            <p><p>Sets the requested representation format</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getFormat">getFormat</a>()
+        
+                                            <p><p>Returns the requested representation format</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitRequestDispatched">emitRequestDispatched</a>(<a href="../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a> $request)
+        
+                                            <p><p>Emits a signal when a Request has been dispatched</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___clone">__clone</a>()
+        
+                                            <p><p>Resets the dispatched status to false</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___sleep">__sleep</a>()
+        
+                                            <p><p>We provide our own __sleep method, where we serialize all properties <em>except</em> the parentRequest if it is
+a HTTP request -- as this one contains $_SERVER etc.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L140">at line 140</a></div>
+        <code>            protected        
+    <strong>__construct</strong>(<a href="../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a>|<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $parentRequest)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructs this action request</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a>|<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr></td>
+                <td>$parentRequest</td>
+                <td><p>Either an HTTP request or another ActionRequest</p></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fromHttpRequest">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L161">at line 161</a></div>
+        <code>        static            <a href="../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a>
+    <strong>fromHttpRequest</strong>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr></td>
+                <td>$request</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createSubRequest">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L171">at line 171</a></div>
+        <code>                    <a href="../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a>
+    <strong>createSubRequest</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a sub request from this action request.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getParentRequest">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L182">at line 182</a></div>
+        <code>                    <abbr title="Neos\Flow\Mvc\Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr>|null
+    <strong>getParentRequest</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the parent request</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Neos\Flow\Mvc\Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getHttpRequest">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L197">at line 197</a></div>
+        <code>                    <abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr>
+    <strong>getHttpRequest</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the top level request: the HTTP request object</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMainRequest">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L212">at line 212</a></div>
+        <code>                    <a href="../../../Neos/Flow/Mvc/RequestInterface.html"><abbr title="Neos\Flow\Mvc\RequestInterface">RequestInterface</abbr></a>
+    <strong>getMainRequest</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the top level ActionRequest: the one just below the HTTP request</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/Mvc/RequestInterface.html"><abbr title="Neos\Flow\Mvc\RequestInterface">RequestInterface</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isMainRequest">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L229">at line 229</a></div>
+        <code>                    bool
+    <strong>isMainRequest</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if this request is the uppermost ActionRequest, just one below the
+HTTP request.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getReferringRequest">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L249">at line 249</a></div>
+        <code>                    <abbr title="Neos\Flow\Mvc\Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr>|null
+    <strong>getReferringRequest</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an ActionRequest which referred to this request, if any.</p></p>                <p><p>The referring request is not set or determined automatically but must be
+explicitly set through the corresponding internal argument &quot;__referrer&quot;.
+This mechanism is used by Flow's form and validation mechanisms.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Neos\Flow\Mvc\Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr>|null</td>
+            <td><p>the referring request, or NULL if no referrer found</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/Exception/InvalidActionNameException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidActionNameException">InvalidActionNameException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/Exception/InvalidArgumentNameException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidArgumentNameException">InvalidArgumentNameException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/Exception/InvalidArgumentTypeException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidArgumentTypeException">InvalidArgumentTypeException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/Exception/InvalidControllerNameException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidControllerNameException">InvalidControllerNameException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Security/Exception/InvalidArgumentForHashGenerationException.html"><abbr title="Neos\Flow\Security\Exception\InvalidArgumentForHashGenerationException">InvalidArgumentForHashGenerationException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Security/Exception/InvalidHashException.html"><abbr title="Neos\Flow\Security\Exception\InvalidHashException">InvalidHashException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDispatched">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L285">at line 285</a></div>
+        <code>                    void
+    <strong>setDispatched</strong>(bool $flag)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the dispatched flag</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$flag</td>
+                <td><p>If this request has been dispatched</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/SignalSlot/Exception/InvalidSlotException.html"><abbr title="Neos\Flow\SignalSlot\Exception\InvalidSlotException">InvalidSlotException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isDispatched">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L304">at line 304</a></div>
+        <code>                    bool
+    <strong>isDispatched</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>If this request has been dispatched and addressed by the responsible
+controller and the response is ready to be sent.</p></p>                <p><p>The dispatcher will try to dispatch the request again if it has not been
+addressed yet.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if this request has been dispatched successfully</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getControllerObjectName">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L316">at line 316</a></div>
+        <code>                    string
+    <strong>getControllerObjectName</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the object name of the controller defined by the package key and
+controller name</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The controller's object name</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setControllerObjectName">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L344">at line 344</a></div>
+        <code>                    void
+    <strong>setControllerObjectName</strong>(string $unknownCasedControllerObjectName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Explicitly sets the object name of the controller</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$unknownCasedControllerObjectName</td>
+                <td><p>The fully qualified controller object name</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ObjectManagement/Exception/UnknownObjectException.html"><abbr title="Neos\Flow\ObjectManagement\Exception\UnknownObjectException">UnknownObjectException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setControllerPackageKey">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L384">at line 384</a></div>
+        <code>                    void
+    <strong>setControllerPackageKey</strong>(string $packageKey)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the package key of the controller.</p></p>                <p><p>This function tries to determine the correct case for the given package key.
+If the Package Manager does not know the specified package, the package key
+cannot be verified or corrected and is stored as is.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$packageKey</td>
+                <td><p>The package key</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getControllerPackageKey">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L396">at line 396</a></div>
+        <code>                    string
+    <strong>getControllerPackageKey</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the package key of the specified controller.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The package key</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setControllerSubpackageKey">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L407">at line 407</a></div>
+        <code>                    void
+    <strong>setControllerSubpackageKey</strong>(string|null $subpackageKey)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the subpackage key of the controller.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$subpackageKey</td>
+                <td><p>The subpackage key.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getControllerSubpackageKey">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L419">at line 419</a></div>
+        <code>                    string|null
+    <strong>getControllerSubpackageKey</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the subpackage key of the specified controller.</p></p>                <p><p>If there is no subpackage key set, the method returns NULL.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td><p>The subpackage key</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setControllerName">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L439">at line 439</a></div>
+        <code>                    void
+    <strong>setControllerName</strong>(string $controllerName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the name of the controller which is supposed to handle the request.</p></p>                <p><p>Note: This is not the object name of the controller!</p>
+<p>Examples: &quot;Standard&quot;, &quot;Account&quot;, ...</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$controllerName</td>
+                <td><p>Name of the controller</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/Exception/InvalidControllerNameException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidControllerNameException">InvalidControllerNameException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getControllerName">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L454">at line 454</a></div>
+        <code>                    string
+    <strong>getControllerName</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the object name of the controller supposed to handle this request, if one
+was set already (if not, the name of the default controller is returned)</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>Name of the controller</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setControllerActionName">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L475">at line 475</a></div>
+        <code>                    void
+    <strong>setControllerActionName</strong>(string $actionName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the name of the action contained in this request.</p></p>                <p><p>Note that the action name must start with a lower case letter and is case sensitive.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$actionName</td>
+                <td><p>Name of the action to execute by the controller</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/Exception/InvalidActionNameException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidActionNameException">InvalidActionNameException</abbr></a></td>
+                <td><p>if the action name is not valid</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getControllerActionName">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L492">at line 492</a></div>
+        <code>                    string
+    <strong>getControllerActionName</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the name of the action the controller is supposed to execute.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>Action name</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setArgument">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L519">at line 519</a></div>
+        <code>                    void
+    <strong>setArgument</strong>(string $argumentName, mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the value of the specified argument</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$argumentName</td>
+                <td><p>Name of the argument to set</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>The new value</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/Exception/InvalidArgumentNameException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidArgumentNameException">InvalidArgumentNameException</abbr></a></td>
+                <td><p>if the given argument name is no string</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/Exception/InvalidArgumentTypeException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidArgumentTypeException">InvalidArgumentTypeException</abbr></a></td>
+                <td><p>if the given argument value is an object</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/Exception/InvalidControllerNameException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidControllerNameException">InvalidControllerNameException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/Exception/InvalidActionNameException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidActionNameException">InvalidActionNameException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getArgument">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L569">at line 569</a></div>
+        <code>                    string|array
+    <strong>getArgument</strong>(string $argumentName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the value of the specified argument</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$argumentName</td>
+                <td><p>Name of the argument</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|array</td>
+            <td><p>Value of the argument</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/Exception/NoSuchArgumentException.html"><abbr title="Neos\Flow\Mvc\Exception\NoSuchArgumentException">NoSuchArgumentException</abbr></a></td>
+                <td><p>if such an argument does not exist</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasArgument">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L584">at line 584</a></div>
+        <code>                    bool
+    <strong>hasArgument</strong>(string $argumentName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if an argument of the given name exists (is set)</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$argumentName</td>
+                <td><p>Name of the argument to check</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if the argument is set, otherwise false</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setArguments">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L602">at line 602</a></div>
+        <code>                    void
+    <strong>setArguments</strong>(array $arguments)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the specified arguments.</p></p>                <p><p>The arguments array will be reset therefore any arguments
+which existed before will be overwritten!</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td><p>An array of argument names and their values</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/Exception/InvalidArgumentNameException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidArgumentNameException">InvalidArgumentNameException</abbr></a></td>
+                <td><p>if an argument name is not a string</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/Exception/InvalidArgumentTypeException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidArgumentTypeException">InvalidArgumentTypeException</abbr></a></td>
+                <td><p>if an argument value is an object</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/Exception/InvalidControllerNameException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidControllerNameException">InvalidControllerNameException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/Exception/InvalidActionNameException.html"><abbr title="Neos\Flow\Mvc\Exception\InvalidActionNameException">InvalidActionNameException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getArguments">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L616">at line 616</a></div>
+        <code>                    array
+    <strong>getArguments</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an Array of arguments and their values</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Array of arguments and their values (which may be arguments and values as well)</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getInternalArgument">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L630">at line 630</a></div>
+        <code>                    string|object
+    <strong>getInternalArgument</strong>(string $argumentName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the value of the specified internal argument.</p></p>                <p><p>Internal arguments are set via setArgument(). In order to be handled as an
+internal argument, its name must start with two underscores.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$argumentName</td>
+                <td><p>Name of the argument, for example &quot;__fooBar&quot;</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|object</td>
+            <td><p>Value of the argument, or NULL if not set.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getInternalArguments">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L641">at line 641</a></div>
+        <code>                    array
+    <strong>getInternalArguments</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the internal arguments of the request, that is, all arguments whose
+name starts with two underscores.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setArgumentNamespace">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L656">at line 656</a></div>
+        <code>                    void
+    <strong>setArgumentNamespace</strong>(string $namespace)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets a namespace for the arguments of this request.</p></p>                <p><p>This doesn't affect the actual behavior of argument handling within this
+classes' methods but is used in other parts of Flow and its libraries to
+render argument names which don't conflict with each other.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$namespace</td>
+                <td><p>Argument namespace</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getArgumentNamespace">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L666">at line 666</a></div>
+        <code>                    string
+    <strong>getArgumentNamespace</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the argument namespace, if any.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPluginArguments">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L676">at line 676</a></div>
+        <code>                    array
+    <strong>getPluginArguments</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an array of plugin argument configurations</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setFormat">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L687">at line 687</a></div>
+        <code>                    void
+    <strong>setFormat</strong>(string $format)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the requested representation format</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$format</td>
+                <td><p>The desired format, something like &quot;html&quot;, &quot;xml&quot;, &quot;png&quot;, &quot;json&quot; or the like. Can even be something like &quot;rss.xml&quot;.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFormat">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L698">at line 698</a></div>
+        <code>                    string
+    <strong>getFormat</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the requested representation format</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The desired format, something like &quot;html&quot;, &quot;xml&quot;, &quot;png&quot;, &quot;json&quot; or the like.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitRequestDispatched">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L714">at line 714</a></div>
+        <code>            protected        void
+    <strong>emitRequestDispatched</strong>(<a href="../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a> $request)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Emits a signal when a Request has been dispatched</p></p>                <p><p>The action request is not proxyable, so the signal is dispatched manually here.
+The safeguard allows unit tests without the dispatcher dependency.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a></td>
+                <td>$request</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/SignalSlot/Exception/InvalidSlotException.html"><abbr title="Neos\Flow\SignalSlot\Exception\InvalidSlotException">InvalidSlotException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___clone">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L727">at line 727</a></div>
+        <code>                    
+    <strong>__clone</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resets the dispatched status to false</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___sleep">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Mvc/ActionRequest.php#L738">at line 738</a></div>
+        <code>                    array
+    <strong>__sleep</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>We provide our own __sleep method, where we serialize all properties <em>except</em> the parentRequest if it is
+a HTTP request -- as this one contains $_SERVER etc.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

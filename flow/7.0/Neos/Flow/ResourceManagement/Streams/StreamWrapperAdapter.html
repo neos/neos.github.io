@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\ResourceManagement\Streams\StreamWrapperAdapter | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (7.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_ResourceManagement_Streams_StreamWrapperAdapter" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/ResourceManagement.html">ResourceManagement</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/ResourceManagement/Streams.html">Streams</a></li><li class="backslash">\</li><li>StreamWrapperAdapter</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>StreamWrapperAdapter    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>StreamWrapperAdapter</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A generic stream wrapper sitting between PHP and stream wrappers
+implementing StreamWrapperInterface.</p></p>            <p><p>The resource manager will register configured stream wrappers with this class,
+enabling the use of Flow goodies like DI in those stream wrappers.</p>
+<p>Instances of this class are created by PHP itself and therefore are unknown
+to Flow's object registry.</p></p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_registeredStreamWrappers">
+                    static                    protected                                        array
+                                                                                
+                                    </td>
+                <td>$registeredStreamWrappers</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_context">
+                                                                                resource
+                                                                                
+                                    </td>
+                <td>$context</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_streamWrapper">
+                                        protected                                        <a href="../../../../Neos/Flow/ResourceManagement/Streams/StreamWrapperInterface.html"><abbr title="Neos\Flow\ResourceManagement\Streams\StreamWrapperInterface">StreamWrapperInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$streamWrapper</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initializeStreamWrapper">initializeStreamWrapper</a>(<a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a> $objectManager)
+        
+                                            <p><p>Initialize StreamWrappers with this adapter</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_registerStreamWrapper">registerStreamWrapper</a>(string $scheme, string $objectName)
+        
+                                            <p><p>Register a stream wrapper. Later registrations for a scheme will override
+earlier ones without warning.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getRegisteredStreamWrappers">getRegisteredStreamWrappers</a>()
+        
+                                            <p><p>Returns the stream wrappers registered with this class.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createStreamWrapper">createStreamWrapper</a>(string $path)
+        
+                                            <p><p>Create the internal stream wrapper if needed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_dir_closedir">dir_closedir</a>()
+        
+                                            <p><p>Close directory handle.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_dir_opendir">dir_opendir</a>(string $path, int $options)
+        
+                                            <p><p>Open directory handle.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_dir_readdir">dir_readdir</a>()
+        
+                                            <p><p>Read entry from directory handle.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_dir_rewinddir">dir_rewinddir</a>()
+        
+                                            <p><p>Rewind directory handle.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_mkdir">mkdir</a>(string $path, int $mode, int $options)
+        
+                                            <p><p>Create a directory.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_rename">rename</a>(string $path_from, string $path_to)
+        
+                                            <p><p>Renames a file or directory.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_rmdir">rmdir</a>(string $path, int $options)
+        
+                                            <p><p>Removes a directory.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    resource
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stream_cast">stream_cast</a>(int $cast_as)
+        
+                                            <p><p>Retrieve the underlaying resource.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stream_close">stream_close</a>()
+        
+                                            <p><p>Close an resource.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stream_eof">stream_eof</a>()
+        
+                                            <p><p>Tests for end-of-file on a file pointer.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stream_flush">stream_flush</a>()
+        
+                                            <p><p>Flushes the output.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stream_lock">stream_lock</a>(int $operation)
+        
+                                            <p><p>Advisory file locking.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stream_open">stream_open</a>(string $path, string $mode, int $options, string $opened_path)
+        
+                                            <p><p>Opens file or URL.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stream_read">stream_read</a>(int $count)
+        
+                                            <p><p>Read from stream.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stream_seek">stream_seek</a>(int $offset, int $whence = SEEK_SET)
+        
+                                            <p><p>Seeks to specific location in a stream.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stream_set_option">stream_set_option</a>(int $option, int $arg1, int $arg2)
+        
+                                            <p><p>Change stream options.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stream_stat">stream_stat</a>()
+        
+                                            <p><p>Retrieve information about a file resource.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stream_tell">stream_tell</a>()
+        
+                                            <p><p>Retrieve the current position of a stream.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_stream_write">stream_write</a>(string $data)
+        
+                                            <p><p>Write to stream.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_unlink">unlink</a>(string $path)
+        
+                                            <p><p>Delete a file.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_url_stat">url_stat</a>(string $path, int $flags)
+        
+                                            <p><p>Retrieve information about a file.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getStreamWrapperImplementationClassNames">getStreamWrapperImplementationClassNames</a>(<a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a> $objectManager)
+        
+                                            <p><p>Returns all class names implementing the StreamWrapperInterface.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_initializeStreamWrapper">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L51">at line 51</a></div>
+        <code>        static            void
+    <strong>initializeStreamWrapper</strong>(<a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a> $objectManager)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Initialize StreamWrappers with this adapter</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a></td>
+                <td>$objectManager</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_registerStreamWrapper">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L73">at line 73</a></div>
+        <code>        static            void
+    <strong>registerStreamWrapper</strong>(string $scheme, string $objectName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Register a stream wrapper. Later registrations for a scheme will override
+earlier ones without warning.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$scheme</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRegisteredStreamWrappers">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L83">at line 83</a></div>
+        <code>        static            array
+    <strong>getRegisteredStreamWrappers</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the stream wrappers registered with this class.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createStreamWrapper">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L94">at line 94</a></div>
+        <code>            protected        void
+    <strong>createStreamWrapper</strong>(string $path)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create the internal stream wrapper if needed.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>The path to fetch the scheme from.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dir_closedir">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L115">at line 115</a></div>
+        <code>                    bool
+    <strong>dir_closedir</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Close directory handle.</p></p>                <p><p>This method is called in response to closedir().</p>
+<p>Any resources which were locked, or allocated, during opening and use of
+the directory stream should be released.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true on success or false on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dir_opendir">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L129">at line 129</a></div>
+        <code>                    bool
+    <strong>dir_opendir</strong>(string $path, int $options)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Open directory handle.</p></p>                <p><p>This method is called in response to opendir().</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>Specifies the URL that was passed to opendir().</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$options</td>
+                <td><p>Whether or not to enforce safe_mode (0x04).</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true on success or false on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dir_readdir">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L142">at line 142</a></div>
+        <code>                    string
+    <strong>dir_readdir</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Read entry from directory handle.</p></p>                <p><p>This method is called in response to readdir().</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>Should return string representing the next filename, or false if there is no next file.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dir_rewinddir">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L158">at line 158</a></div>
+        <code>                    bool
+    <strong>dir_rewinddir</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Rewind directory handle.</p></p>                <p><p>This method is called in response to rewinddir().</p>
+<p>Should reset the output generated by dir_readdir(). I.e.: The next call
+to dir_readdir() should return the first entry in the location returned
+by dir_opendir().</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true on success or false on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mkdir">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L177">at line 177</a></div>
+        <code>                    bool
+    <strong>mkdir</strong>(string $path, int $mode, int $options)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a directory.</p></p>                <p><p>This method is called in response to mkdir().</p>
+<p>Note: In order for the appropriate error message to be returned this
+method should not be defined if the wrapper does not support creating
+directories.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>Directory which should be created.</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$mode</td>
+                <td><p>The value passed to mkdir().</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$options</td>
+                <td><p>A bitwise mask of values, such as STREAM_MKDIR_RECURSIVE.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true on success or false on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_rename">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L198">at line 198</a></div>
+        <code>                    bool
+    <strong>rename</strong>(string $path_from, string $path_to)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Renames a file or directory.</p></p>                <p><p>This method is called in response to rename().</p>
+<p>Should attempt to rename path_from to path_to.</p>
+<p>Note: In order for the appropriate error message to be returned this
+method should not be defined if the wrapper does not support creating
+directories.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path_from</td>
+                <td><p>The URL to the current file.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$path_to</td>
+                <td><p>The URL which the path_from should be renamed to.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true on success or false on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_rmdir">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L217">at line 217</a></div>
+        <code>                    bool
+    <strong>rmdir</strong>(string $path, int $options)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes a directory.</p></p>                <p><p>This method is called in response to rmdir().</p>
+<p>Note: In order for the appropriate error message to be returned this
+method should not be defined if the wrapper does not support creating
+directories.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>The directory URL which should be removed.</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$options</td>
+                <td><p>A bitwise mask of values, such as STREAM_MKDIR_RECURSIVE.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true on success or false on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_cast">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L231">at line 231</a></div>
+        <code>                    resource
+    <strong>stream_cast</strong>(int $cast_as)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Retrieve the underlaying resource.</p></p>                <p><p>This method is called in response to stream_select().</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$cast_as</td>
+                <td><p>Can be STREAM_CAST_FOR_SELECT when stream_select() is calling stream_cast() or STREAM_CAST_AS_STREAM when stream_cast() is called for other uses.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>resource</td>
+            <td><p>Should return the underlying stream resource used by the wrapper, or false.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_close">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L246">at line 246</a></div>
+        <code>                    void
+    <strong>stream_close</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Close an resource.</p></p>                <p><p>This method is called in response to fclose().</p>
+<p>All resources that were locked, or allocated, by the wrapper should be
+released.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_eof">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L258">at line 258</a></div>
+        <code>                    bool
+    <strong>stream_eof</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Tests for end-of-file on a file pointer.</p></p>                <p><p>This method is called in response to feof().</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>Should return true if the read/write position is at the end of the stream and if no more data is available to be read, or false otherwise.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_flush">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L275">at line 275</a></div>
+        <code>                    bool
+    <strong>stream_flush</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flushes the output.</p></p>                <p><p>This method is called in response to fflush().</p>
+<p>If you have cached data in your stream but not yet stored it into the
+underlying storage, you should do so now.</p>
+<p>Note: If not implemented, false is assumed as the return value.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>Should return true if the cached data was successfully stored (or if there was no data to store), or false if the data could not be stored.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_lock">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L296">at line 296</a></div>
+        <code>                    bool
+    <strong>stream_lock</strong>(int $operation)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Advisory file locking.</p></p>                <p><p>This method is called in response to flock(), when file_put_contents()
+(when flags contains LOCK_EX), stream_set_blocking() and when closing the
+stream (LOCK_UN).</p>
+<p>$operation is one of the following:
+LOCK_SH to acquire a shared lock (reader).
+LOCK_EX to acquire an exclusive lock (writer).
+LOCK_UN to release a lock (shared or exclusive).
+LOCK_NB if you don't want flock() to block while locking.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$operation</td>
+                <td><p>One of the LOCK_* constants</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true on success or false on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_open">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L325">at line 325</a></div>
+        <code>                    bool
+    <strong>stream_open</strong>(string $path, string $mode, int $options, string $opened_path)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Opens file or URL.</p></p>                <p><p>This method is called immediately after the wrapper is initialized (f.e.
+by fopen() and file_get_contents()).</p>
+<p>$options can hold one of the following values OR'd together:
+STREAM_USE_PATH
+If path is relative, search for the resource using the include_path.
+STREAM_REPORT_ERRORS
+If this flag is set, you are responsible for raising errors using
+trigger_error() during opening of the stream. If this flag is not set,
+you should not raise any errors.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>Specifies the URL that was passed to the original function.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$mode</td>
+                <td><p>The mode used to open the file, as detailed for fopen().</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$options</td>
+                <td><p>Holds additional flags set by the streams API.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$opened_path</td>
+                <td><p>path If the path is opened successfully, and STREAM_USE_PATH is set in options, opened_path should be set to the full path of the file/resource that was actually opened.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true on success or false on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_read">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L342">at line 342</a></div>
+        <code>                    string
+    <strong>stream_read</strong>(int $count)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Read from stream.</p></p>                <p><p>This method is called in response to fread() and fgets().</p>
+<p>Note: Remember to update the read/write position of the stream (by the
+number of bytes that were successfully read).</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$count</td>
+                <td><p>How many bytes of data from the current position should be returned.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>If there are less than count bytes available, return as many as are available. If no more data is available, return either false or an empty string.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_seek">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L364">at line 364</a></div>
+        <code>                    bool
+    <strong>stream_seek</strong>(int $offset, int $whence = SEEK_SET)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Seeks to specific location in a stream.</p></p>                <p><p>This method is called in response to fseek().</p>
+<p>The read/write position of the stream should be updated according to the
+offset and whence .</p>
+<p>$whence can one of:
+SEEK_SET - Set position equal to offset bytes.
+SEEK_CUR - Set position to current location plus offset.
+SEEK_END - Set position to end-of-file plus offset.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$offset</td>
+                <td><p>The stream offset to seek to.</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$whence</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true on success or false on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_set_option">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L394">at line 394</a></div>
+        <code>                    bool
+    <strong>stream_set_option</strong>(int $option, int $arg1, int $arg2)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Change stream options.</p></p>                <p><p>This method is called to set options on the stream.</p>
+<p>$option can be one of:
+STREAM_OPTION_BLOCKING (The method was called in response to stream_set_blocking())
+STREAM_OPTION_READ_TIMEOUT (The method was called in response to stream_set_timeout())
+STREAM_OPTION_WRITE_BUFFER (The method was called in response to stream_set_write_buffer())</p>
+<p>If $option is ... then $arg1 is set to:
+STREAM_OPTION_BLOCKING: requested blocking mode (1 meaning block 0 not blocking).
+STREAM_OPTION_READ_TIMEOUT: the timeout in seconds.
+STREAM_OPTION_WRITE_BUFFER: buffer mode (STREAM_BUFFER_NONE or STREAM_BUFFER_FULL).</p>
+<p>If $option is ... then $arg2 is set to:
+STREAM_OPTION_BLOCKING: This option is not set.
+STREAM_OPTION_READ_TIMEOUT: the timeout in microseconds.
+STREAM_OPTION_WRITE_BUFFER: the requested buffer size.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$option</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$arg1</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$arg2</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true on success or false on failure. If option is not implemented, false should be returned.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_stat">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L406">at line 406</a></div>
+        <code>                    array
+    <strong>stream_stat</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Retrieve information about a file resource.</p></p>                <p><p>This method is called in response to fstat().</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>See <a href="http://php.net/stat">http://php.net/stat</a></p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_tell">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L418">at line 418</a></div>
+        <code>                    int
+    <strong>stream_tell</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Retrieve the current position of a stream.</p></p>                <p><p>This method is called in response to ftell().</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>Should return the current position of the stream.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_stream_write">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L437">at line 437</a></div>
+        <code>                    int
+    <strong>stream_write</strong>(string $data)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Write to stream.</p></p>                <p><p>This method is called in response to fwrite().</p>
+<p>If there is not enough room in the underlying stream, store as much as
+possible.</p>
+<p>Note: Remember to update the current position of the stream by number of
+bytes that were successfully written.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$data</td>
+                <td><p>Should be stored into the underlying stream.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>Should return the number of bytes that were successfully stored, or 0 if none could be stored.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unlink">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L454">at line 454</a></div>
+        <code>                    bool
+    <strong>unlink</strong>(string $path)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Delete a file.</p></p>                <p><p>This method is called in response to unlink().</p>
+<p>Note: In order for the appropriate error message to be returned this
+method should not be defined if the wrapper does not support removing
+files.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>The file URL which should be deleted.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true on success or false on failure.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_url_stat">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L481">at line 481</a></div>
+        <code>                    array
+    <strong>url_stat</strong>(string $path, int $flags)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Retrieve information about a file.</p></p>                <p><p>This method is called in response to all stat() related functions.</p>
+<p>$flags can hold one or more of the following values OR'd together:
+STREAM_URL_STAT_LINK
+For resources with the ability to link to other resource (such as an
+HTTP Location: forward, or a filesystem symlink). This flag specified
+that only information about the link itself should be returned, not
+the resource pointed to by the link. This flag is set in response to
+calls to lstat(), is_link(), or filetype().
+STREAM_URL_STAT_QUIET
+If this flag is set, your wrapper should not raise any errors. If
+this flag is not set, you are responsible for reporting errors using
+the trigger_error() function during stating of the path.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>The file path or URL to stat. Note that in the case of a URL, it must be a :// delimited URL. Other URL forms are not supported.</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$flags</td>
+                <td><p>Holds additional flags set by the streams API.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Should return as many elements as stat() does. Unknown or unavailable values should be set to a rational value (usually 0).</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getStreamWrapperImplementationClassNames">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/ResourceManagement/Streams/StreamWrapperAdapter.php#L494">at line 494</a></div>
+        <code>        static            array
+    <strong>getStreamWrapperImplementationClassNames</strong>(<a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a> $objectManager)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns all class names implementing the StreamWrapperInterface.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a></td>
+                <td>$objectManager</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Array of stream wrapper implementations</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

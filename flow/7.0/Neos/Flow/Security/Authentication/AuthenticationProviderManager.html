@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Security\Authentication\AuthenticationProviderManager | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (7.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Security_Authentication_AuthenticationProviderManager" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Security.html">Security</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Security/Authentication.html">Authentication</a></li><li class="backslash">\</li><li>AuthenticationProviderManager</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>AuthenticationProviderManager    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>AuthenticationProviderManager</strong>        implements
+        <a href="../../../../Neos/Flow/Security/Authentication/AuthenticationManagerInterface.html"><abbr title="Neos\Flow\Security\Authentication\AuthenticationManagerInterface">AuthenticationManagerInterface</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Security/Authentication/AuthenticationProviderManager.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>The default authentication manager, which relies on Authentication Providers
+to authenticate the tokens stored in the security context.</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_sessionManager">
+                                        protected                                        <a href="../../../../Neos/Flow/Session/SessionManagerInterface.html"><abbr title="Neos\Flow\Session\SessionManagerInterface">SessionManagerInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$sessionManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_tokenAndProviderFactory">
+                                        protected                                        <a href="../../../../Neos/Flow/Security/Authentication/TokenAndProviderFactoryInterface.html"><abbr title="Neos\Flow\Security\Authentication\TokenAndProviderFactoryInterface">TokenAndProviderFactoryInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$tokenAndProviderFactory</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_securityContext">
+                                        protected                                        <a href="../../../../Neos/Flow/Security/Context.html"><abbr title="Neos\Flow\Security\Context">Context</abbr></a>
+                                                                                
+                                    </td>
+                <td>$securityContext</td>
+                <td class="last"><p>The security context of the current request</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_providerConfigurations">
+                                        protected                                        array|null
+                                                                                
+                                    </td>
+                <td>$providerConfigurations</td>
+                <td class="last"><p>Injected configuration for providers.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_isAuthenticated">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$isAuthenticated</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_isInitialized">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$isInitialized</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_authenticationStrategy">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$authenticationStrategy</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../../Neos/Flow/Security/Authentication/TokenAndProviderFactoryInterface.html"><abbr title="Neos\Flow\Security\Authentication\TokenAndProviderFactoryInterface">TokenAndProviderFactoryInterface</abbr></a> $tokenAndProviderFactory)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectSettings">injectSettings</a>(array $settings)
+        
+                                            <p><p>Inject the settings and does a fresh build of tokens based on the injected settings</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Flow/Security/Context.html"><abbr title="Neos\Flow\Security\Context">Context</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getSecurityContext">getSecurityContext</a>()
+        
+                                            <p><p>Returns the security context</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_authenticate">authenticate</a>()
+        
+                                            <p><p>Tries to authenticate the tokens in the security context (in the given order)
+with the available authentication providers, if needed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isAuthenticated">isAuthenticated</a>()
+        
+                                            <p><p>Checks if one or all tokens are authenticated (depending on the authentication strategy).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_logout">logout</a>()
+        
+                                            <p><p>Logout all active authentication tokens</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitAuthenticatedToken">emitAuthenticatedToken</a>(<a href="../../../../Neos/Flow/Security/Authentication/TokenInterface.html"><abbr title="Neos\Flow\Security\Authentication\TokenInterface">TokenInterface</abbr></a> $token)
+        
+                                            <p><p>Signals that the specified token has been successfully authenticated.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitLoggedOut">emitLoggedOut</a>()
+        
+                                            <p><p>Signals that all active authentication tokens have been invalidated.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitSuccessfullyAuthenticated">emitSuccessfullyAuthenticated</a>()
+        
+                                            <p><p>Signals that authentication commenced and at least one token was authenticated.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Security/Authentication/AuthenticationProviderManager.php#L76">at line 76</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../../Neos/Flow/Security/Authentication/TokenAndProviderFactoryInterface.html"><abbr title="Neos\Flow\Security\Authentication\TokenAndProviderFactoryInterface">TokenAndProviderFactoryInterface</abbr></a> $tokenAndProviderFactory)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Security/Authentication/TokenAndProviderFactoryInterface.html"><abbr title="Neos\Flow\Security\Authentication\TokenAndProviderFactoryInterface">TokenAndProviderFactoryInterface</abbr></a></td>
+                <td>$tokenAndProviderFactory</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectSettings">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Security/Authentication/AuthenticationProviderManager.php#L88">at line 88</a></div>
+        <code>                    void
+    <strong>injectSettings</strong>(array $settings)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Inject the settings and does a fresh build of tokens based on the injected settings</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$settings</td>
+                <td><p>The settings</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Security/Exception.html"><abbr title="Neos\Flow\Security\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSecurityContext">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Security/Authentication/AuthenticationProviderManager.php#L116">at line 116</a></div>
+        <code>                    <a href="../../../../Neos/Flow/Security/Context.html"><abbr title="Neos\Flow\Security\Context">Context</abbr></a>
+    <strong>getSecurityContext</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the security context</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Flow/Security/Context.html"><abbr title="Neos\Flow\Security\Context">Context</abbr></a></td>
+            <td><p>$securityContext The security context of the current request</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_authenticate">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Security/Authentication/AuthenticationProviderManager.php#L134">at line 134</a></div>
+        <code>                    void
+    <strong>authenticate</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Tries to authenticate the tokens in the security context (in the given order)
+with the available authentication providers, if needed.</p></p>                <p><p>If the authentication strategy is set to &quot;allTokens&quot;, all tokens have to be authenticated.
+If the strategy is set to &quot;oneToken&quot;, only one token needs to be authenticated, but the
+authentication will stop after the first authenticated token. The strategy
+&quot;atLeastOne&quot; will try to authenticate at least one and as many tokens as possible.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Security/Exception.html"><abbr title="Neos\Flow\Security\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Security/Exception/AuthenticationRequiredException.html"><abbr title="Neos\Flow\Security\Exception\AuthenticationRequiredException">AuthenticationRequiredException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Security/Exception/NoTokensAuthenticatedException.html"><abbr title="Neos\Flow\Security\Exception\NoTokensAuthenticatedException">NoTokensAuthenticatedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isAuthenticated">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Security/Authentication/AuthenticationProviderManager.php#L203">at line 203</a></div>
+        <code>                    bool
+    <strong>isAuthenticated</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if one or all tokens are authenticated (depending on the authentication strategy).</p></p>                <p><p>Will call authenticate() if not done before.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Security/Exception.html"><abbr title="Neos\Flow\Security\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_logout">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Security/Authentication/AuthenticationProviderManager.php#L221">at line 221</a></div>
+        <code>                    void
+    <strong>logout</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Logout all active authentication tokens</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Security/Exception.html"><abbr title="Neos\Flow\Security\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Session/Exception/SessionNotStartedException.html"><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitAuthenticatedToken">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Security/Authentication/AuthenticationProviderManager.php#L246">at line 246</a></div>
+        <code>            protected        void
+    <strong>emitAuthenticatedToken</strong>(<a href="../../../../Neos/Flow/Security/Authentication/TokenInterface.html"><abbr title="Neos\Flow\Security\Authentication\TokenInterface">TokenInterface</abbr></a> $token)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Signals that the specified token has been successfully authenticated.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Security/Authentication/TokenInterface.html"><abbr title="Neos\Flow\Security\Authentication\TokenInterface">TokenInterface</abbr></a></td>
+                <td>$token</td>
+                <td><p>The token which has been authenticated</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitLoggedOut">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Security/Authentication/AuthenticationProviderManager.php#L257">at line 257</a></div>
+        <code>            protected        void
+    <strong>emitLoggedOut</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Signals that all active authentication tokens have been invalidated.</p></p>                <p><p>Note: the session will be destroyed after this signal has been emitted.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitSuccessfullyAuthenticated">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.0/Neos.Flow/Classes/Security/Authentication/AuthenticationProviderManager.php#L267">at line 267</a></div>
+        <code>            protected        void
+    <strong>emitSuccessfullyAuthenticated</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Signals that authentication commenced and at least one token was authenticated.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
