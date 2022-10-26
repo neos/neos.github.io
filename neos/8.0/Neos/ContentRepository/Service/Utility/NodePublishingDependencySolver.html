@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepository\Service\Utility\NodePublishingDependencySolver | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (8.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepository_Service_Utility_NodePublishingDependencySolver" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository.html">ContentRepository</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository/Service.html">Service</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository/Service/Utility.html">Utility</a></li><li class="backslash">\</li><li>NodePublishingDependencySolver</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>NodePublishingDependencySolver    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>NodePublishingDependencySolver</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/8.0/Neos.ContentRepository/Classes/Service/Utility/NodePublishingDependencySolver.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Solve / sort nodes by dependencies for publishing</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_nodesByPath">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$nodesByPath</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodesByNodeData">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$nodesByNodeData</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_dependenciesOutgoing">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$dependenciesOutgoing</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_dependenciesIncoming">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$dependenciesIncoming</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodesWithoutIncoming">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$nodesWithoutIncoming</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_sort">sort</a>(array $nodes)
+        
+                                            <p><p>Sort nodes by an order suitable for publishing</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildNodeDependencies">buildNodeDependencies</a>(array $nodes)
+        
+                                            <p><p>Prepare dependencies for the given list of nodes</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resolveDependencies">resolveDependencies</a>()
+        
+                                            <p><p>Resolve node dependencies</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_sort">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.0/Neos.ContentRepository/Classes/Service/Utility/NodePublishingDependencySolver.php#L59">at line 59</a></div>
+        <code>                    array
+    <strong>sort</strong>(array $nodes)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sort nodes by an order suitable for publishing</p></p>                <p><p>This makes sure all parent and moved-to relations are resolved and changes that need to be published
+before other changes will be published first.</p>
+<p>Uses topological sorting of node dependencies (<a href="http://en.wikipedia.org/wiki/Topological_sorting">http://en.wikipedia.org/wiki/Topological_sorting</a>) to build a publishable order of nodes.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$nodes</td>
+                <td><p>Array of nodes to sort, if dependencies are missing in this list an exception will be thrown</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Array of nodes sorted by dependencies for publishing</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Exception/WorkspaceException.html"><abbr title="Neos\ContentRepository\Exception\WorkspaceException">WorkspaceException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildNodeDependencies">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.0/Neos.ContentRepository/Classes/Service/Utility/NodePublishingDependencySolver.php#L80">at line 80</a></div>
+        <code>            protected        
+    <strong>buildNodeDependencies</strong>(array $nodes)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Prepare dependencies for the given list of nodes</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$nodes</td>
+                <td><p>Unsorted list of nodes</p></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Exception/WorkspaceException.html"><abbr title="Neos\ContentRepository\Exception\WorkspaceException">WorkspaceException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resolveDependencies">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.0/Neos.ContentRepository/Classes/Service/Utility/NodePublishingDependencySolver.php#L135">at line 135</a></div>
+        <code>            protected        array
+    <strong>resolveDependencies</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resolve node dependencies</p></p>                <p><ol>
+<li>Pick a node from the set of nodes without incoming dependencies</li>
+<li>For all dependencies of that node:
+2a. Remove the dependency
+2b. If the dependency has no other incoming dependencies itself, add it to the set of nodes without incoming dependencies</li>
+</ol></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Sorted list of nodes (not all dependencies might be solved)</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
