@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Configuration\ConfigurationManager | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (8.1)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Configuration_ConfigurationManager" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow/Configuration.html">Configuration</a></li><li class="backslash">\</li><li>ConfigurationManager</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ConfigurationManager    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>ConfigurationManager</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A general purpose configuration manager</p></p>                    </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        CONFIGURATION_TYPE_CACHES
+                                    </td>
+                <td class="last">
+                    <p><em><p>Contains a list of caches which are registered automatically. Caches defined in this configuration file are
+registered in an early stage of the boot process and profit from mechanisms such as automatic flushing by the
+File Monitor. See the chapter about the Cache Framework for details.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        CONFIGURATION_TYPE_OBJECTS
+                                    </td>
+                <td class="last">
+                    <p><em><p>Contains object configuration, i.e. options which configure objects and the combination of those on a lower
+level. See the Object Framework chapter for more information.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        CONFIGURATION_TYPE_ROUTES
+                                    </td>
+                <td class="last">
+                    <p><em><p>Contains routes configuration. This routing information is parsed and used by the MVC Web Routing mechanism.</p></em></p>
+                    <p><p>Refer to the Routing chapter for more information.</p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        CONFIGURATION_TYPE_POLICY
+                                    </td>
+                <td class="last">
+                    <p><em><p>Contains the configuration of the security policies of the system. See the Security chapter for details.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        CONFIGURATION_TYPE_SETTINGS
+                                    </td>
+                <td class="last">
+                    <p><em><p>Contains user-level settings, i.e. configuration options the users or administrators are meant to change.</p></em></p>
+                    <p><p>Settings are the highest level of system configuration.</p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    <span class="label label-danger">deprecated</span>                    CONFIGURATION_PROCESSING_TYPE_DEFAULT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    <span class="label label-danger">deprecated</span>                    CONFIGURATION_PROCESSING_TYPE_OBJECTS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    <span class="label label-danger">deprecated</span>                    CONFIGURATION_PROCESSING_TYPE_POLICY
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    <span class="label label-danger">deprecated</span>                    CONFIGURATION_PROCESSING_TYPE_ROUTES
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    <span class="label label-danger">deprecated</span>                    CONFIGURATION_PROCESSING_TYPE_SETTINGS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                    <span class="label label-danger">deprecated</span>                    CONFIGURATION_PROCESSING_TYPE_APPEND
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_configurationLoaders">
+                                        protected                                        <a href="../../../Neos/Flow/Configuration/Loader/LoaderInterface.html"><abbr title="Neos\Flow\Configuration\Loader\LoaderInterface">LoaderInterface</abbr></a>[]
+                                                                                
+                                    </td>
+                <td>$configurationLoaders</td>
+                <td class="last"><p>Defines which Configuration Type is processed by which logic</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_context">
+                                        protected                                        <a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a>
+                                                                                
+                                    </td>
+                <td>$context</td>
+                <td class="last"><p>The application context of the configuration to manage</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_configurations">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$configurations</td>
+                <td class="last"><p>Storage of the raw special configurations</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_packages">
+                                        protected                                        <a href="../../../Neos/Flow/Package/FlowPackageInterface.html"><abbr title="Neos\Flow\Package\FlowPackageInterface">FlowPackageInterface</abbr></a>[]
+                                                                                
+                                    </td>
+                <td>$packages</td>
+                <td class="last"><p>Active packages to load the configuration for</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cacheNeedsUpdate">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$cacheNeedsUpdate</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_temporaryDirectoryPath">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$temporaryDirectoryPath</td>
+                <td class="last"><p>An absolute file path to store configuration caches in. If null no cache will be active.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_unprocessedConfiguration">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$unprocessedConfiguration</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a> $context)
+        
+                                            <p><p>Constructs the configuration manager</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setTemporaryDirectoryPath">setTemporaryDirectoryPath</a>(string $temporaryDirectoryPath)
+        
+                                            <p><p>Set an absolute file path to store configuration caches in. If null no cache will be active.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setPackages">setPackages</a>(array $packages)
+        
+                                            <p><p>Sets the active packages to load the configuration for</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getAvailableConfigurationTypes">getAvailableConfigurationTypes</a>()
+        
+                                            <p><p>Get the available configuration-types</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_registerConfigurationType">registerConfigurationType</a>(string $configurationType, <a href="../../../Neos/Flow/Configuration/Loader/LoaderInterface.html"><abbr title="Neos\Flow\Configuration\Loader\LoaderInterface">LoaderInterface</abbr></a>|string|null $configurationLoader = null)
+        
+                                            <p><p>Registers a new configuration type with the given source.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitConfigurationManagerReady">emitConfigurationManagerReady</a>(<a href="../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a> $configurationManager)
+        
+                                            <p><p>Emits a signal after The ConfigurationManager has been loaded</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getConfiguration">getConfiguration</a>(string $configurationType, string $configurationPath = null)
+        
+                                            <p><p>Returns the specified raw configuration.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shutdown">shutdown</a>()
+        
+                                            <p><p>Shuts down the configuration manager.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_warmup">warmup</a>()
+        
+                                            <p><p>Warms up the complete configuration cache, i.e. fetching every configured configuration type
+in order to be able to store it into the cache, if configured to do so.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_loadConfiguration">loadConfiguration</a>(string $configurationType, array $packages)
+        
+                                            <p><p>Loads special configuration defined in the specified packages and merges them with
+those potentially existing in the global configuration folders. The result is stored
+in the configuration manager's configuration registry and can be retrieved with the
+getConfiguration() method.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_replaceConfigurationForConfigurationType">replaceConfigurationForConfigurationType</a>(string $configurationType, string $cachePathAndFilename)
+        
+                                            <p><p>If a cache file with previously saved configuration exists, it is loaded.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_loadConfigurationsFromCache">loadConfigurationsFromCache</a>()
+        
+                                            <p><p>Includes the cached configuration file such that $this-&gt;configurations is fully populated</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushConfigurationCache">flushConfigurationCache</a>()
+        
+                                            <p><p>If a cache file with previously saved configuration exists, it is removed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_processConfigurationType">processConfigurationType</a>(string $configurationType)
+        
+                                            <p><p>Generate configuration with environment variables replaced without modifying or loading the cache</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_saveConfigurationCache">saveConfigurationCache</a>()
+        
+                                            <p><p>Saves the current configuration into a cache file and creates a cache inclusion script
+in the context's Configuration directory.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_writeConfigurationCacheFile">writeConfigurationCacheFile</a>(string $cachePathAndFilename, string $configurationType = null)
+        
+                                            <p><p>Writes the cache on disk in the given cache file</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_refreshConfiguration">refreshConfiguration</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_replaceVariablesInPhpString">replaceVariablesInPhpString</a>(string $phpString)
+        
+                                            <p><p>Replaces variables (in the format %CONSTANT% or %env:ENVIRONMENT_VARIABLE%)
+in the given php exported configuration string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_constructConfigurationCachePath">constructConfigurationCachePath</a>()
+        
+                                            <p><p>Constructs a path to the configuration cache PHP file.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L171">at line 171</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a> $context)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructs the configuration manager</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a></td>
+                <td>$context</td>
+                <td><p>The application context to fetch configuration for</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTemporaryDirectoryPath">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L181">at line 181</a></div>
+        <code>                    void
+    <strong>setTemporaryDirectoryPath</strong>(string $temporaryDirectoryPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set an absolute file path to store configuration caches in. If null no cache will be active.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$temporaryDirectoryPath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPackages">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L194">at line 194</a></div>
+        <code>                    void
+    <strong>setPackages</strong>(array $packages)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the active packages to load the configuration for</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$packages</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAvailableConfigurationTypes">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L204">at line 204</a></div>
+        <code>                    array
+    <strong>getAvailableConfigurationTypes</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the available configuration-types</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>array of configuration-type identifier strings</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_registerConfigurationType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L217">at line 217</a></div>
+        <code>                    void
+    <strong>registerConfigurationType</strong>(string $configurationType, <a href="../../../Neos/Flow/Configuration/Loader/LoaderInterface.html"><abbr title="Neos\Flow\Configuration\Loader\LoaderInterface">LoaderInterface</abbr></a>|string|null $configurationLoader = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Registers a new configuration type with the given source.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$configurationType</td>
+                <td><p>The type to register, may be anything</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/Loader/LoaderInterface.html"><abbr title="Neos\Flow\Configuration\Loader\LoaderInterface">LoaderInterface</abbr></a>|string|null</td>
+                <td>$configurationLoader</td>
+                <td><p>This should be an instance of LoaderInterface. For backwards compatibility reasons it might also be a string representing one of the CONFIGURATION_PROCESSING<em>TYPE</em>* constants. If null, the default &quot;MergeLoader&quot; is used</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td><p>on invalid configuration processing type</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitConfigurationManagerReady">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L267">at line 267</a></div>
+        <code>            protected        void
+    <strong>emitConfigurationManagerReady</strong>(<a href="../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a> $configurationManager)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Emits a signal after The ConfigurationManager has been loaded</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a></td>
+                <td>$configurationManager</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getConfiguration">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L283">at line 283</a></div>
+        <code>                    mixed
+    <strong>getConfiguration</strong>(string $configurationType, string $configurationPath = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the specified raw configuration.</p></p>                <p><p>The actual configuration will be merged from different sources in a defined order.</p>
+<p>Note that this is a low level method and mostly makes sense to be used by Flow internally.
+If possible just use settings and have them injected.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$configurationType</td>
+                <td><p>The kind of configuration to fetch - must be one of the CONFIGURATION<em>TYPE</em>* constants</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$configurationPath</td>
+                <td><p>The path inside the configuration to fetch</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The configuration or NULL if the configuration doesn't exist</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/Exception/InvalidConfigurationTypeException.html"><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationTypeException">InvalidConfigurationTypeException</abbr></a></td>
+                <td><p>on invalid configuration types</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shutdown">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L307">at line 307</a></div>
+        <code>                    void
+    <strong>shutdown</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Shuts down the configuration manager.</p></p>                <p><p>This method writes the current configuration into a cache file if Flow was configured to do so.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/Exception/InvalidConfigurationException.html"><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationException">InvalidConfigurationException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/Exception/InvalidConfigurationTypeException.html"><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationTypeException">InvalidConfigurationTypeException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Utility/Exception/FilesException.html"><abbr title="Neos\Utility\Exception\FilesException">FilesException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_warmup">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L322">at line 322</a></div>
+        <code>                    void
+    <strong>warmup</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Warms up the complete configuration cache, i.e. fetching every configured configuration type
+in order to be able to store it into the cache, if configured to do so.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/Exception/InvalidConfigurationException.html"><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationException">InvalidConfigurationException</abbr></a></td>
+                <td><p>| InvalidConfigurationTypeException</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Flow\Configuration\ConfigurationManager::shutdown">ConfigurationManager::shutdown</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_loadConfiguration">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L340">at line 340</a></div>
+        <code>            protected        void
+    <strong>loadConfiguration</strong>(string $configurationType, array $packages)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Loads special configuration defined in the specified packages and merges them with
+those potentially existing in the global configuration folders. The result is stored
+in the configuration manager's configuration registry and can be retrieved with the
+getConfiguration() method.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$configurationType</td>
+                <td><p>The kind of configuration to load - must be one of the CONFIGURATION<em>TYPE</em>* constants</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$packages</td>
+                <td><p>An array of Package objects (indexed by package key) to consider</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/Exception/InvalidConfigurationTypeException.html"><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationTypeException">InvalidConfigurationTypeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_replaceConfigurationForConfigurationType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L363">at line 363</a></div>
+        <code>            protected        void
+    <strong>replaceConfigurationForConfigurationType</strong>(string $configurationType, string $cachePathAndFilename)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>If a cache file with previously saved configuration exists, it is loaded.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$configurationType</td>
+                <td><p>The kind of configuration to fetch</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$cachePathAndFilename</td>
+                <td><p>The cache file to load the configuration from</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_loadConfigurationsFromCache">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L375">at line 375</a></div>
+        <code>            protected        void
+    <strong>loadConfigurationsFromCache</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Includes the cached configuration file such that $this-&gt;configurations is fully populated</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushConfigurationCache">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L394">at line 394</a></div>
+        <code>                    void
+    <strong>flushConfigurationCache</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>If a cache file with previously saved configuration exists, it is removed.</p></p>                <p><p>Internal: After this the configuration manager is left without any configuration,
+use refreshConfiguration if you want to reread the configuration.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/Exception.html"><abbr title="Neos\Flow\Configuration\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Flow\Configuration\refreshConfiguration">refreshConfiguration</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_processConfigurationType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L415">at line 415</a></div>
+        <code>            protected        
+    <strong>processConfigurationType</strong>(string $configurationType)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Generate configuration with environment variables replaced without modifying or loading the cache</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$configurationType</td>
+                <td><p>The kind of configuration to fetch</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_saveConfigurationCache">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L436">at line 436</a></div>
+        <code>            protected        void
+    <strong>saveConfigurationCache</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Saves the current configuration into a cache file and creates a cache inclusion script
+in the context's Configuration directory.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/Exception/InvalidConfigurationTypeException.html"><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationTypeException">InvalidConfigurationTypeException</abbr></a></td>
+                <td><p>| FilesException</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_writeConfigurationCacheFile">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L459">at line 459</a></div>
+        <code>            protected        void
+    <strong>writeConfigurationCacheFile</strong>(string $cachePathAndFilename, string $configurationType = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Writes the cache on disk in the given cache file</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$cachePathAndFilename</td>
+                <td><p>The file to save the cache</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$configurationType</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_refreshConfiguration">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L477">at line 477</a></div>
+        <code>                    void
+    <strong>refreshConfiguration</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/Exception/InvalidConfigurationTypeException.html"><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationTypeException">InvalidConfigurationTypeException</abbr></a></td>
+                <td><p>| FilesException | Exception</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_replaceVariablesInPhpString">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L493">at line 493</a></div>
+        <code>            protected        string
+    <strong>replaceVariablesInPhpString</strong>(string $phpString)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Replaces variables (in the format %CONSTANT% or %env:ENVIRONMENT_VARIABLE%)
+in the given php exported configuration string.</p></p>                <p><p>This is applied before caching to allow runtime evaluation of constants and environment variables.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$phpString</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_constructConfigurationCachePath">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.1/Neos.Flow/Classes/Configuration/ConfigurationManager.php#L548">at line 548</a></div>
+        <code>            protected        string
+    <strong>constructConfigurationCachePath</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructs a path to the configuration cache PHP file.</p></p>                <p><p>Derived from the temporary path and application context.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
