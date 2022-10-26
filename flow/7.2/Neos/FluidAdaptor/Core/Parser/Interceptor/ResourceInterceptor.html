@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\FluidAdaptor\Core\Parser\Interceptor\ResourceInterceptor | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
+        <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../../js/typeahead.min.js"></script>
+        <script src="../../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (7.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_FluidAdaptor_Core_Parser_Interceptor_ResourceInterceptor" data-root-path="../../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/FluidAdaptor.html">FluidAdaptor</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/FluidAdaptor/Core.html">Core</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/FluidAdaptor/Core/Parser.html">Parser</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/FluidAdaptor/Core/Parser/Interceptor.html">Interceptor</a></li><li class="backslash">\</li><li>ResourceInterceptor</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ResourceInterceptor    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>ResourceInterceptor</strong>        implements
+        <abbr title="TYPO3Fluid\Fluid\Core\Parser\InterceptorInterface">InterceptorInterface</abbr>        (<a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.FluidAdaptor/Classes/Core/Parser/Interceptor/ResourceInterceptor.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>This interceptor looks for URIs pointing to package resources and in place
+of those adds ResourceUriNode instances using the ResourceViewHelper to
+make those URIs work in the rendered template.</p></p>            <p><p>That means you can build your template so that it can be previewed as is and
+pointers to CSS, JS, images, ... will still work when the resources are
+mirrored by Flow.</p>
+<p>Currently the supported URIs are of the form
+[../]Public/Some/&lt;Path/To/Resource&gt; (will use current package)
+[../]<PackageKey>/Resources/Public/&lt;Path/To/Resource&gt; (will use given package)</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_SPLIT_AT_RESOURCE_URIS
+                                    </td>
+                <td class="last">
+                    <p><em><p>Split a text at what seems to be a package resource URI.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_MATCH_RESOURCE_URI
+                                    </td>
+                <td class="last">
+                    <p><em><p>Is the text at hand a resource URI and what are path/package?</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_defaultPackageKey">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$defaultPackageKey</td>
+                <td class="last"><p>The default package key to use when rendering resource links without a
+package key in the source URL.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setDefaultPackageKey">setDefaultPackageKey</a>(string $defaultPackageKey)
+        
+                                            <p><p>Set the default package key to use for resource URIs.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="TYPO3Fluid\Fluid\Core\Parser\SyntaxTree\NodeInterface">NodeInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_process">process</a>(<abbr title="TYPO3Fluid\Fluid\Core\Parser\SyntaxTree\NodeInterface">NodeInterface</abbr> $node, int $interceptorPosition, <abbr title="TYPO3Fluid\Fluid\Core\Parser\ParsingState">ParsingState</abbr> $parsingState)
+        
+                                            <p><p>Looks for URIs pointing to package resources and in place of those adds
+ViewHelperNode instances using the ResourceViewHelper.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getInterceptionPoints">getInterceptionPoints</a>()
+        
+                                            <p><p>This interceptor wants to hook into text nodes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_setDefaultPackageKey">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.FluidAdaptor/Classes/Core/Parser/Interceptor/ResourceInterceptor.php#L76">at line 76</a></div>
+        <code>                    void
+    <strong>setDefaultPackageKey</strong>(string $defaultPackageKey)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the default package key to use for resource URIs.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$defaultPackageKey</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_process">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.FluidAdaptor/Classes/Core/Parser/Interceptor/ResourceInterceptor.php#L93">at line 93</a></div>
+        <code>                    <abbr title="TYPO3Fluid\Fluid\Core\Parser\SyntaxTree\NodeInterface">NodeInterface</abbr>
+    <strong>process</strong>(<abbr title="TYPO3Fluid\Fluid\Core\Parser\SyntaxTree\NodeInterface">NodeInterface</abbr> $node, int $interceptorPosition, <abbr title="TYPO3Fluid\Fluid\Core\Parser\ParsingState">ParsingState</abbr> $parsingState)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Looks for URIs pointing to package resources and in place of those adds
+ViewHelperNode instances using the ResourceViewHelper.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="TYPO3Fluid\Fluid\Core\Parser\SyntaxTree\NodeInterface">NodeInterface</abbr></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$interceptorPosition</td>
+                <td><p>One of the INTERCEPT_* constants for the current interception point</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="TYPO3Fluid\Fluid\Core\Parser\ParsingState">ParsingState</abbr></td>
+                <td>$parsingState</td>
+                <td><p>the current parsing state. Not needed in this interceptor.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="TYPO3Fluid\Fluid\Core\Parser\SyntaxTree\NodeInterface">NodeInterface</abbr></td>
+            <td><p>the modified node</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getInterceptionPoints">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.FluidAdaptor/Classes/Core/Parser/Interceptor/ResourceInterceptor.php#L131">at line 131</a></div>
+        <code>                    array
+    <strong>getInterceptionPoints</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>This interceptor wants to hook into text nodes.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Array of INTERCEPT_* constants</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

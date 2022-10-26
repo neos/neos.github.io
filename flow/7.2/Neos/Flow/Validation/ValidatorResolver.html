@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Validation\ValidatorResolver | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (7.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Validation_ValidatorResolver" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow/Validation.html">Validation</a></li><li class="backslash">\</li><li>ValidatorResolver</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ValidatorResolver    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>ValidatorResolver</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Validation/ValidatorResolver.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Validator resolver to automatically find a appropriate validator for a given subject</p></p>                    </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_MATCH_VALIDATORS
+                                    </td>
+                <td class="last">
+                    <p><em><p>Match validator names and options</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_MATCH_VALIDATOROPTIONS
+                                    </td>
+                <td class="last">
+                    <p><em><p>Match validator options (to parse actual options)</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_objectManager">
+                                        protected                                        <a href="../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$objectManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_reflectionService">
+                                        protected                                        <a href="../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$reflectionService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_baseValidatorConjunctions">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$baseValidatorConjunctions</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/Validation/Validator/ValidatorInterface.html"><abbr title="Neos\Flow\Validation\Validator\ValidatorInterface">ValidatorInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createValidator">createValidator</a>(string $validatorType, array $validatorOptions = [])
+        
+                                            <p><p>Get a validator for a given data type. Returns a validator implementing
+the ValidatorInterface or NULL if no validator
+could be resolved.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/Validation/Validator/ConjunctionValidator.html"><abbr title="Neos\Flow\Validation\Validator\ConjunctionValidator">ConjunctionValidator</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getBaseValidatorConjunction">getBaseValidatorConjunction</a>(string $targetClassName, array $validationGroups = [&#039;Default&#039;])
+        
+                                            <p><p>Resolves and returns the base validator conjunction for the given data type.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/Validation/Validator/ConjunctionValidator.html"><abbr title="Neos\Flow\Validation\Validator\ConjunctionValidator">ConjunctionValidator</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildMethodArgumentsValidatorConjunctions">buildMethodArgumentsValidatorConjunctions</a>(string $className, string $methodName, array $methodParameters = null, array $methodValidateAnnotations = null)
+        
+                                            <p><p>Detects and registers any validators for arguments:</p>
+<ul>
+<li>by the data type specified in the param annotations</li>
+<li>additional validators specified in the validate annotations of a method</li>
+</ul></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_reset">reset</a>()
+        
+                                            <p><p>Resets the baseValidatorConjunctions
+It is usually not required to reset the ValidatorResolver during one request. This method is mainly useful for functional tests</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/Validation/Validator/GenericObjectValidator.html"><abbr title="Neos\Flow\Validation\Validator\GenericObjectValidator">GenericObjectValidator</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildSubObjectValidator">buildSubObjectValidator</a>(array $objectPath, <a href="../../../Neos/Flow/Validation/Validator/ValidatorInterface.html"><abbr title="Neos\Flow\Validation\Validator\ValidatorInterface">ValidatorInterface</abbr></a> $propertyValidator)
+        
+                                            <p><p>Builds a chain of nested object validators by specification of the given
+object path.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildBaseValidatorConjunction">buildBaseValidatorConjunction</a>(string $indexKey, string $targetClassName, array $validationGroups)
+        
+                                            <p><p>Builds a base validator conjunction for the given data type.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addCustomValidators">addCustomValidators</a>(string $targetClassName, <a href="../../../Neos/Flow/Validation/Validator/ConjunctionValidator.html"><abbr title="Neos\Flow\Validation\Validator\ConjunctionValidator">ConjunctionValidator</abbr></a> $conjunctionValidator)
+        
+                                            <p><p>This adds custom validators to the passed $conjunctionValidator.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPolyTypeObjectValidatorImplementationClassNames">getPolyTypeObjectValidatorImplementationClassNames</a>(<a href="../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a> $objectManager)
+        
+                                            <p><p>Returns a map of object validator class names.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resolveValidatorObjectName">resolveValidatorObjectName</a>(string $validatorType)
+        
+                                            <p><p>Returns the class name of an appropriate validator for the given type. If no
+validator is available false is returned</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getValidatorImplementationClassNames">getValidatorImplementationClassNames</a>(<a href="../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a> $objectManager)
+        
+                                            <p><p>Returns all class names implementing the ValidatorInterface.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getValidatorType">getValidatorType</a>(string $type)
+        
+                                            <p><p>Used to map PHP types to validator types.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_createValidator">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Validation/ValidatorResolver.php#L95">at line 95</a></div>
+        <code>                    <a href="../../../Neos/Flow/Validation/Validator/ValidatorInterface.html"><abbr title="Neos\Flow\Validation\Validator\ValidatorInterface">ValidatorInterface</abbr></a>
+    <strong>createValidator</strong>(string $validatorType, array $validatorOptions = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get a validator for a given data type. Returns a validator implementing
+the ValidatorInterface or NULL if no validator
+could be resolved.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$validatorType</td>
+                <td><p>Either one of the built-in data types or fully qualified validator class name</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$validatorOptions</td>
+                <td><p>Options to be passed to the validator</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/Validation/Validator/ValidatorInterface.html"><abbr title="Neos\Flow\Validation\Validator\ValidatorInterface">ValidatorInterface</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Exception/NoSuchValidatorException.html"><abbr title="Neos\Flow\Validation\Exception\NoSuchValidatorException">NoSuchValidatorException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Exception/InvalidValidationConfigurationException.html"><abbr title="Neos\Flow\Validation\Exception\InvalidValidationConfigurationException">InvalidValidationConfigurationException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getBaseValidatorConjunction">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Validation/ValidatorResolver.php#L136">at line 136</a></div>
+        <code>                    <a href="../../../Neos/Flow/Validation/Validator/ConjunctionValidator.html"><abbr title="Neos\Flow\Validation\Validator\ConjunctionValidator">ConjunctionValidator</abbr></a>
+    <strong>getBaseValidatorConjunction</strong>(string $targetClassName, array $validationGroups = [&#039;Default&#039;])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resolves and returns the base validator conjunction for the given data type.</p></p>                <p><p>If no validation is necessary, the returned validator is empty.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$targetClassName</td>
+                <td><p>Fully qualified class name of the target class, ie. the class which should be validated</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$validationGroups</td>
+                <td><p>The validation groups to build the validator for</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/Validation/Validator/ConjunctionValidator.html"><abbr title="Neos\Flow\Validation\Validator\ConjunctionValidator">ConjunctionValidator</abbr></a></td>
+            <td><p>The validator conjunction</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Exception/InvalidValidationConfigurationException.html"><abbr title="Neos\Flow\Validation\Exception\InvalidValidationConfigurationException">InvalidValidationConfigurationException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Exception/InvalidValidationOptionsException.html"><abbr title="Neos\Flow\Validation\Exception\InvalidValidationOptionsException">InvalidValidationOptionsException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Exception/NoSuchValidatorException.html"><abbr title="Neos\Flow\Validation\Exception\NoSuchValidatorException">NoSuchValidatorException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildMethodArgumentsValidatorConjunctions">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Validation/ValidatorResolver.php#L162">at line 162</a></div>
+        <code>                    <a href="../../../Neos/Flow/Validation/Validator/ConjunctionValidator.html"><abbr title="Neos\Flow\Validation\Validator\ConjunctionValidator">ConjunctionValidator</abbr></a>[]
+    <strong>buildMethodArgumentsValidatorConjunctions</strong>(string $className, string $methodName, array $methodParameters = null, array $methodValidateAnnotations = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Detects and registers any validators for arguments:</p>
+<ul>
+<li>by the data type specified in the param annotations</li>
+<li>additional validators specified in the validate annotations of a method</li>
+</ul></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$methodName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$methodParameters</td>
+                <td><p>Optional pre-compiled array of method parameters</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$methodValidateAnnotations</td>
+                <td><p>Optional pre-compiled array of validate annotations (as array)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/Validation/Validator/ConjunctionValidator.html"><abbr title="Neos\Flow\Validation\Validator\ConjunctionValidator">ConjunctionValidator</abbr></a>[]</td>
+            <td><p>An Array of ValidatorConjunctions for each method parameters.</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Exception/InvalidValidationConfigurationException.html"><abbr title="Neos\Flow\Validation\Exception\InvalidValidationConfigurationException">InvalidValidationConfigurationException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Exception/NoSuchValidatorException.html"><abbr title="Neos\Flow\Validation\Exception\NoSuchValidatorException">NoSuchValidatorException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Exception/InvalidTypeHintException.html"><abbr title="Neos\Flow\Validation\Exception\InvalidTypeHintException">InvalidTypeHintException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Exception/InvalidValidationOptionsException.html"><abbr title="Neos\Flow\Validation\Exception\InvalidValidationOptionsException">InvalidValidationOptionsException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_reset">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Validation/ValidatorResolver.php#L228">at line 228</a></div>
+        <code>                    void
+    <strong>reset</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resets the baseValidatorConjunctions
+It is usually not required to reset the ValidatorResolver during one request. This method is mainly useful for functional tests</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildSubObjectValidator">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Validation/ValidatorResolver.php#L242">at line 242</a></div>
+        <code>            protected        <a href="../../../Neos/Flow/Validation/Validator/GenericObjectValidator.html"><abbr title="Neos\Flow\Validation\Validator\GenericObjectValidator">GenericObjectValidator</abbr></a>
+    <strong>buildSubObjectValidator</strong>(array $objectPath, <a href="../../../Neos/Flow/Validation/Validator/ValidatorInterface.html"><abbr title="Neos\Flow\Validation\Validator\ValidatorInterface">ValidatorInterface</abbr></a> $propertyValidator)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Builds a chain of nested object validators by specification of the given
+object path.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$objectPath</td>
+                <td><p>The object path</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Validator/ValidatorInterface.html"><abbr title="Neos\Flow\Validation\Validator\ValidatorInterface">ValidatorInterface</abbr></a></td>
+                <td>$propertyValidator</td>
+                <td><p>The validator which should be added to the property specified by objectPath</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/Validation/Validator/GenericObjectValidator.html"><abbr title="Neos\Flow\Validation\Validator\GenericObjectValidator">GenericObjectValidator</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Exception/InvalidValidationOptionsException.html"><abbr title="Neos\Flow\Validation\Exception\InvalidValidationOptionsException">InvalidValidationOptionsException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildBaseValidatorConjunction">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Validation/ValidatorResolver.php#L284">at line 284</a></div>
+        <code>            protected        void
+    <strong>buildBaseValidatorConjunction</strong>(string $indexKey, string $targetClassName, array $validationGroups)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Builds a base validator conjunction for the given data type.</p></p>                <p><p>The base validation rules are those which were declared directly in a class (typically
+a model) through some validate annotations on properties.</p>
+<p>If a property holds a class for which a base validator exists, that property will be
+checked as well, regardless of a validate annotation</p>
+<p>Additionally, if a custom validator was defined for the class in question, it will be added
+to the end of the conjunction. A custom validator is found if it follows the naming convention
+&quot;Replace '\Model\' by '\Validator\' and append 'Validator'&quot;.</p>
+<p>Example: $targetClassName is Neos\Foo\Domain\Model\Quux, then the validator will be found if it has the
+name Neos\Foo\Domain\Validator\QuuxValidator</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$indexKey</td>
+                <td><p>The key to use as index in $this-&gt;baseValidatorConjunctions; calculated from target class name and validation groups</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$targetClassName</td>
+                <td><p>The data type to build the validation conjunction for. Needs to be the fully qualified class name.</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$validationGroups</td>
+                <td><p>The validation groups to build the validator for</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Exception/NoSuchValidatorException.html"><abbr title="Neos\Flow\Validation\Exception\NoSuchValidatorException">NoSuchValidatorException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Exception/InvalidValidationOptionsException.html"><abbr title="Neos\Flow\Validation\Exception\InvalidValidationOptionsException">InvalidValidationOptionsException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Exception/InvalidValidationConfigurationException.html"><abbr title="Neos\Flow\Validation\Exception\InvalidValidationConfigurationException">InvalidValidationConfigurationException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addCustomValidators">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Validation/ValidatorResolver.php#L381">at line 381</a></div>
+        <code>            protected        void
+    <strong>addCustomValidators</strong>(string $targetClassName, <a href="../../../Neos/Flow/Validation/Validator/ConjunctionValidator.html"><abbr title="Neos\Flow\Validation\Validator\ConjunctionValidator">ConjunctionValidator</abbr></a> $conjunctionValidator)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>This adds custom validators to the passed $conjunctionValidator.</p></p>                <p><p>A custom validator is found if it follows the naming convention &quot;Replace '\Model\' by '\Validator\' and
+append 'Validator'&quot;. If found, it will be added to the $conjunctionValidator.</p>
+<p>In addition canValidate() will be called on all implementations of the ObjectValidatorInterface to find
+all validators that could validate the target. The one with the highest priority will be added as well.
+If multiple validators have the same priority, which one will be added is not deterministic.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$targetClassName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Validator/ConjunctionValidator.html"><abbr title="Neos\Flow\Validation\Validator\ConjunctionValidator">ConjunctionValidator</abbr></a></td>
+                <td>$conjunctionValidator</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Exception/InvalidValidationConfigurationException.html"><abbr title="Neos\Flow\Validation\Exception\InvalidValidationConfigurationException">InvalidValidationConfigurationException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Validation/Exception/NoSuchValidatorException.html"><abbr title="Neos\Flow\Validation\Exception\NoSuchValidatorException">NoSuchValidatorException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPolyTypeObjectValidatorImplementationClassNames">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Validation/ValidatorResolver.php#L419">at line 419</a></div>
+        <code>        static            array
+    <strong>getPolyTypeObjectValidatorImplementationClassNames</strong>(<a href="../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a> $objectManager)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a map of object validator class names.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a></td>
+                <td>$objectManager</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Array of object validator class names</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resolveValidatorObjectName">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Validation/ValidatorResolver.php#L433">at line 433</a></div>
+        <code>            protected        string|bool
+    <strong>resolveValidatorObjectName</strong>(string $validatorType)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the class name of an appropriate validator for the given type. If no
+validator is available false is returned</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$validatorType</td>
+                <td><p>Either the fully qualified class name of the validator or the short name of a built-in validator</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|bool</td>
+            <td><p>Class name of the validator or false if not available</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getValidatorImplementationClassNames">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Validation/ValidatorResolver.php#L463">at line 463</a></div>
+        <code>        static            array
+    <strong>getValidatorImplementationClassNames</strong>(<a href="../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a> $objectManager)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns all class names implementing the ValidatorInterface.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a></td>
+                <td>$objectManager</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Array of class names implementing ValidatorInterface indexed by class name</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getValidatorType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Validation/ValidatorResolver.php#L476">at line 476</a></div>
+        <code>            protected        string
+    <strong>getValidatorType</strong>(string $type)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Used to map PHP types to validator types.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td><p>Data type to unify</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>unified data type</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

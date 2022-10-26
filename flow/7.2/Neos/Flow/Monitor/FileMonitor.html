@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Monitor\FileMonitor | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (7.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Monitor_FileMonitor" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow/Monitor.html">Monitor</a></li><li class="backslash">\</li><li>FileMonitor</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>FileMonitor    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>FileMonitor</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A monitor which detects changes in directories or files</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_identifier">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$identifier</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_changeDetectionStrategy">
+                                        protected                                        <a href="../../../Neos/Flow/Monitor/ChangeDetectionStrategy/ChangeDetectionStrategyInterface.html"><abbr title="Neos\Flow\Monitor\ChangeDetectionStrategy\ChangeDetectionStrategyInterface">ChangeDetectionStrategyInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$changeDetectionStrategy</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_signalDispatcher">
+                                        protected                                        <a href="../../../Neos/Flow/SignalSlot/Dispatcher.html"><abbr title="Neos\Flow\SignalSlot\Dispatcher">Dispatcher</abbr></a>
+                                                                                
+                                    </td>
+                <td>$signalDispatcher</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_logger">
+                                        protected                                        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$logger</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cache">
+                                        protected                                        <a href="../../../Neos/Cache/Frontend/StringFrontend.html"><abbr title="Neos\Cache\Frontend\StringFrontend">StringFrontend</abbr></a>
+                                                                                
+                                    </td>
+                <td>$cache</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_monitoredFiles">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$monitoredFiles</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_monitoredDirectories">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$monitoredDirectories</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_changedFiles">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$changedFiles</td>
+                <td class="last"><p>Changed files for this monitor</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_changedPaths">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$changedPaths</td>
+                <td class="last"><p>The changed paths for this monitor</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_directoriesAndFiles">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$directoriesAndFiles</td>
+                <td class="last"><p>Array of directories and files that were cached on the last run.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(string $identifier)
+        
+                                            <p><p>Constructs this file monitor</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../Neos/Flow/Monitor/FileMonitor.html"><abbr title="Neos\Flow\Monitor\FileMonitor">FileMonitor</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createFileMonitorAtBoot">createFileMonitorAtBoot</a>(string $identifier, <a href="../../../Neos/Flow/Core/Bootstrap.html"><abbr title="Neos\Flow\Core\Bootstrap">Bootstrap</abbr></a> $bootstrap)
+        
+                                            <p><p>Helper method to create a FileMonitor instance during boot sequence as injections have to be done manually.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectChangeDetectionStrategy">injectChangeDetectionStrategy</a>(<a href="../../../Neos/Flow/Monitor/ChangeDetectionStrategy/ChangeDetectionStrategyInterface.html"><abbr title="Neos\Flow\Monitor\ChangeDetectionStrategy\ChangeDetectionStrategyInterface">ChangeDetectionStrategyInterface</abbr></a> $changeDetectionStrategy)
+        
+                                            <p><p>Injects the Change Detection Strategy</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectSignalDispatcher">injectSignalDispatcher</a>(<a href="../../../Neos/Flow/SignalSlot/Dispatcher.html"><abbr title="Neos\Flow\SignalSlot\Dispatcher">Dispatcher</abbr></a> $signalDispatcher)
+        
+                                            <p><p>Injects the Singal Slot Dispatcher because classes of the Monitor subpackage cannot be proxied by the AOP
+framework because it is not initialized at the time the monitoring is used.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectLogger">injectLogger</a>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        
+                                            <p><p>Injects the (system) logger based on PSR-3.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectCache">injectCache</a>(<a href="../../../Neos/Cache/Frontend/StringFrontend.html"><abbr title="Neos\Cache\Frontend\StringFrontend">StringFrontend</abbr></a> $cache)
+        
+                                            <p><p>Injects the Flow_Monitor cache</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getIdentifier">getIdentifier</a>()
+        
+                                            <p><p>Returns the identifier of this monitor</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_monitorFile">monitorFile</a>(string $pathAndFilename)
+        
+                                            <p><p>Adds the specified file to the list of files to be monitored.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_monitorDirectory">monitorDirectory</a>(string $path, string $filenamePattern = null)
+        
+                                            <p><p>Adds the specified directory to the list of directories to be monitored.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getMonitoredFiles">getMonitoredFiles</a>()
+        
+                                            <p><p>Returns a list of all monitored files</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getMonitoredDirectories">getMonitoredDirectories</a>()
+        
+                                            <p><p>Returns a list of all monitored directories</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_detectChanges">detectChanges</a>()
+        
+                                            <p><p>Detects changes of the files and directories to be monitored and emits signals
+accordingly.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_detectChangesOnPath">detectChangesOnPath</a>(string $path, string $filenamePattern)
+        
+                                            <p><p>Detect changes for one of the monitored paths.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    Generator&lt;string&gt;
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_readMonitoredDirectoryRecursively">readMonitoredDirectoryRecursively</a>(string $path, string $filenamePattern)
+        
+                                            <p><p>Read a monitored directory recursively, taking into account filename patterns</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_loadDetectedDirectoriesAndFiles">loadDetectedDirectoriesAndFiles</a>()
+        
+                                            <p><p>Loads the last detected files for this monitor.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_saveDetectedDirectoriesAndFiles">saveDetectedDirectoriesAndFiles</a>()
+        
+                                            <p><p>Store the changed directories and files back to the cache.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setDetectedFilesForPath">setDetectedFilesForPath</a>(string $path, array $files)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_detectChangedFiles">detectChangedFiles</a>(array $pathAndFilenames)
+        
+                                            <p><p>Detects changes in the given list of files and emits signals if necessary.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitFilesHaveChanged">emitFilesHaveChanged</a>(string $monitorIdentifier, array $changedFiles)
+        
+                                            <p><p>Signalizes that the specified file has changed</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitDirectoriesHaveChanged">emitDirectoriesHaveChanged</a>(string $monitorIdentifier, array $changedDirectories)
+        
+                                            <p><p>Signalizes that the specified directory has changed</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shutdownObject">shutdownObject</a>()
+        
+                                            <p><p>Caches the directories and their files</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L94">at line 94</a></div>
+        <code>                    
+    <strong>__construct</strong>(string $identifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructs this file monitor</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identifier</td>
+                <td><p>Name of this specific file monitor - will be used in the signals emitted by this monitor.</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createFileMonitorAtBoot">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L106">at line 106</a></div>
+        <code>        static            <a href="../../../Neos/Flow/Monitor/FileMonitor.html"><abbr title="Neos\Flow\Monitor\FileMonitor">FileMonitor</abbr></a>
+    <strong>createFileMonitorAtBoot</strong>(string $identifier, <a href="../../../Neos/Flow/Core/Bootstrap.html"><abbr title="Neos\Flow\Core\Bootstrap">Bootstrap</abbr></a> $bootstrap)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Helper method to create a FileMonitor instance during boot sequence as injections have to be done manually.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identifier</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Core/Bootstrap.html"><abbr title="Neos\Flow\Core\Bootstrap">Bootstrap</abbr></a></td>
+                <td>$bootstrap</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/Monitor/FileMonitor.html"><abbr title="Neos\Flow\Monitor\FileMonitor">FileMonitor</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectChangeDetectionStrategy">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L131">at line 131</a></div>
+        <code>                    void
+    <strong>injectChangeDetectionStrategy</strong>(<a href="../../../Neos/Flow/Monitor/ChangeDetectionStrategy/ChangeDetectionStrategyInterface.html"><abbr title="Neos\Flow\Monitor\ChangeDetectionStrategy\ChangeDetectionStrategyInterface">ChangeDetectionStrategyInterface</abbr></a> $changeDetectionStrategy)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the Change Detection Strategy</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Monitor/ChangeDetectionStrategy/ChangeDetectionStrategyInterface.html"><abbr title="Neos\Flow\Monitor\ChangeDetectionStrategy\ChangeDetectionStrategyInterface">ChangeDetectionStrategyInterface</abbr></a></td>
+                <td>$changeDetectionStrategy</td>
+                <td><p>The strategy to use for detecting changes</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectSignalDispatcher">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L144">at line 144</a></div>
+        <code>                    void
+    <strong>injectSignalDispatcher</strong>(<a href="../../../Neos/Flow/SignalSlot/Dispatcher.html"><abbr title="Neos\Flow\SignalSlot\Dispatcher">Dispatcher</abbr></a> $signalDispatcher)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the Singal Slot Dispatcher because classes of the Monitor subpackage cannot be proxied by the AOP
+framework because it is not initialized at the time the monitoring is used.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/SignalSlot/Dispatcher.html"><abbr title="Neos\Flow\SignalSlot\Dispatcher">Dispatcher</abbr></a></td>
+                <td>$signalDispatcher</td>
+                <td><p>The Signal Slot Dispatcher</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectLogger">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L155">at line 155</a></div>
+        <code>                    void
+    <strong>injectLogger</strong>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the (system) logger based on PSR-3.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+                <td>$logger</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectCache">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L166">at line 166</a></div>
+        <code>                    void
+    <strong>injectCache</strong>(<a href="../../../Neos/Cache/Frontend/StringFrontend.html"><abbr title="Neos\Cache\Frontend\StringFrontend">StringFrontend</abbr></a> $cache)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the Flow_Monitor cache</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Cache/Frontend/StringFrontend.html"><abbr title="Neos\Cache\Frontend\StringFrontend">StringFrontend</abbr></a></td>
+                <td>$cache</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getIdentifier">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L176">at line 176</a></div>
+        <code>                    string
+    <strong>getIdentifier</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the identifier of this monitor</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_monitorFile">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L190">at line 190</a></div>
+        <code>                    void
+    <strong>monitorFile</strong>(string $pathAndFilename)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds the specified file to the list of files to be monitored.</p></p>                <p><p>The file in question does not necessarily have to exist.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$pathAndFilename</td>
+                <td><p>Absolute path and filename of the file to monitor</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_monitorDirectory">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L211">at line 211</a></div>
+        <code>                    void
+    <strong>monitorDirectory</strong>(string $path, string $filenamePattern = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds the specified directory to the list of directories to be monitored.</p></p>                <p><p>All files in these directories will be monitored too.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>Absolute path of the directory to monitor</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$filenamePattern</td>
+                <td><p>A pattern for filenames to consider for file monitoring (regular expression)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMonitoredFiles">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L228">at line 228</a></div>
+        <code>                    array
+    <strong>getMonitoredFiles</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a list of all monitored files</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>A list of paths and filenames of monitored files</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMonitoredDirectories">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L239">at line 239</a></div>
+        <code>                    array
+    <strong>getMonitoredDirectories</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a list of all monitored directories</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>A list of paths of monitored directories</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_detectChanges">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L251">at line 251</a></div>
+        <code>                    void
+    <strong>detectChanges</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Detects changes of the files and directories to be monitored and emits signals
+accordingly.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_detectChangesOnPath">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L290">at line 290</a></div>
+        <code>            protected        bool
+    <strong>detectChangesOnPath</strong>(string $path, string $filenamePattern)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Detect changes for one of the monitored paths.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$filenamePattern</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if any changes were detected in this path</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_readMonitoredDirectoryRecursively">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L347">at line 347</a></div>
+        <code>            protected        Generator&lt;string&gt;
+    <strong>readMonitoredDirectoryRecursively</strong>(string $path, string $filenamePattern)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Read a monitored directory recursively, taking into account filename patterns</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>The path of a monitored directory</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$filenamePattern</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>Generator&lt;string&gt;</td>
+            <td><p>A generator returning filenames with full path</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_loadDetectedDirectoriesAndFiles">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L377">at line 377</a></div>
+        <code>            protected        void
+    <strong>loadDetectedDirectoriesAndFiles</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Loads the last detected files for this monitor.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_saveDetectedDirectoriesAndFiles">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L392">at line 392</a></div>
+        <code>            protected        void
+    <strong>saveDetectedDirectoriesAndFiles</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Store the changed directories and files back to the cache.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDetectedFilesForPath">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L402">at line 402</a></div>
+        <code>            protected        void
+    <strong>setDetectedFilesForPath</strong>(string $path, array $files)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$files</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_detectChangedFiles">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L413">at line 413</a></div>
+        <code>            protected        array
+    <strong>detectChangedFiles</strong>(array $pathAndFilenames)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Detects changes in the given list of files and emits signals if necessary.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$pathAndFilenames</td>
+                <td><p>A list of full path and filenames of files to check</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>An array of changed files (key = path and filenmae) and their status (value)</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitFilesHaveChanged">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L433">at line 433</a></div>
+        <code>            protected        void
+    <strong>emitFilesHaveChanged</strong>(string $monitorIdentifier, array $changedFiles)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Signalizes that the specified file has changed</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$monitorIdentifier</td>
+                <td><p>Name of the monitor which detected the change</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$changedFiles</td>
+                <td><p>An array of changed files (key = path and filename) and their status (value)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitDirectoriesHaveChanged">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L446">at line 446</a></div>
+        <code>            protected        void
+    <strong>emitDirectoriesHaveChanged</strong>(string $monitorIdentifier, array $changedDirectories)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Signalizes that the specified directory has changed</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$monitorIdentifier</td>
+                <td><p>Name of the monitor which detected the change</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$changedDirectories</td>
+                <td><p>An array of changed directories (key = path) and their status (value)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shutdownObject">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Monitor/FileMonitor.php#L456">at line 456</a></div>
+        <code>                    void
+    <strong>shutdownObject</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Caches the directories and their files</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Mvc\Routing\RouterCachingService | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (7.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Mvc_Routing_RouterCachingService" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Mvc.html">Mvc</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Mvc/Routing.html">Routing</a></li><li class="backslash">\</li><li>RouterCachingService</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>RouterCachingService    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>RouterCachingService</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Mvc/Routing/RouterCachingService.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Caching of findMatchResults() and resolve() calls on the web Router.</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_routeCache">
+                                        protected                                        <a href="../../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a>
+                                                                                
+                                    </td>
+                <td>$routeCache</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_resolveCache">
+                                        protected                                        <a href="../../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a>
+                                                                                
+                                    </td>
+                <td>$resolveCache</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_persistenceManager">
+                                        protected                                        <a href="../../../../Neos/Flow/Persistence/PersistenceManagerInterface.html"><abbr title="Neos\Flow\Persistence\PersistenceManagerInterface">PersistenceManagerInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$persistenceManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_logger">
+                                        protected                                        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$logger</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_objectManager">
+                                        protected                                        <a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$objectManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_routingSettings">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$routingSettings</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectLogger">injectLogger</a>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initializeObject">initializeObject</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCachedMatchResults">getCachedMatchResults</a>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteContext">RouteContext</abbr></a> $routeContext)
+        
+                                            <p><p>Checks the cache for the given RouteContext and returns the result or false if no matching ache entry was found</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_storeMatchResults">storeMatchResults</a>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteContext">RouteContext</abbr></a> $routeContext, array $matchResults, <a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteTags.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteTags">RouteTags</abbr></a> $matchedTags = null)
+        
+                                            <p><p>Stores the $matchResults in the cache</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Flow/Mvc/Routing/Dto/UriConstraints.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\UriConstraints">UriConstraints</abbr></a>|bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCachedResolvedUriConstraints">getCachedResolvedUriConstraints</a>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/ResolveContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\ResolveContext">ResolveContext</abbr></a> $resolveContext)
+        
+                                            <p><p>Checks the cache for the given ResolveContext and returns the cached UriConstraints if a cache entry is found</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_storeResolvedUriConstraints">storeResolvedUriConstraints</a>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/ResolveContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\ResolveContext">ResolveContext</abbr></a> $resolveContext, <a href="../../../../Neos/Flow/Mvc/Routing/Dto/UriConstraints.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\UriConstraints">UriConstraints</abbr></a> $uriConstraints, <a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteTags.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteTags">RouteTags</abbr></a> $resolvedTags = null)
+        
+                                            <p><p>Stores the resolved UriConstraints in the cache together with the $routeValues</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_generateRouteTags">generateRouteTags</a>(string $uriPath, array $routeValues)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushCaches">flushCaches</a>()
+        
+                                            <p><p>Flushes 'route' and 'resolve' caches.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushCachesByTag">flushCachesByTag</a>(string $tag)
+        
+                                            <p><p>Flushes 'findMatchResults' and 'resolve' caches for the given $tag</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushCachesForUriPath">flushCachesForUriPath</a>(string $uriPath)
+        
+                                            <p><p>Flushes 'findMatchResults' caches that are tagged with the given $uriPath</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_containsObject">containsObject</a>(mixed $subject)
+        
+                                            <p><p>Checks if the given subject contains an object</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_convertObjectsToHashes">convertObjectsToHashes</a>(array $routeValues)
+        
+                                            <p><p>Recursively converts objects in an array to their identifiers</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildResolveCacheIdentifier">buildResolveCacheIdentifier</a>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/ResolveContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\ResolveContext">ResolveContext</abbr></a> $resolveContext, array $routeValues)
+        
+                                            <p><p>Generates the Resolve cache identifier for the given Request</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_extractUuids">extractUuids</a>(array $values)
+        
+                                            <p><p>Helper method to generate tags by taking all UUIDs contained
+in the given $routeValues or $matchResults</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_injectLogger">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Mvc/Routing/RouterCachingService.php#L74">at line 74</a></div>
+        <code>                    
+    <strong>injectLogger</strong>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+                <td>$logger</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initializeObject">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Mvc/Routing/RouterCachingService.php#L82">at line 82</a></div>
+        <code>                    void
+    <strong>initializeObject</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCachedMatchResults">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Mvc/Routing/RouterCachingService.php#L97">at line 97</a></div>
+        <code>                    array|bool
+    <strong>getCachedMatchResults</strong>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteContext">RouteContext</abbr></a> $routeContext)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks the cache for the given RouteContext and returns the result or false if no matching ache entry was found</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteContext">RouteContext</abbr></a></td>
+                <td>$routeContext</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|bool</td>
+            <td><p>the cached route values or false if no cache entry was found</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_storeMatchResults">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Mvc/Routing/RouterCachingService.php#L115">at line 115</a></div>
+        <code>                    void
+    <strong>storeMatchResults</strong>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteContext">RouteContext</abbr></a> $routeContext, array $matchResults, <a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteTags.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteTags">RouteTags</abbr></a> $matchedTags = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Stores the $matchResults in the cache</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteContext">RouteContext</abbr></a></td>
+                <td>$routeContext</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$matchResults</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteTags.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteTags">RouteTags</abbr></a></td>
+                <td>$matchedTags</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCachedResolvedUriConstraints">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Mvc/Routing/RouterCachingService.php#L134">at line 134</a></div>
+        <code>                    <a href="../../../../Neos/Flow/Mvc/Routing/Dto/UriConstraints.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\UriConstraints">UriConstraints</abbr></a>|bool
+    <strong>getCachedResolvedUriConstraints</strong>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/ResolveContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\ResolveContext">ResolveContext</abbr></a> $resolveContext)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks the cache for the given ResolveContext and returns the cached UriConstraints if a cache entry is found</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Routing/Dto/ResolveContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\ResolveContext">ResolveContext</abbr></a></td>
+                <td>$resolveContext</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Flow/Mvc/Routing/Dto/UriConstraints.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\UriConstraints">UriConstraints</abbr></a>|bool</td>
+            <td><p>the cached URI or false if no cache entry was found</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_storeResolvedUriConstraints">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Mvc/Routing/RouterCachingService.php#L151">at line 151</a></div>
+        <code>                    void
+    <strong>storeResolvedUriConstraints</strong>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/ResolveContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\ResolveContext">ResolveContext</abbr></a> $resolveContext, <a href="../../../../Neos/Flow/Mvc/Routing/Dto/UriConstraints.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\UriConstraints">UriConstraints</abbr></a> $uriConstraints, <a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteTags.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteTags">RouteTags</abbr></a> $resolvedTags = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Stores the resolved UriConstraints in the cache together with the $routeValues</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Routing/Dto/ResolveContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\ResolveContext">ResolveContext</abbr></a></td>
+                <td>$resolveContext</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Routing/Dto/UriConstraints.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\UriConstraints">UriConstraints</abbr></a></td>
+                <td>$uriConstraints</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Routing/Dto/RouteTags.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\RouteTags">RouteTags</abbr></a></td>
+                <td>$resolvedTags</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_generateRouteTags">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Mvc/Routing/RouterCachingService.php#L171">at line 171</a></div>
+        <code>            protected        array
+    <strong>generateRouteTags</strong>(string $uriPath, array $routeValues)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$uriPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$routeValues</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushCaches">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Mvc/Routing/RouterCachingService.php#L191">at line 191</a></div>
+        <code>                    void
+    <strong>flushCaches</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flushes 'route' and 'resolve' caches.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushCachesByTag">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Mvc/Routing/RouterCachingService.php#L203">at line 203</a></div>
+        <code>                    void
+    <strong>flushCachesByTag</strong>(string $tag)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flushes 'findMatchResults' and 'resolve' caches for the given $tag</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$tag</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushCachesForUriPath">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Mvc/Routing/RouterCachingService.php#L215">at line 215</a></div>
+        <code>                    void
+    <strong>flushCachesForUriPath</strong>(string $uriPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flushes 'findMatchResults' caches that are tagged with the given $uriPath</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$uriPath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_containsObject">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Mvc/Routing/RouterCachingService.php#L227">at line 227</a></div>
+        <code>            protected        bool
+    <strong>containsObject</strong>(mixed $subject)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if the given subject contains an object</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$subject</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if $subject contains an object, otherwise false</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_convertObjectsToHashes">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Mvc/Routing/RouterCachingService.php#L249">at line 249</a></div>
+        <code>            protected        array
+    <strong>convertObjectsToHashes</strong>(array $routeValues)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Recursively converts objects in an array to their identifiers</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$routeValues</td>
+                <td><p>the array to be processed</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>the modified array or NULL if $routeValues contain an object and its identifier could not be determined</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildResolveCacheIdentifier">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Mvc/Routing/RouterCachingService.php#L279">at line 279</a></div>
+        <code>            protected        string
+    <strong>buildResolveCacheIdentifier</strong>(<a href="../../../../Neos/Flow/Mvc/Routing/Dto/ResolveContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\ResolveContext">ResolveContext</abbr></a> $resolveContext, array $routeValues)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Generates the Resolve cache identifier for the given Request</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Mvc/Routing/Dto/ResolveContext.html"><abbr title="Neos\Flow\Mvc\Routing\Dto\ResolveContext">ResolveContext</abbr></a></td>
+                <td>$resolveContext</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$routeValues</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_extractUuids">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Mvc/Routing/RouterCachingService.php#L293">at line 293</a></div>
+        <code>            protected        array
+    <strong>extractUuids</strong>(array $values)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Helper method to generate tags by taking all UUIDs contained
+in the given $routeValues or $matchResults</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$values</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

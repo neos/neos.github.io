@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Http\Client\Browser | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (7.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Http_Client_Browser" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Http.html">Http</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Http/Client.html">Client</a></li><li class="backslash">\</li><li>Browser</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Browser    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Browser</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Http/Client/Browser.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>An HTTP client simulating a web browser</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_lastRequest">
+                                        protected                                        <abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$lastRequest</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_lastResponse">
+                                        protected                                        <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$lastResponse</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_followRedirects">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$followRedirects</td>
+                <td class="last"><p>If redirects should be followed</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_maximumRedirections">
+                                        protected                                        int
+                                                                                
+                                    </td>
+                <td>$maximumRedirections</td>
+                <td class="last"><p>The very maximum amount of redirections to follow if there is
+a &quot;Location&quot; redirect (see also $redirectionStack property)</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_redirectionStack">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$redirectionStack</td>
+                <td class="last"><p>A simple string array that keeps track of occurred &quot;Location&quot; header
+redirections to avoid infinite loops if the same redirection happens</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_automaticRequestHeaders">
+                                        protected                                        <a href="../../../../Neos/Flow/Http/Headers.html"><abbr title="Neos\Flow\Http\Headers">Headers</abbr></a>
+                                                                                
+                                    </td>
+                <td>$automaticRequestHeaders</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_requestEngine">
+                                        protected                                        <a href="../../../../Neos/Flow/Http/Client/RequestEngineInterface.html"><abbr title="Neos\Flow\Http\Client\RequestEngineInterface">RequestEngineInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$requestEngine</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_serverRequestFactory">
+                                        protected                                        <abbr title="Psr\Http\Message\ServerRequestFactoryInterface">ServerRequestFactoryInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$serverRequestFactory</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_contentStreamFactory">
+                                        protected                                        <abbr title="Psr\Http\Message\StreamFactoryInterface">StreamFactoryInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$contentStreamFactory</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>()
+        
+                                            <p><p>Construct the Browser instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setRequestEngine">setRequestEngine</a>(<a href="../../../../Neos/Flow/Http/Client/RequestEngineInterface.html"><abbr title="Neos\Flow\Http\Client\RequestEngineInterface">RequestEngineInterface</abbr></a> $requestEngine)
+        
+                                            <p><p>Inject the request engine</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addAutomaticRequestHeader">addAutomaticRequestHeader</a>(string $name, array|string|<a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a> $values)
+        
+                                            <p><p>Allows to add headers to be sent with every request the browser executes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_removeAutomaticRequestHeader">removeAutomaticRequestHeader</a>(string $name)
+        
+                                            <p><p>Allows to remove headers that were added with addAutomaticRequestHeader.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_request">request</a>(string|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr> $uri, string $method = &#039;GET&#039;, array $arguments = [], array $files = [], array $server = [], string $content = null)
+        
+                                            <p><p>Requests the given URI with the method and other parameters as specified.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setFollowRedirects">setFollowRedirects</a>(bool $flag)
+        
+                                            <p><p>Sets a flag if redirects should be followed or not.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_sendRequest">sendRequest</a>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request)
+        
+                                            <p><p>Sends a prepared request and returns the respective response.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getLastResponse">getLastResponse</a>()
+        
+                                            <p><p>Returns the response received after the last request.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getLastRequest">getLastRequest</a>()
+        
+                                            <p><p>Returns the last request executed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Flow/Http/Client/RequestEngineInterface.html"><abbr title="Neos\Flow\Http\Client\RequestEngineInterface">RequestEngineInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getRequestEngine">getRequestEngine</a>()
+        
+                                            <p><p>Returns the request engine used by this Browser.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Symfony\Component\DomCrawler\Crawler">Crawler</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCrawler">getCrawler</a>()
+        
+                                            <p><p>Returns the DOM crawler which can be used to interact with the web page
+structure, submit forms, click links or fetch specific parts of the
+website's contents.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Symfony\Component\DomCrawler\Form">Form</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getForm">getForm</a>(string $xpath = &#039;//form&#039;)
+        
+                                            <p><p>Get the form specified by $xpath. If no $xpath given, return the first form
+on the page.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_submit">submit</a>(<abbr title="Symfony\Component\DomCrawler\Form">Form</abbr> $form)
+        
+                                            <p><p>Submit a form</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Http/Client/Browser.php#L93">at line 93</a></div>
+        <code>                    
+    <strong>__construct</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Construct the Browser instance.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setRequestEngine">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Http/Client/Browser.php#L104">at line 104</a></div>
+        <code>                    void
+    <strong>setRequestEngine</strong>(<a href="../../../../Neos/Flow/Http/Client/RequestEngineInterface.html"><abbr title="Neos\Flow\Http\Client\RequestEngineInterface">RequestEngineInterface</abbr></a> $requestEngine)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Inject the request engine</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Http/Client/RequestEngineInterface.html"><abbr title="Neos\Flow\Http\Client\RequestEngineInterface">RequestEngineInterface</abbr></a></td>
+                <td>$requestEngine</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addAutomaticRequestHeader">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Http/Client/Browser.php#L117">at line 117</a></div>
+        <code>                    void
+    <strong>addAutomaticRequestHeader</strong>(string $name, array|string|<a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a> $values)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Allows to add headers to be sent with every request the browser executes.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>Name of the header, for example &quot;Location&quot;, &quot;Content-Description&quot; etc.</p></td>
+            </tr>
+                    <tr>
+                <td>array|string|<a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a></td>
+                <td>$values</td>
+                <td><p>An array of values or a single value for the specified header field</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            \Neos\Flow\Http\Client\Message::setHeader()
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeAutomaticRequestHeader">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Http/Client/Browser.php#L128">at line 128</a></div>
+        <code>                    void
+    <strong>removeAutomaticRequestHeader</strong>(string $name)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Allows to remove headers that were added with addAutomaticRequestHeader.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>Name of the header, for example &quot;Location&quot;, &quot;Content-Description&quot; etc.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_request">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Http/Client/Browser.php#L149">at line 149</a></div>
+        <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
+    <strong>request</strong>(string|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr> $uri, string $method = &#039;GET&#039;, array $arguments = [], array $files = [], array $server = [], string $content = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Requests the given URI with the method and other parameters as specified.</p></p>                <p><p>If a Location header was given and the status code is of response type 3xx
+(see <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html</a>, 14.30 Location)</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr></td>
+                <td>$uri</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$method</td>
+                <td><p>Request method, for example &quot;GET&quot;</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td><p>Arguments to send in the request body</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$files</td>
+                <td><p>A (deep) array of UploadedFile or an untangled $_FILES array</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$server</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$content</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></td>
+            <td><p>The HTTP response</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Http/Client/InfiniteRedirectionException.html"><abbr title="Neos\Flow\Http\Client\InfiniteRedirectionException">InfiniteRedirectionException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setFollowRedirects">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Http/Client/Browser.php#L197">at line 197</a></div>
+        <code>                    void
+    <strong>setFollowRedirects</strong>(bool $flag)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets a flag if redirects should be followed or not.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$flag</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sendRequest">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Http/Client/Browser.php#L209">at line 209</a></div>
+        <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
+    <strong>sendRequest</strong>(<abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr> $request)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sends a prepared request and returns the respective response.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr></td>
+                <td>$request</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLastResponse">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Http/Client/Browser.php#L226">at line 226</a></div>
+        <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
+    <strong>getLastResponse</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the response received after the last request.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></td>
+            <td><p>The HTTP response or NULL if there wasn't a response yet</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLastRequest">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Http/Client/Browser.php#L237">at line 237</a></div>
+        <code>                    <abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr>
+    <strong>getLastRequest</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the last request executed.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Http\Message\ServerRequestInterface">ServerRequestInterface</abbr></td>
+            <td><p>The HTTP request or NULL if there wasn't a request yet</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRequestEngine">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Http/Client/Browser.php#L248">at line 248</a></div>
+        <code>                    <a href="../../../../Neos/Flow/Http/Client/RequestEngineInterface.html"><abbr title="Neos\Flow\Http\Client\RequestEngineInterface">RequestEngineInterface</abbr></a>
+    <strong>getRequestEngine</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the request engine used by this Browser.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Flow/Http/Client/RequestEngineInterface.html"><abbr title="Neos\Flow\Http\Client\RequestEngineInterface">RequestEngineInterface</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCrawler">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Http/Client/Browser.php#L264">at line 264</a></div>
+        <code>                    <abbr title="Symfony\Component\DomCrawler\Crawler">Crawler</abbr>
+    <strong>getCrawler</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the DOM crawler which can be used to interact with the web page
+structure, submit forms, click links or fetch specific parts of the
+website's contents.</p></p>                <p><p>The returned DOM crawler is bound to the response of the last executed
+request.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Symfony\Component\DomCrawler\Crawler">Crawler</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getForm">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Http/Client/Browser.php#L282">at line 282</a></div>
+        <code>                    <abbr title="Symfony\Component\DomCrawler\Form">Form</abbr>
+    <strong>getForm</strong>(string $xpath = &#039;//form&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the form specified by $xpath. If no $xpath given, return the first form
+on the page.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$xpath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Symfony\Component\DomCrawler\Form">Form</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_submit">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Http/Client/Browser.php#L294">at line 294</a></div>
+        <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
+    <strong>submit</strong>(<abbr title="Symfony\Component\DomCrawler\Form">Form</abbr> $form)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Submit a form</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Symfony\Component\DomCrawler\Form">Form</abbr></td>
+                <td>$form</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

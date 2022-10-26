@@ -1,0 +1,2381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Package\PackageManager | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (7.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Package_PackageManager" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow/Package.html">Package</a></li><li class="backslash">\</li><li>PackageManager</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>PackageManager    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>PackageManager</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>The default Flow Package Manager</p></p>                    </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        PACKAGESTATE_FORMAT_VERSION
+                                    </td>
+                <td class="last">
+                    <p><em><p>The current format version for PackageStates.php files</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        DEFAULT_PACKAGE_INFORMATION_CACHE_FILEPATH
+                                    </td>
+                <td class="last">
+                    <p><em><p>The default package states</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_bootstrap">
+                                        protected                                        <a href="../../../Neos/Flow/Core/Bootstrap.html"><abbr title="Neos\Flow\Core\Bootstrap">Bootstrap</abbr></a>
+                                                                                
+                                    </td>
+                <td>$bootstrap</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_packageFactory">
+                                        protected                                        <a href="../../../Neos/Flow/Package/PackageFactory.html"><abbr title="Neos\Flow\Package\PackageFactory">PackageFactory</abbr></a>
+                                                                                
+                                    </td>
+                <td>$packageFactory</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_dispatcher">
+                                        protected                                        <a href="../../../Neos/Flow/SignalSlot/Dispatcher.html"><abbr title="Neos\Flow\SignalSlot\Dispatcher">Dispatcher</abbr></a>
+                                                                                
+                                    </td>
+                <td>$dispatcher</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_packages">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$packages</td>
+                <td class="last"><p>Array of available packages, indexed by package key (case sensitive)</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_packageKeys">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$packageKeys</td>
+                <td class="last"><p>A translation table between lower cased and upper camel cased package keys</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_composerNameToPackageKeyMap">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$composerNameToPackageKeyMap</td>
+                <td class="last"><p>A map between ComposerName and PackageKey, only available when scanAvailablePackages is run</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_packagesBasePath">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$packagesBasePath</td>
+                <td class="last"><p>Absolute path leading to the various package directories</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_packageInformationCacheFilePath">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$packageInformationCacheFilePath</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_packageStatesConfiguration">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$packageStatesConfiguration</td>
+                <td class="last"><p>Package states configuration as stored in the PackageStates.php file</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_settings">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$settings</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_flowPackages">
+                                        protected                                        <a href="../../../Neos/Flow/Package/FlowPackageInterface.html"><abbr title="Neos\Flow\Package\FlowPackageInterface">FlowPackageInterface</abbr></a>[]
+                                                                                
+                                    </td>
+                <td>$flowPackages</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectSettings">injectSettings</a>(array $settings)
+        
+                                            <p><p>Inject settings into the package manager. Has to be called explicitly on object initialization as
+the package manager subpackage is excluded from proxy class building.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(string $packageInformationCacheFilePath, string $packagesBasePath)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initialize">initialize</a>(<a href="../../../Neos/Flow/Core/Bootstrap.html"><abbr title="Neos\Flow\Core\Bootstrap">Bootstrap</abbr></a> $bootstrap)
+        
+                                            <p><p>Initializes the package manager</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getFlowPackages">getFlowPackages</a>()
+        
+                                            <p><p>Get only packages that implement the FlowPackageInterface for use in the Framework
+Array keys will be the respective package keys.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isPackageAvailable">isPackageAvailable</a>(string $packageKey)
+        
+                                            <p><p>Returns true if a package is available (the package's files exist in the packages directory)
+or false if it's not.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPackagesBasePath">getPackagesBasePath</a>()
+        
+                                            <p><p>Returns the base path for packages</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/Package/PackageInterface.html"><abbr title="Neos\Flow\Package\PackageInterface">PackageInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPackage">getPackage</a>(string $packageKey)
+        
+                                            <p><p>Returns a PackageInterface object for the specified package.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getAvailablePackages">getAvailablePackages</a>()
+        
+                                            <p><p>Returns an array of PackageInterface objects of all available packages.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getFrozenPackages">getFrozenPackages</a>()
+        
+                                            <p><p>Returns an array of PackageInterface objects of all frozen packages.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getFilteredPackages">getFilteredPackages</a>(string $packageState = &#039;available&#039;, string $packagePath = null, string $packageType = null)
+        
+                                            <p><p>Returns an array of PackageInterface objects of all packages that match
+the given package state, path, and type filters. All three filters must match, if given.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_filterPackagesByPath">filterPackagesByPath</a>(array $packages, string $filterPath)
+        
+                                            <p><p>Returns an array of PackageInterface objects in the given array of packages
+that are in the specified Package Path</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_filterPackagesByType">filterPackagesByType</a>(array $packages, string $packageType)
+        
+                                            <p><p>Returns an array of PackageInterface objects in the given array of packages
+that are of the specified package type.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/Package/PackageInterface.html"><abbr title="Neos\Flow\Package\PackageInterface">PackageInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createPackage">createPackage</a>(string $packageKey, array $manifest = [], string $packagesPath = null)
+        
+                                            <p><p>Create a package, given the package key</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_movePackage">movePackage</a>(string $fromAbsolutePath, string $toAbsolutePath)
+        
+                                            <p><p>Moves a package from one path to another.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_freezePackage">freezePackage</a>(string $packageKey)
+        
+                                            <p><p>Freezes a package</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isPackageFrozen">isPackageFrozen</a>(string $packageKey)
+        
+                                            <p><p>Tells if a package is frozen</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_unfreezePackage">unfreezePackage</a>(string $packageKey)
+        
+                                            <p><p>Unfreezes a package</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_refreezePackage">refreezePackage</a>(string $packageKey)
+        
+                                            <p><p>Refreezes a package</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_rescanPackages">rescanPackages</a>()
+        
+                                            <p><p>Rescans available packages, order and write a new PackageStates file.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCurrentPackageStates">getCurrentPackageStates</a>()
+        
+                                            <p><p>Loads the states of available packages from the PackageStates.php file and
+initialises a package scan if the file was not found or the configuration format
+was not current.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_loadPackageStates">loadPackageStates</a>()
+        
+                                            <p><p>Load the current package states</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_scanAvailablePackages">scanAvailablePackages</a>()
+        
+                                            <p><p>Scans all directories in the packages directories for available packages.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Neos\Flow\Package\Generator">Generator</abbr>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findComposerPackagesInPath">findComposerPackagesInPath</a>(string $startingDirectory)
+        
+                                            <p><p>Recursively traverses directories from the given starting points and returns all folder paths that contain a composer.json and
+which does NOT have the key &quot;extra.neos.is-merged-repository&quot; set, as that indicates a composer package that joins several &quot;real&quot; packages together.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_preparePackageStateConfiguration">preparePackageStateConfiguration</a>(string $packageKey, string $packagePath, array $composerManifest)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_registerPackagesFromConfiguration">registerPackagesFromConfiguration</a>(array $packageStatesConfiguration)
+        
+                                            <p><p>Requires and registers all packages which were defined in packageStatesConfiguration</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_registerPackageFromStateConfiguration">registerPackageFromStateConfiguration</a>(string $composerName, array $packageStateConfiguration)
+        
+                                            <p><p>Registers a package under the given composer name with the configuration.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_sortAndSavePackageStates">sortAndSavePackageStates</a>(array $packageStates)
+        
+                                            <p><p>Takes the given packageStatesConfiguration, sorts it by dependencies, saves it and returns
+the ordered list</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_savePackageStates">savePackageStates</a>(array $orderedPackageStates)
+        
+                                            <p><p>Save the given (ordered) array of package states data</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_sortAvailablePackagesByDependencies">sortAvailablePackagesByDependencies</a>(array $packageStates)
+        
+                                            <p><p>Orders all packages by comparing their dependencies. By this, the packages
+and package configurations arrays holds all packages in the correct
+initialization order.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_collectPackageManifestData">collectPackageManifestData</a>(array $packageStates)
+        
+                                            <p><p>Collects the manifest data for all packages in the given package states array</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|false
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCaseSensitivePackageKey">getCaseSensitivePackageKey</a>(string $unknownCasedPackageKey)
+        
+                                            <p><p>Returns the correctly cased version of the given package key or false
+if no such package is available.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPackageKeyFromComposerName">getPackageKeyFromComposerName</a>(string $composerName)
+        
+                                            <p><p>Resolves a Flow package key from a composer package name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isPackageKeyValid">isPackageKeyValid</a>(string $packageKey)
+        
+                                            <p><p>Check the conformance of the given package key</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPackageKeyFromManifest">getPackageKeyFromManifest</a>(array $manifest, string $packagePath)
+        
+                                            <p><p>Resolves package key from Composer manifest</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_derivePackageKey">derivePackageKey</a>(string $composerName, string $packageType = null, string $packagePath = &#039;&#039;, string $autoloadNamespace = null)
+        
+                                            <p><p>Derive a flow package key from the given information.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitPackageStatesUpdated">emitPackageStatesUpdated</a>()
+        
+                                            <p><p>Emits a signal when package states have been changed (e.g. when a package was created)</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_injectSettings">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L118">at line 118</a></div>
+        <code>                    void
+    <strong>injectSettings</strong>(array $settings)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Inject settings into the package manager. Has to be called explicitly on object initialization as
+the package manager subpackage is excluded from proxy class building.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$settings</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L127">at line 127</a></div>
+        <code>                    
+    <strong>__construct</strong>(string $packageInformationCacheFilePath, string $packagesBasePath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$packageInformationCacheFilePath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$packagesBasePath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initialize">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L144">at line 144</a></div>
+        <code>                    void
+    <strong>initialize</strong>(<a href="../../../Neos/Flow/Core/Bootstrap.html"><abbr title="Neos\Flow\Core\Bootstrap">Bootstrap</abbr></a> $bootstrap)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Initializes the package manager</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Core/Bootstrap.html"><abbr title="Neos\Flow\Core\Bootstrap">Bootstrap</abbr></a></td>
+                <td>$bootstrap</td>
+                <td><p>The current bootstrap</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception.html"><abbr title="Neos\Flow\Package\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception/CorruptPackageException.html"><abbr title="Neos\Flow\Package\Exception\CorruptPackageException">CorruptPackageException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Utility/Exception/FilesException.html"><abbr title="Neos\Utility\Exception\FilesException">FilesException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Composer/Exception/InvalidConfigurationException.html"><abbr title="Neos\Flow\Composer\Exception\InvalidConfigurationException">InvalidConfigurationException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFlowPackages">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L169">at line 169</a></div>
+        <code>                    array
+    <strong>getFlowPackages</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp; </td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+        <div class="method-description">
+                            <p><p>Get only packages that implement the FlowPackageInterface for use in the Framework
+Array keys will be the respective package keys.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isPackageAvailable">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L182">at line 182</a></div>
+        <code>                    bool
+    <strong>isPackageAvailable</strong>(string $packageKey)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns true if a package is available (the package's files exist in the packages directory)
+or false if it's not.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$packageKey</td>
+                <td><p>The key of the package to check</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if the package is available, otherwise false</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPackagesBasePath">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L192">at line 192</a></div>
+        <code>                    string
+    <strong>getPackagesBasePath</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the base path for packages</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPackage">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L205">at line 205</a></div>
+        <code>                    <a href="../../../Neos/Flow/Package/PackageInterface.html"><abbr title="Neos\Flow\Package\PackageInterface">PackageInterface</abbr></a>
+    <strong>getPackage</strong>(string $packageKey)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a PackageInterface object for the specified package.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$packageKey</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/Package/PackageInterface.html"><abbr title="Neos\Flow\Package\PackageInterface">PackageInterface</abbr></a></td>
+            <td><p>The requested package object</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception/UnknownPackageException.html"><abbr title="Neos\Flow\Package\Exception\UnknownPackageException">UnknownPackageException</abbr></a></td>
+                <td><p>if the specified package is not known</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAvailablePackages">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L221">at line 221</a></div>
+        <code>                    array
+    <strong>getAvailablePackages</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an array of PackageInterface objects of all available packages.</p></p>                <p><p>A package is available, if the package directory contains valid meta information.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFrozenPackages">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L233">at line 233</a></div>
+        <code>                    array
+    <strong>getFrozenPackages</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an array of PackageInterface objects of all frozen packages.</p></p>                <p><p>A frozen package is not considered by file monitoring and provides some
+precompiled reflection data in order to improve performance.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFilteredPackages">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L262">at line 262</a></div>
+        <code>                    array
+    <strong>getFilteredPackages</strong>(string $packageState = &#039;available&#039;, string $packagePath = null, string $packageType = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an array of PackageInterface objects of all packages that match
+the given package state, path, and type filters. All three filters must match, if given.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$packageState</td>
+                <td><p>defaults to available</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$packagePath</td>
+                <td><p>DEPRECATED since Flow 5.0</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$packageType</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception/InvalidPackageStateException.html"><abbr title="Neos\Flow\Package\Exception\InvalidPackageStateException">InvalidPackageStateException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_filterPackagesByPath">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L293">at line 293</a></div>
+        <code>            protected        array
+    <strong>filterPackagesByPath</strong>(array $packages, string $filterPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an array of PackageInterface objects in the given array of packages
+that are in the specified Package Path</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$packages</td>
+                <td><p>Array of PackageInterface to be filtered</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$filterPath</td>
+                <td><p>Filter out anything that's not in this path</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_filterPackagesByType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L316">at line 316</a></div>
+        <code>            protected        array
+    <strong>filterPackagesByType</strong>(array $packages, string $packageType)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an array of PackageInterface objects in the given array of packages
+that are of the specified package type.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$packages</td>
+                <td><p>Array of PackageInterface objects to be filtered</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$packageType</td>
+                <td><p>Filter out anything that's not of this packageType</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createPackage">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L345">at line 345</a></div>
+        <code>                    <a href="../../../Neos/Flow/Package/PackageInterface.html"><abbr title="Neos\Flow\Package\PackageInterface">PackageInterface</abbr></a>
+    <strong>createPackage</strong>(string $packageKey, array $manifest = [], string $packagesPath = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a package, given the package key</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$packageKey</td>
+                <td><p>The package key of the new package</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$manifest</td>
+                <td><p>A composer manifest as associative array.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$packagesPath</td>
+                <td><p>If specified, the package will be created in this path, otherwise the default &quot;Application&quot; directory is used</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/Package/PackageInterface.html"><abbr title="Neos\Flow\Package\PackageInterface">PackageInterface</abbr></a></td>
+            <td><p>The newly created package</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception.html"><abbr title="Neos\Flow\Package\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception/CorruptPackageException.html"><abbr title="Neos\Flow\Package\Exception\CorruptPackageException">CorruptPackageException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception/InvalidPackageKeyException.html"><abbr title="Neos\Flow\Package\Exception\InvalidPackageKeyException">InvalidPackageKeyException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception/PackageKeyAlreadyExistsException.html"><abbr title="Neos\Flow\Package\Exception\PackageKeyAlreadyExistsException">PackageKeyAlreadyExistsException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Utility/Exception/FilesException.html"><abbr title="Neos\Utility\Exception\FilesException">FilesException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Composer/Exception/InvalidConfigurationException.html"><abbr title="Neos\Flow\Composer\Exception\InvalidConfigurationException">InvalidConfigurationException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_movePackage">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L434">at line 434</a></div>
+        <code>            protected        void
+    <strong>movePackage</strong>(string $fromAbsolutePath, string $toAbsolutePath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Moves a package from one path to another.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fromAbsolutePath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$toAbsolutePath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Utility/Exception/FilesException.html"><abbr title="Neos\Utility\Exception\FilesException">FilesException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_freezePackage">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L451">at line 451</a></div>
+        <code>                    void
+    <strong>freezePackage</strong>(string $packageKey)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Freezes a package</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$packageKey</td>
+                <td><p>The package to freeze</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception/PackageStatesFileNotWritableException.html"><abbr title="Neos\Flow\Package\Exception\PackageStatesFileNotWritableException">PackageStatesFileNotWritableException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception/UnknownPackageException.html"><abbr title="Neos\Flow\Package\Exception\UnknownPackageException">UnknownPackageException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Exception.html"><abbr title="Neos\Flow\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Utility/Exception/FilesException.html"><abbr title="Neos\Utility\Exception\FilesException">FilesException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isPackageFrozen">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L477">at line 477</a></div>
+        <code>                    bool
+    <strong>isPackageFrozen</strong>(string $packageKey)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Tells if a package is frozen</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$packageKey</td>
+                <td><p>The package to check</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unfreezePackage">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L500">at line 500</a></div>
+        <code>                    void
+    <strong>unfreezePackage</strong>(string $packageKey)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Unfreezes a package</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$packageKey</td>
+                <td><p>The package to unfreeze</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception/PackageStatesFileNotWritableException.html"><abbr title="Neos\Flow\Package\Exception\PackageStatesFileNotWritableException">PackageStatesFileNotWritableException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Exception.html"><abbr title="Neos\Flow\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Utility/Exception/FilesException.html"><abbr title="Neos\Utility\Exception\FilesException">FilesException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_refreezePackage">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L523">at line 523</a></div>
+        <code>                    void
+    <strong>refreezePackage</strong>(string $packageKey)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Refreezes a package</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$packageKey</td>
+                <td><p>The package to refreeze</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Exception.html"><abbr title="Neos\Flow\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_rescanPackages">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L541">at line 541</a></div>
+        <code>                    array
+    <strong>rescanPackages</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Rescans available packages, order and write a new PackageStates file.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The found and sorted package states.</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception.html"><abbr title="Neos\Flow\Package\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Composer/Exception/InvalidConfigurationException.html"><abbr title="Neos\Flow\Composer\Exception\InvalidConfigurationException">InvalidConfigurationException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Utility/Exception/FilesException.html"><abbr title="Neos\Utility\Exception\FilesException">FilesException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCurrentPackageStates">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L558">at line 558</a></div>
+        <code>            protected        array
+    <strong>getCurrentPackageStates</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Loads the states of available packages from the PackageStates.php file and
+initialises a package scan if the file was not found or the configuration format
+was not current.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception.html"><abbr title="Neos\Flow\Package\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Composer/Exception/InvalidConfigurationException.html"><abbr title="Neos\Flow\Composer\Exception\InvalidConfigurationException">InvalidConfigurationException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Utility/Exception/FilesException.html"><abbr title="Neos\Utility\Exception\FilesException">FilesException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_loadPackageStates">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L583">at line 583</a></div>
+        <code>            protected        array
+    <strong>loadPackageStates</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Load the current package states</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_scanAvailablePackages">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L596">at line 596</a></div>
+        <code>            protected        array
+    <strong>scanAvailablePackages</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Scans all directories in the packages directories for available packages.</p></p>                <p><p>For each package a Package object is created and stored in $this-&gt;packages.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception.html"><abbr title="Neos\Flow\Package\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Composer/Exception/InvalidConfigurationException.html"><abbr title="Neos\Flow\Composer\Exception\InvalidConfigurationException">InvalidConfigurationException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findComposerPackagesInPath">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L640">at line 640</a></div>
+        <code>            protected        <abbr title="Neos\Flow\Package\Generator">Generator</abbr>|null
+    <strong>findComposerPackagesInPath</strong>(string $startingDirectory)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Recursively traverses directories from the given starting points and returns all folder paths that contain a composer.json and
+which does NOT have the key &quot;extra.neos.is-merged-repository&quot; set, as that indicates a composer package that joins several &quot;real&quot; packages together.</p></p>                <p><p>In case a &quot;is-merged-repository&quot; is found the traversal continues inside.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$startingDirectory</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Neos\Flow\Package\Generator">Generator</abbr>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_preparePackageStateConfiguration">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L679">at line 679</a></div>
+        <code>            protected        array
+    <strong>preparePackageStateConfiguration</strong>(string $packageKey, string $packagePath, array $composerManifest)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$packageKey</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$packagePath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$composerManifest</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception/CorruptPackageException.html"><abbr title="Neos\Flow\Package\Exception\CorruptPackageException">CorruptPackageException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception/InvalidPackagePathException.html"><abbr title="Neos\Flow\Package\Exception\InvalidPackagePathException">InvalidPackagePathException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_registerPackagesFromConfiguration">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L698">at line 698</a></div>
+        <code>            protected        void
+    <strong>registerPackagesFromConfiguration</strong>(array $packageStatesConfiguration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Requires and registers all packages which were defined in packageStatesConfiguration</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$packageStatesConfiguration</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception/CorruptPackageException.html"><abbr title="Neos\Flow\Package\Exception\CorruptPackageException">CorruptPackageException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_registerPackageFromStateConfiguration">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L715">at line 715</a></div>
+        <code>            protected        void
+    <strong>registerPackageFromStateConfiguration</strong>(string $composerName, array $packageStateConfiguration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Registers a package under the given composer name with the configuration.</p></p>                <p><p>This uses the PackageFactory to create the Package instance and sets it
+to all relevant data arrays.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$composerName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$packageStateConfiguration</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception/CorruptPackageException.html"><abbr title="Neos\Flow\Package\Exception\CorruptPackageException">CorruptPackageException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sortAndSavePackageStates">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L733">at line 733</a></div>
+        <code>            protected        array
+    <strong>sortAndSavePackageStates</strong>(array $packageStates)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Takes the given packageStatesConfiguration, sorts it by dependencies, saves it and returns
+the ordered list</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$packageStates</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception/PackageStatesFileNotWritableException.html"><abbr title="Neos\Flow\Package\Exception\PackageStatesFileNotWritableException">PackageStatesFileNotWritableException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Utility/Exception/FilesException.html"><abbr title="Neos\Utility\Exception\FilesException">FilesException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_savePackageStates">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L748">at line 748</a></div>
+        <code>            protected        void
+    <strong>savePackageStates</strong>(array $orderedPackageStates)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Save the given (ordered) array of package states data</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$orderedPackageStates</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception/PackageStatesFileNotWritableException.html"><abbr title="Neos\Flow\Package\Exception\PackageStatesFileNotWritableException">PackageStatesFileNotWritableException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Utility/Exception/FilesException.html"><abbr title="Neos\Utility\Exception\FilesException">FilesException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sortAvailablePackagesByDependencies">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L793">at line 793</a></div>
+        <code>            protected        array
+    <strong>sortAvailablePackagesByDependencies</strong>(array $packageStates)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Orders all packages by comparing their dependencies. By this, the packages
+and package configurations arrays holds all packages in the correct
+initialization order.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$packageStates</td>
+                <td><p>The unordered package states</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>ordered package states.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_collectPackageManifestData">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L807">at line 807</a></div>
+        <code>            protected        array
+    <strong>collectPackageManifestData</strong>(array $packageStates)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Collects the manifest data for all packages in the given package states array</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$packageStates</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCaseSensitivePackageKey">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L822">at line 822</a></div>
+        <code>                    string|false
+    <strong>getCaseSensitivePackageKey</strong>(string $unknownCasedPackageKey)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the correctly cased version of the given package key or false
+if no such package is available.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$unknownCasedPackageKey</td>
+                <td><p>The package key to convert</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|false</td>
+            <td><p>The upper camel cased package key or false if no such package exists</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPackageKeyFromComposerName">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L836">at line 836</a></div>
+        <code>                    string
+    <strong>getPackageKeyFromComposerName</strong>(string $composerName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resolves a Flow package key from a composer package name.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$composerName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Package/Exception/InvalidPackageStateException.html"><abbr title="Neos\Flow\Package\Exception\InvalidPackageStateException">InvalidPackageStateException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isPackageKeyValid">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L859">at line 859</a></div>
+        <code>                    bool
+    <strong>isPackageKeyValid</strong>(string $packageKey)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Check the conformance of the given package key</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$packageKey</td>
+                <td><p>The package key to validate</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>If the package key is valid, returns true otherwise false</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPackageKeyFromManifest">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L878">at line 878</a></div>
+        <code>            protected        string
+    <strong>getPackageKeyFromManifest</strong>(array $manifest, string $packagePath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resolves package key from Composer manifest</p></p>                <p><p>If it is a Flow package the name of the containing directory will be used.</p>
+<p>Else if the composer name of the package matches the first part of the lowercased namespace of the package, the mixed
+case version of the composer name / namespace will be used, with backslashes replaced by dots.</p>
+<p>Else the composer name will be used with the slash replaced by a dot</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$manifest</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$packagePath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_derivePackageKey">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L913">at line 913</a></div>
+        <code>            protected        string
+    <strong>derivePackageKey</strong>(string $composerName, string $packageType = null, string $packagePath = &#039;&#039;, string $autoloadNamespace = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Derive a flow package key from the given information.</p></p>                <p><p>The order of importance is:</p>
+<ul>
+<li>package install path</li>
+<li>first found autoload namespace</li>
+<li>composer name</li>
+</ul></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$composerName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$packageType</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$packagePath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$autoloadNamespace</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitPackageStatesUpdated">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Flow/Classes/Package/PackageManager.php#L948">at line 948</a></div>
+        <code>            protected        void
+    <strong>emitPackageStatesUpdated</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Emits a signal when package states have been changed (e.g. when a package was created)</p></p>                <p><p>The advice is not proxyable, so the signal is dispatched manually here.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Exception.html"><abbr title="Neos\Flow\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/SignalSlot/Exception/InvalidSlotException.html"><abbr title="Neos\Flow\SignalSlot\Exception\InvalidSlotException">InvalidSlotException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

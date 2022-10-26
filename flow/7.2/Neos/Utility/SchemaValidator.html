@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Utility\SchemaValidator | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/typeahead.min.js"></script>
+        <script src="../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (7.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Utility_SchemaValidator" data-root-path="../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../Neos/Utility.html">Utility</a></li><li class="backslash">\</li><li>SchemaValidator</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>SchemaValidator    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>SchemaValidator</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A general purpose Array Validator which can check PHP arrays for validity
+according to some schema.</p></p>            <p><p>The schema format is adapted from the JSON Schema standard (<a href="http://json-schema.org">http://json-schema.org</a>)</p>
+<p>Currently the Parts 5.1 -&gt; 5.25 of the json-schema spec are implemented.</p>
+<p>Variations from the spec:</p>
+<ul>
+<li>The &quot;type&quot; constraint is required for all properties.</li>
+<li>The validator only executes the checks that make sense for a specific type
+-&gt; see list of possible constraints below.</li>
+<li>The &quot;format&quot; constraint for string type has additional class-name and instance-name options.</li>
+<li>The &quot;dependencies&quot; constraint of the spec is not implemented.</li>
+<li>Similar to &quot;patternProperties&quot; &quot;formatProperties&quot; can be specified specified for dictionaries</li>
+<li>Definition and referencing of local-types with the '@'-sign is added.</li>
+</ul>
+<p>General constraints for all types (for implementation see validate Method):</p>
+<ul>
+<li>type</li>
+<li>disallow</li>
+<li>enum</li>
+</ul>
+<p>Additional constraints for types:</p>
+<ul>
+<li>string: pattern, minLength, maxLength, format(date-time|date|time|uri|email|ipv4|ipv6|ip-address|host-name|class-name|interface-name)</li>
+<li>number: maximum, minimum, exclusiveMinimum, exclusiveMaximum, divisibleBy</li>
+<li>integer: maximum, minimum, exclusiveMinimum, exclusiveMaximum, divisibleBy</li>
+<li>boolean: --</li>
+<li>array: minItems, maxItems, items</li>
+<li>dictionary: properties, patternProperties, formatProperties, additionalProperties</li>
+<li>null: --</li>
+<li>any: --</li>
+</ul>
+<p>Combine types to allow mixed types, the primitive type of the given value is used to determine which type to validate for:</p>
+<ul>
+<li>type: ['integer', 'string']</li>
+</ul>
+<p>Local type-definitions:
+If a schema contains properties that start with an '@'-sign on the root level those schemas are added to the local
+type definitions and are passed down the validation chain to be refereced with the full identifier and can be used
+in the same way as simple type definition.</p>
+<p>Local Types can not be overwitten but they can extend a list of superTypes.</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validate">validate</a>(mixed $value, mixed $schema, array $types = [])
+        
+                                            <p><p>Validate array with the given schema</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateType">validateType</a>(mixed $value, array $schema, array $types = [])
+        
+                                            <p><p>Validate a value for a given type</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateTypeArray">validateTypeArray</a>(mixed $value, array $schema, array $types = [])
+        
+                                            <p><p>Validate a value with a given list of allowed types</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateNumberType">validateNumberType</a>(mixed $value, array $schema)
+        
+                                            <p><p>Validate an integer value with the given schema</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateIntegerType">validateIntegerType</a>(mixed $value, array $schema)
+        
+                                            <p><p>Validate an integer value with the given schema</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateBooleanType">validateBooleanType</a>(mixed $value, array $schema)
+        
+                                            <p><p>Validate a boolean value with the given schema</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateArrayType">validateArrayType</a>(mixed $value, array $schema, array $types = [])
+        
+                                            <p><p>Validate an array value with the given schema</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateDictionaryType">validateDictionaryType</a>(mixed $value, array $schema, array $types = [])
+        
+                                            <p><p>Validate a dictionary value with the given schema</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateStringType">validateStringType</a>(mixed $value, array $schema, array $types = [])
+        
+                                            <p><p>Validate a string value with the given schema</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateNullType">validateNullType</a>(mixed $value, array $schema)
+        
+                                            <p><p>Validate a null value with the given schema</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateAnyType">validateAnyType</a>(mixed $value, array $schema)
+        
+                                            <p><p>Validate any value with the given schema. Return always a valid Result.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_renderValue">renderValue</a>(mixed $value)
+        
+                                            <p><p>Create a string information for the given value</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../Neos/Error/Messages/Error.html"><abbr title="Neos\Error\Messages\Error">Error</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createError">createError</a>(string $expectation, mixed $value = null)
+        
+                                            <p><p>Create Error Object</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isSchema">isSchema</a>(array $phpArray)
+        
+                                            <p><p>Determine whether the given php array is a schema or not</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isNumericallyIndexedArray">isNumericallyIndexedArray</a>(array $phpArray)
+        
+                                            <p><p>Determine whether the given php array is a plain numerically indexed array</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isDictionary">isDictionary</a>(array $phpArray)
+        
+                                            <p><p>Determine whether the given php array is a Dictionary (has no numeric identifiers)</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_validate">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php#L75">at line 75</a></div>
+        <code>                    <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+    <strong>validate</strong>(mixed $value, mixed $schema, array $types = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validate array with the given schema</p></p>                <p><p>The following properties are handled in given $schema:</p>
+<ul>
+<li>type : value is of given type or schema (array of schemas is allowed)</li>
+<li>disallow : value is NOT of given type or schema (array of schemas is allowed)</li>
+<li>enum : value is equal to one of the given values</li>
+</ul></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>value to validate</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$schema</td>
+                <td><p>type as string, schema or array of schemas</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$types</td>
+                <td><p>the additional type schemas</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php#L154">at line 154</a></div>
+        <code>            protected        <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+    <strong>validateType</strong>(mixed $value, array $schema, array $types = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validate a value for a given type</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$schema</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$types</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateTypeArray">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php#L216">at line 216</a></div>
+        <code>            protected        <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+    <strong>validateTypeArray</strong>(mixed $value, array $schema, array $types = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validate a value with a given list of allowed types</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$schema</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$types</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateNumberType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php#L260">at line 260</a></div>
+        <code>            protected        <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+    <strong>validateNumberType</strong>(mixed $value, array $schema)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validate an integer value with the given schema</p></p>                <p><p>The following properties are handled in given $schema:</p>
+<ul>
+<li>maximum : maximum allowed value</li>
+<li>minimum : minimum allowed value</li>
+<li>exclusiveMinimum : boolean to use exclusive minimum</li>
+<li>exclusiveMaximum : boolean to use exclusive maximum</li>
+<li>divisibleBy : value is divisibleBy the given number</li>
+</ul></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$schema</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateIntegerType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php#L311">at line 311</a></div>
+        <code>            protected        <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+    <strong>validateIntegerType</strong>(mixed $value, array $schema)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validate an integer value with the given schema</p></p>                <p><p>The following properties are handled in given $schema:</p>
+<ul>
+<li>all Properties from number type</li>
+</ul></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$schema</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Utility\SchemaValidator::validateNumberType">SchemaValidator::validateNumberType</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateBooleanType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php#L329">at line 329</a></div>
+        <code>            protected        <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+    <strong>validateBooleanType</strong>(mixed $value, array $schema)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validate a boolean value with the given schema</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$schema</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateArrayType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php#L353">at line 353</a></div>
+        <code>            protected        <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+    <strong>validateArrayType</strong>(mixed $value, array $schema, array $types = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validate an array value with the given schema</p></p>                <p><p>The following properties are handled in given $schema:</p>
+<ul>
+<li>minItems : minimal allowed item Number</li>
+<li>maxItems : maximal allowed item Number</li>
+<li>items : schema for all instances of the array</li>
+<li>uniqueItems : allow only unique values</li>
+</ul></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$schema</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$types</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateDictionaryType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php#L411">at line 411</a></div>
+        <code>            protected        <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+    <strong>validateDictionaryType</strong>(mixed $value, array $schema, array $types = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validate a dictionary value with the given schema</p></p>                <p><p>The following properties are handled in given $schema:</p>
+<ul>
+<li>properties : array of keys and schemas that have to validate</li>
+<li>formatProperties : dictionary of schemas, the schemas are used to validate all keys that match the string-format</li>
+<li>patternProperties : dictionary of schemas, the schemas are used to validate all keys that match the string-pattern</li>
+<li>additionalProperties : if false is given all additionalProperties are forbidden, if a schema is given all additional properties have to match the schema</li>
+</ul></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$schema</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$types</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateStringType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php#L503">at line 503</a></div>
+        <code>            protected        <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+    <strong>validateStringType</strong>(mixed $value, array $schema, array $types = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validate a string value with the given schema</p></p>                <p><p>The following properties are handled in given $schema:</p>
+<ul>
+<li>pattern : Regular expression that matches the $value</li>
+<li>minLength : minimal allowed string length</li>
+<li>maxLength : maximal allowed string length</li>
+<li>format : some predefined formats
+[date-time|date|time|uri|email|ipv4|ipv6|ip-address|host-name|class-name|interface-name]</li>
+</ul></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$schema</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$types</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateNullType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php#L610">at line 610</a></div>
+        <code>            protected        <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+    <strong>validateNullType</strong>(mixed $value, array $schema)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validate a null value with the given schema</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$schema</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateAnyType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php#L626">at line 626</a></div>
+        <code>            protected        <a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+    <strong>validateAnyType</strong>(mixed $value, array $schema)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validate any value with the given schema. Return always a valid Result.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$schema</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_renderValue">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php#L637">at line 637</a></div>
+        <code>            protected        string
+    <strong>renderValue</strong>(mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a string information for the given value</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createError">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php#L649">at line 649</a></div>
+        <code>            protected        <a href="../../Neos/Error/Messages/Error.html"><abbr title="Neos\Error\Messages\Error">Error</abbr></a>
+    <strong>createError</strong>(string $expectation, mixed $value = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create Error Object</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$expectation</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../Neos/Error/Messages/Error.html"><abbr title="Neos\Error\Messages\Error">Error</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isSchema">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php#L671">at line 671</a></div>
+        <code>            protected        bool
+    <strong>isSchema</strong>(array $phpArray)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine whether the given php array is a schema or not</p></p>                        
+                    <p>
+                        
+                                    <tr>
+                        <td>there</td>
+                        <td>should be a more sophisticated way to detect schemas</td>
+                        </tr>
+                            </p>
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$phpArray</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isNumericallyIndexedArray">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php#L683">at line 683</a></div>
+        <code>            protected        bool
+    <strong>isNumericallyIndexedArray</strong>(array $phpArray)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine whether the given php array is a plain numerically indexed array</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$phpArray</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isDictionary">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.2/Neos.Utility.Schema/Classes/SchemaValidator.php#L699">at line 699</a></div>
+        <code>            protected        bool
+    <strong>isDictionary</strong>(array $phpArray)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine whether the given php array is a Dictionary (has no numeric identifiers)</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$phpArray</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
