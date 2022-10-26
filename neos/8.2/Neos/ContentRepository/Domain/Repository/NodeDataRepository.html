@@ -1,0 +1,3605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepository\Domain\Repository\NodeDataRepository | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (8.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepository_Domain_Repository_NodeDataRepository" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository.html">ContentRepository</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository/Domain.html">Domain</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository/Domain/Repository.html">Repository</a></li><li class="backslash">\</li><li>NodeDataRepository</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>NodeDataRepository    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>NodeDataRepository</strong>        extends <abbr title="Neos\Flow\Persistence\Repository">Repository</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A purely internal repository for NodeData storage</p></p>            <p><p>DO NOT USE outside the ContentRepository package!</p>
+<p>The ContextFactory can be used to create a Context that allows to find Node instances that act as the
+public API to the ContentRepository.</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        POSITION_BEFORE
+                                    </td>
+                <td class="last">
+                    <p><em><p>Constants for setNewIndex()</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        POSITION_AFTER
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        POSITION_LAST
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        INDEX_MAXIMUM
+                                    </td>
+                <td class="last">
+                    <p><em><p>Maximum possible index</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_addedNodes">
+                                        protected                                        <a target="_blank" rel="noopener" href="https://www.php.net/SplObjectStorage">SplObjectStorage</a>
+                                                                                
+                                    </td>
+                <td>$addedNodes</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_removedNodes">
+                                        protected                                        <a target="_blank" rel="noopener" href="https://www.php.net/SplObjectStorage">SplObjectStorage</a>
+                                                                                
+                                    </td>
+                <td>$removedNodes</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_entityManager">
+                                        protected                                        <abbr title="Doctrine\ORM\EntityManagerInterface">EntityManagerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$entityManager</td>
+                <td class="last"><p>Doctrine's Entity Manager.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeTypeManager">
+                                        protected                                        <a href="../../../../Neos/ContentRepository/Domain/Service/NodeTypeManager.html"><abbr title="Neos\ContentRepository\Domain\Service\NodeTypeManager">NodeTypeManager</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodeTypeManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_systemLogger">
+                                        protected                                        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$systemLogger</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeFactory">
+                                        protected                                        <a href="../../../../Neos/ContentRepository/Domain/Factory/NodeFactory.html"><abbr title="Neos\ContentRepository\Domain\Factory\NodeFactory">NodeFactory</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodeFactory</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_securityContext">
+                                        protected                                        <abbr title="Neos\Flow\Security\Context">Context</abbr>
+                                                                                
+                                    </td>
+                <td>$securityContext</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_highestIndexCache">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$highestIndexCache</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_defaultOrderings">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$defaultOrderings</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>()
+        
+                                            <p><p>Constructor</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_add">add</a>(object $object)
+        
+                                            <p><p>Adds a NodeData object to this repository.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_remove">remove</a>(object $object)
+        
+                                            <p><p>Removes an object to the persistence.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findByNodeIdentifier">findByNodeIdentifier</a>($nodeIdentifier)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findOneByPath">findOneByPath</a>(string $path, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null, bool|null $removedNodes = false)
+        
+                                            <p><p>Find a single node by exact path.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findShadowNodeByPath">findShadowNodeByPath</a>(string $path, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null)
+        
+                                            <p><p>Find a shadow node by exact path</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findRawNodesByPath">findRawNodesByPath</a>(string $path, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null, bool $onlyShadowNodes = false)
+        
+                                            <p><p>This finds nodes by path and delivers a raw, unfiltered result.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findOneByPathInContext">findOneByPathInContext</a>(string $path, <a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a> $context)
+        
+                                            <p><p>Finds a node by its path and context.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findOneByIdentifier">findOneByIdentifier</a>(string $identifier, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null, bool $removedNodes = false)
+        
+                                            <p><p>Finds a node by its identifier and workspace.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Doctrine\ORM\Internal\Hydration\IterableResult">IterableResult</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findAllIterator">findAllIterator</a>()
+        
+                                            <p><p>Find all objects and return an IterableResult</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/Generator">Generator</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_iterate">iterate</a>(<abbr title="Doctrine\ORM\Internal\Hydration\IterableResult">IterableResult</abbr> $iterator, callable $callback = null)
+        
+                                            <p><p>Iterate over an IterableResult and return a Generator</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setNewIndex">setNewIndex</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a> $node, int $position, <a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $referenceNode = null)
+        
+                                            <p><p>Assigns an index to the given node which reflects the specified position.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findByParentAndNodeTypeRecursively">findByParentAndNodeTypeRecursively</a>(string $parentPath, string $nodeTypeFilter, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null, bool $removedNodes = false)
+        
+                                            <p><p>Finds recursively nodes by its parent and (optionally) by its node type.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findByParentAndNodeType">findByParentAndNodeType</a>(string $parentPath, string $nodeTypeFilter, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null, bool $removedNodes = false, bool $recursive = false)
+        
+                                            <p><p>Finds nodes by its parent and (optionally) by its node type.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getNodeDataForParentAndNodeType">getNodeDataForParentAndNodeType</a>(string $parentPath, string $nodeTypeFilter, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null, bool|null $removedNodes = false, bool $recursive = false)
+        
+                                            <p><p>Internal method</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findByParentWithoutReduce">findByParentWithoutReduce</a>(string $parentPath, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        
+                                            <p><p>Find NodeData by parent path without any dimension reduction and grouping by identifier</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findByIdentifierWithoutReduce">findByIdentifierWithoutReduce</a>(string $identifier, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        
+                                            <p><p>Find NodeData by identifier path without any dimension reduction</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findByParentAndNodeTypeInContext">findByParentAndNodeTypeInContext</a>(string $parentPath, string $nodeTypeFilter, <a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a> $context, bool $recursive = false)
+        
+                                            <p><p>Finds nodes by its parent and (optionally) by its node type given a Context</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_countByParentAndNodeType">countByParentAndNodeType</a>(string $parentPath, string $nodeTypeFilter, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null, bool $includeRemovedNodes = false)
+        
+                                            <p><p>Counts nodes by its parent and (optionally) by its node type.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_openIndexSpace">openIndexSpace</a>(string $parentPath, int $referenceIndex)
+        
+                                            <p><p>Make room in the sortindex-index space of a given path in preparation to inserting a node.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findNextFreeIndexInParentPath">findNextFreeIndexInParentPath</a>(string $parentPath)
+        
+                                            <p><p>Finds the next free index on the level below the given parent path
+across all workspaces.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setHighestIndexInParentPath">setHighestIndexInParentPath</a>(string $parentPath, int $highestIndex)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findNextLowerIndex">findNextLowerIndex</a>(string $parentPath, int $referenceIndex)
+        
+                                            <p><p>Returns the next-lower-index seen from the given reference index in the
+level below the specified parent path. If no node with a lower than the
+given index exists at that level, the reference index is returned.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findNextHigherIndex">findNextHigherIndex</a>(string $parentPath, int $referenceIndex)
+        
+                                            <p><p>Returns the next-higher-index seen from the given reference index in the
+level below the specified parent path. If no node with a higher than the
+given index exists at that level, NULL is returned.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_countByWorkspace">countByWorkspace</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        
+                                            <p><p>Counts the number of nodes within the specified workspace</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_sortNodesByIndex">sortNodesByIndex</a>(array $nodes)
+        
+                                            <p><p>Sorts the given nodes by their index</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findFirstByParentAndNodeType">findFirstByParentAndNodeType</a>(string $parentPath, string $nodeTypeFilter, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions, bool $removedNodes = false)
+        
+                                            <p><p>Finds a single node by its parent and (optionally) by its node type</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findFirstByParentAndNodeTypeInContext">findFirstByParentAndNodeTypeInContext</a>(string $parentPath, string $nodeTypeFilter, <a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a> $context)
+        
+                                            <p><p>Finds a single node by its parent and (optionally) by its node type</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findOnPath">findOnPath</a>(string $pathStartingPoint, string $pathEndPoint, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null, bool $includeRemovedNodes = false, string $nodeTypeFilter = null)
+        
+                                            <p><p>Finds all nodes of the specified workspace lying on the path specified by
+(and including) the given starting point and end point and (optionally) a node type filter.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findByProperties">findByProperties</a>(string|array $term, string $nodeTypeFilter, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions, string $pathStartingPoint = null)
+        
+                                            <p><p>Find nodes by a value in properties</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushNodeRegistry">flushNodeRegistry</a>()
+        
+                                            <p><p>Flushes the addedNodes and removedNodes registry.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addNodeTypeFilterConstraintsToQueryBuilder">addNodeTypeFilterConstraintsToQueryBuilder</a>(<abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr> $queryBuilder, string $nodeTypeFilter)
+        
+                                            <p><p>Add node type filter constraints to the query builder</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getNodeTypeFilterConstraintsForDql">getNodeTypeFilterConstraintsForDql</a>(string|null $nodeTypeFilter = &#039;&#039;)
+        
+                                            <p><p>Generates a two dimensional array with the filters. First level is:
+'excludeNodeTypes'
+'includeNodeTypes'</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getNodeTypeFilterConstraints">getNodeTypeFilterConstraints</a>(<abbr title="Neos\Flow\Persistence\QueryInterface">QueryInterface</abbr> $query, $nodeTypeFilter)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_filterOutRemovedObjects">filterOutRemovedObjects</a>(array $objects)
+        
+                                            <p><p>Iterates of the array of objects and removes all those which have recently been removed from the repository,
+but whose removal has not yet been persisted.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_withoutRemovedNodes">withoutRemovedNodes</a>(array $nodes)
+        
+                                            <p><p>Returns a subset of $nodes which are not flagged as removed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_onlyRemovedNodes">onlyRemovedNodes</a>(array $nodes)
+        
+                                            <p><p>Returns a subset of $nodes which are flagged as removed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_persistEntities">persistEntities</a>()
+        
+                                            <p><p>Persists all entities managed by the repository and all cascading dependencies</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitRepositoryObjectsPersisted">emitRepositoryObjectsPersisted</a>()
+        
+                                            <p><p>Signals that persistEntities() in this repository finished correctly.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addDimensionJoinConstraintsToQueryBuilder">addDimensionJoinConstraintsToQueryBuilder</a>(<abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr> $queryBuilder, array $dimensions)
+        
+                                            <p><p>If $dimensions is not empty, adds join constraints to the given $queryBuilder
+limiting the query result to matching hits.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_reduceNodeVariantsByWorkspacesAndDimensions">reduceNodeVariantsByWorkspacesAndDimensions</a>(array $nodes, array $workspaces, array $dimensions)
+        
+                                            <p><p>Given an array with duplicate nodes (from different workspaces and dimensions) those are reduced to uniqueness (by node identifier)</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_reduceNodeVariantsByWorkspaces">reduceNodeVariantsByWorkspaces</a>(array $nodes, array $workspaces)
+        
+                                            <p><p>Given an array with duplicate nodes (from different workspaces) those are reduced to uniqueness (by node identifier and dimensions hash)</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findByWorkspace">findByWorkspace</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        
+                                            <p><p>Find all NodeData objects inside a given workspace sorted by path to be used
+in publishing. The order makes sure that parent nodes are published first.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_pathExists">pathExists</a>(string $nodePath)
+        
+                                            <p><p>Find out if the given path exists anywhere in the CR. (internal)
+If you need this functionality use \Neos\ContentRepository\Domain\Service\NodeService::nodePathExistsInAnyContext()</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findByPathWithoutReduce">findByPathWithoutReduce</a>(string $path, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, bool $includeRemovedNodes = false, bool $recursive = false)
+        
+                                            <p><p>Find all node data in a path matching the given workspace hierarchy</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findNodesByRelatedEntities">findNodesByRelatedEntities</a>(array $relationMap)
+        
+                                            <p><p>Searches for possible relations to the given entity identifiers in NodeData.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findNodesByPathPrefixAndRelatedEntities">findNodesByPathPrefixAndRelatedEntities</a>(string $pathPrefix, array $relationMap)
+        
+                                            <p><p>Searches for possible relations to the given entity identifiers in NodeData using a path prefix.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_removeAllInPath">removeAllInPath</a>(string $path)
+        
+                                            <p><p>Remove all nodes below a given path. Does not care about workspaces and dimensions.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isInRemovedNodes">isInRemovedNodes</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a> $nodeData)
+        
+                                            <p><p>Test if a given NodeData is in the set of removed node data objects</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createQueryBuilder">createQueryBuilder</a>(array $workspaces)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addParentPathConstraintToQueryBuilder">addParentPathConstraintToQueryBuilder</a>(<abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr> $queryBuilder, string $parentPath, bool $recursive = false)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addPathConstraintToQueryBuilder">addPathConstraintToQueryBuilder</a>(<abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr> $queryBuilder, string $path, bool $recursive = false)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addIdentifierConstraintToQueryBuilder">addIdentifierConstraintToQueryBuilder</a>(<abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr> $queryBuilder, string $identifier)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_filterNodeDataByBestMatchInContext">filterNodeDataByBestMatchInContext</a>(array $nodeDataObjects, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions, bool $includeRemovedNodes = false)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_collectWorkspaceAndAllBaseWorkspaces">collectWorkspaceAndAllBaseWorkspaces</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        
+                                            <p><p>Returns an array that contains the given workspace and all base (parent) workspaces of it.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildQueryBuilderForRelationMap">buildQueryBuilderForRelationMap</a>(array $relationMap)
+        
+                                            <p><p>Returns a query builder for a query on node data using the given
+relation map.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L118">at line 118</a></div>
+        <code>                    
+    <strong>__construct</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructor</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_add">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L135">at line 135</a></div>
+        <code>                    void
+    <strong>add</strong>(object $object)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds a NodeData object to this repository.</p></p>                <p><p>This repository keeps track of added and removed nodes (additionally to the other Unit of Work)
+in order to find in-memory nodes.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td><p>The object to add</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_remove">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L156">at line 156</a></div>
+        <code>                    void
+    <strong>remove</strong>(object $object)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes an object to the persistence.</p></p>                <p><p>This repository keeps track of added and removed nodes (additionally to the
+other Unit of Work) in order to find in-memory nodes.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td><p>The object to remove</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findByNodeIdentifier">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L170">at line 170</a></div>
+        <code>                    
+    <strong>findByNodeIdentifier</strong>($nodeIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$nodeIdentifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findOneByPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L186">at line 186</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>
+    <strong>findOneByPath</strong>(string $path, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null, bool|null $removedNodes = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Find a single node by exact path.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>Absolute path of the node</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td><p>The containing workspace</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dimensions</td>
+                <td><p>An array of dimensions with array of ordered values to use for fallback matching</p></td>
+            </tr>
+                    <tr>
+                <td>bool|null</td>
+                <td>$removedNodes</td>
+                <td><p>Include removed nodes, NULL (all), false (no removed nodes) or true (only removed nodes)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a></td>
+            <td><p>The matching node if found, otherwise NULL</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findShadowNodeByPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L219">at line 219</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>|null
+    <strong>findShadowNodeByPath</strong>(string $path, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Find a shadow node by exact path</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dimensions</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findRawNodesByPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L247">at line 247</a></div>
+        <code>            protected        array
+    <strong>findRawNodesByPath</strong>(string $path, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null, bool $onlyShadowNodes = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>This finds nodes by path and delivers a raw, unfiltered result.</p></p>                <p><p>To get a &quot;usable&quot; set of nodes, filtering by workspaces, dimensions and
+removed nodes must be done on the result.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dimensions</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$onlyShadowNodes</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findOneByPathInContext">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L304">at line 304</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>|null
+    <strong>findOneByPathInContext</strong>(string $path, <a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a> $context)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Finds a node by its path and context.</p></p>                <p><p>If the node does not exist in the specified context's workspace, this function will
+try to find one with the given path in one of the base workspaces (if any).</p>
+<p>Examples for valid paths:</p>
+<p>/          the root node
+/foo       node &quot;foo&quot; on the first level
+/foo/bar   node &quot;bar&quot; on the second level
+/foo/      first node on second level, below &quot;foo&quot;</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>Absolute path of the node</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a></td>
+                <td>$context</td>
+                <td><p>The containing context</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>|null</td>
+            <td><p>The matching node if found, otherwise NULL</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findOneByIdentifier">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L326">at line 326</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>
+    <strong>findOneByIdentifier</strong>(string $identifier, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null, bool $removedNodes = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Finds a node by its identifier and workspace.</p></p>                <p><p>If the node does not exist in the specified workspace, this function will
+try to find one with the given identifier in one of the base workspaces (if any).</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identifier</td>
+                <td><p>Identifier of the node</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td><p>The containing workspace</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dimensions</td>
+                <td><p>An array of dimensions with array of ordered values to use for fallback matching</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$removedNodes</td>
+                <td><p>If shadow nodes should be considered while finding the specified node</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a></td>
+            <td><p>The matching node if found, otherwise NULL</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findAllIterator">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L381">at line 381</a></div>
+        <code>                    <abbr title="Doctrine\ORM\Internal\Hydration\IterableResult">IterableResult</abbr>
+    <strong>findAllIterator</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Find all objects and return an IterableResult</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Doctrine\ORM\Internal\Hydration\IterableResult">IterableResult</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_iterate">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L400">at line 400</a></div>
+        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Generator">Generator</a>
+    <strong>iterate</strong>(<abbr title="Doctrine\ORM\Internal\Hydration\IterableResult">IterableResult</abbr> $iterator, callable $callback = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Iterate over an IterableResult and return a Generator</p></p>                <p><p>This method is useful for batch processing a huge result set.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Doctrine\ORM\Internal\Hydration\IterableResult">IterableResult</abbr></td>
+                <td>$iterator</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>callable</td>
+                <td>$callback</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/Generator">Generator</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setNewIndex">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L430">at line 430</a></div>
+        <code>                    void
+    <strong>setNewIndex</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a> $node, int $position, <a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $referenceNode = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Assigns an index to the given node which reflects the specified position.</p></p>                <p><p>If the position is &quot;before&quot; or &quot;after&quot;, an index will be chosen which makes
+the given node the previous or next node of the given reference node.
+If the position &quot;last&quot; is specified, an index higher than any existing index
+will be chosen.</p>
+<p>If no free index is available between two nodes (for &quot;before&quot; and &quot;after&quot;),
+the whole index of the current node level will be renumbered.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a></td>
+                <td>$node</td>
+                <td><p>The node to set the new index for</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$position</td>
+                <td><p>The position the new index should reflect, must be one of the POSITION_* constants</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+                <td>$referenceNode</td>
+                <td><p>The reference node. Mandatory for POSITION_BEFORE and POSITION_AFTER</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findByParentAndNodeTypeRecursively">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L508">at line 508</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]
+    <strong>findByParentAndNodeTypeRecursively</strong>(string $parentPath, string $nodeTypeFilter, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null, bool $removedNodes = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Finds recursively nodes by its parent and (optionally) by its node type.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$parentPath</td>
+                <td><p>Absolute path of the parent node</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeFilter</td>
+                <td><p>Filter the node type of the nodes, allows complex expressions (e.g. &quot;Neos.Neos:Page&quot;, &quot;!Neos.Neos:Page,Neos.Neos:Text&quot; or NULL)</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td><p>The containing workspace</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dimensions</td>
+                <td><p>An array of dimensions to dimension values</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$removedNodes</td>
+                <td><p>If true the result has ONLY removed nodes. If false removed nodes are NOT inside the result. If NULL the result contains BOTH removed and non-removed nodes. (defaults to false)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]</td>
+            <td><p>The nodes found on the given path</p></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\ContentRepository\Domain\Repository\findByParentAndNodeType()">findByParentAndNodeType()</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findByParentAndNodeType">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L531">at line 531</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]
+    <strong>findByParentAndNodeType</strong>(string $parentPath, string $nodeTypeFilter, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null, bool $removedNodes = false, bool $recursive = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Finds nodes by its parent and (optionally) by its node type.</p></p>                <p><p>If the $recursive flag is set to true, all matching nodes underneath $parentPath will be returned</p>
+<p>Note: Filters out removed nodes.</p>
+<p>The primary sort key is the <em>index</em>, the secondary sort key (if indices are equal, which
+only occurs in very rare cases) is the <em>identifier</em>.</p></p>        
+                    <p>
+                        
+                                    <tr>
+                        <td>Improve</td>
+                        <td>implementation by using DQL</td>
+                        </tr>
+                            </p>
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$parentPath</td>
+                <td><p>Absolute path of the parent node</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeFilter</td>
+                <td><p>Filter the node type of the nodes, allows complex expressions (e.g. &quot;Neos.Neos:Page&quot;, &quot;!Neos.Neos:Page,Neos.Neos:Text&quot; or NULL)</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td><p>The containing workspace</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dimensions</td>
+                <td><p>An array of dimensions to dimension values</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$removedNodes</td>
+                <td><p>If true the result has ONLY removed nodes. If false removed nodes are NOT inside the result. If NULL the result contains BOTH removed and non-removed nodes. (defaults to false)</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$recursive</td>
+                <td><p>If true <em>all</em> matching nodes underneath the specified parent path are returned</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]</td>
+            <td><p>The nodes found on the given path</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getNodeDataForParentAndNodeType">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L590">at line 590</a></div>
+        <code>            protected        array
+    <strong>getNodeDataForParentAndNodeType</strong>(string $parentPath, string $nodeTypeFilter, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null, bool|null $removedNodes = false, bool $recursive = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Internal method</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$parentPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeFilter</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dimensions</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool|null</td>
+                <td>$removedNodes</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$recursive</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findByParentWithoutReduce">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L629">at line 629</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]
+    <strong>findByParentWithoutReduce</strong>(string $parentPath, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Find NodeData by parent path without any dimension reduction and grouping by identifier</p></p>                <p><p>Only used internally for setting the path of all child nodes</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$parentPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]</td>
+            <td><p>A unreduced array of NodeData</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findByIdentifierWithoutReduce">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L668">at line 668</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]
+    <strong>findByIdentifierWithoutReduce</strong>(string $identifier, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Find NodeData by identifier path without any dimension reduction</p></p>                <p><p>Only used internally for finding whether the node exists in another dimension</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identifier</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]</td>
+            <td><p>A unreduced array of NodeData</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findByParentAndNodeTypeInContext">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L692">at line 692</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>[]
+    <strong>findByParentAndNodeTypeInContext</strong>(string $parentPath, string $nodeTypeFilter, <a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a> $context, bool $recursive = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Finds nodes by its parent and (optionally) by its node type given a Context</p></p>                <p><p>TODO Move to a new Node operation getDescendantNodes(...)</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$parentPath</td>
+                <td><p>Absolute path of the parent node</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeFilter</td>
+                <td><p>Filter the node type of the nodes, allows complex expressions (e.g. &quot;Neos.Neos:Page&quot;, &quot;!Neos.Neos:Page,Neos.Neos:Text&quot; or NULL)</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a></td>
+                <td>$context</td>
+                <td><p>The containing workspace</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$recursive</td>
+                <td><p>If true <em>all</em> matching nodes underneath the specified parent path are returned</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>[]</td>
+            <td><p>The nodes found on the given path</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_countByParentAndNodeType">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L718">at line 718</a></div>
+        <code>                    int
+    <strong>countByParentAndNodeType</strong>(string $parentPath, string $nodeTypeFilter, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null, bool $includeRemovedNodes = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Counts nodes by its parent and (optionally) by its node type.</p></p>                <p><p>NOTE: Only considers persisted nodes!</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$parentPath</td>
+                <td><p>Absolute path of the parent node</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeFilter</td>
+                <td><p>Filter the node type of the nodes, allows complex expressions (e.g. &quot;Neos.Neos:Page&quot;, &quot;!Neos.Neos:Page,Neos.Neos:Text&quot; or NULL)</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td><p>The containing workspace</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dimensions</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$includeRemovedNodes</td>
+                <td><p>Should removed nodes be included in the result (defaults to false)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>The number of nodes a similar call to findByParentAndNodeType() would return without any pending added nodes</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_openIndexSpace">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L731">at line 731</a></div>
+        <code>            protected        
+    <strong>openIndexSpace</strong>(string $parentPath, int $referenceIndex)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Make room in the sortindex-index space of a given path in preparation to inserting a node.</p></p>                <p><p>All indices that are greater or equal to the given referenceIndex are incremented by 100</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$parentPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$referenceIndex</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Exception/NodeException.html"><abbr title="Neos\ContentRepository\Exception\NodeException">NodeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findNextFreeIndexInParentPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L789">at line 789</a></div>
+        <code>            protected        int
+    <strong>findNextFreeIndexInParentPath</strong>(string $parentPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Finds the next free index on the level below the given parent path
+across all workspaces.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$parentPath</td>
+                <td><p>Path of the parent node specifying the level in the node tree</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>The next available index</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setHighestIndexInParentPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L808">at line 808</a></div>
+        <code>            protected        void
+    <strong>setHighestIndexInParentPath</strong>(string $parentPath, int $highestIndex)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$parentPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$highestIndex</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findNextLowerIndex">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L824">at line 824</a></div>
+        <code>            protected        int
+    <strong>findNextLowerIndex</strong>(string $parentPath, int $referenceIndex)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the next-lower-index seen from the given reference index in the
+level below the specified parent path. If no node with a lower than the
+given index exists at that level, the reference index is returned.</p></p>                <p><p>The result is determined workspace-agnostic.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$parentPath</td>
+                <td><p>Path of the parent node specifying the level in the node tree</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$referenceIndex</td>
+                <td><p>Index of a known node</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>The currently next lower index</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findNextHigherIndex">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L846">at line 846</a></div>
+        <code>            protected        int
+    <strong>findNextHigherIndex</strong>(string $parentPath, int $referenceIndex)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the next-higher-index seen from the given reference index in the
+level below the specified parent path. If no node with a higher than the
+given index exists at that level, NULL is returned.</p></p>                <p><p>The result is determined workspace-agnostic.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$parentPath</td>
+                <td><p>Path of the parent node specifying the level in the node tree</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$referenceIndex</td>
+                <td><p>Index of a known node</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>The currently next higher index or NULL if no node with a higher index exists</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_countByWorkspace">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L868">at line 868</a></div>
+        <code>                    int
+    <strong>countByWorkspace</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Counts the number of nodes within the specified workspace</p></p>                <p><p>Note: Also counts removed nodes</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td><p>The containing workspace</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>The number of nodes found</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sortNodesByIndex">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L890">at line 890</a></div>
+        <code>            protected        array
+    <strong>sortNodesByIndex</strong>(array $nodes)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sorts the given nodes by their index</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$nodes</td>
+                <td><p>Nodes</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Nodes sorted by index</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findFirstByParentAndNodeType">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L915">at line 915</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>
+    <strong>findFirstByParentAndNodeType</strong>(string $parentPath, string $nodeTypeFilter, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions, bool $removedNodes = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Finds a single node by its parent and (optionally) by its node type</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$parentPath</td>
+                <td><p>Absolute path of the parent node</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeFilter</td>
+                <td><p>Filter the node type of the nodes, allows complex expressions (e.g. &quot;Neos.Neos:Page&quot;, &quot;!Neos.Neos:Page,Neos.Neos:Text&quot; or NULL)</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td><p>The containing workspace</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dimensions</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$removedNodes</td>
+                <td><p>If true the result has ONLY removed nodes. If false removed nodes are NOT inside the result. If NULL the result contains BOTH removed and non-removed nodes. (defaults to false)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a></td>
+            <td><p>The node found or NULL</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findFirstByParentAndNodeTypeInContext">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L934">at line 934</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>
+    <strong>findFirstByParentAndNodeTypeInContext</strong>(string $parentPath, string $nodeTypeFilter, <a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a> $context)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Finds a single node by its parent and (optionally) by its node type</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$parentPath</td>
+                <td><p>Absolute path of the parent node</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeFilter</td>
+                <td><p>Filter the node type of the nodes, allows complex expressions (e.g. &quot;Neos.Neos:Page&quot;, &quot;!Neos.Neos:Page,Neos.Neos:Text&quot; or NULL)</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a></td>
+                <td>$context</td>
+                <td><p>The containing context</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+            <td><p>The node found or NULL</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findOnPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L962">at line 962</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]
+    <strong>findOnPath</strong>(string $pathStartingPoint, string $pathEndPoint, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions = null, bool $includeRemovedNodes = false, string $nodeTypeFilter = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Finds all nodes of the specified workspace lying on the path specified by
+(and including) the given starting point and end point and (optionally) a node type filter.</p></p>                <p><p>If some node does not exist in the specified workspace, this function will
+try to find a corresponding node in one of the base workspaces (if any).</p></p>        
+                    <p>
+                        
+                                    <tr>
+                        <td>findOnPath</td>
+                        <td>should probably not return child nodes of removed nodes unless removed nodes are included.</td>
+                        </tr>
+                            </p>
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$pathStartingPoint</td>
+                <td><p>Absolute path specifying the starting point</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$pathEndPoint</td>
+                <td><p>Absolute path specifying the end point</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td><p>The containing workspace</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dimensions</td>
+                <td><p>Array of dimensions to array of dimension values</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$includeRemovedNodes</td>
+                <td><p>Should removed nodes be included in the result (defaults to false)</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeFilter</td>
+                <td><p>Optional filter for the node type of the nodes, supports complex expressions (e.g. &quot;Neos.Neos:Page&quot;, &quot;!Neos.Neos:Page,Neos.Neos:Text&quot; or NULL)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]</td>
+            <td><p>The nodes found on the given path</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findByProperties">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1028">at line 1028</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]
+    <strong>findByProperties</strong>(string|array $term, string $nodeTypeFilter, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions, string $pathStartingPoint = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Find nodes by a value in properties</p></p>                <p><p>This method is internal and will be replaced with better search capabilities.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|array</td>
+                <td>$term</td>
+                <td><p>Search term</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeFilter</td>
+                <td><p>Node type filter</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dimensions</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$pathStartingPoint</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushNodeRegistry">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1082">at line 1082</a></div>
+        <code>                    void
+    <strong>flushNodeRegistry</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flushes the addedNodes and removedNodes registry.</p></p>                <p><p>This method is (and should only be) used as a slot to the allObjectsPersisted
+signal.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addNodeTypeFilterConstraintsToQueryBuilder">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1096">at line 1096</a></div>
+        <code>                    void
+    <strong>addNodeTypeFilterConstraintsToQueryBuilder</strong>(<abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr> $queryBuilder, string $nodeTypeFilter)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add node type filter constraints to the query builder</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr></td>
+                <td>$queryBuilder</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeFilter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getNodeTypeFilterConstraintsForDql">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1119">at line 1119</a></div>
+        <code>            protected        array
+    <strong>getNodeTypeFilterConstraintsForDql</strong>(string|null $nodeTypeFilter = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Generates a two dimensional array with the filters. First level is:
+'excludeNodeTypes'
+'includeNodeTypes'</p></p>                <p><p>Both are numeric arrays with the respective node types that are included or excluded.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$nodeTypeFilter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getNodeTypeFilterConstraints">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1155">at line 1155</a></div>
+        <code>            protected        array
+    <strong>getNodeTypeFilterConstraints</strong>(<abbr title="Neos\Flow\Persistence\QueryInterface">QueryInterface</abbr> $query, $nodeTypeFilter)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Persistence\QueryInterface">QueryInterface</abbr></td>
+                <td>$query</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$nodeTypeFilter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_filterOutRemovedObjects">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1196">at line 1196</a></div>
+        <code>            protected        void
+    <strong>filterOutRemovedObjects</strong>(array $objects)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Iterates of the array of objects and removes all those which have recently been removed from the repository,
+but whose removal has not yet been persisted.</p></p>                <p><p>Technically this is a check of the given array against $this-&gt;removedNodes.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$objects</td>
+                <td><p>An array of objects to filter, passed by reference.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_withoutRemovedNodes">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1211">at line 1211</a></div>
+        <code>            protected        array
+    <strong>withoutRemovedNodes</strong>(array $nodes)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a subset of $nodes which are not flagged as removed.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$nodes</td>
+                <td><p>NodeData including removed entries</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Only those NodeData instances which are not flagged as removed</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_onlyRemovedNodes">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1224">at line 1224</a></div>
+        <code>            protected        array
+    <strong>onlyRemovedNodes</strong>(array $nodes)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a subset of $nodes which are flagged as removed.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$nodes</td>
+                <td><p>NodeData including removed entries</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Only those NodeData instances which are flagged as removed</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_persistEntities">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1236">at line 1236</a></div>
+        <code>                    void
+    <strong>persistEntities</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Persists all entities managed by the repository and all cascading dependencies</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitRepositoryObjectsPersisted">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1250">at line 1250</a></div>
+        <code>            protected        void
+    <strong>emitRepositoryObjectsPersisted</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Signals that persistEntities() in this repository finished correctly.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addDimensionJoinConstraintsToQueryBuilder">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1262">at line 1262</a></div>
+        <code>            protected        void
+    <strong>addDimensionJoinConstraintsToQueryBuilder</strong>(<abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr> $queryBuilder, array $dimensions)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>If $dimensions is not empty, adds join constraints to the given $queryBuilder
+limiting the query result to matching hits.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr></td>
+                <td>$queryBuilder</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dimensions</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_reduceNodeVariantsByWorkspacesAndDimensions">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1285">at line 1285</a></div>
+        <code>            protected        array
+    <strong>reduceNodeVariantsByWorkspacesAndDimensions</strong>(array $nodes, array $workspaces, array $dimensions)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Given an array with duplicate nodes (from different workspaces and dimensions) those are reduced to uniqueness (by node identifier)</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$nodes</td>
+                <td><p>NodeData result with multiple and duplicate identifiers (different nodes and redundant results for node variants with different dimensions)</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$workspaces</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dimensions</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Array of unique node results indexed by identifier</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Exception/NodeException.html"><abbr title="Neos\ContentRepository\Exception\NodeException">NodeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_reduceNodeVariantsByWorkspaces">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1356">at line 1356</a></div>
+        <code>            protected        array
+    <strong>reduceNodeVariantsByWorkspaces</strong>(array $nodes, array $workspaces)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Given an array with duplicate nodes (from different workspaces) those are reduced to uniqueness (by node identifier and dimensions hash)</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$nodes</td>
+                <td><p>NodeData</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$workspaces</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Array of unique node results indexed by identifier and dimensions hash</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findByWorkspace">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1392">at line 1392</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]
+    <strong>findByWorkspace</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Find all NodeData objects inside a given workspace sorted by path to be used
+in publishing. The order makes sure that parent nodes are published first.</p></p>                <p><p>Shadow nodes are excluded, because they will be published when publishing the moved node.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_pathExists">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1415">at line 1415</a></div>
+        <code>                    bool
+    <strong>pathExists</strong>(string $nodePath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Find out if the given path exists anywhere in the CR. (internal)
+If you need this functionality use \Neos\ContentRepository\Domain\Service\NodeService::nodePathExistsInAnyContext()</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$nodePath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findByPathWithoutReduce">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1445">at line 1445</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]
+    <strong>findByPathWithoutReduce</strong>(string $path, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, bool $includeRemovedNodes = false, bool $recursive = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Find all node data in a path matching the given workspace hierarchy</p></p>                <p><p>Internal method, used by Node::setPath</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$includeRemovedNodes</td>
+                <td><p>Should removed nodes be included in the result (defaults to false)</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$recursive</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>[]</td>
+            <td><p>Node data reduced by workspace but with all existing content dimension variants, includes removed nodes</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findNodesByRelatedEntities">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1480">at line 1480</a></div>
+        <code>                    array
+    <strong>findNodesByRelatedEntities</strong>(array $relationMap)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Searches for possible relations to the given entity identifiers in NodeData.</p></p>                <p><p>Will return all possible NodeData objects that contain this identifiers.
+See buildQueryBuilderForRelationMap for the relationMap definition.</p>
+<p>Note: This is an internal method that is likely to be replaced in the future.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$relationMap</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findNodesByPathPrefixAndRelatedEntities">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1496">at line 1496</a></div>
+        <code>                    array
+    <strong>findNodesByPathPrefixAndRelatedEntities</strong>(string $pathPrefix, array $relationMap)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Searches for possible relations to the given entity identifiers in NodeData using a path prefix.</p></p>                <p><p>Will return all possible NodeData objects that contain this identifiers.
+See buildQueryBuilderForRelationMap for the relationMap definition.</p>
+<p>Note: This is an internal method that is likely to be replaced in the future.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$pathPrefix</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$relationMap</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeAllInPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1514">at line 1514</a></div>
+        <code>                    void
+    <strong>removeAllInPath</strong>(string $path)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Remove all nodes below a given path. Does not care about workspaces and dimensions.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>Starting point path underneath all nodes are to be removed.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isInRemovedNodes">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1528">at line 1528</a></div>
+        <code>                    bool
+    <strong>isInRemovedNodes</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a> $nodeData)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Test if a given NodeData is in the set of removed node data objects</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a></td>
+                <td>$nodeData</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true If the NodeData was marked for removal</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createQueryBuilder">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1538">at line 1538</a></div>
+        <code>            protected        <abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr>
+    <strong>createQueryBuilder</strong>(array $workspaces)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$workspaces</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addParentPathConstraintToQueryBuilder">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1561">at line 1561</a></div>
+        <code>            protected        void
+    <strong>addParentPathConstraintToQueryBuilder</strong>(<abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr> $queryBuilder, string $parentPath, bool $recursive = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr></td>
+                <td>$queryBuilder</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$parentPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$recursive</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addPathConstraintToQueryBuilder">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1583">at line 1583</a></div>
+        <code>            protected        void
+    <strong>addPathConstraintToQueryBuilder</strong>(<abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr> $queryBuilder, string $path, bool $recursive = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr></td>
+                <td>$queryBuilder</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$recursive</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addIdentifierConstraintToQueryBuilder">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1604">at line 1604</a></div>
+        <code>            protected        void
+    <strong>addIdentifierConstraintToQueryBuilder</strong>(<abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr> $queryBuilder, string $identifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr></td>
+                <td>$queryBuilder</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$identifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_filterNodeDataByBestMatchInContext">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1619">at line 1619</a></div>
+        <code>            protected        array
+    <strong>filterNodeDataByBestMatchInContext</strong>(array $nodeDataObjects, <a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace, array $dimensions, bool $includeRemovedNodes = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$nodeDataObjects</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dimensions</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$includeRemovedNodes</td>
+                <td><p>Should removed nodes be included in the result (defaults to false)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_collectWorkspaceAndAllBaseWorkspaces">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1680">at line 1680</a></div>
+        <code>            protected        array
+    <strong>collectWorkspaceAndAllBaseWorkspaces</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an array that contains the given workspace and all base (parent) workspaces of it.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildQueryBuilderForRelationMap">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.2/Neos.ContentRepository/Classes/Domain/Repository/NodeDataRepository.php#L1703">at line 1703</a></div>
+        <code>            protected        <abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr>
+    <strong>buildQueryBuilderForRelationMap</strong>(array $relationMap)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a query builder for a query on node data using the given
+relation map.</p></p>                <p><p>$objectTypeMap = [
+'Neos\Media\Domain\Model\Asset' =&gt; ['some-uuid-here'],
+'Neos\Media\Domain\Model\ImageVariant' =&gt; ['some-uuid-here', 'another-uuid-here']
+]</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$relationMap</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Doctrine\ORM\QueryBuilder">QueryBuilder</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
