@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepository\Migration\Transformations\ChangePropertyValue | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (7.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepository_Migration_Transformations_ChangePropertyValue" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository.html">ContentRepository</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository/Migration.html">Migration</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository/Migration/Transformations.html">Transformations</a></li><li class="backslash">\</li><li>ChangePropertyValue</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ChangePropertyValue    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>ChangePropertyValue</strong>        extends <a href="../../../../Neos/ContentRepository/Migration/Transformations/AbstractTransformation.html"><abbr title="Neos\ContentRepository\Migration\Transformations\AbstractTransformation">AbstractTransformation</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.ContentRepository/Classes/Migration/Transformations/ChangePropertyValue.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Change the value of a given property.</p></p>            <p><p>This can apply two transformations:</p>
+<p>If newValue is set, the value will be set to this, with any occurrences of the currentValuePlaceholder replaced with
+the current value of the property.</p>
+<p>If search and replace are given, that replacement will be done on the value (after applying the newValue if set).</p></p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_propertyName">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$propertyName</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_newValue">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$newValue</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_search">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$search</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_replace">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$replace</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_currentValuePlaceholder">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$currentValuePlaceholder</td>
+                <td class="last"><p>Placeholder for the current property value to be inserted in newValue.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isTransformable">isTransformable</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a> $node)
+        
+                                            <p><p>If the given node has the property this transformation should work on, this
+returns true.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_execute">execute</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a> $node)
+        
+                                            <p><p>Change the property on the given node.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setProperty">setProperty</a>(string $propertyName)
+        
+                                            <p><p>Sets the name of the property to change.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setNewValue">setNewValue</a>(string $newValue)
+        
+                                            <p><p>New property value to be set.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setSearch">setSearch</a>(string $search)
+        
+                                            <p><p>Search string to replace in current property value.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setReplace">setReplace</a>(string $replace)
+        
+                                            <p><p>Replacement for the search string</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setCurrentValuePlaceholder">setCurrentValuePlaceholder</a>(string $currentValuePlaceholder)
+        
+                                            <p><p>The value of this option (defaults to &quot;{current}&quot;) will be used to include the
+current property value into the new value.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_isTransformable">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.ContentRepository/Classes/Migration/Transformations/ChangePropertyValue.php#L121">at line 121</a></div>
+        <code>                    bool
+    <strong>isTransformable</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>If the given node has the property this transformation should work on, this
+returns true.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_execute">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.ContentRepository/Classes/Migration/Transformations/ChangePropertyValue.php#L133">at line 133</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a>
+    <strong>execute</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Change the property on the given node.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeData.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeData">NodeData</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Exception/NodeException.html"><abbr title="Neos\ContentRepository\Exception\NodeException">NodeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setProperty">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.ContentRepository/Classes/Migration/Transformations/ChangePropertyValue.php#L61">at line 61</a></div>
+        <code>                    void
+    <strong>setProperty</strong>(string $propertyName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the name of the property to change.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setNewValue">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.ContentRepository/Classes/Migration/Transformations/ChangePropertyValue.php#L75">at line 75</a></div>
+        <code>                    void
+    <strong>setNewValue</strong>(string $newValue)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>New property value to be set.</p></p>                <p><p>The value of the option &quot;currentValuePlaceholder&quot; (defaults to &quot;{current}&quot;) will be
+used to include the current property value into the new value.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$newValue</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setSearch">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.ContentRepository/Classes/Migration/Transformations/ChangePropertyValue.php#L86">at line 86</a></div>
+        <code>                    void
+    <strong>setSearch</strong>(string $search)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Search string to replace in current property value.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$search</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setReplace">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.ContentRepository/Classes/Migration/Transformations/ChangePropertyValue.php#L97">at line 97</a></div>
+        <code>                    void
+    <strong>setReplace</strong>(string $replace)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Replacement for the search string</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$replace</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCurrentValuePlaceholder">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.ContentRepository/Classes/Migration/Transformations/ChangePropertyValue.php#L109">at line 109</a></div>
+        <code>                    void
+    <strong>setCurrentValuePlaceholder</strong>(string $currentValuePlaceholder)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>The value of this option (defaults to &quot;{current}&quot;) will be used to include the
+current property value into the new value.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$currentValuePlaceholder</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

@@ -1,0 +1,2391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Neos\Domain\Service\UserService | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (7.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Neos_Domain_Service_UserService" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Neos/Domain.html">Domain</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Neos/Domain/Service.html">Service</a></li><li class="backslash">\</li><li>UserService</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>UserService    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>UserService</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A service for managing users</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_defaultAuthenticationProviderName">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$defaultAuthenticationProviderName</td>
+                <td class="last"><p>Might be configurable in the future, for now centralising this as a &quot;constant&quot;</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_workspaceRepository">
+                                        protected                                        <a href="../../../../Neos/ContentRepository/Domain/Repository/WorkspaceRepository.html"><abbr title="Neos\ContentRepository\Domain\Repository\WorkspaceRepository">WorkspaceRepository</abbr></a>
+                                                                                
+                                    </td>
+                <td>$workspaceRepository</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_publishingService">
+                                        protected                                        <a href="../../../../Neos/Neos/Service/PublishingService.html"><abbr title="Neos\Neos\Service\PublishingService">PublishingService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$publishingService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_partyRepository">
+                                        protected                                        <abbr title="Neos\Party\Domain\Repository\PartyRepository">PartyRepository</abbr>
+                                                                                
+                                    </td>
+                <td>$partyRepository</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_userRepository">
+                                        protected                                        <a href="../../../../Neos/Neos/Domain/Repository/UserRepository.html"><abbr title="Neos\Neos\Domain\Repository\UserRepository">UserRepository</abbr></a>
+                                                                                
+                                    </td>
+                <td>$userRepository</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_partyService">
+                                        protected                                        <abbr title="Neos\Party\Domain\Service\PartyService">PartyService</abbr>
+                                                                                
+                                    </td>
+                <td>$partyService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_accountFactory">
+                                        protected                                        <abbr title="Neos\Flow\Security\AccountFactory">AccountFactory</abbr>
+                                                                                
+                                    </td>
+                <td>$accountFactory</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_accountRepository">
+                                        protected                                        <abbr title="Neos\Flow\Security\AccountRepository">AccountRepository</abbr>
+                                                                                
+                                    </td>
+                <td>$accountRepository</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_policyService">
+                                        protected                                        <abbr title="Neos\Flow\Security\Policy\PolicyService">PolicyService</abbr>
+                                                                                
+                                    </td>
+                <td>$policyService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_authenticationManager">
+                                        protected                                        <abbr title="Neos\Flow\Security\Authentication\AuthenticationManagerInterface">AuthenticationManagerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$authenticationManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_privilegeManager">
+                                        protected                                        <abbr title="Neos\Flow\Security\Authorization\PrivilegeManagerInterface">PrivilegeManagerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$privilegeManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_securityContext">
+                                        protected                                        <abbr title="Neos\Flow\Security\Context">Context</abbr>
+                                                                                
+                                    </td>
+                <td>$securityContext</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_tokenAndProviderFactory">
+                                        protected                                        <abbr title="Neos\Flow\Security\Authentication\TokenAndProviderFactoryInterface">TokenAndProviderFactoryInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$tokenAndProviderFactory</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_hashService">
+                                        protected                                        <abbr title="Neos\Flow\Security\Cryptography\HashService">HashService</abbr>
+                                                                                
+                                    </td>
+                <td>$hashService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_sessionManager">
+                                        protected                                        <abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr>
+                                                                                
+                                    </td>
+                <td>$sessionManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_persistenceManager">
+                                        protected                                        <abbr title="Neos\Flow\Persistence\PersistenceManagerInterface">PersistenceManagerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$persistenceManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_now">
+                                        protected                                        <abbr title="Neos\Flow\Utility\Now">Now</abbr>
+                                                                                
+                                    </td>
+                <td>$now</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_runtimeUserCache">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$runtimeUserCache</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Neos\Flow\Persistence\QueryResultInterface">QueryResultInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getUsers">getUsers</a>()
+        
+                                            <p><p>Retrieves a list of all existing users</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Neos\Flow\Persistence\QueryResultInterface">QueryResultInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_searchUsers">searchUsers</a>(string $searchTerm)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getUser">getUser</a>(string $username, string $authenticationProviderName = null)
+        
+                                            <p><p>Retrieves an existing user by the given username</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getUsername">getUsername</a>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user, string $authenticationProviderName = null)
+        
+                                            <p><p>Returns the username of the given user</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCurrentUser">getCurrentUser</a>()
+        
+                                            <p><p>Returns the currently logged in user, if any</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createUser">createUser</a>(string $username, string $password, string $firstName, string $lastName, array $roleIdentifiers = null, string $authenticationProviderName = null)
+        
+                                            <p><p>Creates a user based on the given information</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addUser">addUser</a>(string $username, string $password, <a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user, array $roleIdentifiers = null, string $authenticationProviderName = null)
+        
+                                            <p><p>Adds a user whose User object has been created elsewhere</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitUserCreated">emitUserCreated</a>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        
+                                            <p><p>Signals that a new user, including a new account has been created.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_deleteUser">deleteUser</a>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        
+                                            <p><p>Deletes the specified user and all remaining content in his personal workspaces</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitUserDeleted">emitUserDeleted</a>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        
+                                            <p><p>Signals that the given user has been deleted.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setUserPassword">setUserPassword</a>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user, string $password)
+        
+                                            <p><p>Sets a new password for the given user</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_updateUser">updateUser</a>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        
+                                            <p><p>Updates the given user in the respective repository and potentially executes further actions depending on what
+has been changed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addRoleToUser">addRoleToUser</a>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user, string $roleIdentifier)
+        
+                                            <p><p>Adds the specified role to all accounts of the given user and potentially carries out further actions which are needed to
+properly reflect these changes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_removeRoleFromUser">removeRoleFromUser</a>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user, string $roleIdentifier)
+        
+                                            <p><p>Removes the specified role from all accounts of the given user and potentially carries out further actions which are needed to
+properly reflect these changes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitUserUpdated">emitUserUpdated</a>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        
+                                            <p><p>Signals that the given user data has been updated.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setRolesForAccount">setRolesForAccount</a>(<abbr title="Neos\Flow\Security\Account">Account</abbr> $account, array $newRoleIdentifiers)
+        
+                                            <p><p>Overrides any assigned roles of the given account and potentially carries out further actions which are needed
+to properly reflect these changes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addRoleToAccount">addRoleToAccount</a>(<abbr title="Neos\Flow\Security\Account">Account</abbr> $account, string $roleIdentifier)
+        
+                                            <p><p>Adds the specified role to the given account and potentially carries out further actions which are needed to
+properly reflect these changes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitRolesAdded">emitRolesAdded</a>(<abbr title="Neos\Flow\Security\Account">Account</abbr> $account, array $roles)
+        
+                                            <p><p>Signals that new roles have been assigned to the given account</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_removeRoleFromAccount">removeRoleFromAccount</a>(<abbr title="Neos\Flow\Security\Account">Account</abbr> $account, string $roleIdentifier)
+        
+                                            <p><p>Removes the specified role from the given account and potentially carries out further actions which are needed to
+properly reflect these changes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitRolesRemoved">emitRolesRemoved</a>(<abbr title="Neos\Flow\Security\Account">Account</abbr> $account, array $roles)
+        
+                                            <p><p>Signals that roles have been removed to the given account</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_activateUser">activateUser</a>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        
+                                            <p><p>Reactivates the given user</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitUserActivated">emitUserActivated</a>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        
+                                            <p><p>Signals that the given user has been activated</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_deactivateUser">deactivateUser</a>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        
+                                            <p><p>Deactivates the given user</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_currentUserCanPublishToWorkspace">currentUserCanPublishToWorkspace</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        
+                                            <p><p>Checks if the current user may publish to the given workspace according to one the roles of the user's accounts</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_currentUserCanReadWorkspace">currentUserCanReadWorkspace</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        
+                                            <p><p>Checks if the current user may read the given workspace according to one the roles of the user's accounts</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_currentUserCanManageWorkspace">currentUserCanManageWorkspace</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        
+                                            <p><p>Checks if the current user may manage the given workspace according to one the roles of the user's accounts</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_currentUserCanTransferOwnershipOfWorkspace">currentUserCanTransferOwnershipOfWorkspace</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        
+                                            <p><p>Checks if the current user may transfer ownership of the given workspace</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_currentUserIsAdministrator">currentUserIsAdministrator</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getDefaultAuthenticationProviderName">getDefaultAuthenticationProviderName</a>()
+        
+                                            <p><p>Returns the default authentication provider name</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitUserDeactivated">emitUserDeactivated</a>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        
+                                            <p><p>Signals that the given user has been activated</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_normalizeRoleIdentifiers">normalizeRoleIdentifiers</a>(array $roleIdentifiers)
+        
+                                            <p><p>Replaces role identifiers not containing a &quot;.&quot; into fully qualified role identifiers from the Neos.Neos namespace.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_normalizeRoleIdentifier">normalizeRoleIdentifier</a>(string $roleIdentifier)
+        
+                                            <p><p>Replaces a role identifier not containing a &quot;.&quot; into fully qualified role identifier from the Neos.Neos namespace.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getAllRoles">getAllRoles</a>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        
+                                            <p><p>Returns an array with all roles of a user's accounts, including parent roles, the &quot;Everybody&quot; role and the
+&quot;AuthenticatedUser&quot; role, assuming that the user is logged in.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createPersonalWorkspace">createPersonalWorkspace</a>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user, <abbr title="Neos\Flow\Security\Account">Account</abbr> $account)
+        
+                                            <p><p>Creates a personal workspace for the given user's account if it does not exist already.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_deletePersonalWorkspace">deletePersonalWorkspace</a>(string $accountIdentifier)
+        
+                                            <p><p>Removes all personal workspaces of the given user's account if these workspaces exist. Also removes
+all possibly existing content of these workspaces.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_removeOwnerFromUsersWorkspaces">removeOwnerFromUsersWorkspaces</a>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        
+                                            <p><p>Removes ownership of all workspaces currently owned by the given user</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Neos\Party\Domain\Model\AbstractParty">AbstractParty</abbr>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findUserForAccount">findUserForAccount</a>(string $username, string $authenticationProviderName)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_getUsers">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L171">at line 171</a></div>
+        <code>                    <abbr title="Neos\Flow\Persistence\QueryResultInterface">QueryResultInterface</abbr>
+    <strong>getUsers</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Retrieves a list of all existing users</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Neos\Flow\Persistence\QueryResultInterface">QueryResultInterface</abbr></td>
+            <td><p>The users</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_searchUsers">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L180">at line 180</a></div>
+        <code>                    <abbr title="Neos\Flow\Persistence\QueryResultInterface">QueryResultInterface</abbr>
+    <strong>searchUsers</strong>(string $searchTerm)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$searchTerm</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Neos\Flow\Persistence\QueryResultInterface">QueryResultInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUser">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L194">at line 194</a></div>
+        <code>                    <a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a>|null
+    <strong>getUser</strong>(string $username, string $authenticationProviderName = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Retrieves an existing user by the given username</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$username</td>
+                <td><p>The username</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$authenticationProviderName</td>
+                <td><p>Name of the authentication provider to use. Example: &quot;Neos.Neos:Backend&quot;</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a>|null</td>
+            <td><p>The user, or null if the user does not exist</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Exception.html"><abbr title="Neos\Neos\Domain\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getUsername">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L228">at line 228</a></div>
+        <code>                    string
+    <strong>getUsername</strong>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user, string $authenticationProviderName = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the username of the given user</p></p>                <p><p>Technically, this method will look for the user's backend account (or, if authenticationProviderName is specified,
+for the account matching the given authentication provider) and return the account's identifier.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$authenticationProviderName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The username or null if the given user does not have a backend account</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCurrentUser">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L246">at line 246</a></div>
+        <code>                    <a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a>
+    <strong>getCurrentUser</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the currently logged in user, if any</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+            <td><p>The currently logged in user, or null</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createUser">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L288">at line 288</a></div>
+        <code>                    <a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a>
+    <strong>createUser</strong>(string $username, string $password, string $firstName, string $lastName, array $roleIdentifiers = null, string $authenticationProviderName = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates a user based on the given information</p></p>                <p><p>The created user and account are automatically added to their respective repositories and thus be persisted.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$username</td>
+                <td><p>The username of the user to be created.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$password</td>
+                <td><p>Password of the user to be created</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$firstName</td>
+                <td><p>First name of the user to be created</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$lastName</td>
+                <td><p>Last name of the user to be created</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$roleIdentifiers</td>
+                <td><p>A list of role identifiers to assign</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$authenticationProviderName</td>
+                <td><p>Name of the authentication provider to use. Example: &quot;Neos.Neos:Backend&quot;</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+            <td><p>The created user instance</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addUser">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L314">at line 314</a></div>
+        <code>                    <a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a>
+    <strong>addUser</strong>(string $username, string $password, <a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user, array $roleIdentifiers = null, string $authenticationProviderName = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds a user whose User object has been created elsewhere</p></p>                <p><p>This method basically &quot;creates&quot; a user like createUser() would, except that it does not create the User
+object itself. If you need to create the User object elsewhere, for example in your ActionController, make sure
+to call this method for registering the new user instead of adding it to the PartyRepository manually.</p>
+<p>This method also creates a new user workspace for the given user if no such workspace exist.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$username</td>
+                <td><p>The username of the user to be created.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$password</td>
+                <td><p>Password of the user to be created</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td><p>The pre-built user object to start with</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$roleIdentifiers</td>
+                <td><p>A list of role identifiers to assign</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$authenticationProviderName</td>
+                <td><p>Name of the authentication provider to use. Example: &quot;Neos.Neos:Backend&quot;</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+            <td><p>The same user object</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitUserCreated">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L341">at line 341</a></div>
+        <code>                    void
+    <strong>emitUserCreated</strong>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Signals that a new user, including a new account has been created.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td><p>The created user</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteUser">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L355">at line 355</a></div>
+        <code>                    void
+    <strong>deleteUser</strong>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Deletes the specified user and all remaining content in his personal workspaces</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td><p>The user to delete</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Persistence\Exception\IllegalObjectTypeException">IllegalObjectTypeException</abbr></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitUserDeleted">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L381">at line 381</a></div>
+        <code>                    void
+    <strong>emitUserDeleted</strong>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Signals that the given user has been deleted.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td><p>The created user</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setUserPassword">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L398">at line 398</a></div>
+        <code>                    void
+    <strong>setUserPassword</strong>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user, string $password)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets a new password for the given user</p></p>                <p><p>This method will iterate over all accounts owned by the given user and, if the account uses a UsernamePasswordToken,
+sets a new password accordingly.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td><p>The user to set the password for</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$password</td>
+                <td><p>A new password</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Persistence\Exception\IllegalObjectTypeException">IllegalObjectTypeException</abbr></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateUser">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L430">at line 430</a></div>
+        <code>                    void
+    <strong>updateUser</strong>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Updates the given user in the respective repository and potentially executes further actions depending on what
+has been changed.</p></p>                <p><p>Note: changes to the user's account will not be committed for persistence. Please use addRoleToAccount(), removeRoleFromAccount(),
+setRolesForAccount() and setUserPassword() for changing account properties.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td><p>The modified user</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addRoleToUser">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L445">at line 445</a></div>
+        <code>                    int
+    <strong>addRoleToUser</strong>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user, string $roleIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds the specified role to all accounts of the given user and potentially carries out further actions which are needed to
+properly reflect these changes.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td><p>The user to add roles to</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$roleIdentifier</td>
+                <td><p>A fully qualified role identifier, or a role identifier relative to the Neos.Neos namespace</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>How often this role has been added to accounts owned by the user</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeRoleFromUser">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L464">at line 464</a></div>
+        <code>                    int
+    <strong>removeRoleFromUser</strong>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user, string $roleIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes the specified role from all accounts of the given user and potentially carries out further actions which are needed to
+properly reflect these changes.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td><p>The user to remove roles from</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$roleIdentifier</td>
+                <td><p>A fully qualified role identifier, or a role identifier relative to the Neos.Neos namespace</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>How often this role has been removed from accounts owned by the user</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitUserUpdated">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L482">at line 482</a></div>
+        <code>                    void
+    <strong>emitUserUpdated</strong>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Signals that the given user data has been updated.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td><p>The created user</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setRolesForAccount">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L495">at line 495</a></div>
+        <code>                    void
+    <strong>setRolesForAccount</strong>(<abbr title="Neos\Flow\Security\Account">Account</abbr> $account, array $newRoleIdentifiers)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Overrides any assigned roles of the given account and potentially carries out further actions which are needed
+to properly reflect these changes.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Security\Account">Account</abbr></td>
+                <td>$account</td>
+                <td><p>The account to assign the roles to</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$newRoleIdentifiers</td>
+                <td><p>A list of fully qualified role identifiers, or role identifiers relative to the Neos.Neos namespace</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addRoleToAccount">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L522">at line 522</a></div>
+        <code>                    int
+    <strong>addRoleToAccount</strong>(<abbr title="Neos\Flow\Security\Account">Account</abbr> $account, string $roleIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds the specified role to the given account and potentially carries out further actions which are needed to
+properly reflect these changes.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Security\Account">Account</abbr></td>
+                <td>$account</td>
+                <td><p>The account to add roles to</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$roleIdentifier</td>
+                <td><p>A fully qualified role identifier, or a role identifier relative to the Neos.Neos namespace</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>How often this role has been added to the given account (effectively can be 1 or 0)</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitRolesAdded">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L547">at line 547</a></div>
+        <code>                    void
+    <strong>emitRolesAdded</strong>(<abbr title="Neos\Flow\Security\Account">Account</abbr> $account, array $roles)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Signals that new roles have been assigned to the given account</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Security\Account">Account</abbr></td>
+                <td>$account</td>
+                <td><p>The account</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$roles</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeRoleFromAccount">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L560">at line 560</a></div>
+        <code>                    int
+    <strong>removeRoleFromAccount</strong>(<abbr title="Neos\Flow\Security\Account">Account</abbr> $account, string $roleIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes the specified role from the given account and potentially carries out further actions which are needed to
+properly reflect these changes.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Security\Account">Account</abbr></td>
+                <td>$account</td>
+                <td><p>The account to remove roles from</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$roleIdentifier</td>
+                <td><p>A fully qualified role identifier, or a role identifier relative to the Neos.Neos namespace</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>How often this role has been removed from the given account (effectively can be 1 or 0)</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitRolesRemoved">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L586">at line 586</a></div>
+        <code>                    void
+    <strong>emitRolesRemoved</strong>(<abbr title="Neos\Flow\Security\Account">Account</abbr> $account, array $roles)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Signals that roles have been removed to the given account</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Security\Account">Account</abbr></td>
+                <td>$account</td>
+                <td><p>The account</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$roles</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_activateUser">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L597">at line 597</a></div>
+        <code>                    void
+    <strong>activateUser</strong>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Reactivates the given user</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td><p>The user to activate</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitUserActivated">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L615">at line 615</a></div>
+        <code>                    void
+    <strong>emitUserActivated</strong>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Signals that the given user has been activated</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td><p>The user</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deactivateUser">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L628">at line 628</a></div>
+        <code>                    void
+    <strong>deactivateUser</strong>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Deactivates the given user</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td><p>The user to deactivate</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Persistence\Exception\IllegalObjectTypeException">IllegalObjectTypeException</abbr></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_currentUserCanPublishToWorkspace">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L651">at line 651</a></div>
+        <code>                    bool
+    <strong>currentUserCanPublishToWorkspace</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if the current user may publish to the given workspace according to one the roles of the user's accounts</p></p>                <p><p>In future versions, this logic may be implemented in Neos in a more generic way (for example, by means of an
+ACL object), but for now, this method exists in order to at least centralize and encapsulate the required logic.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td><p>The workspace</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_currentUserCanReadWorkspace">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L673">at line 673</a></div>
+        <code>                    bool
+    <strong>currentUserCanReadWorkspace</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if the current user may read the given workspace according to one the roles of the user's accounts</p></p>                <p><p>In future versions, this logic may be implemented in Neos in a more generic way (for example, by means of an
+ACL object), but for now, this method exists in order to at least centralize and encapsulate the required logic.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td><p>The workspace</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_currentUserCanManageWorkspace">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L695">at line 695</a></div>
+        <code>                    bool
+    <strong>currentUserCanManageWorkspace</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if the current user may manage the given workspace according to one the roles of the user's accounts</p></p>                <p><p>In future versions, this logic may be implemented in Neos in a more generic way (for example, by means of an
+ACL object), but for now, this method exists in order to at least centralize and encapsulate the required logic.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td><p>The workspace</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_currentUserCanTransferOwnershipOfWorkspace">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L725">at line 725</a></div>
+        <code>                    bool
+    <strong>currentUserCanTransferOwnershipOfWorkspace</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a> $workspace)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if the current user may transfer ownership of the given workspace</p></p>                <p><p>In future versions, this logic may be implemented in Neos in a more generic way (for example, by means of an
+ACL object), but for now, this method exists in order to at least centralize and encapsulate the required logic.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Workspace.html"><abbr title="Neos\ContentRepository\Domain\Model\Workspace">Workspace</abbr></a></td>
+                <td>$workspace</td>
+                <td><p>The workspace</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_currentUserIsAdministrator">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L742">at line 742</a></div>
+        <code>                    bool
+    <strong>currentUserIsAdministrator</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Security\Exception\NoSuchRoleException">NoSuchRoleException</abbr></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Security\Exception">Exception</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDefaultAuthenticationProviderName">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L753">at line 753</a></div>
+        <code>                    string
+    <strong>getDefaultAuthenticationProviderName</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the default authentication provider name</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitUserDeactivated">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L766">at line 766</a></div>
+        <code>                    void
+    <strong>emitUserDeactivated</strong>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Signals that the given user has been activated</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td><p>The user</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_normalizeRoleIdentifiers">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L776">at line 776</a></div>
+        <code>            protected        array
+    <strong>normalizeRoleIdentifiers</strong>(array $roleIdentifiers)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Replaces role identifiers not containing a &quot;.&quot; into fully qualified role identifiers from the Neos.Neos namespace.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$roleIdentifiers</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_normalizeRoleIdentifier">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L792">at line 792</a></div>
+        <code>            protected        string
+    <strong>normalizeRoleIdentifier</strong>(string $roleIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Replaces a role identifier not containing a &quot;.&quot; into fully qualified role identifier from the Neos.Neos namespace.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$roleIdentifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Security\Exception\NoSuchRoleException">NoSuchRoleException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAllRoles">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L812">at line 812</a></div>
+        <code>                    array
+    <strong>getAllRoles</strong>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an array with all roles of a user's accounts, including parent roles, the &quot;Everybody&quot; role and the
+&quot;AuthenticatedUser&quot; role, assuming that the user is logged in.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td><p>The user</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Security\Exception\NoSuchRoleException">NoSuchRoleException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createPersonalWorkspace">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L867">at line 867</a></div>
+        <code>            protected        
+    <strong>createPersonalWorkspace</strong>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user, <abbr title="Neos\Flow\Security\Account">Account</abbr> $account)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates a personal workspace for the given user's account if it does not exist already.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td><p>The new user to create a workspace for</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Security\Account">Account</abbr></td>
+                <td>$account</td>
+                <td><p>The user's backend account</p></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Persistence\Exception\IllegalObjectTypeException">IllegalObjectTypeException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deletePersonalWorkspace">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L892">at line 892</a></div>
+        <code>            protected        void
+    <strong>deletePersonalWorkspace</strong>(string $accountIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes all personal workspaces of the given user's account if these workspaces exist. Also removes
+all possibly existing content of these workspaces.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$accountIdentifier</td>
+                <td><p>Identifier of the user's account</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeOwnerFromUsersWorkspaces">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L907">at line 907</a></div>
+        <code>            protected        void
+    <strong>removeOwnerFromUsersWorkspaces</strong>(<a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes ownership of all workspaces currently owned by the given user</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a></td>
+                <td>$user</td>
+                <td><p>The user currently owning workspaces</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findUserForAccount">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Neos/Classes/Domain/Service/UserService.php#L922">at line 922</a></div>
+        <code>            protected        <abbr title="Neos\Party\Domain\Model\AbstractParty">AbstractParty</abbr>|null
+    <strong>findUserForAccount</strong>(string $username, string $authenticationProviderName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$username</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$authenticationProviderName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Neos\Party\Domain\Model\AbstractParty">AbstractParty</abbr>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Exception.html"><abbr title="Neos\Neos\Domain\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

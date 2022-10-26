@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepository\Domain\Service\ContentDimensionPresetSourceInterface | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (7.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepository_Domain_Service_ContentDimensionPresetSourceInterface" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">interface</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository.html">ContentRepository</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository/Domain.html">Domain</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository/Domain/Service.html">Service</a></li><li class="backslash">\</li><li>ContentDimensionPresetSourceInterface</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ContentDimensionPresetSourceInterface    
+            </h1>
+    </div>
+
+    
+    <p>        interface
+    <strong>ContentDimensionPresetSourceInterface</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.ContentRepository/Classes/Domain/Service/ContentDimensionPresetSourceInterface.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>An interface for a Content Dimension Preset source</p></p>            <p><p>It allows to find a matching preset for a list of dimension values. Or calculate all dimension combinations for you (the matrix of all configured presets).</p>
+<h1>Content Dimension Preset</h1>
+<p>A Content Dimension Preset assigns an identifier to a (fallback) list of dimension values. It can have additional properties like UI label and
+icon and further options for routing if needed.</p>
+<p>The default implementation ConfigurationContentDimensionPresetSource will read the available presets from settings.</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getAllPresets">getAllPresets</a>()
+        
+                                            <p><p>Get the full presets configuration as an array</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getDefaultPreset">getDefaultPreset</a>(string $dimensionName)
+        
+                                            <p><p>Get the default preset of a dimension</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findPresetByDimensionValues">findPresetByDimensionValues</a>(string $dimensionName, array $dimensionValues)
+        
+                                            <p><p>Find a dimension preset by dimension values</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getAllowedDimensionPresetsAccordingToPreselection">getAllowedDimensionPresetsAccordingToPreselection</a>(string $dimensionName, array $preselectedDimensionPresets)
+        
+                                            <p><p>Returns a list of presets of the specified dimension which are allowed in combination with the given presets
+of other dimensions.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isPresetCombinationAllowedByConstraints">isPresetCombinationAllowedByConstraints</a>(array $dimensionsNamesAndPresetIdentifiers)
+        
+                                            <p><p>Checks if the given combination of presets is allowed, according to possibly defined constraints in the
+content dimension configuration.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findPresetsByTargetValues">findPresetsByTargetValues</a>(array $targetValues)
+        
+                                            <p><p>Finds for each configured dimension the best matching preset based on given target value for that dimension.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_getAllPresets">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.ContentRepository/Classes/Domain/Service/ContentDimensionPresetSourceInterface.php#L51">at line 51</a></div>
+        <code>                    array
+    <strong>getAllPresets</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the full presets configuration as an array</p></p>                <p><p>Example:</p>
+<p>'language':
+defaultPreset: 'all'
+label: 'Language'
+icon: 'icon-language'
+presets:
+'all':
+label: 'All languages'
+values: ['mul_ZZ']
+uriSegment: 'intl'
+'de_DE':
+label: 'Deutsch (Deutschland)'
+values: ['de_DE', 'de_ZZ', 'mul_ZZ']
+uriSegment: 'deutsch'</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Presets configuration, indexed by dimension identifier</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDefaultPreset">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.ContentRepository/Classes/Domain/Service/ContentDimensionPresetSourceInterface.php#L59">at line 59</a></div>
+        <code>                    array
+    <strong>getDefaultPreset</strong>(string $dimensionName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the default preset of a dimension</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$dimensionName</td>
+                <td><p>The dimension name where the default preset should be returned</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The preset configuration, including the identifier as key &quot;identifier&quot;</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findPresetByDimensionValues">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.ContentRepository/Classes/Domain/Service/ContentDimensionPresetSourceInterface.php#L68">at line 68</a></div>
+        <code>                    array
+    <strong>findPresetByDimensionValues</strong>(string $dimensionName, array $dimensionValues)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Find a dimension preset by dimension values</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$dimensionName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$dimensionValues</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The preset configuration, including the identifier as key &quot;identifier&quot; or NULL if none was found</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAllowedDimensionPresetsAccordingToPreselection">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.ContentRepository/Classes/Domain/Service/ContentDimensionPresetSourceInterface.php#L78">at line 78</a></div>
+        <code>                    array
+    <strong>getAllowedDimensionPresetsAccordingToPreselection</strong>(string $dimensionName, array $preselectedDimensionPresets)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a list of presets of the specified dimension which are allowed in combination with the given presets
+of other dimensions.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$dimensionName</td>
+                <td><p>Name of the dimension to return presets for</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$preselectedDimensionPresets</td>
+                <td><p>An array of dimension name and preset identifier specifying the presets which are already selected</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>An array of presets only for the dimension specified in $dimensionName. Structure is: array($dimensionName =&gt; array('presets' =&gt; array(...))</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isPresetCombinationAllowedByConstraints">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.ContentRepository/Classes/Domain/Service/ContentDimensionPresetSourceInterface.php#L87">at line 87</a></div>
+        <code>                    bool
+    <strong>isPresetCombinationAllowedByConstraints</strong>(array $dimensionsNamesAndPresetIdentifiers)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if the given combination of presets is allowed, according to possibly defined constraints in the
+content dimension configuration.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$dimensionsNamesAndPresetIdentifiers</td>
+                <td><p>Preset pairs, for example array('language' =&gt; 'de', 'country' =&gt; 'GER', 'persona' =&gt; 'clueless')</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findPresetsByTargetValues">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.ContentRepository/Classes/Domain/Service/ContentDimensionPresetSourceInterface.php#L97">at line 97</a></div>
+        <code>                    array
+    <strong>findPresetsByTargetValues</strong>(array $targetValues)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Finds for each configured dimension the best matching preset based on given target value for that dimension.</p></p>                <p><p>The $targetValues array should have the dimension as key and the target value (single value) as value.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$targetValues</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

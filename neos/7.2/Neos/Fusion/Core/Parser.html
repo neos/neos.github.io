@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Fusion\Core\Parser | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (7.2)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Fusion_Core_Parser" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Fusion.html">Fusion</a></li><li class="backslash">\</li><li><a href="../../../Neos/Fusion/Core.html">Core</a></li><li class="backslash">\</li><li>Parser</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Parser    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Parser</strong>        implements
+        <a href="../../../Neos/Fusion/Core/ParserInterface.html"><abbr title="Neos\Fusion\Core\ParserInterface">ParserInterface</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>The Fusion Parser</p></p>                    </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        SCAN_PATTERN_COMMENT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SCAN_PATTERN_OPENINGCONFINEMENT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SCAN_PATTERN_CLOSINGCONFINEMENT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SCAN_PATTERN_DECLARATION
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SCAN_PATTERN_OBJECTDEFINITION
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SCAN_PATTERN_OBJECTPATH
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SPLIT_PATTERN_OBJECTPATH
+                                    </td>
+                <td class="last">
+                    <p><em><p>Split an object path like &quot;foo.bar.baz.quux&quot; or &quot;foo.prototype(Neos.Fusion:Something).bar.baz&quot;
+at the dots (but not the dots inside the prototype definition prototype(...))</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SCAN_PATTERN_OBJECTPATHSEGMENT_IS_PROTOTYPE
+                                    </td>
+                <td class="last">
+                    <p><em><p>Analyze an object path segment like &quot;foo&quot; or &quot;prototype(Neos.Fusion:Something)&quot;
+and detect the latter</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SPLIT_PATTERN_COMMENTTYPE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SPLIT_PATTERN_DECLARATION
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SPLIT_PATTERN_NAMESPACEDECLARATION
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SPLIT_PATTERN_OBJECTDEFINITION
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SPLIT_PATTERN_VALUENUMBER
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SPLIT_PATTERN_VALUEFLOATNUMBER
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SPLIT_PATTERN_VALUELITERAL
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SPLIT_PATTERN_VALUEMULTILINELITERAL
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SPLIT_PATTERN_VALUEBOOLEAN
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SPLIT_PATTERN_VALUENULL
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SCAN_PATTERN_VALUEOBJECTTYPE
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SCAN_PATTERN_DSL_EXPRESSION_START
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SPLIT_PATTERN_DSL_EXPRESSION
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_reservedParseTreeKeys">
+                    static                                                            array
+                                                                                
+                                    </td>
+                <td>$reservedParseTreeKeys</td>
+                <td class="last"><p>Reserved parse tree keys for internal usage.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_objectManager">
+                                        protected                                        <abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$objectManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_dslFactory">
+                                        protected                                        <a href="../../../Neos/Fusion/Core/DslFactory.html"><abbr title="Neos\Fusion\Core\DslFactory">DslFactory</abbr></a>
+                                                                                
+                                    </td>
+                <td>$dslFactory</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_objectTree">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$objectTree</td>
+                <td class="last"><p>The Fusion object tree, created by this parser.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_currentLineNumber">
+                                        protected                                        int
+                                                                                
+                                    </td>
+                <td>$currentLineNumber</td>
+                <td class="last"><p>The line number which is currently processed</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_currentSourceCodeLines">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$currentSourceCodeLines</td>
+                <td class="last"><p>An array of strings of the source code which has</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_currentObjectPathStack">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$currentObjectPathStack</td>
+                <td class="last"><p>The current object path context as defined by confinements.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_currentBlockCommentState">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$currentBlockCommentState</td>
+                <td class="last"><p>Determines if a block comment is currently active or not.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_contextPathAndFilename">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$contextPathAndFilename</td>
+                <td class="last"><p>An optional context path which is used as a prefix for inclusion of further
+Fusion files</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_objectTypeNamespaces">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$objectTypeNamespaces</td>
+                <td class="last"><p>Namespaces used for resolution of Fusion object names. These namespaces
+are a mapping from a user defined key (alias) to a package key (the namespace).</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parse">parse</a>(string $sourceCode, string $contextPathAndFilename = null, array $objectTreeUntilNow = [], bool $buildPrototypeHierarchy = true)
+        
+                                            <p><p>Parses the given Fusion source code and returns an object tree
+as the result.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setObjectTypeNamespace">setObjectTypeNamespace</a>(string $alias, string $namespace)
+        
+                                            <p><p>Sets the given alias to the specified namespace.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initialize">initialize</a>()
+        
+                                            <p><p>Initializes the Fusion parser</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getNextFusionLine">getNextFusionLine</a>()
+        
+                                            <p><p>Get the next, unparsed line of Fusion from this-&gt;currentSourceCodeLines and increase the pointer</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseFusionLine">parseFusionLine</a>(string $fusionLine)
+        
+                                            <p><p>Parses one line of Fusion</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseComment">parseComment</a>(string $fusionLine)
+        
+                                            <p><p>Parses a line with comments or a line while parsing is in block comment mode.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseConfinementBlock">parseConfinementBlock</a>(string $fusionLine, bool $isOpeningConfinement)
+        
+                                            <p><p>Parses a line which opens or closes a confinement</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseDeclaration">parseDeclaration</a>(string $fusionLine)
+        
+                                            <p><p>Parses a parser declaration of the form &quot;declarationtype: declaration&quot;.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseObjectDefinition">parseObjectDefinition</a>(string $fusionLine)
+        
+                                            <p><p>Parses an object definition.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseValueAssignment">parseValueAssignment</a>(string $objectPath, string $value)
+        
+                                            <p><p>Parses a value operation of the type &quot;assignment&quot;.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseValueUnAssignment">parseValueUnAssignment</a>(string $objectPath)
+        
+                                            <p><p>Unsets the object, property or variable specified by the object path.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseValueCopy">parseValueCopy</a>(string $sourceObjectPath, string $targetObjectPath)
+        
+                                            <p><p>Copies the object or value specified by sourcObjectPath and assigns
+it to targetObjectPath.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseNamespaceDeclaration">parseNamespaceDeclaration</a>(string $namespaceDeclaration)
+        
+                                            <p><p>Parses a namespace declaration and stores the result in the namespace registry.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseInclude">parseInclude</a>(string $include)
+        
+                                            <p><p>Parse an include file. Currently, we start a new parser object; but we could as well re-use
+the given one.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getParsedObjectPath">getParsedObjectPath</a>(string $objectPath)
+        
+                                            <p><p>Parse an object path specified as a string and returns an array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getProcessedValue">getProcessedValue</a>(string $unparsedValue)
+        
+                                            <p><p>Parses the given value (which may be a literal, variable or object type) and
+returns the evaluated result, including variables replaced by their actual value.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_invokeAndParseDsl">invokeAndParseDsl</a>(string $identifier, $code)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setValueInObjectTree">setValueInObjectTree</a>(array $objectPathArray, mixed $value, array $objectTree = null)
+        
+                                            <p><p>Assigns a value to a node or a property in the object tree, specified by the object path array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getValueFromObjectTree">getValueFromObjectTree</a>(array $objectPathArray, array $objectTree = null)
+        
+                                            <p><p>Retrieves a value from a node in the object tree, specified by the object path array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCurrentObjectPathPrefix">getCurrentObjectPathPrefix</a>()
+        
+                                            <p><p>Returns the first part of an object path from the current object path stack
+which can be used to prefix a relative object path.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildPrototypeHierarchy">buildPrototypeHierarchy</a>()
+        
+                                            <p><p>Precalculate merged configuration for inherited prototypes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_unquoteString">unquoteString</a>(string $quotedValue)
+        
+                                            <p><p>Removes escapings from a given argument string and trims the outermost
+quotes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_renderCurrentFileAndLineInformation">renderCurrentFileAndLineInformation</a>()
+        
+                                            <p><p>Render a hint about the currently rendered file and líne that is to be used
+in Exception Messages to show where parser errors originate from</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_parse">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L279">at line 279</a></div>
+        <code>                    array
+    <strong>parse</strong>(string $sourceCode, string $contextPathAndFilename = null, array $objectTreeUntilNow = [], bool $buildPrototypeHierarchy = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses the given Fusion source code and returns an object tree
+as the result.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$sourceCode</td>
+                <td><p>The Fusion source code to parse</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$contextPathAndFilename</td>
+                <td><p>An optional path and filename to use as a prefix for inclusion of further Fusion files</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$objectTreeUntilNow</td>
+                <td><p>Used internally for keeping track of the built object tree</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$buildPrototypeHierarchy</td>
+                <td><p>Merge prototype configurations or not. Will be false for includes to only do that once at the end.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>A Fusion object tree, generated from the source code</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setObjectTypeNamespace">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L319">at line 319</a></div>
+        <code>                    void
+    <strong>setObjectTypeNamespace</strong>(string $alias, string $namespace)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the given alias to the specified namespace.</p></p>                <p><p>The namespaces defined through this setter or through a &quot;namespace&quot; declaration
+in one of the Fusions are used to resolve a fully qualified Fusion
+object name while parsing Fusion code.</p>
+<p>The alias is the handle by wich the namespace can be referred to.
+The namespace is, by convention, a package key which must correspond to a
+namespace used in the prototype definitions for Fusion object types.</p>
+<p>The special alias &quot;default&quot; is used as a fallback for resolution of unqualified
+Fusion object types.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$alias</td>
+                <td><p>An alias for the given namespace, for example &quot;neos&quot;</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$namespace</td>
+                <td><p>The namespace, for example &quot;Neos.Neos&quot;</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initialize">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L335">at line 335</a></div>
+        <code>            protected        void
+    <strong>initialize</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Initializes the Fusion parser</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getNextFusionLine">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L349">at line 349</a></div>
+        <code>            protected        string
+    <strong>getNextFusionLine</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the next, unparsed line of Fusion from this-&gt;currentSourceCodeLines and increase the pointer</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>next line of Fusion to parse</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseFusionLine">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L364">at line 364</a></div>
+        <code>            protected        void
+    <strong>parseFusionLine</strong>(string $fusionLine)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses one line of Fusion</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fusionLine</td>
+                <td><p>One line of Fusion code</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseComment">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L396">at line 396</a></div>
+        <code>            protected        void
+    <strong>parseComment</strong>(string $fusionLine)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses a line with comments or a line while parsing is in block comment mode.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fusionLine</td>
+                <td><p>One line of Fusion code</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseConfinementBlock">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L428">at line 428</a></div>
+        <code>            protected        void
+    <strong>parseConfinementBlock</strong>(string $fusionLine, bool $isOpeningConfinement)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses a line which opens or closes a confinement</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fusionLine</td>
+                <td><p>One line of Fusion code</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$isOpeningConfinement</td>
+                <td><p>Set to true, if an opening confinement is to be parsed and false if it's a closing confinement.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseDeclaration">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L448">at line 448</a></div>
+        <code>            protected        void
+    <strong>parseDeclaration</strong>(string $fusionLine)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses a parser declaration of the form &quot;declarationtype: declaration&quot;.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fusionLine</td>
+                <td><p>One line of Fusion code</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseObjectDefinition">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L472">at line 472</a></div>
+        <code>            protected        void
+    <strong>parseObjectDefinition</strong>(string $fusionLine)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses an object definition.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fusionLine</td>
+                <td><p>One line of Fusion code</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseValueAssignment">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L504">at line 504</a></div>
+        <code>            protected        void
+    <strong>parseValueAssignment</strong>(string $objectPath, string $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses a value operation of the type &quot;assignment&quot;.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectPath</td>
+                <td><p>The object path as a string</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$value</td>
+                <td><p>The unparsed value as a string</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseValueUnAssignment">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L517">at line 517</a></div>
+        <code>            protected        void
+    <strong>parseValueUnAssignment</strong>(string $objectPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Unsets the object, property or variable specified by the object path.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectPath</td>
+                <td><p>The object path as a string</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseValueCopy">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L533">at line 533</a></div>
+        <code>            protected        void
+    <strong>parseValueCopy</strong>(string $sourceObjectPath, string $targetObjectPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Copies the object or value specified by sourcObjectPath and assigns
+it to targetObjectPath.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$sourceObjectPath</td>
+                <td><p>Specifies the location in the object tree from where the object or value will be taken</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$targetObjectPath</td>
+                <td><p>Specifies the location in the object tree where the copy will be stored</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseNamespaceDeclaration">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L575">at line 575</a></div>
+        <code>            protected        void
+    <strong>parseNamespaceDeclaration</strong>(string $namespaceDeclaration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses a namespace declaration and stores the result in the namespace registry.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$namespaceDeclaration</td>
+                <td><p>The namespace declaration, for example &quot;neos = Neos.Neos&quot;</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseInclude">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L595">at line 595</a></div>
+        <code>            protected        void
+    <strong>parseInclude</strong>(string $include)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parse an include file. Currently, we start a new parser object; but we could as well re-use
+the given one.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$include</td>
+                <td><p>The include value, for example &quot; FooBar&quot; or &quot; resource://....&quot;. Can also include wildcard mask for Fusion globbing.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getParsedObjectPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L654">at line 654</a></div>
+        <code>            protected        array
+    <strong>getParsedObjectPath</strong>(string $objectPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parse an object path specified as a string and returns an array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectPath</td>
+                <td><p>The object path to parse</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>An object path array</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getProcessedValue">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L706">at line 706</a></div>
+        <code>            protected        mixed
+    <strong>getProcessedValue</strong>(string $unparsedValue)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses the given value (which may be a literal, variable or object type) and
+returns the evaluated result, including variables replaced by their actual value.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$unparsedValue</td>
+                <td><p>The unparsed value</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The processed value</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_invokeAndParseDsl">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L805">at line 805</a></div>
+        <code>            protected        mixed
+    <strong>invokeAndParseDsl</strong>(string $identifier, $code)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identifier</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$code</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setValueInObjectTree">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L833">at line 833</a></div>
+        <code>            protected        array
+    <strong>setValueInObjectTree</strong>(array $objectPathArray, mixed $value, array $objectTree = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Assigns a value to a node or a property in the object tree, specified by the object path array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$objectPathArray</td>
+                <td><p>The object path, specifying the node / property to set</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td><p>The value to assign, is a non-array type or an array with __eelExpression etc.</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$objectTree</td>
+                <td><p>The current (sub-) tree, used internally - don't specify!</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The modified object tree</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getValueFromObjectTree">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L885">at line 885</a></div>
+        <code>            protected        mixed
+    <strong>getValueFromObjectTree</strong>(array $objectPathArray, array $objectTree = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Retrieves a value from a node in the object tree, specified by the object path array.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$objectPathArray</td>
+                <td><p>The object path, specifying the node to retrieve the value of</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$objectTree</td>
+                <td><p>The current (sub-) tree, used internally - don't specify!</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The value</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCurrentObjectPathPrefix">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L912">at line 912</a></div>
+        <code>            protected        string
+    <strong>getCurrentObjectPathPrefix</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the first part of an object path from the current object path stack
+which can be used to prefix a relative object path.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>A part of an object path, ready to use as a prefix</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildPrototypeHierarchy">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L924">at line 924</a></div>
+        <code>            protected        void
+    <strong>buildPrototypeHierarchy</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Precalculate merged configuration for inherited prototypes.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unquoteString">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L957">at line 957</a></div>
+        <code>            protected        string
+    <strong>unquoteString</strong>(string $quotedValue)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes escapings from a given argument string and trims the outermost
+quotes.</p></p>                <p><p>This method is meant as a helper for regular expression results.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$quotedValue</td>
+                <td><p>Value to unquote</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>Unquoted value</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_renderCurrentFileAndLineInformation">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.2/Neos.Fusion/Classes/Core/Parser.php#L978">at line 978</a></div>
+        <code>            protected        string
+    <strong>renderCurrentFileAndLineInformation</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Render a hint about the currently rendered file and líne that is to be used
+in Exception Messages to show where parser errors originate from</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
