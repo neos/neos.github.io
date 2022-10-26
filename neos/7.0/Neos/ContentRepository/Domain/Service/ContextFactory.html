@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepository\Domain\Service\ContextFactory | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (7.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepository_Domain_Service_ContextFactory" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository.html">ContentRepository</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository/Domain.html">Domain</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository/Domain/Service.html">Service</a></li><li class="backslash">\</li><li>ContextFactory</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ContextFactory    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>ContextFactory</strong>        implements
+        <a href="../../../../Neos/ContentRepository/Domain/Service/ContextFactoryInterface.html"><abbr title="Neos\ContentRepository\Domain\Service\ContextFactoryInterface">ContextFactoryInterface</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ContextFactory.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>The ContextFactory makes sure you don't create context instances with
+the same properties twice. Calling create() with the same parameters
+a second time will return the <em>same</em> Context instance again.</p></p>            <p><p>Refer to 'ContextFactoryInterface' instead of 'ContextFactory' when
+injecting this factory into your own class.</p></p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_contextInstances">
+                                        protected                                        <a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a>[]
+                                                                                
+                                    </td>
+                <td>$contextInstances</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_contextImplementation">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$contextImplementation</td>
+                <td class="last"><p>The context implementation this factory will create</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_contentDimensionRepository">
+                                        protected                                        <a href="../../../../Neos/ContentRepository/Domain/Repository/ContentDimensionRepository.html"><abbr title="Neos\ContentRepository\Domain\Repository\ContentDimensionRepository">ContentDimensionRepository</abbr></a>
+                                                                                
+                                    </td>
+                <td>$contentDimensionRepository</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_now">
+                                        protected                                        <abbr title="Neos\Flow\Utility\Now">Now</abbr>
+                                                                                
+                                    </td>
+                <td>$now</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_securityContext">
+                                        protected                                        <abbr title="Neos\Flow\Security\Context">Context</abbr>
+                                                                                
+                                    </td>
+                <td>$securityContext</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_create">create</a>(array $contextProperties = [])
+        
+                                            <p><p>Create the context from the given properties. If a context with those properties was already
+created before then the existing one is returned.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildContextInstance">buildContextInstance</a>(array $contextProperties)
+        
+                                            <p><p>Creates the actual Context instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_mergeContextPropertiesWithDefaults">mergeContextPropertiesWithDefaults</a>(array $contextProperties)
+        
+                                            <p><p>Merges the given context properties with sane defaults for the context implementation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getIdentifier">getIdentifier</a>(array $contextProperties)
+        
+                                            <p><p>Provides a way to identify a context to prevent duplicate context objects.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getIdentifierSource">getIdentifierSource</a>(array $contextProperties)
+        
+                                            <p><p>This creates the actual identifier and needs to be overridden by builders extending this.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateContextProperties">validateContextProperties</a>(array $contextProperties)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_removeDeprecatedProperties">removeDeprecatedProperties</a>(array $contextProperties)
+        
+                                            <p><p>Removes context properties which have been previously allowed but are not supported
+anymore and should be silently ignored</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/ContentDimension.html"><abbr title="Neos\ContentRepository\Domain\Model\ContentDimension">ContentDimension</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getAvailableDimensions">getAvailableDimensions</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_reset">reset</a>()
+        
+                                            <p><p>Reset instances (internal)</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_mergeTargetDimensionContextProperties">mergeTargetDimensionContextProperties</a>(array $contextProperties, array $mergedProperties, array $defaultContextProperties)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_mergeDimensionValues">mergeDimensionValues</a>(array $contextProperties, array $mergedProperties)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getInstances">getInstances</a>()
+        
+                                            <p><p>Returns all known instances of Context.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_create">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ContextFactory.php#L86">at line 86</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a>
+    <strong>create</strong>(array $contextProperties = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create the context from the given properties. If a context with those properties was already
+created before then the existing one is returned.</p></p>                <p><p>The context properties to give depend on the implementation of the context object, for the
+Neos\ContentRepository\Domain\Service\Context it should look like this:</p>
+<p>array(
+'workspaceName' =&gt; 'live',
+'currentDateTime' =&gt; new \Neos\Flow\Utility\Now(),
+'dimensions' =&gt; array(...),
+'targetDimensions' =&gt; array('language' =&gt; 'de', 'persona' =&gt; 'Lisa'),
+'invisibleContentShown' =&gt; false,
+'removedContentShown' =&gt; false,
+'inaccessibleContentShown' =&gt; false
+)</p>
+<p>This array also shows the defaults that get used if you don't provide a certain property.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$contextProperties</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildContextInstance">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ContextFactory.php#L106">at line 106</a></div>
+        <code>            protected        <a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a>
+    <strong>buildContextInstance</strong>(array $contextProperties)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates the actual Context instance.</p></p>                <p><p>This needs to be overridden if the Builder is extended.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$contextProperties</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mergeContextPropertiesWithDefaults">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ContextFactory.php#L118">at line 118</a></div>
+        <code>            protected        array
+    <strong>mergeContextPropertiesWithDefaults</strong>(array $contextProperties)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Merges the given context properties with sane defaults for the context implementation.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$contextProperties</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getIdentifier">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ContextFactory.php#L146">at line 146</a></div>
+        <code>            protected        string
+    <strong>getIdentifier</strong>(array $contextProperties)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Provides a way to identify a context to prevent duplicate context objects.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$contextProperties</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getIdentifierSource">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ContextFactory.php#L157">at line 157</a></div>
+        <code>            protected        string
+    <strong>getIdentifierSource</strong>(array $contextProperties)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>This creates the actual identifier and needs to be overridden by builders extending this.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$contextProperties</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateContextProperties">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ContextFactory.php#L188">at line 188</a></div>
+        <code>            protected        void
+    <strong>validateContextProperties</strong>(array $contextProperties)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$contextProperties</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Exception/InvalidNodeContextException.html"><abbr title="Neos\ContentRepository\Exception\InvalidNodeContextException">InvalidNodeContextException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeDeprecatedProperties">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ContextFactory.php#L244">at line 244</a></div>
+        <code>            protected        array
+    <strong>removeDeprecatedProperties</strong>(array $contextProperties)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes context properties which have been previously allowed but are not supported
+anymore and should be silently ignored</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$contextProperties</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAvailableDimensions">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ContextFactory.php#L255">at line 255</a></div>
+        <code>            protected        <a href="../../../../Neos/ContentRepository/Domain/Model/ContentDimension.html"><abbr title="Neos\ContentRepository\Domain\Model\ContentDimension">ContentDimension</abbr></a>[]
+    <strong>getAvailableDimensions</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/ContentDimension.html"><abbr title="Neos\ContentRepository\Domain\Model\ContentDimension">ContentDimension</abbr></a>[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_reset">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ContextFactory.php#L263">at line 263</a></div>
+        <code>                    void
+    <strong>reset</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Reset instances (internal)</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mergeTargetDimensionContextProperties">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ContextFactory.php#L274">at line 274</a></div>
+        <code>            protected        mixed
+    <strong>mergeTargetDimensionContextProperties</strong>(array $contextProperties, array $mergedProperties, array $defaultContextProperties)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$contextProperties</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$mergedProperties</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$defaultContextProperties</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mergeDimensionValues">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ContextFactory.php#L292">at line 292</a></div>
+        <code>            protected        void
+    <strong>mergeDimensionValues</strong>(array $contextProperties, array $mergedProperties)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$contextProperties</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$mergedProperties</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Exception/InvalidNodeContextException.html"><abbr title="Neos\ContentRepository\Exception\InvalidNodeContextException">InvalidNodeContextException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getInstances">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ContextFactory.php#L314">at line 314</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a>[]
+    <strong>getInstances</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns all known instances of Context.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a>[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

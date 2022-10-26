@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Neos\Service\ContentElementWrappingService | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (7.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Neos_Service_ContentElementWrappingService" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Neos/Service.html">Service</a></li><li class="backslash">\</li><li>ContentElementWrappingService</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ContentElementWrappingService    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>ContentElementWrappingService</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/ContentElementWrappingService.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>The content element wrapping service adds the necessary markup around
+a content element such that it can be edited using the Content Module
+of the Neos Backend.</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_privilegeManager">
+                                        protected                                        <abbr title="Neos\Flow\Security\Authorization\PrivilegeManagerInterface">PrivilegeManagerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$privilegeManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeAuthorizationService">
+                                        protected                                        <a href="../../../Neos/ContentRepository/Service/AuthorizationService.html"><abbr title="Neos\ContentRepository\Service\AuthorizationService">AuthorizationService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodeAuthorizationService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_htmlAugmenter">
+                                        protected                                        <a href="../../../Neos/Fusion/Service/HtmlAugmenter.html"><abbr title="Neos\Fusion\Service\HtmlAugmenter">HtmlAugmenter</abbr></a>
+                                                                                
+                                    </td>
+                <td>$htmlAugmenter</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodePropertyConverterService">
+                                        protected                                        <a href="../../../Neos/Neos/Service/Mapping/NodePropertyConverterService.html"><abbr title="Neos\Neos\Service\Mapping\NodePropertyConverterService">NodePropertyConverterService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodePropertyConverterService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_wrapContentObject">wrapContentObject</a>(<a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node, string $content, string $fusionPath, array $additionalAttributes = [])
+        
+                                            <p><p>Wrap the $content identified by $node with the needed markup for the backend.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_wrapCurrentDocumentMetadata">wrapCurrentDocumentMetadata</a>(<a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node, string $content, string $fusionPath, array $additionalAttributes = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addNodePropertyAttributes">addNodePropertyAttributes</a>(array $attributes, <a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node)
+        
+                                            <p><p>Adds node properties to the given $attributes collection and returns the extended array</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_renderNodePropertyAttribute">renderNodePropertyAttribute</a>(<a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node, string $propertyName)
+        
+                                            <p><p>Renders data attributes needed for the given node property.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addCssClasses">addCssClasses</a>(array $attributes, <a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node, array $initialClasses = [])
+        
+                                            <p><p>Add required CSS classes to the attributes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addDocumentMetadata">addDocumentMetadata</a>(array $attributes, <a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node)
+        
+                                            <p><p>Collects metadata for the Neos backend specifically for document nodes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addGenericEditingMetadata">addGenericEditingMetadata</a>(array $attributes, <a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node)
+        
+                                            <p><p>Collects metadata attributes used to allow editing of the node in the Neos backend.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_collectEditingClassNames">collectEditingClassNames</a>(<a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node)
+        
+                                            <p><p>Collects CSS class names used for styling editable elements in the Neos backend.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isInlineEditable">isInlineEditable</a>(<a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node)
+        
+                                            <p><p>Determine if the Node or one of it's properties is inline editable.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasInlineEditableProperties">hasInlineEditableProperties</a>(<a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node)
+        
+                                            <p><p>Checks if the given Node has any properties configured as 'inlineEditable'</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_needsMetadata">needsMetadata</a>(<a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node, bool $renderCurrentDocumentMetadata)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_dasherize">dasherize</a>(string $value)
+        
+                                            <p><p>Converts camelCased strings to lower cased and non-camel-cased strings</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_wrapContentObject">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/ContentElementWrappingService.php#L65">at line 65</a></div>
+        <code>                    string
+    <strong>wrapContentObject</strong>(<a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node, string $content, string $fusionPath, array $additionalAttributes = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Wrap the $content identified by $node with the needed markup for the backend.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$content</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$additionalAttributes</td>
+                <td><p>additional attributes in the form ['<attribute-name>' =&gt; '<attibute-value>', ...] to be rendered in the element wrapping</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_wrapCurrentDocumentMetadata">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/ContentElementWrappingService.php#L89">at line 89</a></div>
+        <code>                    string
+    <strong>wrapCurrentDocumentMetadata</strong>(<a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node, string $content, string $fusionPath, array $additionalAttributes = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$content</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$additionalAttributes</td>
+                <td><p>additional attributes in the form ['<attribute-name>' =&gt; '<attibute-value>', ...] to be rendered in the element wrapping</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addNodePropertyAttributes">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/ContentElementWrappingService.php#L113">at line 113</a></div>
+        <code>            protected        array
+    <strong>addNodePropertyAttributes</strong>(array $attributes, <a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds node properties to the given $attributes collection and returns the extended array</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$attributes</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>the merged attributes</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_renderNodePropertyAttribute">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/ContentElementWrappingService.php#L133">at line 133</a></div>
+        <code>            protected        array
+    <strong>renderNodePropertyAttribute</strong>(<a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node, string $propertyName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Renders data attributes needed for the given node property.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addCssClasses">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/ContentElementWrappingService.php#L167">at line 167</a></div>
+        <code>            protected        array
+    <strong>addCssClasses</strong>(array $attributes, <a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node, array $initialClasses = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add required CSS classes to the attributes.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$attributes</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$initialClasses</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addDocumentMetadata">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/ContentElementWrappingService.php#L189">at line 189</a></div>
+        <code>            protected        array
+    <strong>addDocumentMetadata</strong>(array $attributes, <a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Collects metadata for the Neos backend specifically for document nodes.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$attributes</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addGenericEditingMetadata">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/ContentElementWrappingService.php#L214">at line 214</a></div>
+        <code>            protected        array
+    <strong>addGenericEditingMetadata</strong>(array $attributes, <a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Collects metadata attributes used to allow editing of the node in the Neos backend.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$attributes</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_collectEditingClassNames">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/ContentElementWrappingService.php#L253">at line 253</a></div>
+        <code>            protected        array
+    <strong>collectEditingClassNames</strong>(<a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Collects CSS class names used for styling editable elements in the Neos backend.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isInlineEditable">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/ContentElementWrappingService.php#L286">at line 286</a></div>
+        <code>            protected        bool
+    <strong>isInlineEditable</strong>(<a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if the Node or one of it's properties is inline editable.</p></p>                <p><p>$parsedType = TypeHandling::parseType($dataType);</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasInlineEditableProperties">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/ContentElementWrappingService.php#L301">at line 301</a></div>
+        <code>            protected        bool
+    <strong>hasInlineEditableProperties</strong>(<a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if the given Node has any properties configured as 'inlineEditable'</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_needsMetadata">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/ContentElementWrappingService.php#L313">at line 313</a></div>
+        <code>            protected        bool
+    <strong>needsMetadata</strong>(<a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node, bool $renderCurrentDocumentMetadata)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$renderCurrentDocumentMetadata</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dasherize">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/ContentElementWrappingService.php#L326">at line 326</a></div>
+        <code>            protected        string
+    <strong>dasherize</strong>(string $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Converts camelCased strings to lower cased and non-camel-cased strings</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

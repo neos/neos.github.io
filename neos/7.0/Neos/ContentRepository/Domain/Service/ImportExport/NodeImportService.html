@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepository\Domain\Service\ImportExport\NodeImportService | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
+        <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../../js/typeahead.min.js"></script>
+        <script src="../../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (7.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepository_Domain_Service_ImportExport_NodeImportService" data-root-path="../../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository.html">ContentRepository</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository/Domain.html">Domain</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository/Domain/Service.html">Service</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository/Domain/Service/ImportExport.html">ImportExport</a></li><li class="backslash">\</li><li>NodeImportService</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>NodeImportService    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>NodeImportService</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeImportService.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Service for importing nodes from an XML structure into the content repository</p></p>            <p><p>Internally, uses associative arrays instead of Domain Models for performance reasons, so &quot;nodeData&quot; in this
+class is always an associative array.</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        SUPPORTED_FORMAT_VERSION
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_persistenceManager">
+                                        protected                                        <abbr title="Neos\Flow\Persistence\PersistenceManagerInterface">PersistenceManagerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$persistenceManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_propertyMapper">
+                                        protected                                        <abbr title="Neos\Flow\Property\PropertyMapper">PropertyMapper</abbr>
+                                                                                
+                                    </td>
+                <td>$propertyMapper</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_entityManager">
+                                        protected                                        <abbr title="Doctrine\ORM\EntityManagerInterface">EntityManagerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$entityManager</td>
+                <td class="last"><p>Doctrine's Entity Manager.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_securityContext">
+                                        protected                                        <abbr title="Neos\Flow\Security\Context">Context</abbr>
+                                                                                
+                                    </td>
+                <td>$securityContext</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_propertyMappingConfiguration">
+                                        protected                                        <a href="../../../../../Neos/ContentRepository/Domain/Service/ImportExport/ImportExportPropertyMappingConfiguration.html"><abbr title="Neos\ContentRepository\Domain\Service\ImportExport\ImportExportPropertyMappingConfiguration">ImportExportPropertyMappingConfiguration</abbr></a>
+                                                                                
+                                    </td>
+                <td>$propertyMappingConfiguration</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeDataStack">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$nodeDataStack</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeIdentifierStack">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$nodeIdentifierStack</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeNameStack">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$nodeNameStack</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeDataPropertyNames">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$nodeDataPropertyNames</td>
+                <td class="last"><p>the list of property names of NodeData. These are the keys inside the nodeData array which is built as intermediate
+representation while parsing the XML.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_import">import</a>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $xmlReader, string $targetPath, string $resourceLoadPath = null)
+        
+                                            <p><p>Imports the sub-tree from the xml reader into the given target path.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    null|string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_determineFormatVersion">determineFormatVersion</a>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $xmlReader)
+        
+                                            <p><p>Determines the ContentRepository format version of the given xml</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_importSubtree">importSubtree</a>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $xmlReader)
+        
+                                            <p><p>Imports the sub-tree from the xml reader into the given target path.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseElement">parseElement</a>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $xmlReader)
+        
+                                            <p><p>Parses the given XML element and adds its content to the internal content tree</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseDimensionsElement">parseDimensionsElement</a>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $reader)
+        
+                                            <p><p>Parses the content of the dimensions-tag and returns the dimensions as an array
+'dimension name' =&gt; dimension value</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseArrayElements">parseArrayElements</a>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $reader, string $elementName, string $currentNodeIdentifier)
+        
+                                            <p><p>Parses the content of exported array and returns the values</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parsePropertiesElement">parsePropertiesElement</a>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $reader, string $currentNodeIdentifier)
+        
+                                            <p><p>Parses the content of the properties-tag and returns the properties as an array
+'property name' =&gt; property value</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_convertElementToValue">convertElementToValue</a>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $reader, string $currentType, string $currentEncoding, string $currentClassName, string $currentNodeIdentifier, string $currentProperty)
+        
+                                            <p><p>Convert an element to the value it represents.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_persistEntities">persistEntities</a>(mixed $propertyValue)
+        
+                                            <p><p>Checks if a propertyValue contains an entity and persists it.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseEndElement">parseEndElement</a>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $reader)
+        
+                                            <p><p>Parses the closing tags writes data to the database then</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCurrentPath">getCurrentPath</a>()
+        
+                                            <p><p>Provides the path for a NodeData according to the current stacks</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getParentPath">getParentPath</a>(string $path)
+        
+                                            <p><p>Provides the parent of the given path</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_persistNodeData">persistNodeData</a>(array $nodeData)
+        
+                                            <p><p>Saves the given array as a node data entity without using the ORM.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_import">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeImportService.php#L179">at line 179</a></div>
+        <code>                    void
+    <strong>import</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $xmlReader, string $targetPath, string $resourceLoadPath = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Imports the sub-tree from the xml reader into the given target path.</p></p>                <p><p>The root node of the imported tree becomes a child of the node specified as the target path,
+as the following example illustrates:</p>
+<ol>
+<li>
+<p>Existing Nodes Before Import:</p>
+<p>path</p>
+<ul>
+<li>to</li>
+<li>
+<ul>
+<li>my</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>targetNode</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>A</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>other</li>
+<li>
+<ul>
+<li>nodes</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Sub-tree in xml to import to 'path/to/my/targetNode':</p>
+<p><B></p>
+<ul>
+<li>
+<B1/>
+<p></B></p>
+</li>
+</ul>
+</li>
+<li>
+<p>existing nodes after the import:</p>
+<p>path</p>
+<ul>
+<li>to</li>
+<li>
+<ul>
+<li>my</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>targetNode</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>A</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>B</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>B1</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>another</li>
+<li>
+<ul>
+<li>sub-tree</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a></td>
+                <td>$xmlReader</td>
+                <td><p>The XML input to import - must be either XML as a string or a prepared \XMLReader instance containing XML data</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$targetPath</td>
+                <td><p>path to the node which becomes parent of the root of the imported sub-tree</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$resourceLoadPath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Exception/ImportException.html"><abbr title="Neos\ContentRepository\Exception\ImportException">ImportException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_determineFormatVersion">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeImportService.php#L212">at line 212</a></div>
+        <code>            protected        null|string
+    <strong>determineFormatVersion</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $xmlReader)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determines the ContentRepository format version of the given xml</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a></td>
+                <td>$xmlReader</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>null|string</td>
+            <td><p>the version as a string or null if the version could not be determined</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_importSubtree">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeImportService.php#L236">at line 236</a></div>
+        <code>            protected        void
+    <strong>importSubtree</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $xmlReader)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Imports the sub-tree from the xml reader into the given target path.</p></p>                <p><p>The root node of the imported tree becomes a child of the node specified by target path.</p>
+<p>This parser uses the depth-first reading strategy, which means it will read the input from top til bottom.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a></td>
+                <td>$xmlReader</td>
+                <td><p>A prepared XML Reader with the structure to import</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseElement">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeImportService.php#L266">at line 266</a></div>
+        <code>            protected        void
+    <strong>parseElement</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $xmlReader)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses the given XML element and adds its content to the internal content tree</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a></td>
+                <td>$xmlReader</td>
+                <td><p>The XML Reader with the element to be parsed as its root</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Exception/ImportException.html"><abbr title="Neos\ContentRepository\Exception\ImportException">ImportException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseDimensionsElement">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeImportService.php#L339">at line 339</a></div>
+        <code>            protected        array
+    <strong>parseDimensionsElement</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $reader)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses the content of the dimensions-tag and returns the dimensions as an array
+'dimension name' =&gt; dimension value</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a></td>
+                <td>$reader</td>
+                <td><p>reader positioned just after an opening dimensions-tag</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>the dimension values</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseArrayElements">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeImportService.php#L372">at line 372</a></div>
+        <code>            protected        array
+    <strong>parseArrayElements</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $reader, string $elementName, string $currentNodeIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses the content of exported array and returns the values</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a></td>
+                <td>$reader</td>
+                <td><p>reader positioned just after an opening array-tag</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$elementName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$currentNodeIdentifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>the array values</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parsePropertiesElement">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeImportService.php#L416">at line 416</a></div>
+        <code>            protected        array
+    <strong>parsePropertiesElement</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $reader, string $currentNodeIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses the content of the properties-tag and returns the properties as an array
+'property name' =&gt; property value</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a></td>
+                <td>$reader</td>
+                <td><p>reader positioned just after an opening properties-tag</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$currentNodeIdentifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>the properties</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_convertElementToValue">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeImportService.php#L481">at line 481</a></div>
+        <code>            protected        mixed
+    <strong>convertElementToValue</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $reader, string $currentType, string $currentEncoding, string $currentClassName, string $currentNodeIdentifier, string $currentProperty)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Convert an element to the value it represents.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a></td>
+                <td>$reader</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$currentType</td>
+                <td><p>current element (userland) type</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$currentEncoding</td>
+                <td><p>date encoding of element</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$currentClassName</td>
+                <td><p>class name of element</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$currentNodeIdentifier</td>
+                <td><p>identifier of the node</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$currentProperty</td>
+                <td><p>current property name</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Exception/ImportException.html"><abbr title="Neos\ContentRepository\Exception\ImportException">ImportException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_persistEntities">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeImportService.php#L525">at line 525</a></div>
+        <code>            protected        void
+    <strong>persistEntities</strong>(mixed $propertyValue)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if a propertyValue contains an entity and persists it.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$propertyValue</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseEndElement">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeImportService.php#L550">at line 550</a></div>
+        <code>            protected        void
+    <strong>parseEndElement</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a> $reader)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses the closing tags writes data to the database then</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/XMLReader">XMLReader</a></td>
+                <td>$reader</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Exception/ImportException.html"><abbr title="Neos\ContentRepository\Exception\ImportException">ImportException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCurrentPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeImportService.php#L588">at line 588</a></div>
+        <code>            protected        string
+    <strong>getCurrentPath</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Provides the path for a NodeData according to the current stacks</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getParentPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeImportService.php#L600">at line 600</a></div>
+        <code>            protected        string
+    <strong>getParentPath</strong>(string $path)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Provides the parent of the given path</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>path to get parent for</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>parent path</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_persistNodeData">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeImportService.php#L625">at line 625</a></div>
+        <code>            protected        void
+    <strong>persistNodeData</strong>(array $nodeData)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Saves the given array as a node data entity without using the ORM.</p></p>                <p><p>If the node data already exists (same dimensions, same identifier, same workspace)
+it is replaced.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$nodeData</td>
+                <td><p>node data to save as an associative array ( $column_name =&gt; $value )</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Exception/ImportException.html"><abbr title="Neos\ContentRepository\Exception\ImportException">ImportException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

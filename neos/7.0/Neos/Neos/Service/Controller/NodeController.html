@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Neos\Service\Controller\NodeController | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (7.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Neos_Service_Controller_NodeController" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Neos/Service.html">Service</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Neos/Service/Controller.html">Controller</a></li><li class="backslash">\</li><li>NodeController</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>NodeController    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>NodeController</strong>        extends <a href="../../../../Neos/Neos/Service/Controller/AbstractServiceController.html"><abbr title="Neos\Neos\Service\Controller\AbstractServiceController">AbstractServiceController</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Service Controller for managing Nodes</p></p>            <p><p>Note: This controller should be, step-by-step, transformed into a clean REST controller (see NEOS-190 and NEOS-199).
+Since this is a rather big endeavor, we slice the elephant and move methods in a clean way from here to the
+new NodesController (\Neos\Neos\Controller\Service\NodesController)</p></p>        </div>
+            
+                <h2>Traits</h2>
+
+        
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../../Neos/Neos/Controller/BackendUserTranslationTrait.html"><abbr title="Neos\Neos\Controller\BackendUserTranslationTrait">BackendUserTranslationTrait</abbr></a>    </div>
+                <div class="col-md-6"><p>A trait to add backend translation based on the backend users settings</p></div>
+            </div>
+            </div>
+    
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property__localizationService">
+                                        protected                                        <abbr title="Neos\Flow\I18n\Service">Service</abbr>
+                                                                                
+                                    </td>
+                <td>$_localizationService</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../../Neos/Neos/Controller/BackendUserTranslationTrait.html#property__localizationService">
+<abbr title="Neos\Neos\Controller\BackendUserTranslationTrait">BackendUserTranslationTrait</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property__userService">
+                                        protected                                        <a href="../../../../Neos/Neos/Service/UserService.html"><abbr title="Neos\Neos\Service\UserService">UserService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$_userService</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../../Neos/Neos/Controller/BackendUserTranslationTrait.html#property__userService">
+<abbr title="Neos\Neos\Controller\BackendUserTranslationTrait">BackendUserTranslationTrait</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_supportedMediaTypes">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$supportedMediaTypes</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_throwableStorage">
+                                        protected                                        <abbr title="Neos\Flow\Log\ThrowableStorageInterface">ThrowableStorageInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$throwableStorage</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../../Neos/Neos/Service/Controller/AbstractServiceController.html#property_throwableStorage">
+<abbr title="Neos\Neos\Service\Controller\AbstractServiceController">AbstractServiceController</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_view">
+                                        protected                                        <a href="../../../../Neos/Neos/Service/View/NodeView.html"><abbr title="Neos\Neos\Service\View\NodeView">NodeView</abbr></a>
+                                                                                
+                                    </td>
+                <td>$view</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_viewFormatToObjectNameMap">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$viewFormatToObjectNameMap</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeTypeManager">
+                                        protected                                        <a href="../../../../Neos/ContentRepository/Domain/Service/NodeTypeManager.html"><abbr title="Neos\ContentRepository\Domain\Service\NodeTypeManager">NodeTypeManager</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodeTypeManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeSearchService">
+                                        protected                                        <a href="../../../../Neos/Neos/Domain/Service/NodeSearchServiceInterface.html"><abbr title="Neos\Neos\Domain\Service\NodeSearchServiceInterface">NodeSearchServiceInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodeSearchService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeFactory">
+                                        protected                                        <a href="../../../../Neos/ContentRepository/Domain/Factory/NodeFactory.html"><abbr title="Neos\ContentRepository\Domain\Factory\NodeFactory">NodeFactory</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodeFactory</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_contextFactory">
+                                        protected                                        <a href="../../../../Neos/ContentRepository/Domain/Service/ContextFactoryInterface.html"><abbr title="Neos\ContentRepository\Domain\Service\ContextFactoryInterface">ContextFactoryInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$contextFactory</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeDataRepository">
+                                        protected                                        <a href="../../../../Neos/ContentRepository/Domain/Repository/NodeDataRepository.html"><abbr title="Neos\ContentRepository\Domain\Repository\NodeDataRepository">NodeDataRepository</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodeDataRepository</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeOperations">
+                                        protected                                        <a href="../../../../Neos/Neos/Service/NodeOperations.html"><abbr title="Neos\Neos\Service\NodeOperations">NodeOperations</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodeOperations</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_domainRepository">
+                                        protected                                        <a href="../../../../Neos/Neos/Domain/Repository/DomainRepository.html"><abbr title="Neos\Neos\Domain\Repository\DomainRepository">DomainRepository</abbr></a>
+                                                                                
+                                    </td>
+                <td>$domainRepository</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initializeObject">initializeObject</a>()
+        
+                                            <p><p>Set the locale according to the user settings</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/Neos/Controller/BackendUserTranslationTrait.html#method_initializeObject">
+<abbr title="Neos\Neos\Controller\BackendUserTranslationTrait">BackendUserTranslationTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_errorAction">errorAction</a>()
+        
+                                            <p><p>A preliminary error action for handling validation errors</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/Neos/Service/Controller/AbstractServiceController.html#method_errorAction">
+<abbr title="Neos\Neos\Service\Controller\AbstractServiceController">AbstractServiceController</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_processRequest">processRequest</a>(<abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr> $request, <abbr title="Neos\Flow\Mvc\ActionResponse">ActionResponse</abbr> $response)
+        
+                                            <p><p>Catch exceptions while processing an exception and respond to JSON format
+TODO: This is an explicit exception handling that will be replaced by format-enabled exception handlers.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/Neos/Service/Controller/AbstractServiceController.html#method_processRequest">
+<abbr title="Neos\Neos\Service\Controller\AbstractServiceController">AbstractServiceController</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_convertException">convertException</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a> $exception)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/Neos/Service/Controller/AbstractServiceController.html#method_convertException">
+<abbr title="Neos\Neos\Service\Controller\AbstractServiceController">AbstractServiceController</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initializeAction">initializeAction</a>()
+        
+                                            <p><p>Select special error action</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getChildNodesForTreeAction">getChildNodesForTreeAction</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node, string $nodeTypeFilter, int $depth, <a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $untilNode)
+        
+                                            <p><p>Return child nodes of specified node for usage in a TreeLoader</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_filterChildNodesForTreeAction">filterChildNodesForTreeAction</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node, string $term, string $nodeType)
+        
+                                            <p><p>Return child nodes of specified node for usage in a TreeLoader based on filter</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createAction">createAction</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $referenceNode, array $nodeData, string $position)
+        
+                                            <p><p>Creates a new node</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createAndRenderAction">createAndRenderAction</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $referenceNode, string $fusionPath, array $nodeData, string $position)
+        
+                                            <p><p>Creates a new node and renders the node inside the containing content collection.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createNodeForTheTreeAction">createNodeForTheTreeAction</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $referenceNode, array $nodeData, string $position, string $nodeTypeFilter = &#039;&#039;)
+        
+                                            <p><p>Creates a new node and returns tree structure</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_moveAction">moveAction</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node, <a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $targetNode, string $position)
+        
+                                            <p><p>Move $node before, into or after $targetNode</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_moveAndRenderAction">moveAndRenderAction</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node, <a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $targetNode, string $position, string $fusionPath)
+        
+                                            <p><p>Move the given node before, into or after the target node depending on the given position and renders it's content collection.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_copyAction">copyAction</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node, <a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $targetNode, string $position, string $nodeName = null)
+        
+                                            <p><p>Copy $node before, into or after $targetNode</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_copyAndRenderAction">copyAndRenderAction</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node, <a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $targetNode, string $position, string $fusionPath, string $nodeName = null)
+        
+                                            <p><p>Copies the given node before, into or after the target node depending on the given position and renders it's content collection.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_updateAction">updateAction</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node)
+        
+                                            <p><p>Updates the specified node.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_updateAndRenderAction">updateAndRenderAction</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node, string $fusionPath)
+        
+                                            <p><p>Updates the specified node and renders it's content collection.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_deleteAction">deleteAction</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node)
+        
+                                            <p><p>Deletes the specified node and all of its sub nodes</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_redirectToRenderNode">redirectToRenderNode</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node, string $fusionPath)
+        
+                                            <p><p>Takes care of creating a redirect to properly render the collection the given node is in.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_processNodeForEditorPlugins">processNodeForEditorPlugins</a>(<a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node)
+        
+                                            <p><p>Returns an array with the data needed by for example the Hallo and Aloha
+link plugins to represent the passed Node instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createContext">createContext</a>(string $workspaceName)
+        
+                                            <p><p>Create a Context for a workspace given by name to be used in this controller.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_initializeObject">
+        <div class="location">in <a href="../../../../Neos/Neos/Controller/BackendUserTranslationTrait.html#method_initializeObject">
+<abbr title="Neos\Neos\Controller\BackendUserTranslationTrait">BackendUserTranslationTrait</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Controller/BackendUserTranslationTrait.php#L39">at line 39</a></div>
+        <code>            protected        void
+    <strong>initializeObject</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the locale according to the user settings</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_errorAction">
+        <div class="location">in <a href="../../../../Neos/Neos/Service/Controller/AbstractServiceController.html#method_errorAction">
+<abbr title="Neos\Neos\Service\Controller\AbstractServiceController">AbstractServiceController</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/AbstractServiceController.php#L48">at line 48</a></div>
+        <code>                    void
+    <strong>errorAction</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>A preliminary error action for handling validation errors</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Mvc\Exception\StopActionException">StopActionException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_processRequest">
+        <div class="location">in <a href="../../../../Neos/Neos/Service/Controller/AbstractServiceController.html#method_processRequest">
+<abbr title="Neos\Neos\Service\Controller\AbstractServiceController">AbstractServiceController</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/AbstractServiceController.php#L83">at line 83</a></div>
+        <code>                    void
+    <strong>processRequest</strong>(<abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr> $request, <abbr title="Neos\Flow\Mvc\ActionResponse">ActionResponse</abbr> $response)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Catch exceptions while processing an exception and respond to JSON format
+TODO: This is an explicit exception handling that will be replaced by format-enabled exception handlers.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></td>
+                <td>$request</td>
+                <td><p>The request object</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Mvc\ActionResponse">ActionResponse</abbr></td>
+                <td>$response</td>
+                <td><p>The response, modified by this handler</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Mvc\Exception\StopActionException">StopActionException</abbr></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_convertException">
+        <div class="location">in <a href="../../../../Neos/Neos/Service/Controller/AbstractServiceController.html#method_convertException">
+<abbr title="Neos\Neos\Service\Controller\AbstractServiceController">AbstractServiceController</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/AbstractServiceController.php#L109">at line 109</a></div>
+        <code>            protected        array
+    <strong>convertException</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a> $exception)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a></td>
+                <td>$exception</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initializeAction">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php#L108">at line 108</a></div>
+        <code>            protected        void
+    <strong>initializeAction</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Select special error action</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getChildNodesForTreeAction">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php#L138">at line 138</a></div>
+        <code>                    void
+    <strong>getChildNodesForTreeAction</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node, string $nodeTypeFilter, int $depth, <a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $untilNode)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return child nodes of specified node for usage in a TreeLoader</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td><p>The node to find child nodes for</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeFilter</td>
+                <td><p>A node type filter</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$depth</td>
+                <td><p>levels of childNodes (0 = unlimited)</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$untilNode</td>
+                <td><p>expand the child nodes until $untilNode is reached, independent of $depth</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_filterChildNodesForTreeAction">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php#L151">at line 151</a></div>
+        <code>                    void
+    <strong>filterChildNodesForTreeAction</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node, string $term, string $nodeType)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return child nodes of specified node for usage in a TreeLoader based on filter</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td><p>The node to find child nodes for</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$term</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeType</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createAction">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php#L184">at line 184</a></div>
+        <code>                    void
+    <strong>createAction</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $referenceNode, array $nodeData, string $position)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates a new node</p></p>                <p><p>We need to call persistAll() in order to return the nextUri. We can't persist only the nodes in NodeDataRepository
+because they might be connected to images / resources which need to be updated at the same time.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$referenceNode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$nodeData</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$position</td>
+                <td><p>where the node should be added (allowed: before, into, after)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createAndRenderAction">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php#L205">at line 205</a></div>
+        <code>                    string
+    <strong>createAndRenderAction</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $referenceNode, string $fusionPath, array $nodeData, string $position)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates a new node and renders the node inside the containing content collection.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$referenceNode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td><p>The Fusion path of the collection</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$nodeData</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$position</td>
+                <td><p>where the node should be added (allowed: before, into, after)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createNodeForTheTreeAction">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php#L220">at line 220</a></div>
+        <code>                    void
+    <strong>createNodeForTheTreeAction</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $referenceNode, array $nodeData, string $position, string $nodeTypeFilter = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates a new node and returns tree structure</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$referenceNode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$nodeData</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$position</td>
+                <td><p>where the node should be added, -1 is before, 0 is in, 1 is after</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeFilter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_moveAction">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php#L237">at line 237</a></div>
+        <code>                    void
+    <strong>moveAction</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node, <a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $targetNode, string $position)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Move $node before, into or after $targetNode</p></p>                <p><p>We need to call persistAll() in order to return the nextUri. We can't persist only the nodes in NodeDataRepository
+because they might be connected to images / resources which need to be updated at the same time.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td><p>The node to be moved</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$targetNode</td>
+                <td><p>The target node to be moved &quot;to&quot;, see $position</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$position</td>
+                <td><p>where the node should be added (allowed: before, into, after)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_moveAndRenderAction">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php#L261">at line 261</a></div>
+        <code>                    void
+    <strong>moveAndRenderAction</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node, <a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $targetNode, string $position, string $fusionPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Move the given node before, into or after the target node depending on the given position and renders it's content collection.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td><p>The node to be moved</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$targetNode</td>
+                <td><p>The target node to be moved &quot;to&quot;, see $position</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$position</td>
+                <td><p>Where the node should be added in relation to $targetNode (allowed: before, into, after)</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td><p>The Fusion path of the collection</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_copyAction">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php#L280">at line 280</a></div>
+        <code>                    void
+    <strong>copyAction</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node, <a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $targetNode, string $position, string $nodeName = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Copy $node before, into or after $targetNode</p></p>                <p><p>We need to call persistAll() in order to return the nextUri. We can't persist only the nodes in NodeDataRepository
+because they might be connected to images / resources which need to be updated at the same time.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td><p>The node to be copied</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$targetNode</td>
+                <td><p>The target node to be copied &quot;to&quot;, see $position</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$position</td>
+                <td><p>Where the node should be added in relation to $targetNode (allowed: before, into, after)</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeName</td>
+                <td><p>Optional node name (if empty random node name will be generated)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Exception/NodeException.html"><abbr title="Neos\ContentRepository\Exception\NodeException">NodeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_copyAndRenderAction">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php#L313">at line 313</a></div>
+        <code>                    void
+    <strong>copyAndRenderAction</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node, <a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $targetNode, string $position, string $fusionPath, string $nodeName = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Copies the given node before, into or after the target node depending on the given position and renders it's content collection.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td><p>The node to be copied</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$targetNode</td>
+                <td><p>The target node to be copied &quot;to&quot;, see $position</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$position</td>
+                <td><p>Where the node should be added in relation to $targetNode (allowed: before, into, after)</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td><p>The Fusion path of the collection</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeName</td>
+                <td><p>Optional node name (if empty random node name will be generated)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateAction">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php#L335">at line 335</a></div>
+        <code>                    void
+    <strong>updateAction</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Updates the specified node.</p></p>                <p><p>Returns the following data:</p>
+<ul>
+<li>the (possibly changed) workspace name of the node</li>
+<li>the URI of the closest document node. If $node is a document node (f.e. a Page), the own URI is returned.
+This is important to handle renames of nodes correctly.</li>
+</ul>
+<p>Note: We do not call $nodeDataRepository-&gt;update() here, as ContentRepository has a stateful API for now.
+We need to call persistAll() in order to return the nextUri. We can't persist only the nodes in NodeDataRepository
+because they might be connected to images / resources which need to be updated at the same time.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td><p>The node to be updated</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateAndRenderAction">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php#L361">at line 361</a></div>
+        <code>                    void
+    <strong>updateAndRenderAction</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node, string $fusionPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Updates the specified node and renders it's content collection.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td><p>The node to be updated</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td><p>The Fusion path of the collection</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteAction">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php#L375">at line 375</a></div>
+        <code>                    void
+    <strong>deleteAction</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Deletes the specified node and all of its sub nodes</p></p>                <p><p>We need to call persistAll() in order to return the nextUri. We can't persist only the nodes in NodeDataRepository
+because they might be connected to images / resources which need to be removed at the same time.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/Node.html"><abbr title="Neos\ContentRepository\Domain\Model\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_redirectToRenderNode">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php#L396">at line 396</a></div>
+        <code>            protected        string
+    <strong>redirectToRenderNode</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node, string $fusionPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Takes care of creating a redirect to properly render the collection the given node is in.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_processNodeForEditorPlugins">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php#L417">at line 417</a></div>
+        <code>            protected        array
+    <strong>processNodeForEditorPlugins</strong>(<a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an array with the data needed by for example the Hallo and Aloha
+link plugins to represent the passed Node instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createContext">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.0/Neos.Neos/Classes/Service/Controller/NodeController.php#L433">at line 433</a></div>
+        <code>            protected        <a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a>
+    <strong>createContext</strong>(string $workspaceName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a Context for a workspace given by name to be used in this controller.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$workspaceName</td>
+                <td><p>Name of the current workspace</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Service/Context.html"><abbr title="Neos\ContentRepository\Domain\Service\Context">Context</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
