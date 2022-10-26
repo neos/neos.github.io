@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\ResourceManagement\ResourceManager | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (7.1)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_ResourceManagement_ResourceManager" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow/ResourceManagement.html">ResourceManagement</a></li><li class="backslash">\</li><li>ResourceManager</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ResourceManager    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>ResourceManager</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>The ResourceManager</p></p>                    </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        DEFAULT_STATIC_COLLECTION_NAME
+                                    </td>
+                <td class="last">
+                    <p><em><p>Names of the default collections for static and persistent resources.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        DEFAULT_PERSISTENT_COLLECTION_NAME
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PUBLIC_RESSOURCE_REGEXP
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_objectManager">
+                                        protected                                        <a href="../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$objectManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_logger">
+                                        protected                                        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$logger</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_resourceRepository">
+                                        protected                                        <a href="../../../Neos/Flow/ResourceManagement/ResourceRepository.html"><abbr title="Neos\Flow\ResourceManagement\ResourceRepository">ResourceRepository</abbr></a>
+                                                                                
+                                    </td>
+                <td>$resourceRepository</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_persistenceManager">
+                                        protected                                        <a href="../../../Neos/Flow/Persistence/PersistenceManagerInterface.html"><abbr title="Neos\Flow\Persistence\PersistenceManagerInterface">PersistenceManagerInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$persistenceManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_settings">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$settings</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_environment">
+                                        protected                                        <a href="../../../Neos/Flow/Utility/Environment.html"><abbr title="Neos\Flow\Utility\Environment">Environment</abbr></a>
+                                                                                
+                                    </td>
+                <td>$environment</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_storages">
+                                        protected                                        <a href="../../../Neos/Flow/ResourceManagement/Storage/StorageInterface.html"><abbr title="Neos\Flow\ResourceManagement\Storage\StorageInterface">StorageInterface</abbr></a>[]
+                                                                                
+                                    </td>
+                <td>$storages</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_targets">
+                                        protected                                        <a href="../../../Neos/Flow/ResourceManagement/Target/TargetInterface.html"><abbr title="Neos\Flow\ResourceManagement\Target\TargetInterface">TargetInterface</abbr></a>[]
+                                                                                
+                                    </td>
+                <td>$targets</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_collections">
+                                        protected                                        <a href="../../../Neos/Flow/ResourceManagement/CollectionInterface.html"><abbr title="Neos\Flow\ResourceManagement\CollectionInterface">CollectionInterface</abbr></a>[]
+                                                                                
+                                    </td>
+                <td>$collections</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_initialized">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$initialized</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectSettings">injectSettings</a>(array $settings)
+        
+                                            <p><p>Injects the settings of this package</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectLogger">injectLogger</a>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        
+                                            <p><p>Injects the (system) logger based on PSR-3.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initialize">initialize</a>()
+        
+                                            <p><p>Initializes the ResourceManager by parsing the related configuration and registering the resource
+stream wrapper.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_importResource">importResource</a>(string|resource $source, string $collectionName = ResourceManager::DEFAULT_PERSISTENT_COLLECTION_NAME, string $forcedPersistenceObjectIdentifier = null)
+        
+                                            <p><p>Imports a resource (file) from the given location as a persistent resource.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_importResourceFromContent">importResourceFromContent</a>(string $content, string $filename, string $collectionName = ResourceManager::DEFAULT_PERSISTENT_COLLECTION_NAME, string $forcedPersistenceObjectIdentifier = null)
+        
+                                            <p><p>Imports the given content passed as a string as a new persistent resource.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_importUploadedResource">importUploadedResource</a>(array $uploadInfo, string $collectionName = self::DEFAULT_PERSISTENT_COLLECTION_NAME)
+        
+                                            <p><p>Imports a resource (file) from the given upload info array as a persistent
+resource.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getResourceBySha1">getResourceBySha1</a>(string $sha1Hash)
+        
+                                            <p><p>Returns the resource object identified by the given SHA1 hash over the content, or NULL if no such PersistentResource
+object is known yet.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    resource|bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getStreamByResource">getStreamByResource</a>(<a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a> $resource)
+        
+                                            <p><p>Returns a stream handle of the given persistent resource which allows for opening / copying the resource's
+data. Note that this stream handle may only be used read-only.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/SplObjectStorage">SplObjectStorage</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getImportedResources">getImportedResources</a>()
+        
+                                            <p><p>Returns an object storage with all resource objects which have been imported
+by the ResourceManager during this script call. Each resource comes with
+an array of additional information about its import.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_deleteResource">deleteResource</a>(<a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a> $resource, bool $unpublishResource = true)
+        
+                                            <p><p>Deletes the given PersistentResource from the ResourceRepository and, if the storage data is no longer used in another
+PersistentResource object, also deletes the data from the storage.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPublicPersistentResourceUri">getPublicPersistentResourceUri</a>(<a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a> $resource)
+        
+                                            <p><p>Returns the web accessible URI for the given resource object</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPublicPersistentResourceUriByHash">getPublicPersistentResourceUriByHash</a>(string $resourceHash, string $collectionName = self::DEFAULT_PERSISTENT_COLLECTION_NAME)
+        
+                                            <p><p>Returns the web accessible URI for the resource object specified by the
+given SHA1 hash.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPublicPackageResourceUri">getPublicPackageResourceUri</a>(string $packageKey, string $relativePathAndFilename)
+        
+                                            <p><p>Returns the public URI for a static resource provided by the specified package and in the given
+path below the package's resources directory.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPublicPackageResourceUriByPath">getPublicPackageResourceUriByPath</a>(string $path)
+        
+                                            <p><p>Returns the public URI for a static resource provided by the public package</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPackageAndPathByPublicPath">getPackageAndPathByPublicPath</a>(string $path)
+        
+                                            <p><p>Return the package key and the relative path and filename from the given resource path</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/ResourceManagement/Storage/StorageInterface.html"><abbr title="Neos\Flow\ResourceManagement\Storage\StorageInterface">StorageInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getStorage">getStorage</a>(string $storageName)
+        
+                                            <p><p>Returns a Storage instance by the given name</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/ResourceManagement/CollectionInterface.html"><abbr title="Neos\Flow\ResourceManagement\CollectionInterface">CollectionInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCollection">getCollection</a>(string $collectionName)
+        
+                                            <p><p>Returns a Collection instance by the given name</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/ResourceManagement/CollectionInterface.html"><abbr title="Neos\Flow\ResourceManagement\CollectionInterface">CollectionInterface</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCollections">getCollections</a>()
+        
+                                            <p><p>Returns an array of currently known Collection instances</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/ResourceManagement/CollectionInterface.html"><abbr title="Neos\Flow\ResourceManagement\CollectionInterface">CollectionInterface</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCollectionsByStorage">getCollectionsByStorage</a>(<a href="../../../Neos/Flow/ResourceManagement/Storage/StorageInterface.html"><abbr title="Neos\Flow\ResourceManagement\Storage\StorageInterface">StorageInterface</abbr></a> $storage)
+        
+                                            <p><p>Returns an array of Collection instances which use the given storage</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shutdownObject">shutdownObject</a>()
+        
+                                            <p><p>Checks if recently imported resources really have been persisted - and if not, removes its data from the
+respective storage.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initializeStorages">initializeStorages</a>()
+        
+                                            <p><p>Initializes the Storage objects according to the current settings</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initializeTargets">initializeTargets</a>()
+        
+                                            <p><p>Initializes the Target objects according to the current settings</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initializeCollections">initializeCollections</a>()
+        
+                                            <p><p>Initializes the Collection objects according to the current settings</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_prepareUploadedFileForImport">prepareUploadedFileForImport</a>(array $uploadInfo)
+        
+                                            <p><p>Prepare an uploaded file to be imported as resource object. Will check the validity of the file,
+move it outside of upload folder if open_basedir is enabled and check the filename.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_injectSettings">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L104">at line 104</a></div>
+        <code>                    void
+    <strong>injectSettings</strong>(array $settings)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the settings of this package</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$settings</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectLogger">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L115">at line 115</a></div>
+        <code>                    void
+    <strong>injectLogger</strong>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the (system) logger based on PSR-3.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+                <td>$logger</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initialize">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L126">at line 126</a></div>
+        <code>            protected        void
+    <strong>initialize</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Initializes the ResourceManager by parsing the related configuration and registering the resource
+stream wrapper.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_importResource">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L152">at line 152</a></div>
+        <code>                    <a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a>
+    <strong>importResource</strong>(string|resource $source, string $collectionName = ResourceManager::DEFAULT_PERSISTENT_COLLECTION_NAME, string $forcedPersistenceObjectIdentifier = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Imports a resource (file) from the given location as a persistent resource.</p></p>                <p><p>On a successful import this method returns a PersistentResource object representing the
+newly imported persistent resource and automatically publishes it to the configured
+publication target.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|resource</td>
+                <td>$source</td>
+                <td><p>A URI (can therefore also be a path and filename) or a PHP resource stream(!) pointing to the PersistentResource to import</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$collectionName</td>
+                <td><p>Name of the collection this new resource should be added to. By default the standard collection for persistent resources is used.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$forcedPersistenceObjectIdentifier</td>
+                <td><p>INTERNAL: Force the object identifier for this resource to the given UUID</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a></td>
+            <td><p>A resource object representing the imported resource</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ResourceManagement/Exception.html"><abbr title="Neos\Flow\ResourceManagement\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_importResourceFromContent">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L198">at line 198</a></div>
+        <code>                    <a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a>
+    <strong>importResourceFromContent</strong>(string $content, string $filename, string $collectionName = ResourceManager::DEFAULT_PERSISTENT_COLLECTION_NAME, string $forcedPersistenceObjectIdentifier = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Imports the given content passed as a string as a new persistent resource.</p></p>                <p><p>The given content typically is binary data or a text format. On a successful import this method
+returns a PersistentResource object representing the imported content and automatically publishes it to the
+configured publication target.</p>
+<p>The specified filename will be used when presenting the resource to a user. Its file extension is
+important because the resource management will derive the IANA Media Type from it.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$content</td>
+                <td><p>The binary content to import</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$filename</td>
+                <td><p>The filename to use for the newly generated resource</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$collectionName</td>
+                <td><p>Name of the collection this new resource should be added to. By default the standard collection for persistent resources is used.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$forcedPersistenceObjectIdentifier</td>
+                <td><p>INTERNAL: Force the object identifier for this resource to the given UUID</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a></td>
+            <td><p>A resource object representing the imported resource</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ResourceManagement/Exception.html"><abbr title="Neos\Flow\ResourceManagement\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_importUploadedResource">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L240">at line 240</a></div>
+        <code>                    <a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a>
+    <strong>importUploadedResource</strong>(array $uploadInfo, string $collectionName = self::DEFAULT_PERSISTENT_COLLECTION_NAME)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Imports a resource (file) from the given upload info array as a persistent
+resource.</p></p>                <p><p>On a successful import this method returns a PersistentResource object representing
+the newly imported persistent resource.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$uploadInfo</td>
+                <td><p>An array detailing the resource to import (expected keys: name, tmp_name)</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$collectionName</td>
+                <td><p>Name of the collection this uploaded resource should be added to</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a></td>
+            <td><p>A resource object representing the imported resource</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ResourceManagement/Exception.html"><abbr title="Neos\Flow\ResourceManagement\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getResourceBySha1">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L272">at line 272</a></div>
+        <code>                    <a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a>|null
+    <strong>getResourceBySha1</strong>(string $sha1Hash)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the resource object identified by the given SHA1 hash over the content, or NULL if no such PersistentResource
+object is known yet.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$sha1Hash</td>
+                <td><p>The SHA1 identifying the data the PersistentResource stands for</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getStreamByResource">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L285">at line 285</a></div>
+        <code>                    resource|bool
+    <strong>getStreamByResource</strong>(<a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a> $resource)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a stream handle of the given persistent resource which allows for opening / copying the resource's
+data. Note that this stream handle may only be used read-only.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a></td>
+                <td>$resource</td>
+                <td><p>The resource to retrieve the stream for</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>resource|bool</td>
+            <td><p>The resource stream or false if the stream could not be obtained</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getImportedResources">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L309">at line 309</a></div>
+        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/SplObjectStorage">SplObjectStorage</a>
+    <strong>getImportedResources</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an object storage with all resource objects which have been imported
+by the ResourceManager during this script call. Each resource comes with
+an array of additional information about its import.</p></p>                <p><p>Example for a returned object storage:</p>
+<p>$resource1 =&gt; array('originalFilename' =&gt; 'Foo.txt'),
+$resource2 =&gt; array('originalFilename' =&gt; 'Bar.txt'),
+...</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/SplObjectStorage">SplObjectStorage</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteResource">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L325">at line 325</a></div>
+        <code>                    bool
+    <strong>deleteResource</strong>(<a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a> $resource, bool $unpublishResource = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Deletes the given PersistentResource from the ResourceRepository and, if the storage data is no longer used in another
+PersistentResource object, also deletes the data from the storage.</p></p>                <p><p>This method will also remove the PersistentResource object from the (internal) ResourceRepository.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a></td>
+                <td>$resource</td>
+                <td><p>The resource to delete</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$unpublishResource</td>
+                <td><p>If the resource should be unpublished before deleting it from the storage</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if the resource was deleted, otherwise false</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPublicPersistentResourceUri">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L376">at line 376</a></div>
+        <code>                    string|bool
+    <strong>getPublicPersistentResourceUri</strong>(<a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a> $resource)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the web accessible URI for the given resource object</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ResourceManagement/PersistentResource.html"><abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr></a></td>
+                <td>$resource</td>
+                <td><p>The resource object</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|bool</td>
+            <td><p>A URI as a string or false if the collection of the resource is not found</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPublicPersistentResourceUriByHash">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L399">at line 399</a></div>
+        <code>                    string
+    <strong>getPublicPersistentResourceUriByHash</strong>(string $resourceHash, string $collectionName = self::DEFAULT_PERSISTENT_COLLECTION_NAME)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the web accessible URI for the resource object specified by the
+given SHA1 hash.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$resourceHash</td>
+                <td><p>The SHA1 hash identifying the resource content</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$collectionName</td>
+                <td><p>Name of the collection the resource is part of</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>A URI as a string</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ResourceManagement/Exception.html"><abbr title="Neos\Flow\ResourceManagement\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPublicPackageResourceUri">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L425">at line 425</a></div>
+        <code>                    string
+    <strong>getPublicPackageResourceUri</strong>(string $packageKey, string $relativePathAndFilename)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the public URI for a static resource provided by the specified package and in the given
+path below the package's resources directory.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$packageKey</td>
+                <td><p>Package key</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$relativePathAndFilename</td>
+                <td><p>A relative path below the &quot;Resources&quot; directory of the package</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPublicPackageResourceUriByPath">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L441">at line 441</a></div>
+        <code>                    string
+    <strong>getPublicPackageResourceUriByPath</strong>(string $path)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the public URI for a static resource provided by the public package</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>The ressource path, like resource://Your.Package/Public/Image/Dummy.png</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPackageAndPathByPublicPath">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L456">at line 456</a></div>
+        <code>                    array
+    <strong>getPackageAndPathByPublicPath</strong>(string $path)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return the package key and the relative path and filename from the given resource path</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>The ressource path, like resource://Your.Package/Public/Image/Dummy.png</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The array contains two value, first the packageKey followed by the relativePathAndFilename</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ResourceManagement/Exception.html"><abbr title="Neos\Flow\ResourceManagement\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getStorage">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L473">at line 473</a></div>
+        <code>                    <a href="../../../Neos/Flow/ResourceManagement/Storage/StorageInterface.html"><abbr title="Neos\Flow\ResourceManagement\Storage\StorageInterface">StorageInterface</abbr></a>
+    <strong>getStorage</strong>(string $storageName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a Storage instance by the given name</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$storageName</td>
+                <td><p>Name of the storage as defined in the settings</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/ResourceManagement/Storage/StorageInterface.html"><abbr title="Neos\Flow\ResourceManagement\Storage\StorageInterface">StorageInterface</abbr></a></td>
+            <td><p>or NULL</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCollection">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L487">at line 487</a></div>
+        <code>                    <a href="../../../Neos/Flow/ResourceManagement/CollectionInterface.html"><abbr title="Neos\Flow\ResourceManagement\CollectionInterface">CollectionInterface</abbr></a>
+    <strong>getCollection</strong>(string $collectionName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a Collection instance by the given name</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$collectionName</td>
+                <td><p>Name of the collection as defined in the settings</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/ResourceManagement/CollectionInterface.html"><abbr title="Neos\Flow\ResourceManagement\CollectionInterface">CollectionInterface</abbr></a></td>
+            <td><p>or NULL</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCollections">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L499">at line 499</a></div>
+        <code>                    <a href="../../../Neos/Flow/ResourceManagement/CollectionInterface.html"><abbr title="Neos\Flow\ResourceManagement\CollectionInterface">CollectionInterface</abbr></a>[]
+    <strong>getCollections</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an array of currently known Collection instances</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/ResourceManagement/CollectionInterface.html"><abbr title="Neos\Flow\ResourceManagement\CollectionInterface">CollectionInterface</abbr></a>[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCollectionsByStorage">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L512">at line 512</a></div>
+        <code>                    <a href="../../../Neos/Flow/ResourceManagement/CollectionInterface.html"><abbr title="Neos\Flow\ResourceManagement\CollectionInterface">CollectionInterface</abbr></a>[]
+    <strong>getCollectionsByStorage</strong>(<a href="../../../Neos/Flow/ResourceManagement/Storage/StorageInterface.html"><abbr title="Neos\Flow\ResourceManagement\Storage\StorageInterface">StorageInterface</abbr></a> $storage)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an array of Collection instances which use the given storage</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ResourceManagement/Storage/StorageInterface.html"><abbr title="Neos\Flow\ResourceManagement\Storage\StorageInterface">StorageInterface</abbr></a></td>
+                <td>$storage</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/ResourceManagement/CollectionInterface.html"><abbr title="Neos\Flow\ResourceManagement\CollectionInterface">CollectionInterface</abbr></a>[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shutdownObject">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L532">at line 532</a></div>
+        <code>                    void
+    <strong>shutdownObject</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if recently imported resources really have been persisted - and if not, removes its data from the
+respective storage.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initializeStorages">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L548">at line 548</a></div>
+        <code>            protected        void
+    <strong>initializeStorages</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Initializes the Storage objects according to the current settings</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ResourceManagement/Exception.html"><abbr title="Neos\Flow\ResourceManagement\Exception">Exception</abbr></a></td>
+                <td><p>if the storage configuration is invalid</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initializeTargets">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L568">at line 568</a></div>
+        <code>            protected        void
+    <strong>initializeTargets</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Initializes the Target objects according to the current settings</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ResourceManagement/Exception.html"><abbr title="Neos\Flow\ResourceManagement\Exception">Exception</abbr></a></td>
+                <td><p>if the target configuration is invalid</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initializeCollections">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L588">at line 588</a></div>
+        <code>            protected        void
+    <strong>initializeCollections</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Initializes the Collection objects according to the current settings</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ResourceManagement/Exception.html"><abbr title="Neos\Flow\ResourceManagement\Exception">Exception</abbr></a></td>
+                <td><p>if the collection configuration is invalid</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prepareUploadedFileForImport">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Flow/Classes/ResourceManagement/ResourceManager.php#L619">at line 619</a></div>
+        <code>            protected        array
+    <strong>prepareUploadedFileForImport</strong>(array $uploadInfo)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Prepare an uploaded file to be imported as resource object. Will check the validity of the file,
+move it outside of upload folder if open_basedir is enabled and check the filename.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$uploadInfo</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Array of string with the two keys &quot;filepath&quot; (the path to get the filecontent from) and &quot;filename&quot; the filename of the originally uploaded file.</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ResourceManagement/Exception.html"><abbr title="Neos\Flow\ResourceManagement\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

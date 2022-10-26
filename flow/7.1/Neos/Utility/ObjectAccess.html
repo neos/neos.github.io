@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Utility\ObjectAccess | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
+        <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/typeahead.min.js"></script>
+        <script src="../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (7.1)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Utility_ObjectAccess" data-root-path="../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../classes.html">Classes</a></li>
+                    <li><a href="../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../traits.html">Traits</a></li>
+                    <li><a href="../../doc-index.html">Index</a></li>
+                    <li><a href="../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../Neos/Utility.html">Utility</a></li><li class="backslash">\</li><li>ObjectAccess</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ObjectAccess    
+            </h1>
+    </div>
+
+    
+    <p>    abstract     class
+    <strong>ObjectAccess</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Provides methods to call appropriate getter/setter on an object given the
+property name. It does this following these rules:</p></p>            <p><ul>
+<li>if the target object is an instance of ArrayAccess, it gets/sets the property</li>
+<li>if public getter/setter method exists, call it.</li>
+<li>if public property exists, return/set the value of it.</li>
+<li>else, throw exception</li>
+</ul>
+<p>Some methods support arrays as well, most notably getProperty() and
+getPropertyPath().</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        ACCESS_GET
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ACCESS_SET
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        ACCESS_PUBLIC
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_gettablePropertyNamesCache">
+                    static                    protected                                        array
+                                                                                
+                                    </td>
+                <td>$gettablePropertyNamesCache</td>
+                <td class="last"><p>Internal RuntimeCache for getGettablePropertyNames()</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_propertyGetterCache">
+                    static                    protected                                        array
+                                                                                
+                                    </td>
+                <td>$propertyGetterCache</td>
+                <td class="last"><p>Internal RuntimeCache for getPropertyInternal()</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getProperty">getProperty</a>(mixed $subject, string|int $propertyName, bool $forceDirectAccess = false)
+        
+                                            <p><p>Get a property of a given object or array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPropertyInternal">getPropertyInternal</a>(mixed $subject, string $propertyName, bool $forceDirectAccess, bool $propertyExists)
+        
+                                            <p><p>Gets a property of a given object or array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initializePropertyGetterCache">initializePropertyGetterCache</a>(string $cacheIdentifier, mixed $subject, string $propertyName)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPropertyPath">getPropertyPath</a>(mixed $subject, string $propertyPath = null)
+        
+                                            <p><p>Gets a property path from a given object or array.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setProperty">setProperty</a>(mixed $subject, string|int $propertyName, mixed $propertyValue, bool $forceDirectAccess = false)
+        
+                                            <p><p>Set a property for a given object.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getGettablePropertyNames">getGettablePropertyNames</a>(object $object)
+        
+                                            <p><p>Returns an array of properties which can be get with the getProperty()
+method.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getSettablePropertyNames">getSettablePropertyNames</a>(object $object)
+        
+                                            <p><p>Returns an array of properties which can be set with the setProperty()
+method.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isPropertySettable">isPropertySettable</a>(object $object, string $propertyName)
+        
+                                            <p><p>Tells if the value of the specified property can be set by this Object Accessor.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isPropertyGettable">isPropertyGettable</a>(object $object, string $propertyName)
+        
+                                            <p><p>Tells if the value of the specified property can be retrieved by this Object Accessor.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getGettableProperties">getGettableProperties</a>(object $object)
+        
+                                            <p><p>Get all properties (names and their current values) of the current
+$object that are accessible through this class.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildSetterMethodName">buildSetterMethodName</a>(string $propertyName)
+        
+                                            <p><p>Build the setter method name for a given property by capitalizing the
+first letter of the property, and prepending it with &quot;set&quot;.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_getProperty">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L68">at line 68</a></div>
+        <code>        static            mixed
+    <strong>getProperty</strong>(mixed $subject, string|int $propertyName, bool $forceDirectAccess = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get a property of a given object or array.</p></p>                <p><p>Tries to get the property the following ways:</p>
+<ul>
+<li>if the target is an array, and has this property, we return it.</li>
+<li>if super cow powers should be used, fetch value through reflection</li>
+<li>if public getter method exists, call it.</li>
+<li>if the target object is an instance of ArrayAccess, it gets the property
+on it if it exists.</li>
+<li>if public property exists, return the value of it.</li>
+<li>else, throw exception</li>
+</ul></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$subject</td>
+                <td><p>Object or array to get the property from</p></td>
+            </tr>
+                    <tr>
+                <td>string|int</td>
+                <td>$propertyName</td>
+                <td><p>Name or index of the property to retrieve</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$forceDirectAccess</td>
+                <td><p>Directly access property using reflection(!)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Value of the property</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td><p>in case $subject was not an object or $propertyName was not a string</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../Neos/Utility/Exception/PropertyNotAccessibleException.html"><abbr title="Neos\Utility\Exception\PropertyNotAccessibleException">PropertyNotAccessibleException</abbr></a></td>
+                <td><p>if the property was not accessible</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPropertyInternal">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L101">at line 101</a></div>
+        <code>        static    protected        mixed
+    <strong>getPropertyInternal</strong>(mixed $subject, string $propertyName, bool $forceDirectAccess, bool $propertyExists)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets a property of a given object or array.</p></p>                <p><p>This is an internal method that does only limited type checking for performance reasons.</p>
+<p>If you can't make sure that $subject is either of type array or object and $propertyName
+of type string you should use getProperty() instead.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$subject</td>
+                <td><p>Object or array to get the property from</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td><p>name of the property to retrieve</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$forceDirectAccess</td>
+                <td><p>directly access property using reflection(!)</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$propertyExists</td>
+                <td><p>(by reference) will be set to true if the specified property exists and is gettable</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Value of the property</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../Neos/Utility/Exception/PropertyNotAccessibleException.html"><abbr title="Neos\Utility\Exception\PropertyNotAccessibleException">PropertyNotAccessibleException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Utility\getProperty()">getProperty()</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initializePropertyGetterCache">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L171">at line 171</a></div>
+        <code>        static    protected        void
+    <strong>initializePropertyGetterCache</strong>(string $cacheIdentifier, mixed $subject, string $propertyName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$cacheIdentifier</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$subject</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPropertyPath">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L205">at line 205</a></div>
+        <code>        static            mixed
+    <strong>getPropertyPath</strong>(mixed $subject, string $propertyPath = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gets a property path from a given object or array.</p></p>                <p><p>If propertyPath is &quot;bla.blubb&quot;, then we first call getProperty($object, 'bla'),
+and on the resulting object we call getProperty(..., 'blubb').</p>
+<p>For arrays the keys are checked likewise.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$subject</td>
+                <td><p>An object or array</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyPath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Value of the property</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setProperty">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L245">at line 245</a></div>
+        <code>        static            bool
+    <strong>setProperty</strong>(mixed $subject, string|int $propertyName, mixed $propertyValue, bool $forceDirectAccess = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set a property for a given object.</p></p>                <p><p>Tries to set the property the following ways:</p>
+<ul>
+<li>if target is an array, set value</li>
+<li>if super cow powers should be used, set value through reflection</li>
+<li>if public setter method exists, call it.</li>
+<li>if public property exists, set it directly.</li>
+<li>if the target object is an instance of ArrayAccess, it sets the property
+on it without checking if it existed.</li>
+<li>else, return false</li>
+</ul></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$subject</td>
+                <td><p>The target object or array</p></td>
+            </tr>
+                    <tr>
+                <td>string|int</td>
+                <td>$propertyName</td>
+                <td><p>Name or index of the property to set</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$propertyValue</td>
+                <td><p>Value of the property</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$forceDirectAccess</td>
+                <td><p>directly access property using reflection(!)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if the property could be set, false otherwise</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td><p>in case $object was not an object or $propertyName was not a string</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getGettablePropertyNames">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L301">at line 301</a></div>
+        <code>        static            array
+    <strong>getGettablePropertyNames</strong>(object $object)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an array of properties which can be get with the getProperty()
+method.</p></p>                <p><p>Includes the following properties:</p>
+<ul>
+<li>which can be get through a public getter method.</li>
+<li>public properties which can be directly get.</li>
+</ul></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td><p>Object to receive property names for</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Array of all gettable property names</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSettablePropertyNames">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L347">at line 347</a></div>
+        <code>        static            array
+    <strong>getSettablePropertyNames</strong>(object $object)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an array of properties which can be set with the setProperty()
+method.</p></p>                <p><p>Includes the following properties:</p>
+<ul>
+<li>which can be set through a public setter method.</li>
+<li>public properties which can be directly set.</li>
+</ul></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td><p>Object to receive property names for</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Array of all settable property names</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isPropertySettable">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L378">at line 378</a></div>
+        <code>        static            bool
+    <strong>isPropertySettable</strong>(object $object, string $propertyName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Tells if the value of the specified property can be set by this Object Accessor.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td><p>Object containing the property</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td><p>Name of the property to check</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isPropertyGettable">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L399">at line 399</a></div>
+        <code>        static            bool
+    <strong>isPropertyGettable</strong>(object $object, string $propertyName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Tells if the value of the specified property can be retrieved by this Object Accessor.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td><p>Object containing the property</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td><p>Name of the property to check</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getGettableProperties">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L424">at line 424</a></div>
+        <code>        static            array
+    <strong>getGettableProperties</strong>(object $object)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get all properties (names and their current values) of the current
+$object that are accessible through this class.</p></p>                        
+                    <p>
+                        
+                                    <tr>
+                        <td>What</td>
+                        <td>to do with ArrayAccess</td>
+                        </tr>
+                            </p>
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td><p>Object to get all properties from.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Associative array of all properties.</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildSetterMethodName">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L447">at line 447</a></div>
+        <code>        static            string
+    <strong>buildSetterMethodName</strong>(string $propertyName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Build the setter method name for a given property by capitalizing the
+first letter of the property, and prepending it with &quot;set&quot;.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td><p>Name of the property</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>Name of the setter method name</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
