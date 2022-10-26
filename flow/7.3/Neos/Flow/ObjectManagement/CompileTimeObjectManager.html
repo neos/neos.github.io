@@ -1,0 +1,2375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\ObjectManagement\CompileTimeObjectManager | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (7.3)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_ObjectManagement_CompileTimeObjectManager" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow/ObjectManagement.html">ObjectManagement</a></li><li class="backslash">\</li><li>CompileTimeObjectManager</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>CompileTimeObjectManager    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>CompileTimeObjectManager</strong>        extends <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/CompileTimeObjectManager.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A specialized Object Manager which is able to do some basic dependency injection for
+singleton scoped objects. This Object Manager is used during compile time when the proxy
+class based DI mechanism is not yet available.</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_context">
+                                        protected                                        <a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a>
+                                                                                
+                                    </td>
+                <td>$context</td>
+                <td class="last"><p>The configuration context for this Flow run</p></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#property_context">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_allSettings">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$allSettings</td>
+                <td class="last"><p>An array of settings of all packages, indexed by package key</p></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#property_allSettings">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_objects">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$objects</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#property_objects">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_dependencyProxies">
+                                        protected                                        <a href="../../../Neos/Flow/ObjectManagement/DependencyInjection/DependencyProxy.html"><abbr title="Neos\Flow\ObjectManagement\DependencyInjection\DependencyProxy">DependencyProxy</abbr></a>[]
+                                                                                
+                                    </td>
+                <td>$dependencyProxies</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#property_dependencyProxies">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_classesBeingInstantiated">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$classesBeingInstantiated</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#property_classesBeingInstantiated">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cachedLowerCasedObjectNames">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$cachedLowerCasedObjectNames</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#property_cachedLowerCasedObjectNames">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_shutdownObjects">
+                                        protected                                        <a target="_blank" rel="noopener" href="https://www.php.net/SplObjectStorage">SplObjectStorage</a>
+                                                                                
+                                    </td>
+                <td>$shutdownObjects</td>
+                <td class="last"><p>A SplObjectStorage containing those objects which need to be shutdown when the container
+shuts down. Each value of each entry is the respective shutdown method name.</p></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#property_shutdownObjects">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_internalShutdownObjects">
+                                        protected                                        <a target="_blank" rel="noopener" href="https://www.php.net/SplObjectStorage">SplObjectStorage</a>
+                                                                                
+                                    </td>
+                <td>$internalShutdownObjects</td>
+                <td class="last"><p>A SplObjectStorage containing only those shutdown objects which have been registered for Flow.</p></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#property_internalShutdownObjects">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_configurationCache">
+                                        protected                                        <a href="../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a>
+                                                                                
+                                    </td>
+                <td>$configurationCache</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_reflectionService">
+                                        protected                                        <a href="../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$reflectionService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_configurationManager">
+                                        protected                                        <a href="../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a>
+                                                                                
+                                    </td>
+                <td>$configurationManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_logger">
+                                        protected                                        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$logger</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_objectConfigurations">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$objectConfigurations</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_registeredClassNames">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$registeredClassNames</td>
+                <td class="last"><p>A list of all class names known to the Object Manager</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_objectNameBuildStack">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$objectNameBuildStack</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cachedClassNamesByScope">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$cachedClassNamesByScope</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a> $context)
+        
+                                            <p><p>Constructor for this Object Container</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method___construct">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setObjects">setObjects</a>(array $objects)
+        
+                                            <p><p>Sets the objects array</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_setObjects">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectAllSettings">injectAllSettings</a>(array $settings)
+        
+                                            <p><p>Injects the global settings array, indexed by package key.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_injectAllSettings">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getContext">getContext</a>()
+        
+                                            <p><p>Returns the context Flow is running in.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getContext">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isRegistered">isRegistered</a>(string $objectName)
+        
+                                            <p><p>Returns true if an object with the given name is registered</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_isRegistered">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_has">has</a>(string $objectName)
+        
+                                            <p><p>Returns true if the container can return an entry for the given identifier.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_has">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_registerShutdownObject">registerShutdownObject</a>(object $object, string $shutdownLifecycleMethodName)
+        
+                                            <p><p>Registers the passed shutdown lifecycle method for the given object</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_registerShutdownObject">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_get">get</a>(string $objectName, mixed ...$constructorArguments)
+        
+                                            <p><p>Returns a fresh or existing instance of the object specified by $objectName.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getScope">getScope</a>(string $objectName)
+        
+                                            <p><p>Returns the scope of the specified object.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getScope">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCaseSensitiveObjectName">getCaseSensitiveObjectName</a>(string $caseInsensitiveObjectName)
+        
+                                            <p><p>Returns the case sensitive object name of an object specified by a
+case insensitive object name. If no object of that name exists,
+false is returned.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getCaseSensitiveObjectName">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getObjectNameByClassName">getObjectNameByClassName</a>(string $className)
+        
+                                            <p><p>Returns the object name corresponding to a given class name.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getObjectNameByClassName">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getClassNameByObjectName">getClassNameByObjectName</a>(string $objectName)
+        
+                                            <p><p>Returns the implementation class name for the specified object</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getClassNameByObjectName">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPackageKeyByObjectName">getPackageKeyByObjectName</a>(string $objectName)
+        
+                                            <p><p>Returns the key of the package the specified object is contained in.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getPackageKeyByObjectName">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setInstance">setInstance</a>(string $objectName, object $instance)
+        
+                                            <p><p>Sets the instance of the given object</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasInstance">hasInstance</a>(string $objectName)
+        
+                                            <p><p>Returns true if this object manager already has an instance for the specified
+object.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_hasInstance">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getInstance">getInstance</a>(string $objectName)
+        
+                                            <p><p>Returns the instance of the specified object or NULL if no instance has been
+registered yet.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getInstance">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getLazyDependencyByHash">getLazyDependencyByHash</a>(string $hash, mixed $propertyReferenceVariable)
+        
+                                            <p><p>This method is used internally to retrieve either an actual (singleton) instance
+of the specified dependency or, if no instance exists yet, a Dependency Proxy
+object which automatically triggers the creation of an instance as soon as
+it is used the first time.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getLazyDependencyByHash">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/ObjectManagement/DependencyInjection/DependencyProxy.html"><abbr title="Neos\Flow\ObjectManagement\DependencyInjection\DependencyProxy">DependencyProxy</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createLazyDependency">createLazyDependency</a>(string $hash, string $propertyReferenceVariable, string $className, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $builder)
+        
+                                            <p><p>Creates a new DependencyProxy class for a dependency built through code
+identified through &quot;hash&quot; for a dependency of class $className. The
+closure in $builder contains code for actually creating the dependency
+instance once it needs to be materialized.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_createLazyDependency">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_forgetInstance">forgetInstance</a>(string $objectName)
+        
+                                            <p><p>Unsets the instance of the given object</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_forgetInstance">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getSessionInstances">getSessionInstances</a>()
+        
+                                            <p><p>Returns all instances of objects with scope session</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getSessionInstances">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shutdown">shutdown</a>()
+        
+                                            <p><p>Shuts down this Object Container by calling the shutdown methods of all
+object instances which were configured to be shut down.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getAllObjectConfigurations">getAllObjectConfigurations</a>()
+        
+                                            <p><p>Returns all current object configurations.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getAllObjectConfigurations">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildObjectByFactory">buildObjectByFactory</a>(string $objectName)
+        
+                                            <p><p>Invokes the Factory defined in the object configuration of the specified object in order
+to build an instance. Arguments which were defined in the object configuration are
+passed to the factory method.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_buildObjectByFactory">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_instantiateClass">instantiateClass</a>(string $className, array $arguments)
+        
+                                            <p><p>Speed optimized alternative to ReflectionClass::newInstanceArgs()</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_instantiateClass">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_callShutdownMethods">callShutdownMethods</a>(<a target="_blank" rel="noopener" href="https://www.php.net/SplObjectStorage">SplObjectStorage</a> $shutdownObjects)
+        
+                                            <p><p>Executes the methods of the provided objects.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_callShutdownMethods">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectReflectionService">injectReflectionService</a>(<a href="../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a> $reflectionService)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectConfigurationManager">injectConfigurationManager</a>(<a href="../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a> $configurationManager)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectConfigurationCache">injectConfigurationCache</a>(<a href="../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a> $configurationCache)
+        
+                                            <p><p>Injects the configuration cache of the Object Framework</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectLogger">injectLogger</a>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        
+                                            <p><p>Injects the (system) logger based on PSR-3.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initialize">initialize</a>(array $packages)
+        
+                                            <p><p>Initializes the the object configurations and some other parts of this Object Manager.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getRegisteredClassNames">getRegisteredClassNames</a>()
+        
+                                            <p><p>Returns a list of all class names, grouped by package key,  which were registered by registerClassFiles()</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getClassNamesByScope">getClassNamesByScope</a>(int $scope)
+        
+                                            <p><p>Returns a list of class names, which are configured with the given scope</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_registerClassFiles">registerClassFiles</a>(array $packages)
+        
+                                            <p><p>Traverses through all class files of the active packages and registers collects the class names as
+&quot;all available class names&quot;. If the respective Flow settings say so, also function test classes
+are registered.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_filterClassNamesFromConfiguration">filterClassNamesFromConfiguration</a>(array $classNames, array $includeClassesConfiguration)
+        
+                                            <p><p>Given an array of class names by package key this filters out classes that
+have been configured to be included by object management.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_applyClassFilterConfiguration">applyClassFilterConfiguration</a>(array $classNames, array $filterConfiguration)
+        
+                                            <p><p>Filters the classnames available for object management by filter expressions that includes classes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildObjectsArray">buildObjectsArray</a>()
+        
+                                            <p><p>Builds the  objects array which contains information about the registered objects,
+their scope, class, built method etc.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getObjectConfigurations">getObjectConfigurations</a>()
+        
+                                            <p><p>Returns object configurations which were previously built by the ConfigurationBuilder.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method___construct">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L88">at line 88</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a> $context)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructor for this Object Container</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a></td>
+                <td>$context</td>
+                <td><p>The configuration context for this Flow run</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setObjects">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_setObjects">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L101">at line 101</a></div>
+        <code>                    void
+    <strong>setObjects</strong>(array $objects)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the objects array</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$objects</td>
+                <td><p>An array of object names and some information about each registered object (scope, lower cased name etc.)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectAllSettings">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_injectAllSettings">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L115">at line 115</a></div>
+        <code>                    void
+    <strong>injectAllSettings</strong>(array $settings)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the global settings array, indexed by package key.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$settings</td>
+                <td><p>The global settings</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getContext">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getContext">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L125">at line 125</a></div>
+        <code>                    <a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a>
+    <strong>getContext</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the context Flow is running in.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a></td>
+            <td><p>the current context</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isRegistered">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_isRegistered">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L138">at line 138</a></div>
+        <code>                    bool
+    <strong>isRegistered</strong>(string $objectName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns true if an object with the given name is registered</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td><p>Name of the object</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if the object has been registered, otherwise false</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_has">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_has">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L157">at line 157</a></div>
+        <code>                    bool
+    <strong>has</strong>(string $objectName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns true if the container can return an entry for the given identifier.</p></p>                <p><p>Returns false otherwise.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_registerShutdownObject">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_registerShutdownObject">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L170">at line 170</a></div>
+        <code>                    void
+    <strong>registerShutdownObject</strong>(object $object, string $shutdownLifecycleMethodName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Registers the passed shutdown lifecycle method for the given object</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td><p>The object to register the shutdown method for</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$shutdownLifecycleMethodName</td>
+                <td><p>The method name of the shutdown method to be called</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_get">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/CompileTimeObjectManager.php#L373">at line 373</a></div>
+        <code>                    object
+    <strong>get</strong>(string $objectName, mixed ...$constructorArguments)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a fresh or existing instance of the object specified by $objectName.</p></p>                <p><p>This specialized get() method is able to do setter injection for properties
+defined in the object configuration of the specified object.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td><p>The name of the object to return an instance of</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>...$constructorArguments</td>
+                <td><p>Any number of arguments that should be passed to the constructor of the object</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object</td>
+            <td><p>The object instance</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ObjectManagement/Exception/CannotBuildObjectException.html"><abbr title="Neos\Flow\ObjectManagement\Exception\CannotBuildObjectException">CannotBuildObjectException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/ObjectManagement/Exception/UnresolvedDependenciesException.html"><abbr title="Neos\Flow\ObjectManagement\Exception\UnresolvedDependenciesException">UnresolvedDependenciesException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/ObjectManagement/Exception/UnknownObjectException.html"><abbr title="Neos\Flow\ObjectManagement\Exception\UnknownObjectException">UnknownObjectException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getScope">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getScope">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L232">at line 232</a></div>
+        <code>                    int
+    <strong>getScope</strong>(string $objectName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the scope of the specified object.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td><p>The object name</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>One of the Configuration::SCOPE_ constants</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ObjectManagement/Exception/UnknownObjectException.html"><abbr title="Neos\Flow\ObjectManagement\Exception\UnknownObjectException">UnknownObjectException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCaseSensitiveObjectName">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getCaseSensitiveObjectName">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L255">at line 255</a></div>
+        <code>                    string|null
+    <strong>getCaseSensitiveObjectName</strong>(string $caseInsensitiveObjectName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp; </td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+        <div class="method-description">
+                            <p><p>Returns the case sensitive object name of an object specified by a
+case insensitive object name. If no object of that name exists,
+false is returned.</p></p>                <p><p>In general, the case sensitive variant is used everywhere in Flow,
+however there might be special situations in which the
+case sensitive name is not available. This method helps you in these
+rare cases.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$caseInsensitiveObjectName</td>
+                <td><p>The object name in lower-, upper- or mixed case</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td><p>Either the mixed case object name or false if no object of that name was found.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getObjectNameByClassName">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getObjectNameByClassName">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L280">at line 280</a></div>
+        <code>                    string
+    <strong>getObjectNameByClassName</strong>(string $className)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the object name corresponding to a given class name.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td><p>The class name</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The object name corresponding to the given class name</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getClassNameByObjectName">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getClassNameByObjectName">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L305">at line 305</a></div>
+        <code>                    string
+    <strong>getClassNameByObjectName</strong>(string $objectName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the implementation class name for the specified object</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td><p>The object name</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The class name corresponding to the given object name or false if no such object is registered</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPackageKeyByObjectName">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getPackageKeyByObjectName">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L320">at line 320</a></div>
+        <code>                    string
+    <strong>getPackageKeyByObjectName</strong>(string $objectName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp; </td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+        <div class="method-description">
+                            <p><p>Returns the key of the package the specified object is contained in.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td><p>The object name</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The package key or false if no such object exists</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setInstance">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/CompileTimeObjectManager.php#L152">at line 152</a></div>
+        <code>                    void
+    <strong>setInstance</strong>(string $objectName, object $instance)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the instance of the given object</p></p>                <p><p>In the Compile Time Object Manager it is even allowed to set instances of not-yet-known objects as long as the Object
+Manager is not initialized, because some few parts need an object registry even before the Object Manager is fully
+functional.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td><p>The object name</p></td>
+            </tr>
+                    <tr>
+                <td>object</td>
+                <td>$instance</td>
+                <td><p>A prebuilt instance</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasInstance">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_hasInstance">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L359">at line 359</a></div>
+        <code>                    bool
+    <strong>hasInstance</strong>(string $objectName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns true if this object manager already has an instance for the specified
+object.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td><p>The object name</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if an instance already exists</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getInstance">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getInstance">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L371">at line 371</a></div>
+        <code>                    object
+    <strong>getInstance</strong>(string $objectName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the instance of the specified object or NULL if no instance has been
+registered yet.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td><p>The object name</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object</td>
+            <td><p>The object or NULL</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLazyDependencyByHash">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getLazyDependencyByHash">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L388">at line 388</a></div>
+        <code>                    mixed
+    <strong>getLazyDependencyByHash</strong>(string $hash, mixed $propertyReferenceVariable)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>This method is used internally to retrieve either an actual (singleton) instance
+of the specified dependency or, if no instance exists yet, a Dependency Proxy
+object which automatically triggers the creation of an instance as soon as
+it is used the first time.</p></p>                <p><p>Internally used by the injectProperties method of generated proxy classes.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$hash</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$propertyReferenceVariable</td>
+                <td><p>Reference of the variable to inject into once the proxy is activated</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createLazyDependency">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_createLazyDependency">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L411">at line 411</a></div>
+        <code>                    <a href="../../../Neos/Flow/ObjectManagement/DependencyInjection/DependencyProxy.html"><abbr title="Neos\Flow\ObjectManagement\DependencyInjection\DependencyProxy">DependencyProxy</abbr></a>
+    <strong>createLazyDependency</strong>(string $hash, string $propertyReferenceVariable, string $className, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $builder)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates a new DependencyProxy class for a dependency built through code
+identified through &quot;hash&quot; for a dependency of class $className. The
+closure in $builder contains code for actually creating the dependency
+instance once it needs to be materialized.</p></p>                <p><p>Internally used by the injectProperties method of generated proxy classes.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$hash</td>
+                <td><p>An md5 hash over the code needed to actually build the dependency instance</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyReferenceVariable</td>
+                <td><p>A first variable where the dependency needs to be injected into</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td><p>Name of the class of the dependency which eventually will be instantiated</p></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$builder</td>
+                <td><p>An anonymous function which creates the instance to be injected</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/ObjectManagement/DependencyInjection/DependencyProxy.html"><abbr title="Neos\Flow\ObjectManagement\DependencyInjection\DependencyProxy">DependencyProxy</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_forgetInstance">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_forgetInstance">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L429">at line 429</a></div>
+        <code>                    void
+    <strong>forgetInstance</strong>(string $objectName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Unsets the instance of the given object</p></p>                <p><p>If run during standard runtime, the whole application might become unstable
+because certain parts might already use an instance of this object. Therefore
+this method should only be used in a setUp() method of a functional test case.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td><p>The object name</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSessionInstances">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getSessionInstances">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L439">at line 439</a></div>
+        <code>                    array
+    <strong>getSessionInstances</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns all instances of objects with scope session</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shutdown">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/CompileTimeObjectManager.php#L448">at line 448</a></div>
+        <code>                    void
+    <strong>shutdown</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Shuts down this Object Container by calling the shutdown methods of all
+object instances which were configured to be shut down.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAllObjectConfigurations">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_getAllObjectConfigurations">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L480">at line 480</a></div>
+        <code>                    array
+    <strong>getAllObjectConfigurations</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns all current object configurations.</p></p>                <p><p>For internal use in bootstrap only. Can change anytime.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildObjectByFactory">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_buildObjectByFactory">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L496">at line 496</a></div>
+        <code>            protected        object
+    <strong>buildObjectByFactory</strong>(string $objectName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Invokes the Factory defined in the object configuration of the specified object in order
+to build an instance. Arguments which were defined in the object configuration are
+passed to the factory method.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td><p>Name of the object to build</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object</td>
+            <td><p>The built object</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ObjectManagement/Exception/UnknownObjectException.html"><abbr title="Neos\Flow\ObjectManagement\Exception\UnknownObjectException">UnknownObjectException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/Exception/InvalidConfigurationTypeException.html"><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationTypeException">InvalidConfigurationTypeException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/ObjectManagement/Exception/CannotBuildObjectException.html"><abbr title="Neos\Flow\ObjectManagement\Exception\CannotBuildObjectException">CannotBuildObjectException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_instantiateClass">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_instantiateClass">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L532">at line 532</a></div>
+        <code>            protected        object
+    <strong>instantiateClass</strong>(string $className, array $arguments)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Speed optimized alternative to ReflectionClass::newInstanceArgs()</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td><p>Name of the class to instantiate</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td><p>Arguments to pass to the constructor</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object</td>
+            <td><p>The object</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ObjectManagement/Exception/CannotBuildObjectException.html"><abbr title="Neos\Flow\ObjectManagement\Exception\CannotBuildObjectException">CannotBuildObjectException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_callShutdownMethods">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectManager.html#method_callShutdownMethods">
+<abbr title="Neos\Flow\ObjectManagement\ObjectManager">ObjectManager</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L554">at line 554</a></div>
+        <code>            protected        void
+    <strong>callShutdownMethods</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/SplObjectStorage">SplObjectStorage</a> $shutdownObjects)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Executes the methods of the provided objects.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/SplObjectStorage">SplObjectStorage</a></td>
+                <td>$shutdownObjects</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectReflectionService">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/CompileTimeObjectManager.php#L83">at line 83</a></div>
+        <code>                    void
+    <strong>injectReflectionService</strong>(<a href="../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a> $reflectionService)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a></td>
+                <td>$reflectionService</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectConfigurationManager">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/CompileTimeObjectManager.php#L92">at line 92</a></div>
+        <code>                    void
+    <strong>injectConfigurationManager</strong>(<a href="../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a> $configurationManager)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a></td>
+                <td>$configurationManager</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectConfigurationCache">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/CompileTimeObjectManager.php#L103">at line 103</a></div>
+        <code>                    void
+    <strong>injectConfigurationCache</strong>(<a href="../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a> $configurationCache)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the configuration cache of the Object Framework</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a></td>
+                <td>$configurationCache</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectLogger">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/CompileTimeObjectManager.php#L114">at line 114</a></div>
+        <code>                    void
+    <strong>injectLogger</strong>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the (system) logger based on PSR-3.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+                <td>$logger</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initialize">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/CompileTimeObjectManager.php#L125">at line 125</a></div>
+        <code>                    void
+    <strong>initialize</strong>(array $packages)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Initializes the the object configurations and some other parts of this Object Manager.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$packages</td>
+                <td><p>An array of active packages to consider</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRegisteredClassNames">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/CompileTimeObjectManager.php#L166">at line 166</a></div>
+        <code>                    array
+    <strong>getRegisteredClassNames</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a list of all class names, grouped by package key,  which were registered by registerClassFiles()</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getClassNamesByScope">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/CompileTimeObjectManager.php#L177">at line 177</a></div>
+        <code>                    array
+    <strong>getClassNamesByScope</strong>(int $scope)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns a list of class names, which are configured with the given scope</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$scope</td>
+                <td><p>One of the ObjectConfiguration::SCOPE_ constants</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>An array of class names configured with the given scope</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_registerClassFiles">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/CompileTimeObjectManager.php#L205">at line 205</a></div>
+        <code>            protected        array
+    <strong>registerClassFiles</strong>(array $packages)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Traverses through all class files of the active packages and registers collects the class names as
+&quot;all available class names&quot;. If the respective Flow settings say so, also function test classes
+are registered.</p></p>                <p><p>For performance reasons this function ignores classes whose name ends with &quot;Exception&quot;.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$packages</td>
+                <td><p>A list of packages to consider</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>A list of class names which were discovered in the given packages</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/Exception/InvalidConfigurationTypeException.html"><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationTypeException">InvalidConfigurationTypeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_filterClassNamesFromConfiguration">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/CompileTimeObjectManager.php#L260">at line 260</a></div>
+        <code>            protected        array
+    <strong>filterClassNamesFromConfiguration</strong>(array $classNames, array $includeClassesConfiguration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Given an array of class names by package key this filters out classes that
+have been configured to be included by object management.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$classNames</td>
+                <td><p>2-level array - key of first level is package key, value of second level is classname (FQN)</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$includeClassesConfiguration</td>
+                <td><p>array of includeClasses configurations</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The input array with all configured to be included in object management added in</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/Exception/InvalidConfigurationTypeException.html"><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationTypeException">InvalidConfigurationTypeException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/Exception/NoSuchOptionException.html"><abbr title="Neos\Flow\Configuration\Exception\NoSuchOptionException">NoSuchOptionException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_applyClassFilterConfiguration">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/CompileTimeObjectManager.php#L274">at line 274</a></div>
+        <code>            protected        array
+    <strong>applyClassFilterConfiguration</strong>(array $classNames, array $filterConfiguration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Filters the classnames available for object management by filter expressions that includes classes.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$classNames</td>
+                <td><p>All classnames per package</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$filterConfiguration</td>
+                <td><p>The filter configuration to apply</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>the remaining class</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/Exception/InvalidConfigurationTypeException.html"><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationTypeException">InvalidConfigurationTypeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildObjectsArray">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/CompileTimeObjectManager.php#L314">at line 314</a></div>
+        <code>            protected        array
+    <strong>buildObjectsArray</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Builds the  objects array which contains information about the registered objects,
+their scope, class, built method etc.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getObjectConfigurations">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Flow/Classes/ObjectManagement/CompileTimeObjectManager.php#L355">at line 355</a></div>
+        <code>                    array
+    <strong>getObjectConfigurations</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns object configurations which were previously built by the ConfigurationBuilder.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

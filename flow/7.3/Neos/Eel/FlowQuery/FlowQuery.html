@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Eel\FlowQuery\FlowQuery | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (7.3)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Eel_FlowQuery_FlowQuery" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Eel.html">Eel</a></li><li class="backslash">\</li><li><a href="../../../Neos/Eel/FlowQuery.html">FlowQuery</a></li><li class="backslash">\</li><li>FlowQuery</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>FlowQuery    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>FlowQuery</strong>        implements
+        <a href="../../../Neos/Eel/ProtectedContextAwareInterface.html"><abbr title="Neos\Eel\ProtectedContextAwareInterface">ProtectedContextAwareInterface</abbr></a>, <a target="_blank" rel="noopener" href="https://www.php.net/IteratorAggregate">IteratorAggregate</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Countable">Countable</a>        (<a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/FlowQuery/FlowQuery.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>FlowQuery is jQuery for PHP, a selector and traversal engine for object sets.</p></p>            <p><p>It is specifically implemented for being used inside Eel, the Embedded Expression
+Language for Flow.</p>
+<p>Essentially, a FlowQuery object is a container for an <em>ordered set</em> of objects
+of a certain type. On this container, <em>operations</em> can be applied (like
+filter(), children(), ...).</p>
+<p>All of these operations work on a <em>set</em>, that is, an operation usually expands
+or shrinks the set of objects.</p>
+<p>An operation normally returns a new FlowQuery instance with the operation applied,
+but there are also some operations like is(...) or count(), which return simple
+types like boolean or numbers. We call these operations <em>final operations</em>.</p>
+<h1>Internal Workings</h1>
+<p>To allow for optimization, calling operations are not immediately executed.
+Instead, they are appended to a <em>list of operations</em>. Only if one tries to
+iterate over the FlowQuery object or calls a final operation, the operations
+get executed and the result is computed.</p>
+<h2>Implementation of Operations</h2>
+<p>Operations are implemented by implementing the OperationInterface or,
+more commonly, subclassing the Operations/AbstractOperation.</p>
+<p>An operation must be <em>equivalence preserving</em>, that is, the following equation
+must always hold:</p>
+<p>applyAllOperations(context) = applyRemainingOperations(applyOperation(context))</p>
+<p>While an operation is running, it can <em>add new operations</em> to the front of the
+operation queue (with pushOperation()), so for example count($filter)
+can first apply filter($filter), followed by count(). However, when doing this,
+great care must be applied by the operation developer in order to still have
+finite runs, and to make sure the operation is <em>equivalence preserving</em>.</p>
+<p>Furthermore, an operation can <em>pop</em> its following operations from the operation
+stack, and <em>peek</em> what the next operation is. It is up to the operation developer
+to ensure equivalence preservation.</p>
+<p>An operation may <em>never</em> invoke __call() on the FlowQuery object it receives;
+as this might lead to an undefined state; i.e. you are not allowed to do:
+$flowQuery-&gt;someOtherOperation() <em>inside</em> an operation.</p>
+<h2>Final Operations</h2>
+<p>If an operation is final, it should return the resulting value directly.</p></p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_context">
+                                        protected                                        array|<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a>
+                                                                                
+                                    </td>
+                <td>$context</td>
+                <td class="last"><p>the objects this FlowQuery object wraps</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_operations">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$operations</td>
+                <td class="last"><p>Ordered list of operations, each operation is internally
+represented as array('name' =&gt; '...', 'arguments' =&gt; array(...))
+whereas the name is a string like 'children' and the arguments
+are a numerically-indexed array</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_operationResolver">
+                                        protected                                        <a href="../../../Neos/Eel/FlowQuery/OperationResolverInterface.html"><abbr title="Neos\Eel\FlowQuery\OperationResolverInterface">OperationResolverInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$operationResolver</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(array|<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a> $context, array $operations = [])
+        
+                                            <p><p>Construct a new FlowQuery object from $context and $operations.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../Neos/Eel/FlowQuery/FlowQuery.html"><abbr title="Neos\Eel\FlowQuery\FlowQuery">FlowQuery</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_q">q</a>(mixed $element)
+        
+                                            <p><p>The q function from eel</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setOperationResolver">setOperationResolver</a>(<a href="../../../Neos/Eel/FlowQuery/OperationResolverInterface.html"><abbr title="Neos\Eel\FlowQuery\OperationResolverInterface">OperationResolverInterface</abbr></a> $operationResolver)
+        
+                                            <p><p>Setter for setting the operation resolver from the outside, only needed
+to successfully run unit tests (hacky!)</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Eel/FlowQuery/FlowQuery.html"><abbr title="Neos\Eel\FlowQuery\FlowQuery">FlowQuery</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___call">__call</a>(string $operationName, array $arguments)
+        
+                                            <p><p>Add a new operation to the operation list and return the new FlowQuery
+object. If the operation is final, we directly compute the result and
+return the value.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_count">count</a>()
+        
+                                            <p><p>Implementation of the countable() interface, which is mapped to the &quot;count&quot; operation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/ArrayIterator">ArrayIterator</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getIterator">getIterator</a>()
+        
+                                            <p><p>Called when iterating over this FlowQuery object, triggers evaluation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_evaluateOperations">evaluateOperations</a>()
+        
+                                            <p><p>Evaluate operations</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_popOperation">popOperation</a>()
+        
+                                            <p><p>Pop the topmost operation from the stack and return it; i.e. the
+operation which should be executed next. The returned array has
+the form:
+array('name' =&gt; '...', 'arguments' =&gt; array(...))</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_pushOperation">pushOperation</a>(string $operationName, array $arguments)
+        
+                                            <p><p>Push a new operation onto the operations stack.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_peekOperationName">peekOperationName</a>()
+        
+                                            <p><p>Peek onto the next operation name, if any, or NULL otherwise.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getContext">getContext</a>()
+        
+                                            <p><p>Get the current context.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setContext">setContext</a>(array|<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a> $context)
+        
+                                            <p><p>Set the updated context with the operation result applied.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_allowsCallOfMethod">allowsCallOfMethod</a>(string $methodName)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/FlowQuery/FlowQuery.php#L110">at line 110</a></div>
+        <code>                    
+    <strong>__construct</strong>(array|<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a> $context, array $operations = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Construct a new FlowQuery object from $context and $operations.</p></p>                <p><p>Only the $context parameter belongs to the public API!</p>
+<p>If a FlowQuery is given as the $context we unwrap its context to assert q(q(context)) == q(context).</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a></td>
+                <td>$context</td>
+                <td><p>The initial context (wrapped objects) for this FlowQuery</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$operations</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Eel/Exception.html"><abbr title="Neos\Eel\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_q">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/FlowQuery/FlowQuery.php#L129">at line 129</a></div>
+        <code>        static            <a href="../../../Neos/Eel/FlowQuery/FlowQuery.html"><abbr title="Neos\Eel\FlowQuery\FlowQuery">FlowQuery</abbr></a>
+    <strong>q</strong>(mixed $element)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>The q function from eel</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$element</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Eel/FlowQuery/FlowQuery.html"><abbr title="Neos\Eel\FlowQuery\FlowQuery">FlowQuery</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Eel/Exception.html"><abbr title="Neos\Eel\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setOperationResolver">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/FlowQuery/FlowQuery.php#L140">at line 140</a></div>
+        <code>                    
+    <strong>setOperationResolver</strong>(<a href="../../../Neos/Eel/FlowQuery/OperationResolverInterface.html"><abbr title="Neos\Eel\FlowQuery\OperationResolverInterface">OperationResolverInterface</abbr></a> $operationResolver)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Setter for setting the operation resolver from the outside, only needed
+to successfully run unit tests (hacky!)</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Eel/FlowQuery/OperationResolverInterface.html"><abbr title="Neos\Eel\FlowQuery\OperationResolverInterface">OperationResolverInterface</abbr></a></td>
+                <td>$operationResolver</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___call">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/FlowQuery/FlowQuery.php#L154">at line 154</a></div>
+        <code>                    <a href="../../../Neos/Eel/FlowQuery/FlowQuery.html"><abbr title="Neos\Eel\FlowQuery\FlowQuery">FlowQuery</abbr></a>
+    <strong>__call</strong>(string $operationName, array $arguments)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add a new operation to the operation list and return the new FlowQuery
+object. If the operation is final, we directly compute the result and
+return the value.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$operationName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Eel/FlowQuery/FlowQuery.html"><abbr title="Neos\Eel\FlowQuery\FlowQuery">FlowQuery</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_count">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/FlowQuery/FlowQuery.php#L185">at line 185</a></div>
+        <code>                    int
+    <strong>count</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Implementation of the countable() interface, which is mapped to the &quot;count&quot; operation.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getIterator">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/FlowQuery/FlowQuery.php#L197">at line 197</a></div>
+        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/ArrayIterator">ArrayIterator</a>
+    <strong>getIterator</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Called when iterating over this FlowQuery object, triggers evaluation.</p></p>                <p><p>Should NEVER be called inside an operation!</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/ArrayIterator">ArrayIterator</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_evaluateOperations">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/FlowQuery/FlowQuery.php#L210">at line 210</a></div>
+        <code>            protected        mixed
+    <strong>evaluateOperations</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Evaluate operations</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>the last operation result if the operation is a final operation, NULL otherwise</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_popOperation">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/FlowQuery/FlowQuery.php#L229">at line 229</a></div>
+        <code>                    array
+    <strong>popOperation</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Pop the topmost operation from the stack and return it; i.e. the
+operation which should be executed next. The returned array has
+the form:
+array('name' =&gt; '...', 'arguments' =&gt; array(...))</p></p>                <p><p>Should only be called inside an operation.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_pushOperation">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/FlowQuery/FlowQuery.php#L244">at line 244</a></div>
+        <code>                    
+    <strong>pushOperation</strong>(string $operationName, array $arguments)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Push a new operation onto the operations stack.</p></p>                <p><p>The last-pushed operation is executed FIRST! (LIFO)</p>
+<p>Should only be called inside an operation.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$operationName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$arguments</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_peekOperationName">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/FlowQuery/FlowQuery.php#L259">at line 259</a></div>
+        <code>                    string
+    <strong>peekOperationName</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Peek onto the next operation name, if any, or NULL otherwise.</p></p>                <p><p>Should only be called inside an operation.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>the next operation name or NULL if no next operation found.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getContext">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/FlowQuery/FlowQuery.php#L275">at line 275</a></div>
+        <code>                    array|<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a>
+    <strong>getContext</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the current context.</p></p>                <p><p>Should only be called inside an operation.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setContext">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/FlowQuery/FlowQuery.php#L287">at line 287</a></div>
+        <code>                    
+    <strong>setContext</strong>(array|<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a> $context)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set the updated context with the operation result applied.</p></p>                <p><p>Should only be called inside an operation.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array|<a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a></td>
+                <td>$context</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_allowsCallOfMethod">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/FlowQuery/FlowQuery.php#L296">at line 296</a></div>
+        <code>                    bool
+    <strong>allowsCallOfMethod</strong>(string $methodName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$methodName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
