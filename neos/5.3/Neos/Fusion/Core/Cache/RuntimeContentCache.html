@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Fusion\Core\Cache\RuntimeContentCache | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (5.3)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Fusion_Core_Cache_RuntimeContentCache" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Fusion.html">Fusion</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Fusion/Core.html">Core</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Fusion/Core/Cache.html">Cache</a></li><li class="backslash">\</li><li>RuntimeContentCache</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>RuntimeContentCache    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>RuntimeContentCache</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Integrate the ContentCache into the Fusion Runtime</p></p>            <p><p>Holds cache related runtime state.</p></p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_runtime">
+                                        protected                                        <a href="../../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a>
+                                                                                
+                                    </td>
+                <td>$runtime</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_enableContentCache">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$enableContentCache</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_inCacheEntryPoint">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$inCacheEntryPoint</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_addCacheSegmentMarkersToPlaceholders">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$addCacheSegmentMarkersToPlaceholders</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cacheMetadata">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$cacheMetadata</td>
+                <td class="last"><p>Stack of cached segment metadata (lifetime)</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_contentCache">
+                                        protected                                        <a href="../../../../Neos/Fusion/Core/Cache/ContentCache.html"><abbr title="Neos\Fusion\Core\Cache\ContentCache">ContentCache</abbr></a>
+                                                                                
+                                    </td>
+                <td>$contentCache</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_tags">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$tags</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_propertyMapper">
+                                        protected                                        <abbr title="Neos\Flow\Property\PropertyMapper">PropertyMapper</abbr>
+                                                                                
+                                    </td>
+                <td>$propertyMapper</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a> $runtime)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addTag">addTag</a>(string $key, string $value)
+        
+                                            <p><p>Adds a tag built from the given key and value.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushTags">flushTags</a>()
+        
+                                            <p><p>Resets the assigned tags, returning the previously set tags.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_enter">enter</a>(array $configuration, string $fusionPath)
+        
+                                            <p><p>Enter an evaluation</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_preEvaluate">preEvaluate</a>(array $evaluateContext, object $fusionObject)
+        
+                                            <p><p>Check for cached evaluation and or collect metadata for evaluation</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_postProcess">postProcess</a>(array $evaluateContext, object $fusionObject, mixed $output)
+        
+                                            <p><p>Post process output for caching information</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_leave">leave</a>(array $evaluateContext)
+        
+                                            <p><p>Leave the evaluation of a path</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_evaluateUncached">evaluateUncached</a>(string $path, array $contextArray)
+        
+                                            <p><p>Evaluate a Fusion path with a given context without content caching</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildCacheIdentifierValues">buildCacheIdentifierValues</a>(array $configuration, string $fusionPath, object $fusionObject)
+        
+                                            <p><p>Builds an array of additional key / values which must go into the calculation of the cache entry identifier for
+a cached content segment.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildCacheTags">buildCacheTags</a>(array $configuration, string $fusionPath, object $fusionObject)
+        
+                                            <p><p>Builds an array of string which must be used as tags for the cache entry identifier of a specific cached content segment.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_unserializeContext">unserializeContext</a>(array $contextArray)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setEnableContentCache">setEnableContentCache</a>(bool $enableContentCache)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getEnableContentCache">getEnableContentCache</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L73">at line 73</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a> $runtime)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a></td>
+                <td>$runtime</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addTag">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L86">at line 86</a></div>
+        <code>                    void
+    <strong>addTag</strong>(string $key, string $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds a tag built from the given key and value.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushTags">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L105">at line 105</a></div>
+        <code>            protected        array
+    <strong>flushTags</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resets the assigned tags, returning the previously set tags.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_enter">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L123">at line 123</a></div>
+        <code>                    array
+    <strong>enter</strong>(array $configuration, string $fusionPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Enter an evaluation</p></p>                <p><p>Needs to be called right before evaluation of a path starts to check the cache mode and set internal state
+like the cache entry point.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$configuration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>An evaluate context array that needs to be passed to subsequent calls to pass the current state</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_preEvaluate">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L160">at line 160</a></div>
+        <code>                    array
+    <strong>preEvaluate</strong>(array $evaluateContext, object $fusionObject)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Check for cached evaluation and or collect metadata for evaluation</p></p>                <p><p>Try to get a cached segment for the current path and return that with all uncached segments evaluated if it
+exists. Otherwise metadata for the cache lifetime is collected (if configured) for nested evaluations (to find the
+minimum maximumLifetime).</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$evaluateContext</td>
+                <td><p>The current evaluation context</p></td>
+            </tr>
+                    <tr>
+                <td>object</td>
+                <td>$fusionObject</td>
+                <td><p>The current Fusion object (for &quot;this&quot; in evaluations)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Cache hit state as boolean and value as mixed</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_postProcess">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L241">at line 241</a></div>
+        <code>                    mixed
+    <strong>postProcess</strong>(array $evaluateContext, object $fusionObject, mixed $output)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Post process output for caching information</p></p>                <p><p>The content cache stores cache segments with markers inside the generated content. This method creates cache
+segments and will process the final outer result (currentPathIsEntryPoint) to remove all cache markers and
+store cache entries.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$evaluateContext</td>
+                <td><p>The current evaluation context</p></td>
+            </tr>
+                    <tr>
+                <td>object</td>
+                <td>$fusionObject</td>
+                <td><p>The current Fusion object (for &quot;this&quot; in evaluations)</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$output</td>
+                <td><p>The generated output after caching information was removed</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The post-processed output with cache segment markers or cleaned for the entry point</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_leave">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L294">at line 294</a></div>
+        <code>                    void
+    <strong>leave</strong>(array $evaluateContext)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Leave the evaluation of a path</p></p>                <p><p>Has to be called in the same function calling enter() for every return path.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$evaluateContext</td>
+                <td><p>The current evaluation context</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_evaluateUncached">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L312">at line 312</a></div>
+        <code>                    mixed
+    <strong>evaluateUncached</strong>(string $path, array $contextArray)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Evaluate a Fusion path with a given context without content caching</p></p>                <p><p>This is used to render uncached segments &quot;out of band&quot; in getCachedSegment of ContentCache.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$contextArray</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>TODO Find another way of disabling the cache (especially to allow cached content inside uncached content)</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildCacheIdentifierValues">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L332">at line 332</a></div>
+        <code>            protected        array
+    <strong>buildCacheIdentifierValues</strong>(array $configuration, string $fusionPath, object $fusionObject)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Builds an array of additional key / values which must go into the calculation of the cache entry identifier for
+a cached content segment.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$configuration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>object</td>
+                <td>$fusionObject</td>
+                <td><p>The actual Fusion object</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildCacheTags">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L349">at line 349</a></div>
+        <code>            protected        array
+    <strong>buildCacheTags</strong>(array $configuration, string $fusionPath, object $fusionObject)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Builds an array of string which must be used as tags for the cache entry identifier of a specific cached content segment.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$configuration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>object</td>
+                <td>$fusionObject</td>
+                <td><p>The actual Fusion object</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unserializeContext">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L374">at line 374</a></div>
+        <code>                    array
+    <strong>unserializeContext</strong>(array $contextArray)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$contextArray</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setEnableContentCache">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L389">at line 389</a></div>
+        <code>                    void
+    <strong>setEnableContentCache</strong>(bool $enableContentCache)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$enableContentCache</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getEnableContentCache">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L397">at line 397</a></div>
+        <code>                    bool
+    <strong>getEnableContentCache</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

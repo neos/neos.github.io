@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Media\Command\MediaCommandController | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (5.3)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Media_Command_MediaCommandController" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Media.html">Media</a></li><li class="backslash">\</li><li><a href="../../../Neos/Media/Command.html">Command</a></li><li class="backslash">\</li><li>MediaCommandController</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>MediaCommandController    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>MediaCommandController</strong>        extends <abbr title="Neos\Flow\Cli\CommandController">CommandController</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Media/Classes/Command/MediaCommandController.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_persistenceManager">
+                                        protected                                        <abbr title="Neos\Flow\Persistence\PersistenceManagerInterface">PersistenceManagerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$persistenceManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_entityManager">
+                                        protected                                        <abbr title="Doctrine\ORM\EntityManagerInterface">EntityManagerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$entityManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_dbalConnection">
+                                        protected                                        <abbr title="Doctrine\DBAL\Connection">Connection</abbr>
+                                                                                
+                                    </td>
+                <td>$dbalConnection</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_assetRepository">
+                                        protected                                        <a href="../../../Neos/Media/Domain/Repository/AssetRepository.html"><abbr title="Neos\Media\Domain\Repository\AssetRepository">AssetRepository</abbr></a>
+                                                                                
+                                    </td>
+                <td>$assetRepository</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_thumbnailRepository">
+                                        protected                                        <a href="../../../Neos/Media/Domain/Repository/ThumbnailRepository.html"><abbr title="Neos\Media\Domain\Repository\ThumbnailRepository">ThumbnailRepository</abbr></a>
+                                                                                
+                                    </td>
+                <td>$thumbnailRepository</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_thumbnailService">
+                                        protected                                        <a href="../../../Neos/Media/Domain/Service/ThumbnailService.html"><abbr title="Neos\Media\Domain\Service\ThumbnailService">ThumbnailService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$thumbnailService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_asyncThumbnails">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$asyncThumbnails</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_mappingStrategy">
+                                        protected                                        <a href="../../../Neos/Media/Domain/Strategy/AssetModelMappingStrategyInterface.html"><abbr title="Neos\Media\Domain\Strategy\AssetModelMappingStrategyInterface">AssetModelMappingStrategyInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$mappingStrategy</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_reflectionService">
+                                        protected                                        <abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr>
+                                                                                
+                                    </td>
+                <td>$reflectionService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_assetVariantGenerator">
+                                        protected                                        <a href="../../../Neos/Media/Domain/Service/AssetVariantGenerator.html"><abbr title="Neos\Media\Domain\Service\AssetVariantGenerator">AssetVariantGenerator</abbr></a>
+                                                                                
+                                    </td>
+                <td>$assetVariantGenerator</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_importResourcesCommand">importResourcesCommand</a>(bool $simulate = false, bool $quiet = false)
+        
+                                            <p><p>Import resources to asset management</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_removeUnusedCommand">removeUnusedCommand</a>(string $assetSource = &#039;&#039;, bool $quiet = false, bool $assumeYes = false, string $onlyTags = &#039;&#039;, int $limit = null)
+        
+                                            <p><p>Remove unused assets</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createThumbnailsCommand">createThumbnailsCommand</a>(string $preset = null, bool $async = null, bool $quiet = false)
+        
+                                            <p><p>Create thumbnails</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_clearThumbnailsCommand">clearThumbnailsCommand</a>(string $preset = null, bool $quiet = false)
+        
+                                            <p><p>Remove thumbnails</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_renderThumbnailsCommand">renderThumbnailsCommand</a>(int $limit = null, bool $quiet = false)
+        
+                                            <p><p>Render ungenerated thumbnails</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_renderVariantsCommand">renderVariantsCommand</a>(int $limit = null, bool $quiet = false, bool $recreate = false)
+        
+                                            <p><p>Render asset variants</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initializeConnection">initializeConnection</a>()
+        
+                                            <p><p>Initializes the DBAL connection which is currently bound to the Doctrine Entity Manager</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_importResourcesCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Media/Classes/Command/MediaCommandController.php#L120">at line 120</a></div>
+        <code>                    void
+    <strong>importResourcesCommand</strong>(bool $simulate = false, bool $quiet = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Import resources to asset management</p></p>                <p><p>This command detects Flow &quot;PersistentResource&quot;s which are not yet available as &quot;Asset&quot; objects and thus don't appear
+in the asset management. The type of the imported asset is determined by the file extension provided by the
+PersistentResource.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$simulate</td>
+                <td><p>If set, this command will only tell what it would do instead of doing it right away</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$quiet</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Persistence\Exception\IllegalObjectTypeException">IllegalObjectTypeException</abbr></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Doctrine\DBAL\DBALException">DBALException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeUnusedCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Media/Classes/Command/MediaCommandController.php#L182">at line 182</a></div>
+        <code>                    void
+    <strong>removeUnusedCommand</strong>(string $assetSource = &#039;&#039;, bool $quiet = false, bool $assumeYes = false, string $onlyTags = &#039;&#039;, int $limit = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Remove unused assets</p></p>                <p><p>This command iterates over all existing assets, checks their usage count and lists the assets which are not
+reported as used by any AssetUsageStrategies. The unused assets can than be removed.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$assetSource</td>
+                <td><p>If specified, only assets of this asset source are considered. For example &quot;neos&quot; or &quot;my-asset-management-system&quot;</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$quiet</td>
+                <td><p>If set, only errors will be displayed.</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$assumeYes</td>
+                <td><p>If set, &quot;yes&quot; is assumed for the &quot;shall I remove ...&quot; dialogs</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$onlyTags</td>
+                <td><p>Comma-separated list of asset tags, that should be taken into account</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$limit</td>
+                <td><p>Limit the result of unused assets displayed and removed for this run.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Persistence\Exception\IllegalObjectTypeException">IllegalObjectTypeException</abbr></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Media/Exception/AssetServiceException.html"><abbr title="Neos\Media\Exception\AssetServiceException">AssetServiceException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createThumbnailsCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Media/Classes/Command/MediaCommandController.php#L291">at line 291</a></div>
+        <code>                    void
+    <strong>createThumbnailsCommand</strong>(string $preset = null, bool $async = null, bool $quiet = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create thumbnails</p></p>                <p><p>Creates thumbnail images based on the configured thumbnail presets. Optional <code>preset</code> parameter to only create
+thumbnails for a specific thumbnail preset configuration.</p>
+<p>Additionally accepts a <code>async</code> parameter determining if the created thumbnails are generated when created.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$preset</td>
+                <td><p>Preset name, if not provided thumbnails are created for all presets</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$async</td>
+                <td><p>Asynchronous generation, if not provided the setting <code>Neos.Media.asyncThumbnails</code> is used</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$quiet</td>
+                <td><p>If set, only errors will be displayed.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Media/Exception/ThumbnailServiceException.html"><abbr title="Neos\Media\Exception\ThumbnailServiceException">ThumbnailServiceException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_clearThumbnailsCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Media/Classes/Command/MediaCommandController.php#L324">at line 324</a></div>
+        <code>                    void
+    <strong>clearThumbnailsCommand</strong>(string $preset = null, bool $quiet = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Remove thumbnails</p></p>                <p><p>Removes all thumbnail objects and their resources. Optional <code>preset</code> parameter to only remove thumbnails
+matching a specific thumbnail preset configuration.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$preset</td>
+                <td><p>Preset name, if provided only thumbnails matching that preset are cleared</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$quiet</td>
+                <td><p>If set, only errors will be displayed.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Persistence\Exception\IllegalObjectTypeException">IllegalObjectTypeException</abbr></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Media/Exception/ThumbnailServiceException.html"><abbr title="Neos\Media\Exception\ThumbnailServiceException">ThumbnailServiceException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_renderThumbnailsCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Media/Classes/Command/MediaCommandController.php#L354">at line 354</a></div>
+        <code>                    void
+    <strong>renderThumbnailsCommand</strong>(int $limit = null, bool $quiet = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Render ungenerated thumbnails</p></p>                <p><p>Loops over ungenerated thumbnails and renders them. Optional <code>limit</code> parameter to limit the amount of
+thumbnails to be rendered to avoid memory exhaustion.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$limit</td>
+                <td><p>Limit the amount of thumbnails to be rendered to avoid memory exhaustion</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$quiet</td>
+                <td><p>If set, only errors will be displayed.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_renderVariantsCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Media/Classes/Command/MediaCommandController.php#L387">at line 387</a></div>
+        <code>                    void
+    <strong>renderVariantsCommand</strong>(int $limit = null, bool $quiet = false, bool $recreate = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Render asset variants</p></p>                <p><p>Loops over missing configured asset variants and renders them. Optional <code>limit</code> parameter to
+limit the amount of variants to be rendered to avoid memory exhaustion.</p>
+<p>If the re-render parameter is given, any existing variants will be rendered again, too.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$limit</td>
+                <td><p>Limit the amount of variants to be rendered to avoid memory exhaustion</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$quiet</td>
+                <td><p>If set, only errors will be displayed.</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$recreate</td>
+                <td><p>If set, existing asset variants will be re-generated and replaced</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Media/Exception/AssetVariantGeneratorException.html"><abbr title="Neos\Media\Exception\AssetVariantGeneratorException">AssetVariantGeneratorException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Persistence\Exception\IllegalObjectTypeException">IllegalObjectTypeException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initializeConnection">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Media/Classes/Command/MediaCommandController.php#L454">at line 454</a></div>
+        <code>            protected        void
+    <strong>initializeConnection</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Initializes the DBAL connection which is currently bound to the Doctrine Entity Manager</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Fusion\View\FusionView | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (5.3)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Fusion_View_FusionView" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Fusion.html">Fusion</a></li><li class="backslash">\</li><li><a href="../../../Neos/Fusion/View.html">View</a></li><li class="backslash">\</li><li>FusionView</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>FusionView    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>FusionView</strong>        extends <abbr title="Neos\Flow\Mvc\View\AbstractView">AbstractView</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/View/FusionView.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>View for using Fusion for standard MVC controllers.</p></p>            <p><p>Recursively loads all Fusion files from the configured path (By default that's Resources/Private/Fusion
+of the current package) and then checks whether a Fusion object for current controller and action can be found.</p>
+<p>If the controller class name is Foo\Bar\Baz\Controller\BlahController and the action is &quot;index&quot;,
+it checks for the Fusion path Foo.Bar.Baz.BlahController.index.
+If this path is found, then it is used for rendering.</p></p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_supportedOptions">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$supportedOptions</td>
+                <td class="last"><p>This contains the supported options, their default values, descriptions and types.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_fusionParser">
+                                        protected                                        <a href="../../../Neos/Fusion/Core/Parser.html"><abbr title="Neos\Fusion\Core\Parser">Parser</abbr></a>
+                                                                                
+                                    </td>
+                <td>$fusionParser</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_parsedFusion">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$parsedFusion</td>
+                <td class="last"><p>The parsed Fusion array in its internal representation</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_fusionPath">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$fusionPath</td>
+                <td class="last"><p>Runtime cache of the Fusion path which should be rendered; derived from the controller
+and action names or set by the user.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_runtimeFactory">
+                                        protected                                        <a href="../../../Neos/Fusion/Core/RuntimeFactory.html"><abbr title="Neos\Fusion\Core\RuntimeFactory">RuntimeFactory</abbr></a>
+                                                                                
+                                    </td>
+                <td>$runtimeFactory</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_fusionRuntime">
+                                        protected                                        <a href="../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a>
+                                                                                
+                                    </td>
+                <td>$fusionRuntime</td>
+                <td class="last"><p>The Fusion Runtime</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setOption">setOption</a>(string $optionName, mixed $value)
+        
+                                            <p><p>Reset runtime cache if an option is changed</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setFusionPath">setFusionPath</a>(string $fusionPath)
+        
+                                            <p><p>Sets the Fusion path to be rendered to an explicit value;
+to be used mostly inside tests.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setPackageKey">setPackageKey</a>(string $packageKey)
+        
+                                            <p><p>The package key where the Fusion should be loaded from. If not given,
+is automatically derived from the current request.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setFusionPathPattern">setFusionPathPattern</a>(string $pathPattern)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setFusionPathPatterns">setFusionPathPatterns</a>(array $pathPatterns)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_render">render</a>()
+        
+                                            <p><p>Render the view</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initializeFusionRuntime">initializeFusionRuntime</a>()
+        
+                                            <p><p>Load the Fusion Files form the defined
+paths and construct a Runtime from the
+parsed results</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_loadFusion">loadFusion</a>()
+        
+                                            <p><p>Load Fusion from the directories specified by $this-&gt;getOption('fusionPathPatterns')</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getMergedFusionObjectTree">getMergedFusionObjectTree</a>()
+        
+                                            <p><p>Parse all the fusion files the are in the current fusionPathPatterns</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getFusionPathPatterns">getFusionPathPatterns</a>()
+        
+                                            <p><p>Get the currently configured fusion path patterns
+<code>@package</code> is replaced by the current package key</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPackageKey">getPackageKey</a>()
+        
+                                            <p><p>Get the package key to load the Fusion from. If set, $this-&gt;getOption('packageKey') is used.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getFusionPathForCurrentRequest">getFusionPathForCurrentRequest</a>()
+        
+                                            <p><p>Determines the Fusion path depending on the current controller and action</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_renderFusion">renderFusion</a>()
+        
+                                            <p><p>Render the given Fusion and return the rendered page</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_setOption">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/View/FusionView.php#L89">at line 89</a></div>
+        <code>                    void
+    <strong>setOption</strong>(string $optionName, mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Reset runtime cache if an option is changed</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$optionName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setFusionPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/View/FusionView.php#L102">at line 102</a></div>
+        <code>                    void
+    <strong>setFusionPath</strong>(string $fusionPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the Fusion path to be rendered to an explicit value;
+to be used mostly inside tests.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPackageKey">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/View/FusionView.php#L114">at line 114</a></div>
+        <code>                    void
+    <strong>setPackageKey</strong>(string $packageKey)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>The package key where the Fusion should be loaded from. If not given,
+is automatically derived from the current request.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$packageKey</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setFusionPathPattern">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/View/FusionView.php#L123">at line 123</a></div>
+        <code>                    void
+    <strong>setFusionPathPattern</strong>(string $pathPattern)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$pathPattern</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setFusionPathPatterns">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/View/FusionView.php#L132">at line 132</a></div>
+        <code>                    void
+    <strong>setFusionPathPatterns</strong>(array $pathPatterns)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$pathPatterns</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_render">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/View/FusionView.php#L143">at line 143</a></div>
+        <code>                    mixed
+    <strong>render</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Render the view</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The rendered view</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initializeFusionRuntime">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/View/FusionView.php#L156">at line 156</a></div>
+        <code>                    void
+    <strong>initializeFusionRuntime</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Load the Fusion Files form the defined
+paths and construct a Runtime from the
+parsed results</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_loadFusion">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/View/FusionView.php#L175">at line 175</a></div>
+        <code>            protected        void
+    <strong>loadFusion</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Load Fusion from the directories specified by $this-&gt;getOption('fusionPathPatterns')</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getMergedFusionObjectTree">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/View/FusionView.php#L185">at line 185</a></div>
+        <code>            protected        array
+    <strong>getMergedFusionObjectTree</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parse all the fusion files the are in the current fusionPathPatterns</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFusionPathPatterns">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/View/FusionView.php#L206">at line 206</a></div>
+        <code>                    array
+    <strong>getFusionPathPatterns</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the currently configured fusion path patterns
+<code>@package</code> is replaced by the current package key</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPackageKey">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/View/FusionView.php#L225">at line 225</a></div>
+        <code>            protected        string
+    <strong>getPackageKey</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the package key to load the Fusion from. If set, $this-&gt;getOption('packageKey') is used.</p></p>                <p><p>Otherwise, the current request is taken and the controller package key is extracted
+from there.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>the package key to load Fusion from</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getFusionPathForCurrentRequest">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/View/FusionView.php#L242">at line 242</a></div>
+        <code>            protected        string
+    <strong>getFusionPathForCurrentRequest</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determines the Fusion path depending on the current controller and action</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_renderFusion">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/View/FusionView.php#L268">at line 268</a></div>
+        <code>            protected        mixed
+    <strong>renderFusion</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Render the given Fusion and return the rendered page</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

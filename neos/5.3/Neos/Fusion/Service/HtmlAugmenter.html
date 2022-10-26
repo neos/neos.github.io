@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Fusion\Service\HtmlAugmenter | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (5.3)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Fusion_Service_HtmlAugmenter" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Fusion.html">Fusion</a></li><li class="backslash">\</li><li><a href="../../../Neos/Fusion/Service.html">Service</a></li><li class="backslash">\</li><li>HtmlAugmenter</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>HtmlAugmenter    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>HtmlAugmenter</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Service/HtmlAugmenter.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A tool that can augment HTML for example by adding arbitrary attributes.</p></p>            <p><p>This is used in order to add meta data arguments to content elements in the Backend.</p>
+<p>Usage:</p>
+<p>$html = '<div foo="existing">Some HTML code</div>';
+$result = (new HtmlAugmenter())-&gt;addAttributes($html, array('foo' =&gt; 'bar', 'bar' =&gt; 'baz'));</p>
+<p>// will return '<div foo="existing bar" bar="baz">Some HTML code&lt;/div'</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addAttributes">addAttributes</a>(string $html, array $attributes, string $fallbackTagName = &#039;div&#039;, array $exclusiveAttributes = null)
+        
+                                            <p><p>Adds the given $attributes to the $html by augmenting the root element.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/DOMNode">DOMNode</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getHtmlRootElement">getHtmlRootElement</a>(string $html)
+        
+                                            <p><p>Detects a unique root tag in the given $html string and returns its DOMNode representation - or NULL if no unique root element could be found</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_mergeAttributes">mergeAttributes</a>(<a target="_blank" rel="noopener" href="https://www.php.net/DOMNode">DOMNode</a> $element, array $newAttributes)
+        
+                                            <p><p>Merges the attributes of $element with the given $newAttributes
+If an attribute exists in both collections, it is merged to &quot;<new attribute> <old attribute>&quot; (if both values differ)</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_renderAttributes">renderAttributes</a>(array $attributes)
+        
+                                            <p><p>Renders the given key/value pair to a valid attribute string in the format <key1>=&quot;<value1>&quot; <key2>=&quot;<value2>&quot;.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_elementHasAttributes">elementHasAttributes</a>(<a target="_blank" rel="noopener" href="https://www.php.net/DOMNode">DOMNode</a> $element, array $attributes = null)
+        
+                                            <p><p>Checks whether the given $element contains at least one of the specified $attributes (case insensitive)</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_addAttributes">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Service/HtmlAugmenter.php#L44">at line 44</a></div>
+        <code>                    string
+    <strong>addAttributes</strong>(string $html, array $attributes, string $fallbackTagName = &#039;div&#039;, array $exclusiveAttributes = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds the given $attributes to the $html by augmenting the root element.</p></p>                <p><p>Attributes are merged with the existing root element's attributes.
+If no unique root node can be determined, a wrapping tag is added with all the given attributes. The name of this
+tag can be specified with $fallbackTagName.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$html</td>
+                <td><p>The HTML code to augment</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$attributes</td>
+                <td><p>Attributes to be added to the root element in the format array('<attribute-name>' =&gt; '<attribute-value>', ...)</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$fallbackTagName</td>
+                <td><p>The root element tag name if one needs to be added</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$exclusiveAttributes</td>
+                <td><p>A list of lowercase(!) attribute names that should be exclusive to the root element. If the existing root element contains one of these a new root element is wrapped</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getHtmlRootElement">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Service/HtmlAugmenter.php#L63">at line 63</a></div>
+        <code>            protected        <a target="_blank" rel="noopener" href="https://www.php.net/DOMNode">DOMNode</a>
+    <strong>getHtmlRootElement</strong>(string $html)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Detects a unique root tag in the given $html string and returns its DOMNode representation - or NULL if no unique root element could be found</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$html</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/DOMNode">DOMNode</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_mergeAttributes">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Service/HtmlAugmenter.php#L96">at line 96</a></div>
+        <code>            protected        void
+    <strong>mergeAttributes</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/DOMNode">DOMNode</a> $element, array $newAttributes)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Merges the attributes of $element with the given $newAttributes
+If an attribute exists in both collections, it is merged to &quot;<new attribute> <old attribute>&quot; (if both values differ)</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/DOMNode">DOMNode</a></td>
+                <td>$element</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$newAttributes</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_renderAttributes">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Service/HtmlAugmenter.php#L120">at line 120</a></div>
+        <code>            protected        string
+    <strong>renderAttributes</strong>(array $attributes)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Renders the given key/value pair to a valid attribute string in the format <key1>=&quot;<value1>&quot; <key2>=&quot;<value2>&quot;.</p></p>                <p><p>..</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$attributes</td>
+                <td><p>The attributes to render in the format array('<attributeKey>' =&gt; '<attributeValue>', ...)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Neos/Exception.html"><abbr title="Neos\Neos\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_elementHasAttributes">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/5.3/Neos.Fusion/Classes/Service/HtmlAugmenter.php#L146">at line 146</a></div>
+        <code>            protected        bool
+    <strong>elementHasAttributes</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/DOMNode">DOMNode</a> $element, array $attributes = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks whether the given $element contains at least one of the specified $attributes (case insensitive)</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/DOMNode">DOMNode</a></td>
+                <td>$element</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$attributes</td>
+                <td><p>array of attribute names to check (lowercase)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if at least one of the $attributes is contained in the given $element, otherwise false</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
