@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepository\Domain\Service\NodeTypeManager | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (8.1)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepository_Domain_Service_NodeTypeManager" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository.html">ContentRepository</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository/Domain.html">Domain</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository/Domain/Service.html">Service</a></li><li class="backslash">\</li><li>NodeTypeManager</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>NodeTypeManager    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>NodeTypeManager</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/8.1/Neos.ContentRepository/Classes/Domain/Service/NodeTypeManager.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Manager for node types</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_cachedNodeTypes">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$cachedNodeTypes</td>
+                <td class="last"><p>Node types, indexed by name</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cachedSubNodeTypes">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$cachedSubNodeTypes</td>
+                <td class="last"><p>Node types, indexed by supertype (also including abstract node types)</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_configurationManager">
+                                        protected                                        <abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr>
+                                                                                
+                                    </td>
+                <td>$configurationManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_fallbackNodeTypeName">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$fallbackNodeTypeName</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_fullNodeTypeConfigurations">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$fullNodeTypeConfigurations</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getNodeTypes">getNodeTypes</a>(bool $includeAbstractNodeTypes = true)
+        
+                                            <p><p>Return all registered node types.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getSubNodeTypes">getSubNodeTypes</a>(string $superTypeName, bool $includeAbstractNodeTypes = true)
+        
+                                            <p><p>Return all non-abstract node types which have a certain $superType, without
+the $superType itself.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getNodeType">getNodeType</a>(string $nodeTypeName)
+        
+                                            <p><p>Returns the specified node type (which could be abstract)</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasNodeType">hasNodeType</a>(string $nodeTypeName)
+        
+                                            <p><p>Checks if the specified node type exists</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createNodeType">createNodeType</a>(string $nodeTypeName)
+        
+                                            <p><p>Creates a new node type</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_loadNodeTypes">loadNodeTypes</a>()
+        
+                                            <p><p>Loads all node types into memory.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_overrideNodeTypes">overrideNodeTypes</a>(array $completeNodeTypeConfiguration)
+        
+                                            <p><p>This method can be used by Functional of Behavioral Tests to completely
+override the node types known in the system.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_loadNodeType">loadNodeType</a>(string $nodeTypeName, array $completeNodeTypeConfiguration)
+        
+                                            <p><p>Load one node type, if it is not loaded yet.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_evaluateSuperTypesConfiguration">evaluateSuperTypesConfiguration</a>(array $superTypesConfiguration, array $completeNodeTypeConfiguration)
+        
+                                            <p><p>Evaluates the given superTypes configuation and returns the array of effective superTypes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_evaluateSuperTypeConfiguration">evaluateSuperTypeConfiguration</a>(string $superTypeName, bool $enabled, array $completeNodeTypeConfiguration)
+        
+                                            <p><p>Evaluates a single superType configuration and returns the NodeType if enabled.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_getNodeTypes">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.1/Neos.ContentRepository/Classes/Domain/Service/NodeTypeManager.php#L68">at line 68</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a>[]
+    <strong>getNodeTypes</strong>(bool $includeAbstractNodeTypes = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return all registered node types.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$includeAbstractNodeTypes</td>
+                <td><p>Whether to include abstract node types, defaults to true</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a>[]</td>
+            <td><p>All node types registered in the system, indexed by node type name</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSubNodeTypes">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.1/Neos.ContentRepository/Classes/Domain/Service/NodeTypeManager.php#L93">at line 93</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a>[]
+    <strong>getSubNodeTypes</strong>(string $superTypeName, bool $includeAbstractNodeTypes = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return all non-abstract node types which have a certain $superType, without
+the $superType itself.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$superTypeName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$includeAbstractNodeTypes</td>
+                <td><p>Whether to include abstract node types, defaults to true</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a>[]</td>
+            <td><p>Sub node types of the given super type, indexed by node type name</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getNodeType">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.1/Neos.ContentRepository/Classes/Domain/Service/NodeTypeManager.php#L127">at line 127</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a>
+    <strong>getNodeType</strong>(string $nodeTypeName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the specified node type (which could be abstract)</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a></td>
+            <td><p>or NULL</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Exception/NodeTypeNotFoundException.html"><abbr title="Neos\ContentRepository\Exception\NodeTypeNotFoundException">NodeTypeNotFoundException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasNodeType">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.1/Neos.ContentRepository/Classes/Domain/Service/NodeTypeManager.php#L153">at line 153</a></div>
+        <code>                    bool
+    <strong>hasNodeType</strong>(string $nodeTypeName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if the specified node type exists</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeName</td>
+                <td><p>Name of the node type</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if it exists, otherwise false</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createNodeType">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.1/Neos.ContentRepository/Classes/Domain/Service/NodeTypeManager.php#L168">at line 168</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a>
+    <strong>createNodeType</strong>(string $nodeTypeName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates a new node type</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeName</td>
+                <td><p>Unique name of the new node type. Example: &quot;Neos.Neos:Page&quot;</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Exception.html"><abbr title="Neos\ContentRepository\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_loadNodeTypes">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.1/Neos.ContentRepository/Classes/Domain/Service/NodeTypeManager.php#L178">at line 178</a></div>
+        <code>            protected        void
+    <strong>loadNodeTypes</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Loads all node types into memory.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_overrideNodeTypes">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.1/Neos.ContentRepository/Classes/Domain/Service/NodeTypeManager.php#L200">at line 200</a></div>
+        <code>                    void
+    <strong>overrideNodeTypes</strong>(array $completeNodeTypeConfiguration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>This method can be used by Functional of Behavioral Tests to completely
+override the node types known in the system.</p></p>                <p><p>In order to reset the node type override, an empty array can be passed in.
+In this case, the system-node-types are used again.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$completeNodeTypeConfiguration</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_loadNodeType">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.1/Neos.ContentRepository/Classes/Domain/Service/NodeTypeManager.php#L218">at line 218</a></div>
+        <code>            protected        <a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a>
+    <strong>loadNodeType</strong>(string $nodeTypeName, array $completeNodeTypeConfiguration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Load one node type, if it is not loaded yet.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$completeNodeTypeConfiguration</td>
+                <td><p>the full node type configuration for all node types</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Exception/NodeConfigurationException.html"><abbr title="Neos\ContentRepository\Exception\NodeConfigurationException">NodeConfigurationException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Exception/NodeTypeIsFinalException.html"><abbr title="Neos\ContentRepository\Exception\NodeTypeIsFinalException">NodeTypeIsFinalException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Exception.html"><abbr title="Neos\ContentRepository\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_evaluateSuperTypesConfiguration">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.1/Neos.ContentRepository/Classes/Domain/Service/NodeTypeManager.php#L264">at line 264</a></div>
+        <code>            protected        array
+    <strong>evaluateSuperTypesConfiguration</strong>(array $superTypesConfiguration, array $completeNodeTypeConfiguration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Evaluates the given superTypes configuation and returns the array of effective superTypes.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$superTypesConfiguration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$completeNodeTypeConfiguration</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_evaluateSuperTypeConfiguration">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.1/Neos.ContentRepository/Classes/Domain/Service/NodeTypeManager.php#L284">at line 284</a></div>
+        <code>            protected        <a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a>
+    <strong>evaluateSuperTypeConfiguration</strong>(string $superTypeName, bool $enabled, array $completeNodeTypeConfiguration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Evaluates a single superType configuration and returns the NodeType if enabled.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$superTypeName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$enabled</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$completeNodeTypeConfiguration</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Domain/Model/NodeType.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeType">NodeType</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Exception/NodeConfigurationException.html"><abbr title="Neos\ContentRepository\Exception\NodeConfigurationException">NodeConfigurationException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Exception/NodeTypeIsFinalException.html"><abbr title="Neos\ContentRepository\Exception\NodeTypeIsFinalException">NodeTypeIsFinalException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
