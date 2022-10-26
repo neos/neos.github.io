@@ -1,0 +1,2128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Fusion\Core\Runtime | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (9.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Fusion_Core_Runtime" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Fusion.html">Fusion</a></li><li class="backslash">\</li><li><a href="../../../Neos/Fusion/Core.html">Core</a></li><li class="backslash">\</li><li>Runtime</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Runtime    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Runtime</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Fusion Runtime</p></p>            <p><h1>Fusion Rendering Process</h1>
+<p>During rendering, all Fusion objects form a tree.</p>
+<p>When a Fusion object at a certain $fusionPath is invoked, it has
+access to all variables stored in the $context (which is an array).</p>
+<p>The Fusion object can then add or replace variables to this context using pushContext()
+or pushContextArray(), before rendering sub-Fusion objects. After rendering
+these, it must call popContext() to reset the context to the last state.</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        BEHAVIOR_EXCEPTION
+                                    </td>
+                <td class="last">
+                    <p><em><p>Internal constants defining how evaluate should work in case of an error</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        BEHAVIOR_RETURNNULL
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        EVALUATION_EXECUTED
+                                    </td>
+                <td class="last">
+                    <p><em><p>Internal constants defining a status of how evaluate was evaluated</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        EVALUATION_SKIPPED
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_eelEvaluator">
+                                        protected                                        <abbr title="Neos\Eel\CompilingEvaluator">CompilingEvaluator</abbr>
+                                                                                
+                                    </td>
+                <td>$eelEvaluator</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_objectManager">
+                                        protected                                        <abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$objectManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_contextStack">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$contextStack</td>
+                <td class="last"><p>Stack of evaluated &quot;@context&quot; values</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_currentContext">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$currentContext</td>
+                <td class="last"><p>Reference to the current context</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_currentApplyValues">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$currentApplyValues</td>
+                <td class="last"><p>Reference to the current apply value</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_defaultContextVariables">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$defaultContextVariables</td>
+                <td class="last"><p>Default context with helper definitions</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_runtimeConfiguration">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$runtimeConfiguration</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_controllerContext">
+                                        protected                                        <abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr>
+                                                                                
+                                    </td>
+                <td>$controllerContext</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_settings">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$settings</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_debugMode">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$debugMode</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_runtimeContentCache">
+                                        protected                                        <a href="../../../Neos/Fusion/Core/Cache/RuntimeContentCache.html"><abbr title="Neos\Fusion\Core\Cache\RuntimeContentCache">RuntimeContentCache</abbr></a>
+                                                                                
+                                    </td>
+                <td>$runtimeContentCache</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_lastEvaluationStatus">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$lastEvaluationStatus</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(array $fusionConfiguration, <abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext)
+        
+                                            <p><p>Constructor for the Fusion Runtime</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectSettings">injectSettings</a>(array $settings)
+        
+                                            <p><p>Inject settings of this package</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addCacheTag">addCacheTag</a>(string $key, string $value)
+        
+                                            <p><p>Add a tag to the current cache segment</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_pushContextArray">pushContextArray</a>(array $contextArray)
+        
+                                            <p><p>Completely replace the context array with the new $contextArray.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_pushContext">pushContext</a>(string $key, mixed $context)
+        
+                                            <p><p>Push a new context object to the rendering stack</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_popContext">popContext</a>()
+        
+                                            <p><p>Remove the topmost context objects and return them</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCurrentContext">getCurrentContext</a>()
+        
+                                            <p><p>Get the current context array</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_popApplyValues">popApplyValues</a>(array $paths)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getLastEvaluationStatus">getLastEvaluationStatus</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_render">render</a>(string $fusionPath)
+        
+                                            <p><p>Render an absolute Fusion path and return the result.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_handleRenderingException">handleRenderingException</a>(string $fusionPath, <a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a> $exception, bool $useInnerExceptionHandler = false)
+        
+                                            <p><p>Handle an Exception thrown while rendering Fusion according to
+settings specified in Neos.Fusion.rendering.exceptionHandler</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_canRender">canRender</a>(string $fusionPath)
+        
+                                            <p><p>Determine if the given Fusion path is renderable, which means it exists
+and has an implementation.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_evaluate">evaluate</a>(string $fusionPath, mixed $contextObject = null, string $behaviorIfPathNotFound = self::BEHAVIOR_RETURNNULL)
+        
+                                            <p><p>Evaluate an absolute Fusion path and return the result</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_evaluateObjectOrRetrieveFromCache">evaluateObjectOrRetrieveFromCache</a>(<a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a> $fusionObject, string $fusionPath, array $fusionConfiguration, array $cacheContext)
+        
+                                            <p><p>Does the evaluation of a Fusion instance, first checking the cache and if conditions and afterwards applying processors.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_evaluateExpressionOrValueInternal">evaluateExpressionOrValueInternal</a>(string $fusionPath, array $fusionConfiguration, <a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a> $contextObject)
+        
+                                            <p><p>Evaluates an EEL expression or value, checking if conditions first and applying processors.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_prepareApplyValuesForFusionPath">prepareApplyValuesForFusionPath</a>(string $fusionPath, array $fusionConfiguration)
+        
+                                            <p><p>Possibly prepares a new &quot;@apply&quot; context for the current fusionPath and pushes it to the stack.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_prepareContextForFusionObject">prepareContextForFusionObject</a>(<a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a> $fusionObject, string $fusionPath, array $fusionConfiguration, array $cacheContext)
+        
+                                            <p><p>Possibly prepares a new context for the current FusionObject and cache context and pushes it to the stack.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_finalizePathEvaluation">finalizePathEvaluation</a>(array $cacheContext, bool $needToPopContext = false, array $applyPathsToPop = [])
+        
+                                            <p><p>Ends the evaluation of a fusion path by popping the context and property stack if needed and leaving the cache context.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_instantiateFusionObject">instantiateFusionObject</a>(string $fusionPath, array $fusionConfiguration, array $applyValuePaths)
+        
+                                            <p><p>Instantiates a Fusion object specified by the given path and configuration</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isArrayFusionObject">isArrayFusionObject</a>(<a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a> $fusionObject)
+        
+                                            <p><p>Check if the given object is an array like object that should get all properties set to iterate or process internally.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setPropertiesOnFusionObject">setPropertiesOnFusionObject</a>(<a href="../../../Neos/Fusion/FusionObjects/AbstractArrayFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractArrayFusionObject">AbstractArrayFusionObject</abbr></a> $fusionObject, array $fusionConfiguration, array $applyValuePaths)
+        
+                                            <p><p>Set options on the given (AbstractArray)Fusion object</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_evaluateEelExpression">evaluateEelExpression</a>(string $expression, <a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a> $contextObject = null)
+        
+                                            <p><p>Evaluate an Eel expression</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_evaluateApplyValues">evaluateApplyValues</a>(array $configurationWithEventualProperties, string $fusionPath)
+        
+                                            <p><p>Evaluate &quot;@apply&quot; for the given fusion key.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_evaluateProcessors">evaluateProcessors</a>(mixed $valueToProcess, array $configurationWithEventualProcessors, string $fusionPath, <a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a> $contextObject = null)
+        
+                                            <p><p>Evaluate processors on given value.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_evaluateIfCondition">evaluateIfCondition</a>(array $configurationWithEventualIf, string $configurationPath, <a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a> $contextObject = null)
+        
+                                            <p><p>Evaluate eventually existing meta &quot;@if&quot; conditionals inside the given configuration and path.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getControllerContext">getControllerContext</a>()
+        
+                                            <p><p>Returns the context which has been passed by the currently active MVC Controller</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getDefaultContextVariables">getDefaultContextVariables</a>()
+        
+                                            <p><p>Get variables from configuration that should be set in the context by default.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_throwExceptionForUnrenderablePathIfNeeded">throwExceptionForUnrenderablePathIfNeeded</a>(string $fusionPath, array $fusionConfiguration, string $behaviorIfPathNotFound)
+        
+                                            <p><p>Checks and throws an exception for an unrenderable path.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setDebugMode">setDebugMode</a>(bool $debugMode)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isDebugMode">isDebugMode</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setEnableContentCache">setEnableContentCache</a>(bool $flag)
+        
+                                            <p><p>If the Fusion content cache should be enabled at all</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L139">at line 139</a></div>
+        <code>                    
+    <strong>__construct</strong>(array $fusionConfiguration, <abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructor for the Fusion Runtime</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$fusionConfiguration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr></td>
+                <td>$controllerContext</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectSettings">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L152">at line 152</a></div>
+        <code>                    void
+    <strong>injectSettings</strong>(array $settings)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Inject settings of this package</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$settings</td>
+                <td><p>The settings</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addCacheTag">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L173">at line 173</a></div>
+        <code>                    void
+    <strong>addCacheTag</strong>(string $key, string $value)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add a tag to the current cache segment</p></p>                <p><p>During Fusion rendering the method can be used to add tag dynamicaly for the current cache segment.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_pushContextArray">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L189">at line 189</a></div>
+        <code>                    void
+    <strong>pushContextArray</strong>(array $contextArray)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Completely replace the context array with the new $contextArray.</p></p>                <p><p>Purely internal method, should not be called outside of Neos.Fusion.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$contextArray</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_pushContext">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L202">at line 202</a></div>
+        <code>                    void
+    <strong>pushContext</strong>(string $key, mixed $context)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Push a new context object to the rendering stack</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>the key inside the context</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$context</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_popContext">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L215">at line 215</a></div>
+        <code>                    array
+    <strong>popContext</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Remove the topmost context objects and return them</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>the topmost context objects as associative array</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCurrentContext">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L227">at line 227</a></div>
+        <code>                    array
+    <strong>getCurrentContext</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get the current context array</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>the array of current context objects</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_popApplyValues">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L232">at line 232</a></div>
+        <code>                    void
+    <strong>popApplyValues</strong>(array $paths)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$paths</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLastEvaluationStatus">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L242">at line 242</a></div>
+        <code>                    string
+    <strong>getLastEvaluationStatus</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_render">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L257">at line 257</a></div>
+        <code>                    mixed
+    <strong>render</strong>(string $fusionPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Render an absolute Fusion path and return the result.</p></p>                <p><p>Compared to $this-&gt;evaluate, this adds some more comments helpful for debugging.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Security\Exception">Exception</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_handleRenderingException">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L292">at line 292</a></div>
+        <code>                    string
+    <strong>handleRenderingException</strong>(string $fusionPath, <a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a> $exception, bool $useInnerExceptionHandler = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Handle an Exception thrown while rendering Fusion according to
+settings specified in Neos.Fusion.rendering.exceptionHandler</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a></td>
+                <td>$exception</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$useInnerExceptionHandler</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationException">InvalidConfigurationException</abbr></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Security\Exception">Exception</abbr></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Mvc\Exception\StopActionException">StopActionException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_canRender">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L345">at line 345</a></div>
+        <code>                    bool
+    <strong>canRender</strong>(string $fusionPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Determine if the given Fusion path is renderable, which means it exists
+and has an implementation.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_evaluate">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L374">at line 374</a></div>
+        <code>                    mixed
+    <strong>evaluate</strong>(string $fusionPath, mixed $contextObject = null, string $behaviorIfPathNotFound = self::BEHAVIOR_RETURNNULL)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Evaluate an absolute Fusion path and return the result</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$contextObject</td>
+                <td><p>The object which will be &quot;this&quot; in Eel expressions. ONLY FOR INTERNAL USE!</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$behaviorIfPathNotFound</td>
+                <td><p>One of BEHAVIOR_EXCEPTION or BEHAVIOR_RETURNNULL</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Mvc\Exception\StopActionException">StopActionException</abbr></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Security\Exception">Exception</abbr></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception/RuntimeException.html"><abbr title="Neos\Fusion\Exception\RuntimeException">RuntimeException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationException">InvalidConfigurationException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_evaluateObjectOrRetrieveFromCache">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L455">at line 455</a></div>
+        <code>            protected        mixed
+    <strong>evaluateObjectOrRetrieveFromCache</strong>(<a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a> $fusionObject, string $fusionPath, array $fusionConfiguration, array $cacheContext)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Does the evaluation of a Fusion instance, first checking the cache and if conditions and afterwards applying processors.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a></td>
+                <td>$fusionObject</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$fusionConfiguration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$cacheContext</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_evaluateExpressionOrValueInternal">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L492">at line 492</a></div>
+        <code>            protected        mixed
+    <strong>evaluateExpressionOrValueInternal</strong>(string $fusionPath, array $fusionConfiguration, <a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a> $contextObject)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Evaluates an EEL expression or value, checking if conditions first and applying processors.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td><p>the Fusion path up to now</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$fusionConfiguration</td>
+                <td><p>Fusion configuration for the expression or value</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a></td>
+                <td>$contextObject</td>
+                <td><p>An optional object for the &quot;this&quot; value inside the context</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The result of the evaluation</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prepareApplyValuesForFusionPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L529">at line 529</a></div>
+        <code>            protected        array
+    <strong>prepareApplyValuesForFusionPath</strong>(string $fusionPath, array $fusionConfiguration)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Possibly prepares a new &quot;@apply&quot; context for the current fusionPath and pushes it to the stack.</p></p>                <p><p>Returns true to express that new properties were pushed and have to be popped during finalizePathEvaluation.</p>
+<p>Since &quot;@apply&quot; are not inherited every call of this method leads to a completely new  &quot;@apply&quot;
+context, which is null by default.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$fusionConfiguration</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Paths to pop</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception/RuntimeException.html"><abbr title="Neos\Fusion\Exception\RuntimeException">RuntimeException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Security\Exception">Exception</abbr></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Mvc\Exception\StopActionException">StopActionException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_prepareContextForFusionObject">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L556">at line 556</a></div>
+        <code>            protected        bool
+    <strong>prepareContextForFusionObject</strong>(<a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a> $fusionObject, string $fusionPath, array $fusionConfiguration, array $cacheContext)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Possibly prepares a new context for the current FusionObject and cache context and pushes it to the stack.</p></p>                <p><p>Returns if a new context was pushed to the stack or not.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a></td>
+                <td>$fusionObject</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$fusionConfiguration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$cacheContext</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception/RuntimeException.html"><abbr title="Neos\Fusion\Exception\RuntimeException">RuntimeException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Security\Exception">Exception</abbr></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Mvc\Exception\StopActionException">StopActionException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_finalizePathEvaluation">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L590">at line 590</a></div>
+        <code>            protected        void
+    <strong>finalizePathEvaluation</strong>(array $cacheContext, bool $needToPopContext = false, array $applyPathsToPop = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Ends the evaluation of a fusion path by popping the context and property stack if needed and leaving the cache context.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$cacheContext</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$needToPopContext</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$applyPathsToPop</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_instantiateFusionObject">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L612">at line 612</a></div>
+        <code>            protected        <a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a>
+    <strong>instantiateFusionObject</strong>(string $fusionPath, array $fusionConfiguration, array $applyValuePaths)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Instantiates a Fusion object specified by the given path and configuration</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td><p>Path to the configuration for this object instance</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$fusionConfiguration</td>
+                <td><p>Configuration at the given path</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$applyValuePaths</td>
+                <td><p>Apply value paths for this object</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isArrayFusionObject">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L650">at line 650</a></div>
+        <code>            protected        bool
+    <strong>isArrayFusionObject</strong>(<a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a> $fusionObject)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Check if the given object is an array like object that should get all properties set to iterate or process internally.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a></td>
+                <td>$fusionObject</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPropertiesOnFusionObject">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L663">at line 663</a></div>
+        <code>            protected        void
+    <strong>setPropertiesOnFusionObject</strong>(<a href="../../../Neos/Fusion/FusionObjects/AbstractArrayFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractArrayFusionObject">AbstractArrayFusionObject</abbr></a> $fusionObject, array $fusionConfiguration, array $applyValuePaths)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set options on the given (AbstractArray)Fusion object</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/FusionObjects/AbstractArrayFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractArrayFusionObject">AbstractArrayFusionObject</abbr></a></td>
+                <td>$fusionObject</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$fusionConfiguration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$applyValuePaths</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_evaluateEelExpression">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L713">at line 713</a></div>
+        <code>            protected        mixed
+    <strong>evaluateEelExpression</strong>(string $expression, <a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a> $contextObject = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Evaluate an Eel expression</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$expression</td>
+                <td><p>The Eel expression to evaluate</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a></td>
+                <td>$contextObject</td>
+                <td><p>An optional object for the &quot;this&quot; value inside the context</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The result of the evaluated Eel expression</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_evaluateApplyValues">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L751">at line 751</a></div>
+        <code>            protected        array|null
+    <strong>evaluateApplyValues</strong>(array $configurationWithEventualProperties, string $fusionPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Evaluate &quot;@apply&quot; for the given fusion key.</p></p>                <p><p>If apply-definitions are found they are evaluated and the returned keys are combined.
+The result is returned as array with the following structure:</p>
+<p>[
+'fusionPath/key_1' =&gt; ['key' =&gt; 'key_1', 'value' =&gt; 'evaluated value 1'],
+'fusionPath/key_2' =&gt; ['key' =&gt; 'key_2', 'value' =&gt; 'evaluated value 2']
+]</p>
+<p>If no apply-expression is defined null is returned instead.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$configurationWithEventualProperties</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_evaluateProcessors">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L817">at line 817</a></div>
+        <code>            protected        mixed
+    <strong>evaluateProcessors</strong>(mixed $valueToProcess, array $configurationWithEventualProcessors, string $fusionPath, <a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a> $contextObject = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Evaluate processors on given value.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$valueToProcess</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$configurationWithEventualProcessors</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a></td>
+                <td>$contextObject</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_evaluateIfCondition">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L855">at line 855</a></div>
+        <code>            protected        bool
+    <strong>evaluateIfCondition</strong>(array $configurationWithEventualIf, string $configurationPath, <a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a> $contextObject = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Evaluate eventually existing meta &quot;@if&quot; conditionals inside the given configuration and path.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$configurationWithEventualIf</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$configurationPath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a></td>
+                <td>$contextObject</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getControllerContext">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L872">at line 872</a></div>
+        <code>                    <abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr>
+    <strong>getControllerContext</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the context which has been passed by the currently active MVC Controller</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDefaultContextVariables">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L883">at line 883</a></div>
+        <code>            protected        array
+    <strong>getDefaultContextVariables</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get variables from configuration that should be set in the context by default.</p></p>                <p><p>For example Eel helpers are made available by this.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Array with default context variable objects.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_throwExceptionForUnrenderablePathIfNeeded">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L904">at line 904</a></div>
+        <code>            protected        
+    <strong>throwExceptionForUnrenderablePathIfNeeded</strong>(string $fusionPath, array $fusionConfiguration, string $behaviorIfPathNotFound)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks and throws an exception for an unrenderable path.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fusionPath</td>
+                <td><p>The Fusion path that cannot be rendered</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$fusionConfiguration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$behaviorIfPathNotFound</td>
+                <td><p>One of the BEHAVIOR_* constants</p></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception/MissingFusionImplementationException.html"><abbr title="Neos\Fusion\Exception\MissingFusionImplementationException">MissingFusionImplementationException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception/MissingFusionObjectException.html"><abbr title="Neos\Fusion\Exception\MissingFusionObjectException">MissingFusionObjectException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDebugMode">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L934">at line 934</a></div>
+        <code>                    void
+    <strong>setDebugMode</strong>(bool $debugMode)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$debugMode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isDebugMode">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L942">at line 942</a></div>
+        <code>                    bool
+    <strong>isDebugMode</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setEnableContentCache">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Runtime.php#L953">at line 953</a></div>
+        <code>                    void
+    <strong>setEnableContentCache</strong>(bool $flag)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>If the Fusion content cache should be enabled at all</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$flag</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

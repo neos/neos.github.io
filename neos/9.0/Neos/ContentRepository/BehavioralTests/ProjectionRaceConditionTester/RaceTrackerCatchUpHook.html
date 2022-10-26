@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepository\BehavioralTests\ProjectionRaceConditionTester\RaceTrackerCatchUpHook | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (9.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepository_BehavioralTests_ProjectionRaceConditionTester_RaceTrackerCatchUpHook" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository.html">ContentRepository</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository/BehavioralTests.html">BehavioralTests</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository/BehavioralTests/ProjectionRaceConditionTester.html">ProjectionRaceConditionTester</a></li><li class="backslash">\</li><li>RaceTrackerCatchUpHook</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>RaceTrackerCatchUpHook    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>RaceTrackerCatchUpHook</strong>        implements
+        <a href="../../../../Neos/ContentRepository/Core/Projection/CatchUpHookInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\CatchUpHookInterface">CatchUpHookInterface</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.BehavioralTests/Classes/ProjectionRaceConditionTester/RaceTrackerCatchUpHook.php">View source</a>)
+</p>
+
+        
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp; </td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+            <div class="description">
+            <p><p>We had some race conditions in projections, where {DoctrineCheckpointStorage} was not working properly.</p></p>            <p><p>We saw some non-deterministic, random errors when running the tests - unluckily only on Linux, not on OSX:
+On OSX, forking a new subprocess in {\Neos\ContentRepositoryRegistry\Factory\ProjectionCatchUpTrigger\SubprocessProjectionCatchUpTrigger} is <em>WAY</em> slower than in Linux;
+and thus the race conditions which appears if two projector instances of the same class run concurrently
+won't happen (or are way less likely).</p>
+<h2>Our Goal: Detect if/when a Projection runs twice at the same time.</h2>
+<p>The system must ENSURE that a given projection NEVER runs concurrently; so this is the case we need to detect.</p>
+<p>This means, the following is the behavior we want to have:</p>
+<pre><code>Process A         acquireLock(  |[  ) processEvent() releaseLock(  ]  )
+Process B             acquireLock(  |                                [  ) processEvent() releaseLock(  ]  )</code></pre>
+<p>(i.e. Process B will wait inside acquireLock() until the lock is released (i.e. Process A finished), and then
+continue.</p>
+<p>A WRONG and UNDEFINED behavior looks as follows:</p>
+<pre><code>Process A         acquireLock(  |[  )  applyEvent()  releaseLock(  ]  )
+Process B             acquireLock(  | [ )  applyEvent()  releaseLock(  ]  )
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                       During this time period, two
+                                       processes run the projection
+                                       concurrently.</code></pre>
+<p><strong>Legend for the flow diagrams above</strong></p>
+<pre><code>--&gt; time   |            [                             ]
+           ^            ^                             ^
+   try to acquire     lock acquired                  lock released
+   the lock</code></pre>
+<h2>Implementation Idea: Race Detector with Redis</h2>
+<p>We implement a custom CatchUpHook (this class {\Neos\ContentRepository\BehavioralTests\ProjectionRaceConditionTester\RaceTrackerCatchUpHook}) which is notified during
+the projection run.</p>
+<p>When {\Neos\ContentRepository\BehavioralTests\ProjectionRaceConditionTester\onBeforeEvent} is called, we know that we are inside applyEvent() in the diagram above,
+thus we know the lock <em>HAS</em> been acquired.
+When {\Neos\ContentRepository\BehavioralTests\ProjectionRaceConditionTester\onBeforeBatchCompleted}is called, we know the lock will be released directly afterwards.</p>
+<p>We track these timings across processes in a single Redis Stream. Because Redis is single-threaded,
+we can be sure that we observe the correct, total order of interleavings <em>across multiple processes</em>
+inside the single trace.</p>
+<h2>Race Detector Algorithm</h2>
+<p>We sequentially go through the stream, we continuously track for which PIDs a transaction is currently
+open.</p>
+<p>When a transaction is open for more than one PID, we know that we found a race.</p>
+<p>This algorithm is implemented in {\Neos\ContentRepository\BehavioralTests\ProjectionRaceConditionTester\Dto\TraceEntries::findProjectionConcurrencyViolations()}.</p>
+<h2>Duplicate Processing Algorithm</h2>
+<p>At the same time, an Event should never be processed multiple times by the same Projector. We additionally
+detect this by remembering the sequence numbers of seen events; and if we have already seen the sequence
+number already, we know this is an error. This is implemented in {\Neos\ContentRepository\BehavioralTests\ProjectionRaceConditionTester\Dto\TraceEntries::findDoubleProcessingOfEvents()}.</p></p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_configuration">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$configuration</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_onBeforeCatchUp">onBeforeCatchUp</a>()
+        
+                                            <p><p>This hook is called at the beginning of {ProjectionInterface::catchUpProjection()};
+BEFORE the Database Lock is acquired (by {CheckpointStorageInterface::acquireLock()}).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_onBeforeEvent">onBeforeEvent</a>(<a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a> $eventInstance, <abbr title="Neos\EventStore\Model\EventEnvelope">EventEnvelope</abbr> $eventEnvelope)
+        
+                                            <p><p>This hook is called for every event during the catchup process, <strong>before</strong> the projection
+is updated. Thus, this hook runs AFTER the database lock is acquired.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_onAfterEvent">onAfterEvent</a>(<a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a> $eventInstance, <abbr title="Neos\EventStore\Model\EventEnvelope">EventEnvelope</abbr> $eventEnvelope)
+        
+                                            <p><p>This hook is called for every event during the catchup process, <strong>after</strong> the projection
+is updated. Thus, this hook runs AFTER the database lock is acquired.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_onBeforeBatchCompleted">onBeforeBatchCompleted</a>()
+        
+                                            <p><p>This hook is called directly before the database lock is RELEASED
+in {CheckpointStorageInterface::updateAndReleaseLock()}.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_onAfterCatchUp">onAfterCatchUp</a>()
+        
+                                            <p><p>This hook is called at the END of {ProjectionInterface::catchUpProjection()}, directly
+before exiting the method.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_onBeforeCatchUp">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.BehavioralTests/Classes/ProjectionRaceConditionTester/RaceTrackerCatchUpHook.php#L112">at line 112</a></div>
+        <code>                    void
+    <strong>onBeforeCatchUp</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>This hook is called at the beginning of {ProjectionInterface::catchUpProjection()};
+BEFORE the Database Lock is acquired (by {CheckpointStorageInterface::acquireLock()}).</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_onBeforeEvent">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.BehavioralTests/Classes/ProjectionRaceConditionTester/RaceTrackerCatchUpHook.php#L117">at line 117</a></div>
+        <code>                    void
+    <strong>onBeforeEvent</strong>(<a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a> $eventInstance, <abbr title="Neos\EventStore\Model\EventEnvelope">EventEnvelope</abbr> $eventEnvelope)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>This hook is called for every event during the catchup process, <strong>before</strong> the projection
+is updated. Thus, this hook runs AFTER the database lock is acquired.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a></td>
+                <td>$eventInstance</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\EventStore\Model\EventEnvelope">EventEnvelope</abbr></td>
+                <td>$eventEnvelope</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_onAfterEvent">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.BehavioralTests/Classes/ProjectionRaceConditionTester/RaceTrackerCatchUpHook.php#L127">at line 127</a></div>
+        <code>                    void
+    <strong>onAfterEvent</strong>(<a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a> $eventInstance, <abbr title="Neos\EventStore\Model\EventEnvelope">EventEnvelope</abbr> $eventEnvelope)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>This hook is called for every event during the catchup process, <strong>after</strong> the projection
+is updated. Thus, this hook runs AFTER the database lock is acquired.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a></td>
+                <td>$eventInstance</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\EventStore\Model\EventEnvelope">EventEnvelope</abbr></td>
+                <td>$eventEnvelope</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_onBeforeBatchCompleted">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.BehavioralTests/Classes/ProjectionRaceConditionTester/RaceTrackerCatchUpHook.php#L131">at line 131</a></div>
+        <code>                    void
+    <strong>onBeforeBatchCompleted</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>This hook is called directly before the database lock is RELEASED
+in {CheckpointStorageInterface::updateAndReleaseLock()}.</p></p>                <p><p>It can happen that this method is called multiple times, even without
+having seen Events in the meantime.</p>
+<p>If there exist more events which need to be processed, the database lock
+is directly acquired again after it is released.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_onAfterCatchUp">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.BehavioralTests/Classes/ProjectionRaceConditionTester/RaceTrackerCatchUpHook.php#L140">at line 140</a></div>
+        <code>                    void
+    <strong>onAfterCatchUp</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>This hook is called at the END of {ProjectionInterface::catchUpProjection()}, directly
+before exiting the method.</p></p>                <p><p>At this point, the Database Lock has already been released.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

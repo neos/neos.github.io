@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepository\Security\Service\AuthorizationService | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (9.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepository_Security_Service_AuthorizationService" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository.html">ContentRepository</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository/Security.html">Security</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepository/Security/Service.html">Service</a></li><li class="backslash">\</li><li>AuthorizationService</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>AuthorizationService    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>AuthorizationService</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Security/Classes/Service/AuthorizationService.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>This service provides API methods to check for privileges
+on nodes and permissions for node actions.</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_securityContext">
+                                        protected                                        <abbr title="Neos\Flow\Security\Context">Context</abbr>
+                                                                                
+                                    </td>
+                <td>$securityContext</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_privilegeManager">
+                                        protected                                        <abbr title="Neos\Flow\Security\Authorization\PrivilegeManagerInterface">PrivilegeManagerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$privilegeManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_contentRepositoryRegistry">
+                                        protected                                        <abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr>
+                                                                                
+                                    </td>
+                <td>$contentRepositoryRegistry</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isGrantedToEditNode">isGrantedToEditNode</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
+        
+                                            <p><p>Returns true if the currently authenticated user is allowed to edit the given $node, otherwise false</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isGrantedToCreateNode">isGrantedToCreateNode</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $referenceNode, <abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr> $typeOfNewNode = null)
+        
+                                            <p><p>Returns true if the currently authenticated user is allowed to create a node of type $typeOfNewNode within the given $referenceNode</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getNodeTypeNamesDeniedForCreation">getNodeTypeNamesDeniedForCreation</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $referenceNode)
+        
+                                            <p><p>Returns the node types that the currently authenticated user is <em>denied</em> to create within the given $referenceNode</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isGrantedToRemoveNode">isGrantedToRemoveNode</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
+        
+                                            <p><p>Returns true if the currently authenticated user is allowed to remove the given $node</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isGrantedToReadNodeProperty">isGrantedToReadNodeProperty</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node, string $propertyName)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isGrantedToEditNodeProperty">isGrantedToEditNodeProperty</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node, string $propertyName)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getDeniedNodePropertiesForEditing">getDeniedNodePropertiesForEditing</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_isGrantedToEditNode">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Security/Classes/Service/AuthorizationService.php#L61">at line 61</a></div>
+        <code>                    bool
+    <strong>isGrantedToEditNode</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns true if the currently authenticated user is allowed to edit the given $node, otherwise false</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isGrantedToCreateNode">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Security/Classes/Service/AuthorizationService.php#L73">at line 73</a></div>
+        <code>                    bool
+    <strong>isGrantedToCreateNode</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $referenceNode, <abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr> $typeOfNewNode = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns true if the currently authenticated user is allowed to create a node of type $typeOfNewNode within the given $referenceNode</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td>$referenceNode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></td>
+                <td>$typeOfNewNode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getNodeTypeNamesDeniedForCreation">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Security/Classes/Service/AuthorizationService.php#L84">at line 84</a></div>
+        <code>                    string[]
+    <strong>getNodeTypeNamesDeniedForCreation</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $referenceNode)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the node types that the currently authenticated user is <em>denied</em> to create within the given $referenceNode</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td>$referenceNode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string[]</td>
+            <td><p>Array of granted node type names</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isGrantedToRemoveNode">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Security/Classes/Service/AuthorizationService.php#L122">at line 122</a></div>
+        <code>                    bool
+    <strong>isGrantedToRemoveNode</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns true if the currently authenticated user is allowed to remove the given $node</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isGrantedToReadNodeProperty">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Security/Classes/Service/AuthorizationService.php#L133">at line 133</a></div>
+        <code>                    bool
+    <strong>isGrantedToReadNodeProperty</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node, string $propertyName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isGrantedToEditNodeProperty">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Security/Classes/Service/AuthorizationService.php#L144">at line 144</a></div>
+        <code>                    bool
+    <strong>isGrantedToEditNodeProperty</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node, string $propertyName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDeniedNodePropertiesForEditing">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Security/Classes/Service/AuthorizationService.php#L154">at line 154</a></div>
+        <code>                    string[]
+    <strong>getDeniedNodePropertiesForEditing</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string[]</td>
+            <td><p>Array of granted node property names</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

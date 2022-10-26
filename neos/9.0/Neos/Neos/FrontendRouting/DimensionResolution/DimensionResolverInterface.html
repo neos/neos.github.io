@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Neos\FrontendRouting\DimensionResolution\DimensionResolverInterface | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (9.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Neos_FrontendRouting_DimensionResolution_DimensionResolverInterface" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">interface</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Neos/FrontendRouting.html">FrontendRouting</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Neos/FrontendRouting/DimensionResolution.html">DimensionResolution</a></li><li class="backslash">\</li><li>DimensionResolverInterface</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>DimensionResolverInterface    
+            </h1>
+    </div>
+
+    
+    <p>        interface
+    <strong>DimensionResolverInterface</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/DimensionResolution/DimensionResolverInterface.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Common interface for content dimension resolvers which are hooked into the Frontend Routing.</p></p>            <p><p>They are responsible for two concerns:</p>
+<p>1) At the beginning of a request, during the Routing stage, to figure out the DimensionSpacePoint
+which should be shown from the URL (by looking at the first URI Path Segment, or the Hostname, or ...)</p>
+<p>2) During Link rendering, to add the dimension part to the URL in the appropriate way.</p>
+<p>There is always a <em>single</em> {\Neos\Neos\FrontendRouting\DimensionResolution\DimensionResolverInterface} active; though this implementation
+can delegate to other implementations of this interface - thus it is built to be extensible
+via <em>composition</em>.</p>
+<p><strong>For a high-level overview on the Frontend Routing, visit {\Neos\Neos\FrontendRouting\EventSourcedFrontendNodeRoutePartHandler}.</strong></p>
+<h2>Usage of {[\Neos\Neos\FrontendRouting\DimensionResolution\DimensionResolverInterface::fromRequestToDimensionSpacePoint}</h2>
+<p>This](../../../../Neos/Neos/FrontendRouting/DimensionResolution/DimensionResolverInterface.html) method is called during the Routing stage (1) above. It receives a {\Neos\Neos\FrontendRouting\DimensionResolution\RequestToDimensionSpacePointContext},
+through which the current URL and route parameters can be received; and via {\Neos\Neos\FrontendRouting\SiteDetection\SiteDetectionResult},
+also the current site / content repository / hostname are accessible.</p>
+<p>The {\Neos\Neos\FrontendRouting\DimensionResolution\RequestToDimensionSpacePointContext::withAddedDimensionSpacePoint()} method should be called with
+the resolving result, potentially multiple times. NOTE: {\Neos\Neos\FrontendRouting\DimensionResolution\RequestToDimensionSpacePointContext} is immutable,
+so calling a method like the above returns a <em>new instance</em> which you need to properly return to the
+caller.</p>
+<h2>Usage of {[\Neos\Neos\FrontendRouting\DimensionResolution\DimensionResolverInterface::fromDimensionSpacePointToUriConstraints}</h2>
+<p>This](../../../../Neos/Neos/FrontendRouting/DimensionResolution/DimensionResolverInterface.html) method is called during the Link rendering (2) above. It receives a DimensionSpacePoint and returns
+an UriConstraints object which contains the necessary URL modifications.</p>
+<h2>Site-specific configuration through Settings.yaml</h2>
+<p>In Settings.yaml, underneath the path
+<code>Neos.Neos.sites.[site-node-name|*].contentDimensions.resolver.factoryClassName</code>,
+you specify which {\Neos\Neos\FrontendRouting\DimensionResolution\DimensionResolverFactoryInterface} should be used to build the used
+{\Neos\Neos\FrontendRouting\DimensionResolution\DimensionResolverInterface}.</p>
+<p>The settings path can either:</p>
+<ul>
+<li>contain a <strong>specific site node name</strong> - in this case,
+the dimension config etc is <strong>just used for the single site.</strong></li>
+<li>contain a fallback <code>*</code> for all other cases.</li>
+</ul>
+<p>The referenced factories are usually singletons; and you can process configuration and instantiate the actual
+{\Neos\Neos\FrontendRouting\DimensionResolution\DimensionResolverInterface} instances in any way you want. You need to pass in all dependencies the resolver
+needs.</p>
+<p>The delegation logic described above is implemented in {\Neos\Neos\FrontendRouting\DimensionResolution\DelegatingResolver}, which is directly referenced
+in {\Neos\Neos\FrontendRouting\EventSourcedFrontendNodeRoutePartHandler}.</p>
+<h2>{\Neos\Neos\FrontendRouting\DimensionResolution\DimensionResolverFactoryInterface} and {\Neos\Neos\FrontendRouting\DimensionResolution\Resolver\CompositeResolver}</h2>
+<p>For many use cases where you want to <strong>compose different resolvers</strong> (e.g. use UriPathResolver for
+the <code>language</code> dimension; and the HostnameResolver for the <code>country</code> dimension), you have to write a
+custom {\Neos\Neos\FrontendRouting\DimensionResolution\DimensionResolverFactoryInterface}, where you can instantiate your desired resolvers with
+the configuration you need.</p>
+<p>To form a <strong>chain of resolvers</strong>, you can all the different resolver instances with the {\Neos\Neos\FrontendRouting\DimensionResolution\Resolver\CompositeResolver}.</p>
+<p>For even more advanced cases, you will need a custom {\Neos\Neos\FrontendRouting\DimensionResolution\DimensionResolverFactoryInterface} and a corresponding
+{\Neos\Neos\FrontendRouting\DimensionResolution\DimensionResolverInterface}.</p>
+<h2>Composition of {\Neos\Neos\FrontendRouting\DimensionResolution\DimensionResolverInterface}</h2>
+<p>As written above, it is common that a resolver delegates to one or more other resolvers.
+To ensure that this composition will work nicely, <strong>it is prohibited inside Resolvers to read Settings
+or any other global state</strong>. If you need to access global state, read it in the Factory and pass it
+via Constructor to the Resolvers.</p>
+<p>(Note: This rule does not apply to {\Neos\Neos\FrontendRouting\DimensionResolution\DelegatingResolver},
+which is the hardcoded entrypoint to the resolver list.)</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Neos\Neos\FrontendRouting\DimensionResolution\RequestToDimensionSpacePointContext">RequestToDimensionSpacePointContext</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_fromRequestToDimensionSpacePoint">fromRequestToDimensionSpacePoint</a>(<abbr title="Neos\Neos\FrontendRouting\DimensionResolution\RequestToDimensionSpacePointContext">RequestToDimensionSpacePointContext</abbr> $context)
+        
+                                            <p><p>Called in the incoming direction, when an URL is resolved on its way</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Neos\Flow\Mvc\Routing\Dto\UriConstraints">UriConstraints</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_fromDimensionSpacePointToUriConstraints">fromDimensionSpacePointToUriConstraints</a>(<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint, <abbr title="Neos\Neos\Domain\Model\SiteNodeName">SiteNodeName</abbr> $targetSiteIdentifier, <abbr title="Neos\Flow\Mvc\Routing\Dto\UriConstraints">UriConstraints</abbr> $uriConstraints)
+        
+                                            <p><p>Called for each generated URL, to adjust (and return) the passed-in UriConstraints
+depending on the given DimensionSpacePoint.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_fromRequestToDimensionSpacePoint">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/DimensionResolution/DimensionResolverInterface.php#L101">at line 101</a></div>
+        <code>                    <abbr title="Neos\Neos\FrontendRouting\DimensionResolution\RequestToDimensionSpacePointContext">RequestToDimensionSpacePointContext</abbr>
+    <strong>fromRequestToDimensionSpacePoint</strong>(<abbr title="Neos\Neos\FrontendRouting\DimensionResolution\RequestToDimensionSpacePointContext">RequestToDimensionSpacePointContext</abbr> $context)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Called in the incoming direction, when an URL is resolved on its way</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Neos\FrontendRouting\DimensionResolution\RequestToDimensionSpacePointContext">RequestToDimensionSpacePointContext</abbr></td>
+                <td>$context</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Neos\Neos\FrontendRouting\DimensionResolution\RequestToDimensionSpacePointContext">RequestToDimensionSpacePointContext</abbr></td>
+            <td><p>the modified context</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fromDimensionSpacePointToUriConstraints">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/DimensionResolution/DimensionResolverInterface.php#L114">at line 114</a></div>
+        <code>                    <abbr title="Neos\Flow\Mvc\Routing\Dto\UriConstraints">UriConstraints</abbr>
+    <strong>fromDimensionSpacePointToUriConstraints</strong>(<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint, <abbr title="Neos\Neos\Domain\Model\SiteNodeName">SiteNodeName</abbr> $targetSiteIdentifier, <abbr title="Neos\Flow\Mvc\Routing\Dto\UriConstraints">UriConstraints</abbr> $uriConstraints)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Called for each generated URL, to adjust (and return) the passed-in UriConstraints
+depending on the given DimensionSpacePoint.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a></td>
+                <td>$dimensionSpacePoint</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Neos\Domain\Model\SiteNodeName">SiteNodeName</abbr></td>
+                <td>$targetSiteIdentifier</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Mvc\Routing\Dto\UriConstraints">UriConstraints</abbr></td>
+                <td>$uriConstraints</td>
+                <td><p>the pre-applied uriConstraints -&gt; modify and return them.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Neos\Flow\Mvc\Routing\Dto\UriConstraints">UriConstraints</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

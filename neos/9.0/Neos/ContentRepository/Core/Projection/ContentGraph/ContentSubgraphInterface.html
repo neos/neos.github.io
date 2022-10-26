@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepository\Core\Projection\ContentGraph\ContentSubgraphInterface | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
+        <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../../js/typeahead.min.js"></script>
+        <script src="../../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (9.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepository_Core_Projection_ContentGraph_ContentSubgraphInterface" data-root-path="../../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">interface</span></li>
+                        <li><a href="../../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository.html">ContentRepository</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository/Core.html">Core</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository/Core/Projection.html">Projection</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph.html">ContentGraph</a></li><li class="backslash">\</li><li>ContentSubgraphInterface</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ContentSubgraphInterface    
+            </h1>
+    </div>
+
+    
+    <p>        interface
+    <strong>ContentSubgraphInterface</strong>        implements
+        <a target="_blank" rel="noopener" href="https://www.php.net/JsonSerializable">JsonSerializable</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentSubgraphInterface.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>This is the most important read model of a content repository.</p></p>            <p><p>It is a &quot;view&quot; to the content graph, only showing a single dimension
+(e.g. &quot;language=de,country=ch&quot;) - so this means this is effectively
+<strong>a tree of nodes</strong>.</p>
+<h2>Accessing the Content Subgraph</h2>
+<p>From the central Content Repository instance, you can fetch the singleton
+{\Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface}. There, you can call
+{<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html">\Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface::getSubgraph()}</a> and pass in
+the {\Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId}, {\Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint} and
+{\Neos\ContentRepository\Core\Projection\ContentGraph\VisibilityConstraints} you want to have.</p>
+<h2>Why is this called &quot;Subgraph&quot; and not Tree?</h2>
+<p>This is because a tree can have only a single root node, but the ContentSubgraph
+supports multiple root nodes. So the totally correct term would be a &quot;Forest&quot;,
+but this is unknown terminology outside academia. This is why we go for &quot;Subgraph&quot;
+to show that this is a part of the Content Graph.</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findChildNodes">findChildNodes</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindChildNodesFilter">FindChildNodesFilter</abbr> $filter)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\References">References</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findReferencedNodes">findReferencedNodes</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindReferencedNodesFilter">FindReferencedNodesFilter</abbr> $filter)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\References">References</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findReferencingNodes">findReferencingNodes</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindReferencingNodesFilter">FindReferencingNodesFilter</abbr> $filter)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findNodeById">findNodeById</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findParentNode">findParentNode</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $childNodeAggregateId)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findNodeByPath">findNodeByPath</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a> $path, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $startingNodeAggregateId)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findChildNodeConnectedThroughEdgeName">findChildNodeConnectedThroughEdgeName</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a> $edgeName)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findSucceedingSiblings">findSucceedingSiblings</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $sibling, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindSucceedingSiblingsFilter">FindSucceedingSiblingsFilter</abbr> $filter)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findPrecedingSiblings">findPrecedingSiblings</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $sibling, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindPrecedingSiblingsFilter">FindPrecedingSiblingsFilter</abbr> $filter)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findNodePath">findNodePath</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Subtrees.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Subtrees">Subtrees</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findSubtrees">findSubtrees</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a> $entryNodeAggregateIds, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindSubtreesFilter">FindSubtreesFilter</abbr> $filter)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findDescendants">findDescendants</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a> $entryNodeAggregateIds, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindDescendantsFilter">FindDescendantsFilter</abbr> $filter)
+        
+                                            <p><p>Recursively find all nodes underneath the $entryNodeAggregateIds,
+which match the node type constraints specified by NodeTypeConstraints.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_countNodes">countNodes</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_findChildNodes">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentSubgraphInterface.php#L64">at line 64</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
+    <strong>findChildNodes</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindChildNodesFilter">FindChildNodesFilter</abbr> $filter)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
+                <td>$parentNodeAggregateId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindChildNodesFilter">FindChildNodesFilter</abbr></td>
+                <td>$filter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findReferencedNodes">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentSubgraphInterface.php#L69">at line 69</a></div>
+        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\References">References</abbr>
+    <strong>findReferencedNodes</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindReferencedNodesFilter">FindReferencedNodesFilter</abbr> $filter)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
+                <td>$nodeAggregateId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindReferencedNodesFilter">FindReferencedNodesFilter</abbr></td>
+                <td>$filter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\References">References</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findReferencingNodes">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentSubgraphInterface.php#L74">at line 74</a></div>
+        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\References">References</abbr>
+    <strong>findReferencingNodes</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindReferencingNodesFilter">FindReferencingNodesFilter</abbr> $filter)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
+                <td>$nodeAggregateId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindReferencingNodesFilter">FindReferencingNodesFilter</abbr></td>
+                <td>$filter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\References">References</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findNodeById">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentSubgraphInterface.php#L83">at line 83</a></div>
+        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+    <strong>findNodeById</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
+                <td>$nodeAggregateId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findParentNode">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentSubgraphInterface.php#L89">at line 89</a></div>
+        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+    <strong>findParentNode</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $childNodeAggregateId)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
+                <td>$childNodeAggregateId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findNodeByPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentSubgraphInterface.php#L96">at line 96</a></div>
+        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+    <strong>findNodeByPath</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a> $path, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $startingNodeAggregateId)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a></td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
+                <td>$startingNodeAggregateId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findChildNodeConnectedThroughEdgeName">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentSubgraphInterface.php#L106">at line 106</a></div>
+        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+    <strong>findChildNodeConnectedThroughEdgeName</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a> $edgeName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
+                <td>$parentNodeAggregateId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a></td>
+                <td>$edgeName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findSucceedingSiblings">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentSubgraphInterface.php#L116">at line 116</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
+    <strong>findSucceedingSiblings</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $sibling, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindSucceedingSiblingsFilter">FindSucceedingSiblingsFilter</abbr> $filter)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
+                <td>$sibling</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindSucceedingSiblingsFilter">FindSucceedingSiblingsFilter</abbr></td>
+                <td>$filter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findPrecedingSiblings">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentSubgraphInterface.php#L126">at line 126</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
+    <strong>findPrecedingSiblings</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $sibling, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindPrecedingSiblingsFilter">FindPrecedingSiblingsFilter</abbr> $filter)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
+                <td>$sibling</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindPrecedingSiblingsFilter">FindPrecedingSiblingsFilter</abbr></td>
+                <td>$filter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findNodePath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentSubgraphInterface.php#L135">at line 135</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a>
+    <strong>findNodePath</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
+                <td>$nodeAggregateId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findSubtrees">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentSubgraphInterface.php#L137">at line 137</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Subtrees.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Subtrees">Subtrees</abbr></a>
+    <strong>findSubtrees</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a> $entryNodeAggregateIds, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindSubtreesFilter">FindSubtreesFilter</abbr> $filter)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a></td>
+                <td>$entryNodeAggregateIds</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindSubtreesFilter">FindSubtreesFilter</abbr></td>
+                <td>$filter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Subtrees.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Subtrees">Subtrees</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findDescendants">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentSubgraphInterface.php#L152">at line 152</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
+    <strong>findDescendants</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a> $entryNodeAggregateIds, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindDescendantsFilter">FindDescendantsFilter</abbr> $filter)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Recursively find all nodes underneath the $entryNodeAggregateIds,
+which match the node type constraints specified by NodeTypeConstraints.</p></p>                <p><p>If a Search Term is specified, the properties are searched for this search term.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a></td>
+                <td>$entryNodeAggregateIds</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindDescendantsFilter">FindDescendantsFilter</abbr></td>
+                <td>$filter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_countNodes">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentSubgraphInterface.php#L161">at line 161</a></div>
+        <code>                    int
+    <strong>countNodes</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;this method might change without further notice.</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
