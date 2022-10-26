@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepository\Domain\Service\ImportExport\NodeExportService | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
+        <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../../js/typeahead.min.js"></script>
+        <script src="../../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (7.3)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepository_Domain_Service_ImportExport_NodeExportService" data-root-path="../../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository.html">ContentRepository</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository/Domain.html">Domain</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository/Domain/Service.html">Service</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository/Domain/Service/ImportExport.html">ImportExport</a></li><li class="backslash">\</li><li>NodeExportService</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>NodeExportService    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>NodeExportService</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeExportService.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Service for exporting content repository nodes as an XML structure</p></p>            <p><p>Internally, uses associative arrays instead of Domain Models for performance reasons, so &quot;nodeData&quot; in this
+class is always an associative array.</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        SUPPORTED_FORMAT_VERSION
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_objectManager">
+                                        protected                                        <abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$objectManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_persistenceManager">
+                                        protected                                        <abbr title="Neos\Flow\Persistence\PersistenceManagerInterface">PersistenceManagerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$persistenceManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_propertyMapper">
+                                        protected                                        <abbr title="Neos\Flow\Property\PropertyMapper">PropertyMapper</abbr>
+                                                                                
+                                    </td>
+                <td>$propertyMapper</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_entityManager">
+                                        protected                                        <abbr title="Doctrine\ORM\EntityManagerInterface">EntityManagerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$entityManager</td>
+                <td class="last"><p>Doctrine's Entity Manager.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeTypeManager">
+                                        protected                                        <a href="../../../../../Neos/ContentRepository/Domain/Service/NodeTypeManager.html"><abbr title="Neos\ContentRepository\Domain\Service\NodeTypeManager">NodeTypeManager</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodeTypeManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeDataRepository">
+                                        protected                                        <a href="../../../../../Neos/ContentRepository/Domain/Repository/NodeDataRepository.html"><abbr title="Neos\ContentRepository\Domain\Repository\NodeDataRepository">NodeDataRepository</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodeDataRepository</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_securityContext">
+                                        protected                                        <abbr title="Neos\Flow\Security\Context">Context</abbr>
+                                                                                
+                                    </td>
+                <td>$securityContext</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_propertyMappingConfiguration">
+                                        protected                                        <a href="../../../../../Neos/ContentRepository/Domain/Service/ImportExport/ImportExportPropertyMappingConfiguration.html"><abbr title="Neos\ContentRepository\Domain\Service\ImportExport\ImportExportPropertyMappingConfiguration">ImportExportPropertyMappingConfiguration</abbr></a>
+                                                                                
+                                    </td>
+                <td>$propertyMappingConfiguration</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_xmlWriter">
+                                        protected                                        <a target="_blank" rel="noopener" href="https://www.php.net/XMLWriter">XMLWriter</a>
+                                                                                
+                                    </td>
+                <td>$xmlWriter</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_exceptionsDuringExport">
+                                        protected                                        <a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a>[]
+                                                                                
+                                    </td>
+                <td>$exceptionsDuringExport</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_exportedNodePaths">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$exportedNodePaths</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectLogger">injectLogger</a>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectThrowableStorage">injectThrowableStorage</a>(<abbr title="Neos\Flow\Log\ThrowableStorageInterface">ThrowableStorageInterface</abbr> $throwableStorage)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/XMLWriter">XMLWriter</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_export">export</a>(string $startingPointNodePath = &#039;/&#039;, string $workspaceName = &#039;live&#039;, <a target="_blank" rel="noopener" href="https://www.php.net/XMLWriter">XMLWriter</a> $xmlWriter = null, bool $tidy = true, bool $endDocument = true, string $resourceSavePath = null, string $nodeTypeFilter = null)
+        
+                                            <p><p>Exports the node data of all nodes in the given sub-tree
+by writing them to the given XMLWriter.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findNodeDataListToExport">findNodeDataListToExport</a>(string $pathStartingPoint, string $workspace = &#039;live&#039;, string $nodeTypeFilter = null)
+        
+                                            <p><p>Find all nodes of the specified workspace lying below the path specified by
+(and including) the given starting point.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_exportNodeDataList">exportNodeDataList</a>(array $nodeDataList)
+        
+                                            <p><p>Exports the given Nodes into the XML structure, contained in <nodes> </nodes> tags.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_exportNodeData">exportNodeData</a>(array $nodeData, array $nodesStack)
+        
+                                            <p><p>Exports a single Node into the XML structure</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_writeConvertedElement">writeConvertedElement</a>(array $data, string $propertyName, string $elementName = null, string $declaredPropertyType = null)
+        
+                                            <p><p>Writes out a single property into the XML structure.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_handleExceptionsDuringExport">handleExceptionsDuringExport</a>()
+        
+                                            <p><p>If $this-&gt;exceptionsDuringImport is non-empty, build up a new composite exception which contains the individual messages and
+re-throw that one.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_injectLogger">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeExportService.php#L120">at line 120</a></div>
+        <code>                    
+    <strong>injectLogger</strong>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+                <td>$logger</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectThrowableStorage">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeExportService.php#L128">at line 128</a></div>
+        <code>                    
+    <strong>injectThrowableStorage</strong>(<abbr title="Neos\Flow\Log\ThrowableStorageInterface">ThrowableStorageInterface</abbr> $throwableStorage)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Log\ThrowableStorageInterface">ThrowableStorageInterface</abbr></td>
+                <td>$throwableStorage</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_export">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeExportService.php#L146">at line 146</a></div>
+        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/XMLWriter">XMLWriter</a>
+    <strong>export</strong>(string $startingPointNodePath = &#039;/&#039;, string $workspaceName = &#039;live&#039;, <a target="_blank" rel="noopener" href="https://www.php.net/XMLWriter">XMLWriter</a> $xmlWriter = null, bool $tidy = true, bool $endDocument = true, string $resourceSavePath = null, string $nodeTypeFilter = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Exports the node data of all nodes in the given sub-tree
+by writing them to the given XMLWriter.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$startingPointNodePath</td>
+                <td><p>path to the root node of the sub-tree to export. The specified node will not be included, only its sub nodes.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$workspaceName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/XMLWriter">XMLWriter</a></td>
+                <td>$xmlWriter</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$tidy</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$endDocument</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$resourceSavePath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeFilter</td>
+                <td><p>Filter the node type of the nodes, allows complex expressions (e.g. &quot;Neos.Neos:Page&quot;, &quot;!Neos.Neos:Page,Neos.Neos:Text&quot;)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/XMLWriter">XMLWriter</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findNodeDataListToExport">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeExportService.php#L187">at line 187</a></div>
+        <code>            protected        array
+    <strong>findNodeDataListToExport</strong>(string $pathStartingPoint, string $workspace = &#039;live&#039;, string $nodeTypeFilter = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Find all nodes of the specified workspace lying below the path specified by
+(and including) the given starting point.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$pathStartingPoint</td>
+                <td><p>Absolute path specifying the starting point</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$workspace</td>
+                <td><p>The containing workspace</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeFilter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>an array of node-data in array format.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_exportNodeDataList">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeExportService.php#L250">at line 250</a></div>
+        <code>            protected        void
+    <strong>exportNodeDataList</strong>(array $nodeDataList)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Exports the given Nodes into the XML structure, contained in <nodes> </nodes> tags.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$nodeDataList</td>
+                <td><p>The nodes to export</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td><p>The result is written directly into $this-&gt;xmlWriter</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_exportNodeData">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeExportService.php#L275">at line 275</a></div>
+        <code>            protected        void
+    <strong>exportNodeData</strong>(array $nodeData, array $nodesStack)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Exports a single Node into the XML structure</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$nodeData</td>
+                <td><p>The node data as an array</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$nodesStack</td>
+                <td><p>The stack keeping track of open tags, as passed by exportNodeDataList()</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td><p>The result is written directly into $this-&gt;xmlWriter</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_writeConvertedElement">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeExportService.php#L377">at line 377</a></div>
+        <code>            protected        void
+    <strong>writeConvertedElement</strong>(array $data, string $propertyName, string $elementName = null, string $declaredPropertyType = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Writes out a single property into the XML structure.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td><p>The data as an array, the given property name is looked up there</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td><p>The name of the property</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$elementName</td>
+                <td><p>an optional name to use, defaults to $propertyName</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$declaredPropertyType</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_handleExceptionsDuringExport">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.ContentRepository/Classes/Domain/Service/ImportExport/NodeExportService.php#L438">at line 438</a></div>
+        <code>            protected        
+    <strong>handleExceptionsDuringExport</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>If $this-&gt;exceptionsDuringImport is non-empty, build up a new composite exception which contains the individual messages and
+re-throw that one.</p></p>                        
+        </div>
+        <div class="tags">
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
