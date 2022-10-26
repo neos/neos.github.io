@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Neos\Flow\Persistence\Doctrine\ObjectValidationAndDeDuplicationListener | Flow Framework</title>
+    <title>Neos\Flow\Security\Cryptography\PrecomposedHashProvider | Flow Framework</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
@@ -23,7 +23,7 @@
           title="Flow Framework (8.2)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Flow_Persistence_Doctrine_ObjectValidationAndDeDuplicationListener" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Flow_Security_Cryptography_PrecomposedHashProvider" data-root-path="../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -67,18 +67,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Persistence.html">Persistence</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Persistence/Doctrine.html">Doctrine</a></li><li class="backslash">\</li><li>ObjectValidationAndDeDuplicationListener</li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Security.html">Security</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Security/Cryptography.html">Cryptography</a></li><li class="backslash">\</li><li>PrecomposedHashProvider</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>ObjectValidationAndDeDuplicationListener    
+        <h1>PrecomposedHashProvider    
             </h1>
     </div>
 
     
     <p>        class
-    <strong>ObjectValidationAndDeDuplicationListener</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Persistence/Doctrine/ObjectValidationAndDeDuplicationListener.php">View source</a>)
+    <strong>PrecomposedHashProvider</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Security/Cryptography/PrecomposedHashProvider.php">View source</a>)
 </p>
 
         
@@ -86,7 +86,7 @@
         
 
             <div class="description">
-            <p><p>An onFlush listener for Flow's Doctrine PersistenceManager.</p></p>            <p><p>Used to de-duplicate value objects and validate new and updated objects during flush.</p></p>        </div>
+            <p><p>Precomposes a hash to be used to prevent timing attacks</p></p>                    </div>
             
         
     
@@ -94,39 +94,21 @@
 
             <table class="table table-condensed">
                     <tr>
-                <td class="type" id="property_validatorResolver">
-                                        protected                                        <a href="../../../../Neos/Flow/Validation/ValidatorResolver.html"><abbr title="Neos\Flow\Validation\ValidatorResolver">ValidatorResolver</abbr></a>
+                <td class="type" id="property_hashService">
+                                        protected                                        <a href="../../../../Neos/Flow/Security/Cryptography/HashService.html"><abbr title="Neos\Flow\Security\Cryptography\HashService">HashService</abbr></a>
                                                                                 
                                     </td>
-                <td>$validatorResolver</td>
+                <td>$hashService</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_reflectionService">
-                                        protected                                        <a href="../../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a>
+                <td class="type" id="property_cache">
+                                        protected                                        <a href="../../../../Neos/Cache/Frontend/StringFrontend.html"><abbr title="Neos\Cache\Frontend\StringFrontend">StringFrontend</abbr></a>
                                                                                 
                                     </td>
-                <td>$reflectionService</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_persistenceManager">
-                                        protected                                        <a href="../../../../Neos/Flow/Persistence/Doctrine/PersistenceManager.html"><abbr title="Neos\Flow\Persistence\Doctrine\PersistenceManager">PersistenceManager</abbr></a>
-                                                                                
-                                    </td>
-                <td>$persistenceManager</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_entityManager">
-                                        protected                                        <abbr title="Doctrine\ORM\EntityManagerInterface">EntityManagerInterface</abbr>
-                                                                                
-                                    </td>
-                <td>$entityManager</td>
-                <td class="last"></td>
+                <td>$cache</td>
+                <td class="last"><p>The Cache have to be injected non-lazy to prevent timing differences</p></td>
                 <td></td>
             </tr>
             </table>
@@ -137,12 +119,24 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    void
+                    string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_onFlush">onFlush</a>(<abbr title="Doctrine\ORM\Event\OnFlushEventArgs">OnFlushEventArgs</abbr> $eventArgs)
+                    <a href="#method_getPrecomposedHash">getPrecomposedHash</a>()
         
-                                            <p><p>An onFlush event listener used to act upon persistence.</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_precomposeHash">precomposeHash</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -152,10 +146,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_onFlush">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Persistence/Doctrine/ObjectValidationAndDeDuplicationListener.php#L64">at line 64</a></div>
-        <code>                    void
-    <strong>onFlush</strong>(<abbr title="Doctrine\ORM\Event\OnFlushEventArgs">OnFlushEventArgs</abbr> $eventArgs)
+                    <h3 id="method_getPrecomposedHash">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Security/Cryptography/PrecomposedHashProvider.php#L41">at line 41</a></div>
+        <code>                    string
+    <strong>getPrecomposedHash</strong>()
         </code>
     </h3>
     <div class="details">    
@@ -163,39 +157,54 @@
             
 
         <div class="method-description">
-                            <p><p>An onFlush event listener used to act upon persistence.</p></p>                        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><abbr title="Doctrine\ORM\Event\OnFlushEventArgs">OnFlushEventArgs</abbr></td>
-                <td>$eventArgs</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>void</td>
+            <td>string</td>
             <td></td>
         </tr>
     </table>
 
             
-                            <h4>Exceptions</h4>
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_precomposeHash">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.2/Neos.Flow/Classes/Security/Cryptography/PrecomposedHashProvider.php#L51">at line 51</a></div>
+        <code>                    string
+    <strong>precomposeHash</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
 
                     <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../Neos/Flow/Persistence/Exception/ObjectValidationFailedException.html"><abbr title="Neos\Flow\Persistence\Exception\ObjectValidationFailedException">ObjectValidationFailedException</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
 
+            
             
             
                     </div>
