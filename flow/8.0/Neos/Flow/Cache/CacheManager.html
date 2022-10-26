@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Cache\CacheManager | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (8.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Cache_CacheManager" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow/Cache.html">Cache</a></li><li class="backslash">\</li><li>CacheManager</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>CacheManager    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>CacheManager</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>The Cache Manager</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_cacheFactory">
+                                        protected                                        <a href="../../../Neos/Flow/Cache/CacheFactory.html"><abbr title="Neos\Flow\Cache\CacheFactory">CacheFactory</abbr></a>
+                                                                                
+                                    </td>
+                <td>$cacheFactory</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_configurationManager">
+                                        protected                                        <a href="../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a>
+                                                                                
+                                    </td>
+                <td>$configurationManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_logger">
+                                        protected                                        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$logger</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_environment">
+                                        protected                                        <a href="../../../Neos/Flow/Utility/Environment.html"><abbr title="Neos\Flow\Utility\Environment">Environment</abbr></a>
+                                                                                
+                                    </td>
+                <td>$environment</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_caches">
+                                        protected                                        <a href="../../../Neos/Cache/Frontend/FrontendInterface.html"><abbr title="Neos\Cache\Frontend\FrontendInterface">FrontendInterface</abbr></a>[]
+                                                                                
+                                    </td>
+                <td>$caches</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_simpleCaches">
+                                        protected                                        <abbr title="Psr\SimpleCache\CacheInterface">CacheInterface</abbr>[]
+                                                                                
+                                    </td>
+                <td>$simpleCaches</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cacheItemPools">
+                                        protected                                        <abbr title="Psr\Cache\CacheItemPoolInterface">CacheItemPoolInterface</abbr>[]
+                                                                                
+                                    </td>
+                <td>$cacheItemPools</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_persistentCaches">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$persistentCaches</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cacheConfigurations">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$cacheConfigurations</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectLogger">injectLogger</a>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        
+                                            <p><p>Injects the (system) logger based on PSR-3.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectCacheFactory">injectCacheFactory</a>(<a href="../../../Neos/Flow/Cache/CacheFactory.html"><abbr title="Neos\Flow\Cache\CacheFactory">CacheFactory</abbr></a> $cacheFactory)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectConfigurationManager">injectConfigurationManager</a>(<a href="../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a> $configurationManager)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectEnvironment">injectEnvironment</a>(<a href="../../../Neos/Flow/Utility/Environment.html"><abbr title="Neos\Flow\Utility\Environment">Environment</abbr></a> $environment)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setCacheConfigurations">setCacheConfigurations</a>(array $cacheConfigurations)
+        
+                                            <p><p>Sets configurations for caches. The key of each entry specifies the
+cache identifier and the value is an array of configuration options.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_registerCache">registerCache</a>(<a href="../../../Neos/Cache/Frontend/FrontendInterface.html"><abbr title="Neos\Cache\Frontend\FrontendInterface">FrontendInterface</abbr></a> $cache, bool $persistent = false)
+        
+                                            <p><p>Registers a cache so it can be retrieved at a later point.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Cache/Frontend/FrontendInterface.html"><abbr title="Neos\Cache\Frontend\FrontendInterface">FrontendInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCache">getCache</a>(string $identifier)
+        
+                                            <p><p>Returns the cache specified by $identifier</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\SimpleCache\CacheInterface">CacheInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getSimpleCache">getSimpleCache</a>(string $identifier)
+        
+                                            <p><p>Return a SimpleCache frontend for the cache specified by $identifier</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Psr\Cache\CacheItemPoolInterface">CacheItemPoolInterface</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCacheItemPool">getCacheItemPool</a>(string $identifier)
+        
+                                            <p><p>Return a SimpleCache frontend for the cache specified by $identifier</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasCache">hasCache</a>(string $identifier)
+        
+                                            <p><p>Checks if the specified cache has been registered.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isCachePersistent">isCachePersistent</a>(string $identifier)
+        
+                                            <p><p>Checks if the specified cache is marked as &quot;persistent&quot;.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushCaches">flushCaches</a>(bool $flushPersistentCaches = false)
+        
+                                            <p><p>Flushes all registered caches</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushCachesByTag">flushCachesByTag</a>(string $tag, bool $flushPersistentCaches = false)
+        
+                                            <p><p>Flushes entries tagged by the specified tag of all registered
+caches.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCacheConfigurations">getCacheConfigurations</a>()
+        
+                                            <p><p>Returns an array of cache configurations, indexed by cache identifier</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushSystemCachesByChangedFiles">flushSystemCachesByChangedFiles</a>(string $fileMonitorIdentifier, array $changedFiles)
+        
+                                            <p><p>Flushes entries tagged with class names if their class source files have changed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushClassCachesByChangedFiles">flushClassCachesByChangedFiles</a>(array $changedFiles)
+        
+                                            <p><p>Flushes entries tagged with class names if their class source files have changed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushConfigurationCachesByChangedFiles">flushConfigurationCachesByChangedFiles</a>(array $changedFiles)
+        
+                                            <p><p>Flushes caches as needed if settings, routes or policies have changed</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushTranslationCachesByChangedFiles">flushTranslationCachesByChangedFiles</a>(array $changedFiles)
+        
+                                            <p><p>Flushes I18n caches if translation files have changed</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createAllCaches">createAllCaches</a>()
+        
+                                            <p><p>Instantiates all registered caches.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createCache">createCache</a>(string $identifier)
+        
+                                            <p><p>Instantiates the cache for $identifier.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_injectLogger">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L97">at line 97</a></div>
+        <code>                    void
+    <strong>injectLogger</strong>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the (system) logger based on PSR-3.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+                <td>$logger</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectCacheFactory">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L106">at line 106</a></div>
+        <code>                    void
+    <strong>injectCacheFactory</strong>(<a href="../../../Neos/Flow/Cache/CacheFactory.html"><abbr title="Neos\Flow\Cache\CacheFactory">CacheFactory</abbr></a> $cacheFactory)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Cache/CacheFactory.html"><abbr title="Neos\Flow\Cache\CacheFactory">CacheFactory</abbr></a></td>
+                <td>$cacheFactory</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectConfigurationManager">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L115">at line 115</a></div>
+        <code>                    void
+    <strong>injectConfigurationManager</strong>(<a href="../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a> $configurationManager)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a></td>
+                <td>$configurationManager</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectEnvironment">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L124">at line 124</a></div>
+        <code>                    void
+    <strong>injectEnvironment</strong>(<a href="../../../Neos/Flow/Utility/Environment.html"><abbr title="Neos\Flow\Utility\Environment">Environment</abbr></a> $environment)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Utility/Environment.html"><abbr title="Neos\Flow\Utility\Environment">Environment</abbr></a></td>
+                <td>$environment</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCacheConfigurations">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L146">at line 146</a></div>
+        <code>                    void
+    <strong>setCacheConfigurations</strong>(array $cacheConfigurations)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets configurations for caches. The key of each entry specifies the
+cache identifier and the value is an array of configuration options.</p></p>                <p><p>Possible options are:</p>
+<p>frontend
+backend
+backendOptions
+persistent</p>
+<p>If one of the options is not specified, the default value is assumed.
+Existing cache configurations are preserved.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$cacheConfigurations</td>
+                <td><p>The cache configurations to set</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_registerCache">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L165">at line 165</a></div>
+        <code>                    void
+    <strong>registerCache</strong>(<a href="../../../Neos/Cache/Frontend/FrontendInterface.html"><abbr title="Neos\Cache\Frontend\FrontendInterface">FrontendInterface</abbr></a> $cache, bool $persistent = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Registers a cache so it can be retrieved at a later point.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Cache/Frontend/FrontendInterface.html"><abbr title="Neos\Cache\Frontend\FrontendInterface">FrontendInterface</abbr></a></td>
+                <td>$cache</td>
+                <td><p>The cache frontend to be registered</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$persistent</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Cache/Exception/DuplicateIdentifierException.html"><abbr title="Neos\Cache\Exception\DuplicateIdentifierException">DuplicateIdentifierException</abbr></a></td>
+                <td><p>if a cache with the given identifier has already been registered.</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCache">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L185">at line 185</a></div>
+        <code>                    <a href="../../../Neos/Cache/Frontend/FrontendInterface.html"><abbr title="Neos\Cache\Frontend\FrontendInterface">FrontendInterface</abbr></a>
+    <strong>getCache</strong>(string $identifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the cache specified by $identifier</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identifier</td>
+                <td><p>Identifies which cache to return</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Cache/Frontend/FrontendInterface.html"><abbr title="Neos\Cache\Frontend\FrontendInterface">FrontendInterface</abbr></a></td>
+            <td><p>The specified cache frontend</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Cache/Exception/NoSuchCacheException.html"><abbr title="Neos\Cache\Exception\NoSuchCacheException">NoSuchCacheException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSimpleCache">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L203">at line 203</a></div>
+        <code>                    <abbr title="Psr\SimpleCache\CacheInterface">CacheInterface</abbr>
+    <strong>getSimpleCache</strong>(string $identifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return a SimpleCache frontend for the cache specified by $identifier</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\SimpleCache\CacheInterface">CacheInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCacheItemPool">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L221">at line 221</a></div>
+        <code>                    <abbr title="Psr\Cache\CacheItemPoolInterface">CacheItemPoolInterface</abbr>
+    <strong>getCacheItemPool</strong>(string $identifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return a SimpleCache frontend for the cache specified by $identifier</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Psr\Cache\CacheItemPoolInterface">CacheItemPoolInterface</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasCache">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L240">at line 240</a></div>
+        <code>                    bool
+    <strong>hasCache</strong>(string $identifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if the specified cache has been registered.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identifier</td>
+                <td><p>The identifier of the cache</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if a cache with the given identifier exists, otherwise false</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isCachePersistent">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L251">at line 251</a></div>
+        <code>                    bool
+    <strong>isCachePersistent</strong>(string $identifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if the specified cache is marked as &quot;persistent&quot;.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identifier</td>
+                <td><p>The identifier of the cache</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if the specified cache is persistent, false if it is not, or if the cache does not exist</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushCaches">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L263">at line 263</a></div>
+        <code>                    void
+    <strong>flushCaches</strong>(bool $flushPersistentCaches = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flushes all registered caches</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$flushPersistentCaches</td>
+                <td><p>If set to true, even those caches which are flagged as &quot;persistent&quot; will be flushed</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushCachesByTag">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L287">at line 287</a></div>
+        <code>                    void
+    <strong>flushCachesByTag</strong>(string $tag, bool $flushPersistentCaches = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flushes entries tagged by the specified tag of all registered
+caches.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$tag</td>
+                <td><p>Tag to search for</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$flushPersistentCaches</td>
+                <td><p>If set to true, even those caches which are flagged as &quot;persistent&quot; will be flushed</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCacheConfigurations">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L304">at line 304</a></div>
+        <code>                    array
+    <strong>getCacheConfigurations</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns an array of cache configurations, indexed by cache identifier</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushSystemCachesByChangedFiles">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L324">at line 324</a></div>
+        <code>                    void
+    <strong>flushSystemCachesByChangedFiles</strong>(string $fileMonitorIdentifier, array $changedFiles)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flushes entries tagged with class names if their class source files have changed.</p></p>                <p><p>Also flushes AOP proxy caches if a policy was modified.</p>
+<p>This method is used as a slot for a signal sent by the system file monitor
+defined in the bootstrap scripts.</p>
+<p>Note: Policy configuration handling is implemented here as well as other parts
+of Flow (like the security framework) are not fully initialized at the
+time needed.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$fileMonitorIdentifier</td>
+                <td><p>Identifier of the File Monitor</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$changedFiles</td>
+                <td><p>A list of full paths to changed files</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushClassCachesByChangedFiles">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L346">at line 346</a></div>
+        <code>            protected        void
+    <strong>flushClassCachesByChangedFiles</strong>(array $changedFiles)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flushes entries tagged with class names if their class source files have changed.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$changedFiles</td>
+                <td><p>A list of full paths to changed files</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Flow\Cache\flushSystemCachesByChangedFiles()">flushSystemCachesByChangedFiles()</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushConfigurationCachesByChangedFiles">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L412">at line 412</a></div>
+        <code>            protected        void
+    <strong>flushConfigurationCachesByChangedFiles</strong>(array $changedFiles)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flushes caches as needed if settings, routes or policies have changed</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$changedFiles</td>
+                <td><p>A list of full paths to changed files</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Flow\Cache\flushSystemCachesByChangedFiles()">flushSystemCachesByChangedFiles()</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushTranslationCachesByChangedFiles">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L462">at line 462</a></div>
+        <code>            protected        void
+    <strong>flushTranslationCachesByChangedFiles</strong>(array $changedFiles)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flushes I18n caches if translation files have changed</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$changedFiles</td>
+                <td><p>A list of full paths to changed files</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Flow\Cache\flushSystemCachesByChangedFiles()">flushSystemCachesByChangedFiles()</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createAllCaches">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L478">at line 478</a></div>
+        <code>            protected        void
+    <strong>createAllCaches</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Instantiates all registered caches.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createCache">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Cache/CacheManager.php#L493">at line 493</a></div>
+        <code>            protected        void
+    <strong>createCache</strong>(string $identifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Instantiates the cache for $identifier.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

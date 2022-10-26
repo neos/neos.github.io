@@ -1,0 +1,2439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Cache\Backend\FileBackend | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (8.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Cache_Backend_FileBackend" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Cache.html">Cache</a></li><li class="backslash">\</li><li><a href="../../../Neos/Cache/Backend.html">Backend</a></li><li class="backslash">\</li><li>FileBackend</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>FileBackend    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>FileBackend</strong>        extends <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html"><abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a>        implements
+        <a href="../../../Neos/Cache/Backend/PhpCapableBackendInterface.html"><abbr title="Neos\Cache\Backend\PhpCapableBackendInterface">PhpCapableBackendInterface</abbr></a>, <a href="../../../Neos/Cache/Backend/FreezableBackendInterface.html"><abbr title="Neos\Cache\Backend\FreezableBackendInterface">FreezableBackendInterface</abbr></a>, <a href="../../../Neos/Cache/Backend/TaggableBackendInterface.html"><abbr title="Neos\Cache\Backend\TaggableBackendInterface">TaggableBackendInterface</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A caching backend which stores cache entries in files</p></p>                    </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        DATETIME_EXPIRYTIME_UNLIMITED
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        UNLIMITED_LIFETIME
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        SEPARATOR
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        EXPIRYTIME_FORMAT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        EXPIRYTIME_LENGTH
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        DATASIZE_DIGITS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_cache">
+                                        protected                                        <a href="../../../Neos/Cache/Frontend/FrontendInterface.html"><abbr title="Neos\Cache\Frontend\FrontendInterface">FrontendInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$cache</td>
+                <td class="last"><p>Reference to the cache frontend which uses this backend</p></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Cache/Backend/AbstractBackend.html#property_cache">
+<abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cacheIdentifier">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$cacheIdentifier</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Cache/Backend/AbstractBackend.html#property_cacheIdentifier">
+<abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_identifierPrefix">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$identifierPrefix</td>
+                <td class="last"><p>A prefix to seperate stored by appliaction context and cache</p></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Cache/Backend/AbstractBackend.html#property_identifierPrefix">
+<abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_defaultLifetime">
+                                        protected                                        int
+                                                                                
+                                    </td>
+                <td>$defaultLifetime</td>
+                <td class="last"><p>Default lifetime of a cache entry in seconds</p></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Cache/Backend/AbstractBackend.html#property_defaultLifetime">
+<abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_environmentConfiguration">
+                                        protected                                        <a href="../../../Neos/Cache/EnvironmentConfiguration.html"><abbr title="Neos\Cache\EnvironmentConfiguration">EnvironmentConfiguration</abbr></a>
+                                                                                
+                                    </td>
+                <td>$environmentConfiguration</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Cache/Backend/AbstractBackend.html#property_environmentConfiguration">
+<abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cacheDirectory">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$cacheDirectory</td>
+                <td class="last"><p>Directory where the files are stored.</p></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#property_cacheDirectory">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cacheEntryFileExtension">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$cacheEntryFileExtension</td>
+                <td class="last"><p>A file extension to use for each cache entry.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cacheEntryIdentifiers">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$cacheEntryIdentifiers</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_frozen">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$frozen</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_useIgBinary">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$useIgBinary</td>
+                <td class="last"><p>If the extension &quot;igbinary&quot; is installed, use it for increased performance.</p></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#property_useIgBinary">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cacheFilesIterator">
+                                        protected                                        <a target="_blank" rel="noopener" href="https://www.php.net/DirectoryIterator">DirectoryIterator</a>
+                                                                                
+                                    </td>
+                <td>$cacheFilesIterator</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#property_cacheFilesIterator">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_baseDirectory">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$baseDirectory</td>
+                <td class="last"><p>Overrides the base directory for this cache,
+the effective directory will be a subdirectory of this.</p></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#property_baseDirectory">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../Neos/Cache/EnvironmentConfiguration.html"><abbr title="Neos\Cache\EnvironmentConfiguration">EnvironmentConfiguration</abbr></a> $environmentConfiguration, array $options = [])
+        
+                                            <p><p>Constructs this backend</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method___construct">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setProperties">setProperties</a>(array $properties, bool $throwExceptionIfPropertyNotSettable = true)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/AbstractBackend.html#method_setProperties">
+<abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setProperty">setProperty</a>(string $propertyName, mixed $propertyValue)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/AbstractBackend.html#method_setProperty">
+<abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setCache">setCache</a>(<a href="../../../Neos/Cache/Frontend/FrontendInterface.html"><abbr title="Neos\Cache\Frontend\FrontendInterface">FrontendInterface</abbr></a> $cache)
+        
+                                            <p><p>Sets a reference to the cache frontend which uses this backend and
+initializes the default cache directory.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setDefaultLifetime">setDefaultLifetime</a>(int|string $defaultLifetime)
+        
+                                            <p><p>Sets the default lifetime for this cache backend</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/AbstractBackend.html#method_setDefaultLifetime">
+<abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_calculateExpiryTime">calculateExpiryTime</a>(int $lifetime = null)
+        
+                                            <p><p>Calculates the expiry time by the given lifetime. If no lifetime is
+specified, the default lifetime is used.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/AbstractBackend.html#method_calculateExpiryTime">
+<abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPrefixedIdentifier">getPrefixedIdentifier</a>(string $entryIdentifier)
+        
+                                            <p><p>Returns the internally used, prefixed entry identifier for the given public
+entry identifier.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/AbstractBackend.html#method_getPrefixedIdentifier">
+<abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setCacheDirectory">setCacheDirectory</a>(string $cacheDirectory)
+        
+                                            <p><p>Sets the directory where the cache files are stored</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_setCacheDirectory">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCacheDirectory">getCacheDirectory</a>()
+        
+                                            <p><p>Returns the directory where the cache files are stored</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_getCacheDirectory">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_set">set</a>(string $entryIdentifier, string $data, array $tags = [], int $lifetime = null)
+        
+                                            <p><p>Saves data in a cache file.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_get">get</a>(string $entryIdentifier)
+        
+                                            <p><p>Loads data from a cache file.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_has">has</a>(string $entryIdentifier)
+        
+                                            <p><p>Checks if a cache entry with the specified identifier exists.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_remove">remove</a>(string $entryIdentifier)
+        
+                                            <p><p>Removes all cache entries matching the specified identifier.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flush">flush</a>()
+        
+                                            <p><p>Removes all cache entries of this cache and sets the frozen flag to false.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isCacheFileExpired">isCacheFileExpired</a>(string $cacheEntryPathAndFilename, bool $acquireLock = true)
+        
+                                            <p><p>Checks if the given cache entry files are still valid or if their
+lifetime has exceeded.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_collectGarbage">collectGarbage</a>()
+        
+                                            <p><p>Does garbage collection</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findCacheFilesByIdentifier">findCacheFilesByIdentifier</a>(string $entryIdentifier)
+        
+                                            <p><p>Tries to find the cache entry for the specified identifier.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_requireOnce">requireOnce</a>(string $entryIdentifier)
+        
+                                            <p><p>Loads PHP code from the cache and require_onces it right away.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_current">current</a>()
+        
+                                            <p><p>Returns the data of the current cache entry pointed to by the cache entry
+iterator.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_current">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_next">next</a>()
+        
+                                            <p><p>Move forward to the next cache entry</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_next">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_key">key</a>()
+        
+                                            <p><p>Returns the identifier of the current cache entry pointed to by the cache
+entry iterator.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_key">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_valid">valid</a>()
+        
+                                            <p><p>Checks if the current position of the cache entry iterator is valid</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_valid">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_rewind">rewind</a>()
+        
+                                            <p><p>Rewinds the cache entry iterator to the first element</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_rewind">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_throwExceptionIfPathExceedsMaximumLength">throwExceptionIfPathExceedsMaximumLength</a>(string $cacheEntryPathAndFilename)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_throwExceptionIfPathExceedsMaximumLength">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getBaseDirectory">getBaseDirectory</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_getBaseDirectory">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setBaseDirectory">setBaseDirectory</a>(string $baseDirectory)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_setBaseDirectory">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_configureCacheDirectory">configureCacheDirectory</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_configureCacheDirectory">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_verifyCacheDirectory">verifyCacheDirectory</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_verifyCacheDirectory">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool|string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_readCacheFile">readCacheFile</a>(string $cacheEntryPathAndFilename, int $offset = null, int $maxlen = null)
+        
+                                            <p><p>Reads the cache data from the given cache file, using locking.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_readCacheFile">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_writeCacheFile">writeCacheFile</a>(string $cacheEntryPathAndFilename, string $data)
+        
+                                            <p><p>Writes the cache data into the given cache file, using locking.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_writeCacheFile">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setup">setup</a>()
+        
+                                            <p><p>Sets up this backend by creating the required cache directory if it doesn't exist yet</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_setup">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getStatus">getStatus</a>()
+        
+                                            <p><p>Validates that the configured cache directory exists and is writeable and returns some details about its configuration if that's the case</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_getStatus">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_freeze">freeze</a>()
+        
+                                            <p><p>Freezes this cache backend.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isFrozen">isFrozen</a>()
+        
+                                            <p><p>Tells if this backend is frozen.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findIdentifiersByTag">findIdentifiersByTag</a>(string $searchedTag)
+        
+                                            <p><p>Finds and returns all cache entry identifiers which are tagged by the
+specified tag.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findIdentifiersByTags">findIdentifiersByTags</a>(array $tags)
+        
+                                            <p><p>Finds and returns all cache entry identifiers which are tagged by the
+specified tags.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushByTag">flushByTag</a>(string $tag)
+        
+                                            <p><p>Removes all cache entries of this cache which are tagged by the specified tag.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushByTags">flushByTags</a>(array $tags)
+        
+                                            <p><p>Removes all cache entries of this cache which are tagged by any of the specified tags.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool|string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_internalGet">internalGet</a>(string $entryIdentifier, bool $acquireLock = true)
+        
+                                            <p><p>Internal get method, allows to nest locks by using the $acquireLock flag</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method___construct">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L92">at line 92</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../Neos/Cache/EnvironmentConfiguration.html"><abbr title="Neos\Cache\EnvironmentConfiguration">EnvironmentConfiguration</abbr></a> $environmentConfiguration, array $options = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructs this backend</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Cache/EnvironmentConfiguration.html"><abbr title="Neos\Cache\EnvironmentConfiguration">EnvironmentConfiguration</abbr></a></td>
+                <td>$environmentConfiguration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$options</td>
+                <td><p>Configuration options - depends on the actual backend</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setProperties">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/AbstractBackend.html#method_setProperties">
+<abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/AbstractBackend.php#L79">at line 79</a></div>
+        <code>            protected        void
+    <strong>setProperties</strong>(array $properties, bool $throwExceptionIfPropertyNotSettable = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$properties</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$throwExceptionIfPropertyNotSettable</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setProperty">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/AbstractBackend.html#method_setProperty">
+<abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/AbstractBackend.php#L98">at line 98</a></div>
+        <code>            protected        bool
+    <strong>setProperty</strong>(string $propertyName, mixed $propertyValue)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$propertyValue</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCache">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L121">at line 121</a></div>
+        <code>                    void
+    <strong>setCache</strong>(<a href="../../../Neos/Cache/Frontend/FrontendInterface.html"><abbr title="Neos\Cache\Frontend\FrontendInterface">FrontendInterface</abbr></a> $cache)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets a reference to the cache frontend which uses this backend and
+initializes the default cache directory.</p></p>                <p><p>This method also detects if this backend is frozen and sets the internal
+flag accordingly.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Cache/Frontend/FrontendInterface.html"><abbr title="Neos\Cache\Frontend\FrontendInterface">FrontendInterface</abbr></a></td>
+                <td>$cache</td>
+                <td><p>The frontend for this backend</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Cache/Exception.html"><abbr title="Neos\Cache\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDefaultLifetime">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/AbstractBackend.html#method_setDefaultLifetime">
+<abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/AbstractBackend.php#L132">at line 132</a></div>
+        <code>                    void
+    <strong>setDefaultLifetime</strong>(int|string $defaultLifetime)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the default lifetime for this cache backend</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int|string</td>
+                <td>$defaultLifetime</td>
+                <td><p>Default lifetime of this cache backend in seconds. 0 means unlimited lifetime.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_calculateExpiryTime">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/AbstractBackend.html#method_calculateExpiryTime">
+<abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/AbstractBackend.php#L147">at line 147</a></div>
+        <code>            protected        <a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a>
+    <strong>calculateExpiryTime</strong>(int $lifetime = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Calculates the expiry time by the given lifetime. If no lifetime is
+specified, the default lifetime is used.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$lifetime</td>
+                <td><p>The lifetime in seconds</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a></td>
+            <td><p>The expiry time</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPrefixedIdentifier">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/AbstractBackend.html#method_getPrefixedIdentifier">
+<abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/AbstractBackend.php#L175">at line 175</a></div>
+        <code>                    string
+    <strong>getPrefixedIdentifier</strong>(string $entryIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the internally used, prefixed entry identifier for the given public
+entry identifier.</p></p>                <p><p>While Flow applications will mostly refer to the simple entry identifier, it
+may be necessary to know the actual identifier used by the cache backend
+in order to share cache entries with other applications. This method allows
+for retrieving it.</p>
+<p>Note that, in case of the AbstractBackend, this method is returns just the
+given entry identifier.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$entryIdentifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setCacheDirectory">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_setCacheDirectory">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L120">at line 120</a></div>
+        <code>                    void
+    <strong>setCacheDirectory</strong>(string $cacheDirectory)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the directory where the cache files are stored</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$cacheDirectory</td>
+                <td><p>Full path of the cache directory</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCacheDirectory">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_getCacheDirectory">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L131">at line 131</a></div>
+        <code>                    string
+    <strong>getCacheDirectory</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the directory where the cache files are stored</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>Full path of the cache directory</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_set">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L150">at line 150</a></div>
+        <code>                    void
+    <strong>set</strong>(string $entryIdentifier, string $data, array $tags = [], int $lifetime = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Saves data in a cache file.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$entryIdentifier</td>
+                <td><p>An identifier for this specific cache entry</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$data</td>
+                <td><p>The data to be stored</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$tags</td>
+                <td><p>Tags to associate with this cache entry. If the backend does not support tags, this option can be ignored.</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$lifetime</td>
+                <td><p>Lifetime of this cache entry in seconds. If NULL is specified, the default lifetime is used. &quot;0&quot; means unlimited lifetime.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/RuntimeException">RuntimeException</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Cache/Exception.html"><abbr title="Neos\Cache\Exception">Exception</abbr></a></td>
+                <td><p>if the directory does not exist or is not writable or exceeds the maximum allowed path length, or if no cache frontend has been set.</p></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_get">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L187">at line 187</a></div>
+        <code>                    mixed
+    <strong>get</strong>(string $entryIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Loads data from a cache file.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$entryIdentifier</td>
+                <td><p>An identifier which describes the cache entry to load</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The cache entry's content as a string or false if the cache entry could not be loaded</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_has">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L200">at line 200</a></div>
+        <code>                    bool
+    <strong>has</strong>(string $entryIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if a cache entry with the specified identifier exists.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$entryIdentifier</td>
+                <td><p>An identifier specifying the cache entry</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if such an entry exists, false if not</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_remove">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L221">at line 221</a></div>
+        <code>                    bool
+    <strong>remove</strong>(string $entryIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes all cache entries matching the specified identifier.</p></p>                <p><p>Usually this only affects one entry.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$entryIdentifier</td>
+                <td><p>Specifies the cache entry to remove</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if (at least) an entry could be removed or false if no entry was found</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/RuntimeException">RuntimeException</a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flush">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L294">at line 294</a></div>
+        <code>                    void
+    <strong>flush</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes all cache entries of this cache and sets the frozen flag to false.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Utility/Exception/FilesException.html"><abbr title="Neos\Utility\Exception\FilesException">FilesException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isCacheFileExpired">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L344">at line 344</a></div>
+        <code>            protected        bool
+    <strong>isCacheFileExpired</strong>(string $cacheEntryPathAndFilename, bool $acquireLock = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if the given cache entry files are still valid or if their
+lifetime has exceeded.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$cacheEntryPathAndFilename</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$acquireLock</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_collectGarbage">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L366">at line 366</a></div>
+        <code>                    void
+    <strong>collectGarbage</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Does garbage collection</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findCacheFilesByIdentifier">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L391">at line 391</a></div>
+        <code>            protected        mixed
+    <strong>findCacheFilesByIdentifier</strong>(string $entryIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Tries to find the cache entry for the specified identifier.</p></p>                <p><p>Usually only one cache entry should be found - if more than one exist, this
+is due to some error or crash.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$entryIdentifier</td>
+                <td><p>The cache entry identifier</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The filenames (including path) as an array if one or more entries could be found, otherwise false</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_requireOnce">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L409">at line 409</a></div>
+        <code>                    mixed
+    <strong>requireOnce</strong>(string $entryIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Loads PHP code from the cache and require_onces it right away.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$entryIdentifier</td>
+                <td><p>An identifier which describes the cache entry to load</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Potential return value from the include operation</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_current">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_current">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L347">at line 347</a></div>
+        <code>                    mixed
+    <strong>current</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the data of the current cache entry pointed to by the cache entry
+iterator.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_next">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_next">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L363">at line 363</a></div>
+        <code>                    void
+    <strong>next</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Move forward to the next cache entry</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_key">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_key">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L381">at line 381</a></div>
+        <code>                    string
+    <strong>key</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the identifier of the current cache entry pointed to by the cache
+entry iterator.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_valid">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_valid">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L395">at line 395</a></div>
+        <code>                    bool
+    <strong>valid</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if the current position of the cache entry iterator is valid</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if the current position is valid, otherwise false</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_rewind">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_rewind">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L409">at line 409</a></div>
+        <code>                    void
+    <strong>rewind</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Rewinds the cache entry iterator to the first element</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_throwExceptionIfPathExceedsMaximumLength">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_throwExceptionIfPathExceedsMaximumLength">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L425">at line 425</a></div>
+        <code>            protected        void
+    <strong>throwExceptionIfPathExceedsMaximumLength</strong>(string $cacheEntryPathAndFilename)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$cacheEntryPathAndFilename</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Cache/Exception.html"><abbr title="Neos\Cache\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getBaseDirectory">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_getBaseDirectory">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L435">at line 435</a></div>
+        <code>                    string
+    <strong>getBaseDirectory</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setBaseDirectory">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_setBaseDirectory">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L443">at line 443</a></div>
+        <code>                    void
+    <strong>setBaseDirectory</strong>(string $baseDirectory)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$baseDirectory</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_configureCacheDirectory">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_configureCacheDirectory">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L451">at line 451</a></div>
+        <code>            protected        void
+    <strong>configureCacheDirectory</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Cache/Exception.html"><abbr title="Neos\Cache\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_verifyCacheDirectory">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_verifyCacheDirectory">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L475">at line 475</a></div>
+        <code>            protected        void
+    <strong>verifyCacheDirectory</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Cache/Exception.html"><abbr title="Neos\Cache\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_readCacheFile">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_readCacheFile">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L493">at line 493</a></div>
+        <code>            protected        bool|string
+    <strong>readCacheFile</strong>(string $cacheEntryPathAndFilename, int $offset = null, int $maxlen = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Reads the cache data from the given cache file, using locking.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$cacheEntryPathAndFilename</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$offset</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$maxlen</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool|string</td>
+            <td><p>The contents of the cache file or false on error</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_writeCacheFile">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_writeCacheFile">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L529">at line 529</a></div>
+        <code>            protected        bool
+    <strong>writeCacheFile</strong>(string $cacheEntryPathAndFilename, string $data)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Writes the cache data into the given cache file, using locking.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$cacheEntryPathAndFilename</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$data</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>Return value of file_put_contents</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setup">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_setup">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L565">at line 565</a></div>
+        <code>                    <a href="../../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+    <strong>setup</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets up this backend by creating the required cache directory if it doesn't exist yet</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getStatus">
+        <div class="location">in <a href="../../../Neos/Cache/Backend/SimpleFileBackend.html#method_getStatus">
+<abbr title="Neos\Cache\Backend\SimpleFileBackend">SimpleFileBackend</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/SimpleFileBackend.php#L582">at line 582</a></div>
+        <code>                    <a href="../../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a>
+    <strong>getStatus</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validates that the configured cache directory exists and is writeable and returns some details about its configuration if that's the case</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Error/Messages/Result.html"><abbr title="Neos\Error\Messages\Result">Result</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_freeze">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L66">at line 66</a></div>
+        <code>                    void
+    <strong>freeze</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Freezes this cache backend.</p></p>                <p><p>All data in a frozen backend remains unchanged and methods which try to add
+or modify data result in an exception thrown. Possible expiry times of
+individual cache entries are ignored.</p>
+<p>On the positive side, a frozen cache backend is much faster on read access.
+A frozen backend can only be thawed by calling the flush() method.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/RuntimeException">RuntimeException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isFrozen">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L105">at line 105</a></div>
+        <code>                    bool
+    <strong>isFrozen</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Tells if this backend is frozen.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findIdentifiersByTag">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L238">at line 238</a></div>
+        <code>                    array
+    <strong>findIdentifiersByTag</strong>(string $searchedTag)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Finds and returns all cache entry identifiers which are tagged by the
+specified tag.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$searchedTag</td>
+                <td><p>The tag to search for</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>An array with identifiers of all matching entries. An empty array if no entries matched</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findIdentifiersByTags">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L251">at line 251</a></div>
+        <code>                    array
+    <strong>findIdentifiersByTags</strong>(array $tags)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Finds and returns all cache entry identifiers which are tagged by the
+specified tags.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$tags</td>
+                <td><p>The tags to search for</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>An array with identifiers of all matching entries. An empty array if no entries matched</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushByTag">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L314">at line 314</a></div>
+        <code>                    int
+    <strong>flushByTag</strong>(string $tag)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes all cache entries of this cache which are tagged by the specified tag.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$tag</td>
+                <td><p>The tag the entries must have</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>The number of entries which have been affected by this flush</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushByTags">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L324">at line 324</a></div>
+        <code>                    int
+    <strong>flushByTags</strong>(array $tags)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes all cache entries of this cache which are tagged by any of the specified tags.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$tags</td>
+                <td><p>The tags the entries must have</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>The number of entries which have been affected by this flush</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_internalGet">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/FileBackend.php#L433">at line 433</a></div>
+        <code>            protected        bool|string
+    <strong>internalGet</strong>(string $entryIdentifier, bool $acquireLock = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Internal get method, allows to nest locks by using the $acquireLock flag</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$entryIdentifier</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$acquireLock</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

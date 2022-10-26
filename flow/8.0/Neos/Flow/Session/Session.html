@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Session\Session | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (8.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Session_Session" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow/Session.html">Session</a></li><li class="backslash">\</li><li>Session</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Session    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>Session</strong>        implements
+        <a href="../../../Neos/Flow/Session/CookieEnabledInterface.html"><abbr title="Neos\Flow\Session\CookieEnabledInterface">CookieEnabledInterface</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A modular session implementation based on the caching framework.</p></p>            <p><p>You may access the currently active session in userland code. In order to do this,
+inject SessionInterface and NOT just the Session object.
+The former will be a unique instance (singleton) representing the current session
+while the latter would be a completely new session instance!</p>
+<p>You can use the Session Manager for accessing sessions which are not currently
+active.</p>
+<p>Note that Flow's bootstrap (that is, Neos\Flow\Core\Scripts) will try to resume
+a possibly existing session automatically. If a session could be resumed during
+that phase already, calling start() at a later stage will be a no-operation.</p></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        TAG_PREFIX
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_objectManager">
+                                        protected                                        <a href="../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$objectManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_logger">
+                                        protected                                        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$logger</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_metaDataCache">
+                                        protected                                        <a href="../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a>
+                                                                                
+                                    </td>
+                <td>$metaDataCache</td>
+                <td class="last"><p>Meta data cache for this session</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_storageCache">
+                                        protected                                        <a href="../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a>
+                                                                                
+                                    </td>
+                <td>$storageCache</td>
+                <td class="last"><p>Storage cache for this session</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_sessionCookieName">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$sessionCookieName</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_sessionCookieLifetime">
+                                        protected                                        int
+                                                                                
+                                    </td>
+                <td>$sessionCookieLifetime</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_sessionCookieDomain">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$sessionCookieDomain</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_sessionCookiePath">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$sessionCookiePath</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_sessionCookieSecure">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$sessionCookieSecure</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_sessionCookieHttpOnly">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$sessionCookieHttpOnly</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_sessionCookieSameSite">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$sessionCookieSameSite</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_sessionCookie">
+                                        protected                                        <a href="../../../Neos/Flow/Http/Cookie.html"><abbr title="Neos\Flow\Http\Cookie">Cookie</abbr></a>
+                                                                                
+                                    </td>
+                <td>$sessionCookie</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_inactivityTimeout">
+                                        protected                                        int
+                                                                                
+                                    </td>
+                <td>$inactivityTimeout</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_lastActivityTimestamp">
+                                        protected                                        int
+                                                                                
+                                    </td>
+                <td>$lastActivityTimestamp</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_tags">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$tags</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_now">
+                                        protected                                        int
+                                                                                
+                                    </td>
+                <td>$now</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_garbageCollectionProbability">
+                                        protected                                        float
+                                                                                
+                                    </td>
+                <td>$garbageCollectionProbability</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_garbageCollectionMaximumPerRun">
+                                        protected                                        int
+                                                                                
+                                    </td>
+                <td>$garbageCollectionMaximumPerRun</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_sessionIdentifier">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$sessionIdentifier</td>
+                <td class="last"><p>The session identifier</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_storageIdentifier">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$storageIdentifier</td>
+                <td class="last"><p>Internal identifier used for storing session data in the cache</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_started">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$started</td>
+                <td class="last"><p>If this session has been started</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_remote">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$remote</td>
+                <td class="last"><p>If this session is remote or the &quot;current&quot; session</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(string $sessionIdentifier = null, string $storageIdentifier = null, int $lastActivityTimestamp = null, array $tags = [])
+        
+                                            <p><p>Constructs this session</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../Neos/Flow/Session/CookieEnabledInterface.html"><abbr title="Neos\Flow\Session\CookieEnabledInterface">CookieEnabledInterface</abbr></a>|<a href="../../../Neos/Flow/Session/SessionInterface.html"><abbr title="Neos\Flow\Session\SessionInterface">SessionInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createFromCookieAndSessionInformation">createFromCookieAndSessionInformation</a>(<a href="../../../Neos/Flow/Http/Cookie.html"><abbr title="Neos\Flow\Http\Cookie">Cookie</abbr></a> $sessionCookie, string $storageIdentifier, int $lastActivityTimestamp, array $tags = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectSettings">injectSettings</a>(array $settings)
+        
+                                            <p><p>Injects the Flow settings</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectLogger">injectLogger</a>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        
+                                            <p><p>Injects the (system) logger based on PSR-3.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initializeObject">initializeObject</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/Http/Cookie.html"><abbr title="Neos\Flow\Http\Cookie">Cookie</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getSessionCookie">getSessionCookie</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isStarted">isStarted</a>()
+        
+                                            <p><p>Tells if the session has been started already.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isRemote">isRemote</a>()
+        
+                                            <p><p>Tells if the session is local (the current session bound to the current HTTP
+request) or remote (retrieved through the Session Manager).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_start">start</a>()
+        
+                                            <p><p>Starts the session, if it has not been already started</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_canBeResumed">canBeResumed</a>()
+        
+                                            <p><p>Returns true if there is a session that can be resumed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resume">resume</a>()
+        
+                                            <p><p>Resumes an existing session, if any.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getId">getId</a>()
+        
+                                            <p><p>Returns the current session identifier</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_renewId">renewId</a>()
+        
+                                            <p><p>Generates and propagates a new session ID and transfers all existing data
+to the new session.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getData">getData</a>(string $key)
+        
+                                            <p><p>Returns the data associated with the given key.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasKey">hasKey</a>(string $key)
+        
+                                            <p><p>Returns true if a session data entry $key is available.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_putData">putData</a>(string $key, mixed $data)
+        
+                                            <p><p>Stores the given data under the given key in the session</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getLastActivityTimestamp">getLastActivityTimestamp</a>()
+        
+                                            <p><p>Returns the unix time stamp marking the last point in time this session has
+been in use.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addTag">addTag</a>(string $tag)
+        
+                                            <p><p>Tags this session with the given tag.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_removeTag">removeTag</a>(string $tag)
+        
+                                            <p><p>Removes the specified tag from this session.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getTags">getTags</a>()
+        
+                                            <p><p>Returns the tags this session has been tagged with.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_touch">touch</a>()
+        
+                                            <p><p>Updates the last activity time to &quot;now&quot;.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_close">close</a>()
+        
+                                            <p><p>Explicitly writes and closes the session</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_destroy">destroy</a>(string $reason = null)
+        
+                                            <p><p>Explicitly destroys all session data</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_collectGarbage">collectGarbage</a>()
+        
+                                            <p><p>Iterates over all existing sessions and removes their data if the inactivity
+timeout was reached.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shutdownObject">shutdownObject</a>()
+        
+                                            <p><p>Shuts down this session</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_autoExpire">autoExpire</a>()
+        
+                                            <p><p>Automatically expires the session if the user has been inactive for too long.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_storeAuthenticatedAccountsInfo">storeAuthenticatedAccountsInfo</a>(array $tokens)
+        
+                                            <p><p>Stores some information about the authenticated accounts in the session data.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_writeSessionMetaDataCacheEntry">writeSessionMetaDataCacheEntry</a>()
+        
+                                            <p><p>Writes the cache entry containing information about the session, such as the
+last activity time and the storage identifier.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_removeSessionMetaDataCacheEntry">removeSessionMetaDataCacheEntry</a>(string $sessionIdentifier)
+        
+                                            <p><p>Removes the session info cache entry for the specified session.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L193">at line 193</a></div>
+        <code>                    
+    <strong>__construct</strong>(string $sessionIdentifier = null, string $storageIdentifier = null, int $lastActivityTimestamp = null, array $tags = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructs this session</p></p>                <p><p>If $sessionIdentifier is specified, this constructor will create a session
+instance representing a remote session. In that case $storageIdentifier and
+$lastActivityTimestamp are also required arguments.</p>
+<p>Session instances MUST NOT be created manually! They should be retrieved via
+the Session Manager or through dependency injection (use SessionInterface!).</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$sessionIdentifier</td>
+                <td><p>The public session identifier which is also used in the session cookie</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$storageIdentifier</td>
+                <td><p>The private storage identifier which is used for storage cache entries</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$lastActivityTimestamp</td>
+                <td><p>Unix timestamp of the last known activity for this session</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$tags</td>
+                <td><p>A list of tags set for this session</p></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createFromCookieAndSessionInformation">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L216">at line 216</a></div>
+        <code>        static            <a href="../../../Neos/Flow/Session/CookieEnabledInterface.html"><abbr title="Neos\Flow\Session\CookieEnabledInterface">CookieEnabledInterface</abbr></a>|<a href="../../../Neos/Flow/Session/SessionInterface.html"><abbr title="Neos\Flow\Session\SessionInterface">SessionInterface</abbr></a>
+    <strong>createFromCookieAndSessionInformation</strong>(<a href="../../../Neos/Flow/Http/Cookie.html"><abbr title="Neos\Flow\Http\Cookie">Cookie</abbr></a> $sessionCookie, string $storageIdentifier, int $lastActivityTimestamp, array $tags = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Http/Cookie.html"><abbr title="Neos\Flow\Http\Cookie">Cookie</abbr></a></td>
+                <td>$sessionCookie</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$storageIdentifier</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$lastActivityTimestamp</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$tags</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/Session/CookieEnabledInterface.html"><abbr title="Neos\Flow\Session\CookieEnabledInterface">CookieEnabledInterface</abbr></a>|<a href="../../../Neos/Flow/Session/SessionInterface.html"><abbr title="Neos\Flow\Session\SessionInterface">SessionInterface</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectSettings">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L233">at line 233</a></div>
+        <code>                    void
+    <strong>injectSettings</strong>(array $settings)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the Flow settings</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$settings</td>
+                <td><p>Settings of the Flow package</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectLogger">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L253">at line 253</a></div>
+        <code>                    void
+    <strong>injectLogger</strong>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the (system) logger based on PSR-3.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+                <td>$logger</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initializeObject">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L262">at line 262</a></div>
+        <code>                    void
+    <strong>initializeObject</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Cache/Exception/InvalidBackendException.html"><abbr title="Neos\Cache\Exception\InvalidBackendException">InvalidBackendException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSessionCookie">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L275">at line 275</a></div>
+        <code>                    <a href="../../../Neos/Flow/Http/Cookie.html"><abbr title="Neos\Flow\Http\Cookie">Cookie</abbr></a>
+    <strong>getSessionCookie</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/Http/Cookie.html"><abbr title="Neos\Flow\Http\Cookie">Cookie</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isStarted">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L286">at line 286</a></div>
+        <code>                    bool
+    <strong>isStarted</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Tells if the session has been started already.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isRemote">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L298">at line 298</a></div>
+        <code>                    bool
+    <strong>isRemote</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Tells if the session is local (the current session bound to the current HTTP
+request) or remote (retrieved through the Session Manager).</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if the session is remote, false if this is the current session</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_start">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L311">at line 311</a></div>
+        <code>                    void
+    <strong>start</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Starts the session, if it has not been already started</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../../../Neos/Flow/Session/CookieEnabledInterface.html"><abbr title="Neos\Flow\Session\CookieEnabledInterface">CookieEnabledInterface</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_canBeResumed">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L337">at line 337</a></div>
+        <code>                    bool
+    <strong>canBeResumed</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns true if there is a session that can be resumed.</p></p>                <p><p>If a to-be-resumed session was inactive for too long, this function will
+trigger the expiration of that session. An expired session cannot be resumed.</p>
+<p>NOTE that this method does a bit more than the name implies: Because the
+session info data needs to be loaded, this method stores this data already
+so it doesn't have to be loaded again once the session is being used.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resume">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L363">at line 363</a></div>
+        <code>                    void
+    <strong>resume</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resumes an existing session, if any.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getId">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L398">at line 398</a></div>
+        <code>                    string
+    <strong>getId</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the current session identifier</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The current session ID</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/SessionNotStartedException.html"><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_renewId">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L415">at line 415</a></div>
+        <code>                    string
+    <strong>renewId</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Generates and propagates a new session ID and transfers all existing data
+to the new session.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The new session ID</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/SessionNotStartedException.html"><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/OperationNotSupportedException.html"><abbr title="Neos\Flow\Session\Exception\OperationNotSupportedException">OperationNotSupportedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getData">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L439">at line 439</a></div>
+        <code>                    array
+    <strong>getData</strong>(string $key)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the data associated with the given key.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>An identifier for the content stored in the session.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The contents associated with the given key</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/SessionNotStartedException.html"><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasKey">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L454">at line 454</a></div>
+        <code>                    bool
+    <strong>hasKey</strong>(string $key)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns true if a session data entry $key is available.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/SessionNotStartedException.html"><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_putData">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L472">at line 472</a></div>
+        <code>                    void
+    <strong>putData</strong>(string $key, mixed $data)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Stores the given data under the given key in the session</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td><p>The key under which the data should be stored</p></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$data</td>
+                <td><p>The data to be stored</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/DataNotSerializableException.html"><abbr title="Neos\Flow\Session\Exception\DataNotSerializableException">DataNotSerializableException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/SessionNotStartedException.html"><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLastActivityTimestamp">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L494">at line 494</a></div>
+        <code>                    int
+    <strong>getLastActivityTimestamp</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the unix time stamp marking the last point in time this session has
+been in use.</p></p>                <p><p>For the current (local) session, this method will always return the current
+time. For a remote session, the unix timestamp will be returned.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>unix timestamp</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/SessionNotStartedException.html"><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addTag">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L514">at line 514</a></div>
+        <code>                    void
+    <strong>addTag</strong>(string $tag)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Tags this session with the given tag.</p></p>                <p><p>Note that third-party libraries might also tag your session. Therefore it is
+recommended to use namespaced tags such as &quot;Acme-Demo-MySpecialTag&quot;.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$tag</td>
+                <td><p>The tag – must match be a valid cache frontend tag</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/SessionNotStartedException.html"><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeTag">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L535">at line 535</a></div>
+        <code>                    void
+    <strong>removeTag</strong>(string $tag)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes the specified tag from this session.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$tag</td>
+                <td><p>The tag – must match be a valid cache frontend tag</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/SessionNotStartedException.html"><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getTags">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L554">at line 554</a></div>
+        <code>                    array
+    <strong>getTags</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the tags this session has been tagged with.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The tags or an empty array if there aren't any</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/SessionNotStartedException.html"><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_touch">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L568">at line 568</a></div>
+        <code>                    void
+    <strong>touch</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Updates the last activity time to &quot;now&quot;.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/SessionNotStartedException.html"><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_close">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L588">at line 588</a></div>
+        <code>                    void
+    <strong>close</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Explicitly writes and closes the session</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_destroy">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L601">at line 601</a></div>
+        <code>                    void
+    <strong>destroy</strong>(string $reason = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Explicitly destroys all session data</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$reason</td>
+                <td><p>A reason for destroying the session – used by the LoggingAspect</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/SessionNotStartedException.html"><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_collectGarbage">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L629">at line 629</a></div>
+        <code>                    int
+    <strong>collectGarbage</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Iterates over all existing sessions and removes their data if the inactivity
+timeout was reached.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>The number of outdated entries removed or NULL if no such information could be determined</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Cache/Exception.html"><abbr title="Neos\Cache\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Cache/Exception/NotSupportedByBackendException.html"><abbr title="Neos\Cache\Exception\NotSupportedByBackendException">NotSupportedByBackendException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shutdownObject">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L682">at line 682</a></div>
+        <code>                    void
+    <strong>shutdownObject</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Shuts down this session</p></p>                <p><p>This method must not be called manually – it is invoked by Flow's object
+management.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/DataNotSerializableException.html"><abbr title="Neos\Flow\Session\Exception\DataNotSerializableException">DataNotSerializableException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/SessionNotStartedException.html"><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Cache/Exception/NotSupportedByBackendException.html"><abbr title="Neos\Cache\Exception\NotSupportedByBackendException">NotSupportedByBackendException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Cache/Exception.html"><abbr title="Neos\Cache\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_autoExpire">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L711">at line 711</a></div>
+        <code>            protected        bool
+    <strong>autoExpire</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Automatically expires the session if the user has been inactive for too long.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if the session expired, false if not</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_storeAuthenticatedAccountsInfo">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L741">at line 741</a></div>
+        <code>            protected        void
+    <strong>storeAuthenticatedAccountsInfo</strong>(array $tokens)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Stores some information about the authenticated accounts in the session data.</p></p>                <p><p>This method will check if a session has already been started, which is
+the case after tokens relying on a session have been authenticated: the
+UsernamePasswordToken does, for example, start a session in its authenticate()
+method.</p>
+<p>Because more than one account can be authenticated at a time, this method
+accepts an array of tokens instead of a single account.</p>
+<p>Note that if a session is started after tokens have been authenticated, the
+session will NOT be tagged with authenticated accounts.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$tokens</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_writeSessionMetaDataCacheEntry">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L768">at line 768</a></div>
+        <code>            protected        void
+    <strong>writeSessionMetaDataCacheEntry</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Writes the cache entry containing information about the session, such as the
+last activity time and the storage identifier.</p></p>                <p><p>This function does not write the whole session <em>data</em> into the storage cache,
+but only the &quot;head&quot; cache entry containing meta information.</p>
+<p>The session cache entry is also tagged with &quot;session&quot;, the session identifier
+and any custom tags of this session, prefixed with TAG_PREFIX.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeSessionMetaDataCacheEntry">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Session/Session.php#L794">at line 794</a></div>
+        <code>            protected        void
+    <strong>removeSessionMetaDataCacheEntry</strong>(string $sessionIdentifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes the session info cache entry for the specified session.</p></p>                <p><p>Note that this function does only remove the &quot;head&quot; cache entry, not the
+related data referred to by the storage identifier.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$sessionIdentifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

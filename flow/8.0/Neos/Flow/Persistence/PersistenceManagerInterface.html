@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Persistence\PersistenceManagerInterface | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script src="../../../js/typeahead.min.js"></script>
+        <script src="../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (8.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Persistence_PersistenceManagerInterface" data-root-path="../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">interface</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow/Persistence.html">Persistence</a></li><li class="backslash">\</li><li>PersistenceManagerInterface</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>PersistenceManagerInterface    
+            </h1>
+    </div>
+
+    
+    <p>        interface
+    <strong>PersistenceManagerInterface</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>The Flow Persistence Manager interface</p></p>                    </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectSettings">injectSettings</a>(array $settings)
+        
+                                            <p><p>Injects the Flow settings, called by Flow.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_persistAll">persistAll</a>(bool $onlyAllowedObjects = false)
+        
+                                            <p><p>Commits new objects and changes to objects in the current persistence session into the backend.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_clearState">clearState</a>()
+        
+                                            <p><p>Clears the in-memory state of the persistence.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isNewObject">isNewObject</a>(object $object)
+        
+                                            <p><p>Checks if the given object has ever been persisted.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_registerNewObject">registerNewObject</a>(<a href="../../../Neos/Flow/Persistence/Aspect/PersistenceMagicInterface.html"><abbr title="Neos\Flow\Persistence\Aspect\PersistenceMagicInterface">PersistenceMagicInterface</abbr></a> $object)
+        
+                                            <p><p>Registers an object which has been created or cloned during this request.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getIdentifierByObject">getIdentifierByObject</a>(object $object)
+        
+                                            <p><p>Returns the (internal) identifier for the object, if it is known to the
+backend. Otherwise NULL is returned.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getObjectByIdentifier">getObjectByIdentifier</a>(mixed $identifier, string $objectType = null, bool $useLazyLoading = false)
+        
+                                            <p><p>Returns the object with the (internal) identifier, if it is known to the
+backend. Otherwise NULL is returned.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_convertObjectToIdentityArray">convertObjectToIdentityArray</a>(object $object)
+        
+                                            <p><p>Converts the given object into an array containing the identity of the domain object.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_convertObjectsToIdentityArrays">convertObjectsToIdentityArrays</a>(array $array)
+        
+                                            <p><p>Recursively iterates through the given array and turns objects
+into arrays containing the identity of the domain object.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Flow/Persistence/QueryInterface.html"><abbr title="Neos\Flow\Persistence\QueryInterface">QueryInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createQueryForType">createQueryForType</a>(string $type)
+        
+                                            <p><p>Return a query object for the given type.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_add">add</a>(object $object)
+        
+                                            <p><p>Adds an object to the persistence.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_remove">remove</a>(object $object)
+        
+                                            <p><p>Removes an object to the persistence.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_update">update</a>(object $object)
+        
+                                            <p><p>Update an object in the persistence.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_allowObject">allowObject</a>(object $object)
+        
+                                            <p><p>Adds the given object to a list of allowed objects which may be persisted when persistAll() is called with the
+$onlyAllowedObjects flag. This is the case if &quot;safe&quot; HTTP request methods are used.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isConnected">isConnected</a>()
+        
+                                            <p><p>Returns true, if an active connection to the persistence
+backend has been established, e.g. entities can be persisted.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasUnpersistedChanges">hasUnpersistedChanges</a>()
+        
+                                            <p><p>Gives feedback if the persistence Manager has unpersisted changes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_injectSettings">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php#L29">at line 29</a></div>
+        <code>                    void
+    <strong>injectSettings</strong>(array $settings)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the Flow settings, called by Flow.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$settings</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_persistAll">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php#L42">at line 42</a></div>
+        <code>                    void
+    <strong>persistAll</strong>(bool $onlyAllowedObjects = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Commits new objects and changes to objects in the current persistence session into the backend.</p></p>                <p><p>If $onlyAllowedObjects is set to true, only those objects which have been registered with
+allowObject() will be persisted. If other objects are in the queue, an exception will be
+raised.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$onlyAllowedObjects</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_clearState">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php#L52">at line 52</a></div>
+        <code>                    void
+    <strong>clearState</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Clears the in-memory state of the persistence.</p></p>                <p><p>Managed instances become detached, any fetches will
+return data directly from the persistence &quot;backend&quot;.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isNewObject">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php#L61">at line 61</a></div>
+        <code>                    bool
+    <strong>isNewObject</strong>(object $object)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if the given object has ever been persisted.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td><p>The object to check</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if the object is new, false if the object exists in the repository</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_registerNewObject">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php#L76">at line 76</a></div>
+        <code>                    void
+    <strong>registerNewObject</strong>(<a href="../../../Neos/Flow/Persistence/Aspect/PersistenceMagicInterface.html"><abbr title="Neos\Flow\Persistence\Aspect\PersistenceMagicInterface">PersistenceMagicInterface</abbr></a> $object)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Registers an object which has been created or cloned during this request.</p></p>                <p><p>The given object must contain the Persistence_Object_Identifier property, thus
+the PersistenceMagicInterface type hint. A &quot;new&quot; object does not necessarily
+have to be known by any repository or be persisted in the end.</p>
+<p>Objects registered with this method must be known to the getObjectByIdentifier()
+method.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Persistence/Aspect/PersistenceMagicInterface.html"><abbr title="Neos\Flow\Persistence\Aspect\PersistenceMagicInterface">PersistenceMagicInterface</abbr></a></td>
+                <td>$object</td>
+                <td><p>The new object to register</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getIdentifierByObject">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php#L90">at line 90</a></div>
+        <code>                    mixed
+    <strong>getIdentifierByObject</strong>(object $object)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the (internal) identifier for the object, if it is known to the
+backend. Otherwise NULL is returned.</p></p>                <p><p>Note: this returns an identifier even if the object has not been
+persisted in case of AOP-managed entities. Use isNewObject() if you need
+to distinguish those cases.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>The identifier for the object if it is known, or NULL</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getObjectByIdentifier">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php#L103">at line 103</a></div>
+        <code>                    object|null
+    <strong>getObjectByIdentifier</strong>(mixed $identifier, string $objectType = null, bool $useLazyLoading = false)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the object with the (internal) identifier, if it is known to the
+backend. Otherwise NULL is returned.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$identifier</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$objectType</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$useLazyLoading</td>
+                <td><p>Set to true if you want to use lazy loading for this object</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object|null</td>
+            <td><p>The object for the identifier if it is known, or NULL</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_convertObjectToIdentityArray">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php#L113">at line 113</a></div>
+        <code>                    array
+    <strong>convertObjectToIdentityArray</strong>(object $object)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Converts the given object into an array containing the identity of the domain object.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td><p>The object to be converted</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The identity array in the format array('__identity' =&gt; '...')</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Persistence/Exception/UnknownObjectException.html"><abbr title="Neos\Flow\Persistence\Exception\UnknownObjectException">UnknownObjectException</abbr></a></td>
+                <td><p>if the given object is not known to the Persistence Manager</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_convertObjectsToIdentityArrays">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php#L125">at line 125</a></div>
+        <code>                    array
+    <strong>convertObjectsToIdentityArrays</strong>(array $array)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Recursively iterates through the given array and turns objects
+into arrays containing the identity of the domain object.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$array</td>
+                <td><p>The array to be iterated over</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The modified array without objects</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Persistence/Exception/UnknownObjectException.html"><abbr title="Neos\Flow\Persistence\Exception\UnknownObjectException">UnknownObjectException</abbr></a></td>
+                <td><p>if array contains objects that are not known to the Persistence Manager</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Flow\Persistence\convertObjectToIdentityArray()">convertObjectToIdentityArray()</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createQueryForType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php#L134">at line 134</a></div>
+        <code>                    <a href="../../../Neos/Flow/Persistence/QueryInterface.html"><abbr title="Neos\Flow\Persistence\QueryInterface">QueryInterface</abbr></a>
+    <strong>createQueryForType</strong>(string $type)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return a query object for the given type.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Flow/Persistence/QueryInterface.html"><abbr title="Neos\Flow\Persistence\QueryInterface">QueryInterface</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_add">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php#L143">at line 143</a></div>
+        <code>                    void
+    <strong>add</strong>(object $object)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds an object to the persistence.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td><p>The object to add</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_remove">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php#L152">at line 152</a></div>
+        <code>                    void
+    <strong>remove</strong>(object $object)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes an object to the persistence.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td><p>The object to remove</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_update">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php#L162">at line 162</a></div>
+        <code>                    void
+    <strong>update</strong>(object $object)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Update an object in the persistence.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td><p>The modified object</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Persistence/Exception/UnknownObjectException.html"><abbr title="Neos\Flow\Persistence\Exception\UnknownObjectException">UnknownObjectException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_allowObject">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php#L172">at line 172</a></div>
+        <code>                    void
+    <strong>allowObject</strong>(object $object)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds the given object to a list of allowed objects which may be persisted when persistAll() is called with the
+$onlyAllowedObjects flag. This is the case if &quot;safe&quot; HTTP request methods are used.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td><p>The object</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isConnected">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php#L181">at line 181</a></div>
+        <code>                    bool
+    <strong>isConnected</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns true, if an active connection to the persistence
+backend has been established, e.g. entities can be persisted.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true, if an connection has been established, false if add object will not be persisted by the backend</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasUnpersistedChanges">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Persistence/PersistenceManagerInterface.php#L191">at line 191</a></div>
+        <code>                    bool
+    <strong>hasUnpersistedChanges</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Gives feedback if the persistence Manager has unpersisted changes.</p></p>                <p><p>This is primarily used to inform the user if he tries to save
+data in an unsafe request.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

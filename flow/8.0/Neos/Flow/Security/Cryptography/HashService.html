@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Security\Cryptography\HashService | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../doctum.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (8.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Security_Cryptography_HashService" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Security.html">Security</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Security/Cryptography.html">Cryptography</a></li><li class="backslash">\</li><li>HashService</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>HashService    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>HashService</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Security/Cryptography/HashService.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A hash service which should be used to generate and validate hashes.</p></p>                    </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_encryptionKey">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$encryptionKey</td>
+                <td class="last"><p>A private, unique key used for encryption tasks</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_passwordHashingStrategies">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$passwordHashingStrategies</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_strategySettings">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$strategySettings</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_objectManager">
+                                        protected                                        <a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$objectManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cache">
+                                        protected                                        <a href="../../../../Neos/Cache/Frontend/StringFrontend.html"><abbr title="Neos\Cache\Frontend\StringFrontend">StringFrontend</abbr></a>
+                                                                                
+                                    </td>
+                <td>$cache</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectSettings">injectSettings</a>(array $settings)
+        
+                                            <p><p>Injects the settings of the package this controller belongs to.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_generateHmac">generateHmac</a>(string $string)
+        
+                                            <p><p>Generate a hash (HMAC) for a given string</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_appendHmac">appendHmac</a>(string $string)
+        
+                                            <p><p>Appends a hash (HMAC) to a given string and returns the result</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateHmac">validateHmac</a>(string $string, string $hmac)
+        
+                                            <p><p>Tests if a string $string matches the HMAC given by $hash.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateAndStripHmac">validateAndStripHmac</a>(string $string)
+        
+                                            <p><p>Tests if the last 40 characters of a given string $string
+matches the HMAC of the rest of the string and, if true,
+returns the string without the HMAC. In case of a HMAC
+validation error, an exception is thrown.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hashPassword">hashPassword</a>(string $password, string $strategyIdentifier = &#039;default&#039;)
+        
+                                            <p><p>Hash a password using the configured password hashing strategy</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validatePassword">validatePassword</a>(string $password, string $hashedPasswordAndSalt)
+        
+                                            <p><p>Validate a hashed password using the configured password hashing strategy</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Flow/Security/Cryptography/PasswordHashingStrategyInterface.html"><abbr title="Neos\Flow\Security\Cryptography\PasswordHashingStrategyInterface">PasswordHashingStrategyInterface</abbr></a>[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getPasswordHashingStrategyAndIdentifier">getPasswordHashingStrategyAndIdentifier</a>(string $strategyIdentifier = &#039;default&#039;)
+        
+                                            <p><p>Get a password hashing strategy</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getEncryptionKey">getEncryptionKey</a>()
+        
+                                            <p><p>Returns the encryption key from the persistent cache or Data/Persistent directory. If none exists, a new
+encryption key will be generated and stored in the cache.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_injectSettings">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Security/Cryptography/HashService.php#L63">at line 63</a></div>
+        <code>                    void
+    <strong>injectSettings</strong>(array $settings)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the settings of the package this controller belongs to.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$settings</td>
+                <td><p>Settings container of the current package</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_generateHmac">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Security/Cryptography/HashService.php#L75">at line 75</a></div>
+        <code>                    string
+    <strong>generateHmac</strong>(string $string)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Generate a hash (HMAC) for a given string</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$string</td>
+                <td><p>The string for which a hash should be generated</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The hash of the string</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Security/Exception/InvalidArgumentForHashGenerationException.html"><abbr title="Neos\Flow\Security\Exception\InvalidArgumentForHashGenerationException">InvalidArgumentForHashGenerationException</abbr></a></td>
+                <td><p>if something else than a string was given as parameter</p></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_appendHmac">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Security/Cryptography/HashService.php#L92">at line 92</a></div>
+        <code>                    string
+    <strong>appendHmac</strong>(string $string)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Appends a hash (HMAC) to a given string and returns the result</p></p>                        
+                    <p>
+                        
+                                    <tr>
+                        <td>Mark</td>
+                        <td>as API once it is more stable</td>
+                        </tr>
+                            </p>
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$string</td>
+                <td><p>The string for which a hash should be generated</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The original string with HMAC of the string appended</p></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Flow\Security\Cryptography\generateHmac()">generateHmac()</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateHmac">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Security/Cryptography/HashService.php#L105">at line 105</a></div>
+        <code>                    bool
+    <strong>validateHmac</strong>(string $string, string $hmac)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Tests if a string $string matches the HMAC given by $hash.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$string</td>
+                <td><p>The string which should be validated</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$hmac</td>
+                <td><p>The hash of the string</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if string and hash fit together, false otherwise.</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateAndStripHmac">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Security/Cryptography/HashService.php#L124">at line 124</a></div>
+        <code>                    string
+    <strong>validateAndStripHmac</strong>(string $string)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Tests if the last 40 characters of a given string $string
+matches the HMAC of the rest of the string and, if true,
+returns the string without the HMAC. In case of a HMAC
+validation error, an exception is thrown.</p></p>                        
+                    <p>
+                        
+                                    <tr>
+                        <td>Mark</td>
+                        <td>as API once it is more stable</td>
+                        </tr>
+                            </p>
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$string</td>
+                <td><p>The string with the HMAC appended (in the format 'string<HMAC>')</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>the original string without the HMAC, if validation was successful</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Security/Exception/InvalidArgumentForHashGenerationException.html"><abbr title="Neos\Flow\Security\Exception\InvalidArgumentForHashGenerationException">InvalidArgumentForHashGenerationException</abbr></a></td>
+                <td><p>if the given string is not well-formatted</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Security/Exception/InvalidHashException.html"><abbr title="Neos\Flow\Security\Exception\InvalidHashException">InvalidHashException</abbr></a></td>
+                <td><p>if the hash did not fit to the data.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Flow\Security\Cryptography\validateHmac()">validateHmac()</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hashPassword">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Security/Cryptography/HashService.php#L146">at line 146</a></div>
+        <code>                    string
+    <strong>hashPassword</strong>(string $password, string $strategyIdentifier = &#039;default&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Hash a password using the configured password hashing strategy</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$password</td>
+                <td><p>The cleartext password</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$strategyIdentifier</td>
+                <td><p>An identifier for a configured strategy, uses default strategy if not specified</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>A hashed password with salt (if used)</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validatePassword">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Security/Cryptography/HashService.php#L162">at line 162</a></div>
+        <code>                    bool
+    <strong>validatePassword</strong>(string $password, string $hashedPasswordAndSalt)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validate a hashed password using the configured password hashing strategy</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$password</td>
+                <td><p>The cleartext password</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$hashedPasswordAndSalt</td>
+                <td><p>The hashed password with salt (if used) and an optional strategy identifier</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td><p>true if the given password matches the hashed password</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getPasswordHashingStrategyAndIdentifier">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Security/Cryptography/HashService.php#L181">at line 181</a></div>
+        <code>            protected        <a href="../../../../Neos/Flow/Security/Cryptography/PasswordHashingStrategyInterface.html"><abbr title="Neos\Flow\Security\Cryptography\PasswordHashingStrategyInterface">PasswordHashingStrategyInterface</abbr></a>[]
+    <strong>getPasswordHashingStrategyAndIdentifier</strong>(string $strategyIdentifier = &#039;default&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Get a password hashing strategy</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$strategyIdentifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Flow/Security/Cryptography/PasswordHashingStrategyInterface.html"><abbr title="Neos\Flow\Security\Cryptography\PasswordHashingStrategyInterface">PasswordHashingStrategyInterface</abbr></a>[]</td>
+            <td><p>and string</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Security/Exception/MissingConfigurationException.html"><abbr title="Neos\Flow\Security\Exception\MissingConfigurationException">MissingConfigurationException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getEncryptionKey">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Flow/Classes/Security/Cryptography/HashService.php#L208">at line 208</a></div>
+        <code>            protected        string
+    <strong>getEncryptionKey</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the encryption key from the persistent cache or Data/Persistent directory. If none exists, a new
+encryption key will be generated and stored in the cache.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The configured encryption key stored in Data/Persistent/EncryptionKey</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
