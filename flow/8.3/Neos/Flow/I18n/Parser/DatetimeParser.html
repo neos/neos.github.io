@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\I18n\Parser\DatetimeParser | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (8.3)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_I18n_Parser_DatetimeParser" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/I18n.html">I18n</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/I18n/Parser.html">Parser</a></li><li class="backslash">\</li><li>DatetimeParser</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>DatetimeParser    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>DatetimeParser</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/I18n/Parser/DatetimeParser.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Parser for date and time.</p></p>                    </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_MATCH_STRICT_TIMEZONE_ABBREVIATION
+                                    </td>
+                <td class="last">
+                    <p><em><p>Regex pattern for matching abbreviated timezones, like GMT, CEST, etc.</p></em></p>
+                    <p><p>Two versions for strict and lenient matching modes.</p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_MATCH_LENIENT_TIMEZONE_ABBREVIATION
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_MATCH_STRICT_TIMEZONE_TZ
+                                    </td>
+                <td class="last">
+                    <p><em><p>Regex pattern for matching TZ database timezones, like Europe/London.</p></em></p>
+                    <p><p>Two versions for strict and lenient matching modes.</p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_MATCH_LENIENT_TIMEZONE_TZ
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_datesReader">
+                                        protected                                        <a href="../../../../Neos/Flow/I18n/Cldr/Reader/DatesReader.html"><abbr title="Neos\Flow\I18n\Cldr\Reader\DatesReader">DatesReader</abbr></a>
+                                                                                
+                                    </td>
+                <td>$datesReader</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectDatesReader">injectDatesReader</a>(<a href="../../../../Neos/Flow/I18n/Cldr/Reader/DatesReader.html"><abbr title="Neos\Flow\I18n\Cldr\Reader\DatesReader">DatesReader</abbr></a> $datesReader)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseDatetimeWithCustomPattern">parseDatetimeWithCustomPattern</a>(string $datetimeToParse, string $format, <a href="../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a> $locale, bool $strictMode = true)
+        
+                                            <p><p>Returns dateTime parsed by custom format (string provided in parameter).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseDate">parseDate</a>(string $dateToParse, <a href="../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a> $locale, string $formatLength = DatesReader::FORMAT_LENGTH_DEFAULT, bool $strictMode = true)
+        
+                                            <p><p>Parses date with format string for date defined in CLDR for particular
+locale.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseTime">parseTime</a>(string $timeToParse, <a href="../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a> $locale, string $formatLength = DatesReader::FORMAT_LENGTH_DEFAULT, bool $strictMode = true)
+        
+                                            <p><p>Parses time with format string for time defined in CLDR for particular
+locale.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseDateAndTime">parseDateAndTime</a>(string $dateAndTimeToParse, <a href="../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a> $locale, string $formatLength = DatesReader::FORMAT_LENGTH_DEFAULT, bool $strictMode = true)
+        
+                                            <p><p>Parses dateTime with format string for date and time defined in CLDR for
+particular locale.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_doParsingWithParsedFormat">doParsingWithParsedFormat</a>(string $datetimeToParse, array $parsedFormat, array $localizedLiterals, bool $strictMode)
+        
+                                            <p><p>Parses date and / or time using parsed format, in strict or lenient mode.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_doParsingInStrictMode">doParsingInStrictMode</a>(string $datetimeToParse, array $parsedFormat, array $localizedLiterals)
+        
+                                            <p><p>Parses date and / or time in strict mode.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_doParsingInLenientMode">doParsingInLenientMode</a>(string $datetimeToParse, array $parsedFormat, array $localizedLiterals)
+        
+                                            <p><p>Parses date and / or time in lenient mode.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_extractAndCheckNumber">extractAndCheckNumber</a>(string $datetimeToParse, bool $isTwoDigits, int $minValue, int $maxValue)
+        
+                                            <p><p>Extracts one or two-digit number from the beginning of the string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_extractNumberAndGetPosition">extractNumberAndGetPosition</a>(string $datetimeToParse, int $position)
+        
+                                            <p><p>Extracts and returns first integer number encountered in provided string.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_injectDatesReader">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/I18n/Parser/DatetimeParser.php#L50">at line 50</a></div>
+        <code>                    void
+    <strong>injectDatesReader</strong>(<a href="../../../../Neos/Flow/I18n/Cldr/Reader/DatesReader.html"><abbr title="Neos\Flow\I18n\Cldr\Reader\DatesReader">DatesReader</abbr></a> $datesReader)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/I18n/Cldr/Reader/DatesReader.html"><abbr title="Neos\Flow\I18n\Cldr\Reader\DatesReader">DatesReader</abbr></a></td>
+                <td>$datesReader</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseDatetimeWithCustomPattern">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/I18n/Parser/DatetimeParser.php#L71">at line 71</a></div>
+        <code>                    mixed
+    <strong>parseDatetimeWithCustomPattern</strong>(string $datetimeToParse, string $format, <a href="../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a> $locale, bool $strictMode = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns dateTime parsed by custom format (string provided in parameter).</p></p>                <p><p>Format must obey syntax defined in CLDR specification, excluding
+unimplemented features (see documentation for DatesReader class).</p>
+<p>Format is remembered in cache and won't be parsed again for some time.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$datetimeToParse</td>
+                <td><p>Date/time to be parsed</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$format</td>
+                <td><p>Format string</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a></td>
+                <td>$locale</td>
+                <td><p>A locale used for finding literals array</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$strictMode</td>
+                <td><p>Work mode (strict when true, lenient when false)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Array of parsed date / time elements, false on failure</p></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../../../../Neos/Flow/I18n/Cldr/Reader/DatesReader.html"><abbr title="Neos\Flow\I18n\Cldr\Reader\DatesReader">DatesReader</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseDate">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/I18n/Parser/DatetimeParser.php#L87">at line 87</a></div>
+        <code>                    mixed
+    <strong>parseDate</strong>(string $dateToParse, <a href="../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a> $locale, string $formatLength = DatesReader::FORMAT_LENGTH_DEFAULT, bool $strictMode = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses date with format string for date defined in CLDR for particular
+locale.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$dateToParse</td>
+                <td><p>date to be parsed</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a></td>
+                <td>$locale</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$formatLength</td>
+                <td><p>One of: full, long, medium, short, or 'default' in order to use default length from CLDR</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$strictMode</td>
+                <td><p>Work mode (strict when true, lenient when false)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Array of parsed date elements, false on failure</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseTime">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/I18n/Parser/DatetimeParser.php#L104">at line 104</a></div>
+        <code>                    mixed
+    <strong>parseTime</strong>(string $timeToParse, <a href="../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a> $locale, string $formatLength = DatesReader::FORMAT_LENGTH_DEFAULT, bool $strictMode = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses time with format string for time defined in CLDR for particular
+locale.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$timeToParse</td>
+                <td><p>Time to be parsed</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a></td>
+                <td>$locale</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$formatLength</td>
+                <td><p>One of: full, long, medium, short, or 'default' in order to use default length from CLDR</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$strictMode</td>
+                <td><p>Work mode (strict when true, lenient when false)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Array of parsed time elements, false on failure</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseDateAndTime">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/I18n/Parser/DatetimeParser.php#L120">at line 120</a></div>
+        <code>                    mixed
+    <strong>parseDateAndTime</strong>(string $dateAndTimeToParse, <a href="../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a> $locale, string $formatLength = DatesReader::FORMAT_LENGTH_DEFAULT, bool $strictMode = true)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses dateTime with format string for date and time defined in CLDR for
+particular locale.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$dateAndTimeToParse</td>
+                <td><p>Date and time to be parsed</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a></td>
+                <td>$locale</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$formatLength</td>
+                <td><p>One of: full, long, medium, short, or 'default' in order to use default length from CLDR</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$strictMode</td>
+                <td><p>Work mode (strict when true, lenient when false)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Array of parsed date and time elements, false on failure</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doParsingWithParsedFormat">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/I18n/Parser/DatetimeParser.php#L135">at line 135</a></div>
+        <code>            protected        mixed
+    <strong>doParsingWithParsedFormat</strong>(string $datetimeToParse, array $parsedFormat, array $localizedLiterals, bool $strictMode)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses date and / or time using parsed format, in strict or lenient mode.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$datetimeToParse</td>
+                <td><p>Date/time to be parsed</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$parsedFormat</td>
+                <td><p>Parsed format (from DatesReader)</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$localizedLiterals</td>
+                <td><p>Array of date / time literals from CLDR</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$strictMode</td>
+                <td><p>Work mode (strict when true, lenient when false)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>Array of parsed date and / or time elements, false on failure</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doParsingInStrictMode">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/I18n/Parser/DatetimeParser.php#L150">at line 150</a></div>
+        <code>            protected        array
+    <strong>doParsingInStrictMode</strong>(string $datetimeToParse, array $parsedFormat, array $localizedLiterals)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses date and / or time in strict mode.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$datetimeToParse</td>
+                <td><p>Date/time to be parsed</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$parsedFormat</td>
+                <td><p>Format parsed by DatesReader</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$localizedLiterals</td>
+                <td><p>Array of date / time literals from CLDR</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Array of parsed date and / or time elements, false on failure</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/I18n/Exception/InvalidArgumentException.html"><abbr title="Neos\Flow\I18n\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../../../../Neos/Flow/I18n/Cldr/Reader/DatesReader.html"><abbr title="Neos\Flow\I18n\Cldr\Reader\DatesReader">DatesReader</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doParsingInLenientMode">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/I18n/Parser/DatetimeParser.php#L351">at line 351</a></div>
+        <code>            protected        array
+    <strong>doParsingInLenientMode</strong>(string $datetimeToParse, array $parsedFormat, array $localizedLiterals)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses date and / or time in lenient mode.</p></p>                <p><p>Algorithm assumptions:</p>
+<ul>
+<li>ignore all literals</li>
+<li>order of elements in parsed format is important</li>
+<li>length of subformat is not strictly checked (eg. 'h' and 'hh')</li>
+<li>number must be in range in order to be accepted (eg. 1-12 for month)</li>
+<li>some format fallback substitutions can be done (eg. 'Jan' for 'January')</li>
+</ul></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$datetimeToParse</td>
+                <td><p>Date/time to be parsed</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$parsedFormat</td>
+                <td><p>Format parsed by DatesReader</p></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$localizedLiterals</td>
+                <td><p>Array of date / time literals from CLDR</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Array of parsed date and / or time elements (can be array of NULLs if nothing was parsed)</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/I18n/Parser/Exception/InvalidParseStringException.html"><abbr title="Neos\Flow\I18n\Parser\Exception\InvalidParseStringException">InvalidParseStringException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/I18n/Exception/InvalidArgumentException.html"><abbr title="Neos\Flow\I18n\Exception\InvalidArgumentException">InvalidArgumentException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../../../../Neos/Flow/I18n/Cldr/Reader/DatesReader.html"><abbr title="Neos\Flow\I18n\Cldr\Reader\DatesReader">DatesReader</abbr></a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_extractAndCheckNumber">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/I18n/Parser/DatetimeParser.php#L597">at line 597</a></div>
+        <code>            protected        int
+    <strong>extractAndCheckNumber</strong>(string $datetimeToParse, bool $isTwoDigits, int $minValue, int $maxValue)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Extracts one or two-digit number from the beginning of the string.</p></p>                <p><p>If the number has certainly two digits, $isTwoDigits can be set to true
+so no additional checking is done (this implies from some date/time
+formats, like 'hh').</p>
+<p>Number is also checked for constraints: minimum and maximum value.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$datetimeToParse</td>
+                <td><p>Date/time to be parsed</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$isTwoDigits</td>
+                <td><p>true if number has surely two digits, false if it has one or two digits</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$minValue</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$maxValue</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><p>Parsed number</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/I18n/Parser/Exception/InvalidParseStringException.html"><abbr title="Neos\Flow\I18n\Parser\Exception\InvalidParseStringException">InvalidParseStringException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_extractNumberAndGetPosition">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/I18n/Parser/DatetimeParser.php#L627">at line 627</a></div>
+        <code>            protected        string
+    <strong>extractNumberAndGetPosition</strong>(string $datetimeToParse, int $position)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Extracts and returns first integer number encountered in provided string.</p></p>                <p><p>Searches for first digit and extracts all adjacent digits. Also returns
+position of first digit in string.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$datetimeToParse</td>
+                <td><p>String to search number in</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$position</td>
+                <td><p>Index of first digit in string</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>Extracted number</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/I18n/Parser/Exception/InvalidParseStringException.html"><abbr title="Neos\Flow\I18n\Parser\Exception\InvalidParseStringException">InvalidParseStringException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
