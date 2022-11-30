@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Neos\Media\Browser\Controller\AddFlashMessageTrait | Neos CMS</title>
+    <title>Neos\Media\Browser\Controller\AddTranslatedFlashMessageTrait | Neos CMS</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (8.1)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Media_Browser_Controller_AddFlashMessageTrait" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Media_Browser_Controller_AddTranslatedFlashMessageTrait" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -67,18 +79,18 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">trait</span></li>
-                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Media.html">Media</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Media/Browser.html">Browser</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Media/Browser/Controller.html">Controller</a></li><li class="backslash">\</li><li>AddFlashMessageTrait</li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Media.html">Media</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Media/Browser.html">Browser</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Media/Browser/Controller.html">Controller</a></li><li class="backslash">\</li><li>AddTranslatedFlashMessageTrait</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>AddFlashMessageTrait    
+        <h1>AddTranslatedFlashMessageTrait    
             </h1>
     </div>
 
     
     <p>        trait
-    <strong>AddFlashMessageTrait</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/8.1/Neos.Media.Browser/Classes/Controller/AddFlashMessageTrait.php">View source</a>)
+    <strong>AddTranslatedFlashMessageTrait</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/8.1/Neos.Media.Browser/Classes/Controller/AddTranslatedFlashMessageTrait.php">View source</a>)
 </p>
 
         
@@ -113,9 +125,10 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_addFlashMessage">addFlashMessage</a>(string $messageBody, string $messageTitle = &#039;&#039;, string $severity = Message::SEVERITY_OK, array $messageArguments = [], int $messageCode = null)
+                    <a href="#method_addTranslatedFlashMessage">addTranslatedFlashMessage</a>(string $messageBodyTranslationId, string $severity = Message::SEVERITY_OK, array $messageArguments = [], int|null $messageCode = null)
         
-                                            <p><p>Add a translated flashMessage.</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -125,10 +138,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_addFlashMessage">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.1/Neos.Media.Browser/Classes/Controller/AddFlashMessageTrait.php#L40">at line 40</a></div>
+                    <h3 id="method_addTranslatedFlashMessage">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.1/Neos.Media.Browser/Classes/Controller/AddTranslatedFlashMessageTrait.php#L30">at line 30</a></div>
         <code>                    void
-    <strong>addFlashMessage</strong>(string $messageBody, string $messageTitle = &#039;&#039;, string $severity = Message::SEVERITY_OK, array $messageArguments = [], int $messageCode = null)
+    <strong>addTranslatedFlashMessage</strong>(string $messageBodyTranslationId, string $severity = Message::SEVERITY_OK, array $messageArguments = [], int|null $messageCode = null)
         </code>
     </h3>
     <div class="details">    
@@ -136,7 +149,8 @@
             
 
         <div class="method-description">
-                            <p><p>Add a translated flashMessage.</p></p>                        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -144,13 +158,8 @@
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$messageBody</td>
-                <td><p>The translation id for the message body.</p></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$messageTitle</td>
-                <td><p>The translation id for the message title.</p></td>
+                <td>$messageBodyTranslationId</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>string</td>
@@ -163,7 +172,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$messageCode</td>
                 <td></td>
             </tr>
