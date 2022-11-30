@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Flow Framework (8.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Cache_Backend_RedisBackend" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Cache_Backend_RedisBackend" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,8 +90,7 @@
 
     
     <p>        class
-    <strong>RedisBackend</strong>        extends <a href="../../../Neos/Cache/Backend/AbstractBackend.html"><abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a>        implements
-        <a href="../../../Neos/Cache/Backend/TaggableBackendInterface.html"><abbr title="Neos\Cache\Backend\TaggableBackendInterface">TaggableBackendInterface</abbr></a>, <a href="../../../Neos/Cache/Backend/IterableBackendInterface.html"><abbr title="Neos\Cache\Backend\IterableBackendInterface">IterableBackendInterface</abbr></a>, <a href="../../../Neos/Cache/Backend/FreezableBackendInterface.html"><abbr title="Neos\Cache\Backend\FreezableBackendInterface">FreezableBackendInterface</abbr></a>, <a href="../../../Neos/Cache/Backend/PhpCapableBackendInterface.html"><abbr title="Neos\Cache\Backend\PhpCapableBackendInterface">PhpCapableBackendInterface</abbr></a>, <a href="../../../Neos/Cache/Backend/WithStatusInterface.html"><abbr title="Neos\Cache\Backend\WithStatusInterface">WithStatusInterface</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/RedisBackend.php">View source</a>)
+    <strong>RedisBackend</strong>        extends <a href="../../../Neos/Cache/Backend/AbstractBackend.html"><abbr title="Neos\Cache\Backend\AbstractBackend">AbstractBackend</abbr></a>        implements        <a href="../../../Neos/Cache/Backend/TaggableBackendInterface.html"><abbr title="Neos\Cache\Backend\TaggableBackendInterface">TaggableBackendInterface</abbr></a>, <a href="../../../Neos/Cache/Backend/IterableBackendInterface.html"><abbr title="Neos\Cache\Backend\IterableBackendInterface">IterableBackendInterface</abbr></a>, <a href="../../../Neos/Cache/Backend/FreezableBackendInterface.html"><abbr title="Neos\Cache\Backend\FreezableBackendInterface">FreezableBackendInterface</abbr></a>, <a href="../../../Neos/Cache/Backend/PhpCapableBackendInterface.html"><abbr title="Neos\Cache\Backend\PhpCapableBackendInterface">PhpCapableBackendInterface</abbr></a>, <a href="../../../Neos/Cache/Backend/WithStatusInterface.html"><abbr title="Neos\Cache\Backend\WithStatusInterface">WithStatusInterface</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/8.0/Neos.Cache/Classes/Backend/RedisBackend.php">View source</a>)
 </p>
 
         
@@ -97,7 +108,7 @@ in proportion to the amount of entries and data size.</p></p>        </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="../../../Neos/Cache/Backend/RequireOnceFromValueTrait.html"><abbr title="Neos\Cache\Backend\RequireOnceFromValueTrait">RequireOnceFromValueTrait</abbr></a>    </div>
-                <div class="col-md-6"><p>RequireOnceFromValueTrait</p></div>
+                <div class="col-md-6">RequireOnceFromValueTrait</div>
             </div>
             </div>
     
@@ -462,7 +473,7 @@ specified tag.</p></p>                </div>
                 <div class="col-md-8">
                     <a href="#method_current">current</a>()
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -472,7 +483,7 @@ specified tag.</p></p>                </div>
                 <div class="col-md-8">
                     <a href="#method_next">next</a>()
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -482,7 +493,7 @@ specified tag.</p></p>                </div>
                 <div class="col-md-8">
                     <a href="#method_key">key</a>()
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -492,7 +503,7 @@ specified tag.</p></p>                </div>
                 <div class="col-md-8">
                     <a href="#method_valid">valid</a>()
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -502,7 +513,7 @@ specified tag.</p></p>                </div>
                 <div class="col-md-8">
                     <a href="#method_rewind">rewind</a>()
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -1447,7 +1458,7 @@ specified tag.</p></p>
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
             
@@ -1479,7 +1490,7 @@ specified tag.</p></p>
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
             
@@ -1511,7 +1522,7 @@ specified tag.</p></p>
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
             
@@ -1543,7 +1554,7 @@ specified tag.</p></p>
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
             
@@ -1575,7 +1586,7 @@ specified tag.</p></p>
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
             
