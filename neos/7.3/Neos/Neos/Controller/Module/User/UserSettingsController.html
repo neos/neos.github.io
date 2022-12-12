@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
         <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
         <script async defer src="../../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../../js/typeahead.min.js"></script>
-        <script src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (7.3)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_Controller_Module_User_UserSettingsController" data-root-path="../../../../../">
+    <body id="class" data-name="class:Neos_Neos_Controller_Module_User_UserSettingsController" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -227,7 +239,7 @@
                 <div class="col-md-8">
                     <a href="#method_indexAction">indexAction</a>()
         
-                                            <p><p>Index</p></p>                </div>
+                                            <p>Index</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -363,7 +375,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_initializeAction">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L61">at line 61</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L62">at line 62</a></div>
         <code>            protected        void
     <strong>initializeAction</strong>()
         </code>
@@ -483,7 +495,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_indexAction">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L84">at line 84</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L85">at line 85</a></div>
         <code>                    void
     <strong>indexAction</strong>()
         </code>
@@ -493,7 +505,7 @@
             
 
         <div class="method-description">
-                            <p><p>Index</p></p>                        
+                            <p>Index</p>                        
         </div>
         <div class="tags">
             
@@ -548,7 +560,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_editAction">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L94">at line 94</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L95">at line 95</a></div>
         <code>                    void
     <strong>editAction</strong>()
         </code>
@@ -580,7 +592,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_updateAction">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L109">at line 109</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L110">at line 110</a></div>
         <code>                    void
     <strong>updateAction</strong>(<a href="../../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
         </code>
@@ -622,7 +634,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_editAccountAction">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L126">at line 126</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L127">at line 127</a></div>
         <code>                    void
     <strong>editAccountAction</strong>(<abbr title="Neos\Flow\Security\Account">Account</abbr> $account)
         </code>
@@ -664,7 +676,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_updateAccountAction">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L141">at line 141</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L142">at line 142</a></div>
         <code>                    void
     <strong>updateAccountAction</strong>(array $password = [])
         </code>
@@ -706,7 +718,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_newElectronicAddressAction">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L163">at line 163</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L176">at line 176</a></div>
         <code>                    void
     <strong>newElectronicAddressAction</strong>(<a href="../../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
         </code>
@@ -748,7 +760,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_createElectronicAddressAction">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L176">at line 176</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L189">at line 189</a></div>
         <code>                    void
     <strong>createElectronicAddressAction</strong>(<a href="../../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user, <abbr title="Neos\Party\Domain\Model\ElectronicAddress">ElectronicAddress</abbr> $electronicAddress)
         </code>
@@ -795,7 +807,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteElectronicAddressAction">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L199">at line 199</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L212">at line 212</a></div>
         <code>                    void
     <strong>deleteElectronicAddressAction</strong>(<a href="../../../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user, <abbr title="Neos\Party\Domain\Model\ElectronicAddress">ElectronicAddress</abbr> $electronicAddress)
         </code>
@@ -842,7 +854,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_assignElectronicAddressOptions">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L217">at line 217</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/7.3/Neos.Neos/Classes/Controller/Module/User/UserSettingsController.php#L230">at line 230</a></div>
         <code>            protected        void
     <strong>assignElectronicAddressOptions</strong>()
         </code>
