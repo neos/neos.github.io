@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Flow Framework (7.2)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Flow_Configuration_ConfigurationManager" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Flow_Configuration_ConfigurationManager" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -665,7 +677,7 @@ in the given php exported configuration string.</p></p>                </div>
                     <table class="table table-condensed">
                     <tr>
                 <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
-                <td><p>on invalid configuration processing type</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -765,7 +777,7 @@ If possible just use settings and have them injected.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../Neos/Flow/Configuration/Exception/InvalidConfigurationTypeException.html"><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationTypeException">InvalidConfigurationTypeException</abbr></a></td>
-                <td><p>on invalid configuration types</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -856,7 +868,7 @@ in order to be able to store it into the cache, if configured to do so.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../Neos/Flow/Configuration/Exception/InvalidConfigurationException.html"><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationException">InvalidConfigurationException</abbr></a></td>
-                <td><p>| InvalidConfigurationTypeException</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1133,7 +1145,7 @@ in the context's Configuration directory.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../Neos/Flow/Configuration/Exception/InvalidConfigurationTypeException.html"><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationTypeException">InvalidConfigurationTypeException</abbr></a></td>
-                <td><p>| FilesException</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1222,7 +1234,7 @@ in the context's Configuration directory.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../Neos/Flow/Configuration/Exception/InvalidConfigurationTypeException.html"><abbr title="Neos\Flow\Configuration\Exception\InvalidConfigurationTypeException">InvalidConfigurationTypeException</abbr></a></td>
-                <td><p>| FilesException | Exception</p></td>
+                <td></td>
             </tr>
             </table>
 
