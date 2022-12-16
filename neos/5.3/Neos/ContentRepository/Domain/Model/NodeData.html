@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (5.3)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Domain_Model_NodeData" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Domain_Model_NodeData" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -1440,7 +1452,7 @@ there if it is gettable.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../../Neos/ContentRepository/Exception/NodeException.html"><abbr title="Neos\ContentRepository\Exception\NodeException">NodeException</abbr></a></td>
-                <td><p>if the content object exists but does not contain the specified property.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1493,7 +1505,7 @@ that object if it exists.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../../Neos/ContentRepository/Exception/NodeException.html"><abbr title="Neos\ContentRepository\Exception\NodeException">NodeException</abbr></a></td>
-                <td><p>if the node does not contain the specified property</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -1612,7 +1624,7 @@ there.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
-                <td><p>if the given contentObject is no object.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -2265,7 +2277,7 @@ there.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
-                <td><p>if the array of roles contains something else than strings.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -2511,7 +2523,7 @@ there.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
-                <td><p>if the given node path is invalid.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -2960,11 +2972,11 @@ properties or creating subnodes.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../../Neos/ContentRepository/Exception/NodeExistsException.html"><abbr title="Neos\ContentRepository\Exception\NodeExistsException">NodeExistsException</abbr></a></td>
-                <td><p>if a node with this path already exists.</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
-                <td><p>if the node name is not accepted.</p></td>
+                <td></td>
             </tr>
             </table>
 
