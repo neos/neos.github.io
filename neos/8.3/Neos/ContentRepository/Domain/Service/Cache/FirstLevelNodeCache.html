@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepository\Domain\Service\Cache\FirstLevelNodeCache | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
+        <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (8.3)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepository_Domain_Service_Cache_FirstLevelNodeCache" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository.html">ContentRepository</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository/Domain.html">Domain</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository/Domain/Service.html">Service</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository/Domain/Service/Cache.html">Cache</a></li><li class="backslash">\</li><li>FirstLevelNodeCache</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>FirstLevelNodeCache    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>FirstLevelNodeCache</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/8.3/Neos.ContentRepository/Classes/Domain/Service/Cache/FirstLevelNodeCache.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A first level cache for the NodeDataRepository. It is used to keep
+Nodes in memory (indexed by identifier and path) and allows to fetch
+them by path or identifier as single node.</p></p>            <p><p>The caching of multiple nodes below a certain path is possible as well,
+using the *ChildNodesByPathAndNodeTypeFilter() methods.</p></p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_nodesByPath">
+                                        protected                                        <a href="../../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>[]
+                                                                                
+                                    </td>
+                <td>$nodesByPath</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodesByIdentifier">
+                                        protected                                        <a href="../../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>[]
+                                                                                
+                                    </td>
+                <td>$nodesByIdentifier</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_childNodesByPathAndNodeTypeFilter">
+                                        protected                                        <a href="../../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>[]
+                                                                                
+                                    </td>
+                <td>$childNodesByPathAndNodeTypeFilter</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>|bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getByPath">getByPath</a>(string $path)
+        
+                                            <p><p>If the cache contains a node for the given path, it is returned.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setByPath">setByPath</a>(string $path, <a href="../../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node = null)
+        
+                                            <p><p>Adds the given node to the cache for the given path. The node
+will also be added under it's identifier.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>|bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getByIdentifier">getByIdentifier</a>(string $identifier)
+        
+                                            <p><p>If the cache contains a node with the given identifier, it is returned.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setByIdentifier">setByIdentifier</a>(string $identifier, <a href="../../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node = null)
+        
+                                            <p><p>Adds the given node to the cache for the given identifier. The node
+will also be added with is's path.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_removeNodeFromIdentifierCache">removeNodeFromIdentifierCache</a>(string $identifier)
+        
+                                            <p><p>Removes the Node with identifier $identifier from the cache.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_removeNodeFromPathCache">removeNodeFromPathCache</a>(string $nodePath)
+        
+                                            <p><p>Removes the Node Path $nodePath from the cache.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getChildNodesByPathAndNodeTypeFilter">getChildNodesByPathAndNodeTypeFilter</a>(string $path, string $nodeTypeFilter)
+        
+                                            <p><p>Returns the cached child nodes for the given path and node type filter.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setChildNodesByPathAndNodeTypeFilter">setChildNodesByPathAndNodeTypeFilter</a>(string $path, string $nodeTypeFilter, array $nodes)
+        
+                                            <p><p>Sets the given nodes as child nodes for the given path and node type filter.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flush">flush</a>()
+        
+                                            <p><p>Flush the cache.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_getByPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.3/Neos.ContentRepository/Classes/Domain/Service/Cache/FirstLevelNodeCache.php#L49">at line 49</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>|bool
+    <strong>getByPath</strong>(string $path)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>If the cache contains a node for the given path, it is returned.</p></p>                <p><p>Otherwise false is returned.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>|bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setByPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.3/Neos.ContentRepository/Classes/Domain/Service/Cache/FirstLevelNodeCache.php#L66">at line 66</a></div>
+        <code>                    void
+    <strong>setByPath</strong>(string $path, <a href="../../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds the given node to the cache for the given path. The node
+will also be added under it's identifier.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getByIdentifier">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.3/Neos.ContentRepository/Classes/Domain/Service/Cache/FirstLevelNodeCache.php#L82">at line 82</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>|bool
+    <strong>getByIdentifier</strong>(string $identifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>If the cache contains a node with the given identifier, it is returned.</p></p>                <p><p>Otherwise false is returned.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a>|bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setByIdentifier">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.3/Neos.ContentRepository/Classes/Domain/Service/Cache/FirstLevelNodeCache.php#L99">at line 99</a></div>
+        <code>                    void
+    <strong>setByIdentifier</strong>(string $identifier, <a href="../../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a> $node = null)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds the given node to the cache for the given identifier. The node
+will also be added with is's path.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identifier</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Domain/Model/NodeInterface.html"><abbr title="Neos\ContentRepository\Domain\Model\NodeInterface">NodeInterface</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeNodeFromIdentifierCache">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.3/Neos.ContentRepository/Classes/Domain/Service/Cache/FirstLevelNodeCache.php#L116">at line 116</a></div>
+        <code>                    
+    <strong>removeNodeFromIdentifierCache</strong>(string $identifier)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes the Node with identifier $identifier from the cache.</p></p>                <p><p>This is needed in extremely rare cases: When loading
+Nodes in the Security Framework, we need to ensure we do
+not pollute the Node cache, as otherwise these nodes will be
+found lateron when the actual queries are made.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identifier</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeNodeFromPathCache">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.3/Neos.ContentRepository/Classes/Domain/Service/Cache/FirstLevelNodeCache.php#L130">at line 130</a></div>
+        <code>                    
+    <strong>removeNodeFromPathCache</strong>(string $nodePath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Removes the Node Path $nodePath from the cache.</p></p>                <p><p>This is needed in extremely rare cases: When loading
+Nodes in the Security Framework, we need to ensure we do
+not pollute the Node cache, as otherwise these nodes will be
+found lateron when the actual queries are made.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$nodePath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getChildNodesByPathAndNodeTypeFilter">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.3/Neos.ContentRepository/Classes/Domain/Service/Cache/FirstLevelNodeCache.php#L142">at line 142</a></div>
+        <code>                    bool
+    <strong>getChildNodesByPathAndNodeTypeFilter</strong>(string $path, string $nodeTypeFilter)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the cached child nodes for the given path and node type filter.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeFilter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setChildNodesByPathAndNodeTypeFilter">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.3/Neos.ContentRepository/Classes/Domain/Service/Cache/FirstLevelNodeCache.php#L160">at line 160</a></div>
+        <code>                    void
+    <strong>setChildNodesByPathAndNodeTypeFilter</strong>(string $path, string $nodeTypeFilter, array $nodes)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the given nodes as child nodes for the given path and node type filter.</p></p>                <p><p>The nodes will each be added with their path and identifier as well.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$nodeTypeFilter</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$nodes</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flush">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.3/Neos.ContentRepository/Classes/Domain/Service/Cache/FirstLevelNodeCache.php#L180">at line 180</a></div>
+        <code>                    void
+    <strong>flush</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flush the cache.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
