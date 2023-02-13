@@ -1385,7 +1385,9 @@ get a Cache.</p></dd><dt>$<a href="Neos/Flow/Cache/CacheFactory.html#property_co
 <abbr title="Neos\Flow\Command\RoutingCommandController">RoutingCommandController</abbr>#configurationManager</a> &mdash; <em>Property in class <a href="Neos/Flow/Command/RoutingCommandController.html"><abbr title="Neos\Flow\Command\RoutingCommandController">RoutingCommandController</abbr></a></em></dt>
                     <dd></dd><dt>$<a href="Neos/Flow/Command/SessionCommandController.html#property_cacheManager">
 <abbr title="Neos\Flow\Command\SessionCommandController">SessionCommandController</abbr>#cacheManager</a> &mdash; <em>Property in class <a href="Neos/Flow/Command/SessionCommandController.html"><abbr title="Neos\Flow\Command\SessionCommandController">SessionCommandController</abbr></a></em></dt>
-                    <dd></dd><dt><a href="Neos/Flow/Composer/ComposerUtility.html"><abbr title="Neos\Flow\Composer\ComposerUtility">ComposerUtility</abbr></a> &mdash; <em>Class in namespace <a href="Neos/Flow/Composer.html">Neos\Flow\Composer</a></em></dt>
+                    <dd></dd><dt><a href="Neos/Flow/Command/SessionCommandController.html#method_collectGarbageCommand">
+<abbr title="Neos\Flow\Command\SessionCommandController">SessionCommandController</abbr>::collectGarbageCommand</a>() &mdash; <em>Method in class <a href="Neos/Flow/Command/SessionCommandController.html"><abbr title="Neos\Flow\Command\SessionCommandController">SessionCommandController</abbr></a></em></dt>
+                    <dd><p>Run garbage collection for sesions.</p></dd><dt><a href="Neos/Flow/Composer/ComposerUtility.html"><abbr title="Neos\Flow\Composer\ComposerUtility">ComposerUtility</abbr></a> &mdash; <em>Class in namespace <a href="Neos/Flow/Composer.html">Neos\Flow\Composer</a></em></dt>
                     <dd><p>Utility to access composer information like composer manifests (composer.json) and the lock file.</p></dd><dt>$<a href="Neos/Flow/Composer/ComposerUtility.html#property_composerManifestCache">
 <abbr title="Neos\Flow\Composer\ComposerUtility">ComposerUtility</abbr>#composerManifestCache</a> &mdash; <em>Property in class <a href="Neos/Flow/Composer/ComposerUtility.html"><abbr title="Neos\Flow\Composer\ComposerUtility">ComposerUtility</abbr></a></em></dt>
                     <dd><p>Runtime cache for composer.json data</p></dd><dt>$<a href="Neos/Flow/Composer/ComposerUtility.html#property_composerLockCache">
@@ -2078,7 +2080,12 @@ timeout was reached.</p></dd><dt><a href="Neos/Flow/Session/SessionInterface.htm
 <abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr>#currentSession</a> &mdash; <em>Property in class <a href="Neos/Flow/Session/SessionManager.html"><abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr></a></em></dt>
                     <dd></dd><dt><a href="Neos/Flow/Session/SessionManager.html#method_createCurrentSessionFromCookie">
 <abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr>::createCurrentSessionFromCookie</a>() &mdash; <em>Method in class <a href="Neos/Flow/Session/SessionManager.html"><abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr></a></em></dt>
-                    <dd></dd><dt><a href="Neos/Flow/Session/TransientSession.html#method_canBeResumed">
+                    <dd></dd><dt><a href="Neos/Flow/Session/SessionManager.html#method_collectGarbage">
+<abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr>::collectGarbage</a>() &mdash; <em>Method in class <a href="Neos/Flow/Session/SessionManager.html"><abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr></a></em></dt>
+                    <dd><p>Iterates over all existing sessions and removes their data if the inactivity
+timeout was reached.</p></dd><dt><a href="Neos/Flow/Session/SessionManagerInterface.html#method_collectGarbage">
+<abbr title="Neos\Flow\Session\SessionManagerInterface">SessionManagerInterface</abbr>::collectGarbage</a>() &mdash; <em>Method in class <a href="Neos/Flow/Session/SessionManagerInterface.html"><abbr title="Neos\Flow\Session\SessionManagerInterface">SessionManagerInterface</abbr></a></em></dt>
+                    <dd><p>Remove data of all sessions which are considered to be expired.</p></dd><dt><a href="Neos/Flow/Session/TransientSession.html#method_canBeResumed">
 <abbr title="Neos\Flow\Session\TransientSession">TransientSession</abbr>::canBeResumed</a>() &mdash; <em>Method in class <a href="Neos/Flow/Session/TransientSession.html"><abbr title="Neos\Flow\Session\TransientSession">TransientSession</abbr></a></em></dt>
                     <dd><p>Returns true if there is a session that can be resumed. false otherwise</p></dd><dt><a href="Neos/Flow/Session/TransientSession.html#method_close">
 <abbr title="Neos\Flow\Session\TransientSession">TransientSession</abbr>::close</a>() &mdash; <em>Method in class <a href="Neos/Flow/Session/TransientSession.html"><abbr title="Neos\Flow\Session\TransientSession">TransientSession</abbr></a></em></dt>
@@ -5763,10 +5770,6 @@ has been intercepted by a security exception, NULL if there is none.</p></dd><dt
 <abbr title="Neos\Flow\Session\Aspect\SessionObjectMethodsPointcutFilter">SessionObjectMethodsPointcutFilter</abbr>::getRuntimeEvaluationsDefinition</a>() &mdash; <em>Method in class <a href="Neos/Flow/Session/Aspect/SessionObjectMethodsPointcutFilter.html"><abbr title="Neos\Flow\Session\Aspect\SessionObjectMethodsPointcutFilter">SessionObjectMethodsPointcutFilter</abbr></a></em></dt>
                     <dd><p>Returns runtime evaluations for a previously matched pointcut</p></dd><dt><a href="Neos/Flow/Session/CookieEnabledInterface.html#method_getSessionCookie">
 <abbr title="Neos\Flow\Session\CookieEnabledInterface">CookieEnabledInterface</abbr>::getSessionCookie</a>() &mdash; <em>Method in class <a href="Neos/Flow/Session/CookieEnabledInterface.html"><abbr title="Neos\Flow\Session\CookieEnabledInterface">CookieEnabledInterface</abbr></a></em></dt>
-                    <dd></dd><dt>$<a href="Neos/Flow/Session/Session.html#property_garbageCollectionProbability">
-<abbr title="Neos\Flow\Session\Session">Session</abbr>#garbageCollectionProbability</a> &mdash; <em>Property in class <a href="Neos/Flow/Session/Session.html"><abbr title="Neos\Flow\Session\Session">Session</abbr></a></em></dt>
-                    <dd></dd><dt>$<a href="Neos/Flow/Session/Session.html#property_garbageCollectionMaximumPerRun">
-<abbr title="Neos\Flow\Session\Session">Session</abbr>#garbageCollectionMaximumPerRun</a> &mdash; <em>Property in class <a href="Neos/Flow/Session/Session.html"><abbr title="Neos\Flow\Session\Session">Session</abbr></a></em></dt>
                     <dd></dd><dt><a href="Neos/Flow/Session/Session.html#method_getSessionCookie">
 <abbr title="Neos\Flow\Session\Session">Session</abbr>::getSessionCookie</a>() &mdash; <em>Method in class <a href="Neos/Flow/Session/Session.html"><abbr title="Neos\Flow\Session\Session">Session</abbr></a></em></dt>
                     <dd></dd><dt><a href="Neos/Flow/Session/Session.html#method_getId">
@@ -5787,7 +5790,11 @@ been in use.</p></dd><dt><a href="Neos/Flow/Session/Session.html#method_getTags"
                     <dd><p>Returns the tags this session has been tagged with.</p></dd><dt><a href="Neos/Flow/Session/SessionInterface.html#method_getLastActivityTimestamp">
 <abbr title="Neos\Flow\Session\SessionInterface">SessionInterface</abbr>::getLastActivityTimestamp</a>() &mdash; <em>Method in class <a href="Neos/Flow/Session/SessionInterface.html"><abbr title="Neos\Flow\Session\SessionInterface">SessionInterface</abbr></a></em></dt>
                     <dd><p>Returns the unix time stamp marking the last point in time this session has
-been in use.</p></dd><dt><a href="Neos/Flow/Session/SessionManager.html#method_getCurrentSession">
+been in use.</p></dd><dt>$<a href="Neos/Flow/Session/SessionManager.html#property_garbageCollectionProbability">
+<abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr>#garbageCollectionProbability</a> &mdash; <em>Property in class <a href="Neos/Flow/Session/SessionManager.html"><abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr></a></em></dt>
+                    <dd></dd><dt>$<a href="Neos/Flow/Session/SessionManager.html#property_garbageCollectionMaximumPerRun">
+<abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr>#garbageCollectionMaximumPerRun</a> &mdash; <em>Property in class <a href="Neos/Flow/Session/SessionManager.html"><abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr></a></em></dt>
+                    <dd></dd><dt><a href="Neos/Flow/Session/SessionManager.html#method_getCurrentSession">
 <abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr>::getCurrentSession</a>() &mdash; <em>Method in class <a href="Neos/Flow/Session/SessionManager.html"><abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr></a></em></dt>
                     <dd><p>Returns the currently active session which stores session data for the
 current HTTP request on this local system.</p></dd><dt><a href="Neos/Flow/Session/SessionManager.html#method_getSession">
@@ -6761,6 +6768,8 @@ controller and the response is ready to be sent.</p></dd><dt><a href="Neos/Flow/
 <abbr title="Neos\Flow\Command\SecurityCommandController">SecurityCommandController</abbr>::importPrivateKeyCommand</a>() &mdash; <em>Method in class <a href="Neos/Flow/Command/SecurityCommandController.html"><abbr title="Neos\Flow\Command\SecurityCommandController">SecurityCommandController</abbr></a></em></dt>
                     <dd><p>Import a private key</p></dd><dt><a href="Neos/Flow/Command/SessionCommandController.html#method_injectCacheManager">
 <abbr title="Neos\Flow\Command\SessionCommandController">SessionCommandController</abbr>::injectCacheManager</a>() &mdash; <em>Method in class <a href="Neos/Flow/Command/SessionCommandController.html"><abbr title="Neos\Flow\Command\SessionCommandController">SessionCommandController</abbr></a></em></dt>
+                    <dd></dd><dt><a href="Neos/Flow/Command/SessionCommandController.html#method_injectSessionManager">
+<abbr title="Neos\Flow\Command\SessionCommandController">SessionCommandController</abbr>::injectSessionManager</a>() &mdash; <em>Method in class <a href="Neos/Flow/Command/SessionCommandController.html"><abbr title="Neos\Flow\Command\SessionCommandController">SessionCommandController</abbr></a></em></dt>
                     <dd></dd><dt><a href="Neos/Flow/Composer/ComposerUtility.html#method_isFlowPackageType">
 <abbr title="Neos\Flow\Composer\ComposerUtility">ComposerUtility</abbr>::isFlowPackageType</a>() &mdash; <em>Method in class <a href="Neos/Flow/Composer/ComposerUtility.html"><abbr title="Neos\Flow\Composer\ComposerUtility">ComposerUtility</abbr></a></em></dt>
                     <dd><p>Checks if the given (composer) package type is a type native to the neos project.</p></dd><dt><a href="Neos/Flow/Composer/Exception/InvalidConfigurationException.html"><abbr title="Neos\Flow\Composer\Exception\InvalidConfigurationException">InvalidConfigurationException</abbr></a> &mdash; <em>Class in namespace <a href="Neos/Flow/Composer/Exception.html">Neos\Flow\Composer\Exception</a></em></dt>
@@ -7642,7 +7651,9 @@ comparing the client IP address.</p></dd><dt>$<a href="Neos/Flow/Security/Sessio
                     <dd><p>Tells if the session is local (the current session bound to the current HTTP
 request) or remote (retrieved through the Session Manager).</p></dd><dt><a href="Neos/Flow/Session/SessionInterface.html#method_isStarted">
 <abbr title="Neos\Flow\Session\SessionInterface">SessionInterface</abbr>::isStarted</a>() &mdash; <em>Method in class <a href="Neos/Flow/Session/SessionInterface.html"><abbr title="Neos\Flow\Session\SessionInterface">SessionInterface</abbr></a></em></dt>
-                    <dd><p>Tells if the session has been started already.</p></dd><dt><a href="Neos/Flow/Session/SessionManager.html#method_initializeCurrentSessionFromCookie">
+                    <dd><p>Tells if the session has been started already.</p></dd><dt>$<a href="Neos/Flow/Session/SessionManager.html#property_inactivityTimeout">
+<abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr>#inactivityTimeout</a> &mdash; <em>Property in class <a href="Neos/Flow/Session/SessionManager.html"><abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr></a></em></dt>
+                    <dd></dd><dt><a href="Neos/Flow/Session/SessionManager.html#method_initializeCurrentSessionFromCookie">
 <abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr>::initializeCurrentSessionFromCookie</a>() &mdash; <em>Method in class <a href="Neos/Flow/Session/SessionManager.html"><abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr></a></em></dt>
                     <dd></dd><dt><a href="Neos/Flow/Session/TransientSession.html#method_isStarted">
 <abbr title="Neos\Flow\Session\TransientSession">TransientSession</abbr>::isStarted</a>() &mdash; <em>Method in class <a href="Neos/Flow/Session/TransientSession.html"><abbr title="Neos\Flow\Session\TransientSession">TransientSession</abbr></a></em></dt>
@@ -8330,6 +8341,8 @@ method to do the actual logout.</p></dd><dt><a href="Neos/Flow/Security/Authoriz
 <abbr title="Neos\Flow\Session\Session">Session</abbr>#logger</a> &mdash; <em>Property in class <a href="Neos/Flow/Session/Session.html"><abbr title="Neos\Flow\Session\Session">Session</abbr></a></em></dt>
                     <dd></dd><dt>$<a href="Neos/Flow/Session/Session.html#property_lastActivityTimestamp">
 <abbr title="Neos\Flow\Session\Session">Session</abbr>#lastActivityTimestamp</a> &mdash; <em>Property in class <a href="Neos/Flow/Session/Session.html"><abbr title="Neos\Flow\Session\Session">Session</abbr></a></em></dt>
+                    <dd></dd><dt>$<a href="Neos/Flow/Session/SessionManager.html#property_logger">
+<abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr>#logger</a> &mdash; <em>Property in class <a href="Neos/Flow/Session/SessionManager.html"><abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr></a></em></dt>
                     <dd></dd><dt>$<a href="Neos/Flow/Session/TransientSession.html#property_lastActivityTimestamp">
 <abbr title="Neos\Flow\Session\TransientSession">TransientSession</abbr>#lastActivityTimestamp</a> &mdash; <em>Property in class <a href="Neos/Flow/Session/TransientSession.html"><abbr title="Neos\Flow\Session\TransientSession">TransientSession</abbr></a></em></dt>
                     <dd></dd><dt>$<a href="Neos/Flow/Validation/Validator/DateTimeValidator.html#property_localizationService">
@@ -11837,7 +11850,9 @@ the interactive shell.</p></dd><dt><a href="Neos/Flow/Command/CacheCommandContro
                     <dd><p>Command controller for starting the development-server</p></dd><dt>$<a href="Neos/Flow/Command/ServerCommandController.html#property_settings">
 <abbr title="Neos\Flow\Command\ServerCommandController">ServerCommandController</abbr>#settings</a> &mdash; <em>Property in class <a href="Neos/Flow/Command/ServerCommandController.html"><abbr title="Neos\Flow\Command\ServerCommandController">ServerCommandController</abbr></a></em></dt>
                     <dd></dd><dt><a href="Neos/Flow/Command/SessionCommandController.html"><abbr title="Neos\Flow\Command\SessionCommandController">SessionCommandController</abbr></a> &mdash; <em>Class in namespace <a href="Neos/Flow/Command.html">Neos\Flow\Command</a></em></dt>
-                    <dd><p>Command controller for managing sessions</p></dd><dt><a href="Neos/Flow/Command/SignalCommandController.html"><abbr title="Neos\Flow\Command\SignalCommandController">SignalCommandController</abbr></a> &mdash; <em>Class in namespace <a href="Neos/Flow/Command.html">Neos\Flow\Command</a></em></dt>
+                    <dd><p>Command controller for managing sessions</p></dd><dt>$<a href="Neos/Flow/Command/SessionCommandController.html#property_sessionManager">
+<abbr title="Neos\Flow\Command\SessionCommandController">SessionCommandController</abbr>#sessionManager</a> &mdash; <em>Property in class <a href="Neos/Flow/Command/SessionCommandController.html"><abbr title="Neos\Flow\Command\SessionCommandController">SessionCommandController</abbr></a></em></dt>
+                    <dd></dd><dt><a href="Neos/Flow/Command/SignalCommandController.html"><abbr title="Neos\Flow\Command\SignalCommandController">SignalCommandController</abbr></a> &mdash; <em>Class in namespace <a href="Neos/Flow/Command.html">Neos\Flow\Command</a></em></dt>
                     <dd><p>Signal command controller for the Neos.Flow package</p></dd><dt><a href="Neos/Flow/Configuration/ConfigurationManager.html#method_setTemporaryDirectoryPath">
 <abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr>::setTemporaryDirectoryPath</a>() &mdash; <em>Method in class <a href="Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a></em></dt>
                     <dd><p>Set an absolute file path to store configuration caches in. If null no cache will be active.</p></dd><dt><a href="Neos/Flow/Configuration/ConfigurationManager.html#method_setPackages">
@@ -12772,7 +12787,9 @@ has been intercepted by a security exception.</p></dd><dt>$<a href="Neos/Flow/Se
                     <dd></dd><dt><a href="Neos/Flow/Session/Session.html"><abbr title="Neos\Flow\Session\Session">Session</abbr></a> &mdash; <em>Class in namespace <a href="Neos/Flow/Session.html">Neos\Flow\Session</a></em></dt>
                     <dd><p>A modular session implementation based on the caching framework.</p></dd><dt>$<a href="Neos/Flow/Session/Session.html#property_storageCache">
 <abbr title="Neos\Flow\Session\Session">Session</abbr>#storageCache</a> &mdash; <em>Property in class <a href="Neos/Flow/Session/Session.html"><abbr title="Neos\Flow\Session\Session">Session</abbr></a></em></dt>
-                    <dd><p>Storage cache for this session</p></dd><dt>$<a href="Neos/Flow/Session/Session.html#property_sessionCookieName">
+                    <dd><p>Storage cache for this session</p></dd><dt>$<a href="Neos/Flow/Session/Session.html#property_sessionManager">
+<abbr title="Neos\Flow\Session\Session">Session</abbr>#sessionManager</a> &mdash; <em>Property in class <a href="Neos/Flow/Session/Session.html"><abbr title="Neos\Flow\Session\Session">Session</abbr></a></em></dt>
+                    <dd></dd><dt>$<a href="Neos/Flow/Session/Session.html#property_sessionCookieName">
 <abbr title="Neos\Flow\Session\Session">Session</abbr>#sessionCookieName</a> &mdash; <em>Property in class <a href="Neos/Flow/Session/Session.html"><abbr title="Neos\Flow\Session\Session">Session</abbr></a></em></dt>
                     <dd></dd><dt>$<a href="Neos/Flow/Session/Session.html#property_sessionCookieLifetime">
 <abbr title="Neos\Flow\Session\Session">Session</abbr>#sessionCookieLifetime</a> &mdash; <em>Property in class <a href="Neos/Flow/Session/Session.html"><abbr title="Neos\Flow\Session\Session">Session</abbr></a></em></dt>
@@ -12804,7 +12821,11 @@ has been intercepted by a security exception.</p></dd><dt>$<a href="Neos/Flow/Se
                     <dd><p>Contract for a session.</p></dd><dt><a href="Neos/Flow/Session/SessionInterface.html#method_start">
 <abbr title="Neos\Flow\Session\SessionInterface">SessionInterface</abbr>::start</a>() &mdash; <em>Method in class <a href="Neos/Flow/Session/SessionInterface.html"><abbr title="Neos\Flow\Session\SessionInterface">SessionInterface</abbr></a></em></dt>
                     <dd><p>Starts the session, if is has not been already started</p></dd><dt><a href="Neos/Flow/Session/SessionManager.html"><abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr></a> &mdash; <em>Class in namespace <a href="Neos/Flow/Session.html">Neos\Flow\Session</a></em></dt>
-                    <dd><p>Session Manager</p></dd><dt><a href="Neos/Flow/Session/SessionManagerInterface.html"><abbr title="Neos\Flow\Session\SessionManagerInterface">SessionManagerInterface</abbr></a> &mdash; <em>Class in namespace <a href="Neos/Flow/Session.html">Neos\Flow\Session</a></em></dt>
+                    <dd><p>Session Manager</p></dd><dt>$<a href="Neos/Flow/Session/SessionManager.html#property_storageCache">
+<abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr>#storageCache</a> &mdash; <em>Property in class <a href="Neos/Flow/Session/SessionManager.html"><abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr></a></em></dt>
+                    <dd><p>Storage cache for by sessions</p></dd><dt><a href="Neos/Flow/Session/SessionManager.html#method_shutdownObject">
+<abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr>::shutdownObject</a>() &mdash; <em>Method in class <a href="Neos/Flow/Session/SessionManager.html"><abbr title="Neos\Flow\Session\SessionManager">SessionManager</abbr></a></em></dt>
+                    <dd><p>Shuts down this session</p></dd><dt><a href="Neos/Flow/Session/SessionManagerInterface.html"><abbr title="Neos\Flow\Session\SessionManagerInterface">SessionManagerInterface</abbr></a> &mdash; <em>Class in namespace <a href="Neos/Flow/Session.html">Neos\Flow\Session</a></em></dt>
                     <dd><p>Interface for a session manager</p></dd><dt>$<a href="Neos/Flow/Session/TransientSession.html#property_sessionId">
 <abbr title="Neos\Flow\Session\TransientSession">TransientSession</abbr>#sessionId</a> &mdash; <em>Property in class <a href="Neos/Flow/Session/TransientSession.html"><abbr title="Neos\Flow\Session\TransientSession">TransientSession</abbr></a></em></dt>
                     <dd><p>The session Id</p></dd><dt>$<a href="Neos/Flow/Session/TransientSession.html#property_started">

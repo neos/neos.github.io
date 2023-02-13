@@ -132,6 +132,51 @@
                 <td class="last"><p>Meta data cache used by sessions</p></td>
                 <td></td>
             </tr>
+                    <tr>
+                <td class="type" id="property_storageCache">
+                                        protected                                        <a href="../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a>
+                                                                                
+                                    </td>
+                <td>$storageCache</td>
+                <td class="last"><p>Storage cache for by sessions</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_garbageCollectionProbability">
+                                        protected                                        float
+                                                                                
+                                    </td>
+                <td>$garbageCollectionProbability</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_garbageCollectionMaximumPerRun">
+                                        protected                                        int
+                                                                                
+                                    </td>
+                <td>$garbageCollectionMaximumPerRun</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_inactivityTimeout">
+                                        protected                                        int
+                                                                                
+                                    </td>
+                <td>$inactivityTimeout</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_logger">
+                                        protected                                        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>
+                                                                                
+                                    </td>
+                <td>$logger</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
             </table>
 
     
@@ -212,6 +257,27 @@ NULL is returned.</p></p>                </div>
                                             <p><p>Destroys all sessions which are tagged with the specified tag.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_collectGarbage">collectGarbage</a>()
+        
+                                            <p><p>Iterates over all existing sessions and removes their data if the inactivity
+timeout was reached.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shutdownObject">shutdownObject</a>()
+        
+                                            <p><p>Shuts down this session</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -220,7 +286,7 @@ NULL is returned.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getCurrentSession">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Session/SessionManager.php#L51">at line 51</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Session/SessionManager.php#L86">at line 86</a></div>
         <code>                    <a href="../../../Neos/Flow/Session/SessionInterface.html"><abbr title="Neos\Flow\Session\SessionInterface">SessionInterface</abbr></a>
     <strong>getCurrentSession</strong>()
         </code>
@@ -253,7 +319,7 @@ current HTTP request on this local system.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_initializeCurrentSessionFromCookie">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Session/SessionManager.php#L63">at line 63</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Session/SessionManager.php#L98">at line 98</a></div>
         <code>                    bool
     <strong>initializeCurrentSessionFromCookie</strong>(<a href="../../../Neos/Flow/Http/Cookie.html"><abbr title="Neos\Flow\Http\Cookie">Cookie</abbr></a> $cookie)
         </code>
@@ -296,7 +362,7 @@ current HTTP request on this local system.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_createCurrentSessionFromCookie">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Session/SessionManager.php#L84">at line 84</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Session/SessionManager.php#L119">at line 119</a></div>
         <code>                    bool
     <strong>createCurrentSessionFromCookie</strong>(<a href="../../../Neos/Flow/Http/Cookie.html"><abbr title="Neos\Flow\Http\Cookie">Cookie</abbr></a> $cookie)
         </code>
@@ -339,7 +405,7 @@ current HTTP request on this local system.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getSession">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Session/SessionManager.php#L103">at line 103</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Session/SessionManager.php#L138">at line 138</a></div>
         <code>                    <a href="../../../Neos/Flow/Session/SessionInterface.html"><abbr title="Neos\Flow\Session\SessionInterface">SessionInterface</abbr></a>
     <strong>getSession</strong>(string $sessionIdentifier)
         </code>
@@ -382,7 +448,7 @@ NULL is returned.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getActiveSessions">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Session/SessionManager.php#L124">at line 124</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Session/SessionManager.php#L159">at line 159</a></div>
         <code>                    <a href="../../../Neos/Flow/Session/Session.html"><abbr title="Neos\Flow\Session\Session">Session</abbr></a>[]
     <strong>getActiveSessions</strong>()
         </code>
@@ -414,7 +480,7 @@ NULL is returned.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getSessionsByTag">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Session/SessionManager.php#L141">at line 141</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Session/SessionManager.php#L176">at line 176</a></div>
         <code>                    array
     <strong>getSessionsByTag</strong>(string $tag)
         </code>
@@ -456,7 +522,7 @@ NULL is returned.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_destroySessionsByTag">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Session/SessionManager.php#L158">at line 158</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Session/SessionManager.php#L193">at line 193</a></div>
         <code>                    int
     <strong>destroySessionsByTag</strong>(string $tag, string $reason = &#039;&#039;)
         </code>
@@ -495,6 +561,93 @@ NULL is returned.</p></p>
     </table>
 
             
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_collectGarbage">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Session/SessionManager.php#L210">at line 210</a></div>
+        <code>                    int|null
+    <strong>collectGarbage</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Iterates over all existing sessions and removes their data if the inactivity
+timeout was reached.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int|null</td>
+            <td><p>The number of outdated entries removed or NULL if no such information could be determined</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shutdownObject">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Session/SessionManager.php#L264">at line 264</a></div>
+        <code>                    void
+    <strong>shutdownObject</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Shuts down this session</p></p>                <p><p>This method must not be called manually – it is invoked by Flow's object
+management.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/DataNotSerializableException.html"><abbr title="Neos\Flow\Session\Exception\DataNotSerializableException">DataNotSerializableException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Flow/Session/Exception/SessionNotStartedException.html"><abbr title="Neos\Flow\Session\Exception\SessionNotStartedException">SessionNotStartedException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Cache/Exception/NotSupportedByBackendException.html"><abbr title="Neos\Cache\Exception\NotSupportedByBackendException">NotSupportedByBackendException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Cache/Exception.html"><abbr title="Neos\Cache\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
