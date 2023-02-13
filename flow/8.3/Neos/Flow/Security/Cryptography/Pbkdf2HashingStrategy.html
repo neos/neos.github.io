@@ -107,7 +107,7 @@
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_dynamicSaltLength">
-                                        protected                                        int
+                                        protected                                        
                                                                                 
                                     </td>
                 <td>$dynamicSaltLength</td>
@@ -116,7 +116,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_iterationCount">
-                                        protected                                        int
+                                        protected                                        
                                                                                 
                                     </td>
                 <td>$iterationCount</td>
@@ -125,7 +125,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_derivedKeyLength">
-                                        protected                                        int
+                                        protected                                        
                                                                                 
                                     </td>
                 <td>$derivedKeyLength</td>
@@ -134,7 +134,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_algorithm">
-                                        protected                                        string
+                                        protected                                        
                                                                                 
                                     </td>
                 <td>$algorithm</td>
@@ -162,7 +162,7 @@
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_hashPassword">hashPassword</a>(string $password, string $staticSalt = null)
+                    <a href="#method_hashPassword">hashPassword</a>(string $password, string|null $staticSalt = null)
         
                                             <p><p>Hash a password for storage using PBKDF2 and the configured parameters.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -172,7 +172,7 @@
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_validatePassword">validatePassword</a>(string $password, string $hashedPasswordAndSalt, string $staticSalt = null)
+                    <a href="#method_validatePassword">validatePassword</a>(string $password, string $hashedPasswordAndSalt, string|null $staticSalt = null)
         
                                             <p><p>Validate a password against a derived key (hashed password) and salt using PBKDF2.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -185,7 +185,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Security/Cryptography/Pbkdf2HashingStrategy.php#L54">at line 54</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Security/Cryptography/Pbkdf2HashingStrategy.php#L52">at line 52</a></div>
         <code>                    
     <strong>__construct</strong>(int $dynamicSaltLength, int $iterationCount, int $derivedKeyLength, string $algorithm)
         </code>
@@ -233,9 +233,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_hashPassword">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Security/Cryptography/Pbkdf2HashingStrategy.php#L70">at line 70</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Security/Cryptography/Pbkdf2HashingStrategy.php#L68">at line 68</a></div>
         <code>                    string
-    <strong>hashPassword</strong>(string $password, string $staticSalt = null)
+    <strong>hashPassword</strong>(string $password, string|null $staticSalt = null)
         </code>
     </h3>
     <div class="details">    
@@ -255,7 +255,7 @@
                 <td><p>Cleartext password that will be hashed</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$staticSalt</td>
                 <td><p>Optional static salt that will not be stored in the hashed password</p></td>
             </tr>
@@ -280,9 +280,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_validatePassword">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Security/Cryptography/Pbkdf2HashingStrategy.php#L87">at line 87</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Security/Cryptography/Pbkdf2HashingStrategy.php#L85">at line 85</a></div>
         <code>                    bool
-    <strong>validatePassword</strong>(string $password, string $hashedPasswordAndSalt, string $staticSalt = null)
+    <strong>validatePassword</strong>(string $password, string $hashedPasswordAndSalt, string|null $staticSalt = null)
         </code>
     </h3>
     <div class="details">    
@@ -307,7 +307,7 @@
                 <td><p>Hashed password with dynamic salt (if used)</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$staticSalt</td>
                 <td><p>Optional static salt that will not be stored in the hashed password</p></td>
             </tr>
