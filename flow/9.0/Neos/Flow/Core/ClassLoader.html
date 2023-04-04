@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Core\ClassLoader | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (9.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Core_ClassLoader" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../Neos/Flow/Core.html">Core</a></li><li class="backslash">\</li><li>ClassLoader</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ClassLoader    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>ClassLoader</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Core/ClassLoader.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>Class Loader implementation for test classes.</p></p>                    </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        MAPPING_TYPE_PSR0
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        MAPPING_TYPE_PSR4
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        MAPPING_TYPE_CLASSMAP
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        MAPPING_TYPE_FILES
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_packageNamespaces">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$packageNamespaces</td>
+                <td class="last"><p>A list of namespaces this class loader is definitely responsible for.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_considerTestsNamespace">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$considerTestsNamespace</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_ignoredClassNames">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$ignoredClassNames</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_fallbackClassPaths">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$fallbackClassPaths</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nonExistentClasses">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$nonExistentClasses</td>
+                <td class="last"><p>Cache classNames that were not found in this class loader in order
+to save time in resolving those non existent classes.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(array $defaultPackageEntries = [])
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_loadClass">loadClass</a>(string $className)
+        
+                                            <p><p>Loads php files containing classes or interfaces found in the classes directory of
+a package and specifically registered classes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_loadClassFromPossiblePaths">loadClassFromPossiblePaths</a>(array $possiblePaths, array $namespaceParts, int $packageNamespacePartCount)
+        
+                                            <p><p>Tries to load a class from a list of possible paths. This is needed because packages are not prefix-free; i.e.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setPackages">setPackages</a>(array $activePackages)
+        
+                                            <p><p>Sets the available packages</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createNamespaceMapEntry">createNamespaceMapEntry</a>(string $namespace, string $classPath, string $mappingType = self::MAPPING_TYPE_PSR0)
+        
+                                            <p><p>Add a namespace to class path mapping to the class loader for resolving classes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createFallbackPathEntry">createFallbackPathEntry</a>(string $path)
+        
+                                            <p><p>Adds an entry to the fallback path map. MappingType for this kind of paths is always PSR4 as no package namespace is used then.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_removeNamespaceMapEntry">removeNamespaceMapEntry</a>(string $namespace, string $classPath, string $mappingType = self::MAPPING_TYPE_PSR0)
+        
+                                            <p><p>Tries to remove a possibly existing namespace to class path map entry.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildClassPathWithPsr0">buildClassPathWithPsr0</a>(array $classNameParts, string $classPath)
+        
+                                            <p><p>Try to build a path to a class according to PSR-0 rules.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildClassPathWithPsr4">buildClassPathWithPsr4</a>(array $classNameParts, string $classPath, int $packageNamespacePartCount)
+        
+                                            <p><p>Try to build a path to a class according to PSR-4 rules.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setConsiderTestsNamespace">setConsiderTestsNamespace</a>(bool $flag)
+        
+                                            <p><p>Sets the flag which enables or disables autoloading support for functional
+test files.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isAutoloadTypeWithPredictableClassPath">isAutoloadTypeWithPredictableClassPath</a>(string $mappingType)
+        
+                                            <p><p>Is the given mapping type predictable in terms of path to class name</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Core/ClassLoader.php#L98">at line 98</a></div>
+        <code>                    
+    <strong>__construct</strong>(array $defaultPackageEntries = [])
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$defaultPackageEntries</td>
+                <td><p>Adds default entries for packages that should be available for very early loading</p></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_loadClass">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Core/ClassLoader.php#L112">at line 112</a></div>
+        <code>                    bool
+    <strong>loadClass</strong>(string $className)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Loads php files containing classes or interfaces found in the classes directory of
+a package and specifically registered classes.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td><p>Name of the class/interface to load</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_loadClassFromPossiblePaths">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Core/ClassLoader.php#L169">at line 169</a></div>
+        <code>            protected        bool
+    <strong>loadClassFromPossiblePaths</strong>(array $possiblePaths, array $namespaceParts, int $packageNamespacePartCount)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Tries to load a class from a list of possible paths. This is needed because packages are not prefix-free; i.e.</p></p>                <p><p>there may exist a package &quot;Neos&quot; and a package &quot;Neos.NodeTypes&quot; -- so a class Neos\NodeTypes\Foo must be first
+loaded (if it exists) from Neos.NodeTypes, falling back to Neos afterwards.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$possiblePaths</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$namespaceParts</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$packageNamespacePartCount</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setPackages">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Core/ClassLoader.php#L197">at line 197</a></div>
+        <code>                    void
+    <strong>setPackages</strong>(array $activePackages)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the available packages</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$activePackages</td>
+                <td><p>An array of \Neos\Flow\Package\Package objects</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createNamespaceMapEntry">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Core/ClassLoader.php#L221">at line 221</a></div>
+        <code>            protected        void
+    <strong>createNamespaceMapEntry</strong>(string $namespace, string $classPath, string $mappingType = self::MAPPING_TYPE_PSR0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Add a namespace to class path mapping to the class loader for resolving classes.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$namespace</td>
+                <td><p>A namespace to map to a class path.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$classPath</td>
+                <td><p>The class path to be mapped.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$mappingType</td>
+                <td><p>The mapping type for this mapping entry. Currently one of self::MAPPING_TYPE_PSR0 or self::MAPPING_TYPE_PSR4 will work. Defaults to self::MAPPING_TYPE_PSR0</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createFallbackPathEntry">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Core/ClassLoader.php#L249">at line 249</a></div>
+        <code>                    void
+    <strong>createFallbackPathEntry</strong>(string $path)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds an entry to the fallback path map. MappingType for this kind of paths is always PSR4 as no package namespace is used then.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$path</td>
+                <td><p>The fallback path to search in.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeNamespaceMapEntry">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Core/ClassLoader.php#L268">at line 268</a></div>
+        <code>            protected        void
+    <strong>removeNamespaceMapEntry</strong>(string $namespace, string $classPath, string $mappingType = self::MAPPING_TYPE_PSR0)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Tries to remove a possibly existing namespace to class path map entry.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$namespace</td>
+                <td><p>A namespace mapped to a class path.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$classPath</td>
+                <td><p>The class path to be removed.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$mappingType</td>
+                <td><p>The mapping type for this mapping entry. Currently one of self::MAPPING_TYPE_PSR0 or self::MAPPING_TYPE_PSR4 will work. Defaults to self::MAPPING_TYPE_PSR0</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildClassPathWithPsr0">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Core/ClassLoader.php#L299">at line 299</a></div>
+        <code>            protected        string
+    <strong>buildClassPathWithPsr0</strong>(array $classNameParts, string $classPath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Try to build a path to a class according to PSR-0 rules.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$classNameParts</td>
+                <td><p>Parts of the FQ classname.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$classPath</td>
+                <td><p>Already detected class path to a possible package.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildClassPathWithPsr4">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Core/ClassLoader.php#L314">at line 314</a></div>
+        <code>            protected        string
+    <strong>buildClassPathWithPsr4</strong>(array $classNameParts, string $classPath, int $packageNamespacePartCount)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Try to build a path to a class according to PSR-4 rules.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$classNameParts</td>
+                <td><p>Parts of the FQ classname.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$classPath</td>
+                <td><p>Already detected class path to a possible package.</p></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$packageNamespacePartCount</td>
+                <td><p>Amount of parts of the className that is also part of the package namespace.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setConsiderTestsNamespace">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Core/ClassLoader.php#L328">at line 328</a></div>
+        <code>                    void
+    <strong>setConsiderTestsNamespace</strong>(bool $flag)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sets the flag which enables or disables autoloading support for functional
+test files.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$flag</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isAutoloadTypeWithPredictableClassPath">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Core/ClassLoader.php#L339">at line 339</a></div>
+        <code>        static            bool
+    <strong>isAutoloadTypeWithPredictableClassPath</strong>(string $mappingType)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Is the given mapping type predictable in terms of path to class name</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$mappingType</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
