@@ -718,7 +718,7 @@ before constructor injection is executed. Used in constructors and wakeup method
             </div>
                     <div class="method-item">
                     <h3 id="method_buildSerializeRelatedEntitiesCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L195">at line 195</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L199">at line 199</a></div>
         <code>            protected        string
     <strong>buildSerializeRelatedEntitiesCode</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration)
         </code>
@@ -733,11 +733,14 @@ before constructor injection is executed. Used in constructors and wakeup method
 <li>The class is annotated with Entity</li>
 <li>The class is annotated with Scope(&quot;session&quot;)</li>
 <li>The class has properties annotated with Transient</li>
+<li>The class has properties annotated with Inject</li>
 </ul>
 <p>Despite the previous condition, the code will not be rendered if the following condition is true:</p>
 <ul>
 <li>The class already has a __sleep() method (we assume that the developer wants to take care of serialization themself)</li>
-</ul></p>        
+</ul>
+<p>NOTE: Even though the method name suggests that it is only dealing with related entities code, it is currently also
+used for removing injected properties before serialization. This should be refactored in the future.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -769,7 +772,7 @@ before constructor injection is executed. Used in constructors and wakeup method
             </div>
                     <div class="method-item">
                     <h3 id="method_buildSetRelatedEntitiesCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L238">at line 238</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L244">at line 244</a></div>
         <code>            protected        string
     <strong>buildSetRelatedEntitiesCode</strong>()
         </code>
@@ -802,7 +805,7 @@ before constructor injection is executed. Used in constructors and wakeup method
             </div>
                     <div class="method-item">
                     <h3 id="method_buildConstructorInjectionCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L249">at line 249</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L255">at line 255</a></div>
         <code>            protected        string
     <strong>buildConstructorInjectionCode</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration)
         </code>
@@ -857,7 +860,7 @@ before constructor injection is executed. Used in constructors and wakeup method
             </div>
                     <div class="method-item">
                     <h3 id="method_buildPropertyInjectionCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L349">at line 349</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L355">at line 355</a></div>
         <code>            protected        string
     <strong>buildPropertyInjectionCode</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration)
         </code>
@@ -908,7 +911,7 @@ before constructor injection is executed. Used in constructors and wakeup method
             </div>
                     <div class="method-item">
                     <h3 id="method_buildPropertyInjectionCodeByConfiguration">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L411">at line 411</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L417">at line 417</a></div>
         <code>            protected        array
     <strong>buildPropertyInjectionCodeByConfiguration</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration, string $propertyName, <a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $propertyConfiguration)
         </code>
@@ -969,7 +972,7 @@ before constructor injection is executed. Used in constructors and wakeup method
             </div>
                     <div class="method-item">
                     <h3 id="method_buildPropertyInjectionCodeByString">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L448">at line 448</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L454">at line 454</a></div>
         <code>                    array
     <strong>buildPropertyInjectionCodeByString</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration, <a href="../../../../Neos/Flow/ObjectManagement/Configuration/ConfigurationProperty.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\ConfigurationProperty">ConfigurationProperty</abbr></a> $propertyConfiguration, string $propertyName, string $propertyObjectName)
         </code>
@@ -1035,7 +1038,7 @@ before constructor injection is executed. Used in constructors and wakeup method
             </div>
                     <div class="method-item">
                     <h3 id="method_buildPropertyInjectionCodeByConfigurationTypeAndPath">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L490">at line 490</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L496">at line 496</a></div>
         <code>                    array
     <strong>buildPropertyInjectionCodeByConfigurationTypeAndPath</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration, string $propertyName, string $configurationType, string $configurationPath = null)
         </code>
@@ -1092,7 +1095,7 @@ before constructor injection is executed. Used in constructors and wakeup method
             </div>
                     <div class="method-item">
                     <h3 id="method_buildLazyPropertyInjectionCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L515">at line 515</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L521">at line 521</a></div>
         <code>            protected        array
     <strong>buildLazyPropertyInjectionCode</strong>(string $propertyObjectName, string $propertyClassName, string $propertyName, string $preparedSetterArgument)
         </code>
@@ -1149,7 +1152,7 @@ before constructor injection is executed. Used in constructors and wakeup method
             </div>
                     <div class="method-item">
                     <h3 id="method_buildSetterInjectionCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L538">at line 538</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L544">at line 544</a></div>
         <code>            protected        <abbr title="Neos\Flow\ObjectManagement\DependencyInjection\array|null">array|null</abbr>
     <strong>buildSetterInjectionCode</strong>(string $className, string $propertyName, string $preparedSetterArgument)
         </code>
@@ -1203,7 +1206,7 @@ an empty array is returned.</p></p>                <p><p>If neither inject<em>()
             </div>
                     <div class="method-item">
                     <h3 id="method_buildLifecycleInitializationCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L561">at line 561</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L567">at line 567</a></div>
         <code>            protected        string
     <strong>buildLifecycleInitializationCode</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration, int $cause)
         </code>
@@ -1250,7 +1253,7 @@ an empty array is returned.</p></p>                <p><p>If neither inject<em>()
             </div>
                     <div class="method-item">
                     <h3 id="method_buildLifecycleShutdownCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L589">at line 589</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L595">at line 595</a></div>
         <code>            protected        string
     <strong>buildLifecycleShutdownCode</strong>(<a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration, int $cause)
         </code>
@@ -1297,7 +1300,7 @@ an empty array is returned.</p></p>                <p><p>If neither inject<em>()
             </div>
                     <div class="method-item">
                     <h3 id="method_buildMethodParametersCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L618">at line 618</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L624">at line 624</a></div>
         <code>            protected        string
     <strong>buildMethodParametersCode</strong>(array $argumentConfigurations)
         </code>
@@ -1348,7 +1351,7 @@ an empty array is returned.</p></p>                <p><p>If neither inject<em>()
             </div>
                     <div class="method-item">
                     <h3 id="method_buildCustomFactoryCall">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L664">at line 664</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L670">at line 670</a></div>
         <code>            protected        string
     <strong>buildCustomFactoryCall</strong>(string $customFactoryObjectName, string $customFactoryMethodName, array $arguments)
         </code>
@@ -1401,7 +1404,7 @@ an empty array is returned.</p></p>                <p><p>If neither inject<em>()
             </div>
                     <div class="method-item">
                     <h3 id="method_compileStaticMethods">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L679">at line 679</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/ObjectManagement/DependencyInjection/ProxyClassBuilder.php#L685">at line 685</a></div>
         <code>            protected        void
     <strong>compileStaticMethods</strong>(string $className, <a href="../../../../Neos/Flow/ObjectManagement/Proxy/ProxyClass.html"><abbr title="Neos\Flow\ObjectManagement\Proxy\ProxyClass">ProxyClass</abbr></a> $proxyClass)
         </code>
