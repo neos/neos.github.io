@@ -228,10 +228,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    array|string|string[]
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_replace">replace</a>(string $string, string $search, string $replace)
+                    <a href="#method_replace">replace</a>(array|string|null $string, array|string|null $search, array|string|null $replace)
         
                                             <p><p>Replace occurrences of a search string inside the string</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -1186,9 +1186,9 @@ String.pregSplit(&quot;first second third&quot;, &quot;/\s+/&quot;, 2) == ['firs
             </div>
                     <div class="method-item">
                     <h3 id="method_replace">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L327">at line 327</a></div>
-        <code>                    string
-    <strong>replace</strong>(string $string, string $search, string $replace)
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L328">at line 328</a></div>
+        <code>                    array|string|string[]
+    <strong>replace</strong>(array|string|null $string, array|string|null $search, array|string|null $replace)
         </code>
     </h3>
     <div class="details">    
@@ -1197,7 +1197,8 @@ String.pregSplit(&quot;first second third&quot;, &quot;/\s+/&quot;, 2) == ['firs
 
         <div class="method-description">
                             <p><p>Replace occurrences of a search string inside the string</p></p>                <p><p>Example::</p>
-<pre><code>String.replace("canal", "ana", "oo") == "cool"</code></pre>
+<pre><code>String.replace("canal", "ana", "oo") == "cool"
+String.replace("cool gridge", ["oo", "gri"], ["ana", "bri"]) == "canal bridge"</code></pre>
 <p>Note: this method does not perform regular expression matching, pregReplace().</p></p>        
         </div>
         <div class="tags">
@@ -1205,17 +1206,17 @@ String.pregSplit(&quot;first second third&quot;, &quot;/\s+/&quot;, 2) == ['firs
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>array|string|null</td>
                 <td>$string</td>
                 <td><p>The input string</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>array|string|null</td>
                 <td>$search</td>
                 <td><p>A search string</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>array|string|null</td>
                 <td>$replace</td>
                 <td><p>A replacement string</p></td>
             </tr>
@@ -1226,7 +1227,7 @@ String.pregSplit(&quot;first second third&quot;, &quot;/\s+/&quot;, 2) == ['firs
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td>array|string|string[]</td>
             <td><p>The string with all occurrences replaced</p></td>
         </tr>
     </table>
@@ -1240,7 +1241,7 @@ String.pregSplit(&quot;first second third&quot;, &quot;/\s+/&quot;, 2) == ['firs
             </div>
                     <div class="method-item">
                     <h3 id="method_split">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L347">at line 347</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L353">at line 353</a></div>
         <code>                    array
     <strong>split</strong>(string $string, string $separator = null, int $limit = null)
         </code>
@@ -1295,7 +1296,7 @@ String.split("Foo", "", 2) == ['F', 'o']</code></pre>
             </div>
                     <div class="method-item">
                     <h3 id="method_startsWith">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L383">at line 383</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L389">at line 389</a></div>
         <code>                    bool
     <strong>startsWith</strong>(string $string, string $search, int $position = null)
         </code>
@@ -1350,7 +1351,7 @@ String.startsWith('My hovercraft is full of...', 'hovercraft', 3) == true</p></p
             </div>
                     <div class="method-item">
                     <h3 id="method_toLowerCase">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L395">at line 395</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L401">at line 401</a></div>
         <code>                    string
     <strong>toLowerCase</strong>(string $string)
         </code>
@@ -1392,7 +1393,7 @@ String.startsWith('My hovercraft is full of...', 'hovercraft', 3) == true</p></p
             </div>
                     <div class="method-item">
                     <h3 id="method_toUpperCase">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L406">at line 406</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L412">at line 412</a></div>
         <code>                    string
     <strong>toUpperCase</strong>(string $string)
         </code>
@@ -1434,7 +1435,7 @@ String.startsWith('My hovercraft is full of...', 'hovercraft', 3) == true</p></p
             </div>
                     <div class="method-item">
                     <h3 id="method_firstLetterToUpperCase">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L421">at line 421</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L427">at line 427</a></div>
         <code>                    string
     <strong>firstLetterToUpperCase</strong>(string $string)
         </code>
@@ -1477,7 +1478,7 @@ String.startsWith('My hovercraft is full of...', 'hovercraft', 3) == true</p></p
             </div>
                     <div class="method-item">
                     <h3 id="method_firstLetterToLowerCase">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L436">at line 436</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L442">at line 442</a></div>
         <code>                    string
     <strong>firstLetterToLowerCase</strong>(string $string)
         </code>
@@ -1520,7 +1521,7 @@ String.startsWith('My hovercraft is full of...', 'hovercraft', 3) == true</p></p
             </div>
                     <div class="method-item">
                     <h3 id="method_stripTags">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L454">at line 454</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L460">at line 460</a></div>
         <code>                    string
     <strong>stripTags</strong>(string $string, string $allowableTags = null)
         </code>
@@ -1569,7 +1570,7 @@ String.startsWith('My hovercraft is full of...', 'hovercraft', 3) == true</p></p
             </div>
                     <div class="method-item">
                     <h3 id="method_nl2br">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L471">at line 471</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L477">at line 477</a></div>
         <code>                    string
     <strong>nl2br</strong>(string $string)
         </code>
@@ -1613,7 +1614,7 @@ String.startsWith('My hovercraft is full of...', 'hovercraft', 3) == true</p></p
             </div>
                     <div class="method-item">
                     <h3 id="method_isBlank">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L487">at line 487</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L493">at line 493</a></div>
         <code>                    bool
     <strong>isBlank</strong>(string $string)
         </code>
@@ -1657,7 +1658,7 @@ String.isBlank('  ') == true</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_trim">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L499">at line 499</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L505">at line 505</a></div>
         <code>                    string
     <strong>trim</strong>(string $string, string $charlist = null)
         </code>
@@ -1704,7 +1705,7 @@ String.isBlank('  ') == true</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_toString">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L516">at line 516</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L522">at line 522</a></div>
         <code>                    string
     <strong>toString</strong>(mixed $value)
         </code>
@@ -1746,7 +1747,7 @@ String.isBlank('  ') == true</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_toInteger">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L527">at line 527</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L533">at line 533</a></div>
         <code>                    int
     <strong>toInteger</strong>(string $string)
         </code>
@@ -1788,7 +1789,7 @@ String.isBlank('  ') == true</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_toFloat">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L538">at line 538</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L544">at line 544</a></div>
         <code>                    float
     <strong>toFloat</strong>(string $string)
         </code>
@@ -1830,7 +1831,7 @@ String.isBlank('  ') == true</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_toBoolean">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L551">at line 551</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L557">at line 557</a></div>
         <code>                    bool
     <strong>toBoolean</strong>(string $string)
         </code>
@@ -1872,7 +1873,7 @@ String.isBlank('  ') == true</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_rawUrlEncode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L562">at line 562</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L568">at line 568</a></div>
         <code>                    string
     <strong>rawUrlEncode</strong>(string $string)
         </code>
@@ -1914,7 +1915,7 @@ String.isBlank('  ') == true</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_rawUrlDecode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L573">at line 573</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L579">at line 579</a></div>
         <code>                    string
     <strong>rawUrlDecode</strong>(string $string)
         </code>
@@ -1956,7 +1957,7 @@ String.isBlank('  ') == true</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_htmlSpecialChars">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L585">at line 585</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L591">at line 591</a></div>
         <code>                    string
     <strong>htmlSpecialChars</strong>(string $string, bool $preserveEntities = false)
         </code>
@@ -2003,7 +2004,7 @@ String.isBlank('  ') == true</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_crop">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L598">at line 598</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L604">at line 604</a></div>
         <code>                    string
     <strong>crop</strong>(string $string, int $maximumCharacters, string $suffix = &#039;&#039;)
         </code>
@@ -2055,7 +2056,7 @@ String.isBlank('  ') == true</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_cropAtWord">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L619">at line 619</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L625">at line 625</a></div>
         <code>                    string
     <strong>cropAtWord</strong>(string $string, int $maximumCharacters, string $suffix = &#039;&#039;)
         </code>
@@ -2108,7 +2109,7 @@ optionally appending <code>suffix</code> if cropping was necessary.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_cropAtSentence">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L641">at line 641</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L647">at line 647</a></div>
         <code>                    string
     <strong>cropAtSentence</strong>(string $string, int $maximumCharacters, string $suffix = &#039;&#039;)
         </code>
@@ -2161,7 +2162,7 @@ optionally appending <code>suffix</code> if cropping was necessary.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_md5">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L664">at line 664</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L670">at line 670</a></div>
         <code>                    string
     <strong>md5</strong>(string $string)
         </code>
@@ -2204,7 +2205,7 @@ optionally appending <code>suffix</code> if cropping was necessary.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sha1">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L679">at line 679</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L685">at line 685</a></div>
         <code>                    string
     <strong>sha1</strong>(string $string)
         </code>
@@ -2247,7 +2248,7 @@ optionally appending <code>suffix</code> if cropping was necessary.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_length">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L690">at line 690</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L696">at line 696</a></div>
         <code>                    int
     <strong>length</strong>(string $string)
         </code>
@@ -2289,7 +2290,7 @@ optionally appending <code>suffix</code> if cropping was necessary.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_wordCount">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L703">at line 703</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L709">at line 709</a></div>
         <code>                    int
     <strong>wordCount</strong>(string $unicodeString)
         </code>
@@ -2333,7 +2334,7 @@ For example this helper can be utilized to calculate the reading time of an arti
             </div>
                     <div class="method-item">
                     <h3 id="method_base64encode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L719">at line 719</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L725">at line 725</a></div>
         <code>                    string
     <strong>base64encode</strong>(string $string)
         </code>
@@ -2386,7 +2387,7 @@ For example this helper can be utilized to calculate the reading time of an arti
             </div>
                     <div class="method-item">
                     <h3 id="method_base64decode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L732">at line 732</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L738">at line 738</a></div>
         <code>                    string|bool
     <strong>base64decode</strong>(string $string, bool $strict = false)
         </code>
@@ -2444,7 +2445,7 @@ For example this helper can be utilized to calculate the reading time of an arti
             </div>
                     <div class="method-item">
                     <h3 id="method_format">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L745">at line 745</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L751">at line 751</a></div>
         <code>                    string
     <strong>format</strong>(string $format, array $args)
         </code>
@@ -2502,7 +2503,7 @@ For example this helper can be utilized to calculate the reading time of an arti
             </div>
                     <div class="method-item">
                     <h3 id="method_allowsCallOfMethod">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L756">at line 756</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/7.3/Neos.Eel/Classes/Helper/StringHelper.php#L762">at line 762</a></div>
         <code>                    bool
     <strong>allowsCallOfMethod</strong>(string $methodName)
         </code>
