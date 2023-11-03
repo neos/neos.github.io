@@ -132,6 +132,24 @@
                 <td class="last"></td>
                 <td></td>
             </tr>
+                    <tr>
+                <td class="type" id="property_maximumThrowableDumpAge">
+                                        protected                                        int
+                                                                                
+                                    </td>
+                <td>$maximumThrowableDumpAge</td>
+                <td class="last"><p>The maximum age of throwable dump in seconds, 0 to disable cleaning based on age</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_maximumThrowableDumpCount">
+                                        protected                                        int
+                                                                                
+                                    </td>
+                <td>$maximumThrowableDumpCount</td>
+                <td class="last"><p>The maximum number of throwable dumps to store, 0 to disable cleaning based on count</p></td>
+                <td></td>
+            </tr>
             </table>
 
     
@@ -153,7 +171,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(string $storagePath)
+                    <a href="#method___construct">__construct</a>(string $storagePath, int $maximumThrowableDumpAge, int $maximumThrowableDumpCount)
         
                                             <p><p>Create new instance.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -243,6 +261,17 @@ can be logged or displayed as needed.</p></p>                </div>
                                             <p><p>Render information about the current request, if possible</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_cleanupThrowableDumps">cleanupThrowableDumps</a>()
+        
+                                            <p><p>Cleans up existing throwable dumps when they are older than the configured
+maximum age or the oldest ones exceeding the maximum number of dumps allowed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -251,7 +280,7 @@ can be logged or displayed as needed.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_createWithOptions">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L44">at line 44</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L58">at line 58</a></div>
         <code>        static            <a href="../../../../Neos/Flow/Log/ThrowableStorageInterface.html"><abbr title="Neos\Flow\Log\ThrowableStorageInterface">ThrowableStorageInterface</abbr></a>
     <strong>createWithOptions</strong>(array $options)
         </code>
@@ -293,9 +322,9 @@ can be logged or displayed as needed.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L56">at line 56</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L74">at line 74</a></div>
         <code>                    
-    <strong>__construct</strong>(string $storagePath)
+    <strong>__construct</strong>(string $storagePath, int $maximumThrowableDumpAge, int $maximumThrowableDumpCount)
         </code>
     </h3>
     <div class="details">    
@@ -312,6 +341,16 @@ can be logged or displayed as needed.</p></p>                </div>
                     <tr>
                 <td>string</td>
                 <td>$storagePath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$maximumThrowableDumpAge</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$maximumThrowableDumpCount</td>
                 <td></td>
             </tr>
             </table>
@@ -337,7 +376,7 @@ can be logged or displayed as needed.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setRequestInformationRenderer">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L92">at line 92</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L112">at line 112</a></div>
         <code>                    <a href="../../../../Neos/Flow/Log/ThrowableStorageInterface.html"><abbr title="Neos\Flow\Log\ThrowableStorageInterface">ThrowableStorageInterface</abbr></a>
     <strong>setRequestInformationRenderer</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $requestInformationRenderer)
         </code>
@@ -380,7 +419,7 @@ can be logged or displayed as needed.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setBacktraceRenderer">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L103">at line 103</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L123">at line 123</a></div>
         <code>                    <a href="../../../../Neos/Flow/Log/ThrowableStorageInterface.html"><abbr title="Neos\Flow\Log\ThrowableStorageInterface">ThrowableStorageInterface</abbr></a>
     <strong>setBacktraceRenderer</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $backtraceRenderer)
         </code>
@@ -423,7 +462,7 @@ can be logged or displayed as needed.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_logThrowable">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L122">at line 122</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L142">at line 142</a></div>
         <code>                    string
     <strong>logThrowable</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $throwable, array $additionalData = [])
         </code>
@@ -473,7 +512,7 @@ Exception #``` in <line> of <file>: <message> - See also: <dumpFilename></p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_generateUniqueReferenceCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L154">at line 154</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L176">at line 176</a></div>
         <code>            protected        string
     <strong>generateUniqueReferenceCode</strong>()
         </code>
@@ -505,7 +544,7 @@ Exception #``` in <line> of <file>: <message> - See also: <dumpFilename></p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_renderErrorInfo">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L167">at line 167</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L189">at line 189</a></div>
         <code>            protected        string
     <strong>renderErrorInfo</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $error, array $additionalData = [])
         </code>
@@ -552,7 +591,7 @@ Exception #``` in <line> of <file>: <message> - See also: <dumpFilename></p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getErrorLogMessage">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L197">at line 197</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L219">at line 219</a></div>
         <code>            protected        string
     <strong>getErrorLogMessage</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Throwable">Throwable</a> $error)
         </code>
@@ -595,7 +634,7 @@ Exception #``` in <line> of <file>: <message> - See also: <dumpFilename></p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_renderBacktrace">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L212">at line 212</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L234">at line 234</a></div>
         <code>            protected        string
     <strong>renderBacktrace</strong>(array $backtrace)
         </code>
@@ -637,7 +676,7 @@ Exception #``` in <line> of <file>: <message> - See also: <dumpFilename></p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_renderRequestInfo">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L227">at line 227</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L249">at line 249</a></div>
         <code>            protected        string
     <strong>renderRequestInfo</strong>()
         </code>
@@ -656,6 +695,39 @@ Exception #``` in <line> of <file>: <message> - See also: <dumpFilename></p></p>
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_cleanupThrowableDumps">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Log/ThrowableStorage/FileStorage.php#L263">at line 263</a></div>
+        <code>            protected        void
+    <strong>cleanupThrowableDumps</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Cleans up existing throwable dumps when they are older than the configured
+maximum age or the oldest ones exceeding the maximum number of dumps allowed.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
             <td></td>
         </tr>
     </table>
