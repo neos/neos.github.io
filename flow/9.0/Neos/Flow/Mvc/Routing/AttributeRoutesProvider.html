@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Neos\Flow\Mvc\Routing\ConfigurationRoutesProvider | Flow Framework</title>
+    <title>Neos\Flow\Mvc\Routing\AttributeRoutesProvider | Flow Framework</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
@@ -23,7 +23,7 @@
           title="Flow Framework (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Flow_Mvc_Routing_ConfigurationRoutesProvider" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
+    <body id="class" data-name="class:Neos_Flow_Mvc_Routing_AttributeRoutesProvider" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -79,24 +79,58 @@
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
                 <li><span class="label label-default">class</span></li>
-                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Mvc.html">Mvc</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Mvc/Routing.html">Routing</a></li><li class="backslash">\</li><li>ConfigurationRoutesProvider</li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Mvc.html">Mvc</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Mvc/Routing.html">Routing</a></li><li class="backslash">\</li><li>AttributeRoutesProvider</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>ConfigurationRoutesProvider    
+        <h1>AttributeRoutesProvider    
             </h1>
     </div>
 
     
     <p>final         class
-    <strong>ConfigurationRoutesProvider</strong>        implements        <a href="../../../../Neos/Flow/Mvc/Routing/RoutesProviderInterface.html"><abbr title="Neos\Flow\Mvc\Routing\RoutesProviderInterface">RoutesProviderInterface</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/Routing/ConfigurationRoutesProvider.php">View source</a>)
+    <strong>AttributeRoutesProvider</strong>        implements        <a href="../../../../Neos/Flow/Mvc/Routing/RoutesProviderInterface.html"><abbr title="Neos\Flow\Mvc\Routing\RoutesProviderInterface">RoutesProviderInterface</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/Routing/AttributeRoutesProvider.php">View source</a>)
 </p>
 
         
     
         
 
+            <div class="description">
+            <p><p>Allows to annotate controller methods with route configurations</p></p>            <p><h2>Internal implementation:</h2>
+<p>Flows routing configuration is declared via \@package, \@subpackage, \@controller and \@action
+The first three options will resolve to a fully qualified class name {<a href="../../../../Neos/Flow/Mvc/ActionRequest.html">\Neos\Flow\Mvc\ActionRequest::getControllerObjectName()}
+which</a> is instantiated in the dispatcher {[\Neos\Flow\Mvc\Dispatcher::dispatch()}</p>
+<p>The](../../../../Neos/Flow/Mvc/Dispatcher.html) latter \@action option will be treated internally by each controller. From the perspective of the dispatcher \@action is just another routing value.
+By convention during processRequest in the default ActionController {\ActionController::resolveActionMethodName()} will be used
+to concatenate the &quot;Action&quot; suffix to the action name
+and {<a href="../../../../Neos/Flow/Mvc/Controller/ActionController.html">\Neos\Flow\Mvc\Controller\ActionController::callActionMethod()}</a> will invoke the method internally with prepared method arguments.</p>
+<p>Creating routes by annotation must make a few assumptions to work:</p>
+<ol>
+<li>
+<p>As not every FQ class name is representable via the routing configuration (e.g. the class has to end with &quot;Controller&quot;),
+only classes can be annotated that reside in a correct location and have the correct suffix.
+Otherwise, an exception will be thrown as the class is not discoverable by the dispatcher.</p>
+</li>
+<li>
+<p>As the ActionController requires a little magic and is the main use case we currently only support this controller.
+For that reason it is validated that the annotation is inside an ActionController and the method ends with &quot;Action&quot;.
+The routing value with the suffix trimmed will be generated:</p>
+<p>class MyThingController extends ActionController
+{</p>
+<h1>[Flow\Route(path: 'foo')]</h1>
+<pre><code>public function someAction()
+{
+}</code></pre>
+<p>}</p>
+</li>
+</ol>
+<p>The example will genrate the configuration:</p>
+<pre><code>\@package My.Package
+\@controller MyThing
+\@action some</code></pre>
+<p>TODO for a future scope of <code>Flow\Action</code> see <a href="https://github.com/neos/flow-development-collection/issues/3335">https://github.com/neos/flow-development-collection/issues/3335</a></p></p>        </div>
             
         
     
@@ -109,7 +143,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a> $configurationManager, <a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a> $objectManager)
+                    <a href="#method___construct">__construct</a>(<a href="../../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a> $reflectionService, <a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a> $objectManager, array $classNames)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -134,9 +168,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/Routing/ConfigurationRoutesProvider.php#L16">at line 16</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/Routing/AttributeRoutesProvider.php#L71">at line 71</a></div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a> $configurationManager, <a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a> $objectManager)
+    <strong>__construct</strong>(<a href="../../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a> $reflectionService, <a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a> $objectManager, array $classNames)
         </code>
     </h3>
     <div class="details">    
@@ -152,13 +186,18 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../Neos/Flow/Configuration/ConfigurationManager.html"><abbr title="Neos\Flow\Configuration\ConfigurationManager">ConfigurationManager</abbr></a></td>
-                <td>$configurationManager</td>
+                <td><a href="../../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a></td>
+                <td>$reflectionService</td>
                 <td></td>
             </tr>
                     <tr>
                 <td><a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a></td>
                 <td>$objectManager</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$classNames</td>
                 <td></td>
             </tr>
             </table>
@@ -173,7 +212,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getRoutes">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/Routing/ConfigurationRoutesProvider.php#L22">at line 22</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/Routing/AttributeRoutesProvider.php#L78">at line 78</a></div>
         <code>                    <a href="../../../../Neos/Flow/Mvc/Routing/Routes.html"><abbr title="Neos\Flow\Mvc\Routing\Routes">Routes</abbr></a>
     <strong>getRoutes</strong>()
         </code>
