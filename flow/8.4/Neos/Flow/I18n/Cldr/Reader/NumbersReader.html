@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\I18n\Cldr\Reader\NumbersReader | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
+        <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (8.4)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_I18n_Cldr_Reader_NumbersReader" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/Flow/I18n.html">I18n</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/Flow/I18n/Cldr.html">Cldr</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/Flow/I18n/Cldr/Reader.html">Reader</a></li><li class="backslash">\</li><li>NumbersReader</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>NumbersReader    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>NumbersReader</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/Cldr/Reader/NumbersReader.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A reader for data placed in &quot;numbers&quot; tag in CLDR.</p></p>            <p><p>The most important functionality of this class is formatting numbers. This is
+an implementation of Number Format Patterns as defined in Unicode Technical
+Standard #35. However, it's not complete implementation as for now.</p>
+<p>Following features are missing (in brackets - chapter from specification):</p>
+<ul>
+<li>support for escaping of special characters in format string [part of G.2]</li>
+<li>formatting numbers to scientific notation [G.4]</li>
+<li>support for significant digits [G.5]</li>
+<li>support for padding [G.6]</li>
+<li>formatting numbers in other number systems than &quot;latn&quot;</li>
+<li>currency symbol substitution is simplified</li>
+</ul></p>        </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_MATCH_SUBFORMAT
+                                    </td>
+                <td class="last">
+                    <p><em><p>An expression to catch one subformat. One format string can have
+one or two subformats (positive and negative, separated by semicolon).</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_MATCH_ROUNDING
+                                    </td>
+                <td class="last">
+                    <p><em><p>An expression to catch float or decimal number embedded in the format
+string, which sets a rounding used during formatting. For example, when
+format string looks like '#,##0.05', it means that formatted number
+should be rounded to the nearest 0.05.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_TYPE_DECIMAL
+                                    </td>
+                <td class="last">
+                    <p><em><p>Constants for available format types.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_TYPE_PERCENT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_TYPE_CURRENCY
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_LENGTH_DEFAULT
+                                    </td>
+                <td class="last">
+                    <p><em><p>Constants for available format lengths.</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_LENGTH_FULL
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_LENGTH_LONG
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_LENGTH_MEDIUM
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        FORMAT_LENGTH_SHORT
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_cldrRepository">
+                                        protected                                        <a href="../../../../../Neos/Flow/I18n/Cldr/CldrRepository.html"><abbr title="Neos\Flow\I18n\Cldr\CldrRepository">CldrRepository</abbr></a>
+                                                                                
+                                    </td>
+                <td>$cldrRepository</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_cache">
+                                        protected                                        <a href="../../../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a>
+                                                                                
+                                    </td>
+                <td>$cache</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_parsedFormats">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$parsedFormats</td>
+                <td class="last"><p>An array of parsed formats, indexed by format strings.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_parsedFormatsIndices">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$parsedFormatsIndices</td>
+                <td class="last"><p>An array which stores references to formats used by particular locales.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_localizedSymbols">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$localizedSymbols</td>
+                <td class="last"><p>Associative array of symbols used in particular locales.</p></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectCldrRepository">injectCldrRepository</a>(<a href="../../../../../Neos/Flow/I18n/Cldr/CldrRepository.html"><abbr title="Neos\Flow\I18n\Cldr\CldrRepository">CldrRepository</abbr></a> $repository)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectCache">injectCache</a>(<a href="../../../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a> $cache)
+        
+                                            <p><p>Injects the Flow_I18n_CDLR_Reader_NumbersReader cache</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_initializeObject">initializeObject</a>()
+        
+                                            <p><p>Constructs the reader, loading parsed data from cache if available.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shutdownObject">shutdownObject</a>()
+        
+                                            <p><p>Shutdowns the object, saving parsed format strings to the cache.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseFormatFromCldr">parseFormatFromCldr</a>(<a href="../../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a> $locale, string $formatType, string $formatLength = self::FORMAT_LENGTH_DEFAULT)
+        
+                                            <p><p>Returns parsed number format basing on locale and desired format length
+if provided.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getDefaultNumberingSystem">getDefaultNumberingSystem</a>(<a href="../../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a> $locale)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseCustomFormat">parseCustomFormat</a>(string $format)
+        
+                                            <p><p>Returns parsed date or time format string provided as parameter.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getLocalizedSymbolsForLocale">getLocalizedSymbolsForLocale</a>(<a href="../../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a> $locale)
+        
+                                            <p><p>Returns symbols array for provided locale.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateFormatType">validateFormatType</a>(string $formatType)
+        
+                                            <p><p>Validates provided format type and throws exception if value is not
+allowed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateFormatLength">validateFormatLength</a>(string $formatLength)
+        
+                                            <p><p>Validates provided format length and throws exception if value is not
+allowed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseFormat">parseFormat</a>(string $format)
+        
+                                            <p><p>Parses a number format (with syntax defined in CLDR).</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_injectCldrRepository">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/Cldr/Reader/NumbersReader.php#L168">at line 168</a></div>
+        <code>                    void
+    <strong>injectCldrRepository</strong>(<a href="../../../../../Neos/Flow/I18n/Cldr/CldrRepository.html"><abbr title="Neos\Flow\I18n\Cldr\CldrRepository">CldrRepository</abbr></a> $repository)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/Flow/I18n/Cldr/CldrRepository.html"><abbr title="Neos\Flow\I18n\Cldr\CldrRepository">CldrRepository</abbr></a></td>
+                <td>$repository</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectCache">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/Cldr/Reader/NumbersReader.php#L179">at line 179</a></div>
+        <code>                    void
+    <strong>injectCache</strong>(<a href="../../../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a> $cache)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Injects the Flow_I18n_CDLR_Reader_NumbersReader cache</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a></td>
+                <td>$cache</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_initializeObject">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/Cldr/Reader/NumbersReader.php#L189">at line 189</a></div>
+        <code>                    void
+    <strong>initializeObject</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Constructs the reader, loading parsed data from cache if available.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shutdownObject">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/Cldr/Reader/NumbersReader.php#L204">at line 204</a></div>
+        <code>                    void
+    <strong>shutdownObject</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Shutdowns the object, saving parsed format strings to the cache.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/Cache/Exception.html"><abbr title="Neos\Cache\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseFormatFromCldr">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/Cldr/Reader/NumbersReader.php#L227">at line 227</a></div>
+        <code>                    array
+    <strong>parseFormatFromCldr</strong>(<a href="../../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a> $locale, string $formatType, string $formatLength = self::FORMAT_LENGTH_DEFAULT)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns parsed number format basing on locale and desired format length
+if provided.</p></p>                <p><p>When third parameter ($formatLength) equals 'default', default format for a
+locale will be used.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a></td>
+                <td>$locale</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$formatType</td>
+                <td><p>A type of format (one of constant values)</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$formatLength</td>
+                <td><p>A length of format (one of constant values)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>An array representing parsed format</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/Flow/I18n/Cldr/Reader/Exception/InvalidFormatLengthException.html"><abbr title="Neos\Flow\I18n\Cldr\Reader\Exception\InvalidFormatLengthException">InvalidFormatLengthException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/Flow/I18n/Cldr/Reader/Exception/InvalidFormatTypeException.html"><abbr title="Neos\Flow\I18n\Cldr\Reader\Exception\InvalidFormatTypeException">InvalidFormatTypeException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/Flow/I18n/Cldr/Reader/Exception/UnableToFindFormatException.html"><abbr title="Neos\Flow\I18n\Cldr\Reader\Exception\UnableToFindFormatException">UnableToFindFormatException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/Flow/I18n/Cldr/Reader/Exception/UnsupportedNumberFormatException.html"><abbr title="Neos\Flow\I18n\Cldr\Reader\Exception\UnsupportedNumberFormatException">UnsupportedNumberFormatException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getDefaultNumberingSystem">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/Cldr/Reader/NumbersReader.php#L264">at line 264</a></div>
+        <code>                    string
+    <strong>getDefaultNumberingSystem</strong>(<a href="../../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a> $locale)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a></td>
+                <td>$locale</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseCustomFormat">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/Cldr/Reader/NumbersReader.php#L278">at line 278</a></div>
+        <code>                    array
+    <strong>parseCustomFormat</strong>(string $format)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns parsed date or time format string provided as parameter.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$format</td>
+                <td><p>Format string to parse</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>An array representing parsed format</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/Flow/I18n/Cldr/Reader/Exception/UnsupportedNumberFormatException.html"><abbr title="Neos\Flow\I18n\Cldr\Reader\Exception\UnsupportedNumberFormatException">UnsupportedNumberFormatException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getLocalizedSymbolsForLocale">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/Cldr/Reader/NumbersReader.php#L299">at line 299</a></div>
+        <code>                    array
+    <strong>getLocalizedSymbolsForLocale</strong>(<a href="../../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a> $locale)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns symbols array for provided locale.</p></p>                <p><p>Symbols are elements defined in tag symbols from CLDR. They define
+localized versions of various number-related elements, like decimal
+separator, group separator or minus sign.</p>
+<p>Symbols arrays for every requested locale are cached.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/Flow/I18n/Locale.html"><abbr title="Neos\Flow\I18n\Locale">Locale</abbr></a></td>
+                <td>$locale</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Symbols array</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateFormatType">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/Cldr/Reader/NumbersReader.php#L317">at line 317</a></div>
+        <code>        static            void
+    <strong>validateFormatType</strong>(string $formatType)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validates provided format type and throws exception if value is not
+allowed.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$formatType</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/Flow/I18n/Cldr/Reader/Exception/InvalidFormatTypeException.html"><abbr title="Neos\Flow\I18n\Cldr\Reader\Exception\InvalidFormatTypeException">InvalidFormatTypeException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateFormatLength">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/Cldr/Reader/NumbersReader.php#L332">at line 332</a></div>
+        <code>        static            void
+    <strong>validateFormatLength</strong>(string $formatLength)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Validates provided format length and throws exception if value is not
+allowed.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$formatLength</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/Flow/I18n/Cldr/Reader/Exception/InvalidFormatLengthException.html"><abbr title="Neos\Flow\I18n\Cldr\Reader\Exception\InvalidFormatLengthException">InvalidFormatLengthException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseFormat">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/Cldr/Reader/NumbersReader.php#L350">at line 350</a></div>
+        <code>            protected        array
+    <strong>parseFormat</strong>(string $format)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses a number format (with syntax defined in CLDR).</p></p>                <p><p>Not all features from CLDR specification are implemented. Please see the
+documentation for this class for details what is missing.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$format</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Parsed format</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/Flow/I18n/Cldr/Reader/Exception/UnsupportedNumberFormatException.html"><abbr title="Neos\Flow\I18n\Cldr\Reader\Exception\UnsupportedNumberFormatException">UnsupportedNumberFormatException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Flow\I18n\Cldr\Reader\NumbersReader::$parsedFormats">NumbersReader::$parsedFormats</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

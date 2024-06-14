@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\I18n\Cldr\CldrParser | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (8.4)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_I18n_Cldr_CldrParser" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/I18n.html">I18n</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/I18n/Cldr.html">Cldr</a></li><li class="backslash">\</li><li>CldrParser</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>CldrParser    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>CldrParser</strong>        extends <a href="../../../../Neos/Flow/I18n/AbstractXmlParser.html"><abbr title="Neos\Flow\I18n\AbstractXmlParser">AbstractXmlParser</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/Cldr/CldrParser.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>A class which parses CLDR file to simple but useful array representation.</p></p>            <p><p>Parsed data is an array where keys are nodes from XML file with its attributes
+(if any). Only distinguishing attributes are taken into account (see [1]).
+Below are examples of parsed data structure.</p>
+<p>such XML data:</p>
+<dates>
+  <calendars>
+    <calendar type="gregorian">
+      <months />
+    </calendar>
+    <calendar type="buddhist">
+      <months />
+    </calendar>
+  </calendars>
+</dates>
+<p>will be converted to such array:
+array(
+'dates' =&gt; array(
+'calendars' =&gt; array(
+'calendar[@type=&quot;gregorian&quot;]' =&gt; array(
+'months' =&gt; ''
+),
+'calendar[@type=&quot;buddhist&quot;]' =&gt; array(
+'months' =&gt; ''
+),
+)
+)
+)</p></p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_parsedFiles">
+                                        protected                                        array
+                                                                                
+                                    </td>
+                <td>$parsedFiles</td>
+                <td class="last"><p>Associative array of &quot;filename =&gt; parsed data&quot; pairs.</p></td>
+                <td><small>from&nbsp;<a href="../../../../Neos/Flow/I18n/AbstractXmlParser.html#property_parsedFiles">
+<abbr title="Neos\Flow\I18n\AbstractXmlParser">AbstractXmlParser</abbr></a></small></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getParsedData">getParsedData</a>(string $sourcePath)
+        
+                                            <p><p>Returns parsed representation of XML file.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/Flow/I18n/AbstractXmlParser.html#method_getParsedData">
+<abbr title="Neos\Flow\I18n\AbstractXmlParser">AbstractXmlParser</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/SimpleXMLElement">SimpleXMLElement</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getRootNode">getRootNode</a>(string $sourcePath)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/Flow/I18n/AbstractXmlParser.html#method_getRootNode">
+<abbr title="Neos\Flow\I18n\AbstractXmlParser">AbstractXmlParser</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseXmlFile">parseXmlFile</a>(string $sourcePath)
+        
+                                            <p><p>Reads and parses XML file and returns internal representation of data.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/Flow/I18n/AbstractXmlParser.html#method_parseXmlFile">
+<abbr title="Neos\Flow\I18n\AbstractXmlParser">AbstractXmlParser</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_doParsingFromRoot">doParsingFromRoot</a>(<a target="_blank" rel="noopener" href="https://www.php.net/SimpleXMLElement">SimpleXMLElement</a> $root)
+        
+                                            <p><p>Returns array representation of XML data, starting from a root node.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseNode">parseNode</a>(<a target="_blank" rel="noopener" href="https://www.php.net/SimpleXMLElement">SimpleXMLElement</a> $node)
+        
+                                            <p><p>Returns array representation of XML data, starting from a node pointed by
+$node variable.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isDistinguishingAttribute">isDistinguishingAttribute</a>(string $attributeName)
+        
+                                            <p><p>Checks if given attribute belongs to the group of distinguishing attributes</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_getParsedData">
+        <div class="location">in <a href="../../../../Neos/Flow/I18n/AbstractXmlParser.html#method_getParsedData">
+<abbr title="Neos\Flow\I18n\AbstractXmlParser">AbstractXmlParser</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/AbstractXmlParser.php#L38">at line 38</a></div>
+        <code>                    array
+    <strong>getParsedData</strong>(string $sourcePath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns parsed representation of XML file.</p></p>                <p><p>Parses XML if it wasn't done before. Caches parsed data.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$sourcePath</td>
+                <td><p>An absolute path to XML file</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Parsed XML file</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRootNode">
+        <div class="location">in <a href="../../../../Neos/Flow/I18n/AbstractXmlParser.html#method_getRootNode">
+<abbr title="Neos\Flow\I18n\AbstractXmlParser">AbstractXmlParser</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/AbstractXmlParser.php#L52">at line 52</a></div>
+        <code>            protected        <a target="_blank" rel="noopener" href="https://www.php.net/SimpleXMLElement">SimpleXMLElement</a>
+    <strong>getRootNode</strong>(string $sourcePath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$sourcePath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/SimpleXMLElement">SimpleXMLElement</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/I18n/Exception/InvalidXmlFileException.html"><abbr title="Neos\Flow\I18n\Exception\InvalidXmlFileException">InvalidXmlFileException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseXmlFile">
+        <div class="location">in <a href="../../../../Neos/Flow/I18n/AbstractXmlParser.html#method_parseXmlFile">
+<abbr title="Neos\Flow\I18n\AbstractXmlParser">AbstractXmlParser</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/AbstractXmlParser.php#L81">at line 81</a></div>
+        <code>            protected        array
+    <strong>parseXmlFile</strong>(string $sourcePath)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Reads and parses XML file and returns internal representation of data.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$sourcePath</td>
+                <td><p>An absolute path to XML file</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>Parsed XML file</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_doParsingFromRoot">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/Cldr/CldrParser.php#L62">at line 62</a></div>
+        <code>            protected        array
+    <strong>doParsingFromRoot</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/SimpleXMLElement">SimpleXMLElement</a> $root)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns array representation of XML data, starting from a root node.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/SimpleXMLElement">SimpleXMLElement</a></td>
+                <td>$root</td>
+                <td><p>A root node</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>An array representing parsed XML file (structure depends on concrete parser)</p></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../../../../Neos/Flow/I18n/AbstractXmlParser.html#method_doParsingFromRoot">
+<abbr title="Neos\Flow\I18n\AbstractXmlParser">AbstractXmlParser</abbr>::doParsingFromRoot</a>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseNode">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/Cldr/CldrParser.php#L77">at line 77</a></div>
+        <code>            protected        mixed
+    <strong>parseNode</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/SimpleXMLElement">SimpleXMLElement</a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns array representation of XML data, starting from a node pointed by
+$node variable.</p></p>                <p><p>Please see the documentation of this class for details about the internal
+representation of XML data.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/SimpleXMLElement">SimpleXMLElement</a></td>
+                <td>$node</td>
+                <td><p>A node to start parsing from</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>An array representing parsed XML node or string value if leaf</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isDistinguishingAttribute">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/I18n/Cldr/CldrParser.php#L120">at line 120</a></div>
+        <code>            protected        bool
+    <strong>isDistinguishingAttribute</strong>(string $attributeName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if given attribute belongs to the group of distinguishing attributes</p></p>                <p><p>Distinguishing attributes in CLDR serves to distinguish multiple elements
+at the same level (most notably 'type').</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$attributeName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
