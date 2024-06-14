@@ -101,6 +101,18 @@
             <p><p>Provides the variables inside fluid template. Adds TemplateObjectAccessInterface functionality.</p></p>                    </div>
             
         
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        ACCESSOR_OBJECT_ACCESS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
     
     
             <h2>Methods</h2>
@@ -111,7 +123,7 @@
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getByPath">getByPath</a>(string $path)
+                    <a href="#method_getByPath">getByPath</a>(string $path, array $accessors = [])
         
                                             <p><p>Get a variable by dotted path expression, retrieving the
 variable from nested arrays/objects one segment at a time.</p></p>                </div>
@@ -123,6 +135,28 @@ variable from nested arrays/objects one segment at a time.</p></p>              
                 </div>
                 <div class="col-md-8">
                     <a href="#method_resolveSubVariableReferences">resolveSubVariableReferences</a>(string $propertyPath)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    null|string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_detectAccessor">detectAccessor</a>(mixed $subject, string $propertyName)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_extractWithAccessor">extractWithAccessor</a>(mixed $subject, string $propertyName, string $accessor)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -146,9 +180,9 @@ variable from nested arrays/objects one segment at a time.</p></p>              
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getByPath">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.FluidAdaptor/Classes/Core/ViewHelper/TemplateVariableContainer.php#L32">at line 32</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.FluidAdaptor/Classes/Core/ViewHelper/TemplateVariableContainer.php#L40">at line 40</a></div>
         <code>                    mixed
-    <strong>getByPath</strong>(string $path)
+    <strong>getByPath</strong>(string $path, array $accessors = [])
         </code>
     </h3>
     <div class="details">    
@@ -157,7 +191,9 @@ variable from nested arrays/objects one segment at a time.</p></p>              
 
         <div class="method-description">
                             <p><p>Get a variable by dotted path expression, retrieving the
-variable from nested arrays/objects one segment at a time.</p></p>                        
+variable from nested arrays/objects one segment at a time.</p></p>                <p><p>If the second argument is provided, it must be an array of
+accessor names which can be used to extract each value in
+the dotted path.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -166,6 +202,11 @@ variable from nested arrays/objects one segment at a time.</p></p>
                     <tr>
                 <td>string</td>
                 <td>$path</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$accessors</td>
                 <td></td>
             </tr>
             </table>
@@ -189,7 +230,7 @@ variable from nested arrays/objects one segment at a time.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_resolveSubVariableReferences">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.FluidAdaptor/Classes/Core/ViewHelper/TemplateVariableContainer.php#L51">at line 51</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.FluidAdaptor/Classes/Core/ViewHelper/TemplateVariableContainer.php#L55">at line 55</a></div>
         <code>            protected        string
     <strong>resolveSubVariableReferences</strong>(string $propertyPath)
         </code>
@@ -231,8 +272,109 @@ variable from nested arrays/objects one segment at a time.</p></p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_detectAccessor">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.FluidAdaptor/Classes/Core/ViewHelper/TemplateVariableContainer.php#L74">at line 74</a></div>
+        <code>            protected        null|string
+    <strong>detectAccessor</strong>(mixed $subject, string $propertyName)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$subject</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>null|string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_extractWithAccessor">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.FluidAdaptor/Classes/Core/ViewHelper/TemplateVariableContainer.php#L85">at line 85</a></div>
+        <code>            protected        mixed|null
+    <strong>extractWithAccessor</strong>(mixed $subject, string $propertyName, string $accessor)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>mixed</td>
+                <td>$subject</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$propertyName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$accessor</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getBooleanValue">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.FluidAdaptor/Classes/Core/ViewHelper/TemplateVariableContainer.php#L70">at line 70</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.FluidAdaptor/Classes/Core/ViewHelper/TemplateVariableContainer.php#L110">at line 110</a></div>
         <code>            protected        bool|null
     <strong>getBooleanValue</strong>($path)
         </code>
