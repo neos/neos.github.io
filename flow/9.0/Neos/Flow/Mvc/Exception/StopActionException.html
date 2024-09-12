@@ -89,7 +89,7 @@
     </div>
 
     
-    <p>        class
+    <p>final         class
     <strong>StopActionException</strong>        extends <a href="../../../../Neos/Flow/Mvc/Exception.html"><abbr title="Neos\Flow\Mvc\Exception">Exception</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/Exception/StopActionException.php">View source</a>)
 </p>
 
@@ -101,7 +101,8 @@
             <p><p>This exception is thrown by a controller to stop the execution of the current
 action and return the control to the dispatcher. The dispatcher catches this
 exception and - depending on the &quot;dispatched&quot; status of the request - either
-continues dispatching the request or returns control to the request handler.</p></p>            <p><p>See the Action Controller's forward() and redirectToUri() methods for more information.</p></p>        </div>
+continues dispatching the request or returns control to the request handler.</p></p>            <p><p>See {<a href="../../../../Neos/Flow/Mvc/Controller/AbstractController.html">\Neos\Flow\Mvc\Controller\AbstractController::throwStatus()}</a> or {<a href="../../../../Neos/Flow/Mvc/Controller/AbstractController.html">\Neos\Flow\Mvc\Controller\AbstractController::redirectToUri()}</a> for more information.</p>
+<p>Other control flow exceptions: {\Neos\Flow\Mvc\Exception\ForwardException}</p></p>        </div>
             
         
     
@@ -127,6 +128,15 @@ continues dispatching the request or returns control to the request handler.</p>
                 <td class="last"></td>
                 <td><small>from&nbsp;<a href="../../../../Neos/Flow/Exception.html#property_statusCode">
 <abbr title="Neos\Flow\Exception">Exception</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_response">
+                                                                                
+                                                                                
+                                    </td>
+                <td>$response</td>
+                <td class="last"><p>The response to be received by the MVC Dispatcher.</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -156,6 +166,17 @@ to it and a developer can find more information about it in the system log.</p><
                                             <p><p>Returns the HTTP status code this exception corresponds to (defaults to 500).</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/Flow/Exception.html#method_getStatusCode">
 <abbr title="Neos\Flow\Exception">Exception</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../../Neos/Flow/Mvc/Exception/StopActionException.html"><abbr title="Neos\Flow\Mvc\Exception\StopActionException">StopActionException</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createForResponse">createForResponse</a>(<abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response, string $details)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
             </div>
             </div>
 
@@ -219,6 +240,54 @@ to it and a developer can find more information about it in the system log.</p><
                     <table class="table table-condensed">
         <tr>
             <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createForResponse">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/Exception/StopActionException.php#L46">at line 46</a></div>
+        <code>        static            <a href="../../../../Neos/Flow/Mvc/Exception/StopActionException.html"><abbr title="Neos\Flow\Mvc\Exception\StopActionException">StopActionException</abbr></a>
+    <strong>createForResponse</strong>(<abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response, string $details)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr></td>
+                <td>$response</td>
+                <td><p>The response to be received by the MVC Dispatcher.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$details</td>
+                <td><p>Additional details just for this exception, in case it is logged (the regular exception message).</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Flow/Mvc/Exception/StopActionException.html"><abbr title="Neos\Flow\Mvc\Exception\StopActionException">StopActionException</abbr></a></td>
             <td></td>
         </tr>
     </table>

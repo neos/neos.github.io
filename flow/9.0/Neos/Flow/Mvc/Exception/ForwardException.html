@@ -89,8 +89,8 @@
     </div>
 
     
-    <p>        class
-    <strong>ForwardException</strong>        extends <a href="../../../../Neos/Flow/Mvc/Exception/StopActionException.html"><abbr title="Neos\Flow\Mvc\Exception\StopActionException">StopActionException</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/Exception/ForwardException.php">View source</a>)
+    <p>final         class
+    <strong>ForwardException</strong>        extends <a href="../../../../Neos/Flow/Mvc/Exception.html"><abbr title="Neos\Flow\Mvc\Exception">Exception</abbr></a>        (<a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/Exception/ForwardException.php">View source</a>)
 </p>
 
         
@@ -99,8 +99,8 @@
 
             <div class="description">
             <p><p>This exception is thrown by a controller to stop the execution of the current
-action and return the control to the dispatcher for the special case of a
-forward().</p></p>                    </div>
+action and return the control to the dispatcher for the special case of a forward.</p></p>            <p><p>See {<a href="../../../../Neos/Flow/Mvc/Controller/AbstractController.html">\Neos\Flow\Mvc\Controller\AbstractController::forward()}</a> for more information.</p>
+<p>Other control flow exceptions: {\Neos\Flow\Mvc\Exception\StopActionException}</p></p>        </div>
             
         
     
@@ -129,11 +129,11 @@ forward().</p></p>                    </div>
             </tr>
                     <tr>
                 <td class="type" id="property_nextRequest">
-                                        protected                                        <a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a>
+                                                                                
                                                                                 
                                     </td>
                 <td>$nextRequest</td>
-                <td class="last"></td>
+                <td class="last"><p>The next request the MVC Dispatcher should handle.</p></td>
                 <td></td>
             </tr>
             </table>
@@ -167,23 +167,13 @@ to it and a developer can find more information about it in the system log.</p><
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    void
+                    static&nbsp;<a href="../../../../Neos/Flow/Mvc/Exception/ForwardException.html"><abbr title="Neos\Flow\Mvc\Exception\ForwardException">ForwardException</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setNextRequest">setNextRequest</a>(<a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a> $nextRequest)
+                    <a href="#method_createForNextRequest">createForNextRequest</a>(<a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a> $nextRequest, string $details)
         
-                                            <p><p>Sets the next request, containing the information about the next action to
-execute.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getNextRequest">getNextRequest</a>()
-        
-                                            <p><p>Returns the next request</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -260,10 +250,10 @@ to it and a developer can find more information about it in the system log.</p><
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setNextRequest">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/Exception/ForwardException.php#L36">at line 36</a></div>
-        <code>                    void
-    <strong>setNextRequest</strong>(<a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a> $nextRequest)
+                    <h3 id="method_createForNextRequest">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/Exception/ForwardException.php#L43">at line 43</a></div>
+        <code>        static            <a href="../../../../Neos/Flow/Mvc/Exception/ForwardException.html"><abbr title="Neos\Flow\Mvc\Exception\ForwardException">ForwardException</abbr></a>
+    <strong>createForNextRequest</strong>(<a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a> $nextRequest, string $details)
         </code>
     </h3>
     <div class="details">    
@@ -271,8 +261,8 @@ to it and a developer can find more information about it in the system log.</p><
             
 
         <div class="method-description">
-                            <p><p>Sets the next request, containing the information about the next action to
-execute.</p></p>                        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -281,7 +271,12 @@ execute.</p></p>
                     <tr>
                 <td><a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a></td>
                 <td>$nextRequest</td>
-                <td></td>
+                <td><p>The next request the MVC Dispatcher should handle.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$details</td>
+                <td><p>Additional details just for this exception, in case it is logged (the regular exception message).</p></td>
             </tr>
             </table>
 
@@ -290,39 +285,7 @@ execute.</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>void</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getNextRequest">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/Exception/ForwardException.php#L46">at line 46</a></div>
-        <code>                    <a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a>
-    <strong>getNextRequest</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Returns the next request</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../Neos/Flow/Mvc/ActionRequest.html"><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></a></td>
+            <td><a href="../../../../Neos/Flow/Mvc/Exception/ForwardException.html"><abbr title="Neos\Flow\Mvc\Exception\ForwardException">ForwardException</abbr></a></td>
             <td></td>
         </tr>
     </table>

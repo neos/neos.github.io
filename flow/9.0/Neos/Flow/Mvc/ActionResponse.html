@@ -84,7 +84,7 @@
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>ActionResponse    
+        <h1>ActionResponse    <small><span class="label label-danger">deprecated</span></small>
             </h1>
     </div>
 
@@ -94,11 +94,33 @@
 </p>
 
         
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>with</td>
+                    <td>Flow 9</td>
+                </tr>
+                    </p>
     
         
 
             <div class="description">
-            <p><p>The minimal MVC response object.</p></p>            <p><p>It allows for simple interactions with the HTTP response from within MVC actions. More specific requirements can be implemented via HTTP middlewares.</p></p>        </div>
+            <p><p>The legacy MVC response object.</p></p>            <p><p>Previously Flows MVC needed a single mutable response which was passed from dispatcher to controllers
+and even further to the view and other places via the controller context: {<a href="../../../Neos/Flow/Mvc/Controller/ControllerContext.html">\Neos\Flow\Mvc\Controller\ControllerContext::getResponse()}.
+This</a> allowed to manipulate the response at every place.</p>
+<p>With the dispatcher and controllers now directly returning a response, the mutability is no longer required.
+Additionally, the abstraction offers naturally nothing, that cant be archived by the psr response,
+as it directly translates to one: {[\Neos\Flow\Mvc\ActionResponse::buildHttpResponse()}</p>
+<p>So](../../../Neos/Flow/Mvc/ActionResponse.html) you can and should use the immutable psr {\Psr\Http\Message\ResponseInterface} instead where-ever possible.</p>
+<p>For backwards compatibility, each controller will might now manage an own instance of the action response
+via <code>$this-&gt;response</code> {<a href="../../../Neos/Flow/Mvc/Controller/AbstractController.html">\Neos\Flow\Mvc\Controller\AbstractController::$response}</a> and pass it along to places.
+But this behaviour is deprecated!</p>
+<p>Instead, you can directly return a PSR repose {\GuzzleHttp\Psr7\Response} from a controller:</p>
+<pre><code class="language-php">public function myAction()
+{
+    return (new Response(status: 200, body: $output))
+        -&gt;withAddedHeader('X-My-Header', 'foo');
+}</code></pre></p>        </div>
             
         
     
@@ -191,7 +213,7 @@
                 </div>
                 <div class="col-md-8">
                     <a href="#method_setContent">setContent</a>(string|<abbr title="Psr\Http\Message\StreamInterface">StreamInterface</abbr> $content)
-        
+        <small><span class="label label-danger">deprecated</span></small>
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
@@ -202,7 +224,7 @@
                 </div>
                 <div class="col-md-8">
                     <a href="#method_setContentType">setContentType</a>(string $contentType)
-        
+        <small><span class="label label-danger">deprecated</span></small>
                                             <p><p>Set content mime type for this response.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -212,7 +234,7 @@
                 </div>
                 <div class="col-md-8">
                     <a href="#method_setRedirectUri">setRedirectUri</a>(<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr> $uri, int $statusCode = 303)
-        
+        <small><span class="label label-danger">deprecated</span></small>
                                             <p><p>Set a redirect URI and according status for this response.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -222,7 +244,7 @@
                 </div>
                 <div class="col-md-8">
                     <a href="#method_setStatusCode">setStatusCode</a>(int $statusCode)
-        
+        <small><span class="label label-danger">deprecated</span></small>
                                             <p><p>Set the status code for this response as HTTP status code.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -232,7 +254,7 @@
                 </div>
                 <div class="col-md-8">
                     <a href="#method_setCookie">setCookie</a>(<a href="../../../Neos/Flow/Http/Cookie.html"><abbr title="Neos\Flow\Http\Cookie">Cookie</abbr></a> $cookie)
-        
+        <small><span class="label label-danger">deprecated</span></small>
                                             <p><p>Set a cookie in the HTTP response
 This leads to a corresponding <code>Set-Cookie</code> header to be set in the HTTP response</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -243,7 +265,7 @@ This leads to a corresponding <code>Set-Cookie</code> header to be set in the HT
                 </div>
                 <div class="col-md-8">
                     <a href="#method_deleteCookie">deleteCookie</a>(string $cookieName)
-        
+        <small><span class="label label-danger">deprecated</span></small>
                                             <p><p>Delete a cooke from the HTTP response
 This leads to a corresponding <code>Set-Cookie</code> header with an expired Cookie to be set in the HTTP response</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -340,7 +362,8 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
                 <div class="col-md-8">
                     <a href="#method_replaceHttpResponse">replaceHttpResponse</a>(<abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
         
-                                            <p><p>Use this if you want build your own HTTP Response inside your action</p></p>                </div>
+                                            <p><p>Unsafe. Please avoid the use of this escape hatch as the behaviour is partly unspecified
+<a href="https://github.com/neos/flow-development-collection/issues/2492">https://github.com/neos/flow-development-collection/issues/2492</a></p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -361,10 +384,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
                 <div class="col-md-8">
                     <a href="#method_buildHttpResponse">buildHttpResponse</a>()
         
-                                            <p><p>Note this is a special use case method that will apply the internal properties (Content-Type, StatusCode, Location, Set-Cookie and Content)
-to the given PSR-7 Response and return a modified response. This is used to merge the ActionResponse properties into a possible HttpResponse
-created in a View (see ActionController::renderView()) because those would be overwritten otherwise. Note that any component parameters will
-still run through the component chain and will not be propagated here.</p></p>                </div>
+                                            <p><p>During the migration of {ActionResponse} to {HttpResponse} this might come in handy.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -375,7 +395,7 @@ still run through the component chain and will not be propagated here.</p></p>  
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L61">at line 61</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L86">at line 86</a></div>
         <code>                    
     <strong>__construct</strong>()
         </code>
@@ -399,12 +419,19 @@ still run through the component chain and will not be propagated here.</p></p>  
             </div>
                     <div class="method-item">
                     <h3 id="method_setContent">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L71">at line 71</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L96">at line 96</a></div>
         <code>                    void
     <strong>setContent</strong>(string|<abbr title="Psr\Http\Message\StreamInterface">StreamInterface</abbr> $content)
-        </code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>please</td>
+                    <td>use {@see \Psr\Http\Message\ResponseInterface::withBody()} in combination with {@see \GuzzleHttp\Psr7\Utils::streamFor} instead</td>
+                </tr>
+                    </p>
     
             
 
@@ -442,12 +469,19 @@ still run through the component chain and will not be propagated here.</p></p>  
             </div>
                     <div class="method-item">
                     <h3 id="method_setContentType">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L87">at line 87</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L112">at line 112</a></div>
         <code>                    void
     <strong>setContentType</strong>(string $contentType)
-        </code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>please</td>
+                    <td>use {@see \Psr\Http\Message\ResponseInterface::withHeader()} with "Content-Type" instead.</td>
+                </tr>
+                    </p>
     
             
 
@@ -484,12 +518,19 @@ still run through the component chain and will not be propagated here.</p></p>  
             </div>
                     <div class="method-item">
                     <h3 id="method_setRedirectUri">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L100">at line 100</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L125">at line 125</a></div>
         <code>                    void
     <strong>setRedirectUri</strong>(<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr> $uri, int $statusCode = 303)
-        </code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>please</td>
+                    <td>use {@see \Psr\Http\Message\ResponseInterface::withStatus()} and {@see \Psr\Http\Message\ResponseInterface::withHeader()} with "Header" instead.</td>
+                </tr>
+                    </p>
     
             
 
@@ -531,12 +572,19 @@ still run through the component chain and will not be propagated here.</p></p>  
             </div>
                     <div class="method-item">
                     <h3 id="method_setStatusCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L114">at line 114</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L139">at line 139</a></div>
         <code>                    void
     <strong>setStatusCode</strong>(int $statusCode)
-        </code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>please</td>
+                    <td>use {@see \Psr\Http\Message\ResponseInterface::withStatus()} instead.</td>
+                </tr>
+                    </p>
     
             
 
@@ -573,12 +621,19 @@ still run through the component chain and will not be propagated here.</p></p>  
             </div>
                     <div class="method-item">
                     <h3 id="method_setCookie">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L126">at line 126</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L151">at line 151</a></div>
         <code>                    void
     <strong>setCookie</strong>(<a href="../../../Neos/Flow/Http/Cookie.html"><abbr title="Neos\Flow\Http\Cookie">Cookie</abbr></a> $cookie)
-        </code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>please</td>
+                    <td>use {@see \Psr\Http\Message\ResponseInterface::withHeader()} with "Set-Cookie" instead.</td>
+                </tr>
+                    </p>
     
             
 
@@ -616,12 +671,19 @@ This leads to a corresponding <code>Set-Cookie</code> header to be set in the HT
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteCookie">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L138">at line 138</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L163">at line 163</a></div>
         <code>                    void
     <strong>deleteCookie</strong>(string $cookieName)
-        </code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                    </p>
     
             
 
@@ -659,7 +721,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_setHttpHeader">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L152">at line 152</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L179">at line 179</a></div>
         <code>                    void
     <strong>setHttpHeader</strong>(string $headerName, array|string|<a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a> $headerValue)
         </code>
@@ -669,7 +731,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             
 
         <div class="method-description">
-                            <p><p>Set the specified header in the response, overwriting any previous value set for this header.</p></p>                        
+                            <p><p>Set the specified header in the response, overwriting any previous value set for this header.</p></p>                <p><p>This behaviour is unsafe and partially unspecified: <a href="https://github.com/neos/flow-development-collection/issues/2492">https://github.com/neos/flow-development-collection/issues/2492</a></p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -706,7 +768,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_addHttpHeader">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L170">at line 170</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L199">at line 199</a></div>
         <code>                    void
     <strong>addHttpHeader</strong>(string $headerName, array|string|<a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a> $headerValue)
         </code>
@@ -716,7 +778,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             
 
         <div class="method-description">
-                            <p><p>Add the specified header to the response, without overwriting any previous value set for this header.</p></p>                        
+                            <p><p>Add the specified header to the response, without overwriting any previous value set for this header.</p></p>                <p><p>This behaviour is unsafe and partially unspecified: <a href="https://github.com/neos/flow-development-collection/issues/2492">https://github.com/neos/flow-development-collection/issues/2492</a></p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -753,7 +815,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_getHttpHeader">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L186">at line 186</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L215">at line 215</a></div>
         <code>                    array|string|null
     <strong>getHttpHeader</strong>(string $headerName)
         </code>
@@ -795,7 +857,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_getContent">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L198">at line 198</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L227">at line 227</a></div>
         <code>                    string
     <strong>getContent</strong>()
         </code>
@@ -828,7 +890,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_getRedirectUri">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L208">at line 208</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L237">at line 237</a></div>
         <code>                    <abbr title="Neos\Flow\Mvc\Psr\Http\Message\UriInterface">UriInterface</abbr>|null
     <strong>getRedirectUri</strong>()
         </code>
@@ -861,7 +923,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_getStatusCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L216">at line 216</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L245">at line 245</a></div>
         <code>                    int
     <strong>getStatusCode</strong>()
         </code>
@@ -894,7 +956,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_hasContentType">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L221">at line 221</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L250">at line 250</a></div>
         <code>                    bool
     <strong>hasContentType</strong>()
         </code>
@@ -927,7 +989,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_getContentType">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L229">at line 229</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L258">at line 258</a></div>
         <code>                    string
     <strong>getContentType</strong>()
         </code>
@@ -960,7 +1022,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_replaceHttpResponse">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L238">at line 238</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L269">at line 269</a></div>
         <code>                    void
     <strong>replaceHttpResponse</strong>(<abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
         </code>
@@ -970,7 +1032,8 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             
 
         <div class="method-description">
-                            <p><p>Use this if you want build your own HTTP Response inside your action</p></p>                        
+                            <p><p>Unsafe. Please avoid the use of this escape hatch as the behaviour is partly unspecified
+<a href="https://github.com/neos/flow-development-collection/issues/2492">https://github.com/neos/flow-development-collection/issues/2492</a></p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1002,7 +1065,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_mergeIntoParentResponse">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L247">at line 247</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L278">at line 278</a></div>
         <code>                    <a href="../../../Neos/Flow/Mvc/ActionResponse.html"><abbr title="Neos\Flow\Mvc\ActionResponse">ActionResponse</abbr></a>
     <strong>mergeIntoParentResponse</strong>(<a href="../../../Neos/Flow/Mvc/ActionResponse.html"><abbr title="Neos\Flow\Mvc\ActionResponse">ActionResponse</abbr></a> $actionResponse)
         </code>
@@ -1045,27 +1108,21 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_buildHttpResponse">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L285">at line 285</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L319">at line 319</a></div>
         <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
     <strong>buildHttpResponse</strong>()
         </code>
     </h3>
     <div class="details">    
     
-                            <table>
-            <tr>
-                <td><span class="label label-warning">internal</span></td>
-                <td>&nbsp; </td>
-            </tr>
-        </table>
-                &nbsp;
-    
+            
 
         <div class="method-description">
-                            <p><p>Note this is a special use case method that will apply the internal properties (Content-Type, StatusCode, Location, Set-Cookie and Content)
-to the given PSR-7 Response and return a modified response. This is used to merge the ActionResponse properties into a possible HttpResponse
-created in a View (see ActionController::renderView()) because those would be overwritten otherwise. Note that any component parameters will
-still run through the component chain and will not be propagated here.</p></p>                        
+                            <p><p>During the migration of {ActionResponse} to {HttpResponse} this might come in handy.</p></p>                <p><p>Note this is a special use case method that will apply the internal properties
+(Content-Type, StatusCode, Location, Set-Cookie and Content)
+to a new or replaced PSR-7 Response and return it.</p>
+<p>Possibly unsafe when used in combination with {\Neos\Flow\Mvc\self::replaceHttpResponse()}
+<a href="https://github.com/neos/flow-development-collection/issues/2492">https://github.com/neos/flow-development-collection/issues/2492</a></p></p>        
         </div>
         <div class="tags">
             
