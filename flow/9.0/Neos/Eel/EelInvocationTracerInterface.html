@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Neos\Eel\Utility | Flow Framework</title>
+    <title>Neos\Eel\EelInvocationTracerInterface | Flow Framework</title>
 
             <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
@@ -23,7 +23,7 @@
           title="Flow Framework (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Eel_Utility" data-root-path="../../" data-search-index-url="../../doctum-search.json">
+    <body id="class" data-name="class:Neos_Eel_EelInvocationTracerInterface" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -78,27 +78,32 @@
 
                         <div class="namespace-breadcrumbs">
             <ol class="breadcrumb">
-                <li><span class="label label-default">class</span></li>
-                        <li><a href="../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../Neos/Eel.html">Eel</a></li><li class="backslash">\</li><li>Utility</li>
+                <li><span class="label label-default">interface</span></li>
+                        <li><a href="../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../Neos/Eel.html">Eel</a></li><li class="backslash">\</li><li>EelInvocationTracerInterface</li>
             </ol>
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>Utility    
+        <h1>EelInvocationTracerInterface    
             </h1>
     </div>
 
     
-    <p>        class
-    <strong>Utility</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Eel/Classes/Utility.php">View source</a>)
+    <p>        interface
+    <strong>EelInvocationTracerInterface</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Eel/Classes/EelInvocationTracerInterface.php">View source</a>)
 </p>
 
         
     
-        
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;experimental tracer for eel. Could be used for example to collect and log deprecations.</td>
+            </tr>
+        </table>
+                &nbsp;
+    
 
-            <div class="description">
-            <p><p>Utility to reduce boilerplate code needed to set default context variables and evaluate a string that possibly is an EEL expression.</p></p>                    </div>
             
         
     
@@ -108,32 +113,35 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;string|null
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_parseEelExpression">parseEelExpression</a>(string $expression)
+                    <a href="#method_recordPropertyAccess">recordPropertyAccess</a>(object $object, string $propertyName)
         
-                                            <p><p>Return the expression if it is a valid EEL expression, null otherwise.</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;array
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getDefaultContextVariables">getDefaultContextVariables</a>(array $configuration)
+                    <a href="#method_recordMethodCall">recordMethodCall</a>(object $object, string $methodName, array $arguments)
         
-                                            <p><p>Get variables from configuration that should be set in the context by default.</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;mixed
+                    void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_evaluateEelExpression">evaluateEelExpression</a>(string $expression, <a href="../../Neos/Eel/EelEvaluatorInterface.html"><abbr title="Neos\Eel\EelEvaluatorInterface">EelEvaluatorInterface</abbr></a> $eelEvaluator, array $contextVariables, array $defaultContextConfiguration = [], <abbr title="Neos\Eel\Neos\Eel\EelInvocationTracerInterface">EelInvocationTracerInterface</abbr>|null $tracer = null)
+                    <a href="#method_recordFunctionCall">recordFunctionCall</a>(callable $function, string $functionName, array $arguments)
         
-                                            <p><p>Evaluate an Eel expression.</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -143,10 +151,10 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_parseEelExpression">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Eel/Classes/Utility.php#L23">at line 23</a></div>
-        <code>        static            string|null
-    <strong>parseEelExpression</strong>(string $expression)
+                    <h3 id="method_recordPropertyAccess">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Eel/Classes/EelInvocationTracerInterface.php#L10">at line 10</a></div>
+        <code>                    void
+    <strong>recordPropertyAccess</strong>(object $object, string $propertyName)
         </code>
     </h3>
     <div class="details">    
@@ -154,15 +162,21 @@
             
 
         <div class="method-description">
-                            <p><p>Return the expression if it is a valid EEL expression, null otherwise.</p></p>                        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td></td>
+            </tr>
+                    <tr>
                 <td>string</td>
-                <td>$expression</td>
+                <td>$propertyName</td>
                 <td></td>
             </tr>
             </table>
@@ -172,7 +186,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>string|null</td>
+            <td>void</td>
             <td></td>
         </tr>
     </table>
@@ -185,10 +199,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getDefaultContextVariables">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Eel/Classes/Utility.php#L41">at line 41</a></div>
-        <code>        static            array
-    <strong>getDefaultContextVariables</strong>(array $configuration)
+                    <h3 id="method_recordMethodCall">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Eel/Classes/EelInvocationTracerInterface.php#L15">at line 15</a></div>
+        <code>                    void
+    <strong>recordMethodCall</strong>(object $object, string $methodName, array $arguments)
         </code>
     </h3>
     <div class="details">    
@@ -196,16 +210,27 @@
             
 
         <div class="method-description">
-                            <p><p>Get variables from configuration that should be set in the context by default.</p></p>                <p><p>For example Eel helpers are made available by this.</p></p>        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$methodName</td>
+                <td></td>
+            </tr>
+                    <tr>
                 <td>array</td>
-                <td>$configuration</td>
-                <td><p>An one dimensional associative array of context variable paths mapping to object names</p></td>
+                <td>$arguments</td>
+                <td></td>
             </tr>
             </table>
 
@@ -214,8 +239,8 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
-            <td><p>Array with default context variable objects.</p></td>
+            <td>void</td>
+            <td></td>
         </tr>
     </table>
 
@@ -227,10 +252,10 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_evaluateEelExpression">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Eel/Classes/Utility.php#L93">at line 93</a></div>
-        <code>        static            mixed
-    <strong>evaluateEelExpression</strong>(string $expression, <a href="../../Neos/Eel/EelEvaluatorInterface.html"><abbr title="Neos\Eel\EelEvaluatorInterface">EelEvaluatorInterface</abbr></a> $eelEvaluator, array $contextVariables, array $defaultContextConfiguration = [], <abbr title="Neos\Eel\Neos\Eel\EelInvocationTracerInterface">EelInvocationTracerInterface</abbr>|null $tracer = null)
+                    <h3 id="method_recordFunctionCall">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Eel/Classes/EelInvocationTracerInterface.php#L20">at line 20</a></div>
+        <code>                    void
+    <strong>recordFunctionCall</strong>(callable $function, string $functionName, array $arguments)
         </code>
     </h3>
     <div class="details">    
@@ -238,35 +263,26 @@
             
 
         <div class="method-description">
-                            <p><p>Evaluate an Eel expression.</p></p>                        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
+                <td>callable</td>
+                <td>$function</td>
+                <td></td>
+            </tr>
+                    <tr>
                 <td>string</td>
-                <td>$expression</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../Neos/Eel/EelEvaluatorInterface.html"><abbr title="Neos\Eel\EelEvaluatorInterface">EelEvaluatorInterface</abbr></a></td>
-                <td>$eelEvaluator</td>
+                <td>$functionName</td>
                 <td></td>
             </tr>
                     <tr>
                 <td>array</td>
-                <td>$contextVariables</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>array</td>
-                <td>$defaultContextConfiguration</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\Eel\Neos\Eel\EelInvocationTracerInterface">EelInvocationTracerInterface</abbr>|null</td>
-                <td>$tracer</td>
+                <td>$arguments</td>
                 <td></td>
             </tr>
             </table>
@@ -276,21 +292,12 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>mixed</td>
+            <td>void</td>
             <td></td>
         </tr>
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../Neos/Eel/Exception.html"><abbr title="Neos\Eel\Exception">Exception</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
             
                     </div>
