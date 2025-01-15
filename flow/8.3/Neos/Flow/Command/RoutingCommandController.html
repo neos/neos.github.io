@@ -291,7 +291,7 @@ method arguments found in the designated command method.</p></p>                
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_forward">forward</a>(string $commandName, string $controllerObjectName = null, array $arguments = [])
+                    <a href="#method_forward">forward</a>(string $commandName, string|null $controllerObjectName = null, array $arguments = [])
         
                                             <p><p>Forwards the request to another command and / or CommandController.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/Cli/CommandController.html#method_forward">
@@ -412,7 +412,7 @@ Should be used for commands that flush code caches.</p></p>                </div
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_resolveCommand">resolveCommand</a>(string $package, string $controller = null, string $action = null, string $format = null, string $subpackage = null, string $additionalArguments = null, string $parameters = null, string $baseUri = null, bool $forceAbsoluteUri = null)
+                    <a href="#method_resolveCommand">resolveCommand</a>(string $package, string|null $controller = null, string|null $action = null, string|null $format = null, string|null $subpackage = null, string|null $additionalArguments = null, string|null $parameters = null, string|null $baseUri = null, bool|null $forceAbsoluteUri = null)
         
                                             <p><p>Build an URI for the given parameters</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -432,7 +432,7 @@ Should be used for commands that flush code caches.</p></p>                </div
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_matchCommand">matchCommand</a>(string $uri, string $method = null, string $parameters = null)
+                    <a href="#method_matchCommand">matchCommand</a>(string $uri, string|null $method = null, string|null $parameters = null)
         
                                             <p><p>Match the given URI to a corresponding route</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -738,7 +738,7 @@ method arguments found in the designated command method.</p></p>
         <div class="location">in <a href="../../../Neos/Flow/Cli/CommandController.html#method_forward">
 <abbr title="Neos\Flow\Cli\CommandController">CommandController</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Cli/CommandController.php#L212">at line 212</a></div>
         <code>            protected        void
-    <strong>forward</strong>(string $commandName, string $controllerObjectName = null, array $arguments = [])
+    <strong>forward</strong>(string $commandName, string|null $controllerObjectName = null, array $arguments = [])
         </code>
     </h3>
     <div class="details">    
@@ -759,7 +759,7 @@ without the need for a new request.</p></p>
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$controllerObjectName</td>
                 <td></td>
             </tr>
@@ -1302,7 +1302,7 @@ generated route path and the selected route:</p>
                     <h3 id="method_resolveCommand">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Command/RoutingCommandController.php#L171">at line 171</a></div>
         <code>                    void
-    <strong>resolveCommand</strong>(string $package, string $controller = null, string $action = null, string $format = null, string $subpackage = null, string $additionalArguments = null, string $parameters = null, string $baseUri = null, bool $forceAbsoluteUri = null)
+    <strong>resolveCommand</strong>(string $package, string|null $controller = null, string|null $action = null, string|null $format = null, string|null $subpackage = null, string|null $additionalArguments = null, string|null $parameters = null, string|null $baseUri = null, bool|null $forceAbsoluteUri = null)
         </code>
     </h3>
     <div class="details">    
@@ -1324,42 +1324,42 @@ resolved URI and which route matched (if any):</p>
                 <td><p>Package key (according to &quot;@package&quot; route value)</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$controller</td>
                 <td><p>Controller name (according to &quot;@controller&quot; route value), default is 'Standard'</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$action</td>
                 <td><p>Action name (according to &quot;@action&quot; route value), default is 'index'</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$format</td>
                 <td><p>Requested Format name (according to &quot;@format&quot; route value), default is 'html'</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$subpackage</td>
                 <td><p>SubPackage name (according to &quot;@subpackage&quot; route value)</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$additionalArguments</td>
                 <td><p>Additional route values as JSON string. Make sure to specify this option as described in the description in order to prevent parsing issues</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$parameters</td>
                 <td><p>Route parameters as JSON string. Make sure to specify this option as described in the description in order to prevent parsing issues</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$baseUri</td>
                 <td><p>Base URI of the simulated request, default ist '<a href="http://localhost">http://localhost</a>'</p></td>
             </tr>
                     <tr>
-                <td>bool</td>
+                <td>bool|null</td>
                 <td>$forceAbsoluteUri</td>
                 <td><p>Whether or not to force the creation of an absolute URI</p></td>
             </tr>
@@ -1466,7 +1466,7 @@ the selected package, controller and action.</p></p>
                     <h3 id="method_matchCommand">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.3/Neos.Flow/Classes/Command/RoutingCommandController.php#L269">at line 269</a></div>
         <code>                    void
-    <strong>matchCommand</strong>(string $uri, string $method = null, string $parameters = null)
+    <strong>matchCommand</strong>(string $uri, string|null $method = null, string|null $parameters = null)
         </code>
     </h3>
     <div class="details">    
@@ -1488,12 +1488,12 @@ matched Route and the mapped routing values (if any):</p>
                 <td><p>The incoming route, absolute or relative</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$method</td>
                 <td><p>The HTTP method to simulate (default is 'GET')</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$parameters</td>
                 <td><p>Route parameters as JSON string. Make sure to specify this option as described in the description in order to prevent parsing issues</p></td>
             </tr>
