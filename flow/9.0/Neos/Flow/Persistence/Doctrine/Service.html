@@ -227,7 +227,7 @@ mapping information contains errors or not.</p></p>                </div>
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_runDql">runDql</a>(string $dql, int $hydrationMode = \Doctrine\ORM\Query::HYDRATE_OBJECT, int $firstResult = null, int $maxResult = null)
+                    <a href="#method_runDql">runDql</a>(string $dql, int $hydrationMode = \Doctrine\ORM\Query::HYDRATE_OBJECT, int|null $firstResult = null, int|null $maxResult = null)
         
                                             <p><p>Run DQL and return the result as-is.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -257,7 +257,7 @@ mapping information contains errors or not.</p></p>                </div>
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_executeMigrations">executeMigrations</a>(string $version = &#039;latest&#039;, string $outputPathAndFilename = null, bool $dryRun = false, bool $quiet = false, string|null $overrideMigrationFolderName = null)
+                    <a href="#method_executeMigrations">executeMigrations</a>(string $version = &#039;latest&#039;, string|null $outputPathAndFilename = null, bool $dryRun = false, bool $quiet = false, string|null $overrideMigrationFolderName = null)
         
                                             <p><p>Execute all new migrations, up to $version if given.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -267,7 +267,7 @@ mapping information contains errors or not.</p></p>                </div>
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_executeMigration">executeMigration</a>(string $version, string $direction = &#039;up&#039;, string $outputPathAndFilename = null, bool $dryRun = false, string|null $overrideMigrationFolderName = null)
+                    <a href="#method_executeMigration">executeMigration</a>(string $version, string $direction = &#039;up&#039;, string|null $outputPathAndFilename = null, bool $dryRun = false, string|null $overrideMigrationFolderName = null)
         
                                             <p><p>Execute a single migration in up or down direction. If $path is given, the
 SQL statements will be written to the file in $path instead of executed.</p></p>                </div>
@@ -298,7 +298,7 @@ SQL statements will be written to the file in $path instead of executed.</p></p>
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_generateMigration">generateMigration</a>(bool $diffAgainstCurrent = true, string $filterExpression = null, string|null $overrideMigrationFolderName = null)
+                    <a href="#method_generateMigration">generateMigration</a>(bool $diffAgainstCurrent = true, string|null $filterExpression = null, string|null $overrideMigrationFolderName = null)
         
                                             <p><p>Generates a new migration file and returns the path to it.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -544,7 +544,7 @@ mapping information contains errors or not.</p></p>
                     <h3 id="method_runDql">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Persistence/Doctrine/Service.php#L200">at line 200</a></div>
         <code>                    mixed
-    <strong>runDql</strong>(string $dql, int $hydrationMode = \Doctrine\ORM\Query::HYDRATE_OBJECT, int $firstResult = null, int $maxResult = null)
+    <strong>runDql</strong>(string $dql, int $hydrationMode = \Doctrine\ORM\Query::HYDRATE_OBJECT, int|null $firstResult = null, int|null $maxResult = null)
         </code>
     </h3>
     <div class="details">    
@@ -569,12 +569,12 @@ mapping information contains errors or not.</p></p>
                 <td></td>
             </tr>
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$firstResult</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$maxResult</td>
                 <td></td>
             </tr>
@@ -712,7 +712,7 @@ mapping information contains errors or not.</p></p>
                     <h3 id="method_executeMigrations">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Persistence/Doctrine/Service.php#L313">at line 313</a></div>
         <code>                    string
-    <strong>executeMigrations</strong>(string $version = &#039;latest&#039;, string $outputPathAndFilename = null, bool $dryRun = false, bool $quiet = false, string|null $overrideMigrationFolderName = null)
+    <strong>executeMigrations</strong>(string $version = &#039;latest&#039;, string|null $outputPathAndFilename = null, bool $dryRun = false, bool $quiet = false, string|null $overrideMigrationFolderName = null)
         </code>
     </h3>
     <div class="details">    
@@ -732,7 +732,7 @@ mapping information contains errors or not.</p></p>
                 <td><p>The version to migrate to</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$outputPathAndFilename</td>
                 <td><p>A file to write SQL to, instead of executing it - implicitly enables dry-run</p></td>
             </tr>
@@ -783,7 +783,7 @@ mapping information contains errors or not.</p></p>
                     <h3 id="method_executeMigration">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Persistence/Doctrine/Service.php#L423">at line 423</a></div>
         <code>                    string
-    <strong>executeMigration</strong>(string $version, string $direction = &#039;up&#039;, string $outputPathAndFilename = null, bool $dryRun = false, string|null $overrideMigrationFolderName = null)
+    <strong>executeMigration</strong>(string $version, string $direction = &#039;up&#039;, string|null $outputPathAndFilename = null, bool $dryRun = false, string|null $overrideMigrationFolderName = null)
         </code>
     </h3>
     <div class="details">    
@@ -809,7 +809,7 @@ SQL statements will be written to the file in $path instead of executed.</p></p>
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$outputPathAndFilename</td>
                 <td><p>A file to write SQL to, instead of executing it</p></td>
             </tr>
@@ -980,7 +980,7 @@ as migrated or not.</p></p>
                     <h3 id="method_generateMigration">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Persistence/Doctrine/Service.php#L626">at line 626</a></div>
         <code>                    array
-    <strong>generateMigration</strong>(bool $diffAgainstCurrent = true, string $filterExpression = null, string|null $overrideMigrationFolderName = null)
+    <strong>generateMigration</strong>(bool $diffAgainstCurrent = true, string|null $filterExpression = null, string|null $overrideMigrationFolderName = null)
         </code>
     </h3>
     <div class="details">    
@@ -1004,7 +1004,7 @@ diffing models and existing schema.</p>
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$filterExpression</td>
                 <td></td>
             </tr>

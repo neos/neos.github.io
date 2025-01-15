@@ -213,7 +213,7 @@ console window</p></p>                </div>
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_outputTable">outputTable</a>(array $rows, array $headers = null, string $headerTitle = null)
+                    <a href="#method_outputTable">outputTable</a>(array $rows, array|null $headers = null, string|null $headerTitle = null)
         
                                             <p><p>Renders a table like output of the given $rows</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -223,7 +223,7 @@ console window</p></p>                </div>
                     int|string|array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_select">select</a>(string|array $question, array $choices, string|bool|int|float|null $default = null, bool $multiSelect = false, int $attempts = null)
+                    <a href="#method_select">select</a>(string|array $question, array $choices, string|bool|int|float|null $default = null, bool $multiSelect = false, int|null $attempts = null)
         
                                             <p><p>Asks the user to select a value</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -233,7 +233,7 @@ console window</p></p>                </div>
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_ask">ask</a>(string|array $question, string $default = null)
+                    <a href="#method_ask">ask</a>(string|array $question, string|null $default = null)
         
                                             <p><p>Asks a question to the user</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -273,7 +273,7 @@ console window</p></p>                </div>
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_askAndValidate">askAndValidate</a>(string|array $question, callable $validator, int $attempts = null, string $default = null)
+                    <a href="#method_askAndValidate">askAndValidate</a>(string|array $question, callable $validator, int|null $attempts = null, string|null $default = null)
         
                                             <p><p>Asks for a value and validates the response</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -283,7 +283,7 @@ console window</p></p>                </div>
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_askHiddenResponseAndValidate">askHiddenResponseAndValidate</a>(string|array $question, callable $validator, int $attempts = null, bool $fallback = true)
+                    <a href="#method_askHiddenResponseAndValidate">askHiddenResponseAndValidate</a>(string|array $question, callable $validator, int|null $attempts = null, bool $fallback = true)
         
                                             <p><p>Asks for a value, hide and validates the response</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -293,7 +293,7 @@ console window</p></p>                </div>
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_progressStart">progressStart</a>(int $max = null)
+                    <a href="#method_progressStart">progressStart</a>(int|null $max = null)
         
                                             <p><p>Starts the progress output</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -664,7 +664,7 @@ console window</p></p>
                     <h3 id="method_outputTable">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Cli/ConsoleOutput.php#L143">at line 143</a></div>
         <code>                    void
-    <strong>outputTable</strong>(array $rows, array $headers = null, string $headerTitle = null)
+    <strong>outputTable</strong>(array $rows, array|null $headers = null, string|null $headerTitle = null)
         </code>
     </h3>
     <div class="details">    
@@ -684,12 +684,12 @@ console window</p></p>
                 <td></td>
             </tr>
                     <tr>
-                <td>array</td>
+                <td>array|null</td>
                 <td>$headers</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$headerTitle</td>
                 <td></td>
             </tr>
@@ -716,7 +716,7 @@ console window</p></p>
                     <h3 id="method_select">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Cli/ConsoleOutput.php#L167">at line 167</a></div>
         <code>                    int|string|array
-    <strong>select</strong>(string|array $question, array $choices, string|bool|int|float|null $default = null, bool $multiSelect = false, int $attempts = null)
+    <strong>select</strong>(string|array $question, array $choices, string|bool|int|float|null $default = null, bool $multiSelect = false, int|null $attempts = null)
         </code>
     </h3>
     <div class="details">    
@@ -751,7 +751,7 @@ console window</p></p>
                 <td><p>If true the result will be an array with the selected options. Multiple options can be given separated by commas</p></td>
             </tr>
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$attempts</td>
                 <td><p>Max number of times to ask before giving up (null by default, which means infinite)</p></td>
             </tr>
@@ -787,7 +787,7 @@ console window</p></p>
                     <h3 id="method_ask">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Cli/ConsoleOutput.php#L186">at line 186</a></div>
         <code>                    mixed
-    <strong>ask</strong>(string|array $question, string $default = null)
+    <strong>ask</strong>(string|array $question, string|null $default = null)
         </code>
     </h3>
     <div class="details">    
@@ -807,7 +807,7 @@ console window</p></p>
                 <td><p>The question to ask. If an array each array item is turned into one line of a multi-line question</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$default</td>
                 <td><p>The default answer if none is given by the user</p></td>
             </tr>
@@ -997,7 +997,7 @@ console window</p></p>
                     <h3 id="method_askAndValidate">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Cli/ConsoleOutput.php#L254">at line 254</a></div>
         <code>                    mixed
-    <strong>askAndValidate</strong>(string|array $question, callable $validator, int $attempts = null, string $default = null)
+    <strong>askAndValidate</strong>(string|array $question, callable $validator, int|null $attempts = null, string|null $default = null)
         </code>
     </h3>
     <div class="details">    
@@ -1024,12 +1024,12 @@ otherwise.</p></p>
                 <td><p>A PHP callback that gets a value and is expected to return the (transformed) value or throw an exception if it wasn't valid</p></td>
             </tr>
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$attempts</td>
                 <td><p>Max number of times to ask before giving up (null by default, which means infinite)</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$default</td>
                 <td><p>The default answer if none is given by the user</p></td>
             </tr>
@@ -1076,7 +1076,7 @@ otherwise.</p></p>
                     <h3 id="method_askHiddenResponseAndValidate">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Cli/ConsoleOutput.php#L279">at line 279</a></div>
         <code>                    mixed
-    <strong>askHiddenResponseAndValidate</strong>(string|array $question, callable $validator, int $attempts = null, bool $fallback = true)
+    <strong>askHiddenResponseAndValidate</strong>(string|array $question, callable $validator, int|null $attempts = null, bool $fallback = true)
         </code>
     </h3>
     <div class="details">    
@@ -1103,7 +1103,7 @@ otherwise.</p></p>
                 <td><p>A PHP callback that gets a value and is expected to return the (transformed) value or throw an exception if it wasn't valid</p></td>
             </tr>
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$attempts</td>
                 <td><p>Max number of times to ask before giving up (null by default, which means infinite)</p></td>
             </tr>
@@ -1148,7 +1148,7 @@ otherwise.</p></p>
                     <h3 id="method_progressStart">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Cli/ConsoleOutput.php#L297">at line 297</a></div>
         <code>                    void
-    <strong>progressStart</strong>(int $max = null)
+    <strong>progressStart</strong>(int|null $max = null)
         </code>
     </h3>
     <div class="details">    
@@ -1163,7 +1163,7 @@ otherwise.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$max</td>
                 <td><p>Maximum steps. If NULL an indeterminate progress bar is rendered</p></td>
             </tr>
