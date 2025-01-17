@@ -232,7 +232,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_removeUnusedCommand">removeUnusedCommand</a>(string $assetSource = &#039;&#039;, bool $quiet = false, bool $assumeYes = false, string $onlyTags = &#039;&#039;, int $limit = null, string $onlyCollections = &#039;&#039;)
+                    <a href="#method_removeUnusedCommand">removeUnusedCommand</a>(string $assetSource = &#039;&#039;, bool $quiet = false, bool $assumeYes = false, string $onlyTags = &#039;&#039;, int|null $limit = null, string $onlyCollections = &#039;&#039;)
         
                                             <p><p>Remove unused assets</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -242,7 +242,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_createThumbnailsCommand">createThumbnailsCommand</a>(string $preset = null, bool $async = null, bool $quiet = false)
+                    <a href="#method_createThumbnailsCommand">createThumbnailsCommand</a>(string|null $preset = null, bool|null $async = null, bool $quiet = false)
         
                                             <p><p>Create thumbnails</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -252,7 +252,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_clearThumbnailsCommand">clearThumbnailsCommand</a>(string $preset = null, bool $quiet = false)
+                    <a href="#method_clearThumbnailsCommand">clearThumbnailsCommand</a>(string|null $preset = null, bool $quiet = false)
         
                                             <p><p>Remove thumbnails</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -262,7 +262,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_renderThumbnailsCommand">renderThumbnailsCommand</a>(int $limit = null, bool $quiet = false)
+                    <a href="#method_renderThumbnailsCommand">renderThumbnailsCommand</a>(int|null $limit = null, bool $quiet = false)
         
                                             <p><p>Render ungenerated thumbnails</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -282,7 +282,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_removeVariantsCommand">removeVariantsCommand</a>(string $identifier, string $variantName, bool $quiet = false, bool $assumeYes = false, int $limit = null)
+                    <a href="#method_removeVariantsCommand">removeVariantsCommand</a>(string $identifier, string $variantName, bool $quiet = false, bool $assumeYes = false, int|null $limit = null)
         
                                             <p><p>Cleanup imageVariants with provided identifier and variant name.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -292,7 +292,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_renderVariantsCommand">renderVariantsCommand</a>(int $limit = null, bool $quiet = false, bool $recreate = false)
+                    <a href="#method_renderVariantsCommand">renderVariantsCommand</a>(int|null $limit = null, bool $quiet = false, bool $recreate = false)
         
                                             <p><p>Render asset variants</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -389,7 +389,7 @@ PersistentResource.</p></p>
                     <h3 id="method_removeUnusedCommand">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.4/Neos.Media/Classes/Command/MediaCommandController.php#L198">at line 198</a></div>
         <code>                    void
-    <strong>removeUnusedCommand</strong>(string $assetSource = &#039;&#039;, bool $quiet = false, bool $assumeYes = false, string $onlyTags = &#039;&#039;, int $limit = null, string $onlyCollections = &#039;&#039;)
+    <strong>removeUnusedCommand</strong>(string $assetSource = &#039;&#039;, bool $quiet = false, bool $assumeYes = false, string $onlyTags = &#039;&#039;, int|null $limit = null, string $onlyCollections = &#039;&#039;)
         </code>
     </h3>
     <div class="details">    
@@ -425,7 +425,7 @@ reported as used by any AssetUsageStrategies. The unused assets can than be remo
                 <td><p>Comma-separated list of asset tag labels, that should be taken into account</p></td>
             </tr>
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$limit</td>
                 <td><p>Limit the result of unused assets displayed and removed for this run.</p></td>
             </tr>
@@ -470,7 +470,7 @@ reported as used by any AssetUsageStrategies. The unused assets can than be remo
                     <h3 id="method_createThumbnailsCommand">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.4/Neos.Media/Classes/Command/MediaCommandController.php#L321">at line 321</a></div>
         <code>                    void
-    <strong>createThumbnailsCommand</strong>(string $preset = null, bool $async = null, bool $quiet = false)
+    <strong>createThumbnailsCommand</strong>(string|null $preset = null, bool|null $async = null, bool $quiet = false)
         </code>
     </h3>
     <div class="details">    
@@ -487,12 +487,12 @@ thumbnails for a specific thumbnail preset configuration.</p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$preset</td>
                 <td><p>Preset name, if not provided thumbnails are created for all presets</p></td>
             </tr>
                     <tr>
-                <td>bool</td>
+                <td>bool|null</td>
                 <td>$async</td>
                 <td><p>Asynchronous generation, if not provided the setting <code>Neos.Media.asyncThumbnails</code> is used</p></td>
             </tr>
@@ -533,7 +533,7 @@ thumbnails for a specific thumbnail preset configuration.</p>
                     <h3 id="method_clearThumbnailsCommand">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.4/Neos.Media/Classes/Command/MediaCommandController.php#L355">at line 355</a></div>
         <code>                    void
-    <strong>clearThumbnailsCommand</strong>(string $preset = null, bool $quiet = false)
+    <strong>clearThumbnailsCommand</strong>(string|null $preset = null, bool $quiet = false)
         </code>
     </h3>
     <div class="details">    
@@ -549,7 +549,7 @@ matching a specific thumbnail preset configuration.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$preset</td>
                 <td><p>Preset name, if provided only thumbnails matching that preset are cleared</p></td>
             </tr>
@@ -594,7 +594,7 @@ matching a specific thumbnail preset configuration.</p></p>
                     <h3 id="method_renderThumbnailsCommand">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.4/Neos.Media/Classes/Command/MediaCommandController.php#L388">at line 388</a></div>
         <code>                    void
-    <strong>renderThumbnailsCommand</strong>(int $limit = null, bool $quiet = false)
+    <strong>renderThumbnailsCommand</strong>(int|null $limit = null, bool $quiet = false)
         </code>
     </h3>
     <div class="details">    
@@ -610,7 +610,7 @@ thumbnails to be rendered to avoid memory exhaustion.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$limit</td>
                 <td><p>Limit the amount of thumbnails to be rendered to avoid memory exhaustion</p></td>
             </tr>
@@ -675,7 +675,7 @@ This command will find every single one for you.</p></p>
                     <h3 id="method_removeVariantsCommand">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.4/Neos.Media/Classes/Command/MediaCommandController.php#L475">at line 475</a></div>
         <code>                    
-    <strong>removeVariantsCommand</strong>(string $identifier, string $variantName, bool $quiet = false, bool $assumeYes = false, int $limit = null)
+    <strong>removeVariantsCommand</strong>(string $identifier, string $variantName, bool $quiet = false, bool $assumeYes = false, int|null $limit = null)
         </code>
     </h3>
     <div class="details">    
@@ -712,7 +712,7 @@ can be regenerated afterwards with <code>media:renderVariants</code>.</p>
                 <td><p>If set, &quot;yes&quot; is assumed for the &quot;shall I remove ...&quot; dialog.</p></td>
             </tr>
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$limit</td>
                 <td><p>Limit the result of unused assets displayed and removed for this run.</p></td>
             </tr>
@@ -739,7 +739,7 @@ can be regenerated afterwards with <code>media:renderVariants</code>.</p>
                     <h3 id="method_renderVariantsCommand">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/8.4/Neos.Media/Classes/Command/MediaCommandController.php#L539">at line 539</a></div>
         <code>                    void
-    <strong>renderVariantsCommand</strong>(int $limit = null, bool $quiet = false, bool $recreate = false)
+    <strong>renderVariantsCommand</strong>(int|null $limit = null, bool $quiet = false, bool $recreate = false)
         </code>
     </h3>
     <div class="details">    
@@ -756,7 +756,7 @@ limit the amount of variants to be rendered to avoid memory exhaustion.</p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$limit</td>
                 <td><p>Limit the amount of variants to be rendered to avoid memory exhaustion</p></td>
             </tr>
