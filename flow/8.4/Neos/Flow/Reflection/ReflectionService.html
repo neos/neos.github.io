@@ -100,17 +100,12 @@
             <div class="description">
             <p><p>A service for acquiring reflection based information in a performant way. This
 service also builds up class schema information which is used by the Flow's
-persistence layer.</p></p>            <p><p>Reflection of classes of all active packages is triggered through the bootstrap's
-initializeReflectionService() method. In a development context, single classes
-may be re-reflected once files are modified whereas in a production context
-reflection is done once and successive requests read from the frozen caches for
-performance reasons.</p>
-<p>The list of available classes is determined by the CompiletimeObjectManager which
-also triggers the initial build of reflection data in this service.</p>
-<p>The invalidation of reflection cache entries is done by the CacheManager which
-in turn is triggered by signals sent by the file monitor.</p>
-<p>The internal representation of cache data is optimized for memory consumption and
-speed by using constants which have an integer value.</p></p>        </div>
+persistence layer.</p></p>            <p><p>The list of available classes from flow packages is determined during initialisation of the
+CompileTimeObjectManager which also triggers the initial build of reflection data.</p>
+<p>During shutdown any reflection changes that occurred are saved to the cache.</p>
+<p>The invalidation of reflection cache entries is done by the CacheManager during development
+via flushClassCachesByChangedFiles by removing the reflected data from the cache.</p>
+<p>The internal representation of cache data is optimized for memory consumption.</p></p>        </div>
             
         
             <h2>Constants</h2>    <table class="table table-condensed">
@@ -1343,7 +1338,7 @@ accordingly.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_setReflectionDataRuntimeCache">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L158">at line 158</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L153">at line 153</a></div>
         <code>                    void
     <strong>setReflectionDataRuntimeCache</strong>(<a href="../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a> $cache)
         </code>
@@ -1386,7 +1381,7 @@ accordingly.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_setClassSchemataRuntimeCache">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L163">at line 163</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L158">at line 158</a></div>
         <code>                    void
     <strong>setClassSchemataRuntimeCache</strong>(<a href="../../../Neos/Cache/Frontend/VariableFrontend.html"><abbr title="Neos\Cache\Frontend\VariableFrontend">VariableFrontend</abbr></a> $cache)
         </code>
@@ -1429,7 +1424,7 @@ accordingly.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_injectSettings">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L168">at line 168</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L163">at line 163</a></div>
         <code>                    void
     <strong>injectSettings</strong>(array $settings)
         </code>
@@ -1472,7 +1467,7 @@ accordingly.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_injectLogger">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L173">at line 173</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L168">at line 168</a></div>
         <code>                    void
     <strong>injectLogger</strong>(<abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
         </code>
@@ -1515,7 +1510,7 @@ accordingly.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDoctrinePhpParser">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L178">at line 178</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L173">at line 173</a></div>
         <code>            protected        <abbr title="Doctrine\Common\Annotations\PhpParser">PhpParser</abbr>
     <strong>getDoctrinePhpParser</strong>()
         </code>
@@ -1548,7 +1543,7 @@ accordingly.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_initialize">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L192">at line 192</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L187">at line 187</a></div>
         <code>            protected        void
     <strong>initialize</strong>()
         </code>
@@ -1580,7 +1575,7 @@ accordingly.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_buildReflectionData">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L226">at line 226</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L221">at line 221</a></div>
         <code>                    void
     <strong>buildReflectionData</strong>(array $availableClassNames)
         </code>
@@ -1656,7 +1651,7 @@ the list of classes to consider for reflection.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isClassReflected">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L244">at line 244</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L239">at line 239</a></div>
         <code>                    bool
     <strong>isClassReflected</strong>(string $className)
         </code>
@@ -1699,7 +1694,7 @@ reflection information is available.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getAllClassNames">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L259">at line 259</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L254">at line 254</a></div>
         <code>                    array
     <strong>getAllClassNames</strong>()
         </code>
@@ -1731,7 +1726,7 @@ reflection information is available.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDefaultImplementationClassNameForInterface">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L280">at line 280</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L275">at line 275</a></div>
         <code>                    <abbr title="Neos\Flow\Reflection\string|bool">string|bool</abbr>
     <strong>getDefaultImplementationClassNameForInterface</strong>(string $interfaceName)
         </code>
@@ -1792,7 +1787,7 @@ implementation was found in the package defining the interface, false is returne
             </div>
                     <div class="method-item">
                     <h3 id="method_getAllImplementationClassNamesForInterface">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L316">at line 316</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L311">at line 311</a></div>
         <code>                    array
     <strong>getAllImplementationClassNamesForInterface</strong>(string $interfaceName)
         </code>
@@ -1852,7 +1847,7 @@ implementation was found in the package defining the interface, false is returne
             </div>
                     <div class="method-item">
                     <h3 id="method_getAllSubClassNamesForClass">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L337">at line 337</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L332">at line 332</a></div>
         <code>                    array
     <strong>getAllSubClassNamesForClass</strong>(string $className)
         </code>
@@ -1911,7 +1906,7 @@ implementation was found in the package defining the interface, false is returne
             </div>
                     <div class="method-item">
                     <h3 id="method_getClassNamesByAnnotation">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L350">at line 350</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L345">at line 345</a></div>
         <code>                    array
     <strong>getClassNamesByAnnotation</strong>(string $annotationClassName)
         </code>
@@ -1954,7 +1949,7 @@ annotation. If no classes were found, an empty array is returned.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isClassAnnotatedWith">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L365">at line 365</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L360">at line 360</a></div>
         <code>                    bool
     <strong>isClassAnnotatedWith</strong>(string $className, string $annotationClassName)
         </code>
@@ -2001,7 +1996,7 @@ annotation. If no classes were found, an empty array is returned.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getClassAnnotations">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L387">at line 387</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L382">at line 382</a></div>
         <code>                    array
     <strong>getClassAnnotations</strong>(string $className, <abbr title="Neos\Flow\Reflection\string|null">string|null</abbr> $annotationClassName = null)
         </code>
@@ -2065,7 +2060,7 @@ annotation. If no classes were found, an empty array is returned.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getClassAnnotation">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L422">at line 422</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L417">at line 417</a></div>
         <code>                    object|null
     <strong>getClassAnnotation</strong>(string $className, string $annotationClassName)
         </code>
@@ -2130,7 +2125,7 @@ get the first instance of them.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isClassImplementationOf">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L440">at line 440</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L435">at line 435</a></div>
         <code>                    bool
     <strong>isClassImplementationOf</strong>(string $className, string $interfaceName)
         </code>
@@ -2194,7 +2189,7 @@ get the first instance of them.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isClassAbstract">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L459">at line 459</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L452">at line 452</a></div>
         <code>                    bool
     <strong>isClassAbstract</strong>(string $className)
         </code>
@@ -2253,7 +2248,7 @@ get the first instance of them.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isClassFinal">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L474">at line 474</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L467">at line 467</a></div>
         <code>                    bool
     <strong>isClassFinal</strong>(string $className)
         </code>
@@ -2312,7 +2307,7 @@ get the first instance of them.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isClassReadonly">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L490">at line 490</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L483">at line 483</a></div>
         <code>                    bool
     <strong>isClassReadonly</strong>(string $className)
         </code>
@@ -2371,7 +2366,7 @@ get the first instance of them.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isClassUnconfigurable">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L501">at line 501</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L494">at line 494</a></div>
         <code>                    bool
     <strong>isClassUnconfigurable</strong>(string $className)
         </code>
@@ -2413,7 +2408,7 @@ get the first instance of them.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getClassesContainingMethodsAnnotatedWith">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L514">at line 514</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L507">at line 507</a></div>
         <code>                    array
     <strong>getClassesContainingMethodsAnnotatedWith</strong>(string $annotationClassName)
         </code>
@@ -2456,7 +2451,7 @@ with the given annotation class</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getMethodsAnnotatedWith">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L528">at line 528</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L521">at line 521</a></div>
         <code>                    array
     <strong>getMethodsAnnotatedWith</strong>(string $className, string $annotationClassName)
         </code>
@@ -2503,7 +2498,7 @@ with the given annotation class</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isMethodFinal">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L547">at line 547</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L540">at line 540</a></div>
         <code>                    bool
     <strong>isMethodFinal</strong>(string $className, string $methodName)
         </code>
@@ -2567,7 +2562,7 @@ with the given annotation class</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isMethodStatic">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L562">at line 562</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L555">at line 555</a></div>
         <code>                    bool
     <strong>isMethodStatic</strong>(string $className, string $methodName)
         </code>
@@ -2631,7 +2626,7 @@ with the given annotation class</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isMethodPublic">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L575">at line 575</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L568">at line 568</a></div>
         <code>                    bool
     <strong>isMethodPublic</strong>(string $className, string $methodName)
         </code>
@@ -2696,7 +2691,7 @@ with the given annotation class</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isMethodProtected">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L588">at line 588</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L581">at line 581</a></div>
         <code>                    bool
     <strong>isMethodProtected</strong>(string $className, string $methodName)
         </code>
@@ -2761,7 +2756,7 @@ with the given annotation class</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isMethodPrivate">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L601">at line 601</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L594">at line 594</a></div>
         <code>                    bool
     <strong>isMethodPrivate</strong>(string $className, string $methodName)
         </code>
@@ -2826,7 +2821,7 @@ with the given annotation class</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isMethodTaggedWith">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L613">at line 613</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L606">at line 606</a></div>
         <code>                    bool
     <strong>isMethodTaggedWith</strong>(string $className, string $methodName, string $tag)
         </code>
@@ -2887,7 +2882,7 @@ with the given annotation class</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isAttributeIgnored">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L627">at line 627</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L620">at line 620</a></div>
         <code>                    bool
     <strong>isAttributeIgnored</strong>(string $attributeName)
         </code>
@@ -2929,7 +2924,7 @@ with the given annotation class</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isMethodAnnotatedWith">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L644">at line 644</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L637">at line 637</a></div>
         <code>                    bool
     <strong>isMethodAnnotatedWith</strong>(string $className, string $methodName, string $annotationClassName)
         </code>
@@ -2990,7 +2985,7 @@ with the given annotation class</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getMethodAnnotations">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L660">at line 660</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L653">at line 653</a></div>
         <code>                    array
     <strong>getMethodAnnotations</strong>(string $className, string $methodName, <abbr title="Neos\Flow\Reflection\string|null">string|null</abbr> $annotationClassName = null)
         </code>
@@ -3051,7 +3046,7 @@ with the given annotation class</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getMethodAnnotation">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L703">at line 703</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L696">at line 696</a></div>
         <code>                    object|null
     <strong>getMethodAnnotation</strong>(string $className, string $methodName, string $annotationClassName)
         </code>
@@ -3113,7 +3108,7 @@ get the first instance of them.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getClassPropertyNames">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L723">at line 723</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L716">at line 716</a></div>
         <code>                    array
     <strong>getClassPropertyNames</strong>(string $className)
         </code>
@@ -3172,7 +3167,7 @@ get the first instance of them.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasMethod">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L738">at line 738</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L731">at line 731</a></div>
         <code>                    bool
     <strong>hasMethod</strong>(string $className, string $methodName)
         </code>
@@ -3236,7 +3231,7 @@ get the first instance of them.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getMethodTagsValues">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L750">at line 750</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L743">at line 743</a></div>
         <code>                    array
     <strong>getMethodTagsValues</strong>(string $className, string $methodName)
         <small><span class="label label-danger">deprecated</span></small></code>
@@ -3299,7 +3294,7 @@ get the first instance of them.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getMethodParameters">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L771">at line 771</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L764">at line 764</a></div>
         <code>                    array
     <strong>getMethodParameters</strong>(string $className, string $methodName)
         </code>
@@ -3364,7 +3359,7 @@ additional information about the parameter position, type hint etc.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getMethodDeclaredReturnType">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L790">at line 790</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L783">at line 783</a></div>
         <code>                    string|null
     <strong>getMethodDeclaredReturnType</strong>(string $className, string $methodName)
         </code>
@@ -3428,7 +3423,7 @@ additional information about the parameter position, type hint etc.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPropertyNamesByTag">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L808">at line 808</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L801">at line 801</a></div>
         <code>                    array
     <strong>getPropertyNamesByTag</strong>(string $className, string $tag)
         </code>
@@ -3492,7 +3487,7 @@ additional information about the parameter position, type hint etc.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPropertyTagsValues">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L836">at line 836</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L827">at line 827</a></div>
         <code>                    array
     <strong>getPropertyTagsValues</strong>(string $className, string $propertyName)
         </code>
@@ -3556,7 +3551,7 @@ additional information about the parameter position, type hint etc.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPropertyTagValues">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L859">at line 859</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L846">at line 846</a></div>
         <code>                    array
     <strong>getPropertyTagValues</strong>(string $className, string $propertyName, string $tag)
         </code>
@@ -3625,7 +3620,7 @@ additional information about the parameter position, type hint etc.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPropertyType">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L879">at line 879</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L862">at line 862</a></div>
         <code>                    string|null
     <strong>getPropertyType</strong>(string $className, string $propertyName)
         </code>
@@ -3689,7 +3684,7 @@ additional information about the parameter position, type hint etc.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isPropertyPrivate">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L894">at line 894</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L877">at line 877</a></div>
         <code>                    bool
     <strong>isPropertyPrivate</strong>(string $className, string $propertyName)
         </code>
@@ -3754,7 +3749,7 @@ additional information about the parameter position, type hint etc.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isPropertyTaggedWith">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L913">at line 913</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L895">at line 895</a></div>
         <code>                    bool
     <strong>isPropertyTaggedWith</strong>(string $className, string $propertyName, string $tag)
         </code>
@@ -3823,7 +3818,7 @@ additional information about the parameter position, type hint etc.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isPropertyAnnotatedWith">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L931">at line 931</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L913">at line 913</a></div>
         <code>                    bool
     <strong>isPropertyAnnotatedWith</strong>(string $className, string $propertyName, string $annotationClassName)
         </code>
@@ -3892,7 +3887,7 @@ additional information about the parameter position, type hint etc.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPropertyNamesByAnnotation">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L949">at line 949</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L931">at line 931</a></div>
         <code>                    array
     <strong>getPropertyNamesByAnnotation</strong>(string $className, string $annotationClassName)
         </code>
@@ -3957,7 +3952,7 @@ specified annotation. If no properties were found, an empty array is returned.</
             </div>
                     <div class="method-item">
                     <h3 id="method_getPropertyAnnotations">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L978">at line 978</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L958">at line 958</a></div>
         <code>                    array
     <strong>getPropertyAnnotations</strong>(string $className, string $propertyName, string $annotationClassName = null)
         </code>
@@ -4026,7 +4021,7 @@ specified annotation. If no properties were found, an empty array is returned.</
             </div>
                     <div class="method-item">
                     <h3 id="method_getPropertyAnnotation">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1006">at line 1006</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L986">at line 986</a></div>
         <code>                    object|null
     <strong>getPropertyAnnotation</strong>(string $className, string $propertyName, string $annotationClassName)
         </code>
@@ -4096,7 +4091,7 @@ get the first instance of them.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getClassSchema">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1021">at line 1021</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1001">at line 1001</a></div>
         <code>                    <abbr title="Neos\Flow\Reflection\Neos\Flow\Reflection\ClassSchema">ClassSchema</abbr>|null
     <strong>getClassSchema</strong>(<abbr title="Neos\Flow\Reflection\string|object">string|object</abbr> $classNameOrObject)
         </code>
@@ -4138,7 +4133,7 @@ get the first instance of them.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_prepareClassReflectionForUsage">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1050">at line 1050</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1030">at line 1030</a></div>
         <code>            protected        string
     <strong>prepareClassReflectionForUsage</strong>(string $className)
         </code>
@@ -4197,7 +4192,7 @@ get the first instance of them.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_reflectEmergedClasses">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1074">at line 1074</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1054">at line 1054</a></div>
         <code>            protected        void
     <strong>reflectEmergedClasses</strong>()
         </code>
@@ -4264,7 +4259,7 @@ this service, these classes will be reflected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isTagIgnored">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1123">at line 1123</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1098">at line 1098</a></div>
         <code>            protected        bool
     <strong>isTagIgnored</strong>(string $tagName)
         </code>
@@ -4306,7 +4301,7 @@ this service, these classes will be reflected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_reflectClass">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1144">at line 1144</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1119">at line 1119</a></div>
         <code>            protected        void
     <strong>reflectClass</strong>(string $className)
         </code>
@@ -4365,7 +4360,7 @@ this service, these classes will be reflected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_reflectClassProperty">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1212">at line 1212</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1187">at line 1187</a></div>
         <code>                    int
     <strong>reflectClassProperty</strong>(string $className, <a href="../../../Neos/Flow/Reflection/PropertyReflection.html"><abbr title="Neos\Flow\Reflection\PropertyReflection">PropertyReflection</abbr></a> $property)
         </code>
@@ -4413,7 +4408,7 @@ this service, these classes will be reflected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_reflectPropertyTag">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1254">at line 1254</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1229">at line 1229</a></div>
         <code>            protected        array|null
     <strong>reflectPropertyTag</strong>(string $className, <a href="../../../Neos/Flow/Reflection/PropertyReflection.html"><abbr title="Neos\Flow\Reflection\PropertyReflection">PropertyReflection</abbr></a> $property, string $tagName, array $tagValues)
         </code>
@@ -4471,7 +4466,7 @@ this service, these classes will be reflected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_addParentClass">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1279">at line 1279</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1254">at line 1254</a></div>
         <code>            protected        void
     <strong>addParentClass</strong>(string $className, <a href="../../../Neos/Flow/Reflection/ClassReflection.html"><abbr title="Neos\Flow\Reflection\ClassReflection">ClassReflection</abbr></a> $parentClass)
         </code>
@@ -4536,7 +4531,7 @@ this service, these classes will be reflected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_addImplementedInterface">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1293">at line 1293</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1268">at line 1268</a></div>
         <code>            protected        void
     <strong>addImplementedInterface</strong>(string $className, <a href="../../../Neos/Flow/Reflection/ClassReflection.html"><abbr title="Neos\Flow\Reflection\ClassReflection">ClassReflection</abbr></a> $interface)
         </code>
@@ -4601,7 +4596,7 @@ this service, these classes will be reflected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_reflectClassMethod">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1312">at line 1312</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1287">at line 1287</a></div>
         <code>            protected        void
     <strong>reflectClassMethod</strong>(string $className, <a href="../../../Neos/Flow/Reflection/MethodReflection.html"><abbr title="Neos\Flow\Reflection\MethodReflection">MethodReflection</abbr></a> $method)
         </code>
@@ -4658,7 +4653,7 @@ this service, these classes will be reflected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_extractVisibility">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1359">at line 1359</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1334">at line 1334</a></div>
         <code>            protected        int
     <strong>extractVisibility</strong>(<abbr title="Neos\Flow\Reflection\MethodReflection|Neos\Flow\Reflection\PropertyReflection">PropertyReflection</abbr> $reflection)
         </code>
@@ -4701,7 +4696,7 @@ this service, these classes will be reflected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_reflectClassMethodParameter">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1371">at line 1371</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1346">at line 1346</a></div>
         <code>            protected        void
     <strong>reflectClassMethodParameter</strong>(string $className, <a href="../../../Neos/Flow/Reflection/MethodReflection.html"><abbr title="Neos\Flow\Reflection\MethodReflection">MethodReflection</abbr></a> $method, <a href="../../../Neos/Flow/Reflection/ParameterReflection.html"><abbr title="Neos\Flow\Reflection\ParameterReflection">ParameterReflection</abbr></a> $parameter)
         </code>
@@ -4754,7 +4749,7 @@ this service, these classes will be reflected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_expandType">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1407">at line 1407</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1382">at line 1382</a></div>
         <code>            protected        string
     <strong>expandType</strong>(<a href="../../../Neos/Flow/Reflection/ClassReflection.html"><abbr title="Neos\Flow\Reflection\ClassReflection">ClassReflection</abbr></a> $class, string $type)
         </code>
@@ -4801,7 +4796,7 @@ this service, these classes will be reflected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getParentClasses">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1461">at line 1461</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1436">at line 1436</a></div>
         <code>            protected        array
     <strong>getParentClasses</strong>(<a href="../../../Neos/Flow/Reflection/ClassReflection.html"><abbr title="Neos\Flow\Reflection\ClassReflection">ClassReflection</abbr></a> $class, array $parentClasses = [])
         </code>
@@ -4848,7 +4843,7 @@ this service, these classes will be reflected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_buildClassSchemata">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1484">at line 1484</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1459">at line 1459</a></div>
         <code>            protected        void
     <strong>buildClassSchemata</strong>(array $classNames)
         </code>
@@ -4923,7 +4918,7 @@ this service, these classes will be reflected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_buildClassSchema">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1504">at line 1504</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1479">at line 1479</a></div>
         <code>            protected        <a href="../../../Neos/Flow/Reflection/ClassSchema.html"><abbr title="Neos\Flow\Reflection\ClassSchema">ClassSchema</abbr></a>
     <strong>buildClassSchema</strong>(string $className)
         </code>
@@ -4995,7 +4990,7 @@ this service, these classes will be reflected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_addPropertiesToClassSchema">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1547">at line 1547</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1522">at line 1522</a></div>
         <code>            protected        void
     <strong>addPropertiesToClassSchema</strong>(<a href="../../../Neos/Flow/Reflection/ClassSchema.html"><abbr title="Neos\Flow\Reflection\ClassSchema">ClassSchema</abbr></a> $classSchema)
         </code>
@@ -5063,7 +5058,7 @@ this service, these classes will be reflected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_evaluateClassPropertyAnnotationsForSchema">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1579">at line 1579</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1554">at line 1554</a></div>
         <code>            protected        bool
     <strong>evaluateClassPropertyAnnotationsForSchema</strong>(<a href="../../../Neos/Flow/Reflection/ClassSchema.html"><abbr title="Neos\Flow\Reflection\ClassSchema">ClassSchema</abbr></a> $classSchema, string $propertyName)
         </code>
@@ -5136,7 +5131,7 @@ this service, these classes will be reflected.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_completeRepositoryAssignments">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1636">at line 1636</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1611">at line 1611</a></div>
         <code>            protected        void
     <strong>completeRepositoryAssignments</strong>()
         </code>
@@ -5194,7 +5189,7 @@ assigned yet, that will be done.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_makeChildClassesAggregateRoot">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1672">at line 1672</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1647">at line 1647</a></div>
         <code>            protected        void
     <strong>makeChildClassesAggregateRoot</strong>(<a href="../../../Neos/Flow/Reflection/ClassSchema.html"><abbr title="Neos\Flow\Reflection\ClassSchema">ClassSchema</abbr></a> $classSchema)
         </code>
@@ -5258,7 +5253,7 @@ subclasses, unless they are aggregate root already.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_ensureAggregateRootInheritanceChainConsistency">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1693">at line 1693</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1668">at line 1668</a></div>
         <code>            protected        void
     <strong>ensureAggregateRootInheritanceChainConsistency</strong>()
         </code>
@@ -5312,7 +5307,7 @@ have a repository assigned up to the tip of their hierarchy.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_checkValueObjectRequirements">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1718">at line 1718</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1693">at line 1693</a></div>
         <code>            protected        void
     <strong>checkValueObjectRequirements</strong>(string $className)
         </code>
@@ -5363,7 +5358,7 @@ have a repository assigned up to the tip of their hierarchy.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_convertParameterDataToArray">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1741">at line 1741</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1716">at line 1716</a></div>
         <code>            protected        array
     <strong>convertParameterDataToArray</strong>(array $parametersInformation)
         </code>
@@ -5406,7 +5401,7 @@ a human-friendly array with speaking indexes.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_convertParameterReflectionToArray">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1766">at line 1766</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1741">at line 1741</a></div>
         <code>            protected        array
     <strong>convertParameterReflectionToArray</strong>(<a href="../../../Neos/Flow/Reflection/ParameterReflection.html"><abbr title="Neos\Flow\Reflection\ParameterReflection">ParameterReflection</abbr></a> $parameter, <a href="../../../Neos/Flow/Reflection/MethodReflection.html"><abbr title="Neos\Flow\Reflection\MethodReflection">MethodReflection</abbr></a> $method)
         </code>
@@ -5453,7 +5448,7 @@ a human-friendly array with speaking indexes.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_forgetChangedClasses">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1823">at line 1823</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1798">at line 1798</a></div>
         <code>            protected        void
     <strong>forgetChangedClasses</strong>()
         </code>
@@ -5503,7 +5498,7 @@ accordingly.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_saveToCache">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1932">at line 1932</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1899">at line 1899</a></div>
         <code>                    void
     <strong>saveToCache</strong>()
         </code>
@@ -5545,7 +5540,7 @@ shutdown sequence.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_cleanClassName">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1978">at line 1978</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1935">at line 1935</a></div>
         <code>            protected        string
     <strong>cleanClassName</strong>(string $className)
         </code>
@@ -5587,7 +5582,7 @@ shutdown sequence.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_produceCacheIdentifierFromClassName">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1986">at line 1986</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1943">at line 1943</a></div>
         <code>            protected        string
     <strong>produceCacheIdentifierFromClassName</strong>(string $className)
         </code>
@@ -5629,7 +5624,7 @@ shutdown sequence.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_log">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1994">at line 1994</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/8.4/Neos.Flow/Classes/Reflection/ReflectionService.php#L1951">at line 1951</a></div>
         <code>            protected        void
     <strong>log</strong>(string $message, string $severity = LogLevel::INFO, array $additionalData = [])
         </code>
