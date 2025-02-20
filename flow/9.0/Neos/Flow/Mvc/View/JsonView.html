@@ -97,15 +97,19 @@
             <p>
                 <small><span class="label label-danger">deprecated</span></small>
                             <tr>
-                    <td>please</td>
-                    <td>use json_encode instead</td>
+                    <td>with</td>
+                    <td>Flow 9.0 please use the native json_encode instead, without relying on the flow object conversion magic</td>
                 </tr>
                     </p>
     
         
 
             <div class="description">
-            <p><p>A JSON view</p></p>                    </div>
+            <p><p>A JSON view</p></p>            <p><p>please return a new response instead in your controller and set the Content-Type to application/json</p>
+<pre><code class="language-php">public function myAction()
+{
+    return new Response(body: json_encode($data, JSON_THROW_ON_ERROR), headers: ['Content-Type' =&gt; 'application/json']);
+}</code></pre></p>        </div>
             
                 <h2>Traits</h2>
 
@@ -881,7 +885,7 @@ when using the action controller the request is directly available at "request"<
             </div>
                     <div class="method-item">
                     <h3 id="method_setVariablesToRender">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/View/JsonView.php#L178">at line 178</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/View/JsonView.php#L187">at line 187</a></div>
         <code>                    void
     <strong>setVariablesToRender</strong>(array $variablesToRender)
         </code>
@@ -924,7 +928,7 @@ By default only the variable 'value' will be rendered</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setConfiguration">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/View/JsonView.php#L187">at line 187</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/View/JsonView.php#L196">at line 196</a></div>
         <code>                    void
     <strong>setConfiguration</strong>(array $configuration)
         </code>
@@ -967,7 +971,7 @@ By default only the variable 'value' will be rendered</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_render">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/View/JsonView.php#L200">at line 200</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/View/JsonView.php#L209">at line 209</a></div>
         <code>                    <abbr title="Psr\Http\Message\ResponseInterface|Psr\Http\Message\StreamInterface">StreamInterface</abbr>
     <strong>render</strong>()
         </code>
@@ -1001,7 +1005,7 @@ the result.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_renderArray">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/View/JsonView.php#L217">at line 217</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/View/JsonView.php#L226">at line 226</a></div>
         <code>            protected        array|string|int|float|null
     <strong>renderArray</strong>()
         </code>
@@ -1034,7 +1038,7 @@ array.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_transformValue">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/View/JsonView.php#L241">at line 241</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/View/JsonView.php#L250">at line 250</a></div>
         <code>            protected        array|string|int|float|null
     <strong>transformValue</strong>(mixed $value, array $configuration)
         </code>
@@ -1082,7 +1086,7 @@ supplied configuration.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_transformObject">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/View/JsonView.php#L276">at line 276</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/View/JsonView.php#L285">at line 285</a></div>
         <code>            protected        array|string
     <strong>transformObject</strong>(object $object, array $configuration)
         </code>

@@ -115,11 +115,33 @@ as it directly translates to one: {[\Neos\Flow\Mvc\ActionResponse::buildHttpResp
 <p>For backwards compatibility, each controller will might now manage an own instance of the action response
 via <code>$this-&gt;response</code> {<a href="../../../Neos/Flow/Mvc/Controller/AbstractController.html">\Neos\Flow\Mvc\Controller\AbstractController::$response}</a> and pass it along to places.
 But this behaviour is deprecated!</p>
-<p>Instead, you can directly return a PSR repose {\GuzzleHttp\Psr7\Response} from a controller:</p>
+<p>Instead of modifying the repose via $this-&gt;response like</p>
+<ul>
+<li>$this-&gt;response-&gt;addHttpHeader</li>
+<li>$this-&gt;response-&gt;setHttpHeader</li>
+<li>$this-&gt;response-&gt;setContentType</li>
+<li>$this-&gt;response-&gt;setStatusCode</li>
+</ul>
+<p>you can directly return a PSR repose {\GuzzleHttp\Psr7\Response} from a controller.</p>
+<p><em>set status code and contents and additional header:</em></p>
 <pre><code class="language-php">public function myAction()
 {
     return (new Response(status: 200, body: $output))
         -&gt;withAddedHeader('X-My-Header', 'foo');
+}</code></pre>
+<p><em>modify a view response with additional header:</em></p>
+<pre><code class="language-php">public function myAction()
+{
+    $response = $this-&gt;view-&gt;render();
+    if (!$response instanceof Response) {
+        $response = new Response(body: $response);
+    }
+    return $response-&gt;withAddedHeader('X-My-Header', 'foo');
+}</code></pre>
+<p><em>render json without using the legacy json view:</em></p>
+<pre><code class="language-php">public function myAction()
+{
+    return new Response(body: json_encode($data, JSON_THROW_ON_ERROR), headers: ['Content-Type' =&gt; 'application/json']);
 }</code></pre></p>        </div>
             
         
@@ -395,7 +417,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L86">at line 86</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L117">at line 117</a></div>
         <code>                    
     <strong>__construct</strong>()
         </code>
@@ -419,7 +441,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_setContent">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L96">at line 96</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L127">at line 127</a></div>
         <code>                    void
     <strong>setContent</strong>(string|<abbr title="Psr\Http\Message\StreamInterface">StreamInterface</abbr> $content)
         <small><span class="label label-danger">deprecated</span></small></code>
@@ -469,7 +491,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_setContentType">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L112">at line 112</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L143">at line 143</a></div>
         <code>                    void
     <strong>setContentType</strong>(string $contentType)
         <small><span class="label label-danger">deprecated</span></small></code>
@@ -518,7 +540,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_setRedirectUri">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L125">at line 125</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L156">at line 156</a></div>
         <code>                    void
     <strong>setRedirectUri</strong>(<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr> $uri, int $statusCode = 303)
         <small><span class="label label-danger">deprecated</span></small></code>
@@ -572,7 +594,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_setStatusCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L139">at line 139</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L170">at line 170</a></div>
         <code>                    void
     <strong>setStatusCode</strong>(int $statusCode)
         <small><span class="label label-danger">deprecated</span></small></code>
@@ -621,7 +643,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_setCookie">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L151">at line 151</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L182">at line 182</a></div>
         <code>                    void
     <strong>setCookie</strong>(<a href="../../../Neos/Flow/Http/Cookie.html"><abbr title="Neos\Flow\Http\Cookie">Cookie</abbr></a> $cookie)
         <small><span class="label label-danger">deprecated</span></small></code>
@@ -671,7 +693,7 @@ This leads to a corresponding <code>Set-Cookie</code> header to be set in the HT
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteCookie">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L163">at line 163</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L194">at line 194</a></div>
         <code>                    void
     <strong>deleteCookie</strong>(string $cookieName)
         <small><span class="label label-danger">deprecated</span></small></code>
@@ -721,7 +743,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_setHttpHeader">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L179">at line 179</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L210">at line 210</a></div>
         <code>                    void
     <strong>setHttpHeader</strong>(string $headerName, array|string|<a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a> $headerValue)
         </code>
@@ -768,7 +790,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_addHttpHeader">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L199">at line 199</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L230">at line 230</a></div>
         <code>                    void
     <strong>addHttpHeader</strong>(string $headerName, array|string|<a target="_blank" rel="noopener" href="https://www.php.net/DateTime">DateTime</a> $headerValue)
         </code>
@@ -815,7 +837,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_getHttpHeader">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L215">at line 215</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L246">at line 246</a></div>
         <code>                    array|string|null
     <strong>getHttpHeader</strong>(string $headerName)
         </code>
@@ -857,7 +879,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_getContent">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L227">at line 227</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L258">at line 258</a></div>
         <code>                    string
     <strong>getContent</strong>()
         </code>
@@ -890,7 +912,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_getRedirectUri">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L237">at line 237</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L268">at line 268</a></div>
         <code>                    <abbr title="Neos\Flow\Mvc\Psr\Http\Message\UriInterface">UriInterface</abbr>|null
     <strong>getRedirectUri</strong>()
         </code>
@@ -923,7 +945,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_getStatusCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L245">at line 245</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L276">at line 276</a></div>
         <code>                    int
     <strong>getStatusCode</strong>()
         </code>
@@ -956,7 +978,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_hasContentType">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L250">at line 250</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L281">at line 281</a></div>
         <code>                    bool
     <strong>hasContentType</strong>()
         </code>
@@ -989,7 +1011,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_getContentType">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L258">at line 258</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L289">at line 289</a></div>
         <code>                    string
     <strong>getContentType</strong>()
         </code>
@@ -1022,7 +1044,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_replaceHttpResponse">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L269">at line 269</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L300">at line 300</a></div>
         <code>                    void
     <strong>replaceHttpResponse</strong>(<abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr> $response)
         </code>
@@ -1065,7 +1087,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_mergeIntoParentResponse">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L278">at line 278</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L309">at line 309</a></div>
         <code>                    <a href="../../../Neos/Flow/Mvc/ActionResponse.html"><abbr title="Neos\Flow\Mvc\ActionResponse">ActionResponse</abbr></a>
     <strong>mergeIntoParentResponse</strong>(<a href="../../../Neos/Flow/Mvc/ActionResponse.html"><abbr title="Neos\Flow\Mvc\ActionResponse">ActionResponse</abbr></a> $actionResponse)
         </code>
@@ -1108,7 +1130,7 @@ This leads to a corresponding <code>Set-Cookie</code> header with an expired Coo
             </div>
                     <div class="method-item">
                     <h3 id="method_buildHttpResponse">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L319">at line 319</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Flow/Classes/Mvc/ActionResponse.php#L350">at line 350</a></div>
         <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>
     <strong>buildHttpResponse</strong>()
         </code>
