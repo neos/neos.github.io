@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Flow\Aop\Pointcut\PointcutExpressionParser | Flow Framework</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Flow Framework (9.1)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Flow_Aop_Pointcut_PointcutExpressionParser" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Flow Framework</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow.html">Flow</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Aop.html">Aop</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Flow/Aop/Pointcut.html">Pointcut</a></li><li class="backslash">\</li><li>PointcutExpressionParser</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>PointcutExpressionParser    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>PointcutExpressionParser</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php">View source</a>)
+</p>
+
+        
+    
+        
+
+            <div class="description">
+            <p><p>The pointcut expression parser parses the definition of the place and circumstances
+where advices can be inserted later on. The input of the parse() function is a string
+from a pointcut- or advice annotation and returns a pointcut filter composite.</p></p>                    </div>
+            
+        
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_SPLITBYOPERATOR
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_MATCHPOINTCUTDESIGNATOR
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_MATCHVISIBILITYMODIFIER
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_MATCHRUNTIMEEVALUATIONSDEFINITION
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_MATCHRUNTIMEEVALUATIONSVALUELIST
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                                                                                        PATTERN_MATCHMETHODNAMEANDARGUMENTS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_proxyClassBuilder">
+                                        protected                                        <a href="../../../../Neos/Flow/Aop/Builder/ProxyClassBuilder.html"><abbr title="Neos\Flow\Aop\Builder\ProxyClassBuilder">ProxyClassBuilder</abbr></a>
+                                                                                
+                                    </td>
+                <td>$proxyClassBuilder</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_reflectionService">
+                                        protected                                        <a href="../../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$reflectionService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_objectManager">
+                                        protected                                        <a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$objectManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_sourceHint">
+                                        protected                                        string
+                                                                                
+                                    </td>
+                <td>$sourceHint</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectProxyClassBuilder">injectProxyClassBuilder</a>(<a href="../../../../Neos/Flow/Aop/Builder/ProxyClassBuilder.html"><abbr title="Neos\Flow\Aop\Builder\ProxyClassBuilder">ProxyClassBuilder</abbr></a> $proxyClassBuilder)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectReflectionService">injectReflectionService</a>(<a href="../../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a> $reflectionService)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_injectObjectManager">injectObjectManager</a>(<a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a> $objectManager)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parse">parse</a>(string $pointcutExpression, string $sourceHint)
+        
+                                            <p><p>Parses a string pointcut expression and returns the pointcut
+objects accordingly</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseDesignatorClassAnnotatedWith">parseDesignatorClassAnnotatedWith</a>(string $operator, string $annotationPattern, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        
+                                            <p><p>Takes a class annotation filter pattern and adds a so configured class annotation filter to the
+filter composite object.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseDesignatorClass">parseDesignatorClass</a>(string $operator, string $classPattern, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        
+                                            <p><p>Takes a class filter pattern and adds a so configured class filter to the
+filter composite object.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseDesignatorMethodAnnotatedWith">parseDesignatorMethodAnnotatedWith</a>(string $operator, string $annotationPattern, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        
+                                            <p><p>Takes a method annotation filter pattern and adds a so configured method annotation filter to the
+filter composite object.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseAnnotationPattern">parseAnnotationPattern</a>(string $annotationPattern, array $annotationPropertyConstraints)
+        
+                                            <p><p>Parse an annotation pattern and adjust $annotationPattern and $annotationPropertyConstraints as
+needed.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseDesignatorMethod">parseDesignatorMethod</a>(string $operator, string $signaturePattern, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        
+                                            <p><p>Splits the parameters of the pointcut designator &quot;method&quot; into a class
+and a method part and adds the appropriately configured filters to the
+filter composite object.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseDesignatorWithin">parseDesignatorWithin</a>(string $operator, string $signaturePattern, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        
+                                            <p><p>Adds a class type filter to the pointcut filter composite</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseDesignatorPointcut">parseDesignatorPointcut</a>(string $operator, string $pointcutExpression, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        
+                                            <p><p>Splits the value of the pointcut designator &quot;pointcut&quot; into an aspect
+class- and a pointcut method part and adds the appropriately configured
+filter to the composite object.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseDesignatorFilter">parseDesignatorFilter</a>(string $operator, string $filterObjectName, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        
+                                            <p><p>Adds a custom filter to the pointcut filter composite</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseDesignatorSetting">parseDesignatorSetting</a>(string $operator, string $configurationPath, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        
+                                            <p><p>Adds a setting filter to the pointcut filter composite</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseRuntimeEvaluations">parseRuntimeEvaluations</a>(string $operator, string $runtimeEvaluations, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        
+                                            <p><p>Adds runtime evaluations to the pointcut filter composite</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getSubstringBetweenParentheses">getSubstringBetweenParentheses</a>(string $string)
+        
+                                            <p><p>Returns the substring of $string which is enclosed by parentheses
+of the first level.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getVisibilityFromSignaturePattern">getVisibilityFromSignaturePattern</a>(string $signaturePattern)
+        
+                                            <p><p>Parses the signature pattern and returns the visibility modifier if any. If a modifier
+was found, it will be removed from the $signaturePattern.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getArgumentConstraintsFromMethodArgumentsPattern">getArgumentConstraintsFromMethodArgumentsPattern</a>(string $methodArgumentsPattern)
+        
+                                            <p><p>Parses the method arguments pattern and returns the corresponding constraints array</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getRuntimeEvaluationConditionsFromEvaluateString">getRuntimeEvaluationConditionsFromEvaluateString</a>(string $evaluateString)
+        
+                                            <p><p>Parses the evaluate string for runtime evaluations and returns the corresponding conditions array</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_injectProxyClassBuilder">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L89">at line 89</a></div>
+        <code>                    void
+    <strong>injectProxyClassBuilder</strong>(<a href="../../../../Neos/Flow/Aop/Builder/ProxyClassBuilder.html"><abbr title="Neos\Flow\Aop\Builder\ProxyClassBuilder">ProxyClassBuilder</abbr></a> $proxyClassBuilder)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Builder/ProxyClassBuilder.html"><abbr title="Neos\Flow\Aop\Builder\ProxyClassBuilder">ProxyClassBuilder</abbr></a></td>
+                <td>$proxyClassBuilder</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectReflectionService">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L98">at line 98</a></div>
+        <code>                    void
+    <strong>injectReflectionService</strong>(<a href="../../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a> $reflectionService)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Reflection/ReflectionService.html"><abbr title="Neos\Flow\Reflection\ReflectionService">ReflectionService</abbr></a></td>
+                <td>$reflectionService</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_injectObjectManager">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L107">at line 107</a></div>
+        <code>                    void
+    <strong>injectObjectManager</strong>(<a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a> $objectManager)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/ObjectManagerInterface.html"><abbr title="Neos\Flow\ObjectManagement\ObjectManagerInterface">ObjectManagerInterface</abbr></a></td>
+                <td>$objectManager</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parse">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L122">at line 122</a></div>
+        <code>                    <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a>
+    <strong>parse</strong>(string $pointcutExpression, string $sourceHint)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses a string pointcut expression and returns the pointcut
+objects accordingly</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$pointcutExpression</td>
+                <td><p>The expression defining the pointcut</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$sourceHint</td>
+                <td><p>A message giving a hint on where the expression was defined. This is used in error messages.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a></td>
+            <td><p>A composite of class-filters, method-filters and pointcuts</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Exception/InvalidPointcutExpressionException.html"><abbr title="Neos\Flow\Aop\Exception\InvalidPointcutExpressionException">InvalidPointcutExpressionException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Exception.html"><abbr title="Neos\Flow\Aop\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseDesignatorClassAnnotatedWith">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L183">at line 183</a></div>
+        <code>            protected        void
+    <strong>parseDesignatorClassAnnotatedWith</strong>(string $operator, string $annotationPattern, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Takes a class annotation filter pattern and adds a so configured class annotation filter to the
+filter composite object.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$operator</td>
+                <td><p>The operator</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$annotationPattern</td>
+                <td><p>The pattern expression as configuration for the class annotation filter</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a></td>
+                <td>$pointcutFilterComposite</td>
+                <td><p>An instance of the pointcut filter composite. The result (ie. the class annotation filter) will be added to this composite object.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseDesignatorClass">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L203">at line 203</a></div>
+        <code>            protected        void
+    <strong>parseDesignatorClass</strong>(string $operator, string $classPattern, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Takes a class filter pattern and adds a so configured class filter to the
+filter composite object.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$operator</td>
+                <td><p>The operator</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$classPattern</td>
+                <td><p>The pattern expression as configuration for the class filter</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a></td>
+                <td>$pointcutFilterComposite</td>
+                <td><p>An instance of the pointcut filter composite. The result (ie. the class filter) will be added to this composite object.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseDesignatorMethodAnnotatedWith">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L219">at line 219</a></div>
+        <code>            protected        void
+    <strong>parseDesignatorMethodAnnotatedWith</strong>(string $operator, string $annotationPattern, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Takes a method annotation filter pattern and adds a so configured method annotation filter to the
+filter composite object.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$operator</td>
+                <td><p>The operator</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$annotationPattern</td>
+                <td><p>The pattern expression as configuration for the method annotation filter</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a></td>
+                <td>$pointcutFilterComposite</td>
+                <td><p>An instance of the pointcut filter composite. The result (ie. the method annotation filter) will be added to this composite object.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseAnnotationPattern">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L238">at line 238</a></div>
+        <code>            protected        void
+    <strong>parseAnnotationPattern</strong>(string $annotationPattern, array $annotationPropertyConstraints)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parse an annotation pattern and adjust $annotationPattern and $annotationPropertyConstraints as
+needed.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$annotationPattern</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$annotationPropertyConstraints</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseDesignatorMethod">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L261">at line 261</a></div>
+        <code>            protected        void
+    <strong>parseDesignatorMethod</strong>(string $operator, string $signaturePattern, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Splits the parameters of the pointcut designator &quot;method&quot; into a class
+and a method part and adds the appropriately configured filters to the
+filter composite object.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$operator</td>
+                <td><p>The operator</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$signaturePattern</td>
+                <td><p>The pattern expression defining the class and method - the &quot;signature&quot;</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a></td>
+                <td>$pointcutFilterComposite</td>
+                <td><p>An instance of the pointcut filter composite. The result (ie. the class and method filter) will be added to this composite object.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Exception/InvalidPointcutExpressionException.html"><abbr title="Neos\Flow\Aop\Exception\InvalidPointcutExpressionException">InvalidPointcutExpressionException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseDesignatorWithin">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L306">at line 306</a></div>
+        <code>            protected        void
+    <strong>parseDesignatorWithin</strong>(string $operator, string $signaturePattern, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds a class type filter to the pointcut filter composite</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$operator</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$signaturePattern</td>
+                <td><p>The pattern expression defining the class type</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a></td>
+                <td>$pointcutFilterComposite</td>
+                <td><p>An instance of the pointcut filter composite. The result (ie. the class type filter) will be added to this composite object.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseDesignatorPointcut">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L324">at line 324</a></div>
+        <code>            protected        void
+    <strong>parseDesignatorPointcut</strong>(string $operator, string $pointcutExpression, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Splits the value of the pointcut designator &quot;pointcut&quot; into an aspect
+class- and a pointcut method part and adds the appropriately configured
+filter to the composite object.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$operator</td>
+                <td><p>The operator</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$pointcutExpression</td>
+                <td><p>The pointcut expression (value of the designator)</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a></td>
+                <td>$pointcutFilterComposite</td>
+                <td><p>An instance of the pointcut filter composite. The result (ie. the pointcut filter) will be added to this composite object.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Exception/InvalidPointcutExpressionException.html"><abbr title="Neos\Flow\Aop\Exception\InvalidPointcutExpressionException">InvalidPointcutExpressionException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseDesignatorFilter">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L344">at line 344</a></div>
+        <code>            protected        void
+    <strong>parseDesignatorFilter</strong>(string $operator, string $filterObjectName, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds a custom filter to the pointcut filter composite</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$operator</td>
+                <td><p>The operator</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$filterObjectName</td>
+                <td><p>Object Name of the custom filter (value of the designator)</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a></td>
+                <td>$pointcutFilterComposite</td>
+                <td><p>An instance of the pointcut filter composite. The result (ie. the custom filter) will be added to this composite object.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Exception/InvalidPointcutExpressionException.html"><abbr title="Neos\Flow\Aop\Exception\InvalidPointcutExpressionException">InvalidPointcutExpressionException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseDesignatorSetting">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L361">at line 361</a></div>
+        <code>            protected        void
+    <strong>parseDesignatorSetting</strong>(string $operator, string $configurationPath, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds a setting filter to the pointcut filter composite</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$operator</td>
+                <td><p>The operator</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$configurationPath</td>
+                <td><p>The path to the settings option, that should be used</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a></td>
+                <td>$pointcutFilterComposite</td>
+                <td><p>An instance of the pointcut filter composite. The result (ie. the custom filter) will be added to this composite object.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parseRuntimeEvaluations">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L379">at line 379</a></div>
+        <code>            protected        void
+    <strong>parseRuntimeEvaluations</strong>(string $operator, string $runtimeEvaluations, <a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a> $pointcutFilterComposite)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Adds runtime evaluations to the pointcut filter composite</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$operator</td>
+                <td><p>The operator</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$runtimeEvaluations</td>
+                <td><p>The runtime evaluations string</p></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Pointcut/PointcutFilterComposite.html"><abbr title="Neos\Flow\Aop\Pointcut\PointcutFilterComposite">PointcutFilterComposite</abbr></a></td>
+                <td>$pointcutFilterComposite</td>
+                <td><p>An instance of the pointcut filter composite. The result (ie. the custom filter) will be added to this composite object.</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSubstringBetweenParentheses">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L398">at line 398</a></div>
+        <code>            protected        string
+    <strong>getSubstringBetweenParentheses</strong>(string $string)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the substring of $string which is enclosed by parentheses
+of the first level.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$string</td>
+                <td><p>The string to parse</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td><p>The inner part between the first level of parentheses</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Exception/InvalidPointcutExpressionException.html"><abbr title="Neos\Flow\Aop\Exception\InvalidPointcutExpressionException">InvalidPointcutExpressionException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getVisibilityFromSignaturePattern">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L433">at line 433</a></div>
+        <code>            protected        string|null
+    <strong>getVisibilityFromSignaturePattern</strong>(string $signaturePattern)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses the signature pattern and returns the visibility modifier if any. If a modifier
+was found, it will be removed from the $signaturePattern.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$signaturePattern</td>
+                <td><p>The regular expression for matching the method() signature</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td><p>Visibility modifier or NULL of none was found</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Flow/Aop/Exception/InvalidPointcutExpressionException.html"><abbr title="Neos\Flow\Aop\Exception\InvalidPointcutExpressionException">InvalidPointcutExpressionException</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getArgumentConstraintsFromMethodArgumentsPattern">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L457">at line 457</a></div>
+        <code>            protected        array
+    <strong>getArgumentConstraintsFromMethodArgumentsPattern</strong>(string $methodArgumentsPattern)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses the method arguments pattern and returns the corresponding constraints array</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$methodArgumentsPattern</td>
+                <td><p>The arguments pattern defined in the pointcut expression</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The corresponding constraints array</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRuntimeEvaluationConditionsFromEvaluateString">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Flow/Classes/Aop/Pointcut/PointcutExpressionParser.php#L488">at line 488</a></div>
+        <code>            protected        array
+    <strong>getRuntimeEvaluationConditionsFromEvaluateString</strong>(string $evaluateString)
+        </code>
+    </h3>
+    <div class="details">    
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses the evaluate string for runtime evaluations and returns the corresponding conditions array</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$evaluateString</td>
+                <td><p>The evaluate string defined in the pointcut expression</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The corresponding constraints array</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://flow.neos.io" rel="noreferrer noopener" target="_blank">Flow Framework</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
