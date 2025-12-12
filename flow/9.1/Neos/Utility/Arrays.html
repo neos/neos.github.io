@@ -164,7 +164,7 @@ In case of identical keys, ie. keeping the values of the second. The given $toAr
                     static&nbsp;mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_array_reduce">array_reduce</a>(array $array, string $function, mixed $initial = null)
+                    <a href="#method_array_reduce">array_reduce</a>(array $array, callable $function, mixed $initial = null)
         
                                             <p><p>Replacement for array_reduce that allows any type for $initial (instead
 of only integer)</p></p>                </div>
@@ -192,10 +192,10 @@ of only integer)</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;array|<a target="_blank" rel="noopener" href="https://www.php.net/ArrayAccess">ArrayAccess</a>
+                    static&nbsp;array|ArrayAccess&lt;int|<abbr title="Neos\Utility\string,mixed&gt;">string,mixed&gt;</abbr>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setValueByPath">setValueByPath</a>(array|<a target="_blank" rel="noopener" href="https://www.php.net/ArrayAccess">ArrayAccess</a> $subject, array|string $path, mixed $value)
+                    <a href="#method_setValueByPath">setValueByPath</a>(array|ArrayAccess&lt;int|<abbr title="Neos\Utility\string,mixed&gt;">string,mixed&gt;</abbr> $subject, array|string $path, mixed $value)
         
                                             <p><p>Sets the given value in a nested array or object by following the specified path.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -466,7 +466,7 @@ It should have the following signature $callable($key, ?array $firstValue = null
             </div>
                     <div class="method-item">
                     <h3 id="method_containsMultipleTypes">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.Arrays/Classes/Arrays.php#L163">at line 163</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.Arrays/Classes/Arrays.php#L162">at line 162</a></div>
         <code>        static            bool
     <strong>containsMultipleTypes</strong>(array $array)
         </code>
@@ -510,7 +510,7 @@ It should have the following signature $callable($key, ?array $firstValue = null
                     <h3 id="method_array_reduce">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.Arrays/Classes/Arrays.php#L187">at line 187</a></div>
         <code>        static            mixed
-    <strong>array_reduce</strong>(array $array, string $function, mixed $initial = null)
+    <strong>array_reduce</strong>(array $array, callable $function, mixed $initial = null)
         </code>
     </h3>
     <div class="details">    
@@ -531,7 +531,7 @@ of only integer)</p></p>
                 <td><p>the array to reduce</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>callable</td>
                 <td>$function</td>
                 <td><p>the reduce function with the same order of parameters as in the native array_reduce (i.e. accumulator first, then current array element)</p></td>
             </tr>
@@ -663,8 +663,8 @@ of only integer)</p></p>
                     <div class="method-item">
                     <h3 id="method_setValueByPath">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.Arrays/Classes/Arrays.php#L244">at line 244</a></div>
-        <code>        static            array|<a target="_blank" rel="noopener" href="https://www.php.net/ArrayAccess">ArrayAccess</a>
-    <strong>setValueByPath</strong>(array|<a target="_blank" rel="noopener" href="https://www.php.net/ArrayAccess">ArrayAccess</a> $subject, array|string $path, mixed $value)
+        <code>        static            array|ArrayAccess&lt;int|<abbr title="Neos\Utility\string,mixed&gt;">string,mixed&gt;</abbr>
+    <strong>setValueByPath</strong>(array|ArrayAccess&lt;int|<abbr title="Neos\Utility\string,mixed&gt;">string,mixed&gt;</abbr> $subject, array|string $path, mixed $value)
         </code>
     </h3>
     <div class="details">    
@@ -679,7 +679,7 @@ of only integer)</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array|<a target="_blank" rel="noopener" href="https://www.php.net/ArrayAccess">ArrayAccess</a></td>
+                <td>array|ArrayAccess&lt;int|<abbr title="Neos\Utility\string,mixed&gt;">string,mixed&gt;</abbr></td>
                 <td>$subject</td>
                 <td><p>The array or ArrayAccess instance to work on</p></td>
             </tr>
@@ -700,7 +700,7 @@ of only integer)</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>array|<a target="_blank" rel="noopener" href="https://www.php.net/ArrayAccess">ArrayAccess</a></td>
+            <td>array|ArrayAccess&lt;int|<abbr title="Neos\Utility\string,mixed&gt;">string,mixed&gt;</abbr></td>
             <td><p>The modified array or object</p></td>
         </tr>
     </table>
@@ -723,7 +723,7 @@ of only integer)</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_unsetValueByPath">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.Arrays/Classes/Arrays.php#L274">at line 274</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.Arrays/Classes/Arrays.php#L275">at line 275</a></div>
         <code>        static            array
     <strong>unsetValueByPath</strong>(array $array, array|string $path)
         </code>
@@ -779,7 +779,7 @@ of only integer)</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sortKeysRecursively">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.Arrays/Classes/Arrays.php#L301">at line 301</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.Arrays/Classes/Arrays.php#L302">at line 302</a></div>
         <code>        static            bool
     <strong>sortKeysRecursively</strong>(array $array, int $sortFlags = \SORT_REGULAR)
         </code>
@@ -837,7 +837,7 @@ of only integer)</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_convertObjectToArray">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.Arrays/Classes/Arrays.php#L320">at line 320</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.Arrays/Classes/Arrays.php#L321">at line 321</a></div>
         <code>        static            array
     <strong>convertObjectToArray</strong>(mixed $subject)
         </code>
@@ -888,7 +888,7 @@ of only integer)</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_removeEmptyElementsRecursively">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.Arrays/Classes/Arrays.php#L342">at line 342</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.Arrays/Classes/Arrays.php#L343">at line 343</a></div>
         <code>        static            array
     <strong>removeEmptyElementsRecursively</strong>(array $array)
         </code>

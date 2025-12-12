@@ -145,16 +145,16 @@ getPropertyPath().</p></p>        </div>
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_gettablePropertyNamesCache">
-                    static                    protected                                        array
+                    static                    protected                                        
                                                                                 
                                     </td>
                 <td>$gettablePropertyNamesCache</td>
-                <td class="last"><p>Internal RuntimeCache for getGettablePropertyNames()</p></td>
+                <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_propertyGetterCache">
-                    static                    protected                                        array
+                    static                    protected                                        
                                                                                 
                                     </td>
                 <td>$propertyGetterCache</td>
@@ -172,7 +172,7 @@ getPropertyPath().</p></p>        </div>
                     static&nbsp;mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getProperty">getProperty</a>(mixed $subject, string|int $propertyName, bool $forceDirectAccess = false)
+                    <a href="#method_getProperty">getProperty</a>(object|array $subject, string|int $propertyName, bool $forceDirectAccess = false)
         
                                             <p><p>Get a property of a given object or array.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -182,7 +182,7 @@ getPropertyPath().</p></p>        </div>
                     static&nbsp;mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getPropertyInternal">getPropertyInternal</a>(mixed $subject, string $propertyName, bool $forceDirectAccess, bool $propertyExists)
+                    <a href="#method_getPropertyInternal">getPropertyInternal</a>(mixed $subject, <abbr title="Neos\Utility\string|int">string|int</abbr> $propertyName, bool $forceDirectAccess, bool $propertyExists)
         
                                             <p><p>Gets a property of a given object or array.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -213,7 +213,7 @@ getPropertyPath().</p></p>        </div>
                     static&nbsp;bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setProperty">setProperty</a>(mixed $subject, string|int $propertyName, mixed $propertyValue, bool $forceDirectAccess = false)
+                    <a href="#method_setProperty">setProperty</a>(array|object $subject, string|int $propertyName, mixed $propertyValue, bool $forceDirectAccess = false)
         
                                             <p><p>Set a property for a given object.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -292,7 +292,7 @@ first letter of the property, and prepending it with &quot;set&quot;.</p></p>   
                     <h3 id="method_getProperty">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L68">at line 68</a></div>
         <code>        static            mixed
-    <strong>getProperty</strong>(mixed $subject, string|int $propertyName, bool $forceDirectAccess = false)
+    <strong>getProperty</strong>(object|array $subject, string|int $propertyName, bool $forceDirectAccess = false)
         </code>
     </h3>
     <div class="details">    
@@ -316,7 +316,7 @@ on it if it exists.</li>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td>object|array</td>
                 <td>$subject</td>
                 <td><p>Object or array to get the property from</p></td>
             </tr>
@@ -364,9 +364,9 @@ on it if it exists.</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPropertyInternal">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L101">at line 101</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L103">at line 103</a></div>
         <code>        static    protected        mixed
-    <strong>getPropertyInternal</strong>(mixed $subject, string $propertyName, bool $forceDirectAccess, bool $propertyExists)
+    <strong>getPropertyInternal</strong>(mixed $subject, <abbr title="Neos\Utility\string|int">string|int</abbr> $propertyName, bool $forceDirectAccess, bool $propertyExists)
         </code>
     </h3>
     <div class="details">    
@@ -388,7 +388,7 @@ of type string you should use getProperty() instead.</p></p>
                 <td><p>Object or array to get the property from</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td><abbr title="Neos\Utility\string|int">string|int</abbr></td>
                 <td>$propertyName</td>
                 <td><p>name of the property to retrieve</p></td>
             </tr>
@@ -443,7 +443,7 @@ of type string you should use getProperty() instead.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_initializePropertyGetterCache">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L171">at line 171</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L177">at line 177</a></div>
         <code>        static    protected        void
     <strong>initializePropertyGetterCache</strong>(string $cacheIdentifier, mixed $subject, string $propertyName)
         </code>
@@ -496,7 +496,7 @@ of type string you should use getProperty() instead.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPropertyPath">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L205">at line 205</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L211">at line 211</a></div>
         <code>        static            mixed
     <strong>getPropertyPath</strong>(mixed $subject, string $propertyPath)
         </code>
@@ -545,9 +545,9 @@ and on the resulting object we call getProperty(..., 'blubb').</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setProperty">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L240">at line 240</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L246">at line 246</a></div>
         <code>        static            bool
-    <strong>setProperty</strong>(mixed $subject, string|int $propertyName, mixed $propertyValue, bool $forceDirectAccess = false)
+    <strong>setProperty</strong>(array|object $subject, string|int $propertyName, mixed $propertyValue, bool $forceDirectAccess = false)
         </code>
     </h3>
     <div class="details">    
@@ -571,7 +571,7 @@ on it without checking if it existed.</li>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>mixed</td>
+                <td>array|object</td>
                 <td>$subject</td>
                 <td><p>The target object or array</p></td>
             </tr>
@@ -620,7 +620,7 @@ on it without checking if it existed.</li>
             </div>
                     <div class="method-item">
                     <h3 id="method_getGettablePropertyNames">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L296">at line 296</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L303">at line 303</a></div>
         <code>        static            array
     <strong>getGettablePropertyNames</strong>(object $object)
         </code>
@@ -676,7 +676,7 @@ method.</p></p>                <p><p>Includes the following properties:</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getSettablePropertyNames">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L342">at line 342</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L349">at line 349</a></div>
         <code>        static            array
     <strong>getSettablePropertyNames</strong>(object $object)
         </code>
@@ -732,7 +732,7 @@ method.</p></p>                <p><p>Includes the following properties:</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isPropertySettable">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L373">at line 373</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L380">at line 380</a></div>
         <code>        static            bool
     <strong>isPropertySettable</strong>(object $object, string $propertyName)
         </code>
@@ -788,7 +788,7 @@ method.</p></p>                <p><p>Includes the following properties:</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isPropertyGettable">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L394">at line 394</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L402">at line 402</a></div>
         <code>        static            bool
     <strong>isPropertyGettable</strong>(object $object, string $propertyName)
         </code>
@@ -844,7 +844,7 @@ method.</p></p>                <p><p>Includes the following properties:</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getGettableProperties">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L419">at line 419</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L427">at line 427</a></div>
         <code>        static            array
     <strong>getGettableProperties</strong>(object $object)
         </code>
@@ -903,7 +903,7 @@ $object that are accessible through this class.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_buildSetterMethodName">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L442">at line 442</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L450">at line 450</a></div>
         <code>        static            string
     <strong>buildSetterMethodName</strong>(string $propertyName)
         </code>
