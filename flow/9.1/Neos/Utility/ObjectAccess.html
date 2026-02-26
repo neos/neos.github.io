@@ -94,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -145,16 +146,16 @@ getPropertyPath().</p></p>        </div>
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_gettablePropertyNamesCache">
-                    static                    protected                                        
+                    static                    protected                                        array
                                                                                 
                                     </td>
                 <td>$gettablePropertyNamesCache</td>
-                <td class="last"></td>
+                <td class="last"><p>Internal RuntimeCache for getGettablePropertyNames()</p></td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_propertyGetterCache">
-                    static                    protected                                        
+                    static                    protected                                        <abbr title="Neos\Utility\array&lt;string, array{accessorMethod?: string, publicProperty?: string}&gt;">array&lt;string, array{accessorMethod?: string, publicProperty?: string}&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$propertyGetterCache</td>
@@ -172,7 +173,7 @@ getPropertyPath().</p></p>        </div>
                     static&nbsp;mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getProperty">getProperty</a>(object|array $subject, string|int $propertyName, bool $forceDirectAccess = false)
+                    <a href="#method_getProperty">getProperty</a>(object|mixed[] $subject, string|int $propertyName, bool $forceDirectAccess = false)
         
                                             <p><p>Get a property of a given object or array.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -182,7 +183,7 @@ getPropertyPath().</p></p>        </div>
                     static&nbsp;mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getPropertyInternal">getPropertyInternal</a>(mixed $subject, <abbr title="Neos\Utility\string|int">string|int</abbr> $propertyName, bool $forceDirectAccess, bool $propertyExists)
+                    <a href="#method_getPropertyInternal">getPropertyInternal</a>(mixed $subject, string|int $propertyName, bool $forceDirectAccess, bool $propertyExists)
         
                                             <p><p>Gets a property of a given object or array.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -213,7 +214,7 @@ getPropertyPath().</p></p>        </div>
                     static&nbsp;bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_setProperty">setProperty</a>(array|object $subject, string|int $propertyName, mixed $propertyValue, bool $forceDirectAccess = false)
+                    <a href="#method_setProperty">setProperty</a>(mixed[]|object $subject, string|int $propertyName, mixed $propertyValue, bool $forceDirectAccess = false)
         
                                             <p><p>Set a property for a given object.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -292,10 +293,11 @@ first letter of the property, and prepending it with &quot;set&quot;.</p></p>   
                     <h3 id="method_getProperty">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L68">at line 68</a></div>
         <code>        static            mixed
-    <strong>getProperty</strong>(object|array $subject, string|int $propertyName, bool $forceDirectAccess = false)
+    <strong>getProperty</strong>(object|mixed[] $subject, string|int $propertyName, bool $forceDirectAccess = false)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -316,7 +318,7 @@ on it if it exists.</li>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>object|array</td>
+                <td>object|mixed[]</td>
                 <td>$subject</td>
                 <td><p>Object or array to get the property from</p></td>
             </tr>
@@ -366,10 +368,11 @@ on it if it exists.</li>
                     <h3 id="method_getPropertyInternal">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L103">at line 103</a></div>
         <code>        static    protected        mixed
-    <strong>getPropertyInternal</strong>(mixed $subject, <abbr title="Neos\Utility\string|int">string|int</abbr> $propertyName, bool $forceDirectAccess, bool $propertyExists)
+    <strong>getPropertyInternal</strong>(mixed $subject, string|int $propertyName, bool $forceDirectAccess, bool $propertyExists)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -388,7 +391,7 @@ of type string you should use getProperty() instead.</p></p>
                 <td><p>Object or array to get the property from</p></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\Utility\string|int">string|int</abbr></td>
+                <td>string|int</td>
                 <td>$propertyName</td>
                 <td><p>name of the property to retrieve</p></td>
             </tr>
@@ -449,6 +452,7 @@ of type string you should use getProperty() instead.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -502,6 +506,7 @@ of type string you should use getProperty() instead.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -547,10 +552,11 @@ and on the resulting object we call getProperty(..., 'blubb').</p>
                     <h3 id="method_setProperty">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.1/Neos.Utility.ObjectHandling/Classes/ObjectAccess.php#L246">at line 246</a></div>
         <code>        static            bool
-    <strong>setProperty</strong>(array|object $subject, string|int $propertyName, mixed $propertyValue, bool $forceDirectAccess = false)
+    <strong>setProperty</strong>(mixed[]|object $subject, string|int $propertyName, mixed $propertyValue, bool $forceDirectAccess = false)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -571,7 +577,7 @@ on it without checking if it existed.</li>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array|object</td>
+                <td>mixed[]|object</td>
                 <td>$subject</td>
                 <td><p>The target object or array</p></td>
             </tr>
@@ -626,6 +632,7 @@ on it without checking if it existed.</li>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -682,6 +689,7 @@ method.</p></p>                <p><p>Includes the following properties:</p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -738,6 +746,7 @@ method.</p></p>                <p><p>Includes the following properties:</p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -794,6 +803,7 @@ method.</p></p>                <p><p>Includes the following properties:</p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -850,6 +860,7 @@ method.</p></p>                <p><p>Includes the following properties:</p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -909,6 +920,7 @@ $object that are accessible through this class.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
