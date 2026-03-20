@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepositoryRegistry\Command\SubscriptionCommandController | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (9.1)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepositoryRegistry_Command_SubscriptionCommandController" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/ContentRepositoryRegistry.html">ContentRepositoryRegistry</a></li><li class="backslash">\</li><li><a href="../../../Neos/ContentRepositoryRegistry/Command.html">Command</a></li><li class="backslash">\</li><li>SubscriptionCommandController</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>SubscriptionCommandController    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>SubscriptionCommandController</strong>        extends <abbr title="Neos\Flow\Cli\CommandController">CommandController</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepositoryRegistry/Classes/Command/SubscriptionCommandController.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            <div class="description">
+            <p><p>Manage subscriptions (mainly projections)</p></p>            <p><p>If any interaction is required &quot;./flow cr:status&quot; can be asked.</p>
+<p><em>Replay for initialisation</em></p>
+<p>For initialising on a new database - which contains events already - a replay will make sure that the subscriptions
+are emptied and reapply the events. This can be triggered via &quot;./flow subscription:replay --subscription contentGraph&quot; or &quot;./flow subscription:replayall&quot;</p>
+<p>And after registering a new subscription a setup as well as a replay of this subscription is also required.</p>
+<p><em>Replay to repair</em></p>
+<p>In case a subscription is detached and then reinstalled a replay will make sure its caught up to all new events.
+And that the previous state will be reset as the projections logic might have changed.</p>
+<p>Also in case a subscription runs into the error status, its code needs to be fixed, and it can be attempted to be replayed.</p>
+<p>See also {\Neos\ContentRepository\Core\Service\ContentRepositoryMaintainer} for more information.</p></p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_contentRepositoryRegistry">
+                                        protected                                        <a href="../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a>
+                                                                                
+                                    </td>
+                <td>$contentRepositoryRegistry</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_replayCommand">replayCommand</a>(string $subscription, string $contentRepository = &#039;default&#039;, bool $force = false, bool $quiet = false)
+        
+                                            <p><p>Replays the specified subscription of a Content Repository by resetting its state and performing a full catchup.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_replayAllCommand">replayAllCommand</a>(string $contentRepository = &#039;default&#039;, bool $force = false, bool $quiet = false)
+        
+                                            <p><p>Replays all projections of the specified Content Repository by resetting their states and performing a full catchup</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_reactivateCommand">reactivateCommand</a>(string $subscription, string $contentRepository = &#039;default&#039;, bool $quiet = false)
+        
+                                            <p><p>Reactivate a subscription (Advanced &amp; Experimental)</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_replayCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepositoryRegistry/Classes/Command/SubscriptionCommandController.php#L49">at line 49</a></div>
+        <code>                    void
+    <strong>replayCommand</strong>(string $subscription, string $contentRepository = &#039;default&#039;, bool $force = false, bool $quiet = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Replays the specified subscription of a Content Repository by resetting its state and performing a full catchup.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$subscription</td>
+                <td><p>Identifier of the subscription to replay like it was configured (e.g. &quot;contentGraph&quot;, &quot;Vendor.Package:YourProjection&quot;)</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the Content Repository instance to operate on</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$force</td>
+                <td><p>Replay the subscription without confirmation. This may take some time!</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$quiet</td>
+                <td><p>If set only fatal errors are rendered to the output (must be used with --force flag to avoid user input)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_replayAllCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepositoryRegistry/Classes/Command/SubscriptionCommandController.php#L98">at line 98</a></div>
+        <code>                    void
+    <strong>replayAllCommand</strong>(string $contentRepository = &#039;default&#039;, bool $force = false, bool $quiet = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Replays all projections of the specified Content Repository by resetting their states and performing a full catchup</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the Content Repository instance to operate on</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$force</td>
+                <td><p>Replay all subscriptions without confirmation. This may take some time!</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$quiet</td>
+                <td><p>If set only fatal errors are rendered to the output (must be used with --force flag to avoid user input)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_reactivateCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepositoryRegistry/Classes/Command/SubscriptionCommandController.php#L155">at line 155</a></div>
+        <code>                    void
+    <strong>reactivateCommand</strong>(string $subscription, string $contentRepository = &#039;default&#039;, bool $quiet = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;reactivation is an experimental and advanced concept, if possible a replay should be used instead which is more stable</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+        <div class="method-description">
+                            <p><p>Reactivate a subscription (Advanced &amp; Experimental)</p></p>                <p><p>The explicit catchup is only needed for projections in the error or detached status with left behind position.
+Running a full replay would work but might be overkill, instead this reactivation will just attempt
+catchup the subscription back to active from its current position.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$subscription</td>
+                <td><p>Identifier of the subscription to reactivate like it was configured (e.g. &quot;contentGraph&quot;, &quot;Vendor.Package:YourProjection&quot;)</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the Content Repository instance to operate on</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$quiet</td>
+                <td><p>If set only fatal errors are rendered to the output (must be used with --force flag to avoid user input)</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

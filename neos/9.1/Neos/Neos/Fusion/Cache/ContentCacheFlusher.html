@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Neos\Fusion\Cache\ContentCacheFlusher | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (9.1)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Neos_Fusion_Cache_ContentCacheFlusher" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Neos/Fusion.html">Fusion</a></li><li class="backslash">\</li><li><a href="../../../../Neos/Neos/Fusion/Cache.html">Cache</a></li><li class="backslash">\</li><li>ContentCacheFlusher</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ContentCacheFlusher    
+            </h1>
+    </div>
+
+    
+    <p>        class
+    <strong>ContentCacheFlusher</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.Neos/Classes/Fusion/Cache/ContentCacheFlusher.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            <div class="description">
+            <p><p>This service flushes Fusion content caches triggered by node changes.</p></p>            <p><p>It is called when the projection changes: In this case, it is triggered by
+{\Neos\Neos\Fusion\Cache\GraphProjectorCatchUpHookForCacheFlushing} which calls this method.
+This is the relevant case if publishing a workspace</p>
+<ul>
+<li>where we f.e. need to flush the cache for Live.</li>
+</ul>
+<p>The {\Neos\Neos\Fusion\Cache\AssetChangeHandlerForCacheFlushing} also calls this ContentCacheFlusher
+to flush the caches of all Nodes using a given asset that has changed.</p></p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_debugMode">
+                                        protected                                        bool
+                                                                                
+                                    </td>
+                <td>$debugMode</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../../Neos/Fusion/Core/Cache/ContentCache.html"><abbr title="Neos\Fusion\Core\Cache\ContentCache">ContentCache</abbr></a> $contentCache, <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $systemLogger, <a href="../../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a> $contentRepositoryRegistry, <abbr title="Neos\Flow\Persistence\PersistenceManagerInterface">PersistenceManagerInterface</abbr> $persistenceManager)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushWorkspace">flushWorkspace</a>(<a href="../../../../Neos/Neos/Fusion/Cache/FlushWorkspaceRequest.html"><abbr title="Neos\Neos\Fusion\Cache\FlushWorkspaceRequest">FlushWorkspaceRequest</abbr></a> $flushWorkspaceRequest, <abbr title="Neos\Neos\Fusion\Cache\CacheFlushingStrategy">CacheFlushingStrategy</abbr> $cacheFlushingStrategy)
+        
+                                            <p><p>Main entry point to flush the caches of a given workspaceName with a given strategy.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushNodeAggregate">flushNodeAggregate</a>(<a href="../../../../Neos/Neos/Fusion/Cache/FlushNodeAggregateRequest.html"><abbr title="Neos\Neos\Fusion\Cache\FlushNodeAggregateRequest">FlushNodeAggregateRequest</abbr></a> $flushNodeAggregateRequest, <abbr title="Neos\Neos\Fusion\Cache\CacheFlushingStrategy">CacheFlushingStrategy</abbr> $cacheFlushingStrategy)
+        
+                                            <p><p>Main entry point to flush the caches of a given NodeAggregate with a given strategy.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushTags">flushTags</a>(array $tagsToFlush, <abbr title="Neos\Neos\Fusion\Cache\CacheFlushingStrategy">CacheFlushingStrategy</abbr> $cacheFlushingStrategy)
+        
+                                            <p><p>Flush caches according to the given tags and strategy.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushTagsImmediately">flushTagsImmediately</a>(array $tagsToFlush)
+        
+                                            <p><p>Flush caches according to the given tags immediately.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_collectTagsForFlushOnShutdown">collectTagsForFlushOnShutdown</a>(array $tagsToFlush)
+        
+                                            <p><p>Collect tags to get flushed on shutdown.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getAllImplementedNodeTypeNames">getAllImplementedNodeTypeNames</a>(<a href="../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a> $nodeType)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_flushCollectedTags">flushCollectedTags</a>()
+        
+                                            <p><p>Flush caches according to the previously registered changes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_shutdownObject">shutdownObject</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_emitTagsFlushed">emitTagsFlushed</a>(array $tagsToFlush)
+        
+                                            <p><p>Signal that is triggered whenever cache tags get flushed</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.Neos/Classes/Fusion/Cache/ContentCacheFlusher.php#L51">at line 51</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../../Neos/Fusion/Core/Cache/ContentCache.html"><abbr title="Neos\Fusion\Core\Cache\ContentCache">ContentCache</abbr></a> $contentCache, <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $systemLogger, <a href="../../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a> $contentRepositoryRegistry, <abbr title="Neos\Flow\Persistence\PersistenceManagerInterface">PersistenceManagerInterface</abbr> $persistenceManager)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Fusion/Core/Cache/ContentCache.html"><abbr title="Neos\Fusion\Core\Cache\ContentCache">ContentCache</abbr></a></td>
+                <td>$contentCache</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+                <td>$systemLogger</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a></td>
+                <td>$contentRepositoryRegistry</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Persistence\PersistenceManagerInterface">PersistenceManagerInterface</abbr></td>
+                <td>$persistenceManager</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushWorkspace">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.Neos/Classes/Fusion/Cache/ContentCacheFlusher.php#L62">at line 62</a></div>
+        <code>                    void
+    <strong>flushWorkspace</strong>(<a href="../../../../Neos/Neos/Fusion/Cache/FlushWorkspaceRequest.html"><abbr title="Neos\Neos\Fusion\Cache\FlushWorkspaceRequest">FlushWorkspaceRequest</abbr></a> $flushWorkspaceRequest, <abbr title="Neos\Neos\Fusion\Cache\CacheFlushingStrategy">CacheFlushingStrategy</abbr> $cacheFlushingStrategy)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Main entry point to flush the caches of a given workspaceName with a given strategy.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Fusion/Cache/FlushWorkspaceRequest.html"><abbr title="Neos\Neos\Fusion\Cache\FlushWorkspaceRequest">FlushWorkspaceRequest</abbr></a></td>
+                <td>$flushWorkspaceRequest</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Neos\Fusion\Cache\CacheFlushingStrategy">CacheFlushingStrategy</abbr></td>
+                <td>$cacheFlushingStrategy</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushNodeAggregate">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.Neos/Classes/Fusion/Cache/ContentCacheFlusher.php#L81">at line 81</a></div>
+        <code>                    void
+    <strong>flushNodeAggregate</strong>(<a href="../../../../Neos/Neos/Fusion/Cache/FlushNodeAggregateRequest.html"><abbr title="Neos\Neos\Fusion\Cache\FlushNodeAggregateRequest">FlushNodeAggregateRequest</abbr></a> $flushNodeAggregateRequest, <abbr title="Neos\Neos\Fusion\Cache\CacheFlushingStrategy">CacheFlushingStrategy</abbr> $cacheFlushingStrategy)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Main entry point to flush the caches of a given NodeAggregate with a given strategy.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Fusion/Cache/FlushNodeAggregateRequest.html"><abbr title="Neos\Neos\Fusion\Cache\FlushNodeAggregateRequest">FlushNodeAggregateRequest</abbr></a></td>
+                <td>$flushNodeAggregateRequest</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Neos\Fusion\Cache\CacheFlushingStrategy">CacheFlushingStrategy</abbr></td>
+                <td>$cacheFlushingStrategy</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushTags">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.Neos/Classes/Fusion/Cache/ContentCacheFlusher.php#L199">at line 199</a></div>
+        <code>            protected        void
+    <strong>flushTags</strong>(array $tagsToFlush, <abbr title="Neos\Neos\Fusion\Cache\CacheFlushingStrategy">CacheFlushingStrategy</abbr> $cacheFlushingStrategy)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flush caches according to the given tags and strategy.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$tagsToFlush</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Neos\Fusion\Cache\CacheFlushingStrategy">CacheFlushingStrategy</abbr></td>
+                <td>$cacheFlushingStrategy</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushTagsImmediately">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.Neos/Classes/Fusion/Cache/ContentCacheFlusher.php#L213">at line 213</a></div>
+        <code>            protected        void
+    <strong>flushTagsImmediately</strong>(array $tagsToFlush)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flush caches according to the given tags immediately.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$tagsToFlush</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_collectTagsForFlushOnShutdown">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.Neos/Classes/Fusion/Cache/ContentCacheFlusher.php#L238">at line 238</a></div>
+        <code>            protected        void
+    <strong>collectTagsForFlushOnShutdown</strong>(array $tagsToFlush)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Collect tags to get flushed on shutdown.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$tagsToFlush</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getAllImplementedNodeTypeNames">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.Neos/Classes/Fusion/Cache/ContentCacheFlusher.php#L247">at line 247</a></div>
+        <code>            protected        array
+    <strong>getAllImplementedNodeTypeNames</strong>(<a href="../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a> $nodeType)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a></td>
+                <td>$nodeType</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_flushCollectedTags">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.Neos/Classes/Fusion/Cache/ContentCacheFlusher.php#L264">at line 264</a></div>
+        <code>                    void
+    <strong>flushCollectedTags</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Flush caches according to the previously registered changes.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_shutdownObject">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.Neos/Classes/Fusion/Cache/ContentCacheFlusher.php#L270">at line 270</a></div>
+        <code>                    void
+    <strong>shutdownObject</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_emitTagsFlushed">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.Neos/Classes/Fusion/Cache/ContentCacheFlusher.php#L282">at line 282</a></div>
+        <code>            protected        void
+    <strong>emitTagsFlushed</strong>(array $tagsToFlush)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Signal that is triggered whenever cache tags get flushed</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$tagsToFlush</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

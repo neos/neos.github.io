@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepository\Core\ContentRepository | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
+        <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
+        <script async defer src="../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (9.1)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepository_Core_ContentRepository" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../classes.html">Classes</a></li>
+                    <li><a href="../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../traits.html">Traits</a></li>
+                    <li><a href="../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../Neos/ContentRepository.html">ContentRepository</a></li><li class="backslash">\</li><li><a href="../../../Neos/ContentRepository/Core.html">Core</a></li><li class="backslash">\</li><li>ContentRepository</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>ContentRepository    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>ContentRepository</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepository.Core/Classes/ContentRepository.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            <div class="description">
+            <p><p>Main Entry Point to the system. Encapsulates the full event-sourced Content Repository.</p></p>            <p><p>Use this to:</p>
+<ul>
+<li>send commands to the system (to mutate state) via {\Neos\ContentRepository\Core\self::handle()}</li>
+<li>access the content graph read model</li>
+<li>access 3rd party read models via {\Neos\ContentRepository\Core\self::projectionState()}</li>
+</ul></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../Neos/ContentRepository/Core/SharedModel/ContentRepository/ContentRepositoryId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId">ContentRepositoryId</abbr></a> $id, <a href="../../../Neos/ContentRepository/Core/CommandHandler/CommandBus.html"><abbr title="Neos\ContentRepository\Core\CommandHandler\CommandBus">CommandBus</abbr></a> $commandBus, <abbr title="Neos\EventStore\EventStoreInterface">EventStoreInterface</abbr> $eventStore, <a href="../../../Neos/ContentRepository/Core/EventStore/EventNormalizer.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventNormalizer">EventNormalizer</abbr></a> $eventNormalizer, <a href="../../../Neos/ContentRepository/Core/Subscription/Engine/SubscriptionEngine.html"><abbr title="Neos\ContentRepository\Core\Subscription\Engine\SubscriptionEngine">SubscriptionEngine</abbr></a> $subscriptionEngine, <a href="../../../Neos/ContentRepository/Core/NodeType/NodeTypeManager.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeManager">NodeTypeManager</abbr></a> $nodeTypeManager, <a href="../../../Neos/ContentRepository/Core/DimensionSpace/InterDimensionalVariationGraph.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\InterDimensionalVariationGraph">InterDimensionalVariationGraph</abbr></a> $variationGraph, <a href="../../../Neos/ContentRepository/Core/Dimension/ContentDimensionSourceInterface.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionSourceInterface">ContentDimensionSourceInterface</abbr></a> $contentDimensionSource, <a href="../../../Neos/ContentRepository/Core/Feature/Security/AuthProviderInterface.html"><abbr title="Neos\ContentRepository\Core\Feature\Security\AuthProviderInterface">AuthProviderInterface</abbr></a> $authProvider, <abbr title="Psr\Clock\ClockInterface">ClockInterface</abbr> $clock, <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphReadModelInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphReadModelInterface">ContentGraphReadModelInterface</abbr></a> $contentGraphReadModel, <a href="../../../Neos/ContentRepository/Core/CommandHandler/CommandHookInterface.html"><abbr title="Neos\ContentRepository\Core\CommandHandler\CommandHookInterface">CommandHookInterface</abbr></a> $commandHook, <a href="../../../Neos/ContentRepository/Core/Projection/ProjectionStates.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionStates">ProjectionStates</abbr></a> $projectionStates, <a href="../../../Neos/ContentRepository/Core/Infrastructure/PerformanceTracing/PerformanceTracerInterface.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\PerformanceTracing\PerformanceTracerInterface">PerformanceTracerInterface</abbr></a>|null $performanceTracer)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_handle">handle</a>(<a href="../../../Neos/ContentRepository/Core/CommandHandler/CommandInterface.html"><abbr title="Neos\ContentRepository\Core\CommandHandler\CommandInterface">CommandInterface</abbr></a> $command)
+        
+                                            <p><p>The only API to send commands (mutation intentions) to the system.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/ContentRepository/Core/Projection/ProjectionStateInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionStateInterface">ProjectionStateInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_projectionState">projectionState</a>(string $projectionStateClassName)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getContentGraph">getContentGraph</a>(<a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/WorkspaceName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName">WorkspaceName</abbr></a> $workspaceName)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentSubgraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentSubgraphInterface">ContentSubgraphInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getContentSubgraph">getContentSubgraph</a>(<a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/WorkspaceName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName">WorkspaceName</abbr></a> $workspaceName, <a href="../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint)
+        
+                                            <p><p>Main API to retrieve a content subgraph, taking VisibilityConstraints of the current user
+into account ({AuthProviderInterface::getVisibilityConstraints()})</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/Workspace.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\Workspace">Workspace</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findWorkspaceByName">findWorkspaceByName</a>(<a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/WorkspaceName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName">WorkspaceName</abbr></a> $workspaceName)
+        
+                                            <p><p>Returns the workspace with the given name, or NULL if it does not exist in this content repository</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/Workspaces.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\Workspaces">Workspaces</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findWorkspaces">findWorkspaces</a>()
+        
+                                            <p><p>Returns all workspaces of this content repository. To limit the set, {Workspaces::find()} and {Workspaces::filter()} can be used
+as well as {Workspaces::getBaseWorkspaces()} and {Workspaces::getDependantWorkspacesRecursively()}.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/ContentRepository/Core/NodeType/NodeTypeManager.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeManager">NodeTypeManager</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getNodeTypeManager">getNodeTypeManager</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/ContentRepository/Core/DimensionSpace/InterDimensionalVariationGraph.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\InterDimensionalVariationGraph">InterDimensionalVariationGraph</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getVariationGraph">getVariationGraph</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/ContentRepository/Core/Dimension/ContentDimensionSourceInterface.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionSourceInterface">ContentDimensionSourceInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getContentDimensionSource">getContentDimensionSource</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepository.Core/Classes/ContentRepository.php#L68">at line 68</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../Neos/ContentRepository/Core/SharedModel/ContentRepository/ContentRepositoryId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId">ContentRepositoryId</abbr></a> $id, <a href="../../../Neos/ContentRepository/Core/CommandHandler/CommandBus.html"><abbr title="Neos\ContentRepository\Core\CommandHandler\CommandBus">CommandBus</abbr></a> $commandBus, <abbr title="Neos\EventStore\EventStoreInterface">EventStoreInterface</abbr> $eventStore, <a href="../../../Neos/ContentRepository/Core/EventStore/EventNormalizer.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventNormalizer">EventNormalizer</abbr></a> $eventNormalizer, <a href="../../../Neos/ContentRepository/Core/Subscription/Engine/SubscriptionEngine.html"><abbr title="Neos\ContentRepository\Core\Subscription\Engine\SubscriptionEngine">SubscriptionEngine</abbr></a> $subscriptionEngine, <a href="../../../Neos/ContentRepository/Core/NodeType/NodeTypeManager.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeManager">NodeTypeManager</abbr></a> $nodeTypeManager, <a href="../../../Neos/ContentRepository/Core/DimensionSpace/InterDimensionalVariationGraph.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\InterDimensionalVariationGraph">InterDimensionalVariationGraph</abbr></a> $variationGraph, <a href="../../../Neos/ContentRepository/Core/Dimension/ContentDimensionSourceInterface.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionSourceInterface">ContentDimensionSourceInterface</abbr></a> $contentDimensionSource, <a href="../../../Neos/ContentRepository/Core/Feature/Security/AuthProviderInterface.html"><abbr title="Neos\ContentRepository\Core\Feature\Security\AuthProviderInterface">AuthProviderInterface</abbr></a> $authProvider, <abbr title="Psr\Clock\ClockInterface">ClockInterface</abbr> $clock, <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphReadModelInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphReadModelInterface">ContentGraphReadModelInterface</abbr></a> $contentGraphReadModel, <a href="../../../Neos/ContentRepository/Core/CommandHandler/CommandHookInterface.html"><abbr title="Neos\ContentRepository\Core\CommandHandler\CommandHookInterface">CommandHookInterface</abbr></a> $commandHook, <a href="../../../Neos/ContentRepository/Core/Projection/ProjectionStates.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionStates">ProjectionStates</abbr></a> $projectionStates, <a href="../../../Neos/ContentRepository/Core/Infrastructure/PerformanceTracing/PerformanceTracerInterface.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\PerformanceTracing\PerformanceTracerInterface">PerformanceTracerInterface</abbr></a>|null $performanceTracer)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;use the {@see \Neos\ContentRepository\Core\ContentRepositoryFactory::getOrBuild()} to instantiate</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/SharedModel/ContentRepository/ContentRepositoryId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId">ContentRepositoryId</abbr></a></td>
+                <td>$id</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/CommandHandler/CommandBus.html"><abbr title="Neos\ContentRepository\Core\CommandHandler\CommandBus">CommandBus</abbr></a></td>
+                <td>$commandBus</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\EventStore\EventStoreInterface">EventStoreInterface</abbr></td>
+                <td>$eventStore</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/EventStore/EventNormalizer.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventNormalizer">EventNormalizer</abbr></a></td>
+                <td>$eventNormalizer</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/Subscription/Engine/SubscriptionEngine.html"><abbr title="Neos\ContentRepository\Core\Subscription\Engine\SubscriptionEngine">SubscriptionEngine</abbr></a></td>
+                <td>$subscriptionEngine</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/NodeType/NodeTypeManager.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeManager">NodeTypeManager</abbr></a></td>
+                <td>$nodeTypeManager</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/DimensionSpace/InterDimensionalVariationGraph.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\InterDimensionalVariationGraph">InterDimensionalVariationGraph</abbr></a></td>
+                <td>$variationGraph</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/Dimension/ContentDimensionSourceInterface.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionSourceInterface">ContentDimensionSourceInterface</abbr></a></td>
+                <td>$contentDimensionSource</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/Feature/Security/AuthProviderInterface.html"><abbr title="Neos\ContentRepository\Core\Feature\Security\AuthProviderInterface">AuthProviderInterface</abbr></a></td>
+                <td>$authProvider</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Psr\Clock\ClockInterface">ClockInterface</abbr></td>
+                <td>$clock</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphReadModelInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphReadModelInterface">ContentGraphReadModelInterface</abbr></a></td>
+                <td>$contentGraphReadModel</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/CommandHandler/CommandHookInterface.html"><abbr title="Neos\ContentRepository\Core\CommandHandler\CommandHookInterface">CommandHookInterface</abbr></a></td>
+                <td>$commandHook</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ProjectionStates.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionStates">ProjectionStates</abbr></a></td>
+                <td>$projectionStates</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/Infrastructure/PerformanceTracing/PerformanceTracerInterface.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\PerformanceTracing\PerformanceTracerInterface">PerformanceTracerInterface</abbr></a>|null</td>
+                <td>$performanceTracer</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_handle">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepository.Core/Classes/ContentRepository.php#L92">at line 92</a></div>
+        <code>                    void
+    <strong>handle</strong>(<a href="../../../Neos/ContentRepository/Core/CommandHandler/CommandInterface.html"><abbr title="Neos\ContentRepository\Core\CommandHandler\CommandInterface">CommandInterface</abbr></a> $command)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The only API to send commands (mutation intentions) to the system.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/CommandHandler/CommandInterface.html"><abbr title="Neos\ContentRepository\Core\CommandHandler\CommandInterface">CommandInterface</abbr></a></td>
+                <td>$command</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/Feature/Security/Exception/AccessDenied.html"><abbr title="Neos\ContentRepository\Core\Feature\Security\Exception\AccessDenied">AccessDenied</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_projectionState">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepository.Core/Classes/ContentRepository.php#L176">at line 176</a></div>
+        <code>                    <a href="../../../Neos/ContentRepository/Core/Projection/ProjectionStateInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionStateInterface">ProjectionStateInterface</abbr></a>
+    <strong>projectionState</strong>(string $projectionStateClassName)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$projectionStateClassName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/ContentRepository/Core/Projection/ProjectionStateInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionStateInterface">ProjectionStateInterface</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getContentGraph">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepository.Core/Classes/ContentRepository.php#L185">at line 185</a></div>
+        <code>                    <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a>
+    <strong>getContentGraph</strong>(<a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/WorkspaceName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName">WorkspaceName</abbr></a> $workspaceName)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/WorkspaceName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName">WorkspaceName</abbr></a></td>
+                <td>$workspaceName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/SharedModel/Exception/WorkspaceDoesNotExist.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Exception\WorkspaceDoesNotExist">WorkspaceDoesNotExist</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/Feature/Security/Exception/AccessDenied.html"><abbr title="Neos\ContentRepository\Core\Feature\Security\Exception\AccessDenied">AccessDenied</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getContentSubgraph">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepository.Core/Classes/ContentRepository.php#L201">at line 201</a></div>
+        <code>                    <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentSubgraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentSubgraphInterface">ContentSubgraphInterface</abbr></a>
+    <strong>getContentSubgraph</strong>(<a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/WorkspaceName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName">WorkspaceName</abbr></a> $workspaceName, <a href="../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Main API to retrieve a content subgraph, taking VisibilityConstraints of the current user
+into account ({AuthProviderInterface::getVisibilityConstraints()})</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/WorkspaceName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName">WorkspaceName</abbr></a></td>
+                <td>$workspaceName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a></td>
+                <td>$dimensionSpacePoint</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentSubgraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentSubgraphInterface">ContentSubgraphInterface</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/SharedModel/Exception/WorkspaceDoesNotExist.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Exception\WorkspaceDoesNotExist">WorkspaceDoesNotExist</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/Feature/Security/Exception/AccessDenied.html"><abbr title="Neos\ContentRepository\Core\Feature\Security\Exception\AccessDenied">AccessDenied</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findWorkspaceByName">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepository.Core/Classes/ContentRepository.php#L211">at line 211</a></div>
+        <code>                    <a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/Workspace.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\Workspace">Workspace</abbr></a>|null
+    <strong>findWorkspaceByName</strong>(<a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/WorkspaceName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName">WorkspaceName</abbr></a> $workspaceName)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the workspace with the given name, or NULL if it does not exist in this content repository</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/WorkspaceName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName">WorkspaceName</abbr></a></td>
+                <td>$workspaceName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/Workspace.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\Workspace">Workspace</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findWorkspaces">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepository.Core/Classes/ContentRepository.php#L220">at line 220</a></div>
+        <code>                    <a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/Workspaces.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\Workspaces">Workspaces</abbr></a>
+    <strong>findWorkspaces</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns all workspaces of this content repository. To limit the set, {Workspaces::find()} and {Workspaces::filter()} can be used
+as well as {Workspaces::getBaseWorkspaces()} and {Workspaces::getDependantWorkspacesRecursively()}.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/Workspaces.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\Workspaces">Workspaces</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getNodeTypeManager">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepository.Core/Classes/ContentRepository.php#L225">at line 225</a></div>
+        <code>                    <a href="../../../Neos/ContentRepository/Core/NodeType/NodeTypeManager.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeManager">NodeTypeManager</abbr></a>
+    <strong>getNodeTypeManager</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/ContentRepository/Core/NodeType/NodeTypeManager.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeManager">NodeTypeManager</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getVariationGraph">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepository.Core/Classes/ContentRepository.php#L230">at line 230</a></div>
+        <code>                    <a href="../../../Neos/ContentRepository/Core/DimensionSpace/InterDimensionalVariationGraph.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\InterDimensionalVariationGraph">InterDimensionalVariationGraph</abbr></a>
+    <strong>getVariationGraph</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/ContentRepository/Core/DimensionSpace/InterDimensionalVariationGraph.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\InterDimensionalVariationGraph">InterDimensionalVariationGraph</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getContentDimensionSource">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepository.Core/Classes/ContentRepository.php#L235">at line 235</a></div>
+        <code>                    <a href="../../../Neos/ContentRepository/Core/Dimension/ContentDimensionSourceInterface.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionSourceInterface">ContentDimensionSourceInterface</abbr></a>
+    <strong>getContentDimensionSource</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/ContentRepository/Core/Dimension/ContentDimensionSourceInterface.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionSourceInterface">ContentDimensionSourceInterface</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
