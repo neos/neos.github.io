@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
         <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
         <script async defer src="../../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../../js/typeahead.min.js"></script>
-        <script src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_SharedModel_Workspace_ContentStreamId" data-root-path="../../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_SharedModel_Workspace_ContentStreamId" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,10 +90,10 @@
 
     
     <p>final         class
-    <strong>ContentStreamId</strong>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/JsonSerializable">JsonSerializable</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Stringable">Stringable</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Workspace/ContentStreamId.php">View source</a>)
+    <strong>ContentStreamId</strong>        implements        <a target="_blank" rel="noopener" href="https://www.php.net/JsonSerializable">JsonSerializable</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Workspace/ContentStreamId.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -91,6 +103,18 @@
 a central concept in the Event-Sourced CR introduced with Neos 5.0.</p></p>                    </div>
             
         
+            <h2>Constants</h2>    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                                                                                                        PATTERN
+                                    </td>
+                <td class="last">
+                    <p><em><p>A preg pattern to match against content stream identifiers</p></em></p>
+                    <p></p>
+                </td>
+            </tr>
+            </table>
+
     
     
             <h2>Methods</h2>
@@ -131,10 +155,10 @@ a central concept in the Event-Sourced CR introduced with Neos 5.0.</p></p>     
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getValue">getValue</a>()
+                    <a href="#method_equals">equals</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $other)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -151,17 +175,6 @@ a central concept in the Event-Sourced CR introduced with Neos 5.0.</p></p>     
                                     </div>
                 <div class="col-md-2"></div>
             </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    bool
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_equals">equals</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $other)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
             </div>
 
 
@@ -170,12 +183,13 @@ a central concept in the Event-Sourced CR introduced with Neos 5.0.</p></p>     
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_fromString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Workspace/ContentStreamId.php#L42">at line 42</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Workspace/ContentStreamId.php#L54">at line 54</a></div>
         <code>        static            <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a>
     <strong>fromString</strong>(string $value)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -213,12 +227,13 @@ a central concept in the Event-Sourced CR introduced with Neos 5.0.</p></p>     
             </div>
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Workspace/ContentStreamId.php#L47">at line 47</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Workspace/ContentStreamId.php#L59">at line 59</a></div>
         <code>        static            <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a>
     <strong>create</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -246,78 +261,13 @@ a central concept in the Event-Sourced CR introduced with Neos 5.0.</p></p>     
             </div>
                     <div class="method-item">
                     <h3 id="method_jsonSerialize">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Workspace/ContentStreamId.php#L52">at line 52</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Workspace/ContentStreamId.php#L64">at line 64</a></div>
         <code>                    string
     <strong>jsonSerialize</strong>()
         </code>
     </h3>
     <div class="details">    
-    
             
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getValue">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Workspace/ContentStreamId.php#L57">at line 57</a></div>
-        <code>                    string
-    <strong>getValue</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method___toString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Workspace/ContentStreamId.php#L62">at line 62</a></div>
-        <code>                    string
-    <strong>__toString</strong>()
-        </code>
-    </h3>
-    <div class="details">    
     
             
 
@@ -345,12 +295,13 @@ a central concept in the Event-Sourced CR introduced with Neos 5.0.</p></p>     
             </div>
                     <div class="method-item">
                     <h3 id="method_equals">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Workspace/ContentStreamId.php#L67">at line 67</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Workspace/ContentStreamId.php#L69">at line 69</a></div>
         <code>                    bool
     <strong>equals</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $other)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -375,6 +326,40 @@ a central concept in the Event-Sourced CR introduced with Neos 5.0.</p></p>     
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Workspace/ContentStreamId.php#L74">at line 74</a></div>
+        <code>                    string
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
             <td></td>
         </tr>
     </table>

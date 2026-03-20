@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_Fusion_DimensionsMenuItemsImplementation" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Neos_Fusion_DimensionsMenuItemsImplementation" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -99,45 +112,6 @@ if necessary to fetch a result for a given dimension value</li>
 </ul></p>        </div>
             
         
-            <h2>Constants</h2>    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                                                                                                        STATE_NORMAL
-                                    </td>
-                <td class="last">
-                    <p><em></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                                                                                        STATE_CURRENT
-                                    </td>
-                <td class="last">
-                    <p><em></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                                                                                        STATE_ACTIVE
-                                    </td>
-                <td class="last">
-                    <p><em></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                                                                                        STATE_ABSENT
-                                    </td>
-                <td class="last">
-                    <p><em></em></p>
-                    <p></p>
-                </td>
-            </tr>
-            </table>
-
     
             <h2>Properties</h2>
 
@@ -184,7 +158,7 @@ if necessary to fetch a result for a given dimension value</li>
             </tr>
                     <tr>
                 <td class="type" id="property_items">
-                                        protected                                        <abbr title="Neos\Neos\Fusion\array&lt;int,\Neos\Neos\Fusion\MenuItem&gt;">MenuItem&gt;</abbr>
+                                        protected                                        <abbr title="Neos\Neos\Fusion\array&lt;int, \Neos\Neos\Fusion\MenuItem&gt;">MenuItem&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$items</td>
@@ -194,7 +168,7 @@ if necessary to fetch a result for a given dimension value</li>
             </tr>
                     <tr>
                 <td class="type" id="property_currentNode">
-                                        protected                                        <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>
+                                        protected                                        <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>
                                                                                 
                                     </td>
                 <td>$currentNode</td>
@@ -203,44 +177,43 @@ if necessary to fetch a result for a given dimension value</li>
 <abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></td>
             </tr>
                     <tr>
-                <td class="type" id="property_currentLevel">
-                                        protected                                        int
-                                                                                
-                                    </td>
-                <td>$currentLevel</td>
-                <td class="last"><p>Internal cache for the currentLevel tsValue.</p></td>
-                <td><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#property_currentLevel">
-<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_renderHiddenInIndex">
+                <td class="type" id="property_renderHiddenInMenu">
                                         protected                                        bool
                                                                                 
                                     </td>
-                <td>$renderHiddenInIndex</td>
-                <td class="last"><p>Internal cache for the renderHiddenInIndex property.</p></td>
-                <td><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#property_renderHiddenInIndex">
+                <td>$renderHiddenInMenu</td>
+                <td class="last"><p>Internal cache for the renderHiddenInMenu property.</p></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#property_renderHiddenInMenu">
 <abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></td>
             </tr>
                     <tr>
-                <td class="type" id="property_currentNodeRootline">
-                                        protected                                        <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>[]
+                <td class="type" id="property_calculateItemStates">
+                                        protected                                        bool
                                                                                 
                                     </td>
-                <td>$currentNodeRootline</td>
-                <td class="last"><p>Rootline of all nodes from the current node to the site root node, keys are depth of nodes.</p></td>
-                <td><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#property_currentNodeRootline">
+                <td>$calculateItemStates</td>
+                <td class="last"><p>Internal cache for the calculateItemStates property.</p></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#property_calculateItemStates">
 <abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_contentRepositoryRegistry">
-                                        protected                                        
+                                        protected                                        <a href="../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a>
                                                                                 
                                     </td>
                 <td>$contentRepositoryRegistry</td>
                 <td class="last"></td>
                 <td><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#property_contentRepositoryRegistry">
 <abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeLabelGenerator">
+                                        protected                                        <a href="../../../Neos/Neos/Domain/NodeLabel/NodeLabelGeneratorInterface.html"><abbr title="Neos\Neos\Domain\NodeLabel\NodeLabelGeneratorInterface">NodeLabelGeneratorInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodeLabelGenerator</td>
+                <td class="last"></td>
+                <td></td>
             </tr>
             </table>
 
@@ -255,7 +228,7 @@ if necessary to fetch a result for a given dimension value</li>
                 <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<a href="../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a> $runtime, string $path, string $fusionObjectName)
         
-                                            <p><p>Constructor</p></p>                </div>
+                                            <p>Constructor</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html#method___construct">
 <abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a></small></div>
             </div>
@@ -341,10 +314,33 @@ if necessary to fetch a result for a given dimension value</li>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getRenderHiddenInIndex">getRenderHiddenInIndex</a>()
+                    <a href="#method_isCalculateItemStatesEnabled">isCalculateItemStatesEnabled</a>()
         
-                                            <p><p>Should nodes that have &quot;hiddenInIndex&quot; set still be visible in this menu.</p></p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getRenderHiddenInIndex">
+                                            <p><p>Whether the active/current state of menu items is calculated on the server side.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_isCalculateItemStatesEnabled">
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getRenderHiddenInMenu">getRenderHiddenInMenu</a>()
+        
+                                            <p><p>Should nodes that have &quot;hiddenInMenu&quot; set still be visible in this menu.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getRenderHiddenInMenu">
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCurrentNode">getCurrentNode</a>()
+        
+                                            <p><p>The node the menu is built from, all relative specifications will
+use this as a base</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getCurrentNode">
 <abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -373,33 +369,23 @@ if necessary to fetch a result for a given dimension value</li>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_isNodeHidden">isNodeHidden</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
+                    <a href="#method_isNodeHidden">isNodeHidden</a>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         
                                             <p><p>Return TRUE/FALSE if the node is currently hidden or not in the menu;
-taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion object into account.</p></p>                </div>
+taking the &quot;renderHiddenInMenu&quot; configuration of the Menu Fusion object into account.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_isNodeHidden">
 <abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getCurrentNodeRootline">getCurrentNodeRootline</a>()
+                    <a href="#method_buildUri">buildUri</a>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         
-                                            <p><p>Get the rootline from the current node up to the site node.</p></p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getCurrentNodeRootline">
-<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getNodeLevelInSite">getNodeLevelInSite</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
-        
-                                            <p><p>Node Level relative to site root node.</p></p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getNodeLevelInSite">
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_buildUri">
 <abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -426,10 +412,10 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+                    <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_findClosestGeneralizationMatchingDimensionValue">findClosestGeneralizationMatchingDimensionValue</a>(<a href="../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint, <abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr> $contentDimensionIdentifier, <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateIdentifier, <abbr title="Neos\Neos\Fusion\DimensionsMenuItemsImplementationInternals">DimensionsMenuItemsImplementationInternals</abbr> $dimensionMenuItemsImplementationInternals, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <a href="#method_findClosestGeneralizationMatchingDimensionValue">findClosestGeneralizationMatchingDimensionValue</a>(<a href="../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint, <a href="../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a> $contentDimensionIdentifier, <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId, <a href="../../../Neos/ContentRepository/Core/DimensionSpace/InterDimensionalVariationGraph.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\InterDimensionalVariationGraph">InterDimensionalVariationGraph</abbr></a> $interDimensionalVariationGraph, <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -440,7 +426,7 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_determineMetadata">determineMetadata</a>(<a href="../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint, <abbr title="Neos\Neos\Fusion\DimensionsMenuItemsImplementationInternals">DimensionsMenuItemsImplementationInternals</abbr> $dimensionMenuItemsImplementationInternals)
+                    <a href="#method_determineMetadata">determineMetadata</a>(<a href="../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint, <a href="../../../Neos/ContentRepository/Core/Dimension/ContentDimensionSourceInterface.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionSourceInterface">ContentDimensionSourceInterface</abbr></a> $contentDimensionSource)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -451,7 +437,7 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_determineLabel">determineLabel</a>(<abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null $variant = null, array $metadata = [])
+                    <a href="#method_determineLabel">determineLabel</a>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null $variant = null, array $metadata = [])
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -459,10 +445,10 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    <abbr title="Neos\Neos\Fusion\MenuItemState">MenuItemState</abbr>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_calculateItemState">calculateItemState</a>(<abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null $variant = null)
+                    <a href="#method_calculateItemState">calculateItemState</a>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null $variant = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -481,7 +467,7 @@ to find a dimension space point in which a variant can be resolved</p></p>      
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr>|null
+                    <a href="../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getContentDimensionIdentifierToLimitTo">getContentDimensionIdentifierToLimitTo</a>()
@@ -516,11 +502,12 @@ to find a dimension space point in which a variant can be resolved</p></p>      
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Constructor</p></p>                        
+                            <p>Constructor</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -554,12 +541,13 @@ to find a dimension space point in which a variant can be resolved</p></p>      
                     <div class="method-item">
                     <h3 id="method_evaluate">
         <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_evaluate">
-<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L108">at line 108</a></div>
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L117">at line 117</a></div>
         <code>                    mixed
     <strong>evaluate</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -593,6 +581,7 @@ to find a dimension space point in which a variant can be resolved</p></p>      
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -626,6 +615,7 @@ to find a dimension space point in which a variant can be resolved</p></p>      
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -670,6 +660,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -713,6 +704,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -756,6 +748,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -804,6 +797,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -839,19 +833,20 @@ first evaluated value will be cached in memory.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getRenderHiddenInIndex">
-        <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getRenderHiddenInIndex">
-<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L77">at line 77</a></div>
+                    <h3 id="method_isCalculateItemStatesEnabled">
+        <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_isCalculateItemStatesEnabled">
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L64">at line 64</a></div>
         <code>                    bool
-    <strong>getRenderHiddenInIndex</strong>()
+    <strong>isCalculateItemStatesEnabled</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Should nodes that have &quot;hiddenInIndex&quot; set still be visible in this menu.</p></p>                        
+                            <p><p>Whether the active/current state of menu items is calculated on the server side.</p></p>                <p><p>This has an effect on performance and caching</p></p>        
         </div>
         <div class="tags">
             
@@ -872,14 +867,84 @@ first evaluated value will be cached in memory.</p></p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getRenderHiddenInMenu">
+        <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getRenderHiddenInMenu">
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L76">at line 76</a></div>
+        <code>                    bool
+    <strong>getRenderHiddenInMenu</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Should nodes that have &quot;hiddenInMenu&quot; set still be visible in this menu.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCurrentNode">
+        <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getCurrentNode">
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L89">at line 89</a></div>
+        <code>                    <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>
+    <strong>getCurrentNode</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The node the menu is built from, all relative specifications will
+use this as a base</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getItems">
         <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getItems">
-<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L91">at line 91</a></div>
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L103">at line 103</a></div>
         <code>                    array
     <strong>getItems</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -906,12 +971,13 @@ first evaluated value will be cached in memory.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_buildItems">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L44">at line 44</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L51">at line 51</a></div>
         <code>            protected        array
     <strong>buildItems</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -939,25 +1005,26 @@ first evaluated value will be cached in memory.</p></p>
                     <div class="method-item">
                     <h3 id="method_isNodeHidden">
         <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_isNodeHidden">
-<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L133">at line 133</a></div>
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L142">at line 142</a></div>
         <code>            protected        bool
-    <strong>isNodeHidden</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
+    <strong>isNodeHidden</strong>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>Return TRUE/FALSE if the node is currently hidden or not in the menu;
-taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion object into account.</p></p>                <p><p>This method needs to be called inside buildItems() in the subclasses.</p></p>        
+taking the &quot;renderHiddenInMenu&quot; configuration of the Menu Fusion object into account.</p></p>                <p><p>This method needs to be called inside buildItems() in the subclasses.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
                 <td>$node</td>
                 <td></td>
             </tr>
@@ -981,59 +1048,28 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getCurrentNodeRootline">
-        <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getCurrentNodeRootline">
-<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L150">at line 150</a></div>
-        <code>            protected        array
-    <strong>getCurrentNodeRootline</strong>()
+                    <h3 id="method_buildUri">
+        <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_buildUri">
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L154">at line 154</a></div>
+        <code>            protected        string
+    <strong>buildUri</strong>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Get the rootline from the current node up to the site node.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getNodeLevelInSite">
-        <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getNodeLevelInSite">
-<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L174">at line 174</a></div>
-        <code>            protected        int
-    <strong>getNodeLevelInSite</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Node Level relative to site root node.</p></p>                <p><p>0 = Site root node</p></p>        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
                 <td>$node</td>
                 <td></td>
             </tr>
@@ -1044,7 +1080,7 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
+            <td>string</td>
             <td></td>
         </tr>
     </table>
@@ -1058,12 +1094,13 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
             </div>
                     <div class="method-item">
                     <h3 id="method_getDimension">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L35">at line 35</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L42">at line 42</a></div>
         <code>                    array
     <strong>getDimension</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1091,12 +1128,13 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
             </div>
                     <div class="method-item">
                     <h3 id="method_isDimensionSpacePointRelevant">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L124">at line 124</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L133">at line 133</a></div>
         <code>            protected        bool
     <strong>isDimensionSpacePointRelevant</strong>(<a href="../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1134,12 +1172,13 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
             </div>
                     <div class="method-item">
                     <h3 id="method_findClosestGeneralizationMatchingDimensionValue">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L144">at line 144</a></div>
-        <code>            protected        <abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
-    <strong>findClosestGeneralizationMatchingDimensionValue</strong>(<a href="../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint, <abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr> $contentDimensionIdentifier, <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateIdentifier, <abbr title="Neos\Neos\Fusion\DimensionsMenuItemsImplementationInternals">DimensionsMenuItemsImplementationInternals</abbr> $dimensionMenuItemsImplementationInternals, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L153">at line 153</a></div>
+        <code>            protected        <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
+    <strong>findClosestGeneralizationMatchingDimensionValue</strong>(<a href="../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint, <a href="../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a> $contentDimensionIdentifier, <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId, <a href="../../../Neos/ContentRepository/Core/DimensionSpace/InterDimensionalVariationGraph.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\InterDimensionalVariationGraph">InterDimensionalVariationGraph</abbr></a> $interDimensionalVariationGraph, <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1157,23 +1196,23 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></td>
+                <td><a href="../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a></td>
                 <td>$contentDimensionIdentifier</td>
                 <td></td>
             </tr>
                     <tr>
                 <td><a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
-                <td>$nodeAggregateIdentifier</td>
+                <td>$nodeAggregateId</td>
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\Neos\Fusion\DimensionsMenuItemsImplementationInternals">DimensionsMenuItemsImplementationInternals</abbr></td>
-                <td>$dimensionMenuItemsImplementationInternals</td>
+                <td><a href="../../../Neos/ContentRepository/Core/DimensionSpace/InterDimensionalVariationGraph.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\InterDimensionalVariationGraph">InterDimensionalVariationGraph</abbr></a></td>
+                <td>$interDimensionalVariationGraph</td>
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></td>
-                <td>$contentRepository</td>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a></td>
+                <td>$contentGraph</td>
                 <td></td>
             </tr>
             </table>
@@ -1183,7 +1222,7 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null</td>
+            <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -1197,12 +1236,13 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
             </div>
                     <div class="method-item">
                     <h3 id="method_determineMetadata">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L178">at line 178</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L186">at line 186</a></div>
         <code>            protected        array
-    <strong>determineMetadata</strong>(<a href="../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint, <abbr title="Neos\Neos\Fusion\DimensionsMenuItemsImplementationInternals">DimensionsMenuItemsImplementationInternals</abbr> $dimensionMenuItemsImplementationInternals)
+    <strong>determineMetadata</strong>(<a href="../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint, <a href="../../../Neos/ContentRepository/Core/Dimension/ContentDimensionSourceInterface.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionSourceInterface">ContentDimensionSourceInterface</abbr></a> $contentDimensionSource)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1220,8 +1260,8 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\Neos\Fusion\DimensionsMenuItemsImplementationInternals">DimensionsMenuItemsImplementationInternals</abbr></td>
-                <td>$dimensionMenuItemsImplementationInternals</td>
+                <td><a href="../../../Neos/ContentRepository/Core/Dimension/ContentDimensionSourceInterface.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionSourceInterface">ContentDimensionSourceInterface</abbr></a></td>
+                <td>$contentDimensionSource</td>
                 <td></td>
             </tr>
             </table>
@@ -1245,12 +1285,13 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
             </div>
                     <div class="method-item">
                     <h3 id="method_determineLabel">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L206">at line 206</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L214">at line 214</a></div>
         <code>            protected        string
-    <strong>determineLabel</strong>(<abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null $variant = null, array $metadata = [])
+    <strong>determineLabel</strong>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null $variant = null, array $metadata = [])
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1263,7 +1304,7 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null</td>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null</td>
                 <td>$variant</td>
                 <td></td>
             </tr>
@@ -1293,12 +1334,13 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
             </div>
                     <div class="method-item">
                     <h3 id="method_calculateItemState">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L221">at line 221</a></div>
-        <code>            protected        string
-    <strong>calculateItemState</strong>(<abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null $variant = null)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L227">at line 227</a></div>
+        <code>            protected        <abbr title="Neos\Neos\Fusion\MenuItemState">MenuItemState</abbr>
+    <strong>calculateItemState</strong>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null $variant = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1311,7 +1353,7 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null</td>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null</td>
                 <td>$variant</td>
                 <td></td>
             </tr>
@@ -1322,7 +1364,7 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td><abbr title="Neos\Neos\Fusion\MenuItemState">MenuItemState</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1336,12 +1378,13 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
             </div>
                     <div class="method-item">
                     <h3 id="method_includeGeneralizations">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L239">at line 239</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L245">at line 245</a></div>
         <code>            protected        bool
     <strong>includeGeneralizations</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1369,12 +1412,13 @@ to find a dimension space point in which a variant can be resolved</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getContentDimensionIdentifierToLimitTo">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L247">at line 247</a></div>
-        <code>            protected        <abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr>|null
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L253">at line 253</a></div>
+        <code>            protected        <a href="../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a>|null
     <strong>getContentDimensionIdentifierToLimitTo</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1388,7 +1432,7 @@ to find a dimension space point in which a variant can be resolved</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr>|null</td>
+            <td><a href="../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -1402,12 +1446,13 @@ to find a dimension space point in which a variant can be resolved</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getValuesToRestrictTo">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L257">at line 257</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/DimensionsMenuItemsImplementation.php#L263">at line 263</a></div>
         <code>            protected        array
     <strong>getValuesToRestrictTo</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

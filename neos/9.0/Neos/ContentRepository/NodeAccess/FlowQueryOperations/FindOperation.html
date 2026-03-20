@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_NodeAccess_FlowQueryOperations_FindOperation" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_NodeAccess_FlowQueryOperations_FindOperation" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,27 +94,40 @@
 </p>
 
         
+        
     
         
 
             <div class="description">
             <p><p>&quot;find&quot; operation working on ContentRepository nodes. This operation allows for retrieval
-of nodes specified by a path, identifier or node type (recursive).</p></p>            <p><p>Example (node name):</p>
+of nodes specified by a path, identifier or node type (recursive).</p></p>            <p><p>Relative examples depending on the node's workspace, dimension space point, visibility constraints and location in the graph:</p>
+<p>Example (node name):</p>
 <p>q(node).find('main')</p>
 <p>Example (relative path):</p>
 <p>q(node).find('main/text1')</p>
-<p>Example (absolute path):</p>
-<p>q(node).find('/sites/my-site/home')</p>
-<p>Example (identifier):</p>
-<p>q(node).find('#30e893c1-caef-0ca5-b53d-e5699bb8e506')</p>
 <p>Example (node type):</p>
 <p>q(node).find('[instanceof Neos.NodeTypes:Text]')</p>
 <p>Example (multiple node types):</p>
 <p>q(node).find('[instanceof Neos.NodeTypes:Text],[instanceof Neos.NodeTypes:Image]')</p>
 <p>Example (node type with filter):</p>
-<p>q(node).find('[instanceof Neos.NodeTypes:Text][text*=&quot;Neos&quot;]')</p></p>        </div>
+<p>q(node).find('[instanceof Neos.NodeTypes:Text][text*=&quot;Neos&quot;]')</p>
+<p>Absolute / global examples depending only on the node's workspace and dimension space point as well as visibility constraints:</p>
+<p>Example (absolute path):</p>
+<p>q(site).find('/<Neos.Neos:Sites>/my-site/home')</p>
+<p>Example (global identifier):</p>
+<p>q(site).find('#30e893c1-caef-0ca5-b53d-e5699bb8e506')</p></p>        </div>
             
+                <h2>Traits</h2>
+
         
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/CreateNodeHashTrait.html"><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\CreateNodeHashTrait">CreateNodeHashTrait</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+            </div>
+    
     
             <h2>Properties</h2>
 
@@ -113,7 +138,7 @@ of nodes specified by a path, identifier or node type (recursive).</p></p>      
                                                                                 
                                     </td>
                 <td>$shortName</td>
-                <td class="last"><p>{@inheritdoc}</p></td>
+                <td class="last">{@inheritdoc}</td>
                 <td></td>
             </tr>
                     <tr>
@@ -122,12 +147,12 @@ of nodes specified by a path, identifier or node type (recursive).</p></p>      
                                                                                 
                                     </td>
                 <td>$priority</td>
-                <td class="last"><p>{@inheritdoc}</p></td>
+                <td class="last">{@inheritdoc}</td>
                 <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_contentRepositoryRegistry">
-                                        protected                                        <abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr>
+                                        protected                                        <a href="../../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a>
                                                                                 
                                     </td>
                 <td>$contentRepositoryRegistry</td>
@@ -142,12 +167,24 @@ of nodes specified by a path, identifier or node type (recursive).</p></p>      
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createNodeHash">createNodeHash</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        
+                                            <p><p>Create a string hash containing the node-aggregateId, cr-id, workspace-name, dimensionSpacePoint-hash
+and visibilityConstraints-hash. To be used for ensuring uniqueness or removing nodes.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/CreateNodeHashTrait.html#method_createNodeHash">
+<abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\CreateNodeHashTrait">CreateNodeHashTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_canEvaluate">canEvaluate</a>(<abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\array&lt;int,mixed&gt;">array&lt;int,mixed&gt;</abbr> $context)
+                    <a href="#method_canEvaluate">canEvaluate</a>(<abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\array&lt;int, mixed&gt;">array&lt;int, mixed&gt;</abbr> $context)
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -178,7 +215,7 @@ and thus may work with the legacy node interface until subgraphs are available
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_addNodesByIdentifier">addNodesByIdentifier</a>(<a href="../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateIdentifier, array $entryPoints, array $result)
+                    <a href="#method_addNodesById">addNodesById</a>(<a href="../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId, array $entryPoints, array $result)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -189,7 +226,7 @@ and thus may work with the legacy node interface until subgraphs are available
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_addNodesByPath">addNodesByPath</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a> $nodePath, array $entryPoints, array $result)
+                    <a href="#method_addNodesByPath">addNodesByPath</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a>|<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/AbsoluteNodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\AbsoluteNodePath">AbsoluteNodePath</abbr></a> $nodePath, array $entryPoints, array $result)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -200,7 +237,7 @@ and thus may work with the legacy node interface until subgraphs are available
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_addNodesByType">addNodesByType</a>(<a href="../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName, array $entryPoints, array $result, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <a href="#method_addNodesByType">addNodesByType</a>(<a href="../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName, array $entryPoints, array $result)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -213,25 +250,83 @@ and thus may work with the legacy node interface until subgraphs are available
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_canEvaluate">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FindOperation.php#L94">at line 94</a></div>
-        <code>                    bool
-    <strong>canEvaluate</strong>(<abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\array&lt;int,mixed&gt;">array&lt;int,mixed&gt;</abbr> $context)
+                    <h3 id="method_createNodeHash">
+        <div class="location">in <a href="../../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/CreateNodeHashTrait.html#method_createNodeHash">
+<abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\CreateNodeHashTrait">CreateNodeHashTrait</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/CreateNodeHashTrait.php#L17">at line 17</a></div>
+        <code>            protected        string
+    <strong>createNodeHash</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p><p>Create a string hash containing the node-aggregateId, cr-id, workspace-name, dimensionSpacePoint-hash
+and visibilityConstraints-hash. To be used for ensuring uniqueness or removing nodes.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\array&lt;int,mixed&gt;">array&lt;int,mixed&gt;</abbr></td>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html#method_equals">
+<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>::equals</a>
+                                    </td>
+                <td>for comparison</td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_canEvaluate">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FindOperation.php#L99">at line 99</a></div>
+        <code>                    bool
+    <strong>canEvaluate</strong>(<abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\array&lt;int, mixed&gt;">array&lt;int, mixed&gt;</abbr> $context)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p>{@inheritdoc}</p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\array&lt;int, mixed&gt;">array&lt;int, mixed&gt;</abbr></td>
                 <td>$context</td>
                 <td><p>(or array-like object) onto which this operation should be applied</p></td>
             </tr>
@@ -256,12 +351,13 @@ and thus may work with the legacy node interface until subgraphs are available
             </div>
                     <div class="method-item">
                     <h3 id="method_evaluate">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FindOperation.php#L115">at line 115</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FindOperation.php#L120">at line 120</a></div>
         <code>                    void
     <strong>evaluate</strong>(<abbr title="Neos\Eel\FlowQuery\FlowQuery">FlowQuery</abbr> $flowQuery, array $arguments)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -322,12 +418,13 @@ and thus may work with the legacy node interface until subgraphs are available
             </div>
                     <div class="method-item">
                     <h3 id="method_getEntryPoints">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FindOperation.php#L194">at line 194</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FindOperation.php#L204">at line 204</a></div>
         <code>            protected        array
     <strong>getEntryPoints</strong>(array $contextNodes)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -364,13 +461,14 @@ and thus may work with the legacy node interface until subgraphs are available
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_addNodesByIdentifier">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FindOperation.php#L218">at line 218</a></div>
+                    <h3 id="method_addNodesById">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FindOperation.php#L229">at line 229</a></div>
         <code>            protected        array
-    <strong>addNodesByIdentifier</strong>(<a href="../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateIdentifier, array $entryPoints, array $result)
+    <strong>addNodesById</strong>(<a href="../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId, array $entryPoints, array $result)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -384,7 +482,7 @@ and thus may work with the legacy node interface until subgraphs are available
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
-                <td>$nodeAggregateIdentifier</td>
+                <td>$nodeAggregateId</td>
                 <td></td>
             </tr>
                     <tr>
@@ -418,12 +516,13 @@ and thus may work with the legacy node interface until subgraphs are available
             </div>
                     <div class="method-item">
                     <h3 id="method_addNodesByPath">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FindOperation.php#L240">at line 240</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FindOperation.php#L251">at line 251</a></div>
         <code>            protected        array
-    <strong>addNodesByPath</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a> $nodePath, array $entryPoints, array $result)
+    <strong>addNodesByPath</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a>|<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/AbsoluteNodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\AbsoluteNodePath">AbsoluteNodePath</abbr></a> $nodePath, array $entryPoints, array $result)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -436,7 +535,7 @@ and thus may work with the legacy node interface until subgraphs are available
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a></td>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a>|<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/AbsoluteNodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\AbsoluteNodePath">AbsoluteNodePath</abbr></a></td>
                 <td>$nodePath</td>
                 <td></td>
             </tr>
@@ -471,12 +570,13 @@ and thus may work with the legacy node interface until subgraphs are available
             </div>
                     <div class="method-item">
                     <h3 id="method_addNodesByType">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FindOperation.php#L272">at line 272</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FindOperation.php#L277">at line 277</a></div>
         <code>            protected        array
-    <strong>addNodesByType</strong>(<a href="../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName, array $entryPoints, array $result, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+    <strong>addNodesByType</strong>(<a href="../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName, array $entryPoints, array $result)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -501,11 +601,6 @@ and thus may work with the legacy node interface until subgraphs are available
                     <tr>
                 <td>array</td>
                 <td>$result</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></td>
-                <td>$contentRepository</td>
                 <td></td>
             </tr>
             </table>

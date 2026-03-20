@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../../../fonts/doctum-font.css">
+        <script src="../../../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../../../doctum.js"></script>
+        <script async defer src="../../../../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (9.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepository_Core_Projection_ContentGraph_Filter_NodeType_NodeTypeCriteria" data-root-path="../../../../../../../" data-search-index-url="../../../../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../../../../Neos/ContentRepository.html">ContentRepository</a></li><li class="backslash">\</li><li><a href="../../../../../../../Neos/ContentRepository/Core.html">Core</a></li><li class="backslash">\</li><li><a href="../../../../../../../Neos/ContentRepository/Core/Projection.html">Projection</a></li><li class="backslash">\</li><li><a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph.html">ContentGraph</a></li><li class="backslash">\</li><li><a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter.html">Filter</a></li><li class="backslash">\</li><li><a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType.html">NodeType</a></li><li class="backslash">\</li><li>NodeTypeCriteria</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>NodeTypeCriteria    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>NodeTypeCriteria</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            <div class="description">
+            <p><p>The list of node type criteria needed for various find() operations on the {ContentSubgraphInterface}.</p></p>            <p><p>This DTO is a direct representation of the user's intent, so the filter strings are translated
+as follows:</p>
+<ul>
+<li>Foo.Bar: <code>allowed: [Foo.Bar]; disallowed: []</code></li>
+<li>Foo.Bar,Baz,!Other: <code>allowed: [Foo.Bar, Baz]; disallowed: [Other]</code></li>
+<li>(empty): <code>allowed: []; disallowed: []</code>.</li>
+</ul>
+<p>This is usually created by the factory method {\Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\self::fromFilterString}.</p>
+<h2>Semantics</h2>
+<p>1) By specifying a node type, you allow or deny it <em>and all of its sub node types</em>
+according to the node type hierarchy.</p>
+<p>2) Deny rules win over allow rules.</p>
+<p>3) If no constraint is specified, everything is allowed.</p>
+<p>4) If only deny rules are specified, everything is allowed <strong>except</strong> the specified node types
+and their sub node types.</p>
+<p>NOTE: Implementers of ContentSubgraphInterface need to take of implementing the above
+semantics. You can use the internal method {<a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/ExpandedNodeTypeCriteria.html">\Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\ExpandedNodeTypeCriteria::create}
+</a>      to take sub-nodes into account.</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_create">create</a>(<a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a> $allowed, <a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a> $disallowed)
+        
+                                            <p><p>We recommended to call this method with named arguments to better
+understand the distinction between allowed and disallowed NodeTypeNames</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createWithAllowedNodeTypeNames">createWithAllowedNodeTypeNames</a>(<a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a> $nodeTypeNames)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createWithDisallowedNodeTypeNames">createWithDisallowedNodeTypeNames</a>(<a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a> $nodeTypeNames)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_fromFilterString">fromFilterString</a>(string $serializedFilters)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_withAdditionalDisallowedNodeType">withAdditionalDisallowedNodeType</a>(<a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
+        
+                                            <p><p>IMMUTABLE, returns a new instance</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_withAdditionalAllowedNodeType">withAdditionalAllowedNodeType</a>(<a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
+        
+                                            <p><p>IMMUTABLE, returns a new instance</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_toFilterString">toFilterString</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_create">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.php#L63">at line 63</a></div>
+        <code>        static            <a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a>
+    <strong>create</strong>(<a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a> $allowed, <a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a> $disallowed)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>We recommended to call this method with named arguments to better
+understand the distinction between allowed and disallowed NodeTypeNames</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a></td>
+                <td>$allowed</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a></td>
+                <td>$disallowed</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createWithAllowedNodeTypeNames">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.php#L70">at line 70</a></div>
+        <code>        static            <a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a>
+    <strong>createWithAllowedNodeTypeNames</strong>(<a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a> $nodeTypeNames)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a></td>
+                <td>$nodeTypeNames</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createWithDisallowedNodeTypeNames">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.php#L75">at line 75</a></div>
+        <code>        static            <a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a>
+    <strong>createWithDisallowedNodeTypeNames</strong>(<a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a> $nodeTypeNames)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a></td>
+                <td>$nodeTypeNames</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fromFilterString">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.php#L80">at line 80</a></div>
+        <code>        static            <a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a>
+    <strong>fromFilterString</strong>(string $serializedFilters)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$serializedFilters</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_withAdditionalDisallowedNodeType">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.php#L110">at line 110</a></div>
+        <code>                    <a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a>
+    <strong>withAdditionalDisallowedNodeType</strong>(<a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>IMMUTABLE, returns a new instance</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a></td>
+                <td>$nodeTypeName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_withAdditionalAllowedNodeType">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.php#L121">at line 121</a></div>
+        <code>                    <a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a>
+    <strong>withAdditionalAllowedNodeType</strong>(<a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>IMMUTABLE, returns a new instance</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a></td>
+                <td>$nodeTypeName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toFilterString">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.php#L129">at line 129</a></div>
+        <code>                    string
+    <strong>toFilterString</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

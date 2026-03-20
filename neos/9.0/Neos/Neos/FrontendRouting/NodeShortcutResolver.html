@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_FrontendRouting_NodeShortcutResolver" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Neos_FrontendRouting_NodeShortcutResolver" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -100,7 +113,7 @@ and redirects to a shortcut target when visiting the shortcut itself.</p></p>   
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../../Neos/Media/Domain/Repository/AssetRepository.html"><abbr title="Neos\Media\Domain\Repository\AssetRepository">AssetRepository</abbr></a> $assetRepository, <abbr title="Neos\Flow\ResourceManagement\ResourceManager">ResourceManager</abbr> $resourceManager)
+                    <a href="#method___construct">__construct</a>(<a href="../../../Neos/Media/Domain/Repository/AssetRepository.html"><abbr title="Neos\Media\Domain\Repository\AssetRepository">AssetRepository</abbr></a> $assetRepository, <abbr title="Neos\Flow\ResourceManagement\ResourceManager">ResourceManager</abbr> $resourceManager, <a href="../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a> $contentRepositoryRegistry)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -108,20 +121,20 @@ and redirects to a shortcut target when visiting the shortcut itself.</p></p>   
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Neos\FrontendRouting\NodeAddress">NodeAddress</abbr>|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr>
+                    <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAddress.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAddress">NodeAddress</abbr></a>|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_resolveShortcutTarget">resolveShortcutTarget</a>(<abbr title="Neos\Neos\FrontendRouting\NodeAddress">NodeAddress</abbr> $nodeAddress, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <a href="#method_resolveShortcutTarget">resolveShortcutTarget</a>(<a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAddress.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAddress">NodeAddress</abbr></a> $nodeAddress)
         
                                             <p><p>&quot;adapter&quot; for {resolveNode} when working with NodeAddresses.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo|Psr\Http\Message\UriInterface">UriInterface</abbr>
+                    <a href="../../../Neos/Neos/FrontendRouting/Projection/DocumentNodeInfo.html"><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo">DocumentNodeInfo</abbr></a>|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_resolveNode">resolveNode</a>(<a href="../../../Neos/Neos/FrontendRouting/Projection/DocumentNodeInfo.html"><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo">DocumentNodeInfo</abbr></a> $documentNodeInfo, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <a href="#method_resolveNode">resolveNode</a>(<a href="../../../Neos/Neos/FrontendRouting/Projection/DocumentNodeInfo.html"><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo">DocumentNodeInfo</abbr></a> $documentNodeInfo, <a href="../../../Neos/ContentRepository/Core/ContentRepository.html"><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></a> $contentRepository)
         
                                             <p><p>This method is used during routing (when creating URLs), to directly generate URLs to the shortcut TARGET,
 if linking to a shortcut.</p></p>                </div>
@@ -135,12 +148,13 @@ if linking to a shortcut.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/NodeShortcutResolver.php#L45">at line 45</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/NodeShortcutResolver.php#L41">at line 41</a></div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../../Neos/Media/Domain/Repository/AssetRepository.html"><abbr title="Neos\Media\Domain\Repository\AssetRepository">AssetRepository</abbr></a> $assetRepository, <abbr title="Neos\Flow\ResourceManagement\ResourceManager">ResourceManager</abbr> $resourceManager)
+    <strong>__construct</strong>(<a href="../../../Neos/Media/Domain/Repository/AssetRepository.html"><abbr title="Neos\Media\Domain\Repository\AssetRepository">AssetRepository</abbr></a> $assetRepository, <abbr title="Neos\Flow\ResourceManagement\ResourceManager">ResourceManager</abbr> $resourceManager, <a href="../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a> $contentRepositoryRegistry)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -162,6 +176,11 @@ if linking to a shortcut.</p></p>                </div>
                 <td>$resourceManager</td>
                 <td></td>
             </tr>
+                    <tr>
+                <td><a href="../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a></td>
+                <td>$contentRepositoryRegistry</td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -174,12 +193,13 @@ if linking to a shortcut.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_resolveShortcutTarget">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/NodeShortcutResolver.php#L65">at line 65</a></div>
-        <code>                    <abbr title="Neos\Neos\FrontendRouting\NodeAddress">NodeAddress</abbr>|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr>
-    <strong>resolveShortcutTarget</strong>(<abbr title="Neos\Neos\FrontendRouting\NodeAddress">NodeAddress</abbr> $nodeAddress, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/NodeShortcutResolver.php#L59">at line 59</a></div>
+        <code>                    <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAddress.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAddress">NodeAddress</abbr></a>|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr>
+    <strong>resolveShortcutTarget</strong>(<a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAddress.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAddress">NodeAddress</abbr></a> $nodeAddress)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -192,13 +212,8 @@ because it is only covering the live workspace</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\Neos\FrontendRouting\NodeAddress">NodeAddress</abbr></td>
+                <td><a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAddress.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAddress">NodeAddress</abbr></a></td>
                 <td>$nodeAddress</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></td>
-                <td>$contentRepository</td>
                 <td></td>
             </tr>
             </table>
@@ -208,8 +223,8 @@ because it is only covering the live workspace</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Neos\FrontendRouting\NodeAddress">NodeAddress</abbr>|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr></td>
-            <td><p>NodeAddress is returned if we want to link to another node
+            <td><a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAddress.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAddress">NodeAddress</abbr></a>|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr></td>
+            <td><p>NodeIdentity is returned if we want to link to another node
 (i.e. node is NOT a shortcut node; or target is a node);
 or UriInterface for links to fixed URLs (Asset URLs or external URLs)</p></td>
         </tr>
@@ -237,12 +252,13 @@ or UriInterface for links to fixed URLs (Asset URLs or external URLs)</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_resolveNode">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/NodeShortcutResolver.php#L95">at line 95</a></div>
-        <code>                    <abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo|Psr\Http\Message\UriInterface">UriInterface</abbr>
-    <strong>resolveNode</strong>(<a href="../../../Neos/Neos/FrontendRouting/Projection/DocumentNodeInfo.html"><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo">DocumentNodeInfo</abbr></a> $documentNodeInfo, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/NodeShortcutResolver.php#L93">at line 93</a></div>
+        <code>                    <a href="../../../Neos/Neos/FrontendRouting/Projection/DocumentNodeInfo.html"><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo">DocumentNodeInfo</abbr></a>|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr>
+    <strong>resolveNode</strong>(<a href="../../../Neos/Neos/FrontendRouting/Projection/DocumentNodeInfo.html"><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo">DocumentNodeInfo</abbr></a> $documentNodeInfo, <a href="../../../Neos/ContentRepository/Core/ContentRepository.html"><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></a> $contentRepository)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -261,7 +277,7 @@ because it is only covering the live workspace</p></p>
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></td>
+                <td><a href="../../../Neos/ContentRepository/Core/ContentRepository.html"><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></a></td>
                 <td>$contentRepository</td>
                 <td></td>
             </tr>
@@ -272,7 +288,7 @@ because it is only covering the live workspace</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo|Psr\Http\Message\UriInterface">UriInterface</abbr></td>
+            <td><a href="../../../Neos/Neos/FrontendRouting/Projection/DocumentNodeInfo.html"><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo">DocumentNodeInfo</abbr></a>|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr></td>
             <td><p>DocumentNodeInfo is returned if we want to link to another node
 (i.e. node is NOT a shortcut node; or target is a node);
 or UriInterface for links to fixed URLs (Asset URLs or external URLs)</p></td>

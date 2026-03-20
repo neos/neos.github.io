@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Fusion_Core_Cache_RuntimeContentCache" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Fusion_Core_Cache_RuntimeContentCache" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -113,7 +126,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_inCacheEntryPoint">
-                                        protected                                        bool
+                                        protected                                        bool|null
                                                                                 
                                     </td>
                 <td>$inCacheEntryPoint</td>
@@ -156,15 +169,6 @@
                 <td class="last"></td>
                 <td></td>
             </tr>
-                    <tr>
-                <td class="type" id="property_propertyMapper">
-                                        protected                                        <abbr title="Neos\Flow\Property\PropertyMapper">PropertyMapper</abbr>
-                                                                                
-                                    </td>
-                <td>$propertyMapper</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
             </table>
 
     
@@ -187,7 +191,18 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_addTag">addTag</a>(string $key, string $value)
+                    <a href="#method_injectSerializer">injectSerializer</a>(<abbr title="Symfony\Component\Serializer\Normalizer\NormalizerInterface">NormalizerInterface</abbr>&<abbr title="Symfony\Component\Serializer\Normalizer\DenormalizerInterface">DenormalizerInterface</abbr> $serializer)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_addTag">addTag</a>(string $tag)
         
                                             <p><p>Adds a tag built from the given key and value.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -278,10 +293,21 @@ a cached content segment.</p></p>                </div>
                     array
                 </div>
                 <div class="col-md-8">
+                    <a href="#method_serializeContext">serializeContext</a>(array $contextVariables)
+        
+                                            <p><p>Encodes an array of context variables to its serialized representation
+{self::unserializeContext()}</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
                     <a href="#method_unserializeContext">unserializeContext</a>(array $contextArray)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Decodes and serialized array of context variables to its original values
+{self::serializeContext()}</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -314,12 +340,13 @@ a cached content segment.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L73">at line 73</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L74">at line 74</a></div>
         <code>                    
     <strong>__construct</strong>(<a href="../../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a> $runtime)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -347,13 +374,58 @@ a cached content segment.</p></p>                </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_addTag">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L86">at line 86</a></div>
+                    <h3 id="method_injectSerializer">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L79">at line 79</a></div>
         <code>                    void
-    <strong>addTag</strong>(string $key, string $value)
+    <strong>injectSerializer</strong>(<abbr title="Symfony\Component\Serializer\Normalizer\NormalizerInterface">NormalizerInterface</abbr>&<abbr title="Symfony\Component\Serializer\Normalizer\DenormalizerInterface">DenormalizerInterface</abbr> $serializer)
         </code>
     </h3>
     <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Symfony\Component\Serializer\Normalizer\NormalizerInterface">NormalizerInterface</abbr>&<abbr title="Symfony\Component\Serializer\Normalizer\DenormalizerInterface">DenormalizerInterface</abbr></td>
+                <td>$serializer</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addTag">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L89">at line 89</a></div>
+        <code>                    void
+    <strong>addTag</strong>(string $tag)
+        </code>
+    </h3>
+    <div class="details">    
+            
     
             
 
@@ -366,12 +438,7 @@ a cached content segment.</p></p>                </div>
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$key</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$value</td>
+                <td>$tag</td>
                 <td></td>
             </tr>
             </table>
@@ -404,12 +471,13 @@ a cached content segment.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_flushTags">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L105">at line 105</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L103">at line 103</a></div>
         <code>            protected        array
     <strong>flushTags</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -436,12 +504,13 @@ a cached content segment.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_enter">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L123">at line 123</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L121">at line 121</a></div>
         <code>                    array
     <strong>enter</strong>(array $configuration, string $fusionPath)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -493,12 +562,13 @@ like the cache entry point.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_preEvaluate">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L160">at line 160</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L158">at line 158</a></div>
         <code>                    array
     <strong>preEvaluate</strong>(array $evaluateContext, object $fusionObject)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -542,12 +612,13 @@ minimum maximumLifetime).</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_postProcess">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L241">at line 241</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L238">at line 238</a></div>
         <code>                    mixed
     <strong>postProcess</strong>(array $evaluateContext, object $fusionObject, mixed $output)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -596,12 +667,13 @@ store cache entries.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_leave">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L294">at line 294</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L291">at line 291</a></div>
         <code>                    void
     <strong>leave</strong>(array $evaluateContext)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -638,12 +710,13 @@ store cache entries.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_evaluateUncached">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L312">at line 312</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L309">at line 309</a></div>
         <code>                    mixed
     <strong>evaluateUncached</strong>(string $path, array $contextArray)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -685,12 +758,13 @@ store cache entries.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_buildCacheIdentifierValues">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L332">at line 332</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L329">at line 329</a></div>
         <code>            protected        array
     <strong>buildCacheIdentifierValues</strong>(array $configuration, string $fusionPath, object $fusionObject)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -738,12 +812,13 @@ a cached content segment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_buildCacheTags">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L349">at line 349</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L346">at line 346</a></div>
         <code>            protected        array
     <strong>buildCacheTags</strong>(array $configuration, string $fusionPath, object $fusionObject)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -789,19 +864,64 @@ a cached content segment.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_unserializeContext">
+                    <h3 id="method_serializeContext">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L374">at line 374</a></div>
-        <code>                    array
-    <strong>unserializeContext</strong>(array $contextArray)
+        <code>            protected        array
+    <strong>serializeContext</strong>(array $contextVariables)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Encodes an array of context variables to its serialized representation
+{self::unserializeContext()}</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$contextVariables</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unserializeContext">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L394">at line 394</a></div>
+        <code>            protected        array
+    <strong>unserializeContext</strong>(array $contextArray)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Decodes and serialized array of context variables to its original values
+{self::serializeContext()}</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -833,12 +953,13 @@ a cached content segment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setEnableContentCache">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L389">at line 389</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L409">at line 409</a></div>
         <code>                    void
     <strong>setEnableContentCache</strong>(bool $enableContentCache)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -876,12 +997,13 @@ a cached content segment.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getEnableContentCache">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L397">at line 397</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/RuntimeContentCache.php#L417">at line 417</a></div>
         <code>                    bool
     <strong>getEnableContentCache</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

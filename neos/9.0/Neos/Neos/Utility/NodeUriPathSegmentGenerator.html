@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_Utility_NodeUriPathSegmentGenerator" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Neos_Utility_NodeUriPathSegmentGenerator" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -95,10 +108,19 @@
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_transliterationService">
-                                        protected                                        
+                                        protected                                        <a href="../../../Neos/Neos/Service/TransliterationService.html"><abbr title="Neos\Neos\Service\TransliterationService">TransliterationService</abbr></a>
                                                                                 
                                     </td>
                 <td>$transliterationService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeLabelGenerator">
+                                        protected                                        <a href="../../../Neos/Neos/Domain/NodeLabel/NodeLabelGeneratorInterface.html"><abbr title="Neos\Neos\Domain\NodeLabel\NodeLabelGeneratorInterface">NodeLabelGeneratorInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodeLabelGenerator</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -113,7 +135,7 @@
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_generateUriPathSegment">generateUriPathSegment</a>(<abbr title="Neos\Neos\Utility\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null $node = null, string|null $text = null)
+                    <a href="#method_generateUriPathSegment">generateUriPathSegment</a>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null $node = null, string|null $text = null)
         
                                             <p><p>Generates a URI path segment for a given node taking its language dimension value into account</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -126,12 +148,13 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_generateUriPathSegment">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Utility/NodeUriPathSegmentGenerator.php#L39">at line 39</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Utility/NodeUriPathSegmentGenerator.php#L43">at line 43</a></div>
         <code>                    string
-    <strong>generateUriPathSegment</strong>(<abbr title="Neos\Neos\Utility\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null $node = null, string|null $text = null)
+    <strong>generateUriPathSegment</strong>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null $node = null, string|null $text = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -143,7 +166,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\Neos\Utility\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null</td>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null</td>
                 <td>$node</td>
                 <td><p>Optional node to determine language dimension value from</p></td>
             </tr>

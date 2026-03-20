@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_Projection_Projections" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_Projection_Projections" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,10 +90,10 @@
 
     
     <p>final         class
-    <strong>Projections</strong>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/IteratorAggregate">IteratorAggregate</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/Projections.php">View source</a>)
+    <strong>Projections</strong>        implements        <a target="_blank" rel="noopener" href="https://www.php.net/IteratorAggregate">IteratorAggregate</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Countable">Countable</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/Projections.php">View source</a>)
 </p>
 
+        
         
     
                         <table>
@@ -107,7 +119,7 @@
                     static&nbsp;<a href="../../../../Neos/ContentRepository/Core/Projection/Projections.html"><abbr title="Neos\ContentRepository\Core\Projection\Projections">Projections</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_create">create</a>()
+                    <a href="#method_createEmpty">createEmpty</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -115,10 +127,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../Neos/ContentRepository/Core/Projection/Projections.html"><abbr title="Neos\ContentRepository\Core\Projection\Projections">Projections</abbr></a>
+                    static&nbsp;<a href="../../../../Neos/ContentRepository/Core/Projection/Projections.html"><abbr title="Neos\ContentRepository\Core\Projection\Projections">Projections</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_with">with</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionInterface">ProjectionInterface</abbr></a> $projection)
+                    <a href="#method_fromArray">fromArray</a>(array $projections)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -129,7 +141,7 @@
                     <a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionInterface">ProjectionInterface</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_get">get</a>(string $projectionClassName)
+                    <a href="#method_get">get</a>(<a href="../../../../Neos/ContentRepository/Core/Subscription/SubscriptionId.html"><abbr title="Neos\ContentRepository\Core\Subscription\SubscriptionId">SubscriptionId</abbr></a> $id)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -140,7 +152,18 @@
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_has">has</a>(string $projectionClassName)
+                    <a href="#method_has">has</a>(<a href="../../../../Neos/ContentRepository/Core/Subscription/SubscriptionId.html"><abbr title="Neos\ContentRepository\Core\Subscription\SubscriptionId">SubscriptionId</abbr></a> $id)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Core/Projection/Projections.html"><abbr title="Neos\ContentRepository\Core\Projection\Projections">Projections</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_with">with</a>(<a href="../../../../Neos/ContentRepository/Core/Subscription/SubscriptionId.html"><abbr title="Neos\ContentRepository\Core\Subscription\SubscriptionId">SubscriptionId</abbr></a> $id, <a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionInterface">ProjectionInterface</abbr></a> $projection)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -159,10 +182,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionStateInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionStateInterface">ProjectionStateInterface</abbr></a>
+                    int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getProjectionState">getProjectionState</a>(string $projectionStateClassName)
+                    <a href="#method_count">count</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -175,13 +198,14 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_create">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/Projections.php#L36">at line 36</a></div>
+                    <h3 id="method_createEmpty">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/Projections.php#L31">at line 31</a></div>
         <code>        static            <a href="../../../../Neos/ContentRepository/Core/Projection/Projections.html"><abbr title="Neos\ContentRepository\Core\Projection\Projections">Projections</abbr></a>
-    <strong>create</strong>()
+    <strong>createEmpty</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -208,13 +232,14 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_with">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/Projections.php#L46">at line 46</a></div>
-        <code>                    <a href="../../../../Neos/ContentRepository/Core/Projection/Projections.html"><abbr title="Neos\ContentRepository\Core\Projection\Projections">Projections</abbr></a>
-    <strong>with</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionInterface">ProjectionInterface</abbr></a> $projection)
+                    <h3 id="method_fromArray">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/Projections.php#L40">at line 40</a></div>
+        <code>        static            <a href="../../../../Neos/ContentRepository/Core/Projection/Projections.html"><abbr title="Neos\ContentRepository\Core\Projection\Projections">Projections</abbr></a>
+    <strong>fromArray</strong>(array $projections)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -226,6 +251,143 @@
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$projections</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Core/Projection/Projections.html"><abbr title="Neos\ContentRepository\Core\Projection\Projections">Projections</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_get">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/Projections.php#L61">at line 61</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionInterface">ProjectionInterface</abbr></a>
+    <strong>get</strong>(<a href="../../../../Neos/ContentRepository/Core/Subscription/SubscriptionId.html"><abbr title="Neos\ContentRepository\Core\Subscription\SubscriptionId">SubscriptionId</abbr></a> $id)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/Subscription/SubscriptionId.html"><abbr title="Neos\ContentRepository\Core\Subscription\SubscriptionId">SubscriptionId</abbr></a></td>
+                <td>$id</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionInterface">ProjectionInterface</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_has">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/Projections.php#L69">at line 69</a></div>
+        <code>                    bool
+    <strong>has</strong>(<a href="../../../../Neos/ContentRepository/Core/Subscription/SubscriptionId.html"><abbr title="Neos\ContentRepository\Core\Subscription\SubscriptionId">SubscriptionId</abbr></a> $id)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/Subscription/SubscriptionId.html"><abbr title="Neos\ContentRepository\Core\Subscription\SubscriptionId">SubscriptionId</abbr></a></td>
+                <td>$id</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_with">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/Projections.php#L78">at line 78</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Core/Projection/Projections.html"><abbr title="Neos\ContentRepository\Core\Projection\Projections">Projections</abbr></a>
+    <strong>with</strong>(<a href="../../../../Neos/ContentRepository/Core/Subscription/SubscriptionId.html"><abbr title="Neos\ContentRepository\Core\Subscription\SubscriptionId">SubscriptionId</abbr></a> $id, <a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionInterface">ProjectionInterface</abbr></a> $projection)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/Subscription/SubscriptionId.html"><abbr title="Neos\ContentRepository\Core\Subscription\SubscriptionId">SubscriptionId</abbr></a></td>
+                <td>$id</td>
+                <td></td>
+            </tr>
                     <tr>
                 <td><a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionInterface">ProjectionInterface</abbr></a></td>
                 <td>$projection</td>
@@ -251,99 +413,14 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_get">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/Projections.php#L67">at line 67</a></div>
-        <code>                    <a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionInterface">ProjectionInterface</abbr></a>
-    <strong>get</strong>(string $projectionClassName)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$projectionClassName</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionInterface">ProjectionInterface</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_has">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/Projections.php#L82">at line 82</a></div>
-        <code>                    bool
-    <strong>has</strong>(string $projectionClassName)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$projectionClassName</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/Projections.php#L91">at line 91</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/Projections.php#L83">at line 83</a></div>
         <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a>
     <strong>getIterator</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -370,13 +447,14 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getProjectionState">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/Projections.php#L101">at line 101</a></div>
-        <code>                    <a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionStateInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionStateInterface">ProjectionStateInterface</abbr></a>
-    <strong>getProjectionState</strong>(string $projectionStateClassName)
+                    <h3 id="method_count">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/Projections.php#L88">at line 88</a></div>
+        <code>                    int
+    <strong>count</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -385,22 +463,12 @@
                     
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$projectionStateClassName</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionStateInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionStateInterface">ProjectionStateInterface</abbr></a></td>
+            <td>int</td>
             <td></td>
         </tr>
     </table>

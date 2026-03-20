@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Fusion_View_FusionView" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Fusion_View_FusionView" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -117,7 +130,7 @@ If this path is found, then it is used for rendering.</p></p>        </div>
             </tr>
                     <tr>
                 <td class="type" id="property_parsedFusion">
-                                        protected                                        array
+                                        protected                                        <a href="../../../Neos/Fusion/Core/FusionConfiguration.html"><abbr title="Neos\Fusion\Core\FusionConfiguration">FusionConfiguration</abbr></a>
                                                                                 
                                     </td>
                 <td>$parsedFusion</td>
@@ -152,6 +165,16 @@ and action names or set by the user.</p></td>
                 <td class="last"><p>The Fusion Runtime</p></td>
                 <td></td>
             </tr>
+                    <tr>
+                <td class="type" id="property_assignedActionRequest">
+                                        protected                                        <abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr>|null
+                                                                                
+                                    </td>
+                <td>$assignedActionRequest</td>
+                <td class="last"><p>Via {assign} request using the &quot;request&quot; key,
+will be available also as Fusion global in the runtime.</p></td>
+                <td></td>
+            </tr>
             </table>
 
     
@@ -166,6 +189,27 @@ and action names or set by the user.</p></td>
                     <a href="#method_setOption">setOption</a>(string $optionName, mixed $value)
         
                                             <p><p>Reset runtime cache if an option is changed</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Fusion/View/FusionView.html"><abbr title="Neos\Fusion\View\FusionView">FusionView</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_assign">assign</a>(string $key, mixed $value)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setControllerContext">setControllerContext</a>(<abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext)
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p><p>Legacy layer to set the request for this view if not set already.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -214,12 +258,12 @@ is automatically derived from the current request.</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    mixed
+                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|<abbr title="Psr\Http\Message\StreamInterface">StreamInterface</abbr>
                 </div>
                 <div class="col-md-8">
                     <a href="#method_render">render</a>()
         
-                                            <p><p>Render the view</p></p>                </div>
+                                            <p><p>Render the view to a full response in case a Neos.Fusion:Http.Message was used.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -246,12 +290,12 @@ parsed results</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    <a href="../../../Neos/Fusion/Core/FusionConfiguration.html"><abbr title="Neos\Fusion\Core\FusionConfiguration">FusionConfiguration</abbr></a>
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getMergedFusionObjectTree">getMergedFusionObjectTree</a>()
         
-                                            <p><p>Parse all the fusion files the are in the current fusionPathPatterns</p></p>                </div>
+                                            <p><p>Parse all the fusion files that are in the current fusionPathPatterns</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -285,16 +329,6 @@ parsed results</p></p>                </div>
                                             <p><p>Determines the Fusion path depending on the current controller and action</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    mixed
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_renderFusion">renderFusion</a>()
-        
-                                            <p><p>Render the given Fusion and return the rendered page</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
             </div>
 
 
@@ -303,12 +337,13 @@ parsed results</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_setOption">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L89">at line 89</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L99">at line 99</a></div>
         <code>                    void
     <strong>setOption</strong>(string $optionName, mixed $value)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -349,13 +384,105 @@ parsed results</p></p>                </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_assign">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L109">at line 109</a></div>
+        <code>                    <a href="../../../Neos/Fusion/View/FusionView.html"><abbr title="Neos\Fusion\View\FusionView">FusionView</abbr></a>
+    <strong>assign</strong>(string $key, mixed $value)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$key</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Fusion/View/FusionView.html"><abbr title="Neos\Fusion\View\FusionView">FusionView</abbr></a></td>
+            <td><p>for chaining</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setControllerContext">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L130">at line 130</a></div>
+        <code>                    
+    <strong>setControllerContext</strong>(<abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext)
+        <small><span class="label label-danger">deprecated</span></small></code>
+    </h3>
+    <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>with</td>
+                    <td>Neos 9</td>
+                </tr>
+                    </p>
+    
+            
+
+        <div class="method-description">
+                            <p><p>Legacy layer to set the request for this view if not set already.</p></p>                <p><p>Please use {\Neos\Fusion\View\assign} with &quot;request&quot; instead</p>
+<p>$view-&gt;assign('request&quot;', $this-&gt;request)</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr></td>
+                <td>$controllerContext</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_setFusionPath">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L102">at line 102</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L144">at line 144</a></div>
         <code>                    void
     <strong>setFusionPath</strong>(string $fusionPath)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -393,12 +520,13 @@ to be used mostly inside tests.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setPackageKey">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L114">at line 114</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L156">at line 156</a></div>
         <code>                    void
     <strong>setPackageKey</strong>(string $packageKey)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -436,12 +564,13 @@ is automatically derived from the current request.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setFusionPathPattern">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L123">at line 123</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L165">at line 165</a></div>
         <code>                    void
     <strong>setFusionPathPattern</strong>(string $pathPattern)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -479,12 +608,13 @@ is automatically derived from the current request.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setFusionPathPatterns">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L132">at line 132</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L174">at line 174</a></div>
         <code>                    void
     <strong>setFusionPathPatterns</strong>(array $pathPatterns)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -522,17 +652,18 @@ is automatically derived from the current request.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_render">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L143">at line 143</a></div>
-        <code>                    mixed
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L186">at line 186</a></div>
+        <code>                    <abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|<abbr title="Psr\Http\Message\StreamInterface">StreamInterface</abbr>
     <strong>render</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Render the view</p></p>                        
+                            <p><p>Render the view to a full response in case a Neos.Fusion:Http.Message was used.</p></p>                <p><p>If the fusion path contains a simple string a stream will be rendered.</p></p>        
         </div>
         <div class="tags">
             
@@ -540,8 +671,8 @@ is automatically derived from the current request.</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>mixed</td>
-            <td><p>The rendered view</p></td>
+            <td><abbr title="Psr\Http\Message\ResponseInterface">ResponseInterface</abbr>|<abbr title="Psr\Http\Message\StreamInterface">StreamInterface</abbr></td>
+            <td></td>
         </tr>
     </table>
 
@@ -554,12 +685,13 @@ is automatically derived from the current request.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_initializeFusionRuntime">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L156">at line 156</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L202">at line 202</a></div>
         <code>                    void
     <strong>initializeFusionRuntime</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -588,12 +720,13 @@ parsed results</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_loadFusion">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L175">at line 175</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L230">at line 230</a></div>
         <code>            protected        void
     <strong>loadFusion</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -620,17 +753,18 @@ parsed results</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getMergedFusionObjectTree">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L185">at line 185</a></div>
-        <code>            protected        array
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L238">at line 238</a></div>
+        <code>            protected        <a href="../../../Neos/Fusion/Core/FusionConfiguration.html"><abbr title="Neos\Fusion\Core\FusionConfiguration">FusionConfiguration</abbr></a>
     <strong>getMergedFusionObjectTree</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Parse all the fusion files the are in the current fusionPathPatterns</p></p>                        
+                            <p><p>Parse all the fusion files that are in the current fusionPathPatterns</p></p>                        
         </div>
         <div class="tags">
             
@@ -638,7 +772,7 @@ parsed results</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
+            <td><a href="../../../Neos/Fusion/Core/FusionConfiguration.html"><abbr title="Neos\Fusion\Core\FusionConfiguration">FusionConfiguration</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -652,12 +786,13 @@ parsed results</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFusionPathPatterns">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L206">at line 206</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L259">at line 259</a></div>
         <code>                    array
     <strong>getFusionPathPatterns</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -685,12 +820,13 @@ parsed results</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPackageKey">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L225">at line 225</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L281">at line 281</a></div>
         <code>            protected        string
     <strong>getPackageKey</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -718,12 +854,13 @@ from there.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFusionPathForCurrentRequest">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L242">at line 242</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L299">at line 299</a></div>
         <code>            protected        string
     <strong>getFusionPathForCurrentRequest</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -742,47 +879,6 @@ from there.</p></p>
     </table>
 
             
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_renderFusion">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/View/FusionView.php#L268">at line 268</a></div>
-        <code>            protected        mixed
-    <strong>renderFusion</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Render the given Fusion and return the rendered page</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>mixed</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
             
                     </div>

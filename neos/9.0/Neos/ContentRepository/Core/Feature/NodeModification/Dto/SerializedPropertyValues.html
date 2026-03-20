@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../../../fonts/doctum-font.css">
         <script src="../../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../../doctum.js"></script>
         <script async defer src="../../../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../../../js/typeahead.min.js"></script>
-        <script src="../../../../../../doctum.js"></script>
+        <script async defer src="../../../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_Feature_NodeModification_Dto_SerializedPropertyValues" data-root-path="../../../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_Feature_NodeModification_Dto_SerializedPropertyValues" data-root-path="../../../../../../" data-search-index-url="../../../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,39 +90,34 @@
 
     
     <p>final         class
-    <strong>SerializedPropertyValues</strong>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/IteratorAggregate">IteratorAggregate</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Countable">Countable</a>, <a target="_blank" rel="noopener" href="https://www.php.net/JsonSerializable">JsonSerializable</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php">View source</a>)
+    <strong>SerializedPropertyValues</strong>        implements        <a target="_blank" rel="noopener" href="https://www.php.net/IteratorAggregate">IteratorAggregate</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Countable">Countable</a>, <a target="_blank" rel="noopener" href="https://www.php.net/JsonSerializable">JsonSerializable</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php">View source</a>)
 </p>
 
+        
         
     
         
 
             <div class="description">
-            <p><p>&quot;Raw&quot; property values as saved in the event log // in projections.</p></p>            <p><p>This means: each &quot;value&quot; must be a simple PHP data type.</p>
-<p>NOTE: if a value is set to NULL in SerializedPropertyValues, this means the key should be unset,
-because we treat NULL and &quot;not set&quot; the same from an API perspective.</p></p>        </div>
+            <p><p>&quot;Raw&quot; property values as saved in the event log // in projections.</p></p>            <p><p>This means: each &quot;value&quot; must be a simple PHP data type.</p></p>        </div>
             
         
     
-            <h2>Properties</h2>
-
-            <table class="table table-condensed">
-                    <tr>
-                <td class="type" id="property_iterator">
-                                        protected                                        <abbr title="ArrayIterator&lt;string,?\Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValue&gt;">SerializedPropertyValue&gt;</abbr>
-                                                                                
-                                    </td>
-                <td>$iterator</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-            </table>
-
     
             <h2>Methods</h2>
 
             <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../../../../Neos/ContentRepository/Core/Feature/NodeModification/Dto/SerializedPropertyValues.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValues">SerializedPropertyValues</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createEmpty">createEmpty</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     static&nbsp;<a href="../../../../../../Neos/ContentRepository/Core/Feature/NodeModification/Dto/SerializedPropertyValues.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValues">SerializedPropertyValues</abbr></a>
@@ -127,7 +134,7 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
                     static&nbsp;<a href="../../../../../../Neos/ContentRepository/Core/Feature/NodeModification/Dto/SerializedPropertyValues.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValues">SerializedPropertyValues</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_defaultFromNodeType">defaultFromNodeType</a>(<abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr> $nodeType)
+                    <a href="#method_defaultFromNodeType">defaultFromNodeType</a>(<a href="../../../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a> $nodeType, <a href="../../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyConverter.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyConverter">PropertyConverter</abbr></a> $propertyConverter)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -157,10 +164,21 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    <a href="../../../../../../Neos/ContentRepository/Core/Feature/NodeModification/Dto/SerializedPropertyValues.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValues">SerializedPropertyValues</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_unsetProperties">unsetProperties</a>(<a href="../../../../../../Neos/ContentRepository/Core/SharedModel/Node/PropertyNames.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\PropertyNames">PropertyNames</abbr></a> $propertyNames)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_splitByScope">splitByScope</a>(<abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr> $nodeType)
+                    <a href="#method_splitByScope">splitByScope</a>(<a href="../../../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a> $nodeType)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -179,7 +197,7 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValue">SerializedPropertyValue</abbr>|null
+                    <a href="../../../../../../Neos/ContentRepository/Core/Feature/NodeModification/Dto/SerializedPropertyValue.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValue">SerializedPropertyValue</abbr></a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getProperty">getProperty</a>(string $propertyName)
@@ -190,18 +208,7 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getValues">getValues</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a target="_blank" rel="noopener" href="https://www.php.net/ArrayIterator">ArrayIterator</a>
+                    <a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a>
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getIterator">getIterator</a>()
@@ -250,13 +257,48 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
 
             <div id="method-details">
                     <div class="method-item">
+                    <h3 id="method_createEmpty">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L43">at line 43</a></div>
+        <code>        static            <a href="../../../../../../Neos/ContentRepository/Core/Feature/NodeModification/Dto/SerializedPropertyValues.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValues">SerializedPropertyValues</abbr></a>
+    <strong>createEmpty</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../../Neos/ContentRepository/Core/Feature/NodeModification/Dto/SerializedPropertyValues.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValues">SerializedPropertyValues</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_fromArray">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L57">at line 57</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L51">at line 51</a></div>
         <code>        static            <a href="../../../../../../Neos/ContentRepository/Core/Feature/NodeModification/Dto/SerializedPropertyValues.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValues">SerializedPropertyValues</abbr></a>
     <strong>fromArray</strong>(array $propertyValues)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -294,14 +336,22 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
             </div>
                     <div class="method-item">
                     <h3 id="method_defaultFromNodeType">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L80">at line 80</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L71">at line 71</a></div>
         <code>        static            <a href="../../../../../../Neos/ContentRepository/Core/Feature/NodeModification/Dto/SerializedPropertyValues.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValues">SerializedPropertyValues</abbr></a>
-    <strong>defaultFromNodeType</strong>(<abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr> $nodeType)
+    <strong>defaultFromNodeType</strong>(<a href="../../../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a> $nodeType, <a href="../../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyConverter.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyConverter">PropertyConverter</abbr></a> $propertyConverter)
         </code>
     </h3>
     <div class="details">    
-    
             
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp; </td>
+            </tr>
+        </table>
+                &nbsp;
+    
 
         <div class="method-description">
                             <p class="no-description">No description</p>
@@ -312,8 +362,13 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></td>
+                <td><a href="../../../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a></td>
                 <td>$nodeType</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyConverter.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyConverter">PropertyConverter</abbr></a></td>
+                <td>$propertyConverter</td>
                 <td></td>
             </tr>
             </table>
@@ -337,12 +392,13 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
             </div>
                     <div class="method-item">
                     <h3 id="method_fromJsonString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L97">at line 97</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L102">at line 102</a></div>
         <code>        static            <a href="../../../../../../Neos/ContentRepository/Core/Feature/NodeModification/Dto/SerializedPropertyValues.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValues">SerializedPropertyValues</abbr></a>
     <strong>fromJsonString</strong>(string $jsonString)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -380,12 +436,13 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
             </div>
                     <div class="method-item">
                     <h3 id="method_merge">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L111">at line 111</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L107">at line 107</a></div>
         <code>                    <a href="../../../../../../Neos/ContentRepository/Core/Feature/NodeModification/Dto/SerializedPropertyValues.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValues">SerializedPropertyValues</abbr></a>
     <strong>merge</strong>(<a href="../../../../../../Neos/ContentRepository/Core/Feature/NodeModification/Dto/SerializedPropertyValues.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValues">SerializedPropertyValues</abbr></a> $other)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -422,13 +479,14 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_splitByScope">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L123">at line 123</a></div>
-        <code>                    array
-    <strong>splitByScope</strong>(<abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr> $nodeType)
+                    <h3 id="method_unsetProperties">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L112">at line 112</a></div>
+        <code>                    <a href="../../../../../../Neos/ContentRepository/Core/Feature/NodeModification/Dto/SerializedPropertyValues.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValues">SerializedPropertyValues</abbr></a>
+    <strong>unsetProperties</strong>(<a href="../../../../../../Neos/ContentRepository/Core/SharedModel/Node/PropertyNames.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\PropertyNames">PropertyNames</abbr></a> $propertyNames)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -441,7 +499,58 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></td>
+                <td><a href="../../../../../../Neos/ContentRepository/Core/SharedModel/Node/PropertyNames.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\PropertyNames">PropertyNames</abbr></a></td>
+                <td>$propertyNames</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../../Neos/ContentRepository/Core/Feature/NodeModification/Dto/SerializedPropertyValues.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValues">SerializedPropertyValues</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_splitByScope">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L125">at line 125</a></div>
+        <code>                    array
+    <strong>splitByScope</strong>(<a href="../../../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a> $nodeType)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp; </td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a></td>
                 <td>$nodeType</td>
                 <td></td>
             </tr>
@@ -466,12 +575,13 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
             </div>
                     <div class="method-item">
                     <h3 id="method_propertyExists">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L142">at line 142</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L139">at line 139</a></div>
         <code>                    bool
     <strong>propertyExists</strong>(string $propertyName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -509,12 +619,13 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
             </div>
                     <div class="method-item">
                     <h3 id="method_getProperty">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L147">at line 147</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValue">SerializedPropertyValue</abbr>|null
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L144">at line 144</a></div>
+        <code>                    <a href="../../../../../../Neos/ContentRepository/Core/Feature/NodeModification/Dto/SerializedPropertyValue.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValue">SerializedPropertyValue</abbr></a>|null
     <strong>getProperty</strong>(string $propertyName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -538,40 +649,7 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValue">SerializedPropertyValue</abbr>|null</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getValues">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L159">at line 159</a></div>
-        <code>                    array
-    <strong>getValues</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
+            <td><a href="../../../../../../Neos/ContentRepository/Core/Feature/NodeModification/Dto/SerializedPropertyValue.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeModification\Dto\SerializedPropertyValue">SerializedPropertyValue</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -585,12 +663,13 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
             </div>
                     <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L167">at line 167</a></div>
-        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/ArrayIterator">ArrayIterator</a>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L149">at line 149</a></div>
+        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a>
     <strong>getIterator</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -604,7 +683,7 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
 
                     <table class="table table-condensed">
         <tr>
-            <td><a target="_blank" rel="noopener" href="https://www.php.net/ArrayIterator">ArrayIterator</a></td>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a></td>
             <td></td>
         </tr>
     </table>
@@ -618,12 +697,13 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L172">at line 172</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L154">at line 154</a></div>
         <code>                    int
     <strong>count</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -651,12 +731,13 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
             </div>
                     <div class="method-item">
                     <h3 id="method_getPlainValues">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L180">at line 180</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L162">at line 162</a></div>
         <code>                    array
     <strong>getPlainValues</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -684,12 +765,13 @@ because we treat NULL and &quot;not set&quot; the same from an API perspective.<
             </div>
                     <div class="method-item">
                     <h3 id="method_jsonSerialize">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L193">at line 193</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/Dto/SerializedPropertyValues.php#L175">at line 175</a></div>
         <code>                    array
     <strong>jsonSerialize</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

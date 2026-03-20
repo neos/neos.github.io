@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_EventStore_EventNormalizer" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_EventStore_EventNormalizer" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,13 +94,22 @@
 </p>
 
         
-    
         
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;inside projections the event will already be denormalized</td>
+            </tr>
+        </table>
+                &nbsp;
+    
 
             <div class="description">
-            <p><p>Central authority to convert Content Repository domain events to Event Store EventData and EventType, vice versa.</p></p>            <p><p>For normalizing (from classes to event store), this is called from {\Neos\ContentRepository\Core\ContentRepository::normalizeEvent()}.</p>
-<p>For denormalizing (from event store to classes), this is called in the individual projections; f.e.
-{\Neos\ContentRepository\Core\EventStore\ContentGraphProjection::apply()}.</p></p>        </div>
+            <p><p>Central authority to convert Content Repository domain events to Event Store EventData and EventType, vice versa.</p></p>            <p><ul>
+<li>For normalizing (from classes to event store)</li>
+<li>For denormalizing (from event store to classes)</li>
+</ul></p>        </div>
             
         
     
@@ -98,32 +119,10 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    static&nbsp;<a href="../../../../Neos/ContentRepository/Core/EventStore/EventNormalizer.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventNormalizer">EventNormalizer</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Neos\EventStore\Model\Event\EventData">EventData</abbr>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getEventData">getEventData</a>(<a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a> $event)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Neos\EventStore\Model\Event\EventType">EventType</abbr>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getEventType">getEventType</a>(<a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a> $event)
+                    <a href="#method_create">create</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -135,6 +134,17 @@
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getEventClassName">getEventClassName</a>(<abbr title="Neos\EventStore\Model\Event">Event</abbr> $event)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <abbr title="Neos\EventStore\Model\Event">Event</abbr>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_normalize">normalize</a>(<a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a>|<a href="../../../../Neos/ContentRepository/Core/EventStore/DecoratedEvent.html"><abbr title="Neos\ContentRepository\Core\EventStore\DecoratedEvent">DecoratedEvent</abbr></a> $event)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -158,18 +168,19 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/EventStore/EventNormalizer.php#L62">at line 62</a></div>
-        <code>                    
-    <strong>__construct</strong>()
+                    <h3 id="method_create">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/EventStore/EventNormalizer.php#L72">at line 72</a></div>
+        <code>        static            <a href="../../../../Neos/ContentRepository/Core/EventStore/EventNormalizer.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventNormalizer">EventNormalizer</abbr></a>
+    <strong>create</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
                             <table>
             <tr>
                 <td><span class="label label-warning">internal</span></td>
-                <td>&nbsp;never instanciate this object yourself</td>
+                <td>&nbsp;never instantiate this object yourself</td>
             </tr>
         </table>
                 &nbsp;
@@ -181,88 +192,11 @@
         </div>
         <div class="tags">
             
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getEventData">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/EventStore/EventNormalizer.php#L101">at line 101</a></div>
-        <code>                    <abbr title="Neos\EventStore\Model\Event\EventData">EventData</abbr>
-    <strong>getEventData</strong>(<a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a> $event)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a></td>
-                <td>$event</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\EventStore\Model\Event\EventData">EventData</abbr></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getEventType">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/EventStore/EventNormalizer.php#L118">at line 118</a></div>
-        <code>                    <abbr title="Neos\EventStore\Model\Event\EventType">EventType</abbr>
-    <strong>getEventType</strong>(<a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a> $event)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a></td>
-                <td>$event</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Neos\EventStore\Model\Event\EventType">EventType</abbr></td>
+            <td><a href="../../../../Neos/ContentRepository/Core/EventStore/EventNormalizer.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventNormalizer">EventNormalizer</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -276,12 +210,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getEventClassName">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/EventStore/EventNormalizer.php#L127">at line 127</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/EventStore/EventNormalizer.php#L131">at line 131</a></div>
         <code>                    string
     <strong>getEventClassName</strong>(<abbr title="Neos\EventStore\Model\Event">Event</abbr> $event)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -318,13 +253,58 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_normalize">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/EventStore/EventNormalizer.php#L139">at line 139</a></div>
+        <code>                    <abbr title="Neos\EventStore\Model\Event">Event</abbr>
+    <strong>normalize</strong>(<a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a>|<a href="../../../../Neos/ContentRepository/Core/EventStore/DecoratedEvent.html"><abbr title="Neos\ContentRepository\Core\EventStore\DecoratedEvent">DecoratedEvent</abbr></a> $event)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a>|<a href="../../../../Neos/ContentRepository/Core/EventStore/DecoratedEvent.html"><abbr title="Neos\ContentRepository\Core\EventStore\DecoratedEvent">DecoratedEvent</abbr></a></td>
+                <td>$event</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><abbr title="Neos\EventStore\Model\Event">Event</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_denormalize">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/EventStore/EventNormalizer.php#L135">at line 135</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/EventStore/EventNormalizer.php#L156">at line 156</a></div>
         <code>                    <a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a>
     <strong>denormalize</strong>(<abbr title="Neos\EventStore\Model\Event">Event</abbr> $event)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

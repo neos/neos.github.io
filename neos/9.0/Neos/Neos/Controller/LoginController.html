@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_Controller_LoginController" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Neos_Controller_LoginController" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -94,7 +107,7 @@
     <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-6">
-                    <a href="../../../Neos/Neos/Controller/Module/ModuleTranslationTrait.html"><abbr title="Neos\Neos\Controller\Module\ModuleTranslationTrait">ModuleTranslationTrait</abbr></a>    </div>
+                    <a href="../../../Neos/Neos/Controller/TranslationTrait.html"><abbr title="Neos\Neos\Controller\TranslationTrait">TranslationTrait</abbr></a>    </div>
                 <div class="col-md-6"><p>A trait to do easy backend module translations</p></div>
             </div>
             </div>
@@ -105,13 +118,13 @@
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_translator">
-                                        protected                                        
+                                        protected                                        <abbr title="Neos\Flow\I18n\Translator">Translator</abbr>
                                                                                 
                                     </td>
                 <td>$translator</td>
                 <td class="last"></td>
-                <td><small>from&nbsp;<a href="../../../Neos/Neos/Controller/Module/ModuleTranslationTrait.html#property_translator">
-<abbr title="Neos\Neos\Controller\Module\ModuleTranslationTrait">ModuleTranslationTrait</abbr></a></small></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Neos/Controller/TranslationTrait.html#property_translator">
+<abbr title="Neos\Neos\Controller\TranslationTrait">TranslationTrait</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_defaultViewObjectName">
@@ -168,6 +181,15 @@
                 <td></td>
             </tr>
                     <tr>
+                <td class="type" id="property_flashMessageService">
+                                        protected                                        <abbr title="Neos\Flow\Mvc\FlashMessage\FlashMessageService">FlashMessageService</abbr>
+                                                                                
+                                    </td>
+                <td>$flashMessageService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
                 <td class="type" id="property_loginTokenCache">
                                         protected                                        <abbr title="Neos\Cache\Frontend\StringFrontend">StringFrontend</abbr>
                                                                                 
@@ -186,17 +208,8 @@
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_flashMessageService">
-                                        protected                                        <abbr title="Neos\Flow\Mvc\FlashMessage\FlashMessageService">FlashMessageService</abbr>
-                                                                                
-                                    </td>
-                <td>$flashMessageService</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td class="type" id="property_viewFormatToObjectNameMap">
-                                        protected                                        <abbr title="Neos\Neos\Controller\array&lt;string,class-string&gt;">array&lt;string,class-string&gt;</abbr>
+                                        protected                                        <abbr title="Neos\Neos\Controller\array&lt;string, class-string&gt;">array&lt;string, class-string&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$viewFormatToObjectNameMap</td>
@@ -205,7 +218,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_supportedMediaTypes">
-                                        protected                                        <abbr title="Neos\Neos\Controller\array&lt;int,string&gt;">array&lt;int,string&gt;</abbr>
+                                        protected                                        <abbr title="Neos\Neos\Controller\array&lt;int, string&gt;">array&lt;int, string&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$supportedMediaTypes</td>
@@ -223,12 +236,12 @@
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getModuleLabel">getModuleLabel</a>(string $id, array $arguments = [])
+                    <a href="#method_getLabel">getLabel</a>(string $id, array $arguments = [])
         
                                             <p class="no-description">No description</p>
                                     </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Controller/Module/ModuleTranslationTrait.html#method_getModuleLabel">
-<abbr title="Neos\Neos\Controller\Module\ModuleTranslationTrait">ModuleTranslationTrait</abbr></a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Controller/TranslationTrait.html#method_getLabel">
+<abbr title="Neos\Neos\Controller\TranslationTrait">TranslationTrait</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -266,17 +279,17 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_onAuthenticationFailure">onAuthenticationFailure</a>(<abbr title="Neos\Flow\Security\Exception\AuthenticationRequiredException">AuthenticationRequiredException</abbr> $exception = null)
+                    <a href="#method_onAuthenticationFailure">onAuthenticationFailure</a>(<abbr title="Neos\Flow\Security\Exception\AuthenticationRequiredException">AuthenticationRequiredException</abbr>|null $exception = null)
         
                                             <p><p>Is called if authentication failed.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    void
+                    null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_onAuthenticationSuccess">onAuthenticationSuccess</a>(<abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr> $originalRequest = null)
+                    <a href="#method_onAuthenticationSuccess">onAuthenticationSuccess</a>(<abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr>|null $originalRequest = null)
         
                                             <p><p>Is called if authentication was successful.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -318,14 +331,15 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_getModuleLabel">
-        <div class="location">in <a href="../../../Neos/Neos/Controller/Module/ModuleTranslationTrait.html#method_getModuleLabel">
-<abbr title="Neos\Neos\Controller\Module\ModuleTranslationTrait">ModuleTranslationTrait</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Module/ModuleTranslationTrait.php#L31">at line 31</a></div>
+                    <h3 id="method_getLabel">
+        <div class="location">in <a href="../../../Neos/Neos/Controller/TranslationTrait.html#method_getLabel">
+<abbr title="Neos\Neos\Controller\TranslationTrait">TranslationTrait</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/TranslationTrait.php#L31">at line 31</a></div>
         <code>                    string
-    <strong>getModuleLabel</strong>(string $id, array $arguments = [])
+    <strong>getLabel</strong>(string $id, array $arguments = [])
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -368,12 +382,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_initializeIndexAction">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/LoginController.php#L118">at line 118</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/LoginController.php#L100">at line 100</a></div>
         <code>                    void
     <strong>initializeIndexAction</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -401,12 +416,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_indexAction">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/LoginController.php#L148">at line 148</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/LoginController.php#L130">at line 130</a></div>
         <code>                    void
     <strong>indexAction</strong>(string|null $username = null, bool $unauthorized = false)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -473,12 +489,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_tokenLoginAction">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/LoginController.php#L176">at line 176</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/LoginController.php#L158">at line 158</a></div>
         <code>                    void
     <strong>tokenLoginAction</strong>(string $token)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -528,12 +545,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_onAuthenticationFailure">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/LoginController.php#L214">at line 214</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/LoginController.php#L193">at line 193</a></div>
         <code>            protected        void
-    <strong>onAuthenticationFailure</strong>(<abbr title="Neos\Flow\Security\Exception\AuthenticationRequiredException">AuthenticationRequiredException</abbr> $exception = null)
+    <strong>onAuthenticationFailure</strong>(<abbr title="Neos\Flow\Security\Exception\AuthenticationRequiredException">AuthenticationRequiredException</abbr>|null $exception = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -545,7 +563,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\Flow\Security\Exception\AuthenticationRequiredException">AuthenticationRequiredException</abbr></td>
+                <td><abbr title="Neos\Flow\Security\Exception\AuthenticationRequiredException">AuthenticationRequiredException</abbr>|null</td>
                 <td>$exception</td>
                 <td><p>The exception thrown while the authentication process</p></td>
             </tr>
@@ -570,12 +588,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_onAuthenticationSuccess">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/LoginController.php#L240">at line 240</a></div>
-        <code>            protected        void
-    <strong>onAuthenticationSuccess</strong>(<abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr> $originalRequest = null)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/LoginController.php#L217">at line 217</a></div>
+        <code>            protected        null
+    <strong>onAuthenticationSuccess</strong>(<abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr>|null $originalRequest = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -587,7 +606,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></td>
+                <td><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr>|null</td>
                 <td>$originalRequest</td>
                 <td><p>The request that was intercepted by the security framework,
 NULL if there was none</p></td>
@@ -599,7 +618,7 @@ NULL if there was none</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td>void</td>
+            <td>null</td>
             <td></td>
         </tr>
     </table>
@@ -630,12 +649,13 @@ NULL if there was none</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_logoutAction">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/LoginController.php#L275">at line 275</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/LoginController.php#L247">at line 247</a></div>
         <code>                    void
     <strong>logoutAction</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -663,12 +683,13 @@ at first, before the actual logout takes place, and the session gets destroyed.<
             </div>
                     <div class="method-item">
                     <h3 id="method_getErrorFlashMessage">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/LoginController.php#L305">at line 305</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/LoginController.php#L270">at line 270</a></div>
         <code>            protected        false
     <strong>getErrorFlashMessage</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -695,12 +716,13 @@ at first, before the actual logout takes place, and the session gets destroyed.<
             </div>
                     <div class="method-item">
                     <h3 id="method_replaceSessionCookie">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/LoginController.php#L316">at line 316</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/LoginController.php#L281">at line 281</a></div>
         <code>            protected        void
     <strong>replaceSessionCookie</strong>(string $sessionIdentifier)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

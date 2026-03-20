@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_NodeType_NodeTypeNames" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_NodeType_NodeTypeNames" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,10 +90,10 @@
 
     
     <p>final         class
-    <strong>NodeTypeNames</strong>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/IteratorAggregate">IteratorAggregate</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php">View source</a>)
+    <strong>NodeTypeNames</strong>        implements        <a target="_blank" rel="noopener" href="https://www.php.net/IteratorAggregate">IteratorAggregate</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -152,10 +164,21 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a target="_blank" rel="noopener" href="https://www.php.net/ArrayIterator">ArrayIterator</a>
+                    <a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a>
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getIterator">getIterator</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_map">map</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -191,12 +214,13 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_with">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L35">at line 35</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L34">at line 34</a></div>
         <code>        static            <a href="../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a>
     <strong>with</strong>(<a href="../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -234,12 +258,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fromArray">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L43">at line 43</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L42">at line 42</a></div>
         <code>        static            <a href="../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a>
     <strong>fromArray</strong>(array $array)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -277,12 +302,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fromStringArray">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L51">at line 51</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L50">at line 50</a></div>
         <code>        static            <a href="../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a>
     <strong>fromStringArray</strong>(array $array)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -320,12 +346,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_createEmpty">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L59">at line 59</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L58">at line 58</a></div>
         <code>        static            <a href="../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a>
     <strong>createEmpty</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -353,12 +380,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_withAdditionalNodeTypeName">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L64">at line 64</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L63">at line 63</a></div>
         <code>                    <a href="../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a>
     <strong>withAdditionalNodeTypeName</strong>(<a href="../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -396,12 +424,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L78">at line 78</a></div>
-        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/ArrayIterator">ArrayIterator</a>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L74">at line 74</a></div>
+        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a>
     <strong>getIterator</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -415,7 +444,51 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a target="_blank" rel="noopener" href="https://www.php.net/ArrayIterator">ArrayIterator</a></td>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_map">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L84">at line 84</a></div>
+        <code>                    array
+    <strong>map</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$callback</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
             <td></td>
         </tr>
     </table>
@@ -429,12 +502,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_toStringArray">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L86">at line 86</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L92">at line 92</a></div>
         <code>                    array
     <strong>toStringArray</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -462,12 +536,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isEmpty">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L91">at line 91</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/NodeType/NodeTypeNames.php#L97">at line 97</a></div>
         <code>                    bool
     <strong>isEmpty</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

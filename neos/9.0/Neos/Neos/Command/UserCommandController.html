@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_Command_UserCommandController" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Neos_Command_UserCommandController" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -81,6 +93,7 @@
     <strong>UserCommandController</strong>        extends <abbr title="Neos\Flow\Cli\CommandController">CommandController</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -132,7 +145,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_showCommand">showCommand</a>(string $username, string $authenticationProvider = null)
+                    <a href="#method_showCommand">showCommand</a>(string $username, string|null $authenticationProvider = null)
         
                                             <p><p>Shows the given user</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -219,7 +232,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Neos\Command\array&lt;int,mixed&gt;">array&lt;int,mixed&gt;</abbr>
+                    <abbr title="Neos\Neos\Command\array&lt;int, mixed&gt;">array&lt;int, mixed&gt;</abbr>
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getTableRowForUser">getTableRowForUser</a>(<a href="../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
@@ -235,12 +248,13 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_listCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L53">at line 53</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L57">at line 57</a></div>
         <code>                    void
     <strong>listCommand</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -267,12 +281,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_showCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L82">at line 82</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L87">at line 87</a></div>
         <code>                    void
-    <strong>showCommand</strong>(string $username, string $authenticationProvider = null)
+    <strong>showCommand</strong>(string $username, string|null $authenticationProvider = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -294,7 +309,7 @@ will look for an account identified by &quot;username&quot; for that specific pr
 Usually refers to the account identifier of the user's Neos backend account.</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$authenticationProvider</td>
                 <td><p>Name of the authentication provider to use. Example: &quot;Neos.Neos:Backend&quot;</p></td>
             </tr>
@@ -311,6 +326,15 @@ Usually refers to the account identifier of the user's Neos backend account.</p>
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Neos\Domain\Exception|\Neos\Flow\Cli\Exception\StopCommandException">StopCommandException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -319,12 +343,13 @@ Usually refers to the account identifier of the user's Neos backend account.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_createCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L121">at line 121</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L153">at line 153</a></div>
         <code>                    void
     <strong>createCommand</strong>(string $username, string $password, string $firstName, string $lastName, string $roles = null, string $authenticationProvider = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -394,12 +419,13 @@ Example: &quot;Neos.Neos:Backend&quot;</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L200">at line 200</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L232">at line 232</a></div>
         <code>                    void
     <strong>deleteCommand</strong>(string $username, bool $assumeYes = false, string $authenticationProvider = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -452,12 +478,13 @@ related accounts will be deleted.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_activateCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L242">at line 242</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L274">at line 274</a></div>
         <code>                    void
     <strong>activateCommand</strong>(string $username, string $authenticationProvider = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -503,12 +530,13 @@ Example: &quot;Neos.Neos:Backend&quot;</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_deactivateCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L271">at line 271</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L303">at line 303</a></div>
         <code>                    void
     <strong>deactivateCommand</strong>(string $username, string $authenticationProvider = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -554,12 +582,13 @@ Example: &quot;Neos.Neos:Backend&quot;</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_setPasswordCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L301">at line 301</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L333">at line 333</a></div>
         <code>                    void
     <strong>setPasswordCommand</strong>(string $username, string $password, string $authenticationProvider = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -610,12 +639,13 @@ Example: &quot;Neos.Neos:Backend&quot;</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_addRoleCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L330">at line 330</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L362">at line 362</a></div>
         <code>                    void
     <strong>addRoleCommand</strong>(string $username, string $role, string $authenticationProvider = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -667,12 +697,13 @@ existing accounts related to that user, regardless of its authentication provide
             </div>
                     <div class="method-item">
                     <h3 id="method_removeRoleCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L368">at line 368</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L400">at line 400</a></div>
         <code>                    void
     <strong>removeRoleCommand</strong>(string $username, string $role, string $authenticationProvider = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -723,12 +754,13 @@ for example &quot;Neos.Neos:Administrator&quot; or just &quot;Administrator&quot
             </div>
                     <div class="method-item">
                     <h3 id="method_findUsersByUsernamePattern">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L398">at line 398</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L430">at line 430</a></div>
         <code>            protected        <a href="../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a>[]
     <strong>findUsersByUsernamePattern</strong>(string $usernamePattern, string $authenticationProviderName = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -770,12 +802,13 @@ for example &quot;Neos.Neos:Administrator&quot; or just &quot;Administrator&quot
             </div>
                     <div class="method-item">
                     <h3 id="method_getTableRowForUser">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L425">at line 425</a></div>
-        <code>            protected        <abbr title="Neos\Neos\Command\array&lt;int,mixed&gt;">array&lt;int,mixed&gt;</abbr>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/UserCommandController.php#L457">at line 457</a></div>
+        <code>            protected        <abbr title="Neos\Neos\Command\array&lt;int, mixed&gt;">array&lt;int, mixed&gt;</abbr>
     <strong>getTableRowForUser</strong>(<a href="../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a> $user)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -798,7 +831,7 @@ for example &quot;Neos.Neos:Administrator&quot; or just &quot;Administrator&quot
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Neos\Command\array&lt;int,mixed&gt;">array&lt;int,mixed&gt;</abbr></td>
+            <td><abbr title="Neos\Neos\Command\array&lt;int, mixed&gt;">array&lt;int, mixed&gt;</abbr></td>
             <td></td>
         </tr>
     </table>

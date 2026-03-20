@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
         <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
         <script async defer src="../../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../../js/typeahead.min.js"></script>
-        <script src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_Infrastructure_Property_PropertyType" data-root-path="../../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_Infrastructure_Property_PropertyType" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -81,6 +93,7 @@
     <strong>PropertyType</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php">View source</a>)
 </p>
 
+        
         
     
                         <table>
@@ -172,7 +185,7 @@
                     static&nbsp;<a href="../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyType.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyType">PropertyType</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_fromNodeTypeDeclaration">fromNodeTypeDeclaration</a>(string $declaration, <abbr title="Neos\ContentRepository\Core\SharedModel\Node\PropertyName">PropertyName</abbr> $propertyName, <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
+                    <a href="#method_fromNodeTypeDeclaration">fromNodeTypeDeclaration</a>(string $declaration, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/PropertyName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\PropertyName">PropertyName</abbr></a> $propertyName, <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -183,7 +196,7 @@
                     static&nbsp;<a href="../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyType.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyType">PropertyType</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_bool">bool</a>(bool $isNullable)
+                    <a href="#method_bool">bool</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -194,7 +207,7 @@
                     static&nbsp;<a href="../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyType.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyType">PropertyType</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_int">int</a>(bool $isNullable)
+                    <a href="#method_int">int</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -205,7 +218,7 @@
                     static&nbsp;<a href="../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyType.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyType">PropertyType</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_string">string</a>(bool $isNullable)
+                    <a href="#method_string">string</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -216,7 +229,7 @@
                     static&nbsp;<a href="../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyType.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyType">PropertyType</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_float">float</a>(bool $isNullable)
+                    <a href="#method_float">float</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -227,7 +240,7 @@
                     static&nbsp;<a href="../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyType.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyType">PropertyType</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_date">date</a>(bool $isNullable)
+                    <a href="#method_date">date</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -326,28 +339,6 @@
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_isNullable">isNullable</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getArrayOfClassName">getArrayOfClassName</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    bool
-                </div>
-                <div class="col-md-8">
                     <a href="#method_isMatchedBy">isMatchedBy</a>(mixed $propertyValue)
         
                                             <p class="no-description">No description</p>
@@ -365,17 +356,6 @@
                                     </div>
                 <div class="col-md-2"></div>
             </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8">
-                    <a href="#method___toString">__toString</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
             </div>
 
 
@@ -384,12 +364,13 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_fromNodeTypeDeclaration">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L54">at line 54</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L64">at line 64</a></div>
         <code>        static            <a href="../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyType.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyType">PropertyType</abbr></a>
-    <strong>fromNodeTypeDeclaration</strong>(string $declaration, <abbr title="Neos\ContentRepository\Core\SharedModel\Node\PropertyName">PropertyName</abbr> $propertyName, <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
+    <strong>fromNodeTypeDeclaration</strong>(string $declaration, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/PropertyName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\PropertyName">PropertyName</abbr></a> $propertyName, <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -407,7 +388,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\SharedModel\Node\PropertyName">PropertyName</abbr></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/PropertyName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\PropertyName">PropertyName</abbr></a></td>
                 <td>$propertyName</td>
                 <td></td>
             </tr>
@@ -446,12 +427,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_bool">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L109">at line 109</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L119">at line 119</a></div>
         <code>        static            <a href="../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyType.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyType">PropertyType</abbr></a>
-    <strong>bool</strong>(bool $isNullable)
+    <strong>bool</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -460,16 +442,6 @@
                     
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>bool</td>
-                <td>$isNullable</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -489,12 +461,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_int">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L114">at line 114</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L124">at line 124</a></div>
         <code>        static            <a href="../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyType.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyType">PropertyType</abbr></a>
-    <strong>int</strong>(bool $isNullable)
+    <strong>int</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -503,16 +476,6 @@
                     
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>bool</td>
-                <td>$isNullable</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -532,12 +495,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_string">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L119">at line 119</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L129">at line 129</a></div>
         <code>        static            <a href="../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyType.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyType">PropertyType</abbr></a>
-    <strong>string</strong>(bool $isNullable)
+    <strong>string</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -546,16 +510,6 @@
                     
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>bool</td>
-                <td>$isNullable</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -575,12 +529,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_float">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L124">at line 124</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L134">at line 134</a></div>
         <code>        static            <a href="../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyType.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyType">PropertyType</abbr></a>
-    <strong>float</strong>(bool $isNullable)
+    <strong>float</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -589,16 +544,6 @@
                     
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>bool</td>
-                <td>$isNullable</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -618,12 +563,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_date">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L129">at line 129</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L139">at line 139</a></div>
         <code>        static            <a href="../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyType.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyType">PropertyType</abbr></a>
-    <strong>date</strong>(bool $isNullable)
+    <strong>date</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -632,16 +578,6 @@
                     
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>bool</td>
-                <td>$isNullable</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
@@ -661,12 +597,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isBool">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L134">at line 134</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L144">at line 144</a></div>
         <code>                    bool
     <strong>isBool</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -694,12 +631,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isInt">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L139">at line 139</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L149">at line 149</a></div>
         <code>                    bool
     <strong>isInt</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -727,12 +665,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isFloat">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L144">at line 144</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L154">at line 154</a></div>
         <code>                    bool
     <strong>isFloat</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -760,12 +699,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L149">at line 149</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L159">at line 159</a></div>
         <code>                    bool
     <strong>isString</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -793,12 +733,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isArray">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L154">at line 154</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L164">at line 164</a></div>
         <code>                    bool
     <strong>isArray</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -826,12 +767,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isArrayOf">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L159">at line 159</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L169">at line 169</a></div>
         <code>                    bool
     <strong>isArrayOf</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -859,12 +801,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isDate">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L164">at line 164</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L174">at line 174</a></div>
         <code>                    bool
     <strong>isDate</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -892,78 +835,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L169">at line 169</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L179">at line 179</a></div>
         <code>                    string
     <strong>getValue</strong>()
         </code>
     </h3>
     <div class="details">    
-    
             
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isNullable">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L174">at line 174</a></div>
-        <code>                    bool
-    <strong>isNullable</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getArrayOfClassName">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L179">at line 179</a></div>
-        <code>                    string
-    <strong>getArrayOfClassName</strong>()
-        </code>
-    </h3>
-    <div class="details">    
     
             
 
@@ -991,12 +869,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isMatchedBy">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L184">at line 184</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L189">at line 189</a></div>
         <code>                    bool
     <strong>isMatchedBy</strong>(mixed $propertyValue)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1034,45 +913,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getSerializationType">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L226">at line 226</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L231">at line 231</a></div>
         <code>                    string
     <strong>getSerializationType</strong>()
         </code>
     </h3>
     <div class="details">    
-    
             
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method___toString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/PropertyType.php#L231">at line 231</a></div>
-        <code>                    string
-    <strong>__toString</strong>()
-        </code>
-    </h3>
-    <div class="details">    
     
             
 

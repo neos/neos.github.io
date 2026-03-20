@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_ViewHelpers_Uri_NodeViewHelper" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Neos_ViewHelpers_Uri_NodeViewHelper" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -95,9 +108,7 @@ Example: <code>/sites/acmecom/home/about/us</code></p>
 <p><em><code>node</code> does not start with <code>/</code>:</em>
 The given path is treated as a path relative to the current node.
 Examples: given that the current node is <code>/sites/acmecom/products/</code>,
-<code>stapler</code> results in <code>/sites/acmecom/products/stapler</code>,
-<code>../about</code> results in <code>/sites/acmecom/about/</code>,
-<code>./neos/info</code> results in <code>/sites/acmecom/products/neos/info</code>.</p>
+<code>stapler</code> results in <code>/sites/acmecom/products/stapler</code>,</p>
 <p><em><code>node</code> starts with a tilde character (<code>~</code>):</em>
 The given path is treated as a path relative to the current site node.
 Example: given that the current node is <code>/sites/acmecom/products/</code>,
@@ -155,19 +166,10 @@ about/us.html
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_contentRepositoryRegistry">
-                                        protected                                        <abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr>
+                                        protected                                        <a href="../../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a>
                                                                                 
                                     </td>
                 <td>$contentRepositoryRegistry</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_nodeSiteResolvingService">
-                                        protected                                        <a href="../../../../Neos/Neos/Domain/Service/NodeSiteResolvingService.html"><abbr title="Neos\Neos\Domain\Service\NodeSiteResolvingService">NodeSiteResolvingService</abbr></a>
-                                                                                
-                                    </td>
-                <td>$nodeSiteResolvingService</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -177,6 +179,33 @@ about/us.html
                                                                                 
                                     </td>
                 <td>$throwableStorage</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeUriBuilderFactory">
+                                        protected                                        <a href="../../../../Neos/Neos/FrontendRouting/NodeUriBuilderFactory.html"><abbr title="Neos\Neos\FrontendRouting\NodeUriBuilderFactory">NodeUriBuilderFactory</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodeUriBuilderFactory</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodePathResolver">
+                                        protected                                        <a href="../../../../Neos/Neos/Utility/NodePathResolver.html"><abbr title="Neos\Neos\Utility\NodePathResolver">NodePathResolver</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodePathResolver</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_legacyNodePathNormalizer">
+                                        protected                                        <a href="../../../../Neos/Neos/Utility/LegacyNodePathNormalizer.html"><abbr title="Neos\Neos\Utility\LegacyNodePathNormalizer">LegacyNodePathNormalizer</abbr></a>
+                                                                                
+                                    </td>
+                <td>$legacyNodePathNormalizer</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -238,12 +267,13 @@ about/us.html
                     <div class="method-item">
                     <h3 id="method_getContextVariable">
         <div class="location">in <a href="../../../../Neos/Fusion/ViewHelpers/FusionContextTrait.html#method_getContextVariable">
-<abbr title="Neos\Fusion\ViewHelpers\FusionContextTrait">FusionContextTrait</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/ViewHelpers/FusionContextTrait.php#L35">at line 35</a></div>
+<abbr title="Neos\Fusion\ViewHelpers\FusionContextTrait">FusionContextTrait</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/ViewHelpers/FusionContextTrait.php#L34">at line 34</a></div>
         <code>            protected        mixed
     <strong>getContextVariable</strong>(string $variableName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -298,6 +328,7 @@ about/us.html
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -335,12 +366,13 @@ about/us.html
             </div>
                     <div class="method-item">
                     <h3 id="method_initializeArguments">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/ViewHelpers/Uri/NodeViewHelper.php#L133">at line 133</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/ViewHelpers/Uri/NodeViewHelper.php#L138">at line 138</a></div>
         <code>                    void
     <strong>initializeArguments</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -376,12 +408,13 @@ about/us.html
             </div>
                     <div class="method-item">
                     <h3 id="method_render">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/ViewHelpers/Uri/NodeViewHelper.php#L208">at line 208</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/ViewHelpers/Uri/NodeViewHelper.php#L191">at line 191</a></div>
         <code>                    string
     <strong>render</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

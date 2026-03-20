@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="namespace" data-name="namespace:Neos_ContentRepository_Core_DimensionSpace" data-root-path="../../../">
+    <body id="namespace" data-name="namespace:Neos_ContentRepository_Core_DimensionSpace" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -83,8 +95,18 @@
     <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a>    </div>
+                <div class="col-md-6"><p>A point in the dimension space with coordinates DimensionName =&gt; DimensionValue.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="../../../Neos/ContentRepository/Core/DimensionSpace/ContentDimensionZookeeper.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\ContentDimensionZookeeper">ContentDimensionZookeeper</abbr></a>    </div>
                 <div class="col-md-6"><p>The content dimension zookeeper</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/ContentRepository/Core/DimensionSpace/ContentSubgraphVariationWeight.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\ContentSubgraphVariationWeight">ContentSubgraphVariationWeight</abbr></a>    </div>
+                <div class="col-md-6"><p>The value object describing the weight of a variation edge between subgraphs A and B</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -93,8 +115,13 @@
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a>    </div>
+                <div class="col-md-6"><p>A set of points in the dimension space.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="../../../Neos/ContentRepository/Core/DimensionSpace/InterDimensionalVariationGraph.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\InterDimensionalVariationGraph">InterDimensionalVariationGraph</abbr></a>    </div>
-                <div class="col-md-6"><p>The inter dimensional variation graph domain model
+                <div class="col-md-6"><p>The interdimensional variation graph domain model
 Represents the specialization and generalization mechanism between dimension space points</p></div>
             </div>
                     <div class="row">
@@ -108,6 +135,11 @@ where the node is visible.</p></div>
                 <div class="col-md-6">
                     <a href="../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePointSet">OriginDimensionSpacePointSet</abbr></a>    </div>
                 <div class="col-md-6"><p>A set of points in the dimension space, occupied by nodes in a node aggregate</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/ContentRepository/Core/DimensionSpace/WeightedDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\WeightedDimensionSpacePoint">WeightedDimensionSpacePoint</abbr></a>    </div>
+                <div class="col-md-6"><p>A weighted dimension space point</p></div>
             </div>
             </div>
     

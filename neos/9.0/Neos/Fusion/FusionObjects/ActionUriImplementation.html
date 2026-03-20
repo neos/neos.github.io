@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Fusion_FusionObjects_ActionUriImplementation" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Fusion_FusionObjects_ActionUriImplementation" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -96,8 +109,6 @@
 <li>format</li>
 <li>section</li>
 <li>additionalParams</li>
-<li>addQueryString</li>
-<li>argumentsToBeExcludedFromQueryString</li>
 <li>absolute</li>
 <li>request</li>
 </ul>
@@ -161,7 +172,7 @@
                 <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<a href="../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a> $runtime, string $path, string $fusionObjectName)
         
-                                            <p><p>Constructor</p></p>                </div>
+                                            <p>Constructor</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html#method___construct">
 <abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a></small></div>
             </div>
@@ -335,26 +346,6 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array|null
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getArgumentsToBeExcludedFromQueryString">getArgumentsToBeExcludedFromQueryString</a>()
-        
-                                            <p><p>Arguments to be removed from the URI. Only active if addQueryString = true</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    bool
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_isAddQueryString">isAddQueryString</a>()
-        
-                                            <p><p>If true, the current query parameters will be kept in the URI</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     bool
                 </div>
                 <div class="col-md-8">
@@ -378,11 +369,12 @@
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Constructor</p></p>                        
+                            <p>Constructor</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -415,12 +407,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_evaluate">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L162">at line 162</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L140">at line 140</a></div>
         <code>                    mixed
     <strong>evaluate</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -455,6 +448,7 @@
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -488,6 +482,7 @@
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -532,6 +527,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -575,6 +571,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -618,6 +615,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -666,6 +664,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -702,12 +701,13 @@ first evaluated value will be cached in memory.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getRequest">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L43">at line 43</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L41">at line 41</a></div>
         <code>                    <abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr>
     <strong>getRequest</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -735,12 +735,13 @@ first evaluated value will be cached in memory.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPackage">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L53">at line 53</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L51">at line 51</a></div>
         <code>                    string|null
     <strong>getPackage</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -767,12 +768,13 @@ first evaluated value will be cached in memory.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getSubpackage">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L63">at line 63</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L61">at line 61</a></div>
         <code>                    string|null
     <strong>getSubpackage</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -799,12 +801,13 @@ first evaluated value will be cached in memory.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getController">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L73">at line 73</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L71">at line 71</a></div>
         <code>                    string|null
     <strong>getController</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -831,12 +834,13 @@ first evaluated value will be cached in memory.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getAction">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L83">at line 83</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L81">at line 81</a></div>
         <code>                    string|null
     <strong>getAction</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -863,12 +867,13 @@ first evaluated value will be cached in memory.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getArguments">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L93">at line 93</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L91">at line 91</a></div>
         <code>                    array|null
     <strong>getArguments</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -895,12 +900,13 @@ first evaluated value will be cached in memory.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFormat">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L104">at line 104</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L102">at line 102</a></div>
         <code>                    string|null
     <strong>getFormat</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -927,12 +933,13 @@ first evaluated value will be cached in memory.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getSection">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L114">at line 114</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L112">at line 112</a></div>
         <code>                    string|null
     <strong>getSection</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -959,12 +966,13 @@ first evaluated value will be cached in memory.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getAdditionalParams">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L124">at line 124</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L122">at line 122</a></div>
         <code>                    array|null
     <strong>getAdditionalParams</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -990,77 +998,14 @@ first evaluated value will be cached in memory.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getArgumentsToBeExcludedFromQueryString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L134">at line 134</a></div>
-        <code>                    array|null
-    <strong>getArgumentsToBeExcludedFromQueryString</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Arguments to be removed from the URI. Only active if addQueryString = true</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array|null</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_isAddQueryString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L144">at line 144</a></div>
-        <code>                    bool
-    <strong>isAddQueryString</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>If true, the current query parameters will be kept in the URI</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_isAbsolute">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L154">at line 154</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/ActionUriImplementation.php#L132">at line 132</a></div>
         <code>                    bool
     <strong>isAbsolute</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

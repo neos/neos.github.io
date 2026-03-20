@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="namespace" data-name="namespace:Neos_Neos_Domain_Model" data-root-path="../../../">
+    <body id="namespace" data-name="namespace:Neos_Neos_Domain_Model" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -75,12 +87,14 @@
         <h1>Neos\Neos\Domain\Model</h1>
     </div>
 
-            <h2>Namespaces</h2>
-        <div class="namespace-list">
-            <a href="../../../Neos/Neos/Domain/Model/Dto.html">Neos\Neos\Domain\Model\Dto</a>        </div>
     
             <h2>Classes</h2>
     <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/Neos/Domain/Model/DiscardingResult.html"><abbr title="Neos\Neos\Domain\Model\DiscardingResult">DiscardingResult</abbr></a>    </div>
+                <div class="col-md-6"><p>The discarding result DTO</p></div>
+            </div>
                     <div class="row">
                 <div class="col-md-6">
                     <a href="../../../Neos/Neos/Domain/Model/Domain.html"><abbr title="Neos\Neos\Domain\Model\Domain">Domain</abbr></a>    </div>
@@ -88,8 +102,19 @@
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                    <a href="../../../Neos/Neos/Domain/Model/PluginViewDefinition.html"><abbr title="Neos\Neos\Domain\Model\PluginViewDefinition">PluginViewDefinition</abbr></a>    </div>
-                <div class="col-md-6"><p>A plugin view definition</p></div>
+                    <a href="../../../Neos/Neos/Domain/Model/NodePermissions.html"><abbr title="Neos\Neos\Domain\Model\NodePermissions">NodePermissions</abbr></a>    </div>
+                <div class="col-md-6"><p>Evaluated permissions a specific user has on a node, usually evaluated by the {ContentRepositoryAuthorizationService}</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/Neos/Domain/Model/PublishingResult.html"><abbr title="Neos\Neos\Domain\Model\PublishingResult">PublishingResult</abbr></a>    </div>
+                <div class="col-md-6"><p>The publishing result DTO</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/Neos/Domain/Model/RenderingMode.html"><abbr title="Neos\Neos\Domain\Model\RenderingMode">RenderingMode</abbr></a>    </div>
+                <div class="col-md-6"><p>Describes the mode in which the Neos interface is rendering currently,
+mainly distinguishing between edit and preview modes currently.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -98,14 +123,24 @@
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="../../../Neos/Neos/Domain/Model/SiteConfiguration.html"><abbr title="Neos\Neos\Domain\Model\SiteConfiguration">SiteConfiguration</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/Neos/Domain/Model/SiteNodeName.html"><abbr title="Neos\Neos\Domain\Model\SiteNodeName">SiteNodeName</abbr></a>    </div>
+                <div class="col-md-6"><p>This is the node name underneath &quot;/sites&quot; which uniquely identifies the specific site; and which is defined
+by the user.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="../../../Neos/Neos/Domain/Model/User.html"><abbr title="Neos\Neos\Domain\Model\User">User</abbr></a>    </div>
                 <div class="col-md-6"><p>Domain Model of a User</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                    <a href="../../../Neos/Neos/Domain/Model/UserInterfaceMode.html"><abbr title="Neos\Neos\Domain\Model\UserInterfaceMode">UserInterfaceMode</abbr></a>    </div>
-                <div class="col-md-6"><p>Describes the mode in which the Neos interface is rendering currently,
-mainly distinguishing between edit and preview modes currently.</p></div>
+                    <a href="../../../Neos/Neos/Domain/Model/UserId.html"><abbr title="Neos\Neos\Domain\Model\UserId">UserId</abbr></a>    </div>
+                <div class="col-md-6"><p>Globally unique identifier of a Neos user</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -114,20 +149,46 @@ mainly distinguishing between edit and preview modes currently.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                    <a href="../../../Neos/Neos/Domain/Model/WorkspaceName.html"><abbr title="Neos\Neos\Domain\Model\WorkspaceName">WorkspaceName</abbr></a>    </div>
-                <div class="col-md-6"><p>The workspace name value for Neos contexts
-Directly translatable to CR workspace names</p></div>
+                    <a href="../../../Neos/Neos/Domain/Model/WorkspaceDescription.html"><abbr title="Neos\Neos\Domain\Model\WorkspaceDescription">WorkspaceDescription</abbr></a>    </div>
+                <div class="col-md-6"><p>Description for a workspace</p></div>
             </div>
-            </div>
-            <h2>Interfaces</h2>
-    <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-6">
-                                            <em><a href="../../../Neos/Neos/Domain/Model/UserInterface.html"><abbr title="Neos\Neos\Domain\Model\UserInterface">UserInterface</abbr></a></em>
-                        </div>
-                <div class="col-md-6"><p>Interface for a user of the content repository. Users can be owners of workspaces.</p></div>
+                    <a href="../../../Neos/Neos/Domain/Model/WorkspaceMetadata.html"><abbr title="Neos\Neos\Domain\Model\WorkspaceMetadata">WorkspaceMetadata</abbr></a>    </div>
+                <div class="col-md-6"><p>Neos-specific metadata of a workspace</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/Neos/Domain/Model/WorkspacePermissions.html"><abbr title="Neos\Neos\Domain\Model\WorkspacePermissions">WorkspacePermissions</abbr></a>    </div>
+                <div class="col-md-6"><p>Evaluated permissions a specific user has on a workspace, usually evaluated by the {ContentRepositoryAuthorizationService}</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/Neos/Domain/Model/WorkspaceRoleAssignment.html"><abbr title="Neos\Neos\Domain\Model\WorkspaceRoleAssignment">WorkspaceRoleAssignment</abbr></a>    </div>
+                <div class="col-md-6"><p>Assignment of a workspace role to a Neos user or user group</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/Neos/Domain/Model/WorkspaceRoleAssignments.html"><abbr title="Neos\Neos\Domain\Model\WorkspaceRoleAssignments">WorkspaceRoleAssignments</abbr></a>    </div>
+                <div class="col-md-6"><p>A set of {WorkspaceRoleAssignment} instances</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/Neos/Domain/Model/WorkspaceRoleSubject.html"><abbr title="Neos\Neos\Domain\Model\WorkspaceRoleSubject">WorkspaceRoleSubject</abbr></a>    </div>
+                <div class="col-md-6"><p>The identifier of a workspace role subject that identifiers a group of users or a single user {WorkspaceRoleSubjectType}</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/Neos/Domain/Model/WorkspaceRoleSubjects.html"><abbr title="Neos\Neos\Domain\Model\WorkspaceRoleSubjects">WorkspaceRoleSubjects</abbr></a>    </div>
+                <div class="col-md-6"><p>A set of {WorkspaceRoleSubject} instances</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/Neos/Domain/Model/WorkspaceTitle.html"><abbr title="Neos\Neos\Domain\Model\WorkspaceTitle">WorkspaceTitle</abbr></a>    </div>
+                <div class="col-md-6"><p>Human-Readable title of a workspace</p></div>
             </div>
             </div>
+    
     
     
 </div><div id="footer">

@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../../../fonts/doctum-font.css">
         <script src="../../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../../doctum.js"></script>
         <script async defer src="../../../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../../../js/typeahead.min.js"></script>
-        <script src="../../../../../../doctum.js"></script>
+        <script async defer src="../../../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Media_Domain_Model_AssetSource_Neos_NeosAssetProxyQueryResult" data-root-path="../../../../../../">
+    <body id="class" data-name="class:Neos_Media_Domain_Model_AssetSource_Neos_NeosAssetProxyQueryResult" data-root-path="../../../../../../" data-search-index-url="../../../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,10 +90,10 @@
 
     
     <p>final         class
-    <strong>NeosAssetProxyQueryResult</strong>        implements
-        <a href="../../../../../../Neos/Media/Domain/Model/AssetSource/AssetProxyQueryResultInterface.html"><abbr title="Neos\Media\Domain\Model\AssetSource\AssetProxyQueryResultInterface">AssetProxyQueryResultInterface</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php">View source</a>)
+    <strong>NeosAssetProxyQueryResult</strong>        implements        <a href="../../../../../../Neos/Media/Domain/Model/AssetSource/AssetProxyQueryResultInterface.html"><abbr title="Neos\Media\Domain\Model\AssetSource\AssetProxyQueryResultInterface">AssetProxyQueryResultInterface</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -117,7 +129,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Media\Domain\Model\AssetSource\Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr>|null
+                    <a href="../../../../../../Neos/Media/Domain/Model/AssetSource/AssetProxy/AssetProxyInterface.html"><abbr title="Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr></a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getFirst">getFirst</a>()
@@ -139,7 +151,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Media\Domain\Model\AssetSource\Neos\Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr>|null
+                    <a href="../../../../../../Neos/Media/Domain/Model/AssetSource/AssetProxy/AssetProxyInterface.html"><abbr title="Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr></a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_current">current</a>()
@@ -205,7 +217,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Media\Domain\Model\AssetSource\Neos\Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr>|null
+                    <a href="../../../../../../Neos/Media/Domain/Model/AssetSource/AssetProxy/AssetProxyInterface.html"><abbr title="Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr></a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_offsetGet">offsetGet</a>(mixed $offset)
@@ -261,6 +273,7 @@
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -300,6 +313,7 @@
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -328,11 +342,12 @@
                     <div class="method-item">
                     <h3 id="method_getFirst">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L65">at line 65</a></div>
-        <code>                    <abbr title="Neos\Media\Domain\Model\AssetSource\Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr>|null
+        <code>                    <a href="../../../../../../Neos/Media/Domain/Model/AssetSource/AssetProxy/AssetProxyInterface.html"><abbr title="Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr></a>|null
     <strong>getFirst</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -346,7 +361,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Media\Domain\Model\AssetSource\Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr>|null</td>
+            <td><a href="../../../../../../Neos/Media/Domain/Model/AssetSource/AssetProxy/AssetProxyInterface.html"><abbr title="Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -366,6 +381,7 @@
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -394,11 +410,12 @@
                     <div class="method-item">
                     <h3 id="method_current">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L90">at line 90</a></div>
-        <code>                    <abbr title="Neos\Media\Domain\Model\AssetSource\Neos\Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr>|null
+        <code>                    <a href="../../../../../../Neos/Media/Domain/Model/AssetSource/AssetProxy/AssetProxyInterface.html"><abbr title="Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr></a>|null
     <strong>current</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -412,7 +429,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Media\Domain\Model\AssetSource\Neos\Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr>|null</td>
+            <td><a href="../../../../../../Neos/Media/Domain/Model/AssetSource/AssetProxy/AssetProxyInterface.html"><abbr title="Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -432,6 +449,7 @@
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -459,12 +477,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_key">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L111">at line 111</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L112">at line 112</a></div>
         <code>                    <a href="../../../../../../Neos/Media/Domain/Model/AssetSource/AssetProxy/AssetProxyInterface.html"><abbr title="Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr></a>|null
     <strong>key</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -492,12 +511,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_valid">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L119">at line 119</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L121">at line 121</a></div>
         <code>                    bool
     <strong>valid</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -525,12 +545,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_rewind">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L127">at line 127</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L130">at line 130</a></div>
         <code>                    void
     <strong>rewind</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -558,12 +579,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetExists">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L136">at line 136</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L140">at line 140</a></div>
         <code>                    bool
     <strong>offsetExists</strong>(mixed $offset)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -601,12 +623,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetGet">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L145">at line 145</a></div>
-        <code>                    <abbr title="Neos\Media\Domain\Model\AssetSource\Neos\Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr>|null
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L150">at line 150</a></div>
+        <code>                    <a href="../../../../../../Neos/Media/Domain/Model/AssetSource/AssetProxy/AssetProxyInterface.html"><abbr title="Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr></a>|null
     <strong>offsetGet</strong>(mixed $offset)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -630,7 +653,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Media\Domain\Model\AssetSource\Neos\Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr>|null</td>
+            <td><a href="../../../../../../Neos/Media/Domain/Model/AssetSource/AssetProxy/AssetProxyInterface.html"><abbr title="Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -644,12 +667,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetSet">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L154">at line 154</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L160">at line 160</a></div>
         <code>                    
     <strong>offsetSet</strong>(mixed $offset, mixed $value)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -683,12 +707,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetUnset">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L162">at line 162</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L169">at line 169</a></div>
         <code>                    
     <strong>offsetUnset</strong>(mixed $offset)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -717,12 +742,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_count">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L170">at line 170</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/AssetSource/Neos/NeosAssetProxyQueryResult.php#L178">at line 178</a></div>
         <code>                    int
     <strong>count</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

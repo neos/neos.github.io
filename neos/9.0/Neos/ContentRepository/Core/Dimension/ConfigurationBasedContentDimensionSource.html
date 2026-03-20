@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_Dimension_ConfigurationBasedContentDimensionSource" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_Dimension_ConfigurationBasedContentDimensionSource" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,10 +90,10 @@
 
     
     <p>final         class
-    <strong>ConfigurationBasedContentDimensionSource</strong>        implements
-        <a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionSourceInterface.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionSourceInterface">ContentDimensionSourceInterface</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Dimension/ConfigurationBasedContentDimensionSource.php">View source</a>)
+    <strong>ConfigurationBasedContentDimensionSource</strong>        implements        <a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionSourceInterface.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionSourceInterface">ContentDimensionSourceInterface</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Dimension/ConfigurationBasedContentDimensionSource.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -108,7 +120,7 @@
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_dimensionConfiguration">
-                                        protected                                        <abbr title="Neos\ContentRepository\Core\Dimension\array&lt;string,mixed&gt;">array&lt;string,mixed&gt;</abbr>
+                                        protected                                        <abbr title="Neos\ContentRepository\Core\Dimension\array&lt;string, mixed&gt;">array&lt;string, mixed&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$dimensionConfiguration</td>
@@ -117,7 +129,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_contentDimensions">
-                                        protected                                        <abbr title="Neos\ContentRepository\Core\Dimension\array&lt;string,\Neos\ContentRepository\Core\Dimension\ContentDimension&gt;">ContentDimension&gt;</abbr>
+                                        protected                                        <abbr title="Neos\ContentRepository\Core\Dimension\array&lt;string, \Neos\ContentRepository\Core\Dimension\ContentDimension&gt;">ContentDimension&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$contentDimensions</td>
@@ -157,7 +169,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_extractDimensionValuesAndVariations">extractDimensionValuesAndVariations</a>(string $rawValue, array $values, array $variationEdges, array $configuration, <abbr title="Neos\ContentRepository\Core\Dimension\Neos\ContentRepository\Core\Dimension\ContentDimensionValue">ContentDimensionValue</abbr>|null $generalization, <abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionValueSpecializationDepth">ContentDimensionValueSpecializationDepth</abbr> $specializationDepth)
+                    <a href="#method_extractDimensionValuesAndVariations">extractDimensionValuesAndVariations</a>(string $rawValue, array $values, array $variationEdges, array $configuration, <a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionValue.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionValue">ContentDimensionValue</abbr></a>|null $generalization, <a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionValueSpecializationDepth.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionValueSpecializationDepth">ContentDimensionValueSpecializationDepth</abbr></a> $specializationDepth)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -165,10 +177,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Dimension\Neos\ContentRepository\Core\Dimension\ContentDimension">ContentDimension</abbr>|null
+                    <a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimension.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimension">ContentDimension</abbr></a>|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getDimension">getDimension</a>(<abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr> $dimensionId)
+                    <a href="#method_getDimension">getDimension</a>(<a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a> $dimensionId)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -199,6 +211,7 @@
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -233,6 +246,7 @@
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -283,10 +297,11 @@
                     <h3 id="method_extractDimensionValuesAndVariations">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Dimension/ConfigurationBasedContentDimensionSource.php#L99">at line 99</a></div>
         <code>            protected        void
-    <strong>extractDimensionValuesAndVariations</strong>(string $rawValue, array $values, array $variationEdges, array $configuration, <abbr title="Neos\ContentRepository\Core\Dimension\Neos\ContentRepository\Core\Dimension\ContentDimensionValue">ContentDimensionValue</abbr>|null $generalization, <abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionValueSpecializationDepth">ContentDimensionValueSpecializationDepth</abbr> $specializationDepth)
+    <strong>extractDimensionValuesAndVariations</strong>(string $rawValue, array $values, array $variationEdges, array $configuration, <a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionValue.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionValue">ContentDimensionValue</abbr></a>|null $generalization, <a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionValueSpecializationDepth.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionValueSpecializationDepth">ContentDimensionValueSpecializationDepth</abbr></a> $specializationDepth)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -319,12 +334,12 @@
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Dimension\Neos\ContentRepository\Core\Dimension\ContentDimensionValue">ContentDimensionValue</abbr>|null</td>
+                <td><a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionValue.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionValue">ContentDimensionValue</abbr></a>|null</td>
                 <td>$generalization</td>
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionValueSpecializationDepth">ContentDimensionValueSpecializationDepth</abbr></td>
+                <td><a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionValueSpecializationDepth.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionValueSpecializationDepth">ContentDimensionValueSpecializationDepth</abbr></a></td>
                 <td>$specializationDepth</td>
                 <td></td>
             </tr>
@@ -359,11 +374,12 @@
                     <div class="method-item">
                     <h3 id="method_getDimension">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Dimension/ConfigurationBasedContentDimensionSource.php#L177">at line 177</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Dimension\Neos\ContentRepository\Core\Dimension\ContentDimension">ContentDimension</abbr>|null
-    <strong>getDimension</strong>(<abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr> $dimensionId)
+        <code>                    <a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimension.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimension">ContentDimension</abbr></a>|null
+    <strong>getDimension</strong>(<a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a> $dimensionId)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -376,7 +392,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></td>
+                <td><a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a></td>
                 <td>$dimensionId</td>
                 <td></td>
             </tr>
@@ -387,7 +403,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Dimension\Neos\ContentRepository\Core\Dimension\ContentDimension">ContentDimension</abbr>|null</td>
+            <td><a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimension.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimension">ContentDimension</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -428,6 +444,7 @@
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

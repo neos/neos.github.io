@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_NodeAccess_FlowQueryOperations_FilterOperation" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_NodeAccess_FlowQueryOperations_FilterOperation" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -95,18 +108,37 @@ work on node types instead of PHP object types, so that::</p>
 filter. This filter allow also to filter the current context by a given
 node. Anything else remains unchanged.</p></p>        </div>
             
+                <h2>Traits</h2>
+
         
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../../Neos/Neos/Utility/NodeTypeWithFallbackProvider.html"><abbr title="Neos\Neos\Utility\NodeTypeWithFallbackProvider">NodeTypeWithFallbackProvider</abbr></a>    <small><span class="label label-danger">deprecated</span></small></div>
+                <div class="col-md-6"><p>Utility trait for retrieving node types for nodes with a built-in fallback mechanism</p></div>
+            </div>
+            </div>
+    
     
             <h2>Properties</h2>
 
             <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_contentRepositoryRegistry">
+                                        protected                                        <a href="../../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a>
+                                                                                
+                                    </td>
+                <td>$contentRepositoryRegistry</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
                     <tr>
                 <td class="type" id="property_priority">
                     static                    protected                                        int
                                                                                 
                                     </td>
                 <td>$priority</td>
-                <td class="last"><p>{@inheritdoc}</p></td>
+                <td class="last">{@inheritdoc}</td>
                 <td></td>
             </tr>
             </table>
@@ -117,12 +149,24 @@ node. Anything else remains unchanged.</p></p>        </div>
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getNodeType">getNodeType</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/Neos/Utility/NodeTypeWithFallbackProvider.html#method_getNodeType">
+<abbr title="Neos\Neos\Utility\NodeTypeWithFallbackProvider">NodeTypeWithFallbackProvider</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_canEvaluate">canEvaluate</a>(array $context)
+                    <a href="#method_canEvaluate">canEvaluate</a>(<abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\array&lt;int, mixed&gt;">array&lt;int, mixed&gt;</abbr> $context)
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -132,7 +176,7 @@ node. Anything else remains unchanged.</p></p>        </div>
                 <div class="col-md-8">
                     <a href="#method_evaluate">evaluate</a>(<abbr title="Neos\Eel\FlowQuery\FlowQuery">FlowQuery</abbr> $flowQuery, array $arguments)
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -142,7 +186,7 @@ node. Anything else remains unchanged.</p></p>        </div>
                 <div class="col-md-8">
                     <a href="#method_matchesPropertyNameFilter">matchesPropertyNameFilter</a>(object $element, string $propertyNameFilter)
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -150,9 +194,9 @@ node. Anything else remains unchanged.</p></p>        </div>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_matchesIdentifierFilter">matchesIdentifierFilter</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $element, string $identifier)
+                    <a href="#method_matchesIdentifierFilter">matchesIdentifierFilter</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $element, string $identifier)
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -160,9 +204,9 @@ node. Anything else remains unchanged.</p></p>        </div>
                     mixed
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getPropertyPath">getPropertyPath</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $element, string $propertyPath)
+                    <a href="#method_getPropertyPath">getPropertyPath</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $element, string $propertyPath)
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -172,7 +216,7 @@ node. Anything else remains unchanged.</p></p>        </div>
                 <div class="col-md-8">
                     <a href="#method_evaluateOperator">evaluateOperator</a>(mixed $value, string $operator, mixed $operand)
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -182,25 +226,78 @@ node. Anything else remains unchanged.</p></p>        </div>
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_canEvaluate">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FilterOperation.php#L47">at line 47</a></div>
-        <code>                    bool
-    <strong>canEvaluate</strong>(array $context)
-        </code>
+                    <h3 id="method_getNodeType">
+        <div class="location">in <a href="../../../../Neos/Neos/Utility/NodeTypeWithFallbackProvider.html#method_getNodeType">
+<abbr title="Neos\Neos\Utility\NodeTypeWithFallbackProvider">NodeTypeWithFallbackProvider</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Utility/NodeTypeWithFallbackProvider.php#L31">at line 31</a></div>
+        <code>            protected        <a href="../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a>
+    <strong>getNodeType</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>to</td>
+                    <td>ease migration from Neos 8.3</td>
+                </tr>
+                    </p>
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array</td>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_canEvaluate">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FilterOperation.php#L57">at line 57</a></div>
+        <code>                    bool
+    <strong>canEvaluate</strong>(<abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\array&lt;int, mixed&gt;">array&lt;int, mixed&gt;</abbr> $context)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p>{@inheritdoc}</p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\array&lt;int, mixed&gt;">array&lt;int, mixed&gt;</abbr></td>
                 <td>$context</td>
                 <td><p>$context onto which this operation should be applied (array or array-like object)</p></td>
             </tr>
@@ -225,17 +322,18 @@ node. Anything else remains unchanged.</p></p>        </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_evaluate">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FilterOperation.php#L59">at line 59</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FilterOperation.php#L69">at line 69</a></div>
         <code>                    void
     <strong>evaluate</strong>(<abbr title="Neos\Eel\FlowQuery\FlowQuery">FlowQuery</abbr> $flowQuery, array $arguments)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -272,17 +370,18 @@ node. Anything else remains unchanged.</p></p>        </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_matchesPropertyNameFilter">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FilterOperation.php#L87">at line 87</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FilterOperation.php#L97">at line 97</a></div>
         <code>            protected        bool
     <strong>matchesPropertyNameFilter</strong>(object $element, string $propertyNameFilter)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -319,24 +418,25 @@ node. Anything else remains unchanged.</p></p>        </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_matchesIdentifierFilter">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FilterOperation.php#L105">at line 105</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FilterOperation.php#L110">at line 110</a></div>
         <code>            protected        bool
-    <strong>matchesIdentifierFilter</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $element, string $identifier)
+    <strong>matchesIdentifierFilter</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $element, string $identifier)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
                 <td>$element</td>
                 <td></td>
             </tr>
@@ -366,24 +466,25 @@ node. Anything else remains unchanged.</p></p>        </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPropertyPath">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FilterOperation.php#L117">at line 117</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FilterOperation.php#L122">at line 122</a></div>
         <code>            protected        mixed
-    <strong>getPropertyPath</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $element, string $propertyPath)
+    <strong>getPropertyPath</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $element, string $propertyPath)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
                 <td>$element</td>
                 <td></td>
             </tr>
@@ -413,17 +514,18 @@ node. Anything else remains unchanged.</p></p>        </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_evaluateOperator">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FilterOperation.php#L134">at line 134</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/FilterOperation.php#L135">at line 135</a></div>
         <code>            protected        bool
     <strong>evaluateOperator</strong>(mixed $value, string $operator, mixed $operand)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>

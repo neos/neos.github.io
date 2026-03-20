@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
         <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
         <script async defer src="../../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../../js/typeahead.min.js"></script>
-        <script src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_SharedModel_Node_NodeName" data-root-path="../../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_SharedModel_Node_NodeName" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,17 +90,23 @@
 
     
     <p>final         class
-    <strong>NodeName</strong>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/JsonSerializable">JsonSerializable</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Stringable">Stringable</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeName.php">View source</a>)
+    <strong>NodeName</strong>        implements        <a target="_blank" rel="noopener" href="https://www.php.net/JsonSerializable">JsonSerializable</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeName.php">View source</a>)
 </p>
 
+        
         
     
         
 
             <div class="description">
-            <p><p>The Node name is the &quot;path part&quot; of the node; i.e. when accessing the node &quot;/foo&quot; via path,
-the node name is &quot;foo&quot;.</p></p>            <p><p>Semantically it describes the hierarchical relation of a node to its parent, e.g. &quot;main&quot; denotes the main child node.</p></p>        </div>
+            <p><p>The Node name is the &quot;path part&quot; of the node; i.e. when accessing the node &quot;/foo&quot; via path {NodePath},
+the node name is &quot;foo&quot;.</p></p>            <p><p>Semantically it describes the hierarchical relation of a node to its parent, e.g. &quot;main&quot; denotes the main child node.</p>
+<p>Multiple node names describe a node path {\Neos\ContentRepository\Core\Projection\ContentGraph\NodePath}</p>
+<p>To fetch the child node that is connected with the parent via the name &quot;main&quot; use the subgraph's: {\Neos\ContentRepository\Core\SharedModel\Node\ContentSubgraphInterface::findNodeByPath()}</p>
+<pre><code class="language-php">$subgraph-&gt;findNodeByPath(
+    NodeName::fromString("main"),
+    $parentNodeAggregateId
+)</code></pre></p>        </div>
             
         
             <h2>Constants</h2>    <table class="table table-condensed">
@@ -121,13 +139,13 @@ the node name is &quot;foo&quot;.</p></p>            <p><p>Semantically it descr
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    static&nbsp;<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_jsonSerialize">jsonSerialize</a>()
+                    <a href="#method_transliterateFromString">transliterateFromString</a>(string $name)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Transforms a text into a valid name by removing invalid characters
+and transliterating special characters if possible.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -135,7 +153,7 @@ the node name is &quot;foo&quot;.</p></p>            <p><p>Semantically it descr
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___toString">__toString</a>()
+                    <a href="#method_jsonSerialize">jsonSerialize</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -152,6 +170,17 @@ the node name is &quot;foo&quot;.</p></p>            <p><p>Semantically it descr
                                     </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___toString">__toString</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -160,12 +189,13 @@ the node name is &quot;foo&quot;.</p></p>            <p><p>Semantically it descr
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_fromString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeName.php#L41">at line 41</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeName.php#L55">at line 55</a></div>
         <code>        static            <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a>
     <strong>fromString</strong>(string $value)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -202,27 +232,38 @@ the node name is &quot;foo&quot;.</p></p>            <p><p>Semantically it descr
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_jsonSerialize">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeName.php#L46">at line 46</a></div>
-        <code>                    string
-    <strong>jsonSerialize</strong>()
+                    <h3 id="method_transliterateFromString">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeName.php#L66">at line 66</a></div>
+        <code>        static            <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a>
+    <strong>transliterateFromString</strong>(string $name)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Transforms a text into a valid name by removing invalid characters
+and transliterating special characters if possible.</p></p>                        
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$name</td>
+                <td><p>The possibly invalid name</p></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -235,13 +276,14 @@ the node name is &quot;foo&quot;.</p></p>            <p><p>Semantically it descr
 
             </div>
                     <div class="method-item">
-                    <h3 id="method___toString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeName.php#L51">at line 51</a></div>
+                    <h3 id="method_jsonSerialize">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeName.php#L94">at line 94</a></div>
         <code>                    string
-    <strong>__toString</strong>()
+    <strong>jsonSerialize</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -269,12 +311,13 @@ the node name is &quot;foo&quot;.</p></p>            <p><p>Semantically it descr
             </div>
                     <div class="method-item">
                     <h3 id="method_equals">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeName.php#L56">at line 56</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeName.php#L99">at line 99</a></div>
         <code>                    bool
     <strong>equals</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a> $other)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -299,6 +342,40 @@ the node name is &quot;foo&quot;.</p></p>            <p><p>Semantically it descr
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method___toString">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeName.php#L104">at line 104</a></div>
+        <code>                    string
+    <strong>__toString</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
             <td></td>
         </tr>
     </table>

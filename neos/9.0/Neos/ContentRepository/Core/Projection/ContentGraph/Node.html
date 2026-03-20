@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepository\Core\Projection\ContentGraph\Node | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
+        <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (9.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepository_Core_Projection_ContentGraph_Node" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository.html">ContentRepository</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository/Core.html">Core</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository/Core/Projection.html">Projection</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph.html">ContentGraph</a></li><li class="backslash">\</li><li>Node</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>Node    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>Node</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Node.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            <div class="description">
+            <p><p>Main read model of the {ContentSubgraphInterface}.</p></p>            <p><p>Immutable, Read Only. In case you want to modify it, you need
+to create Commands and send them to ContentRepository::handle.</p>
+<h2>Identity of a Node</h2>
+<p>The node's &quot;Read Model&quot; identity is summarized here {\Neos\ContentRepository\Core\SharedModel\Node\NodeAddress}, consisting of:</p>
+<ul>
+<li>{\Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId}</li>
+<li>{\Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName}</li>
+<li>{\Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint}</li>
+<li>{\Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId}</li>
+</ul>
+<p>The node address can be constructed via {<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAddress.html">\Neos\ContentRepository\Core\SharedModel\Node\NodeAddress::fromNode()}</a> and serialized.</p>
+<h2>Traversing the graph</h2>
+<p>The node does not have structure information, i.e. no infos
+about its children. To f.e. fetch children, you need to fetch
+the subgraph and use findChildNodes on the subgraph:</p>
+<pre><code>$subgraph = $contentRepository-&gt;getContentGraph($node-&gt;workspaceName)-&gt;getSubgraph(
+    $node-&gt;dimensionSpacePoint,
+    $node-&gt;visibilityConstraints
+);
+$childNodes = $subgraph-&gt;findChildNodes($node-&gt;aggregateId, FindChildNodesFilter::create());</code></pre>
+<h2>A note about the {\Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint} and the {\Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint}</h2>
+<p>The {<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html">\Neos\ContentRepository\Core\Projection\ContentGraph\Node::dimensionSpacePoint}</a> is the DimensionSpacePoint this node has been accessed in,
+and NOT the DimensionSpacePoint where the node is &quot;at home&quot;.
+The DimensionSpacePoint where the node is (at home) is called the ORIGIN DimensionSpacePoint,
+and this can be accessed using {<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html">\Neos\ContentRepository\Core\Projection\ContentGraph\Node::originDimensionSpacePoint}.</a> If in doubt, you'll
+usually need the DimensionSpacePoint instead of the OriginDimensionSpacePoint;
+you'll only need the OriginDimensionSpacePoint when constructing commands on the write side.</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_create">create</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/ContentRepository/ContentRepositoryId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId">ContentRepositoryId</abbr></a> $contentRepositoryId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/WorkspaceName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName">WorkspaceName</abbr></a> $workspaceName, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $aggregateId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $originDimensionSpacePoint, <abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateClassification">NodeAggregateClassification</abbr> $classification, <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/PropertyCollection.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\PropertyCollection">PropertyCollection</abbr></a> $properties, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a>|null $name, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeTags.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeTags">NodeTags</abbr></a> $tags, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Timestamps.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Timestamps">Timestamps</abbr></a> $timestamps, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/VisibilityConstraints.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\VisibilityConstraints">VisibilityConstraints</abbr></a> $visibilityConstraints)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getProperty">getProperty</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/PropertyName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\PropertyName">PropertyName</abbr></a>|string $propertyName)
+        
+                                            <p><p>Returns the specified property, or null if it does not exist (or was set to null -&gt; unset)</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasProperty">hasProperty</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/PropertyName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\PropertyName">PropertyName</abbr></a>|string $propertyName)
+        
+                                            <p><p>If this node has a property with the given name. It does not check if the property exists in the current NodeType schema.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_equals">equals</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $other)
+        
+                                            <p><p>Checks if the node's &quot;Read Model&quot; identity equals with the given one</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_create">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Node.php#L106">at line 106</a></div>
+        <code>        static            <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>
+    <strong>create</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/ContentRepository/ContentRepositoryId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId">ContentRepositoryId</abbr></a> $contentRepositoryId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/WorkspaceName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName">WorkspaceName</abbr></a> $workspaceName, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $aggregateId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $originDimensionSpacePoint, <abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateClassification">NodeAggregateClassification</abbr> $classification, <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/PropertyCollection.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\PropertyCollection">PropertyCollection</abbr></a> $properties, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a>|null $name, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeTags.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeTags">NodeTags</abbr></a> $tags, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Timestamps.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Timestamps">Timestamps</abbr></a> $timestamps, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/VisibilityConstraints.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\VisibilityConstraints">VisibilityConstraints</abbr></a> $visibilityConstraints)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;The signature of this method can change in the future!</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/ContentRepository/ContentRepositoryId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId">ContentRepositoryId</abbr></a></td>
+                <td>$contentRepositoryId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/WorkspaceName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName">WorkspaceName</abbr></a></td>
+                <td>$workspaceName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a></td>
+                <td>$dimensionSpacePoint</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
+                <td>$aggregateId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a></td>
+                <td>$originDimensionSpacePoint</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateClassification">NodeAggregateClassification</abbr></td>
+                <td>$classification</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a></td>
+                <td>$nodeTypeName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/PropertyCollection.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\PropertyCollection">PropertyCollection</abbr></a></td>
+                <td>$properties</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a>|null</td>
+                <td>$name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeTags.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeTags">NodeTags</abbr></a></td>
+                <td>$tags</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Timestamps.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Timestamps">Timestamps</abbr></a></td>
+                <td>$timestamps</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/VisibilityConstraints.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\VisibilityConstraints">VisibilityConstraints</abbr></a></td>
+                <td>$visibilityConstraints</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getProperty">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Node.php#L118">at line 118</a></div>
+        <code>                    mixed
+    <strong>getProperty</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/PropertyName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\PropertyName">PropertyName</abbr></a>|string $propertyName)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns the specified property, or null if it does not exist (or was set to null -&gt; unset)</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/PropertyName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\PropertyName">PropertyName</abbr></a>|string</td>
+                <td>$propertyName</td>
+                <td><p>Name of the property</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td><p>value of the property</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasProperty">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Node.php#L132">at line 132</a></div>
+        <code>                    bool
+    <strong>hasProperty</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/PropertyName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\PropertyName">PropertyName</abbr></a>|string $propertyName)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>If this node has a property with the given name. It does not check if the property exists in the current NodeType schema.</p></p>                <p><p>That means that {\Neos\ContentRepository\Core\Projection\ContentGraph\self::getProperty()} will not be null, except for the rare case the property deserializing returns null.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/PropertyName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\PropertyName">PropertyName</abbr></a>|string</td>
+                <td>$propertyName</td>
+                <td><p>Name of the property</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_equals">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Node.php#L140">at line 140</a></div>
+        <code>                    bool
+    <strong>equals</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $other)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Checks if the node's &quot;Read Model&quot; identity equals with the given one</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+                <td>$other</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

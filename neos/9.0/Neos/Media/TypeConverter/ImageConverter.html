@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Media_TypeConverter_ImageConverter" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Media_TypeConverter_ImageConverter" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -81,6 +93,7 @@
     <strong>ImageConverter</strong>        extends <a href="../../../Neos/Media/TypeConverter/ImageInterfaceConverter.html"><abbr title="Neos\Media\TypeConverter\ImageInterfaceConverter">ImageInterfaceConverter</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/TypeConverter/ImageConverter.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -258,7 +271,7 @@ this type converter should withdraw and let the PersistedObjectConverter kick in
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getTargetTypeForSource">getTargetTypeForSource</a>(mixed $source, string $originalTargetType, <abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr> $configuration = null)
+                    <a href="#method_getTargetTypeForSource">getTargetTypeForSource</a>(mixed $source, string $originalTargetType, <abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr>|null $configuration = null)
         
                                             <p><p>Determines the target type based on the source's (optional) __type key.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Media/TypeConverter/AssetInterfaceConverter.html#method_getTargetTypeForSource">
@@ -269,7 +282,7 @@ this type converter should withdraw and let the PersistedObjectConverter kick in
                     <abbr title="Neos\Flow\Validation\Error">Error</abbr>|<a href="../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_convertFrom">convertFrom</a>(mixed $source, string $targetType, array $convertedChildProperties = [], <abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr> $configuration = null)
+                    <a href="#method_convertFrom">convertFrom</a>(mixed $source, string $targetType, array $convertedChildProperties = [], <abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr>|null $configuration = null)
         
                                             <p><p>Convert an object from $source to an \Neos\Media\Domain\Model\AssetInterface implementation</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Media/TypeConverter/AssetInterfaceConverter.html#method_convertFrom">
@@ -334,6 +347,7 @@ this type converter should withdraw and let the PersistedObjectConverter kick in
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -383,6 +397,7 @@ this type converter should withdraw and let the PersistedObjectConverter kick in
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -426,6 +441,7 @@ this type converter should withdraw and let the PersistedObjectConverter kick in
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -475,10 +491,11 @@ this type converter should withdraw and let the PersistedObjectConverter kick in
         <div class="location">in <a href="../../../Neos/Media/TypeConverter/AssetInterfaceConverter.html#method_getTargetTypeForSource">
 <abbr title="Neos\Media\TypeConverter\AssetInterfaceConverter">AssetInterfaceConverter</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/TypeConverter/AssetInterfaceConverter.php#L169">at line 169</a></div>
         <code>                    string
-    <strong>getTargetTypeForSource</strong>(mixed $source, string $originalTargetType, <abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr> $configuration = null)
+    <strong>getTargetTypeForSource</strong>(mixed $source, string $originalTargetType, <abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr>|null $configuration = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -500,7 +517,7 @@ this type converter should withdraw and let the PersistedObjectConverter kick in
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr></td>
+                <td><abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr>|null</td>
                 <td>$configuration</td>
                 <td></td>
             </tr>
@@ -545,10 +562,11 @@ this type converter should withdraw and let the PersistedObjectConverter kick in
         <div class="location">in <a href="../../../Neos/Media/TypeConverter/AssetInterfaceConverter.html#method_convertFrom">
 <abbr title="Neos\Media\TypeConverter\AssetInterfaceConverter">AssetInterfaceConverter</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/TypeConverter/AssetInterfaceConverter.php#L201">at line 201</a></div>
         <code>                    <abbr title="Neos\Flow\Validation\Error">Error</abbr>|<a href="../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a>
-    <strong>convertFrom</strong>(mixed $source, string $targetType, array $convertedChildProperties = [], <abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr> $configuration = null)
+    <strong>convertFrom</strong>(mixed $source, string $targetType, array $convertedChildProperties = [], <abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr>|null $configuration = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -575,7 +593,7 @@ this type converter should withdraw and let the PersistedObjectConverter kick in
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr></td>
+                <td><abbr title="Neos\Flow\Property\PropertyMappingConfigurationInterface">PropertyMappingConfigurationInterface</abbr>|null</td>
                 <td>$configuration</td>
                 <td></td>
             </tr>
@@ -616,6 +634,7 @@ this type converter should withdraw and let the PersistedObjectConverter kick in
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -656,7 +675,7 @@ default value in the constructor signature.</p>
                     <table class="table table-condensed">
                     <tr>
                 <td><abbr title="Neos\Flow\Property\Exception\InvalidTargetException">InvalidTargetException</abbr></td>
-                <td><p>if a required constructor argument is missing</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -675,6 +694,7 @@ default value in the constructor signature.</p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -736,6 +756,7 @@ default value in the constructor signature.</p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -794,6 +815,7 @@ default value in the constructor signature.</p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

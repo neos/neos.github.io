@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Fusion_Core_ObjectTreeParser_Token" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Fusion_Core_ObjectTreeParser_Token" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,8 +94,16 @@
 </p>
 
         
-    
         
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp; </td>
+            </tr>
+        </table>
+                &nbsp;
+    
 
             
         
@@ -419,7 +439,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;
+                    static&nbsp;array
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getConstants">getConstants</a>()
@@ -436,12 +456,13 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/Token.php#L64">at line 64</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/Token.php#L67">at line 67</a></div>
         <code>                    
     <strong>__construct</strong>(int $type, string $value)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -475,12 +496,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getType">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/Token.php#L70">at line 70</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/Token.php#L73">at line 73</a></div>
         <code>                    int
     <strong>getType</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -508,12 +530,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/Token.php#L75">at line 75</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/Token.php#L78">at line 78</a></div>
         <code>                    string
     <strong>getValue</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -541,12 +564,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_typeToString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/Token.php#L88">at line 88</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/Token.php#L91">at line 91</a></div>
         <code>        static            string
     <strong>typeToString</strong>(int $type)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -592,12 +616,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getConstants">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/Token.php#L101">at line 101</a></div>
-        <code>        static    protected        
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/Token.php#L105">at line 105</a></div>
+        <code>        static    protected        array
     <strong>getConstants</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -607,6 +632,15 @@
         </div>
         <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
             

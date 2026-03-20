@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
         <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
         <script async defer src="../../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../../js/typeahead.min.js"></script>
-        <script src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_BehavioralTests_ProjectionRaceConditionTester_Command_RaceConditionTrackerCommandController" data-root-path="../../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_BehavioralTests_ProjectionRaceConditionTester_Command_RaceConditionTrackerCommandController" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
                         <table>
             <tr>
@@ -102,7 +115,7 @@
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_configuration">
-                                        protected                                        array
+                                        protected                                        mixed[]
                                                                                 
                                     </td>
                 <td>$configuration</td>
@@ -122,8 +135,7 @@
                 <div class="col-md-8">
                     <a href="#method_resetCommand">resetCommand</a>()
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Reset the race condition tracker by clearing the stored traces in Redis.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -131,10 +143,9 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_analyzeTraceCommand">analyzeTraceCommand</a>(string $storeTrace = null)
+                    <a href="#method_analyzeTraceCommand">analyzeTraceCommand</a>(string|null $storeTrace = null)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Analyze the stored trace and detect race conditions and double-processed events.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -145,18 +156,25 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_resetCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.BehavioralTests/Classes/ProjectionRaceConditionTester/Command/RaceConditionTrackerCommandController.php#L38">at line 38</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.BehavioralTests/Classes/ProjectionRaceConditionTester/Command/RaceConditionTrackerCommandController.php#L42">at line 42</a></div>
         <code>                    void
     <strong>resetCommand</strong>()
         </code>
     </h3>
     <div class="details">    
-    
             
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp; </td>
+            </tr>
+        </table>
+                &nbsp;
+    
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Reset the race condition tracker by clearing the stored traces in Redis.</p></p>                        
         </div>
         <div class="tags">
             
@@ -178,27 +196,34 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_analyzeTraceCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.BehavioralTests/Classes/ProjectionRaceConditionTester/Command/RaceConditionTrackerCommandController.php#L44">at line 44</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.BehavioralTests/Classes/ProjectionRaceConditionTester/Command/RaceConditionTrackerCommandController.php#L55">at line 55</a></div>
         <code>                    void
-    <strong>analyzeTraceCommand</strong>(string $storeTrace = null)
+    <strong>analyzeTraceCommand</strong>(string|null $storeTrace = null)
         </code>
     </h3>
     <div class="details">    
-    
             
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp; </td>
+            </tr>
+        </table>
+                &nbsp;
+    
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Analyze the stored trace and detect race conditions and double-processed events.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$storeTrace</td>
-                <td></td>
+                <td><p>The path to store the full trace in NDJSON format (optional).</p></td>
             </tr>
             </table>
 

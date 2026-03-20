@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_Command_SiteCommandController" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Neos_Command_SiteCommandController" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -99,6 +112,15 @@
                                                                                 
                                     </td>
                 <td>$siteRepository</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_domainRepository">
+                                        protected                                        <a href="../../../Neos/Neos/Domain/Repository/DomainRepository.html"><abbr title="Neos\Neos\Domain\Repository\DomainRepository">DomainRepository</abbr></a>
+                                                                                
+                                    </td>
+                <td>$domainRepository</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -121,11 +143,56 @@
                 <td></td>
             </tr>
                     <tr>
+                <td class="type" id="property_contentRepositoryRegistry">
+                                        protected                                        <a href="../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a>
+                                                                                
+                                    </td>
+                <td>$contentRepositoryRegistry</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
                 <td class="type" id="property_persistenceManager">
                                         protected                                        <abbr title="Neos\Flow\Persistence\PersistenceManagerInterface">PersistenceManagerInterface</abbr>
                                                                                 
                                     </td>
                 <td>$persistenceManager</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_siteImportService">
+                                        protected                                        <a href="../../../Neos/Neos/Domain/Service/SiteImportService.html"><abbr title="Neos\Neos\Domain\Service\SiteImportService">SiteImportService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$siteImportService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_siteExportService">
+                                        protected                                        <a href="../../../Neos/Neos/Domain/Service/SiteExportService.html"><abbr title="Neos\Neos\Domain\Service\SiteExportService">SiteExportService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$siteExportService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_sitePruningService">
+                                        protected                                        <a href="../../../Neos/Neos/Domain/Service/SitePruningService.html"><abbr title="Neos\Neos\Domain\Service\SitePruningService">SitePruningService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$sitePruningService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_workspaceService">
+                                        protected                                        <a href="../../../Neos/Neos/Domain/Service/WorkspaceService.html"><abbr title="Neos\Neos\Domain\Service\WorkspaceService">WorkspaceService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$workspaceService</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -150,9 +217,29 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_pruneCommand">pruneCommand</a>(string $siteNode)
+                    <a href="#method_importAllCommand">importAllCommand</a>(string|null $packageKey = null, string|null $path = null, string $contentRepository = &#039;default&#039;, bool $verbose = false)
         
-                                            <p><p>Remove site with content and related data (with globbing)</p></p>                </div>
+                                            <p><p>Import sites</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_exportAllCommand">exportAllCommand</a>(string|null $packageKey = null, string|null $path = null, string $contentRepository = &#039;default&#039;, bool $verbose = false)
+        
+                                            <p><p>Export sites</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_pruneAllCommand">pruneAllCommand</a>(string $contentRepository = &#039;default&#039;, bool $force = false, bool $verbose = false)
+        
+                                            <p><p>This will completely prune the data of the specified content repository and remove all site-records.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -195,6 +282,39 @@
                                             <p><p>Find all sites the match the given site-node-name-pattern with support for globbing</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_determineTargetPath">determineTargetPath</a>(string|null $packageKey, string|null $path)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createOnProcessorClosure">createOnProcessorClosure</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createOnMessageClosure">createOnMessageClosure</a>(bool $verbose)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -203,12 +323,13 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_createCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L83">at line 83</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L129">at line 129</a></div>
         <code>                    void
     <strong>createCommand</strong>(string $name, string $packageKey, string $nodeType, string $nodeName = null, bool $inactive = false)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -271,18 +392,143 @@ If no nodeName is given it will be determined from the siteName.</p></td>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_pruneCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L120">at line 120</a></div>
+                    <h3 id="method_importAllCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L175">at line 175</a></div>
         <code>                    void
-    <strong>pruneCommand</strong>(string $siteNode)
+    <strong>importAllCommand</strong>(string|null $packageKey = null, string|null $path = null, string $contentRepository = &#039;default&#039;, bool $verbose = false)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Remove site with content and related data (with globbing)</p></p>                <p><p>In the future we need some more sophisticated cleanup.</p></p>        
+                            <p><p>Import sites</p></p>                <p><p>This command allows importing sites from the given path/package. The format must
+be identical to that produced by the exportAll command.</p>
+<p>If a path is specified, this command expects the corresponding directory to contain the exported files</p>
+<p>If a package key is specified, this command expects the export files to be located in the private resources
+directory of the given package (Resources/Private/Content).</p>
+<p><strong>Note that the live workspace has to be empty prior to importing.</strong></p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$packageKey</td>
+                <td><p>Package key specifying the package containing the sites content</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$path</td>
+                <td><p>relative or absolute path and filename to the export files</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$verbose</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_exportAllCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L215">at line 215</a></div>
+        <code>                    void
+    <strong>exportAllCommand</strong>(string|null $packageKey = null, string|null $path = null, string $contentRepository = &#039;default&#039;, bool $verbose = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Export sites</p></p>                <p><p>This command exports all sites of the content repository.</p>
+<p>If a path is specified, this command creates the directory if needed and exports into that.</p>
+<p>If a package key is specified, this command exports to the private resources
+directory of the given package (Resources/Private/Content).</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$packageKey</td>
+                <td><p>Package key specifying the package containing the sites content</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$path</td>
+                <td><p>relative or absolute path and filename to the export files</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$verbose</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_pruneAllCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L234">at line 234</a></div>
+        <code>                    void
+    <strong>pruneAllCommand</strong>(string $contentRepository = &#039;default&#039;, bool $force = false, bool $verbose = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>This will completely prune the data of the specified content repository and remove all site-records.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -290,8 +536,18 @@ If no nodeName is given it will be determined from the siteName.</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$siteNode</td>
-                <td><p>Name for site root nodes to clear only content of this sites (globbing is supported)</p></td>
+                <td>$contentRepository</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$force</td>
+                <td><p>Prune the cr without confirmation. This cannot be reverted!</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$verbose</td>
+                <td></td>
             </tr>
             </table>
 
@@ -314,12 +570,13 @@ If no nodeName is given it will be determined from the siteName.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_listCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L145">at line 145</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L255">at line 255</a></div>
         <code>                    void
     <strong>listCommand</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -338,6 +595,15 @@ If no nodeName is given it will be determined from the siteName.</p></td>
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Cli\Exception\StopCommandException">StopCommandException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -346,12 +612,13 @@ If no nodeName is given it will be determined from the siteName.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_activateCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L203">at line 203</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L280">at line 280</a></div>
         <code>                    void
     <strong>activateCommand</strong>(string $siteNode)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -388,12 +655,13 @@ If no nodeName is given it will be determined from the siteName.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_deactivateCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L225">at line 225</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L302">at line 302</a></div>
         <code>                    void
     <strong>deactivateCommand</strong>(string $siteNode)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -430,12 +698,13 @@ If no nodeName is given it will be determined from the siteName.</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_findSitesByNodeNamePattern">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L245">at line 245</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L322">at line 322</a></div>
         <code>            protected        <a href="../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a>[]
     <strong>findSitesByNodeNamePattern</strong>(string $siteNodePattern)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -459,6 +728,133 @@ If no nodeName is given it will be determined from the siteName.</p></td>
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a>[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_determineTargetPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L332">at line 332</a></div>
+        <code>            protected        string
+    <strong>determineTargetPath</strong>(string|null $packageKey, string|null $path)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$packageKey</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$path</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createOnProcessorClosure">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L357">at line 357</a></div>
+        <code>            protected        <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>
+    <strong>createOnProcessorClosure</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createOnMessageClosure">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/SiteCommandController.php#L365">at line 365</a></div>
+        <code>            protected        <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a>
+    <strong>createOnMessageClosure</strong>(bool $verbose)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>bool</td>
+                <td>$verbose</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
             <td></td>
         </tr>
     </table>

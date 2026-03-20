@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Media_Domain_Model_ImageVariant" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Media_Domain_Model_ImageVariant" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,10 +90,10 @@
 
     
     <p>        class
-    <strong>ImageVariant</strong>        extends <a href="../../../../Neos/Media/Domain/Model/Asset.html"><abbr title="Neos\Media\Domain\Model\Asset">Asset</abbr></a>        implements
-        <a href="../../../../Neos/Media/Domain/Model/AssetVariantInterface.html"><abbr title="Neos\Media\Domain\Model\AssetVariantInterface">AssetVariantInterface</abbr></a>, <a href="../../../../Neos/Media/Domain/Model/ImageInterface.html"><abbr title="Neos\Media\Domain\Model\ImageInterface">ImageInterface</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php">View source</a>)
+    <strong>ImageVariant</strong>        extends <a href="../../../../Neos/Media/Domain/Model/Asset.html"><abbr title="Neos\Media\Domain\Model\Asset">Asset</abbr></a>        implements        <a href="../../../../Neos/Media/Domain/Model/AssetVariantInterface.html"><abbr title="Neos\Media\Domain\Model\AssetVariantInterface">AssetVariantInterface</abbr></a>, <a href="../../../../Neos/Media/Domain/Model/ImageInterface.html"><abbr title="Neos\Media\Domain\Model\ImageInterface">ImageInterface</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -659,7 +671,7 @@ image variant's resource.</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Media\Domain\Model\AssetSource\Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr>|null
+                    <a href="../../../../Neos/Media/Domain/Model/AssetSource/AssetProxy/AssetProxyInterface.html"><abbr title="Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr></a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getAssetProxy">getAssetProxy</a>()
@@ -930,12 +942,13 @@ image variant's resource.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L84">at line 84</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L85">at line 85</a></div>
         <code>                    
     <strong>__construct</strong>(<a href="../../../../Neos/Media/Domain/Model/Image.html"><abbr title="Neos\Media\Domain\Model\Image">Image</abbr></a> $originalAsset)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -963,12 +976,13 @@ image variant's resource.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_initializeObject">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L116">at line 116</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L123">at line 123</a></div>
         <code>                    void
     <strong>initializeObject</strong>(int $initializationCause)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1034,6 +1048,7 @@ from parent classes being executed.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1067,6 +1082,7 @@ from parent classes being executed.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1101,6 +1117,7 @@ from parent classes being executed.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1135,6 +1152,7 @@ from parent classes being executed.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1161,12 +1179,13 @@ from parent classes being executed.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setResource">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L235">at line 235</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L242">at line 242</a></div>
         <code>                    void
     <strong>setResource</strong>(<abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr> $resource)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1213,12 +1232,13 @@ throw a RuntimeException.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getResource">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L139">at line 139</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L146">at line 146</a></div>
         <code>                    <abbr title="Neos\Flow\ResourceManagement\PersistentResource">PersistentResource</abbr>
     <strong>getResource</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1245,12 +1265,13 @@ throw a RuntimeException.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getFileExtension">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L173">at line 173</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L180">at line 180</a></div>
         <code>                    string
     <strong>getFileExtension</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1284,6 +1305,7 @@ throw a RuntimeException.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1310,12 +1332,13 @@ throw a RuntimeException.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setTitle">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L248">at line 248</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L255">at line 255</a></div>
         <code>                    void
     <strong>setTitle</strong>(string $title)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1362,12 +1385,13 @@ RuntimeException.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getTitle">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L183">at line 183</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L190">at line 190</a></div>
         <code>                    string
     <strong>getTitle</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1401,6 +1425,7 @@ RuntimeException.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1437,12 +1462,13 @@ RuntimeException.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCaption">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L193">at line 193</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L200">at line 200</a></div>
         <code>                    string
     <strong>getCaption</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1469,12 +1495,13 @@ RuntimeException.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCopyrightNotice">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L201">at line 201</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L208">at line 208</a></div>
         <code>                    string
     <strong>getCopyrightNotice</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1509,6 +1536,7 @@ RuntimeException.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1553,6 +1581,7 @@ RuntimeException.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1579,12 +1608,13 @@ RuntimeException.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_addTag">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L259">at line 259</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L266">at line 266</a></div>
         <code>                    bool
     <strong>addTag</strong>(<a href="../../../../Neos/Media/Domain/Model/Tag.html"><abbr title="Neos\Media\Domain\Model\Tag">Tag</abbr></a> $tag)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1628,6 +1658,7 @@ RuntimeException.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1700,6 +1731,7 @@ the original asset is used.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1747,12 +1779,13 @@ the original asset is used.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_refresh">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L154">at line 154</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L161">at line 161</a></div>
         <code>                    void
     <strong>refresh</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1808,12 +1841,13 @@ image variant's resource.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setTags">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L270">at line 270</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L277">at line 277</a></div>
         <code>                    void
     <strong>setTags</strong>(<abbr title="Doctrine\Common\Collections\Collection">Collection</abbr> $tags)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1857,6 +1891,7 @@ image variant's resource.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1900,6 +1935,7 @@ image variant's resource.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1933,6 +1969,7 @@ image variant's resource.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1970,12 +2007,13 @@ image variant's resource.</p></p>
                     <div class="method-item">
                     <h3 id="method_setAssetSourceIdentifier">
         <div class="location">in <a href="../../../../Neos/Media/Domain/Model/Asset.html#method_setAssetSourceIdentifier">
-<abbr title="Neos\Media\Domain\Model\Asset">Asset</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/Asset.php#L476">at line 476</a></div>
+<abbr title="Neos\Media\Domain\Model\Asset">Asset</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/Asset.php#L477">at line 477</a></div>
         <code>                    void
     <strong>setAssetSourceIdentifier</strong>(string $assetSourceIdentifier)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2014,12 +2052,13 @@ external asset sources.</p></p>
                     <div class="method-item">
                     <h3 id="method_getAssetSourceIdentifier">
         <div class="location">in <a href="../../../../Neos/Media/Domain/Model/Asset.html#method_getAssetSourceIdentifier">
-<abbr title="Neos\Media\Domain\Model\Asset">Asset</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/Asset.php#L484">at line 484</a></div>
+<abbr title="Neos\Media\Domain\Model\Asset">Asset</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/Asset.php#L485">at line 485</a></div>
         <code>                    string|null
     <strong>getAssetSourceIdentifier</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2048,12 +2087,13 @@ external asset sources.</p></p>
                     <div class="method-item">
                     <h3 id="method_getAssetProxy">
         <div class="location">in <a href="../../../../Neos/Media/Domain/Model/Asset.html#method_getAssetProxy">
-<abbr title="Neos\Media\Domain\Model\Asset">Asset</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/Asset.php#L492">at line 492</a></div>
-        <code>                    <abbr title="Neos\Media\Domain\Model\AssetSource\Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr>|null
+<abbr title="Neos\Media\Domain\Model\Asset">Asset</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/Asset.php#L493">at line 493</a></div>
+        <code>                    <a href="../../../../Neos/Media/Domain/Model/AssetSource/AssetProxy/AssetProxyInterface.html"><abbr title="Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr></a>|null
     <strong>getAssetProxy</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2067,7 +2107,7 @@ external asset sources.</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Media\Domain\Model\AssetSource\Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr>|null</td>
+            <td><a href="../../../../Neos/Media/Domain/Model/AssetSource/AssetProxy/AssetProxyInterface.html"><abbr title="Neos\Media\Domain\Model\AssetSource\AssetProxy\AssetProxyInterface">AssetProxyInterface</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -2082,12 +2122,13 @@ external asset sources.</p></p>
                     <div class="method-item">
                     <h3 id="method_isInUse">
         <div class="location">in <a href="../../../../Neos/Media/Domain/Model/Asset.html#method_isInUse">
-<abbr title="Neos\Media\Domain\Model\Asset">Asset</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/Asset.php#L531">at line 531</a></div>
+<abbr title="Neos\Media\Domain\Model\Asset">Asset</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/Asset.php#L532">at line 532</a></div>
         <code>                    bool
     <strong>isInUse</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2115,12 +2156,13 @@ external asset sources.</p></p>
                     <div class="method-item">
                     <h3 id="method_getUsageCount">
         <div class="location">in <a href="../../../../Neos/Media/Domain/Model/Asset.html#method_getUsageCount">
-<abbr title="Neos\Media\Domain\Model\Asset">Asset</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/Asset.php#L542">at line 542</a></div>
+<abbr title="Neos\Media\Domain\Model\Asset">Asset</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/Asset.php#L543">at line 543</a></div>
         <code>                    int
     <strong>getUsageCount</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2154,6 +2196,7 @@ external asset sources.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2187,6 +2230,7 @@ external asset sources.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2220,6 +2264,7 @@ external asset sources.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2253,6 +2298,7 @@ external asset sources.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2296,6 +2342,7 @@ external asset sources.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2329,6 +2376,7 @@ external asset sources.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2362,6 +2410,7 @@ external asset sources.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2395,6 +2444,7 @@ external asset sources.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2421,12 +2471,13 @@ external asset sources.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getOriginalAsset">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L129">at line 129</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L136">at line 136</a></div>
         <code>                    <a href="../../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a>
     <strong>getOriginalAsset</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2453,12 +2504,13 @@ external asset sources.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setName">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L212">at line 212</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L219">at line 219</a></div>
         <code>                    void
     <strong>setName</strong>(string $name)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2495,12 +2547,13 @@ external asset sources.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getName">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L222">at line 222</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L229">at line 229</a></div>
         <code>                    string
     <strong>getName</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2527,12 +2580,13 @@ external asset sources.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_addVariant">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L281">at line 281</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L288">at line 288</a></div>
         <code>                    void
     <strong>addVariant</strong>(<a href="../../../../Neos/Media/Domain/Model/ImageVariant.html"><abbr title="Neos\Media\Domain\Model\ImageVariant">ImageVariant</abbr></a> $variant)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2569,12 +2623,13 @@ external asset sources.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getVariants">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L291">at line 291</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L298">at line 298</a></div>
         <code>                    array
     <strong>getVariants</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2601,12 +2656,13 @@ external asset sources.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setPresetIdentifier">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L301">at line 301</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L308">at line 308</a></div>
         <code>                    void
     <strong>setPresetIdentifier</strong>(string $presetIdentifier)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2643,12 +2699,13 @@ external asset sources.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPresetIdentifier">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L311">at line 311</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L318">at line 318</a></div>
         <code>                    string|null
     <strong>getPresetIdentifier</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2675,12 +2732,13 @@ external asset sources.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setPresetVariantName">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L319">at line 319</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L326">at line 326</a></div>
         <code>                    void
     <strong>setPresetVariantName</strong>(string $presetVariantName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2718,12 +2776,13 @@ external asset sources.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPresetVariantName">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L327">at line 327</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L334">at line 334</a></div>
         <code>                    string|null
     <strong>getPresetVariantName</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2751,12 +2810,13 @@ external asset sources.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_addAdjustment">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L344">at line 344</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L351">at line 351</a></div>
         <code>                    void
     <strong>addAdjustment</strong>(<a href="../../../../Neos/Media/Domain/Model/Adjustment/ImageAdjustmentInterface.html"><abbr title="Neos\Media\Domain\Model\Adjustment\ImageAdjustmentInterface">ImageAdjustmentInterface</abbr></a> $adjustment)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2814,12 +2874,13 @@ external asset sources.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_addAdjustments">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L362">at line 362</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L369">at line 369</a></div>
         <code>                    void
     <strong>addAdjustments</strong>(array $adjustments)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2877,12 +2938,13 @@ external asset sources.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_applyAdjustment">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L378">at line 378</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L385">at line 385</a></div>
         <code>            protected        void
     <strong>applyAdjustment</strong>(<a href="../../../../Neos/Media/Domain/Model/Adjustment/ImageAdjustmentInterface.html"><abbr title="Neos\Media\Domain\Model\Adjustment\ImageAdjustmentInterface">ImageAdjustmentInterface</abbr></a> $adjustment)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2928,12 +2990,13 @@ external asset sources.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getAdjustments">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L403">at line 403</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L410">at line 410</a></div>
         <code>                    <abbr title="Doctrine\Common\Collections\Collection">Collection</abbr>
     <strong>getAdjustments</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -2961,12 +3024,13 @@ external asset sources.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_renderResource">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L416">at line 416</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Model/ImageVariant.php#L423">at line 423</a></div>
         <code>            protected        void
     <strong>renderResource</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_Controller_Frontend_NodeController" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Neos_Controller_Frontend_NodeController" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,23 +94,41 @@
 </p>
 
         
+        
     
         
 
-            <div class="description">
-            <p><p>Event Sourced Node Controller; as Replacement of NodeController</p></p>                    </div>
             
+                <h2>Traits</h2>
+
         
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../../Neos/Neos/Utility/NodeTypeWithFallbackProvider.html"><abbr title="Neos\Neos\Utility\NodeTypeWithFallbackProvider">NodeTypeWithFallbackProvider</abbr></a>    <small><span class="label label-danger">deprecated</span></small></div>
+                <div class="col-md-6"><p>Utility trait for retrieving node types for nodes with a built-in fallback mechanism</p></div>
+            </div>
+            </div>
+    
     
             <h2>Properties</h2>
 
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_contentRepositoryRegistry">
-                                        protected                                        <abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr>
+                                        protected                                        <a href="../../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a>
                                                                                 
                                     </td>
                 <td>$contentRepositoryRegistry</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_subgraphCachePool">
+                                        protected                                        <a href="../../../../Neos/ContentRepositoryRegistry/SubgraphCachingInMemory/SubgraphCachePool.html"><abbr title="Neos\ContentRepositoryRegistry\SubgraphCachingInMemory\SubgraphCachePool">SubgraphCachePool</abbr></a>
+                                                                                
+                                    </td>
+                <td>$subgraphCachePool</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -175,11 +205,47 @@
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_nodeSiteResolvingService">
-                                        protected                                        <a href="../../../../Neos/Neos/Domain/Service/NodeSiteResolvingService.html"><abbr title="Neos\Neos\Domain\Service\NodeSiteResolvingService">NodeSiteResolvingService</abbr></a>
+                <td class="type" id="property_renderingModeService">
+                                        protected                                        <a href="../../../../Neos/Neos/Domain/Service/RenderingModeService.html"><abbr title="Neos\Neos\Domain\Service\RenderingModeService">RenderingModeService</abbr></a>
                                                                                 
                                     </td>
-                <td>$nodeSiteResolvingService</td>
+                <td>$renderingModeService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_shortcutRedirectHttpStatusCode">
+                                        protected                                        int
+                                                                                
+                                    </td>
+                <td>$shortcutRedirectHttpStatusCode</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeUriBuilderFactory">
+                                        protected                                        <a href="../../../../Neos/Neos/FrontendRouting/NodeUriBuilderFactory.html"><abbr title="Neos\Neos\FrontendRouting\NodeUriBuilderFactory">NodeUriBuilderFactory</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodeUriBuilderFactory</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_contentRepositoryAuthorizationService">
+                                        protected                                        <a href="../../../../Neos/Neos/Security/Authorization/ContentRepositoryAuthorizationService.html"><abbr title="Neos\Neos\Security\Authorization\ContentRepositoryAuthorizationService">ContentRepositoryAuthorizationService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$contentRepositoryAuthorizationService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_contentSubgraphCacheWarmup">
+                                        protected                                        <a href="../../../../Neos/Neos/Controller/Frontend/ContentSubgraphCacheWarmup.html"><abbr title="Neos\Neos\Controller\Frontend\ContentSubgraphCacheWarmup">ContentSubgraphCacheWarmup</abbr></a>|null
+                                                                                
+                                    </td>
+                <td>$contentSubgraphCacheWarmup</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -189,6 +255,18 @@
             <h2>Methods</h2>
 
             <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getNodeType">getNodeType</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/Neos/Utility/NodeTypeWithFallbackProvider.html#method_getNodeType">
+<abbr title="Neos\Neos\Utility\NodeTypeWithFallbackProvider">NodeTypeWithFallbackProvider</abbr></a></small></div>
+            </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     void
@@ -205,7 +283,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_showAction">showAction</a>(string $node, bool $showInvisible = false)
+                    <a href="#method_showAction">showAction</a>(string $node)
         
                                             <p><p>Initializes the view with the necessary parameters encoded in the given NodeAddress</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -227,9 +305,9 @@ actually affected node is different from the one routing resolved.</p></p>      
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_handleShortcutNode">handleShortcutNode</a>(<abbr title="Neos\Neos\FrontendRouting\NodeAddress">NodeAddress</abbr> $nodeAddress, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <a href="#method_handleShortcutNode">handleShortcutNode</a>(<a href="../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAddress.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAddress">NodeAddress</abbr></a> $nodeAddress)
         
-                                            <p><p>Handles redirects to shortcut targets in live rendering.</p></p>                </div>
+                                            <p><p>Handles redirects to shortcut targets of nodes in the live workspace.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -239,6 +317,58 @@ actually affected node is different from the one routing resolved.</p></p>      
 
             <div id="method-details">
                     <div class="method-item">
+                    <h3 id="method_getNodeType">
+        <div class="location">in <a href="../../../../Neos/Neos/Utility/NodeTypeWithFallbackProvider.html#method_getNodeType">
+<abbr title="Neos\Neos\Utility\NodeTypeWithFallbackProvider">NodeTypeWithFallbackProvider</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Utility/NodeTypeWithFallbackProvider.php#L31">at line 31</a></div>
+        <code>            protected        <a href="../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a>
+    <strong>getNodeType</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        <small><span class="label label-danger">deprecated</span></small></code>
+    </h3>
+    <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>to</td>
+                    <td>ease migration from Neos 8.3</td>
+                </tr>
+                    </p>
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_previewAction">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Frontend/NodeController.php#L125">at line 125</a></div>
         <code>                    void
@@ -246,6 +376,7 @@ actually affected node is different from the one routing resolved.</p></p>      
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -260,7 +391,7 @@ actually affected node is different from the one routing resolved.</p></p>      
                     <tr>
                 <td>string</td>
                 <td>$node</td>
-                <td><p>Legacy name for backwards compatibility of route components</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -284,10 +415,6 @@ actually affected node is different from the one routing resolved.</p></p>      
             </tr>
                     <tr>
                 <td><abbr title="Neos\Flow\Mvc\Exception\StopActionException">StopActionException</abbr></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\Flow\Mvc\Exception\UnsupportedRequestTypeException">UnsupportedRequestTypeException</abbr></td>
                 <td></td>
             </tr>
                     <tr>
@@ -312,12 +439,13 @@ actually affected node is different from the one routing resolved.</p></p>      
             </div>
                     <div class="method-item">
                     <h3 id="method_showAction">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Frontend/NodeController.php#L198">at line 198</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Frontend/NodeController.php#L189">at line 189</a></div>
         <code>                    void
-    <strong>showAction</strong>(string $node, bool $showInvisible = false)
+    <strong>showAction</strong>(string $node)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -332,11 +460,6 @@ actually affected node is different from the one routing resolved.</p></p>      
                 <td>string</td>
                 <td>$node</td>
                 <td><p>Legacy name for backwards compatibility of route components</p></td>
-            </tr>
-                    <tr>
-                <td>bool</td>
-                <td>$showInvisible</td>
-                <td></td>
             </tr>
             </table>
 
@@ -363,10 +486,6 @@ actually affected node is different from the one routing resolved.</p></p>      
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\Flow\Mvc\Exception\UnsupportedRequestTypeException">UnsupportedRequestTypeException</abbr></td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td><abbr title="Neos\Flow\Mvc\Routing\Exception\MissingActionNameException">MissingActionNameException</abbr></td>
                 <td></td>
             </tr>
@@ -388,12 +507,13 @@ actually affected node is different from the one routing resolved.</p></p>      
             </div>
                     <div class="method-item">
                     <h3 id="method_overrideViewVariablesFromInternalArguments">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Frontend/NodeController.php#L254">at line 254</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Frontend/NodeController.php#L239">at line 239</a></div>
         <code>            protected        void
     <strong>overrideViewVariablesFromInternalArguments</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -431,30 +551,26 @@ actually affected node is different from the one routing resolved.</p></p>      
             </div>
                     <div class="method-item">
                     <h3 id="method_handleShortcutNode">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Frontend/NodeController.php#L288">at line 288</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Frontend/NodeController.php#L270">at line 270</a></div>
         <code>            protected        void
-    <strong>handleShortcutNode</strong>(<abbr title="Neos\Neos\FrontendRouting\NodeAddress">NodeAddress</abbr> $nodeAddress, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+    <strong>handleShortcutNode</strong>(<a href="../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAddress.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAddress">NodeAddress</abbr></a> $nodeAddress)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Handles redirects to shortcut targets in live rendering.</p></p>                        
+                            <p><p>Handles redirects to shortcut targets of nodes in the live workspace.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\Neos\FrontendRouting\NodeAddress">NodeAddress</abbr></td>
+                <td><a href="../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAddress.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAddress">NodeAddress</abbr></a></td>
                 <td>$nodeAddress</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></td>
-                <td>$contentRepository</td>
                 <td></td>
             </tr>
             </table>
@@ -479,10 +595,6 @@ actually affected node is different from the one routing resolved.</p></p>      
             </tr>
                     <tr>
                 <td><abbr title="Neos\Flow\Mvc\Exception\StopActionException">StopActionException</abbr></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\Flow\Mvc\Exception\UnsupportedRequestTypeException">UnsupportedRequestTypeException</abbr></td>
                 <td></td>
             </tr>
             </table>

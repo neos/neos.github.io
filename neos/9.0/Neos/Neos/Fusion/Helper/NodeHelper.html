@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_Fusion_Helper_NodeHelper" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Neos_Fusion_Helper_NodeHelper" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,10 +90,10 @@
 
     
     <p>        class
-    <strong>NodeHelper</strong>        implements
-        <abbr title="Neos\Eel\ProtectedContextAwareInterface">ProtectedContextAwareInterface</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php">View source</a>)
+    <strong>NodeHelper</strong>        implements        <abbr title="Neos\Eel\ProtectedContextAwareInterface">ProtectedContextAwareInterface</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -96,10 +108,19 @@
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_contentRepositoryRegistry">
-                                        protected                                        <abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr>
+                                        protected                                        <a href="../../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a>
                                                                                 
                                     </td>
                 <td>$contentRepositoryRegistry</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeLabelGenerator">
+                                        protected                                        <a href="../../../../Neos/Neos/Domain/NodeLabel/NodeLabelGeneratorInterface.html"><abbr title="Neos\Neos\Domain\NodeLabel\NodeLabelGeneratorInterface">NodeLabelGeneratorInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodeLabelGenerator</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -111,10 +132,107 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>
+                    string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_nearestContentCollection">nearestContentCollection</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node, string $nodePath)
+                    <a href="#method_label">label</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        
+                                            <p><p>Renders the actual node label based on the NodeType definition in Fusion.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_depth">depth</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_path">path</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_nodeType">nodeType</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        
+                                            <p><p>Retrieving the NodeType of the given Node.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isOfType">isOfType</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node, string $nodeType)
+        
+                                            <p><p>If this node type or any of the direct or indirect super types
+has the given name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isDisabled">isDisabled</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isNodeTypeExistent">isNodeTypeExistent</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_serializedNodeAddress">serializedNodeAddress</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentSubgraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentSubgraphInterface">ContentSubgraphInterface</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_subgraphForNode">subgraphForNode</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_nearestContentCollection">nearestContentCollection</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node, string|null $nodePath)
         
                                             <p><p>Check if the given node is already a collection, find collection by nodePath otherwise, throw exception
 if no content collection could be found</p></p>                </div>
@@ -125,31 +243,9 @@ if no content collection could be found</p></p>                </div>
                     <a href="../../../../Neos/Neos/Fusion/Helper/NodeLabelToken.html"><abbr title="Neos\Neos\Fusion\Helper\NodeLabelToken">NodeLabelToken</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_labelForNode">labelForNode</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
+                    <a href="#method_labelForNode">labelForNode</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         
-                                            <p><p>Generate a label for a node with a chaining mechanism. To be used in nodetype definitions.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    bool
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_isOfType">isOfType</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node, string $nodeType)
-        
-                                            <p><p>If this node type or any of the direct or indirect super types
-has the given name.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_nodeAddressToString">nodeAddressToString</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Return a builder to generate a label for a node with a chaining mechanism. To be used in NodeType definition:</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -170,32 +266,27 @@ has the given name.</p></p>                </div>
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_nearestContentCollection">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L42">at line 42</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>
-    <strong>nearestContentCollection</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node, string $nodePath)
+                    <h3 id="method_label">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L48">at line 48</a></div>
+        <code>                    string
+    <strong>label</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Check if the given node is already a collection, find collection by nodePath otherwise, throw exception
-if no content collection could be found</p></p>                        
+                            <p><p>Renders the actual node label based on the NodeType definition in Fusion.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
                 <td>$node</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$nodePath</td>
                 <td></td>
             </tr>
             </table>
@@ -205,21 +296,12 @@ if no content collection could be found</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+            <td>string</td>
             <td></td>
         </tr>
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../Neos/Neos/Domain/Exception.html"><abbr title="Neos\Neos\Domain\Exception">Exception</abbr></a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
             
                     </div>
@@ -227,25 +309,34 @@ if no content collection could be found</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_labelForNode">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L82">at line 82</a></div>
-        <code>                    <a href="../../../../Neos/Neos/Fusion/Helper/NodeLabelToken.html"><abbr title="Neos\Neos\Fusion\Helper\NodeLabelToken">NodeLabelToken</abbr></a>
-    <strong>labelForNode</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
-        </code>
+                    <h3 id="method_depth">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L58">at line 58</a></div>
+        <code>                    int
+    <strong>depth</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>do</td>
+                    <td>not rely on this, as it is rather expensive to calculate</td>
+                </tr>
+                    </p>
     
             
 
         <div class="method-description">
-                            <p><p>Generate a label for a node with a chaining mechanism. To be used in nodetype definitions.</p></p>                        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
                 <td>$node</td>
                 <td></td>
             </tr>
@@ -256,7 +347,101 @@ if no content collection could be found</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../Neos/Neos/Fusion/Helper/NodeLabelToken.html"><abbr title="Neos\Neos\Fusion\Helper\NodeLabelToken">NodeLabelToken</abbr></a></td>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_path">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L67">at line 67</a></div>
+        <code>                    string
+    <strong>path</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        <small><span class="label label-danger">deprecated</span></small></code>
+    </h3>
+    <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>do</td>
+                    <td>not rely on this, as it is rather expensive to calculate</td>
+                </tr>
+                    </p>
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_nodeType">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L86">at line 86</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a>|null
+    <strong>nodeType</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Retrieving the NodeType of the given Node.</p></p>                <p><p>If the NodeType schema changed and the NodeType does not exist anymore, NULL is returned.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -270,12 +455,13 @@ if no content collection could be found</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_isOfType">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L95">at line 95</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L97">at line 97</a></div>
         <code>                    bool
-    <strong>isOfType</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node, string $nodeType)
+    <strong>isOfType</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node, string $nodeType)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -288,7 +474,7 @@ has the given name.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
                 <td>$node</td>
                 <td></td>
             </tr>
@@ -317,13 +503,14 @@ has the given name.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_nodeAddressToString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L101">at line 101</a></div>
-        <code>                    string
-    <strong>nodeAddressToString</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
+                    <h3 id="method_isDisabled">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L104">at line 104</a></div>
+        <code>                    bool
+    <strong>isDisabled</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -336,7 +523,109 @@ has the given name.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isNodeTypeExistent">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L112">at line 112</a></div>
+        <code>                    bool
+    <strong>isNodeTypeExistent</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;should not be required to be used for integration</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_serializedNodeAddress">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L121">at line 121</a></div>
+        <code>                    string
+    <strong>serializedNodeAddress</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;experimental API without documentation and clear use-case</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
                 <td>$node</td>
                 <td></td>
             </tr>
@@ -360,13 +649,175 @@ has the given name.</p></p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_subgraphForNode">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L129">at line 129</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentSubgraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentSubgraphInterface">ContentSubgraphInterface</abbr></a>
+    <strong>subgraphForNode</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;experimental API without documentation and clear use-case</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentSubgraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentSubgraphInterface">ContentSubgraphInterface</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_nearestContentCollection">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L141">at line 141</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>
+    <strong>nearestContentCollection</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node, string|null $nodePath)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;implementation detail of Neos.Neos:ContentCollection</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+        <div class="method-description">
+                            <p><p>Check if the given node is already a collection, find collection by nodePath otherwise, throw exception
+if no content collection could be found</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$nodePath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Exception.html"><abbr title="Neos\Neos\Domain\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_labelForNode">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L195">at line 195</a></div>
+        <code>                    <a href="../../../../Neos/Neos/Fusion/Helper/NodeLabelToken.html"><abbr title="Neos\Neos\Fusion\Helper\NodeLabelToken">NodeLabelToken</abbr></a>
+    <strong>labelForNode</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Return a builder to generate a label for a node with a chaining mechanism. To be used in NodeType definition:</p></p>                <p><p>'Vendor.Site:MyContent':
+label: &quot;${Neos.Node.labelForNode(node).prefix('foo')}&quot;</p>
+<p>FIXME the method name is slightly ambiguous and not to confused with Neos.Node.label which renders the configured label from yaml</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Neos/Fusion/Helper/NodeLabelToken.html"><abbr title="Neos\Neos\Fusion\Helper\NodeLabelToken">NodeLabelToken</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_allowsCallOfMethod">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L156">at line 156</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/NodeHelper.php#L204">at line 204</a></div>
         <code>                    bool
     <strong>allowsCallOfMethod</strong>(string $methodName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

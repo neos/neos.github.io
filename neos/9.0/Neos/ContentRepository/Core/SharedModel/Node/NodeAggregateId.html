@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
         <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
         <script async defer src="../../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../../js/typeahead.min.js"></script>
-        <script src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_SharedModel_Node_NodeAggregateId" data-root-path="../../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_SharedModel_Node_NodeAggregateId" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,10 +90,10 @@
 
     
     <p>final         class
-    <strong>NodeAggregateId</strong>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/JsonSerializable">JsonSerializable</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Stringable">Stringable</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeAggregateId.php">View source</a>)
+    <strong>NodeAggregateId</strong>        implements        <a target="_blank" rel="noopener" href="https://www.php.net/JsonSerializable">JsonSerializable</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeAggregateId.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -93,7 +105,8 @@
             <h2>Constants</h2>    <table class="table table-condensed">
                     <tr>
                 <td>
-                                                                                                                        PATTERN
+                                                            private
+                                                                                PATTERN
                                     </td>
                 <td class="last">
                     <p><em><p>A preg pattern to match against node aggregate identifiers</p></em></p>
@@ -124,6 +137,17 @@
                 </div>
                 <div class="col-md-8">
                     <a href="#method_fromString">fromString</a>(string $value)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_tryFromString">tryFromString</a>(string $value)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -162,17 +186,6 @@
                                     </div>
                 <div class="col-md-2"></div>
             </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getValue">getValue</a>()
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
             </div>
 
 
@@ -181,12 +194,13 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeAggregateId.php#L43">at line 43</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeAggregateId.php#L36">at line 36</a></div>
         <code>        static            <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>
     <strong>create</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -214,12 +228,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fromString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeAggregateId.php#L48">at line 48</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeAggregateId.php#L41">at line 41</a></div>
         <code>        static            <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>
     <strong>fromString</strong>(string $value)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -256,13 +271,58 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_equals">
+                    <h3 id="method_tryFromString">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeAggregateId.php#L53">at line 53</a></div>
+        <code>        static            <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null
+    <strong>tryFromString</strong>(string $value)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$value</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_equals">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeAggregateId.php#L58">at line 58</a></div>
         <code>                    bool
     <strong>equals</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $other)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -300,12 +360,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_jsonSerialize">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeAggregateId.php#L58">at line 58</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeAggregateId.php#L63">at line 63</a></div>
         <code>                    string
     <strong>jsonSerialize</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -333,45 +394,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeAggregateId.php#L63">at line 63</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeAggregateId.php#L73">at line 73</a></div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
     </h3>
     <div class="details">    
-    
             
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getValue">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/SharedModel/Node/NodeAggregateId.php#L68">at line 68</a></div>
-        <code>                    string
-    <strong>getValue</strong>()
-        </code>
-    </h3>
-    <div class="details">    
     
             
 

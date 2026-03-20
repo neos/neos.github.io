@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_DimensionSpace_OriginDimensionSpacePoint" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_DimensionSpace_OriginDimensionSpacePoint" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,9 +90,10 @@
 
     
     <p>final         class
-    <strong>OriginDimensionSpacePoint</strong>        extends <abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/OriginDimensionSpacePoint.php">View source</a>)
+    <strong>OriginDimensionSpacePoint</strong>        extends <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/OriginDimensionSpacePoint.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -100,6 +113,127 @@ but might be visible in other languages via fallback mechanisms.</p></p>        
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(array $coordinates, string $hash)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method___construct">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hashCoordinates">hashCoordinates</a>(array $coordinates)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_hashCoordinates">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_validateCoordinates">validateCoordinates</a>(array $coordinates)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_validateCoordinates">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isDirectVariantInDimension">isDirectVariantInDimension</a>(<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a> $other, <a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a> $contentDimensionId)
+        
+                                            <p><p>A variant VarA is a &quot;Direct Variant in Dimension Dim&quot; of another variant VarB,
+if VarA and VarB are sharing all dimension values except in &quot;Dim&quot;,
+AND they have differing dimension values in &quot;Dim&quot;. Thus, VarA and VarB only vary in the given &quot;Dim&quot;.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_isDirectVariantInDimension">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasCoordinate">hasCoordinate</a>(<a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a> $dimensionId)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_hasCoordinate">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCoordinate">getCoordinate</a>(<a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a> $dimensionId)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_getCoordinate">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_equals">equals</a>(<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a> $other)
+        
+                                            <p><p>Equals check (as opposed to === same check, which is usually the preferred variant)
+Compares two hashes, since the DSPs themselves might be of different classes</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_equals">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_toLegacyDimensionArray">toLegacyDimensionArray</a>()
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_toLegacyDimensionArray">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_jsonSerialize">jsonSerialize</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_jsonSerialize">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_toJson">toJson</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_toJson">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     static&nbsp;<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a>
                 </div>
                 <div class="col-md-8">
@@ -107,6 +241,16 @@ but might be visible in other languages via fallback mechanisms.</p></p>        
         
                                             <p class="no-description">No description</p>
                                     </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createWithoutDimensions">createWithoutDimensions</a>()
+        
+                                            <p><p>Creates a dimension space point for a zero-dimensional content repository.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -160,13 +304,443 @@ but might be visible in other languages via fallback mechanisms.</p></p>        
 
             <div id="method-details">
                     <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">in <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method___construct">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/AbstractDimensionSpacePoint.php#L27">at line 27</a></div>
+        <code>            protected        
+    <strong>__construct</strong>(array $coordinates, string $hash)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$coordinates</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$hash</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hashCoordinates">
+        <div class="location">in <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_hashCoordinates">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/AbstractDimensionSpacePoint.php#L39">at line 39</a></div>
+        <code>final        static    protected        string
+    <strong>hashCoordinates</strong>(array $coordinates)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$coordinates</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_validateCoordinates">
+        <div class="location">in <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_validateCoordinates">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/AbstractDimensionSpacePoint.php#L50">at line 50</a></div>
+        <code>final        static    protected        void
+    <strong>validateCoordinates</strong>(array $coordinates)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$coordinates</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isDirectVariantInDimension">
+        <div class="location">in <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_isDirectVariantInDimension">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/AbstractDimensionSpacePoint.php#L84">at line 84</a></div>
+        <code>final                    bool
+    <strong>isDirectVariantInDimension</strong>(<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a> $other, <a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a> $contentDimensionId)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>A variant VarA is a &quot;Direct Variant in Dimension Dim&quot; of another variant VarB,
+if VarA and VarB are sharing all dimension values except in &quot;Dim&quot;,
+AND they have differing dimension values in &quot;Dim&quot;. Thus, VarA and VarB only vary in the given &quot;Dim&quot;.</p></p>                <p><p>It does not say anything about how VarA and VarB relate (if it is specialization, peer or generalization).</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a></td>
+                <td>$other</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a></td>
+                <td>$contentDimensionId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasCoordinate">
+        <div class="location">in <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_hasCoordinate">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/AbstractDimensionSpacePoint.php#L106">at line 106</a></div>
+        <code>final                    bool
+    <strong>hasCoordinate</strong>(<a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a> $dimensionId)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a></td>
+                <td>$dimensionId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCoordinate">
+        <div class="location">in <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_getCoordinate">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/AbstractDimensionSpacePoint.php#L111">at line 111</a></div>
+        <code>final                    string|null
+    <strong>getCoordinate</strong>(<a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a> $dimensionId)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a></td>
+                <td>$dimensionId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_equals">
+        <div class="location">in <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_equals">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/AbstractDimensionSpacePoint.php#L120">at line 120</a></div>
+        <code>final                    bool
+    <strong>equals</strong>(<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a> $other)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Equals check (as opposed to === same check, which is usually the preferred variant)
+Compares two hashes, since the DSPs themselves might be of different classes</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a></td>
+                <td>$other</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toLegacyDimensionArray">
+        <div class="location">in <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_toLegacyDimensionArray">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/AbstractDimensionSpacePoint.php#L129">at line 129</a></div>
+        <code>final                    array
+    <strong>toLegacyDimensionArray</strong>()
+        <small><span class="label label-danger">deprecated</span></small></code>
+    </h3>
+    <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>should</td>
+                    <td>be only used for conversion from Neos <= 8.x to 9.x upwards. never use this in "modern" code.</td>
+                </tr>
+                    </p>
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_jsonSerialize">
+        <div class="location">in <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_jsonSerialize">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/AbstractDimensionSpacePoint.php#L143">at line 143</a></div>
+        <code>final                    array
+    <strong>jsonSerialize</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toJson">
+        <div class="location">in <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/AbstractDimensionSpacePoint.html#method_toJson">
+<abbr title="Neos\ContentRepository\Core\DimensionSpace\AbstractDimensionSpacePoint">AbstractDimensionSpacePoint</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/AbstractDimensionSpacePoint.php#L148">at line 148</a></div>
+        <code>final                    string
+    <strong>toJson</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_fromArray">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/OriginDimensionSpacePoint.php#L55">at line 55</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/OriginDimensionSpacePoint.php#L52">at line 52</a></div>
         <code>        static            <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a>
     <strong>fromArray</strong>(array $data)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -203,13 +777,47 @@ but might be visible in other languages via fallback mechanisms.</p></p>        
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_createWithoutDimensions">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/OriginDimensionSpacePoint.php#L62">at line 62</a></div>
+        <code>        static            <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a>
+    <strong>createWithoutDimensions</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates a dimension space point for a zero-dimensional content repository.</p></p>                <p><p>This applies to content repositories without any dimensions configured.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_fromJsonString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/OriginDimensionSpacePoint.php#L63">at line 63</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/OriginDimensionSpacePoint.php#L70">at line 70</a></div>
         <code>        static            <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a>
     <strong>fromJsonString</strong>(string $jsonString)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -247,12 +855,13 @@ but might be visible in other languages via fallback mechanisms.</p></p>        
             </div>
                     <div class="method-item">
                     <h3 id="method_fromDimensionSpacePoint">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/OriginDimensionSpacePoint.php#L68">at line 68</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/OriginDimensionSpacePoint.php#L75">at line 75</a></div>
         <code>        static            <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a>
     <strong>fromDimensionSpacePoint</strong>(<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -290,12 +899,13 @@ but might be visible in other languages via fallback mechanisms.</p></p>        
             </div>
                     <div class="method-item">
                     <h3 id="method_fromLegacyDimensionArray">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/OriginDimensionSpacePoint.php#L80">at line 80</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/OriginDimensionSpacePoint.php#L87">at line 87</a></div>
         <code>final        static            <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a>
     <strong>fromLegacyDimensionArray</strong>(array $legacyDimensionValues)
         <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            
             <p>
                 <small><span class="label label-danger">deprecated</span></small>
                             <tr>
@@ -340,12 +950,13 @@ but might be visible in other languages via fallback mechanisms.</p></p>        
             </div>
                     <div class="method-item">
                     <h3 id="method_toDimensionSpacePoint">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/OriginDimensionSpacePoint.php#L92">at line 92</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/DimensionSpace/OriginDimensionSpacePoint.php#L99">at line 99</a></div>
         <code>                    <a href="../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a>
     <strong>toDimensionSpacePoint</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

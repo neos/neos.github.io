@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_Dimension_ContentDimensionConstraintSet" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_Dimension_ContentDimensionConstraintSet" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,10 +90,10 @@
 
     
     <p>final         class
-    <strong>ContentDimensionConstraintSet</strong>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/IteratorAggregate">IteratorAggregate</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Dimension/ContentDimensionConstraintSet.php">View source</a>)
+    <strong>ContentDimensionConstraintSet</strong>        implements        <a target="_blank" rel="noopener" href="https://www.php.net/IteratorAggregate">IteratorAggregate</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Dimension/ContentDimensionConstraintSet.php">View source</a>)
 </p>
 
+        
         
     
                         <table>
@@ -126,7 +138,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a target="_blank" rel="noopener" href="https://www.php.net/ArrayIterator">ArrayIterator</a>
+                    <a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a>
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getIterator">getIterator</a>()
@@ -137,10 +149,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Dimension\Neos\ContentRepository\Core\Dimension\ContentDimensionConstraints">ContentDimensionConstraints</abbr>|null
+                    <a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionConstraints.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionConstraints">ContentDimensionConstraints</abbr></a>|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getConstraints">getConstraints</a>(<abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr> $dimensionId)
+                    <a href="#method_getConstraints">getConstraints</a>(<a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a> $dimensionId)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -151,7 +163,7 @@
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_allowsCombinationWith">allowsCombinationWith</a>(<abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr> $contentDimensionId, <abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionValue">ContentDimensionValue</abbr> $contentDimensionValue)
+                    <a href="#method_allowsCombinationWith">allowsCombinationWith</a>(<a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a> $contentDimensionId, <a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionValue.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionValue">ContentDimensionValue</abbr></a> $contentDimensionValue)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -171,6 +183,7 @@
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -205,6 +218,7 @@
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -232,12 +246,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getIterator">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Dimension/ContentDimensionConstraintSet.php#L61">at line 61</a></div>
-        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/ArrayIterator">ArrayIterator</a>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Dimension/ContentDimensionConstraintSet.php#L58">at line 58</a></div>
+        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a>
     <strong>getIterator</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -251,7 +266,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a target="_blank" rel="noopener" href="https://www.php.net/ArrayIterator">ArrayIterator</a></td>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a></td>
             <td></td>
         </tr>
     </table>
@@ -265,12 +280,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getConstraints">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Dimension/ContentDimensionConstraintSet.php#L66">at line 66</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Dimension\Neos\ContentRepository\Core\Dimension\ContentDimensionConstraints">ContentDimensionConstraints</abbr>|null
-    <strong>getConstraints</strong>(<abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr> $dimensionId)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Dimension/ContentDimensionConstraintSet.php#L63">at line 63</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionConstraints.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionConstraints">ContentDimensionConstraints</abbr></a>|null
+    <strong>getConstraints</strong>(<a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a> $dimensionId)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -283,7 +299,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></td>
+                <td><a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a></td>
                 <td>$dimensionId</td>
                 <td></td>
             </tr>
@@ -294,7 +310,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Dimension\Neos\ContentRepository\Core\Dimension\ContentDimensionConstraints">ContentDimensionConstraints</abbr>|null</td>
+            <td><a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionConstraints.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionConstraints">ContentDimensionConstraints</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -308,12 +324,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_allowsCombinationWith">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Dimension/ContentDimensionConstraintSet.php#L71">at line 71</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Dimension/ContentDimensionConstraintSet.php#L68">at line 68</a></div>
         <code>                    bool
-    <strong>allowsCombinationWith</strong>(<abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr> $contentDimensionId, <abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionValue">ContentDimensionValue</abbr> $contentDimensionValue)
+    <strong>allowsCombinationWith</strong>(<a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a> $contentDimensionId, <a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionValue.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionValue">ContentDimensionValue</abbr></a> $contentDimensionValue)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -326,12 +343,12 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></td>
+                <td><a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionId.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionId">ContentDimensionId</abbr></a></td>
                 <td>$contentDimensionId</td>
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionValue">ContentDimensionValue</abbr></td>
+                <td><a href="../../../../Neos/ContentRepository/Core/Dimension/ContentDimensionValue.html"><abbr title="Neos\ContentRepository\Core\Dimension\ContentDimensionValue">ContentDimensionValue</abbr></a></td>
                 <td>$contentDimensionValue</td>
                 <td></td>
             </tr>

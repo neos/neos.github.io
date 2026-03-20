@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Media_Command_MediaCommandController" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Media_Command_MediaCommandController" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -81,6 +93,7 @@
     <strong>MediaCommandController</strong>        extends <abbr title="Neos\Flow\Cli\CommandController">CommandController</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -133,6 +146,24 @@
                                                                                 
                                     </td>
                 <td>$thumbnailRepository</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_imageVariantRepository">
+                                        protected                                        <a href="../../../Neos/Media/Domain/Repository/ImageVariantRepository.html"><abbr title="Neos\Media\Domain\Repository\ImageVariantRepository">ImageVariantRepository</abbr></a>
+                                                                                
+                                    </td>
+                <td>$imageVariantRepository</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_assetService">
+                                        protected                                        <a href="../../../Neos/Media/Domain/Service/AssetService.html"><abbr title="Neos\Media\Domain\Service\AssetService">AssetService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$assetService</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -202,7 +233,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_removeUnusedCommand">removeUnusedCommand</a>(string $assetSource = &#039;&#039;, bool $quiet = false, bool $assumeYes = false, string $onlyTags = &#039;&#039;, int $limit = null, string $onlyCollections = &#039;&#039;)
+                    <a href="#method_removeUnusedCommand">removeUnusedCommand</a>(string $assetSource = &#039;&#039;, bool $quiet = false, bool $assumeYes = false, string $onlyTags = &#039;&#039;, int|null $limit = null, string $onlyCollections = &#039;&#039;)
         
                                             <p><p>Remove unused assets</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -212,7 +243,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_createThumbnailsCommand">createThumbnailsCommand</a>(string $preset = null, bool $async = null, bool $quiet = false)
+                    <a href="#method_createThumbnailsCommand">createThumbnailsCommand</a>(string|null $preset = null, bool|null $async = null, bool $quiet = false)
         
                                             <p><p>Create thumbnails</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -222,7 +253,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_clearThumbnailsCommand">clearThumbnailsCommand</a>(string $preset = null, bool $quiet = false)
+                    <a href="#method_clearThumbnailsCommand">clearThumbnailsCommand</a>(string|null $preset = null, bool $quiet = false)
         
                                             <p><p>Remove thumbnails</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -232,7 +263,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_renderThumbnailsCommand">renderThumbnailsCommand</a>(int $limit = null, bool $quiet = false)
+                    <a href="#method_renderThumbnailsCommand">renderThumbnailsCommand</a>(int|null $limit = null, bool $quiet = false)
         
                                             <p><p>Render ungenerated thumbnails</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -242,7 +273,27 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_renderVariantsCommand">renderVariantsCommand</a>(int $limit = null, bool $quiet = false, bool $recreate = false)
+                    <a href="#method_listVariantPresetsCommand">listVariantPresetsCommand</a>()
+        
+                                            <p><p>List all configurations for your imageVariants.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_removeVariantsCommand">removeVariantsCommand</a>(string $identifier, string $variantName, bool $quiet = false, bool $assumeYes = false, int|null $limit = null)
+        
+                                            <p><p>Cleanup imageVariants with provided identifier and variant name.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_renderVariantsCommand">renderVariantsCommand</a>(int|null $limit = null, bool $quiet = false, bool $recreate = false)
         
                                             <p><p>Render asset variants</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -275,12 +326,13 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_importResourcesCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L119">at line 119</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L134">at line 134</a></div>
         <code>                    void
     <strong>importResourcesCommand</strong>(bool $simulate = false, bool $quiet = false)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -324,7 +376,7 @@ PersistentResource.</p></p>
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Doctrine\DBAL\DBALException">DBALException</abbr></td>
+                <td><abbr title="Doctrine\DBAL\Exception">Exception</abbr></td>
                 <td></td>
             </tr>
             </table>
@@ -337,12 +389,13 @@ PersistentResource.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_removeUnusedCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L181">at line 181</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L195">at line 195</a></div>
         <code>                    void
-    <strong>removeUnusedCommand</strong>(string $assetSource = &#039;&#039;, bool $quiet = false, bool $assumeYes = false, string $onlyTags = &#039;&#039;, int $limit = null, string $onlyCollections = &#039;&#039;)
+    <strong>removeUnusedCommand</strong>(string $assetSource = &#039;&#039;, bool $quiet = false, bool $assumeYes = false, string $onlyTags = &#039;&#039;, int|null $limit = null, string $onlyCollections = &#039;&#039;)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -375,7 +428,7 @@ reported as used by any AssetUsageStrategies. The unused assets can than be remo
                 <td><p>Comma-separated list of asset tag labels, that should be taken into account</p></td>
             </tr>
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$limit</td>
                 <td><p>Limit the result of unused assets displayed and removed for this run.</p></td>
             </tr>
@@ -418,31 +471,32 @@ reported as used by any AssetUsageStrategies. The unused assets can than be remo
             </div>
                     <div class="method-item">
                     <h3 id="method_createThumbnailsCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L304">at line 304</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L318">at line 318</a></div>
         <code>                    void
-    <strong>createThumbnailsCommand</strong>(string $preset = null, bool $async = null, bool $quiet = false)
+    <strong>createThumbnailsCommand</strong>(string|null $preset = null, bool|null $async = null, bool $quiet = false)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>Create thumbnails</p></p>                <p><p>Creates thumbnail images based on the configured thumbnail presets. Optional <code>preset</code> parameter to only create
 thumbnails for a specific thumbnail preset configuration.</p>
-<p>Additionally accepts a <code>async</code> parameter determining if the created thumbnails are generated when created.</p></p>        
+<p>Additionally, accepts a <code>async</code> parameter determining if the created thumbnails are generated when created.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$preset</td>
                 <td><p>Preset name, if not provided thumbnails are created for all presets</p></td>
             </tr>
                     <tr>
-                <td>bool</td>
+                <td>bool|null</td>
                 <td>$async</td>
                 <td><p>Asynchronous generation, if not provided the setting <code>Neos.Media.asyncThumbnails</code> is used</p></td>
             </tr>
@@ -481,12 +535,13 @@ thumbnails for a specific thumbnail preset configuration.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_clearThumbnailsCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L338">at line 338</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L352">at line 352</a></div>
         <code>                    void
-    <strong>clearThumbnailsCommand</strong>(string $preset = null, bool $quiet = false)
+    <strong>clearThumbnailsCommand</strong>(string|null $preset = null, bool $quiet = false)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -499,7 +554,7 @@ matching a specific thumbnail preset configuration.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$preset</td>
                 <td><p>Preset name, if provided only thumbnails matching that preset are cleared</p></td>
             </tr>
@@ -542,12 +597,13 @@ matching a specific thumbnail preset configuration.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_renderThumbnailsCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L371">at line 371</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L384">at line 384</a></div>
         <code>                    void
-    <strong>renderThumbnailsCommand</strong>(int $limit = null, bool $quiet = false)
+    <strong>renderThumbnailsCommand</strong>(int|null $limit = null, bool $quiet = false)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -560,7 +616,7 @@ thumbnails to be rendered to avoid memory exhaustion.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$limit</td>
                 <td><p>Limit the amount of thumbnails to be rendered to avoid memory exhaustion</p></td>
             </tr>
@@ -589,13 +645,113 @@ thumbnails to be rendered to avoid memory exhaustion.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_renderVariantsCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L404">at line 404</a></div>
+                    <h3 id="method_listVariantPresetsCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L407">at line 407</a></div>
         <code>                    void
-    <strong>renderVariantsCommand</strong>(int $limit = null, bool $quiet = false, bool $recreate = false)
+    <strong>listVariantPresetsCommand</strong>()
         </code>
     </h3>
     <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>List all configurations for your imageVariants.</p></p>                <p><p>Doesn't matter if configured under 'Neos.Media.variantPresets' or already deleted from this configuration.
+This command will find every single one for you.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_removeVariantsCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L470">at line 470</a></div>
+        <code>                    
+    <strong>removeVariantsCommand</strong>(string $identifier, string $variantName, bool $quiet = false, bool $assumeYes = false, int|null $limit = null)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Cleanup imageVariants with provided identifier and variant name.</p></p>                <p><p>Image variants that are still configured are removed without usage check and
+can be regenerated afterwards with <code>media:renderVariants</code>.</p>
+<p>This command will not remove any custom cropped image variants.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$identifier</td>
+                <td><p>Identifier of variants to remove.</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$variantName</td>
+                <td><p>Variants with this name will be removed (if exist).</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$quiet</td>
+                <td><p>If set, only errors and questions will be displayed.</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$assumeYes</td>
+                <td><p>If set, &quot;yes&quot; is assumed for the &quot;shall I remove ...&quot; dialog.</p></td>
+            </tr>
+                    <tr>
+                <td>int|null</td>
+                <td>$limit</td>
+                <td><p>Limit the result of unused assets displayed and removed for this run.</p></td>
+            </tr>
+            </table>
+
+            
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Cli\Exception\StopCommandException">StopCommandException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_renderVariantsCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L534">at line 534</a></div>
+        <code>                    void
+    <strong>renderVariantsCommand</strong>(int|null $limit = null, bool $quiet = false, bool $recreate = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
     
             
 
@@ -609,7 +765,7 @@ limit the amount of variants to be rendered to avoid memory exhaustion.</p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$limit</td>
                 <td><p>Limit the amount of variants to be rendered to avoid memory exhaustion</p></td>
             </tr>
@@ -657,12 +813,13 @@ limit the amount of variants to be rendered to avoid memory exhaustion.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_persistAll">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L469">at line 469</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L599">at line 599</a></div>
         <code>            protected        void
     <strong>persistAll</strong>(int $iteration)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -699,12 +856,13 @@ limit the amount of variants to be rendered to avoid memory exhaustion.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_initializeConnection">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L479">at line 479</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Command/MediaCommandController.php#L609">at line 609</a></div>
         <code>            protected        void
     <strong>initializeConnection</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

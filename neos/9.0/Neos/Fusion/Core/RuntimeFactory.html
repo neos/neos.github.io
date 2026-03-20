@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Fusion_Core_RuntimeFactory" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Fusion_Core_RuntimeFactory" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,11 +94,18 @@
 </p>
 
         
-    
         
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;The Fusion Runtime is considered internal.
+For interacting with Fusion from the outside a FusionView should be used.</td>
+            </tr>
+        </table>
+                &nbsp;
+    
 
-            <div class="description">
-            <p><p>This runtime factory takes care of instantiating a Fusion runtime.</p></p>                    </div>
             
         
     
@@ -94,11 +113,20 @@
 
             <table class="table table-condensed">
                     <tr>
-                <td class="type" id="property_serverRequestFactory">
-                                        protected                                        <abbr title="Psr\Http\Message\ServerRequestFactoryInterface">ServerRequestFactoryInterface</abbr>
+                <td class="type" id="property_fusionParser">
+                                        protected                                        <a href="../../../Neos/Fusion/Core/Parser.html"><abbr title="Neos\Fusion\Core\Parser">Parser</abbr></a>
                                                                                 
                                     </td>
-                <td>$serverRequestFactory</td>
+                <td>$fusionParser</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_defaultContextConfiguration">
+                                        protected                                        <abbr title="Neos\Fusion\Core\array&lt;string, string&gt;">array&lt;string, string&gt;</abbr>
+                                                                                
+                                    </td>
+                <td>$defaultContextConfiguration</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -113,7 +141,18 @@
                     <a href="../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_create">create</a>(array $fusionConfiguration, <abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext = null)
+                    <a href="#method_create">create</a>(array $fusionConfiguration, <abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr>|null $controllerContext = null)
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createFromConfiguration">createFromConfiguration</a>(<a href="../../../Neos/Fusion/Core/FusionConfiguration.html"><abbr title="Neos\Fusion\Core\FusionConfiguration">FusionConfiguration</abbr></a> $fusionConfiguration, <a href="../../../Neos/Fusion/Core/FusionGlobals.html"><abbr title="Neos\Fusion\Core\FusionGlobals">FusionGlobals</abbr></a> $fusionGlobals)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -121,10 +160,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr>
+                    <a href="../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_createControllerContextFromEnvironment">createControllerContextFromEnvironment</a>()
+                    <a href="#method_createFromSourceCode">createFromSourceCode</a>(<a href="../../../Neos/Fusion/Core/FusionSourceCodeCollection.html"><abbr title="Neos\Fusion\Core\FusionSourceCodeCollection">FusionSourceCodeCollection</abbr></a> $sourceCode, <a href="../../../Neos/Fusion/Core/FusionGlobals.html"><abbr title="Neos\Fusion\Core\FusionGlobals">FusionGlobals</abbr></a> $fusionGlobals)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -138,12 +177,20 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/RuntimeFactory.php#L42">at line 42</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/RuntimeFactory.php#L46">at line 46</a></div>
         <code>                    <a href="../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a>
-    <strong>create</strong>(array $fusionConfiguration, <abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext = null)
-        </code>
+    <strong>create</strong>(array $fusionConfiguration, <abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr>|null $controllerContext = null)
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>with</td>
+                    <td>Neos 8.3 might be removed with Neos 9.0 use {@link createFromConfiguration} instead.</td>
+                </tr>
+                    </p>
     
             
 
@@ -161,7 +208,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr></td>
+                <td><abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr>|null</td>
                 <td>$controllerContext</td>
                 <td></td>
             </tr>
@@ -185,13 +232,14 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_createControllerContextFromEnvironment">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/RuntimeFactory.php#L54">at line 54</a></div>
-        <code>            protected        <abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr>
-    <strong>createControllerContextFromEnvironment</strong>()
+                    <h3 id="method_createFromConfiguration">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/RuntimeFactory.php#L62">at line 62</a></div>
+        <code>                    <a href="../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a>
+    <strong>createFromConfiguration</strong>(<a href="../../../Neos/Fusion/Core/FusionConfiguration.html"><abbr title="Neos\Fusion\Core\FusionConfiguration">FusionConfiguration</abbr></a> $fusionConfiguration, <a href="../../../Neos/Fusion/Core/FusionGlobals.html"><abbr title="Neos\Fusion\Core\FusionGlobals">FusionGlobals</abbr></a> $fusionGlobals)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -200,12 +248,76 @@
                     
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Core/FusionConfiguration.html"><abbr title="Neos\Fusion\Core\FusionConfiguration">FusionConfiguration</abbr></a></td>
+                <td>$fusionConfiguration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Core/FusionGlobals.html"><abbr title="Neos\Fusion\Core\FusionGlobals">FusionGlobals</abbr></a></td>
+                <td>$fusionGlobals</td>
+                <td></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr></td>
+            <td><a href="../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createFromSourceCode">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/RuntimeFactory.php#L74">at line 74</a></div>
+        <code>                    <a href="../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a>
+    <strong>createFromSourceCode</strong>(<a href="../../../Neos/Fusion/Core/FusionSourceCodeCollection.html"><abbr title="Neos\Fusion\Core\FusionSourceCodeCollection">FusionSourceCodeCollection</abbr></a> $sourceCode, <a href="../../../Neos/Fusion/Core/FusionGlobals.html"><abbr title="Neos\Fusion\Core\FusionGlobals">FusionGlobals</abbr></a> $fusionGlobals)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Core/FusionSourceCodeCollection.html"><abbr title="Neos\Fusion\Core\FusionSourceCodeCollection">FusionSourceCodeCollection</abbr></a></td>
+                <td>$sourceCode</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Core/FusionGlobals.html"><abbr title="Neos\Fusion\Core\FusionGlobals">FusionGlobals</abbr></a></td>
+                <td>$fusionGlobals</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a></td>
             <td></td>
         </tr>
     </table>

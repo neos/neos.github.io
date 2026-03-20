@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
         <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
         <script async defer src="../../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../../js/typeahead.min.js"></script>
-        <script src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_Projection_ContentGraph_NodePath" data-root-path="../../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_Projection_ContentGraph_NodePath" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,16 +90,25 @@
 
     
     <p>final         class
-    <strong>NodePath</strong>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/JsonSerializable">JsonSerializable</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Stringable">Stringable</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php">View source</a>)
+    <strong>NodePath</strong>        implements        <a target="_blank" rel="noopener" href="https://www.php.net/JsonSerializable">JsonSerializable</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php">View source</a>)
 </p>
 
+        
         
     
         
 
             <div class="description">
-            <p><p>The node path is a list of NodeNames. It can be either absolute or relative.</p></p>            <p><p>It describes the hierarchy path of a node to a root node in a subgraph.</p></p>        </div>
+            <p><p>The relative node path is a collection of node names {NodeName}.</p></p>            <p><p>If it contains no elements, it is considered root in combination with {\Neos\ContentRepository\Core\Projection\ContentGraph\AbsoluteNodePath}.</p>
+<p>Example:
+root path: '' is resolved to []
+non-root path: 'my-document/main' is resolved to ~ ['my-document', 'main']</p>
+<p>It describes the hierarchy path of a node to an ancestor node in a subgraph.</p>
+<p>To fetch a node on a path use the subgraph: {[\Neos\ContentRepository\Core\Projection\ContentGraph\ContentSubgraphInterface::findNodeByPath()}</p>
+<pre><code class="language-php">$subgraph-&gt;findNodeByPath(
+](../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentSubgraphInterface.html)    NodePath::fromString("my-document/main"),
+    $siteNodeAggregateId
+)</code></pre></p>        </div>
             
         
     
@@ -95,6 +116,17 @@
             <h2>Methods</h2>
 
             <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    static&nbsp;<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createEmpty">createEmpty</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     static&nbsp;<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a>
@@ -119,10 +151,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    static&nbsp;<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_isRoot">isRoot</a>()
+                    <a href="#method_fromNodeNames">fromNodeNames</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a> ...$nodeNames)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -133,7 +165,7 @@
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_isAbsolute">isAbsolute</a>()
+                    <a href="#method_isEmpty">isEmpty</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -165,7 +197,7 @@
                     int
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getDepth">getDepth</a>()
+                    <a href="#method_getLength">getLength</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -177,6 +209,17 @@
                 </div>
                 <div class="col-md-8">
                     <a href="#method_equals">equals</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a> $other)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_serializeToString">serializeToString</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -211,13 +254,48 @@
 
             <div id="method-details">
                     <div class="method-item">
+                    <h3 id="method_createEmpty">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L53">at line 53</a></div>
+        <code>        static            <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a>
+    <strong>createEmpty</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_fromString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L47">at line 47</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L58">at line 58</a></div>
         <code>        static            <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a>
     <strong>fromString</strong>(string $path)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -255,12 +333,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fromPathSegments">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L55">at line 55</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L73">at line 73</a></div>
         <code>        static            <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a>
     <strong>fromPathSegments</strong>(array $pathSegments)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -297,13 +376,14 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isRoot">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L63">at line 63</a></div>
-        <code>                    bool
-    <strong>isRoot</strong>()
+                    <h3 id="method_fromNodeNames">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L92">at line 92</a></div>
+        <code>        static            <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a>
+    <strong>fromNodeNames</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a> ...$nodeNames)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -312,12 +392,22 @@
                     
         </div>
         <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a></td>
+                <td>...$nodeNames</td>
+                <td></td>
+            </tr>
+            </table>
+
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>bool</td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -330,13 +420,14 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isAbsolute">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L68">at line 68</a></div>
+                    <h3 id="method_isEmpty">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L97">at line 97</a></div>
         <code>                    bool
-    <strong>isAbsolute</strong>()
+    <strong>isEmpty</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -364,12 +455,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_appendPathSegment">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L76">at line 76</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L105">at line 105</a></div>
         <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a>
     <strong>appendPathSegment</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a> $nodeName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -406,12 +498,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getParts">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L84">at line 84</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L116">at line 116</a></div>
         <code>                    array
     <strong>getParts</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -438,13 +531,14 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getDepth">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L93">at line 93</a></div>
+                    <h3 id="method_getLength">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L121">at line 121</a></div>
         <code>                    int
-    <strong>getDepth</strong>()
+    <strong>getLength</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -472,12 +566,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_equals">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L104">at line 104</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L126">at line 126</a></div>
         <code>                    bool
     <strong>equals</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a> $other)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -514,13 +609,48 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_serializeToString">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L131">at line 131</a></div>
+        <code>                    string
+    <strong>serializeToString</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_jsonSerialize">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L109">at line 109</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L142">at line 142</a></div>
         <code>                    string
     <strong>jsonSerialize</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -548,12 +678,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L114">at line 114</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/NodePath.php#L147">at line 147</a></div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

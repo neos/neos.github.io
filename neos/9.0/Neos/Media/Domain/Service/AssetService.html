@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Media_Domain_Service_AssetService" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Media_Domain_Service_AssetService" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -81,6 +93,7 @@
     <strong>AssetService</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/AssetService.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -205,7 +218,7 @@ about usage of assets and rendering thumbnails.</p></p>                    </div
                     array|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getThumbnailUriAndSizeForAsset">getThumbnailUriAndSizeForAsset</a>(<a href="../../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a> $asset, <a href="../../../../Neos/Media/Domain/Model/ThumbnailConfiguration.html"><abbr title="Neos\Media\Domain\Model\ThumbnailConfiguration">ThumbnailConfiguration</abbr></a> $configuration, <abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr> $request = null)
+                    <a href="#method_getThumbnailUriAndSizeForAsset">getThumbnailUriAndSizeForAsset</a>(<a href="../../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a> $asset, <a href="../../../../Neos/Media/Domain/Model/ThumbnailConfiguration.html"><abbr title="Neos\Media\Domain\Model\ThumbnailConfiguration">ThumbnailConfiguration</abbr></a> $configuration, <abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr>|null $request = null)
         
                                             <p><p>Calculates the dimensions of the thumbnail to be generated and returns the thumbnail URI.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -324,6 +337,7 @@ about usage of assets and rendering thumbnails.</p></p>                    </div
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -362,10 +376,11 @@ about usage of assets and rendering thumbnails.</p></p>                    </div
                     <h3 id="method_getThumbnailUriAndSizeForAsset">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/AssetService.php#L143">at line 143</a></div>
         <code>                    array|null
-    <strong>getThumbnailUriAndSizeForAsset</strong>(<a href="../../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a> $asset, <a href="../../../../Neos/Media/Domain/Model/ThumbnailConfiguration.html"><abbr title="Neos\Media\Domain\Model\ThumbnailConfiguration">ThumbnailConfiguration</abbr></a> $configuration, <abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr> $request = null)
+    <strong>getThumbnailUriAndSizeForAsset</strong>(<a href="../../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a> $asset, <a href="../../../../Neos/Media/Domain/Model/ThumbnailConfiguration.html"><abbr title="Neos\Media\Domain\Model\ThumbnailConfiguration">ThumbnailConfiguration</abbr></a> $configuration, <abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr>|null $request = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -387,7 +402,7 @@ about usage of assets and rendering thumbnails.</p></p>                    </div
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr></td>
+                <td><abbr title="Neos\Flow\Mvc\ActionRequest">ActionRequest</abbr>|null</td>
                 <td>$request</td>
                 <td><p>Request argument must be provided for asynchronous thumbnails</p></td>
             </tr>
@@ -439,6 +454,7 @@ about usage of assets and rendering thumbnails.</p></p>                    </div
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -471,6 +487,7 @@ about usage of assets and rendering thumbnails.</p></p>                    </div
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -513,6 +530,7 @@ about usage of assets and rendering thumbnails.</p></p>                    </div
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -555,6 +573,7 @@ about usage of assets and rendering thumbnails.</p></p>                    </div
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -597,6 +616,7 @@ about usage of assets and rendering thumbnails.</p></p>                    </div
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -630,7 +650,7 @@ about usage of assets and rendering thumbnails.</p></p>                    </div
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../../Neos/Media/Exception/AssetServiceException.html"><abbr title="Neos\Media\Exception\AssetServiceException">AssetServiceException</abbr></a></td>
-                <td><p>Thrown if the asset can not be removed</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -648,6 +668,7 @@ about usage of assets and rendering thumbnails.</p></p>                    </div
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -694,12 +715,13 @@ about usage of assets and rendering thumbnails.</p></p>                    </div
             </div>
                     <div class="method-item">
                     <h3 id="method_emitAssetCreated">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/AssetService.php#L362">at line 362</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/AssetService.php#L364">at line 364</a></div>
         <code>                    void
     <strong>emitAssetCreated</strong>(<a href="../../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a> $asset)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -736,12 +758,13 @@ about usage of assets and rendering thumbnails.</p></p>                    </div
             </div>
                     <div class="method-item">
                     <h3 id="method_emitAssetRemoved">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/AssetService.php#L373">at line 373</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/AssetService.php#L375">at line 375</a></div>
         <code>                    void
     <strong>emitAssetRemoved</strong>(<a href="../../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a> $asset)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -778,12 +801,13 @@ about usage of assets and rendering thumbnails.</p></p>                    </div
             </div>
                     <div class="method-item">
                     <h3 id="method_emitAssetUpdated">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/AssetService.php#L384">at line 384</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/AssetService.php#L386">at line 386</a></div>
         <code>                    void
     <strong>emitAssetUpdated</strong>(<a href="../../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a> $asset)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -820,12 +844,13 @@ about usage of assets and rendering thumbnails.</p></p>                    </div
             </div>
                     <div class="method-item">
                     <h3 id="method_emitAssetResourceReplaced">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/AssetService.php#L398">at line 398</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/AssetService.php#L400">at line 400</a></div>
         <code>                    void
     <strong>emitAssetResourceReplaced</strong>(<a href="../../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a> $asset)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

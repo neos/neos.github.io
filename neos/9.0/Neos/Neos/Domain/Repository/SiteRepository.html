@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_Domain_Repository_SiteRepository" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Neos_Domain_Repository_SiteRepository" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,20 +94,40 @@
 </p>
 
         
+        
     
         
 
             <div class="description">
             <p><p>The Site Repository</p></p>                    </div>
             
+                <h2>Traits</h2>
+
         
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../../Neos/Neos/Utility/NodeTypeWithFallbackProvider.html"><abbr title="Neos\Neos\Utility\NodeTypeWithFallbackProvider">NodeTypeWithFallbackProvider</abbr></a>    <small><span class="label label-danger">deprecated</span></small></div>
+                <div class="col-md-6"><p>Utility trait for retrieving node types for nodes with a built-in fallback mechanism</p></div>
+            </div>
+            </div>
+    
     
             <h2>Properties</h2>
 
             <table class="table table-condensed">
                     <tr>
+                <td class="type" id="property_contentRepositoryRegistry">
+                                        protected                                        <a href="../../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a>
+                                                                                
+                                    </td>
+                <td>$contentRepositoryRegistry</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
                 <td class="type" id="property_defaultOrderings">
-                                        protected                                        <abbr title="Neos\Neos\Domain\Repository\array&lt;string,string&gt;">array&lt;string,string&gt;</abbr>
+                                        protected                                        <abbr title="Neos\Neos\Domain\Repository\array&lt;string, string&gt;">array&lt;string, string&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$defaultOrderings</td>
@@ -119,7 +151,19 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Neos\Domain\Repository\Neos\Neos\Domain\Model\Site">Site</abbr>|null
+                    <a href="../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getNodeType">getNodeType</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/Neos/Utility/NodeTypeWithFallbackProvider.html#method_getNodeType">
+<abbr title="Neos\Neos\Utility\NodeTypeWithFallbackProvider">NodeTypeWithFallbackProvider</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_findFirst">findFirst</a>()
@@ -139,7 +183,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Neos\Domain\Repository\Neos\Neos\Domain\Model\Site">Site</abbr>|null
+                    <a href="../../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_findFirstOnline">findFirstOnline</a>()
@@ -149,10 +193,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Neos\Domain\Repository\Neos\Neos\Domain\Model\Site">Site</abbr>|null
+                    <a href="../../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a>|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_findOneByNodeName">findOneByNodeName</a>(<abbr title="string|Neos\Neos\Domain\Model\SiteNodeName">SiteNodeName</abbr> $nodeName)
+                    <a href="#method_findOneByNodeName">findOneByNodeName</a>(string|<a href="../../../../Neos/Neos/Domain/Model/SiteNodeName.html"><abbr title="Neos\Neos\Domain\Model\SiteNodeName">SiteNodeName</abbr></a> $nodeName)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -160,7 +204,17 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Neos\Domain\Repository\Neos\Neos\Domain\Model\Site">Site</abbr>|null
+                    <a href="../../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findSiteBySiteNode">findSiteBySiteNode</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $siteNode)
+        
+                                            <p><p>Finds a given site by site node.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_findDefault">findDefault</a>()
@@ -197,13 +251,66 @@
 
             <div id="method-details">
                     <div class="method-item">
+                    <h3 id="method_getNodeType">
+        <div class="location">in <a href="../../../../Neos/Neos/Utility/NodeTypeWithFallbackProvider.html#method_getNodeType">
+<abbr title="Neos\Neos\Utility\NodeTypeWithFallbackProvider">NodeTypeWithFallbackProvider</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Utility/NodeTypeWithFallbackProvider.php#L31">at line 31</a></div>
+        <code>            protected        <a href="../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a>
+    <strong>getNodeType</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        <small><span class="label label-danger">deprecated</span></small></code>
+    </h3>
+    <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>to</td>
+                    <td>ease migration from Neos 8.3</td>
+                </tr>
+                    </p>
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_findFirst">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/Repository/SiteRepository.php#L55">at line 55</a></div>
-        <code>                    <abbr title="Neos\Neos\Domain\Repository\Neos\Neos\Domain\Model\Site">Site</abbr>|null
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/Repository/SiteRepository.php#L65">at line 65</a></div>
+        <code>                    <a href="../../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a>|null
     <strong>findFirst</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -216,7 +323,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Neos\Domain\Repository\Neos\Neos\Domain\Model\Site">Site</abbr>|null</td>
+            <td><a href="../../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a>|null</td>
             <td><p>The first site or NULL if none exists</p></td>
         </tr>
     </table>
@@ -230,12 +337,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_findOnline">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/Repository/SiteRepository.php#L68">at line 68</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/Repository/SiteRepository.php#L78">at line 78</a></div>
         <code>                    <abbr title="Neos\Flow\Persistence\QueryResultInterface">QueryResultInterface</abbr>
     <strong>findOnline</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -262,12 +370,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_findFirstOnline">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/Repository/SiteRepository.php#L76">at line 76</a></div>
-        <code>                    <abbr title="Neos\Neos\Domain\Repository\Neos\Neos\Domain\Model\Site">Site</abbr>|null
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/Repository/SiteRepository.php#L86">at line 86</a></div>
+        <code>                    <a href="../../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a>|null
     <strong>findFirstOnline</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -280,7 +389,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Neos\Domain\Repository\Neos\Neos\Domain\Model\Site">Site</abbr>|null</td>
+            <td><a href="../../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -294,12 +403,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_findOneByNodeName">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/Repository/SiteRepository.php#L84">at line 84</a></div>
-        <code>                    <abbr title="Neos\Neos\Domain\Repository\Neos\Neos\Domain\Model\Site">Site</abbr>|null
-    <strong>findOneByNodeName</strong>(<abbr title="string|Neos\Neos\Domain\Model\SiteNodeName">SiteNodeName</abbr> $nodeName)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/Repository/SiteRepository.php#L94">at line 94</a></div>
+        <code>                    <a href="../../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a>|null
+    <strong>findOneByNodeName</strong>(string|<a href="../../../../Neos/Neos/Domain/Model/SiteNodeName.html"><abbr title="Neos\Neos\Domain\Model\SiteNodeName">SiteNodeName</abbr></a> $nodeName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -312,7 +422,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="string|Neos\Neos\Domain\Model\SiteNodeName">SiteNodeName</abbr></td>
+                <td>string|<a href="../../../../Neos/Neos/Domain/Model/SiteNodeName.html"><abbr title="Neos\Neos\Domain\Model\SiteNodeName">SiteNodeName</abbr></a></td>
                 <td>$nodeName</td>
                 <td></td>
             </tr>
@@ -323,7 +433,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Neos\Domain\Repository\Neos\Neos\Domain\Model\Site">Site</abbr>|null</td>
+            <td><a href="../../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -336,13 +446,71 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_findSiteBySiteNode">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/Repository/SiteRepository.php#L122">at line 122</a></div>
+        <code>                    <a href="../../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a>
+    <strong>findSiteBySiteNode</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $siteNode)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Finds a given site by site node.</p></p>                <p><p>To find the correct site node by its descended child node leverage <code>findClosestNode</code>:</p>
+<pre><code class="language-php">$siteNode = $subgraph-&gt;findClosestNode(
+    $node-&gt;aggregateId,
+    FindClosestNodeFilter::create(nodeTypes: NodeTypeNameFactory::NAME_SITE)
+);</code></pre>
+<p>To resolve the SiteNode by a Site use {<a href="../../../../Neos/Neos/Domain/Service/SiteNodeUtility.html">\Neos\Neos\Domain\Service\SiteNodeUtility::findSiteNodeBySite()}</a></p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+                <td>$siteNode</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../Neos/Neos/Domain/Exception.html"><abbr title="Neos\Neos\Domain\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_findDefault">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/Repository/SiteRepository.php#L105">at line 105</a></div>
-        <code>                    <abbr title="Neos\Neos\Domain\Repository\Neos\Neos\Domain\Model\Site">Site</abbr>|null
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/Repository/SiteRepository.php#L142">at line 142</a></div>
+        <code>                    <a href="../../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a>|null
     <strong>findDefault</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -356,7 +524,7 @@ If the site is not found or not active an exception is thrown</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Neos\Domain\Repository\Neos\Neos\Domain\Model\Site">Site</abbr>|null</td>
+            <td><a href="../../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -379,12 +547,13 @@ If the site is not found or not active an exception is thrown</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_findByNodeName">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/Repository/SiteRepository.php#L33">at line 33</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/Repository/SiteRepository.php#L38">at line 38</a></div>
         <code>                    <abbr title="Neos\Flow\Persistence\QueryResultInterface|\Neos\Neos\Domain\Model\Site[]">Site[]</abbr>
     <strong>findByNodeName</strong>(string $nodeName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -422,12 +591,13 @@ If the site is not found or not active an exception is thrown</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_findByState">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/Repository/SiteRepository.php#L33">at line 33</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/Repository/SiteRepository.php#L38">at line 38</a></div>
         <code>                    <abbr title="Neos\Flow\Persistence\QueryResultInterface|\Neos\Neos\Domain\Model\Site[]">Site[]</abbr>
     <strong>findByState</strong>(int $state)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

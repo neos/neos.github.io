@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
         <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
         <script async defer src="../../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../../js/typeahead.min.js"></script>
-        <script src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_Feature_Common_TetheredNodeInternals" data-root-path="../../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_Feature_Common_TetheredNodeInternals" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
                         <table>
             <tr>
@@ -123,10 +136,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr>
+                    <a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_createEventsForVariations">createEventsForVariations</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr> $nodeAggregate, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <a href="#method_createEventsForVariations">createEventsForVariations</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a> $nodeAggregate)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -134,10 +147,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr>
+                    <a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_handleCreateNodeSpecializationVariant">handleCreateNodeSpecializationVariant</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr> $nodeAggregate, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <a href="#method_handleCreateNodeSpecializationVariant">handleCreateNodeSpecializationVariant</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a> $nodeAggregate)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -149,7 +162,7 @@
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_collectNodeSpecializationVariantsThatWillHaveBeenCreated">collectNodeSpecializationVariantsThatWillHaveBeenCreated</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr> $nodeAggregate, <abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr> $specializationVisibility, array $events, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <a href="#method_collectNodeSpecializationVariantsThatWillHaveBeenCreated">collectNodeSpecializationVariantsThatWillHaveBeenCreated</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a> $nodeAggregate, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a> $specializationVisibility, array $events)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -158,10 +171,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr>
+                    <a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_handleCreateNodeGeneralizationVariant">handleCreateNodeGeneralizationVariant</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr> $nodeAggregate, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <a href="#method_handleCreateNodeGeneralizationVariant">handleCreateNodeGeneralizationVariant</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a> $nodeAggregate)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -173,7 +186,7 @@
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_collectNodeGeneralizationVariantsThatWillHaveBeenCreated">collectNodeGeneralizationVariantsThatWillHaveBeenCreated</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr> $nodeAggregate, <abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr> $generalizationVisibility, array $events, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <a href="#method_collectNodeGeneralizationVariantsThatWillHaveBeenCreated">collectNodeGeneralizationVariantsThatWillHaveBeenCreated</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a> $nodeAggregate, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a> $generalizationVisibility, array $events)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -182,10 +195,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr>
+                    <a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_handleCreateNodePeerVariant">handleCreateNodePeerVariant</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr> $nodeAggregate, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <a href="#method_handleCreateNodePeerVariant">handleCreateNodePeerVariant</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a> $nodeAggregate)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -197,7 +210,7 @@
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_collectNodePeerVariantsThatWillHaveBeenCreated">collectNodePeerVariantsThatWillHaveBeenCreated</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr> $nodeAggregate, <abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr> $peerVisibility, array $events, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <a href="#method_collectNodePeerVariantsThatWillHaveBeenCreated">collectNodePeerVariantsThatWillHaveBeenCreated</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a> $nodeAggregate, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a> $peerVisibility, array $events)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -206,12 +219,45 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr>
+                    <a href="../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyConverter.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyConverter">PropertyConverter</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_createEventsForMissingTetheredNode">createEventsForMissingTetheredNode</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr> $parentNodeAggregate, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $parentNode, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a> $tetheredNodeName, <abbr title="Neos\ContentRepository\Core\Feature\Common\Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr>|null $tetheredNodeAggregateId, <abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr> $expectedTetheredNodeType, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <a href="#method_getPropertyConverter">getPropertyConverter</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createEventsForMissingTetheredNode">createEventsForMissingTetheredNode</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $parentNodeTypeName, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a> $parentNodeAggregateCoverageByOccupant, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $originDimensionSpacePoint, <a href="../../../../../Neos/ContentRepository/Core/NodeType/TetheredNodeTypeDefinition.html"><abbr title="Neos\ContentRepository\Core\NodeType\TetheredNodeTypeDefinition">TetheredNodeTypeDefinition</abbr></a> $tetheredNodeTypeDefinition, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null $tetheredNodeAggregateId)
         
                                             <p><p>This is the remediation action for non-existing tethered nodes.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createEventsForMissingTetheredNodeAggregate">createEventsForMissingTetheredNodeAggregate</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/NodeType/TetheredNodeTypeDefinition.html"><abbr title="Neos\ContentRepository\Core\NodeType\TetheredNodeTypeDefinition">TetheredNodeTypeDefinition</abbr></a> $tetheredNodeTypeDefinition, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePointSet">OriginDimensionSpacePointSet</abbr></a> $affectedOriginDimensionSpacePoints, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/CoverageByOrigin.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\CoverageByOrigin">CoverageByOrigin</abbr></a> $coverageByOrigin, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null $succeedingSiblingNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/Feature/NodeCreation/Dto/NodeAggregateIdsByNodePaths.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeCreation\Dto\NodeAggregateIdsByNodePaths">NodeAggregateIdsByNodePaths</abbr></a> $nodeAggregateIdsByNodePaths, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a> $currentNodePath)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createEventsForWronglyTypedNodeAggregate">createEventsForWronglyTypedNodeAggregate</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a> $nodeAggregate, <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $newNodeTypeName, <a href="../../../../../Neos/ContentRepository/Core/Feature/NodeCreation/Dto/NodeAggregateIdsByNodePaths.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeCreation\Dto\NodeAggregateIdsByNodePaths">NodeAggregateIdsByNodePaths</abbr></a> $nodeAggregateIdsByNodePaths, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a> $currentNodePath, <abbr title="Neos\ContentRepository\Core\Feature\NodeTypeChange\Dto\NodeAggregateTypeChangeChildConstraintConflictResolutionStrategy">NodeAggregateTypeChangeChildConstraintConflictResolutionStrategy</abbr> $conflictResolutionStrategy, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a> $alreadyRemovedNodeAggregateIds)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -223,12 +269,13 @@
                     <div class="method-item">
                     <h3 id="method_getInterDimensionalVariationGraph">
         <div class="location">in <a href="../../../../../Neos/ContentRepository/Core/Feature/Common/NodeVariationInternals.html#method_getInterDimensionalVariationGraph">
-<abbr title="Neos\ContentRepository\Core\Feature\Common\NodeVariationInternals">NodeVariationInternals</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/NodeVariationInternals.php#L35">at line 35</a></div>
+<abbr title="Neos\ContentRepository\Core\Feature\Common\NodeVariationInternals">NodeVariationInternals</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/NodeVariationInternals.php#L36">at line 36</a></div>
         <code>    abstract        protected        <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/InterDimensionalVariationGraph.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\InterDimensionalVariationGraph">InterDimensionalVariationGraph</abbr></a>
     <strong>getInterDimensionalVariationGraph</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -256,12 +303,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_createEventsForVariations">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/TetheredNodeInternals.php#L39">at line 39</a></div>
-        <code>    abstract        protected        <abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr>
-    <strong>createEventsForVariations</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr> $nodeAggregate, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/TetheredNodeInternals.php#L54">at line 54</a></div>
+        <code>    abstract        protected        <a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a>
+    <strong>createEventsForVariations</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a> $nodeAggregate)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -274,8 +322,8 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a></td>
+                <td>$contentGraph</td>
                 <td></td>
             </tr>
                     <tr>
@@ -289,13 +337,8 @@
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a></td>
                 <td>$nodeAggregate</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></td>
-                <td>$contentRepository</td>
                 <td></td>
             </tr>
             </table>
@@ -305,7 +348,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -320,12 +363,13 @@
                     <div class="method-item">
                     <h3 id="method_handleCreateNodeSpecializationVariant">
         <div class="location">in <a href="../../../../../Neos/ContentRepository/Core/Feature/Common/NodeVariationInternals.html#method_handleCreateNodeSpecializationVariant">
-<abbr title="Neos\ContentRepository\Core\Feature\Common\NodeVariationInternals">NodeVariationInternals</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/NodeVariationInternals.php#L74">at line 74</a></div>
-        <code>            protected        <abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr>
-    <strong>handleCreateNodeSpecializationVariant</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr> $nodeAggregate, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+<abbr title="Neos\ContentRepository\Core\Feature\Common\NodeVariationInternals">NodeVariationInternals</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/NodeVariationInternals.php#L71">at line 71</a></div>
+        <code>            protected        <a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a>
+    <strong>handleCreateNodeSpecializationVariant</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a> $nodeAggregate)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -338,8 +382,8 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a></td>
+                <td>$contentGraph</td>
                 <td></td>
             </tr>
                     <tr>
@@ -353,13 +397,8 @@
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a></td>
                 <td>$nodeAggregate</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></td>
-                <td>$contentRepository</td>
                 <td></td>
             </tr>
             </table>
@@ -369,7 +408,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -384,12 +423,13 @@
                     <div class="method-item">
                     <h3 id="method_collectNodeSpecializationVariantsThatWillHaveBeenCreated">
         <div class="location">in <a href="../../../../../Neos/ContentRepository/Core/Feature/Common/NodeVariationInternals.html#method_collectNodeSpecializationVariantsThatWillHaveBeenCreated">
-<abbr title="Neos\ContentRepository\Core\Feature\Common\NodeVariationInternals">NodeVariationInternals</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/NodeVariationInternals.php#L99">at line 99</a></div>
+<abbr title="Neos\ContentRepository\Core\Feature\Common\NodeVariationInternals">NodeVariationInternals</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/NodeVariationInternals.php#L94">at line 94</a></div>
         <code>            protected        array
-    <strong>collectNodeSpecializationVariantsThatWillHaveBeenCreated</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr> $nodeAggregate, <abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr> $specializationVisibility, array $events, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+    <strong>collectNodeSpecializationVariantsThatWillHaveBeenCreated</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a> $nodeAggregate, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a> $specializationVisibility, array $events)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -402,8 +442,8 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a></td>
+                <td>$contentGraph</td>
                 <td></td>
             </tr>
                     <tr>
@@ -417,23 +457,18 @@
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a></td>
                 <td>$nodeAggregate</td>
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a></td>
                 <td>$specializationVisibility</td>
                 <td></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$events</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></td>
-                <td>$contentRepository</td>
                 <td></td>
             </tr>
             </table>
@@ -458,12 +493,13 @@
                     <div class="method-item">
                     <h3 id="method_handleCreateNodeGeneralizationVariant">
         <div class="location">in <a href="../../../../../Neos/ContentRepository/Core/Feature/Common/NodeVariationInternals.html#method_handleCreateNodeGeneralizationVariant">
-<abbr title="Neos\ContentRepository\Core\Feature\Common\NodeVariationInternals">NodeVariationInternals</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/NodeVariationInternals.php#L136">at line 136</a></div>
-        <code>            protected        <abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr>
-    <strong>handleCreateNodeGeneralizationVariant</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr> $nodeAggregate, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+<abbr title="Neos\ContentRepository\Core\Feature\Common\NodeVariationInternals">NodeVariationInternals</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/NodeVariationInternals.php#L134">at line 134</a></div>
+        <code>            protected        <a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a>
+    <strong>handleCreateNodeGeneralizationVariant</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a> $nodeAggregate)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -476,8 +512,8 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a></td>
+                <td>$contentGraph</td>
                 <td></td>
             </tr>
                     <tr>
@@ -491,13 +527,8 @@
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a></td>
                 <td>$nodeAggregate</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></td>
-                <td>$contentRepository</td>
                 <td></td>
             </tr>
             </table>
@@ -507,7 +538,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -522,12 +553,13 @@
                     <div class="method-item">
                     <h3 id="method_collectNodeGeneralizationVariantsThatWillHaveBeenCreated">
         <div class="location">in <a href="../../../../../Neos/ContentRepository/Core/Feature/Common/NodeVariationInternals.html#method_collectNodeGeneralizationVariantsThatWillHaveBeenCreated">
-<abbr title="Neos\ContentRepository\Core\Feature\Common\NodeVariationInternals">NodeVariationInternals</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/NodeVariationInternals.php#L161">at line 161</a></div>
+<abbr title="Neos\ContentRepository\Core\Feature\Common\NodeVariationInternals">NodeVariationInternals</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/NodeVariationInternals.php#L157">at line 157</a></div>
         <code>            protected        array
-    <strong>collectNodeGeneralizationVariantsThatWillHaveBeenCreated</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr> $nodeAggregate, <abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr> $generalizationVisibility, array $events, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+    <strong>collectNodeGeneralizationVariantsThatWillHaveBeenCreated</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a> $nodeAggregate, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a> $generalizationVisibility, array $events)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -540,8 +572,8 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a></td>
+                <td>$contentGraph</td>
                 <td></td>
             </tr>
                     <tr>
@@ -555,23 +587,18 @@
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a></td>
                 <td>$nodeAggregate</td>
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a></td>
                 <td>$generalizationVisibility</td>
                 <td></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$events</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></td>
-                <td>$contentRepository</td>
                 <td></td>
             </tr>
             </table>
@@ -596,12 +623,13 @@
                     <div class="method-item">
                     <h3 id="method_handleCreateNodePeerVariant">
         <div class="location">in <a href="../../../../../Neos/ContentRepository/Core/Feature/Common/NodeVariationInternals.html#method_handleCreateNodePeerVariant">
-<abbr title="Neos\ContentRepository\Core\Feature\Common\NodeVariationInternals">NodeVariationInternals</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/NodeVariationInternals.php#L198">at line 198</a></div>
-        <code>            protected        <abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr>
-    <strong>handleCreateNodePeerVariant</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr> $nodeAggregate, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+<abbr title="Neos\ContentRepository\Core\Feature\Common\NodeVariationInternals">NodeVariationInternals</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/NodeVariationInternals.php#L197">at line 197</a></div>
+        <code>            protected        <a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a>
+    <strong>handleCreateNodePeerVariant</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a> $nodeAggregate)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -614,8 +642,8 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a></td>
+                <td>$contentGraph</td>
                 <td></td>
             </tr>
                     <tr>
@@ -629,13 +657,8 @@
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a></td>
                 <td>$nodeAggregate</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></td>
-                <td>$contentRepository</td>
                 <td></td>
             </tr>
             </table>
@@ -645,7 +668,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -660,12 +683,13 @@
                     <div class="method-item">
                     <h3 id="method_collectNodePeerVariantsThatWillHaveBeenCreated">
         <div class="location">in <a href="../../../../../Neos/ContentRepository/Core/Feature/Common/NodeVariationInternals.html#method_collectNodePeerVariantsThatWillHaveBeenCreated">
-<abbr title="Neos\ContentRepository\Core\Feature\Common\NodeVariationInternals">NodeVariationInternals</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/NodeVariationInternals.php#L223">at line 223</a></div>
+<abbr title="Neos\ContentRepository\Core\Feature\Common\NodeVariationInternals">NodeVariationInternals</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/NodeVariationInternals.php#L220">at line 220</a></div>
         <code>            protected        array
-    <strong>collectNodePeerVariantsThatWillHaveBeenCreated</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr> $nodeAggregate, <abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr> $peerVisibility, array $events, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+    <strong>collectNodePeerVariantsThatWillHaveBeenCreated</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $sourceOrigin, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $targetOrigin, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a> $nodeAggregate, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a> $peerVisibility, array $events)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -678,8 +702,8 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a></td>
+                <td>$contentGraph</td>
                 <td></td>
             </tr>
                     <tr>
@@ -693,23 +717,18 @@
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a></td>
                 <td>$nodeAggregate</td>
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a></td>
                 <td>$peerVisibility</td>
                 <td></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$events</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></td>
-                <td>$contentRepository</td>
                 <td></td>
             </tr>
             </table>
@@ -732,13 +751,48 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_createEventsForMissingTetheredNode">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/TetheredNodeInternals.php#L55">at line 55</a></div>
-        <code>            protected        <abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr>
-    <strong>createEventsForMissingTetheredNode</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr> $parentNodeAggregate, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $parentNode, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a> $tetheredNodeName, <abbr title="Neos\ContentRepository\Core\Feature\Common\Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr>|null $tetheredNodeAggregateId, <abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr> $expectedTetheredNodeType, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <h3 id="method_getPropertyConverter">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/TetheredNodeInternals.php#L52">at line 52</a></div>
+        <code>    abstract        protected        <a href="../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyConverter.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyConverter">PropertyConverter</abbr></a>
+    <strong>getPropertyConverter</strong>()
         </code>
     </h3>
     <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Infrastructure/Property/PropertyConverter.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\Property\PropertyConverter">PropertyConverter</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createEventsForMissingTetheredNode">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/TetheredNodeInternals.php#L69">at line 69</a></div>
+        <code>            protected        <a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a>
+    <strong>createEventsForMissingTetheredNode</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $parentNodeTypeName, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a> $parentNodeAggregateCoverageByOccupant, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $originDimensionSpacePoint, <a href="../../../../../Neos/ContentRepository/Core/NodeType/TetheredNodeTypeDefinition.html"><abbr title="Neos\ContentRepository\Core\NodeType\TetheredNodeTypeDefinition">TetheredNodeTypeDefinition</abbr></a> $tetheredNodeTypeDefinition, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null $tetheredNodeAggregateId)
+        </code>
+    </h3>
+    <div class="details">    
+            
     
             
 
@@ -755,33 +809,38 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></td>
-                <td>$parentNodeAggregate</td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a></td>
+                <td>$contentGraph</td>
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
-                <td>$parentNode</td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
+                <td>$parentNodeAggregateId</td>
                 <td></td>
             </tr>
                     <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a></td>
-                <td>$tetheredNodeName</td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a></td>
+                <td>$parentNodeTypeName</td>
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Feature\Common\Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr>|null</td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a></td>
+                <td>$parentNodeAggregateCoverageByOccupant</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a></td>
+                <td>$originDimensionSpacePoint</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/NodeType/TetheredNodeTypeDefinition.html"><abbr title="Neos\ContentRepository\Core\NodeType\TetheredNodeTypeDefinition">TetheredNodeTypeDefinition</abbr></a></td>
+                <td>$tetheredNodeTypeDefinition</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null</td>
                 <td>$tetheredNodeAggregateId</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></td>
-                <td>$expectedTetheredNodeType</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></td>
-                <td>$contentRepository</td>
                 <td></td>
             </tr>
             </table>
@@ -791,7 +850,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -806,6 +865,159 @@
             </tr>
             </table>
 
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createEventsForMissingTetheredNodeAggregate">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/TetheredNodeInternals.php#L188">at line 188</a></div>
+        <code>            protected        array
+    <strong>createEventsForMissingTetheredNodeAggregate</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/NodeType/TetheredNodeTypeDefinition.html"><abbr title="Neos\ContentRepository\Core\NodeType\TetheredNodeTypeDefinition">TetheredNodeTypeDefinition</abbr></a> $tetheredNodeTypeDefinition, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePointSet">OriginDimensionSpacePointSet</abbr></a> $affectedOriginDimensionSpacePoints, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/CoverageByOrigin.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\CoverageByOrigin">CoverageByOrigin</abbr></a> $coverageByOrigin, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null $succeedingSiblingNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/Feature/NodeCreation/Dto/NodeAggregateIdsByNodePaths.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeCreation\Dto\NodeAggregateIdsByNodePaths">NodeAggregateIdsByNodePaths</abbr></a> $nodeAggregateIdsByNodePaths, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a> $currentNodePath)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a></td>
+                <td>$contentGraph</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/NodeType/TetheredNodeTypeDefinition.html"><abbr title="Neos\ContentRepository\Core\NodeType\TetheredNodeTypeDefinition">TetheredNodeTypeDefinition</abbr></a></td>
+                <td>$tetheredNodeTypeDefinition</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePointSet">OriginDimensionSpacePointSet</abbr></a></td>
+                <td>$affectedOriginDimensionSpacePoints</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/CoverageByOrigin.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\CoverageByOrigin">CoverageByOrigin</abbr></a></td>
+                <td>$coverageByOrigin</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
+                <td>$parentNodeAggregateId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null</td>
+                <td>$succeedingSiblingNodeAggregateId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Feature/NodeCreation/Dto/NodeAggregateIdsByNodePaths.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeCreation\Dto\NodeAggregateIdsByNodePaths">NodeAggregateIdsByNodePaths</abbr></a></td>
+                <td>$nodeAggregateIdsByNodePaths</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a></td>
+                <td>$currentNodePath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createEventsForWronglyTypedNodeAggregate">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/Common/TetheredNodeInternals.php#L283">at line 283</a></div>
+        <code>            protected        <a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a>
+    <strong>createEventsForWronglyTypedNodeAggregate</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a> $nodeAggregate, <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $newNodeTypeName, <a href="../../../../../Neos/ContentRepository/Core/Feature/NodeCreation/Dto/NodeAggregateIdsByNodePaths.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeCreation\Dto\NodeAggregateIdsByNodePaths">NodeAggregateIdsByNodePaths</abbr></a> $nodeAggregateIdsByNodePaths, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a> $currentNodePath, <abbr title="Neos\ContentRepository\Core\Feature\NodeTypeChange\Dto\NodeAggregateTypeChangeChildConstraintConflictResolutionStrategy">NodeAggregateTypeChangeChildConstraintConflictResolutionStrategy</abbr> $conflictResolutionStrategy, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a> $alreadyRemovedNodeAggregateIds)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a></td>
+                <td>$contentGraph</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a></td>
+                <td>$nodeAggregate</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a></td>
+                <td>$newNodeTypeName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Feature/NodeCreation/Dto/NodeAggregateIdsByNodePaths.html"><abbr title="Neos\ContentRepository\Core\Feature\NodeCreation\Dto\NodeAggregateIdsByNodePaths">NodeAggregateIdsByNodePaths</abbr></a></td>
+                <td>$nodeAggregateIdsByNodePaths</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodePath.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodePath">NodePath</abbr></a></td>
+                <td>$currentNodePath</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\ContentRepository\Core\Feature\NodeTypeChange\Dto\NodeAggregateTypeChangeChildConstraintConflictResolutionStrategy">NodeAggregateTypeChangeChildConstraintConflictResolutionStrategy</abbr></td>
+                <td>$conflictResolutionStrategy</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a></td>
+                <td>$alreadyRemovedNodeAggregateIds</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/EventStore/Events.html"><abbr title="Neos\ContentRepository\Core\EventStore\Events">Events</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
             
             
                     </div>

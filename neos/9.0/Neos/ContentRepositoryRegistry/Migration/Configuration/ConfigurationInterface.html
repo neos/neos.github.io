@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepositoryRegistry_Migration_Configuration_ConfigurationInterface" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_ContentRepositoryRegistry_Migration_Configuration_ConfigurationInterface" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -96,7 +109,7 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    <abbr title="Neos\ContentRepositoryRegistry\Migration\Configuration\array&lt;string, mixed&gt;">array&lt;string, mixed&gt;</abbr>
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getAvailableVersions">getAvailableVersions</a>()
@@ -116,10 +129,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    <abbr title="Neos\ContentRepositoryRegistry\Migration\Configuration\array&lt;string, mixed&gt;">array&lt;string, mixed&gt;</abbr>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getMigrationVersion">getMigrationVersion</a>(string $version)
+                    <a href="#method_getMigrationVersion">getMigrationVersion</a>(string|int $version)
         
                                             <p><p>Returns the migration configuration with the given version.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -132,12 +145,13 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_getAvailableVersions">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepositoryRegistry/Classes/Migration/Configuration/ConfigurationInterface.php#L25">at line 25</a></div>
-        <code>                    array
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepositoryRegistry/Classes/Migration/Configuration/ConfigurationInterface.php#L28">at line 28</a></div>
+        <code>                    <abbr title="Neos\ContentRepositoryRegistry\Migration\Configuration\array&lt;string, mixed&gt;">array&lt;string, mixed&gt;</abbr>
     <strong>getAvailableVersions</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -150,7 +164,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
+            <td><abbr title="Neos\ContentRepositoryRegistry\Migration\Configuration\array&lt;string, mixed&gt;">array&lt;string, mixed&gt;</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -164,12 +178,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isVersionAvailable">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepositoryRegistry/Classes/Migration/Configuration/ConfigurationInterface.php#L33">at line 33</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepositoryRegistry/Classes/Migration/Configuration/ConfigurationInterface.php#L36">at line 36</a></div>
         <code>                    bool
     <strong>isVersionAvailable</strong>(string $version)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -206,12 +221,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getMigrationVersion">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepositoryRegistry/Classes/Migration/Configuration/ConfigurationInterface.php#L41">at line 41</a></div>
-        <code>                    array
-    <strong>getMigrationVersion</strong>(string $version)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepositoryRegistry/Classes/Migration/Configuration/ConfigurationInterface.php#L44">at line 44</a></div>
+        <code>                    <abbr title="Neos\ContentRepositoryRegistry\Migration\Configuration\array&lt;string, mixed&gt;">array&lt;string, mixed&gt;</abbr>
+    <strong>getMigrationVersion</strong>(string|int $version)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -223,7 +239,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|int</td>
                 <td>$version</td>
                 <td></td>
             </tr>
@@ -234,7 +250,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
+            <td><abbr title="Neos\ContentRepositoryRegistry\Migration\Configuration\array&lt;string, mixed&gt;">array&lt;string, mixed&gt;</abbr></td>
             <td></td>
         </tr>
     </table>

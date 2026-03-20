@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_Command_WorkspaceCommandController" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Neos_Command_WorkspaceCommandController" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -103,20 +116,29 @@
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_persistenceManager">
-                                        protected                                        
+                <td class="type" id="property_contentRepositoryRegistry">
+                                        protected                                        <a href="../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a>
                                                                                 
                                     </td>
-                <td>$persistenceManager</td>
+                <td>$contentRepositoryRegistry</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_contentRepositoryRegistry">
-                                        protected                                        
+                <td class="type" id="property_workspacePublishingService">
+                                        protected                                        <a href="../../../Neos/Neos/Domain/Service/WorkspacePublishingService.html"><abbr title="Neos\Neos\Domain\Service\WorkspacePublishingService">WorkspacePublishingService</abbr></a>
                                                                                 
                                     </td>
-                <td>$contentRepositoryRegistry</td>
+                <td>$workspacePublishingService</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_workspaceService">
+                                        protected                                        <a href="../../../Neos/Neos/Domain/Service/WorkspaceService.html"><abbr title="Neos\Neos\Domain\Service\WorkspaceService">WorkspaceService</abbr></a>
+                                                                                
+                                    </td>
+                <td>$workspaceService</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -131,7 +153,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_publishCommand">publishCommand</a>(string $workspace, string $contentRepositoryIdentifier = &#039;default&#039;, bool $verbose = false, bool $dryRun = false)
+                    <a href="#method_publishCommand">publishCommand</a>(string $workspace, string $contentRepository = &#039;default&#039;)
         
                                             <p><p>Publish changes of a workspace</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -141,7 +163,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_discardCommand">discardCommand</a>(string $workspace, string $contentRepositoryIdentifier = &#039;default&#039;, bool $verbose = false, bool $dryRun = false)
+                    <a href="#method_discardCommand">discardCommand</a>(string $workspace, string $contentRepository = &#039;default&#039;)
         
                                             <p><p>Discard changes in workspace</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -151,10 +173,9 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_createRootCommand">createRootCommand</a>(string $name, string $contentRepositoryIdentifier = &#039;default&#039;)
+                    <a href="#method_rebaseCommand">rebaseCommand</a>(string $workspace, string $contentRepository = &#039;default&#039;, bool $force = false)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Rebase workspace on base workspace</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -162,9 +183,9 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_createCommand">createCommand</a>(string $workspace, string $baseWorkspace = &#039;live&#039;, string $title = null, string $description = null, string $owner = &#039;&#039;, string $contentRepositoryIdentifier = &#039;default&#039;)
+                    <a href="#method_createRootCommand">createRootCommand</a>(string $name, string $contentRepository = &#039;default&#039;, string|null $title = null, string|null $description = null)
         
-                                            <p><p>Create a new workspace</p></p>                </div>
+                                            <p><p>Create a new root workspace for a content repository</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -172,7 +193,67 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_deleteCommand">deleteCommand</a>(string $workspace, bool $force = false, string $contentRepositoryIdentifier = &#039;default&#039;)
+                    <a href="#method_createPersonalCommand">createPersonalCommand</a>(string $workspace, string $owner, string $baseWorkspace = &#039;live&#039;, string|null $title = null, string|null $description = null, string $contentRepository = &#039;default&#039;)
+        
+                                            <p><p>Create a new personal workspace for the specified user</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createSharedCommand">createSharedCommand</a>(string $workspace, string $baseWorkspace = &#039;live&#039;, string|null $title = null, string|null $description = null, string $contentRepository = &#039;default&#039;)
+        
+                                            <p><p>Create a new shared workspace</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setTitleCommand">setTitleCommand</a>(string $workspace, string $newTitle, string $contentRepository = &#039;default&#039;)
+        
+                                            <p><p>Set/change the title of a workspace</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_setDescriptionCommand">setDescriptionCommand</a>(string $workspace, string $newDescription, string $contentRepository = &#039;default&#039;)
+        
+                                            <p><p>Set/change the description of a workspace</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_assignRoleCommand">assignRoleCommand</a>(string $workspace, string $subject, string $role, string $contentRepository = &#039;default&#039;, string $type = &#039;group&#039;)
+        
+                                            <p><p>Assign a workspace role to the given user/user group</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_unassignRoleCommand">unassignRoleCommand</a>(string $workspace, string $subject, string $contentRepository = &#039;default&#039;, string $type = &#039;group&#039;)
+        
+                                            <p><p>Unassign a workspace role from the given user/user group</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_deleteCommand">deleteCommand</a>(string $workspace, bool $force = false, string $contentRepository = &#039;default&#039;)
         
                                             <p><p>Deletes a workspace</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -182,9 +263,9 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_rebaseCommand">rebaseCommand</a>(string $workspace, string $baseWorkspace, string $contentRepositoryIdentifier = &#039;default&#039;)
+                    <a href="#method_rebaseOutdatedCommand">rebaseOutdatedCommand</a>(string $contentRepository = &#039;default&#039;, bool $force = false)
         
-                                            <p><p>Rebase a workspace</p></p>                </div>
+                                            <p><p>Rebase all outdated content streams</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -192,9 +273,19 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_listCommand">listCommand</a>(string $contentRepositoryIdentifier = &#039;default&#039;)
+                    <a href="#method_listCommand">listCommand</a>(string $contentRepository = &#039;default&#039;)
         
                                             <p><p>Display a list of existing workspaces</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_showCommand">showCommand</a>(string $workspace, string $contentRepository = &#039;default&#039;)
+        
+                                            <p><p>Display details for the specified workspace</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -205,18 +296,18 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_publishCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L70">at line 70</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L67">at line 67</a></div>
         <code>                    void
-    <strong>publishCommand</strong>(string $workspace, string $contentRepositoryIdentifier = &#039;default&#039;, bool $verbose = false, bool $dryRun = false)
+    <strong>publishCommand</strong>(string $workspace, string $contentRepository = &#039;default&#039;)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Publish changes of a workspace</p></p>                <p><p>This command publishes all modified, created or deleted nodes in the specified workspace to its base workspace.
-If a target workspace is specified, the content is published to that workspace instead.</p></p>        
+                            <p><p>Publish changes of a workspace</p></p>                <p><p>This command publishes all modified, created or deleted nodes in the specified workspace to its base workspace.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -229,18 +320,56 @@ If a target workspace is specified, the content is published to that workspace i
             </tr>
                     <tr>
                 <td>string</td>
-                <td>$contentRepositoryIdentifier</td>
-                <td></td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the content repository. (Default: 'default')</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_discardCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L89">at line 89</a></div>
+        <code>                    void
+    <strong>discardCommand</strong>(string $workspace, string $contentRepository = &#039;default&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Discard changes in workspace</p></p>                <p><p>This command discards all modified, created or deleted nodes in the specified workspace.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$workspace</td>
+                <td><p>Name of the workspace, for example &quot;user-john&quot;</p></td>
             </tr>
                     <tr>
-                <td>bool</td>
-                <td>$verbose</td>
-                <td><p>If enabled, some information about individual nodes will be displayed</p></td>
-            </tr>
-                    <tr>
-                <td>bool</td>
-                <td>$dryRun</td>
-                <td><p>If set, only displays which nodes would be published, no real changes are committed</p></td>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the content repository. (Default: 'default')</p></td>
             </tr>
             </table>
 
@@ -259,7 +388,7 @@ If a target workspace is specified, the content is published to that workspace i
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Symfony\Component\Serializer\Exception\ExceptionInterface">ExceptionInterface</abbr></td>
+                <td><abbr title="Neos\Flow\Cli\Exception\StopCommandException">StopCommandException</abbr></td>
                 <td></td>
             </tr>
             </table>
@@ -271,18 +400,19 @@ If a target workspace is specified, the content is published to that workspace i
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_discardCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L101">at line 101</a></div>
+                    <h3 id="method_rebaseCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L113">at line 113</a></div>
         <code>                    void
-    <strong>discardCommand</strong>(string $workspace, string $contentRepositoryIdentifier = &#039;default&#039;, bool $verbose = false, bool $dryRun = false)
+    <strong>rebaseCommand</strong>(string $workspace, string $contentRepository = &#039;default&#039;, bool $force = false)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Discard changes in workspace</p></p>                <p><p>This command discards all modified, created or deleted nodes in the specified workspace.</p></p>        
+                            <p><p>Rebase workspace on base workspace</p></p>                <p><p>This command rebases the given workspace on its base workspace, it may fail if the rebase is not possible.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -295,18 +425,13 @@ If a target workspace is specified, the content is published to that workspace i
             </tr>
                     <tr>
                 <td>string</td>
-                <td>$contentRepositoryIdentifier</td>
-                <td></td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the content repository. (Default: 'default')</p></td>
             </tr>
                     <tr>
                 <td>bool</td>
-                <td>$verbose</td>
-                <td><p>If enabled, information about individual nodes will be displayed</p></td>
-            </tr>
-                    <tr>
-                <td>bool</td>
-                <td>$dryRun</td>
-                <td><p>If set, only displays which nodes would be discarded, no real changes are committed</p></td>
+                <td>$force</td>
+                <td><p>Rebase all events that do not conflict</p></td>
             </tr>
             </table>
 
@@ -321,6 +446,15 @@ If a target workspace is specified, the content is published to that workspace i
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Cli\Exception\StopCommandException">StopCommandException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -329,18 +463,18 @@ If a target workspace is specified, the content is published to that workspace i
             </div>
                     <div class="method-item">
                     <h3 id="method_createRootCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L125">at line 125</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L143">at line 143</a></div>
         <code>                    void
-    <strong>createRootCommand</strong>(string $name, string $contentRepositoryIdentifier = &#039;default&#039;)
+    <strong>createRootCommand</strong>(string $name, string $contentRepository = &#039;default&#039;, string|null $title = null, string|null $description = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Create a new root workspace for a content repository</p></p>                <p><p>NOTE: By default, only administrators can access workspaces without role assignments. Use <i>workspace:assignrole</i> to add workspace permissions</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -349,12 +483,22 @@ If a target workspace is specified, the content is published to that workspace i
                     <tr>
                 <td>string</td>
                 <td>$name</td>
-                <td></td>
+                <td><p>Name of the new root</p></td>
             </tr>
                     <tr>
                 <td>string</td>
-                <td>$contentRepositoryIdentifier</td>
-                <td></td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the content repository. (Default: 'default')</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$title</td>
+                <td><p>Optional title of the workspace</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$description</td>
+                <td><p>Optional description of the workspace</p></td>
             </tr>
             </table>
 
@@ -369,6 +513,15 @@ If a target workspace is specified, the content is published to that workspace i
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/Feature/WorkspaceCreation/Exception/WorkspaceAlreadyExists.html"><abbr title="Neos\ContentRepository\Core\Feature\WorkspaceCreation\Exception\WorkspaceAlreadyExists">WorkspaceAlreadyExists</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -376,18 +529,96 @@ If a target workspace is specified, the content is published to that workspace i
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_createCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L150">at line 150</a></div>
+                    <h3 id="method_createPersonalCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L168">at line 168</a></div>
         <code>                    void
-    <strong>createCommand</strong>(string $workspace, string $baseWorkspace = &#039;live&#039;, string $title = null, string $description = null, string $owner = &#039;&#039;, string $contentRepositoryIdentifier = &#039;default&#039;)
+    <strong>createPersonalCommand</strong>(string $workspace, string $owner, string $baseWorkspace = &#039;live&#039;, string|null $title = null, string|null $description = null, string $contentRepository = &#039;default&#039;)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Create a new workspace</p></p>                <p><p>This command creates a new workspace.</p></p>        
+                            <p><p>Create a new personal workspace for the specified user</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$workspace</td>
+                <td><p>Name of the workspace, for example &quot;christmas-campaign&quot;</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$owner</td>
+                <td><p>The username (aka account identifier) of a User to own the workspace</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$baseWorkspace</td>
+                <td><p>Name of the base workspace. If none is specified, &quot;live&quot; is assumed.</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$title</td>
+                <td><p>Human friendly title of the workspace, for example &quot;Christmas Campaign&quot;</p></td>
+            </tr>
+                    <tr>
+                <td>string|null</td>
+                <td>$description</td>
+                <td><p>A description explaining the purpose of the new workspace</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the content repository. (Default: 'default')</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Cli\Exception\StopCommandException">StopCommandException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createSharedCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L200">at line 200</a></div>
+        <code>                    void
+    <strong>createSharedCommand</strong>(string $workspace, string $baseWorkspace = &#039;live&#039;, string|null $title = null, string|null $description = null, string $contentRepository = &#039;default&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Create a new shared workspace</p></p>                <p><p>NOTE: By default, only administrators can access workspaces without role assignments. Use <i>workspace:assignrole</i> to add workspace permissions</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -404,24 +635,19 @@ If a target workspace is specified, the content is published to that workspace i
                 <td><p>Name of the base workspace. If none is specified, &quot;live&quot; is assumed.</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$title</td>
                 <td><p>Human friendly title of the workspace, for example &quot;Christmas Campaign&quot;</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$description</td>
                 <td><p>A description explaining the purpose of the new workspace</p></td>
             </tr>
                     <tr>
                 <td>string</td>
-                <td>$owner</td>
-                <td><p>The identifier of a User to own the workspace</p></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$contentRepositoryIdentifier</td>
-                <td></td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the content repository. (Default: 'default')</p></td>
             </tr>
             </table>
 
@@ -436,6 +662,15 @@ If a target workspace is specified, the content is published to that workspace i
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Cli\Exception\StopCommandException">StopCommandException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -443,13 +678,298 @@ If a target workspace is specified, the content is published to that workspace i
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_deleteCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L212">at line 212</a></div>
+                    <h3 id="method_setTitleCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L223">at line 223</a></div>
         <code>                    void
-    <strong>deleteCommand</strong>(string $workspace, bool $force = false, string $contentRepositoryIdentifier = &#039;default&#039;)
+    <strong>setTitleCommand</strong>(string $workspace, string $newTitle, string $contentRepository = &#039;default&#039;)
         </code>
     </h3>
     <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set/change the title of a workspace</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$workspace</td>
+                <td><p>Name of the workspace, for example &quot;some-workspace&quot;</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$newTitle</td>
+                <td><p>Human friendly title of the workspace, for example &quot;Some workspace&quot;</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the content repository. (Default: 'default')</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Cli\Exception\StopCommandException">StopCommandException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDescriptionCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L243">at line 243</a></div>
+        <code>                    void
+    <strong>setDescriptionCommand</strong>(string $workspace, string $newDescription, string $contentRepository = &#039;default&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Set/change the description of a workspace</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$workspace</td>
+                <td><p>Name of the workspace, for example &quot;some-workspace&quot;</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$newDescription</td>
+                <td><p>Human friendly description of the workspace</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the content repository. (Default: 'default')</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Cli\Exception\StopCommandException">StopCommandException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_assignRoleCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L279">at line 279</a></div>
+        <code>                    void
+    <strong>assignRoleCommand</strong>(string $workspace, string $subject, string $role, string $contentRepository = &#039;default&#039;, string $type = &#039;group&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Assign a workspace role to the given user/user group</p></p>                <p><p>Without explicit workspace roles, only administrators can change the corresponding workspace.
+With this command, a user or group (represented by a Flow role identifier) can be granted one of the two roles:</p>
+<ul>
+<li>viewer: Can read from the workspace</li>
+<li>collaborator: Can read from and write to the workspace</li>
+<li>manager: Can read from and write to the workspace and manage it (i.e. change metadata &amp; role assignments)</li>
+</ul>
+<p>Examples:</p>
+<p>To grant editors read and write access to a (shared) workspace: <i>./flow workspace:assignrole some-workspace &quot;Neos.Neos:AbstractEditor&quot; collaborator</i></p>
+<p>To grant a specific user read, write and manage access to a workspace: <i>./flow workspace:assignrole some-workspace admin manager --type user</i></p>
+<p>{\Neos\Neos\Domain\Model\WorkspaceRole}</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$workspace</td>
+                <td><p>Name of the workspace, for example &quot;some-workspace&quot;</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$subject</td>
+                <td><p>The user/group that should be assigned. By default, this is expected to be a Flow role identifier (e.g. 'Neos.Neos:AbstractEditor') – if $type is 'user', this is the username (aka account identifier) of a Neos user</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$role</td>
+                <td><p>Role to assign, either 'viewer', 'collaborator' or 'manager' – a viewer can only read from the workspace, a collaborator can read and write from/to the workspace. A manager can <em>on top</em> change the workspace metadata &amp; roles itself</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the content repository. (Default: 'default')</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td><p>Type of role, either 'group' (default) or 'user' – if 'group', $subject is expected to be a Flow role identifier, otherwise the username (aka account identifier) of a Neos user</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Cli\Exception\StopCommandException">StopCommandException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_unassignRoleCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L318">at line 318</a></div>
+        <code>                    void
+    <strong>unassignRoleCommand</strong>(string $workspace, string $subject, string $contentRepository = &#039;default&#039;, string $type = &#039;group&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Unassign a workspace role from the given user/user group</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$workspace</td>
+                <td><p>Name of the workspace, for example &quot;some-workspace&quot;</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$subject</td>
+                <td><p>The user/group that should be unassigned. By default, this is expected to be a Flow role identifier (e.g. 'Neos.Neos:AbstractEditor') – if $type is 'user', this is the username (aka account identifier) of a Neos user</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the content repository. (Default: 'default')</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$type</td>
+                <td><p>Type of role, either 'group' (default) or 'user' – if 'group', $subject is expected to be a Flow role identifier, otherwise the username (aka account identifier) of a Neos user</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Cli\Exception\StopCommandException">StopCommandException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>See also</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+                                            <abbr title="Neos\Neos\Command\assignRoleCommand()">assignRoleCommand()</abbr>
+                                    </td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L349">at line 349</a></div>
+        <code>                    void
+    <strong>deleteCommand</strong>(string $workspace, bool $force = false, string $contentRepository = &#039;default&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+            
     
             
 
@@ -473,8 +993,8 @@ workspace itself, use <i>workspace:discard</i> instead.</p></p>
             </tr>
                     <tr>
                 <td>string</td>
-                <td>$contentRepositoryIdentifier</td>
-                <td></td>
+                <td>$contentRepository</td>
+                <td><p>The name of the content repository. (Default: 'default')</p></td>
             </tr>
             </table>
 
@@ -489,38 +1009,35 @@ workspace itself, use <i>workspace:discard</i> instead.</p></p>
     </table>
 
             
-            
-                            <h4>See also</h4>
+                            <h4>Exceptions</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>
-                                            <abbr title="Neos\Neos\Command\neos.neos:workspace:discard">neos.neos:workspace:discard</abbr>
-                                    </td>
+                <td><abbr title="Neos\Flow\Cli\Exception\StopCommandException">StopCommandException</abbr></td>
                 <td></td>
             </tr>
             </table>
 
+            
             
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_rebaseCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L303">at line 303</a></div>
+                    <h3 id="method_rebaseOutdatedCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L419">at line 419</a></div>
         <code>                    void
-    <strong>rebaseCommand</strong>(string $workspace, string $baseWorkspace, string $contentRepositoryIdentifier = &#039;default&#039;)
+    <strong>rebaseOutdatedCommand</strong>(string $contentRepository = &#039;default&#039;, bool $force = false)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Rebase a workspace</p></p>                <p><p>This command sets a new base workspace for the specified workspace. Note that doing so will put the possible
-changes contained in the workspace to be rebased into a different context and thus might lead to unintended
-results when being published.</p></p>        
+                            <p><p>Rebase all outdated content streams</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -528,17 +1045,12 @@ results when being published.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$workspace</td>
-                <td><p>Name of the workspace to rebase, for example &quot;user-john&quot;</p></td>
+                <td>$contentRepository</td>
+                <td><p>The name of the content repository. (Default: 'default')</p></td>
             </tr>
                     <tr>
-                <td>string</td>
-                <td>$baseWorkspace</td>
-                <td><p>Name of the new base workspace</p></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$contentRepositoryIdentifier</td>
+                <td>bool</td>
+                <td>$force</td>
                 <td></td>
             </tr>
             </table>
@@ -562,12 +1074,13 @@ results when being published.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_listCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L342">at line 342</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L445">at line 445</a></div>
         <code>                    void
-    <strong>listCommand</strong>(string $contentRepositoryIdentifier = &#039;default&#039;)
+    <strong>listCommand</strong>(string $contentRepository = &#039;default&#039;)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -580,8 +1093,8 @@ results when being published.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
-                <td>$contentRepositoryIdentifier</td>
-                <td></td>
+                <td>$contentRepository</td>
+                <td><p>The name of the content repository. (Default: 'default')</p></td>
             </tr>
             </table>
 
@@ -596,6 +1109,72 @@ results when being published.</p></p>
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Cli\Exception\StopCommandException">StopCommandException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_showCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Command/WorkspaceCommandController.php#L483">at line 483</a></div>
+        <code>                    void
+    <strong>showCommand</strong>(string $workspace, string $contentRepository = &#039;default&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Display details for the specified workspace</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$workspace</td>
+                <td><p>Name of the workspace to show</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>The name of the content repository. (Default: 'default')</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Cli\Exception\StopCommandException">StopCommandException</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>

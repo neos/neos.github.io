@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_Aspects_SiteRepositoryCachingAspect" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Neos_Aspects_SiteRepositoryCachingAspect" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -81,6 +93,7 @@
     <strong>SiteRepositoryCachingAspect</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Aspects/SiteRepositoryCachingAspect.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -142,6 +155,17 @@
                     mixed
                 </div>
                 <div class="col-md-8">
+                    <a href="#method_cacheFindOneByNodeName">cacheFindOneByNodeName</a>(<abbr title="Neos\Flow\Aop\JoinPointInterface">JoinPointInterface</abbr> $joinPoint)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
                     <a href="#method_cacheDomainForActiveRequest">cacheDomainForActiveRequest</a>(<abbr title="Neos\Flow\Aop\JoinPointInterface">JoinPointInterface</abbr> $joinPoint)
         
                                             <p class="no-description">No description</p>
@@ -156,12 +180,57 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_cacheFirstOnlineSite">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Aspects/SiteRepositoryCachingAspect.php#L52">at line 52</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Aspects/SiteRepositoryCachingAspect.php#L58">at line 58</a></div>
         <code>                    mixed
     <strong>cacheFirstOnlineSite</strong>(<abbr title="Neos\Flow\Aop\JoinPointInterface">JoinPointInterface</abbr> $joinPoint)
         </code>
     </h3>
     <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Aop\JoinPointInterface">JoinPointInterface</abbr></td>
+                <td>$joinPoint</td>
+                <td><p>The current join point</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_cacheFindOneByNodeName">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Aspects/SiteRepositoryCachingAspect.php#L72">at line 72</a></div>
+        <code>                    mixed
+    <strong>cacheFindOneByNodeName</strong>(<abbr title="Neos\Flow\Aop\JoinPointInterface">JoinPointInterface</abbr> $joinPoint)
+        </code>
+    </h3>
+    <div class="details">    
+            
     
             
 
@@ -199,12 +268,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_cacheDomainForActiveRequest">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Aspects/SiteRepositoryCachingAspect.php#L66">at line 66</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Aspects/SiteRepositoryCachingAspect.php#L92">at line 92</a></div>
         <code>                    mixed
     <strong>cacheDomainForActiveRequest</strong>(<abbr title="Neos\Flow\Aop\JoinPointInterface">JoinPointInterface</abbr> $joinPoint)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

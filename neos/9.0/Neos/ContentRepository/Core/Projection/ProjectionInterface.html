@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_Projection_ProjectionInterface" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_Projection_ProjectionInterface" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,13 +94,13 @@
 </p>
 
         
+        
     
         
 
             <div class="description">
             <p><p>Common interface for a Content Repository projection. This API is NOT exposed to the outside world, but is
-the contract between {ContentRepository} and the individual projections.</p></p>            <p><p>If the Projection needs to be notified that a catchup is about to happen, you can additionally
-implement {\Neos\ContentRepository\Core\Projection\WithMarkStaleInterface}. This is useful f.e. to disable runtime caches in the ProjectionState.</p></p>        </div>
+the contract between {ContentRepository} and the individual projections.</p></p>                    </div>
             
         
     
@@ -103,17 +115,17 @@ implement {\Neos\ContentRepository\Core\Projection\WithMarkStaleInterface}. This
                 <div class="col-md-8">
                     <a href="#method_setUp">setUp</a>()
         
-                                            <p><p>Set up the projection state (create databases, call CheckpointStorage::setup()).</p></p>                </div>
+                                            <p><p>Set up the projection state (create/update required database tables, ...).</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    bool
+                    <a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionStatus.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionStatus">ProjectionStatus</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_canHandle">canHandle</a>(<abbr title="Neos\EventStore\Model\Event">Event</abbr> $event)
+                    <a href="#method_status">status</a>()
         
-                                            <p><p>Can the projection handle this event? Must be deterministic.</p></p>                </div>
+                                            <p><p>Determines the setup status of the projection. E.g. are the database tables created or any columns missing.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -121,20 +133,10 @@ implement {\Neos\ContentRepository\Core\Projection\WithMarkStaleInterface}. This
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_catchUp">catchUp</a>(<abbr title="Neos\EventStore\Model\EventStream\EventStreamInterface">EventStreamInterface</abbr> $eventStream, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <a href="#method_apply">apply</a>(<a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a> $event, <abbr title="Neos\EventStore\Model\EventEnvelope">EventEnvelope</abbr> $eventEnvelope)
         
-                                            <p><p>Catch up the projection, consuming the not-yet-seen events in the given event stream.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Neos\EventStore\Model\Event\SequenceNumber">SequenceNumber</abbr>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getSequenceNumber">getSequenceNumber</a>()
-        
-                                            <p><p>Part of the Blocking implementation of commands - usually delegates to an internal
-{CheckpointStorageInterface::getHighestAppliedSequenceNumber()}.</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -144,7 +146,8 @@ implement {\Neos\ContentRepository\Core\Projection\WithMarkStaleInterface}. This
                 <div class="col-md-8">
                     <a href="#method_getState">getState</a>()
         
-                                            <p><p>NOTE: The ProjectionStateInterface returned must be ALWAYS THE SAME INSTANCE.</p></p>                </div>
+                                            <p><p>NOTE: The state will be accessed eagerly ONCE upon initialisation of the content repository
+and put into the immutable {ProjectionStates} collection.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -152,7 +155,7 @@ implement {\Neos\ContentRepository\Core\Projection\WithMarkStaleInterface}. This
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_reset">reset</a>()
+                    <a href="#method_resetState">resetState</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -166,17 +169,18 @@ implement {\Neos\ContentRepository\Core\Projection\WithMarkStaleInterface}. This
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_setUp">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ProjectionInterface.php#L29">at line 29</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ProjectionInterface.php#L23">at line 23</a></div>
         <code>                    void
     <strong>setUp</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Set up the projection state (create databases, call CheckpointStorage::setup()).</p></p>                        
+                            <p><p>Set up the projection state (create/update required database tables, ...).</p></p>                        
         </div>
         <div class="tags">
             
@@ -197,75 +201,66 @@ implement {\Neos\ContentRepository\Core\Projection\WithMarkStaleInterface}. This
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_canHandle">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ProjectionInterface.php#L40">at line 40</a></div>
-        <code>                    bool
-    <strong>canHandle</strong>(<abbr title="Neos\EventStore\Model\Event">Event</abbr> $event)
+                    <h3 id="method_status">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ProjectionInterface.php#L28">at line 28</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionStatus.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionStatus">ProjectionStatus</abbr></a>
+    <strong>status</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Can the projection handle this event? Must be deterministic.</p></p>                <p><p>Used to determine whether this projection should be triggered in response to an event; and also
-needed as part of the Blocking logic ({\Neos\ContentRepository\Core\CommandHandler\PendingProjections}).</p></p>        
+                            <p><p>Determines the setup status of the projection. E.g. are the database tables created or any columns missing.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionStatus.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionStatus">ProjectionStatus</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_apply">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ProjectionInterface.php#L30">at line 30</a></div>
+        <code>                    void
+    <strong>apply</strong>(<a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a> $event, <abbr title="Neos\EventStore\Model\EventEnvelope">EventEnvelope</abbr> $eventEnvelope)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\EventStore\Model\Event">Event</abbr></td>
+                <td><a href="../../../../Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a></td>
                 <td>$event</td>
                 <td></td>
             </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>bool</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_catchUp">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ProjectionInterface.php#L52">at line 52</a></div>
-        <code>                    void
-    <strong>catchUp</strong>(<abbr title="Neos\EventStore\Model\EventStream\EventStreamInterface">EventStreamInterface</abbr> $eventStream, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Catch up the projection, consuming the not-yet-seen events in the given event stream.</p></p>                <p><p>How this is called depends a lot on your infrastructure - usually via some indirection
-from {\Neos\ContentRepository\Core\Projection\ProjectionCatchUpTriggerInterface}.</p></p>        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\EventStore\Model\EventStream\EventStreamInterface">EventStreamInterface</abbr></td>
-                <td>$eventStream</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></td>
-                <td>$contentRepository</td>
+                <td><abbr title="Neos\EventStore\Model\EventEnvelope">EventEnvelope</abbr></td>
+                <td>$eventEnvelope</td>
                 <td></td>
             </tr>
             </table>
@@ -276,39 +271,6 @@ from {\Neos\ContentRepository\Core\Projection\ProjectionCatchUpTriggerInterface}
                     <table class="table table-condensed">
         <tr>
             <td>void</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getSequenceNumber">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ProjectionInterface.php#L60">at line 60</a></div>
-        <code>                    <abbr title="Neos\EventStore\Model\Event\SequenceNumber">SequenceNumber</abbr>
-    <strong>getSequenceNumber</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Part of the Blocking implementation of commands - usually delegates to an internal
-{CheckpointStorageInterface::getHighestAppliedSequenceNumber()}.</p></p>                <p><p>See {\Neos\ContentRepository\Core\CommandHandler\PendingProjections} for implementation details.</p></p>        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Neos\EventStore\Model\Event\SequenceNumber">SequenceNumber</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -322,18 +284,21 @@ from {\Neos\ContentRepository\Core\Projection\ProjectionCatchUpTriggerInterface}
             </div>
                     <div class="method-item">
                     <h3 id="method_getState">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ProjectionInterface.php#L70">at line 70</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ProjectionInterface.php#L42">at line 42</a></div>
         <code>                    <a href="../../../../Neos/ContentRepository/Core/Projection/ProjectionStateInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionStateInterface">ProjectionStateInterface</abbr></a>
     <strong>getState</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>NOTE: The ProjectionStateInterface returned must be ALWAYS THE SAME INSTANCE.</p></p>                <p><p>If the Projection needs to be notified that a catchup is about to happen, you can additionally
-implement {\Neos\ContentRepository\Core\Projection\WithMarkStaleInterface}. This is useful f.e. to disable runtime caches in the ProjectionState.</p></p>        
+                            <p><p>NOTE: The state will be accessed eagerly ONCE upon initialisation of the content repository
+and put into the immutable {ProjectionStates} collection.</p></p>                <p><p>This ensures always the same instance is being returned when accessing it.</p>
+<p>Projections should on construction already have the state prepared, that also for internal
+use cases the SAME INSTANCE is always used.</p></p>        
         </div>
         <div class="tags">
             
@@ -354,13 +319,14 @@ implement {\Neos\ContentRepository\Core\Projection\WithMarkStaleInterface}. This
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_reset">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ProjectionInterface.php#L72">at line 72</a></div>
+                    <h3 id="method_resetState">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ProjectionInterface.php#L44">at line 44</a></div>
         <code>                    void
-    <strong>reset</strong>()
+    <strong>resetState</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

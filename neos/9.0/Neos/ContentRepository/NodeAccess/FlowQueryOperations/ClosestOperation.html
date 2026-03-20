@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_NodeAccess_FlowQueryOperations_ClosestOperation" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_NodeAccess_FlowQueryOperations_ClosestOperation" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -101,7 +114,7 @@ traversing up through its ancestors.</p></p>                    </div>
                                                                                 
                                     </td>
                 <td>$shortName</td>
-                <td class="last"><p>{@inheritdoc}</p></td>
+                <td class="last">{@inheritdoc}</td>
                 <td></td>
             </tr>
                     <tr>
@@ -110,7 +123,7 @@ traversing up through its ancestors.</p></p>                    </div>
                                                                                 
                                     </td>
                 <td>$priority</td>
-                <td class="last"><p>{@inheritdoc}</p></td>
+                <td class="last">{@inheritdoc}</td>
                 <td></td>
             </tr>
             </table>
@@ -124,9 +137,9 @@ traversing up through its ancestors.</p></p>                    </div>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_canEvaluate">canEvaluate</a>(<abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\array&lt;int,mixed&gt;">array&lt;int,mixed&gt;</abbr> $context)
+                    <a href="#method_canEvaluate">canEvaluate</a>(<abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\array&lt;int, mixed&gt;">array&lt;int, mixed&gt;</abbr> $context)
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -136,7 +149,7 @@ traversing up through its ancestors.</p></p>                    </div>
                 <div class="col-md-8">
                     <a href="#method_evaluate">evaluate</a>(<abbr title="Neos\Eel\FlowQuery\FlowQuery">FlowQuery</abbr> $flowQuery, array $arguments)
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -147,24 +160,25 @@ traversing up through its ancestors.</p></p>                    </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_canEvaluate">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/ClosestOperation.php#L46">at line 46</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/ClosestOperation.php#L49">at line 49</a></div>
         <code>                    bool
-    <strong>canEvaluate</strong>(<abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\array&lt;int,mixed&gt;">array&lt;int,mixed&gt;</abbr> $context)
+    <strong>canEvaluate</strong>(<abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\array&lt;int, mixed&gt;">array&lt;int, mixed&gt;</abbr> $context)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\array&lt;int,mixed&gt;">array&lt;int,mixed&gt;</abbr></td>
+                <td><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\array&lt;int, mixed&gt;">array&lt;int, mixed&gt;</abbr></td>
                 <td>$context</td>
                 <td><p>(or array-like object) onto which this operation should be applied</p></td>
             </tr>
@@ -189,17 +203,18 @@ traversing up through its ancestors.</p></p>                    </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_evaluate">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/ClosestOperation.php#L60">at line 60</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.NodeAccess/Classes/FlowQueryOperations/ClosestOperation.php#L63">at line 63</a></div>
         <code>                    void
     <strong>evaluate</strong>(<abbr title="Neos\Eel\FlowQuery\FlowQuery">FlowQuery</abbr> $flowQuery, array $arguments)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>

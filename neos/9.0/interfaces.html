@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="interfaces" data-name="" data-root-path="">
+    <body id="interfaces" data-name="" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -72,6 +84,18 @@
     <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-6">
+                                            <em><a href="Neos/ContentRepositoryRegistry/Factory/AuthProvider/AuthProviderFactoryInterface.html"><abbr title="Neos\ContentRepositoryRegistry\Factory\AuthProvider\AuthProviderFactoryInterface">AuthProviderFactoryInterface</abbr></a></em>
+                        <small><span class="label label-danger">deprecated</span></small></div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Neos/ContentRepositoryRegistry/Factory/Clock/ClockFactoryInterface.html"><abbr title="Neos\ContentRepositoryRegistry\Factory\Clock\ClockFactoryInterface">ClockFactoryInterface</abbr></a></em>
+                        </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                                             <em><a href="Neos/ContentRepositoryRegistry/Factory/ContentDimensionSource/ContentDimensionSourceFactoryInterface.html"><abbr title="Neos\ContentRepositoryRegistry\Factory\ContentDimensionSource\ContentDimensionSourceFactoryInterface">ContentDimensionSourceFactoryInterface</abbr></a></em>
                         </div>
                 <div class="col-md-6"></div>
@@ -90,13 +114,13 @@
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <em><a href="Neos/ContentRepositoryRegistry/Factory/ProjectionCatchUpTrigger/ProjectionCatchUpTriggerFactoryInterface.html"><abbr title="Neos\ContentRepositoryRegistry\Factory\ProjectionCatchUpTrigger\ProjectionCatchUpTriggerFactoryInterface">ProjectionCatchUpTriggerFactoryInterface</abbr></a></em>
+                                            <em><a href="Neos/ContentRepositoryRegistry/Factory/PerformanceTracer/PerformanceTracerFactoryInterface.html"><abbr title="Neos\ContentRepositoryRegistry\Factory\PerformanceTracer\PerformanceTracerFactoryInterface">PerformanceTracerFactoryInterface</abbr></a></em>
                         </div>
                 <div class="col-md-6"></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <em><a href="Neos/ContentRepositoryRegistry/Factory/UserIdProvider/UserIdProviderFactoryInterface.html"><abbr title="Neos\ContentRepositoryRegistry\Factory\UserIdProvider\UserIdProviderFactoryInterface">UserIdProviderFactoryInterface</abbr></a></em>
+                                            <em><a href="Neos/ContentRepositoryRegistry/Factory/SubscriptionStore/SubscriptionStoreFactoryInterface.html"><abbr title="Neos\ContentRepositoryRegistry\Factory\SubscriptionStore\SubscriptionStoreFactoryInterface">SubscriptionStoreFactoryInterface</abbr></a></em>
                         </div>
                 <div class="col-md-6"></div>
             </div>
@@ -114,9 +138,15 @@
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                                            <em><a href="Neos/ContentRepository/Core/CommandHandler/CommandHookInterface.html"><abbr title="Neos\ContentRepository\Core\CommandHandler\CommandHookInterface">CommandHookInterface</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Contract for a hook that is invoked just before any command is processed via {ContentRepository::handle()}</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                                             <em><a href="Neos/ContentRepository/Core/CommandHandler/CommandInterface.html"><abbr title="Neos\ContentRepository\Core\CommandHandler\CommandInterface">CommandInterface</abbr></a></em>
                         </div>
-                <div class="col-md-6"><p>Common (marker) interface for all commands of the Content Repository</p></div>
+                <div class="col-md-6"><p>Common interface for all commands of the content repository</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -129,6 +159,18 @@
                                             <em><a href="Neos/ContentRepository/Core/EventStore/EventInterface.html"><abbr title="Neos\ContentRepository\Core\EventStore\EventInterface">EventInterface</abbr></a></em>
                         </div>
                 <div class="col-md-6"><p>Common interface for all Content Repository &quot;domain events&quot;</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Neos/ContentRepository/Core/Factory/AuthProviderFactoryInterface.html"><abbr title="Neos\ContentRepository\Core\Factory\AuthProviderFactoryInterface">AuthProviderFactoryInterface</abbr></a></em>
+                        </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Neos/ContentRepository/Core/Factory/CommandHookFactoryInterface.html"><abbr title="Neos\ContentRepository\Core\Factory\CommandHookFactoryInterface">CommandHookFactoryInterface</abbr></a></em>
+                        </div>
+                <div class="col-md-6"></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -145,41 +187,45 @@ but which interacts with the CR internals in an intricate way.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <em><a href="Neos/ContentRepository/Core/Feature/Common/EmbedsContentStreamAndNodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\Feature\Common\EmbedsContentStreamAndNodeAggregateId">EmbedsContentStreamAndNodeAggregateId</abbr></a></em>
+                                            <em><a href="Neos/ContentRepository/Core/Feature/Common/EmbedsContentStreamId.html"><abbr title="Neos\ContentRepository\Core\Feature\Common\EmbedsContentStreamId">EmbedsContentStreamId</abbr></a></em>
                         </div>
-                <div class="col-md-6"><p>This interface is implemented by <strong>events</strong> which contain ContentStreamId and NodeAggregateId.</p></div>
+                <div class="col-md-6"><p>This interface is implemented by <strong>events</strong> which contain ContentStreamId.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <em><a href="Neos/ContentRepository/Core/Feature/Common/MatchableWithNodeIdToPublishOrDiscardInterface.html"><abbr title="Neos\ContentRepository\Core\Feature\Common\MatchableWithNodeIdToPublishOrDiscardInterface">MatchableWithNodeIdToPublishOrDiscardInterface</abbr></a></em>
+                                            <em><a href="Neos/ContentRepository/Core/Feature/Common/EmbedsNodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\Feature\Common\EmbedsNodeAggregateId">EmbedsNodeAggregateId</abbr></a></em>
                         </div>
-                <div class="col-md-6"><p>This interface must be implemented by all commands which are working with individual nodes, such that they are
-filterable whether they are applying their action to a NodeIdToPublish.</p></div>
+                <div class="col-md-6"><p>This interface is implemented by <strong>events</strong> which contain NodeAggregateId.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <em><a href="Neos/ContentRepository/Core/Feature/Common/PublishableToOtherContentStreamsInterface.html"><abbr title="Neos\ContentRepository\Core\Feature\Common\PublishableToOtherContentStreamsInterface">PublishableToOtherContentStreamsInterface</abbr></a></em>
+                                            <em><a href="Neos/ContentRepository/Core/Feature/Common/EmbedsWorkspaceName.html"><abbr title="Neos\ContentRepository\Core\Feature\Common\EmbedsWorkspaceName">EmbedsWorkspaceName</abbr></a></em>
                         </div>
-                <div class="col-md-6"><p>This interface is implemented by <strong>events</strong> which can be published to different content streams.</p></div>
+                <div class="col-md-6"><p>This interface is implemented by <strong>events</strong> which contain WorkspaceName.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <em><a href="Neos/ContentRepository/Core/Feature/Common/RebasableToOtherContentStreamsInterface.html"><abbr title="Neos\ContentRepository\Core\Feature\Common\RebasableToOtherContentStreamsInterface">RebasableToOtherContentStreamsInterface</abbr></a></em>
+                                            <em><a href="Neos/ContentRepository/Core/Feature/Common/PublishableToWorkspaceInterface.html"><abbr title="Neos\ContentRepository\Core\Feature\Common\PublishableToWorkspaceInterface">PublishableToWorkspaceInterface</abbr></a></em>
                         </div>
-                <div class="col-md-6"><p>This interface is implemented by <strong>commands</strong> which can be rebased to other Content Streams. This is basically all
-node-based commands.</p></div>
+                <div class="col-md-6"><p>This interface is implemented by <strong>events</strong> which can be published to different workspaces.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <em><a href="Neos/ContentRepository/Core/Infrastructure/DbalClientInterface.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\DbalClientInterface">DbalClientInterface</abbr></a></em>
+                                            <em><a href="Neos/ContentRepository/Core/Feature/Common/RebasableToOtherWorkspaceInterface.html"><abbr title="Neos\ContentRepository\Core\Feature\Common\RebasableToOtherWorkspaceInterface">RebasableToOtherWorkspaceInterface</abbr></a></em>
                         </div>
-                <div class="col-md-6"><p>This is what the ES CR uses to access a database. It needs to be filled from the external world</p></div>
+                <div class="col-md-6"><p>Common (marker) interface for all <strong>commands</strong> that need to be serialized for rebasing to other workspaces</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <em><a href="Neos/ContentRepository/Core/NodeType/NodeLabelGeneratorInterface.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeLabelGeneratorInterface">NodeLabelGeneratorInterface</abbr></a></em>
+                                            <em><a href="Neos/ContentRepository/Core/Feature/Security/AuthProviderInterface.html"><abbr title="Neos\ContentRepository\Core\Feature\Security\AuthProviderInterface">AuthProviderInterface</abbr></a></em>
                         </div>
-                <div class="col-md-6"><p>Interface for rendering a node label string based on some strategy</p></div>
+                <div class="col-md-6"><p>Provides authorization decisions for the current user, for one Content Repository.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Neos/ContentRepository/Core/Infrastructure/PerformanceTracing/PerformanceTracerInterface.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\PerformanceTracing\PerformanceTracerInterface">PerformanceTracerInterface</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Interface for tracing performance and execution flow in the Content Repository.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -190,15 +236,15 @@ for example to provide dynamic properties.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <em><a href="Neos/ContentRepository/Core/Projection/CatchUpHookFactoryInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\CatchUpHookFactoryInterface">CatchUpHookFactoryInterface</abbr></a></em>
+                                            <em><a href="Neos/ContentRepository/Core/Projection/CatchUpHook/CatchUpHookFactoryInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\CatchUpHook\CatchUpHookFactoryInterface">CatchUpHookFactoryInterface</abbr></a></em>
                         </div>
                 <div class="col-md-6"></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <em><a href="Neos/ContentRepository/Core/Projection/CatchUpHookInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\CatchUpHookInterface">CatchUpHookInterface</abbr></a></em>
+                                            <em><a href="Neos/ContentRepository/Core/Projection/CatchUpHook/CatchUpHookInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\CatchUpHook\CatchUpHookInterface">CatchUpHookInterface</abbr></a></em>
                         </div>
-                <div class="col-md-6"><p>This is an internal API with which you can hook into the catch-up process of a Projection.</p></div>
+                <div class="col-md-6"><p>This is an api with which you can hook into the catch-up process of a projection.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -209,28 +255,39 @@ for example to provide dynamic properties.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                                            <em><a href="Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphProjectionFactoryInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphProjectionFactoryInterface">ContentGraphProjectionFactoryInterface</abbr></a></em>
+                        </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphProjectionInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphProjectionInterface">ContentGraphProjectionInterface</abbr></a></em>
+                        </div>
+                <div class="col-md-6"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphReadModelInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphReadModelInterface">ContentGraphReadModelInterface</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>This low level interface gives access to the content graph and workspaces</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                                             <em><a href="Neos/ContentRepository/Core/Projection/ContentGraph/ContentSubgraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentSubgraphInterface">ContentSubgraphInterface</abbr></a></em>
                         </div>
                 <div class="col-md-6"><p>This is the most important read model of a content repository.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                                            <em><a href="Neos/ContentRepository/Core/Projection/ContentGraph/Filter/PropertyValue/Criteria/PropertyValueCriteriaInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\PropertyValue\Criteria\PropertyValueCriteriaInterface">PropertyValueCriteriaInterface</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>Common marker interface for property value filter criteria</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                                             <em><a href="Neos/ContentRepository/Core/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ProjectionIntegrityViolationDetectorInterface">ProjectionIntegrityViolationDetectorInterface</abbr></a></em>
                         </div>
                 <div class="col-md-6"><p>interface because different impls.</p></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
-                                            <em><a href="Neos/ContentRepository/Core/Projection/ContentGraph/PropertyCollectionInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\PropertyCollectionInterface">PropertyCollectionInterface</abbr></a></em>
-                        </div>
-                <div class="col-md-6"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
-                                            <em><a href="Neos/ContentRepository/Core/Projection/ProjectionCatchUpTriggerInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionCatchUpTriggerInterface">ProjectionCatchUpTriggerInterface</abbr></a></em>
-                        </div>
-                <div class="col-md-6"><p>Interface for a class that (asynchronously) triggers a catchup of affected projections after a
-{ContentRepository::handle()} call.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -253,36 +310,9 @@ the contract between {ContentRepository} and the individual projections.</p></di
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <em><a href="Neos/ContentRepository/Core/Projection/WithMarkStaleInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\WithMarkStaleInterface">WithMarkStaleInterface</abbr></a></em>
-                        </div>
-                <div class="col-md-6"><p>Additional marker interface to add to a {ProjectionInterface}.</p></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
-                                            <em><a href="Neos/ContentRepository/Core/SharedModel/User/UserIdProviderInterface.html"><abbr title="Neos\ContentRepository\Core\SharedModel\User\UserIdProviderInterface">UserIdProviderInterface</abbr></a></em>
+                                            <em><a href="Neos/ContentRepository/Core/Subscription/Store/SubscriptionStoreInterface.html"><abbr title="Neos\ContentRepository\Core\Subscription\Store\SubscriptionStoreInterface">SubscriptionStoreInterface</abbr></a></em>
                         </div>
                 <div class="col-md-6"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
-                                            <em><a href="Neos/EventSourcedContentRepository/LegacyApi/ContextInNodeBasedReadModel/ContextInNodeBasedReadModelInterface.html"><abbr title="Neos\EventSourcedContentRepository\LegacyApi\ContextInNodeBasedReadModel\ContextInNodeBasedReadModelInterface">ContextInNodeBasedReadModelInterface</abbr></a></em>
-                        </div>
-                <div class="col-md-6"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
-                                            <em><a href="Neos/EventSourcedContentRepository/LegacyApi/LegacyNodeInterfaceApi/LegacyNodeInterfaceApi.html"><abbr title="Neos\EventSourcedContentRepository\LegacyApi\LegacyNodeInterfaceApi\LegacyNodeInterfaceApi">LegacyNodeInterfaceApi</abbr></a></em>
-                        </div>
-                <div class="col-md-6"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
-                                            <em><a href="Neos/EventSourcedContentRepository/LegacyApi/Logging/LegacyLoggerInterface.html"><abbr title="Neos\EventSourcedContentRepository\LegacyApi\Logging\LegacyLoggerInterface">LegacyLoggerInterface</abbr></a></em>
-                        </div>
-                <div class="col-md-6"><ul>
-<li>INFO log level should be used for logging deprecations by default</li>
-<li>WARNING log level should be used if we cannot provide useful fallback behavior.</li>
-</ul></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -462,9 +492,9 @@ implement this interface so that they can be handled specifically.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <em><a href="Neos/Neos/Domain/Model/UserInterface.html"><abbr title="Neos\Neos\Domain\Model\UserInterface">UserInterface</abbr></a></em>
+                                            <em><a href="Neos/Neos/Domain/NodeLabel/NodeLabelGeneratorInterface.html"><abbr title="Neos\Neos\Domain\NodeLabel\NodeLabelGeneratorInterface">NodeLabelGeneratorInterface</abbr></a></em>
                         </div>
-                <div class="col-md-6"><p>Interface for a user of the content repository. Users can be owners of workspaces.</p></div>
+                <div class="col-md-6"></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -474,9 +504,9 @@ implement this interface so that they can be handled specifically.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                                            <em><a href="Neos/Neos/Domain/Service/NodeSearchServiceInterface.html"><abbr title="Neos\Neos\Domain\Service\NodeSearchServiceInterface">NodeSearchServiceInterface</abbr></a></em>
+                                            <em><a href="Neos/Neos/Domain/Service/FusionAutoIncludeHandler.html"><abbr title="Neos\Neos\Domain\Service\FusionAutoIncludeHandler">FusionAutoIncludeHandler</abbr></a></em>
                         </div>
-                <div class="col-md-6"><p>Interface for the node search service for finding nodes based on a fulltext search</p></div>
+                <div class="col-md-6"></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -515,7 +545,7 @@ to e.g. use the one with localization support.</p></div>
                     <div class="row">
                 <div class="col-md-6">
                                             <em><a href="Neos/SiteKickstarter/Generator/SitePackageGeneratorInterface.html"><abbr title="Neos\SiteKickstarter\Generator\SitePackageGeneratorInterface">SitePackageGeneratorInterface</abbr></a></em>
-                        </div>
+                        <small><span class="label label-danger">deprecated</span></small></div>
                 <div class="col-md-6"></div>
             </div>
             </div>

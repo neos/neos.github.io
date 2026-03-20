@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
         <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
         <script async defer src="../../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../../js/typeahead.min.js"></script>
-        <script src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_Projection_ContentGraph_ProjectionIntegrityViolationDetectorInterface" data-root-path="../../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_Projection_ContentGraph_ProjectionIntegrityViolationDetectorInterface" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -81,6 +93,7 @@
     <strong>ProjectionIntegrityViolationDetectorInterface</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php">View source</a>)
 </p>
 
+        
         
     
                         <table>
@@ -162,16 +175,7 @@
             </tr>
                     <tr>
                 <td>
-                                                                                                                        ERROR_CODE_NODE_HAS_MISSING_RESTRICTION
-                                    </td>
-                <td class="last">
-                    <p><em></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                                                                                        ERROR_CODE_RESTRICTION_INTEGRITY_IS_COMPROMISED
+                                                                                                                        ERROR_CODE_NODE_HAS_MISSING_SUBTREE_TAG
                                     </td>
                 <td class="last">
                     <p><em></em></p>
@@ -199,15 +203,6 @@
                     <tr>
                 <td>
                                                                                                                         ERROR_CODE_REFERENCE_INTEGRITY_IS_COMPROMISED
-                                    </td>
-                <td class="last">
-                    <p><em></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                                                                                        ERROR_CODE_REFERENCES_ARE_AMBIGUOUSLY_SORTED
                                     </td>
                 <td class="last">
                     <p><em></em></p>
@@ -274,19 +269,10 @@
                     <abbr title="Neos\Error\Messages\Result">Result</abbr>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_restrictionsArePropagatedRecursively">restrictionsArePropagatedRecursively</a>()
+                    <a href="#method_subtreeTagsAreInherited">subtreeTagsAreInherited</a>()
         
-                                            <p><p>A is marked as hidden, so B and C should have incoming restriction edges.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Neos\Error\Messages\Result">Result</abbr>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_restrictionIntegrityIsProvided">restrictionIntegrityIsProvided</a>()
-        
-                                            <p><p>Checks that the restriction edges are connected at source (e.g. to &quot;A&quot;) and at destination (e.g. to &quot;B&quot;)</p></p>                </div>
+                                            <p><p>A is tagged with a subtree tag, so B and C should inherit that subtree tag (or explicitly have it set)
+This test should fail if e.g. in the example below, C is missing the &quot;foo&quot; tag (<tag>* = explicitly set, <tag> = inherited):</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -403,12 +389,13 @@ the same classification in all variants.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_hierarchyIntegrityIsProvided">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L61">at line 61</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L59">at line 59</a></div>
         <code>                    <abbr title="Neos\Error\Messages\Result">Result</abbr>
     <strong>hierarchyIntegrityIsProvided</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -447,12 +434,13 @@ exists at most once.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_siblingsAreDistinctlySorted">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L75">at line 75</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L73">at line 73</a></div>
         <code>                    <abbr title="Neos\Error\Messages\Result">Result</abbr>
     <strong>siblingsAreDistinctlySorted</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -486,12 +474,13 @@ exists at most once.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_tetheredNodesAreNamed">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L89">at line 89</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L87">at line 87</a></div>
         <code>                    <abbr title="Neos\Error\Messages\Result">Result</abbr>
     <strong>tetheredNodesAreNamed</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -524,70 +513,39 @@ exists at most once.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_restrictionsArePropagatedRecursively">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L109">at line 109</a></div>
+                    <h3 id="method_subtreeTagsAreInherited">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L114">at line 114</a></div>
         <code>                    <abbr title="Neos\Error\Messages\Result">Result</abbr>
-    <strong>restrictionsArePropagatedRecursively</strong>()
+    <strong>subtreeTagsAreInherited</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>A is marked as hidden, so B and C should have incoming restriction edges.</p></p>                <p><p>This test should fail if e.g. in the example below, the restriction edge from A to C is missing.</p>
-<p>┌─────┐
-│  A  │━━┓
-└─────┘  ┃
-│     ┃
-│     ┃
-┌─────┐  ┃
-│  B  │◀━┛
-└─────┘  ┃
+                            <p><p>A is tagged with a subtree tag, so B and C should inherit that subtree tag (or explicitly have it set)
+This test should fail if e.g. in the example below, C is missing the &quot;foo&quot; tag (<tag>* = explicitly set, <tag> = inherited):</p></p>                <p><p>┌────────────────────────┐
+│           A            │
+│                        │
+│ SubtreeTags: foo<em>      │
+│                        │
+└───────────┬────────────┘
 │
-│     ┃   &lt;-- this Restriction Edge is missing.
-┌─────┐
-│  C  │◀ ┛
-└─────┘</p></p>        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Neos\Error\Messages\Result">Result</abbr></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_restrictionIntegrityIsProvided">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L123">at line 123</a></div>
-        <code>                    <abbr title="Neos\Error\Messages\Result">Result</abbr>
-    <strong>restrictionIntegrityIsProvided</strong>()
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Checks that the restriction edges are connected at source (e.g. to &quot;A&quot;) and at destination (e.g. to &quot;B&quot;)</p></p>                <p><p>┌─────┐
-│  A  │━━┓ &lt;-- checks that A exists (for each restriction edge)
-└─────┘  ┃
-│     ┃
-│     ┃
-┌─────┐  ┃
-│  B  │◀━┛ &lt;-- checks that B exists (for each restriction edge)
-└─────┘</p></p>        
+┌───────────┴────────────┐
+│           B            │
+│                        │
+│ SubtreeTags: foo, bar</em> │
+│                        │
+└───────────┬────────────┘
+│
+┌───────────┴────────────┐
+│           C            │
+│                        │
+│ SubtreeTags: bar       │ &lt;-- is missing the inherited &quot;foo&quot; subtree tag
+│                        │
+└────────────────────────┘</p></p>        
         </div>
         <div class="tags">
             
@@ -609,12 +567,13 @@ exists at most once.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_referenceIntegrityIsProvided">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L139">at line 139</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L130">at line 130</a></div>
         <code>                    <abbr title="Neos\Error\Messages\Result">Result</abbr>
     <strong>referenceIntegrityIsProvided</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -649,12 +608,13 @@ exists at most once.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_referencesAreDistinctlySorted">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L155">at line 155</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L146">at line 146</a></div>
         <code>                    <abbr title="Neos\Error\Messages\Result">Result</abbr>
     <strong>referencesAreDistinctlySorted</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -689,12 +649,13 @@ ref - 10 └─────┘
             </div>
                     <div class="method-item">
                     <h3 id="method_allNodesAreConnectedToARootNodePerSubgraph">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L170">at line 170</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L161">at line 161</a></div>
         <code>                    <abbr title="Neos\Error\Messages\Result">Result</abbr>
     <strong>allNodesAreConnectedToARootNodePerSubgraph</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -729,12 +690,13 @@ Checks that per subgraph all nodes are connected to a root node.</p></p>        
             </div>
                     <div class="method-item">
                     <h3 id="method_allNodesHaveAtMostOneParentPerSubgraph">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L183">at line 183</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L174">at line 174</a></div>
         <code>                    <abbr title="Neos\Error\Messages\Result">Result</abbr>
     <strong>allNodesHaveAtMostOneParentPerSubgraph</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -767,12 +729,13 @@ all nodes have exactly one parent (except root nodes which have none).</p></p>  
             </div>
                     <div class="method-item">
                     <h3 id="method_nonRootNodesHaveParents">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L194">at line 194</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L185">at line 185</a></div>
         <code>                    <abbr title="Neos\Error\Messages\Result">Result</abbr>
     <strong>nonRootNodesHaveParents</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -803,12 +766,13 @@ all nodes have exactly one parent (except root nodes which have none).</p></p>  
             </div>
                     <div class="method-item">
                     <h3 id="method_nodeAggregateIdsAreUniquePerSubgraph">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L206">at line 206</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L197">at line 197</a></div>
         <code>                    <abbr title="Neos\Error\Messages\Result">Result</abbr>
     <strong>nodeAggregateIdsAreUniquePerSubgraph</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -840,12 +804,13 @@ a Node Aggregate id does not appear more than once.</p></p>                <p><p
             </div>
                     <div class="method-item">
                     <h3 id="method_nodeAggregatesAreConsistentlyTypedPerContentStream">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L219">at line 219</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L210">at line 210</a></div>
         <code>                    <abbr title="Neos\Error\Messages\Result">Result</abbr>
     <strong>nodeAggregatesAreConsistentlyTypedPerContentStream</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -878,12 +843,13 @@ the same NodeType in all variants.</p></p>                <p><p>╱      ╲  &l
             </div>
                     <div class="method-item">
                     <h3 id="method_nodeAggregatesAreConsistentlyClassifiedPerContentStream">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L232">at line 232</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L223">at line 223</a></div>
         <code>                    <abbr title="Neos\Error\Messages\Result">Result</abbr>
     <strong>nodeAggregatesAreConsistentlyClassifiedPerContentStream</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -916,12 +882,13 @@ the same classification in all variants.</p></p>                <p><p>╱       
             </div>
                     <div class="method-item">
                     <h3 id="method_childNodeCoverageIsASubsetOfParentNodeCoverage">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L251">at line 251</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L242">at line 242</a></div>
         <code>                    <abbr title="Neos\Error\Messages\Result">Result</abbr>
     <strong>childNodeCoverageIsASubsetOfParentNodeCoverage</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -960,12 +927,13 @@ the same classification in all variants.</p></p>                <p><p>╱       
             </div>
                     <div class="method-item">
                     <h3 id="method_allNodesCoverTheirOrigin">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L262">at line 262</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ProjectionIntegrityViolationDetectorInterface.php#L253">at line 253</a></div>
         <code>                    <abbr title="Neos\Error\Messages\Result">Result</abbr>
     <strong>allNodesCoverTheirOrigin</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

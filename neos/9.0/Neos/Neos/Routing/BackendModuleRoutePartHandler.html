@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_Routing_BackendModuleRoutePartHandler" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Neos_Routing_BackendModuleRoutePartHandler" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -81,6 +93,7 @@
     <strong>BackendModuleRoutePartHandler</strong>        extends <abbr title="Neos\Flow\Mvc\Routing\DynamicRoutePart">DynamicRoutePart</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Routing/BackendModuleRoutePartHandler.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -177,7 +190,7 @@ accordingly</p></p>                </div>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_resolveValue">resolveValue</a>(<abbr title="Neos\Neos\Routing\array&lt;string,mixed&gt;">array&lt;string,mixed&gt;</abbr>|null|string $value)
+                    <a href="#method_resolveValue">resolveValue</a>(<abbr title="Neos\Neos\Routing\array&lt;string, mixed&gt;">array&lt;string, mixed&gt;</abbr>|null|string $value)
         
                                             <p><p>Iterate through the configured modules, find the matching module and set
 the route path accordingly</p></p>                </div>
@@ -197,6 +210,7 @@ the route path accordingly</p></p>                </div>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -240,6 +254,7 @@ the route path accordingly</p></p>                </div>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -284,6 +299,7 @@ accordingly</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -323,10 +339,11 @@ accordingly</p></p>
                     <h3 id="method_resolveValue">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Routing/BackendModuleRoutePartHandler.php#L139">at line 139</a></div>
         <code>            protected        bool
-    <strong>resolveValue</strong>(<abbr title="Neos\Neos\Routing\array&lt;string,mixed&gt;">array&lt;string,mixed&gt;</abbr>|null|string $value)
+    <strong>resolveValue</strong>(<abbr title="Neos\Neos\Routing\array&lt;string, mixed&gt;">array&lt;string, mixed&gt;</abbr>|null|string $value)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -339,7 +356,7 @@ the route path accordingly</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\Neos\Routing\array&lt;string,mixed&gt;">array&lt;string,mixed&gt;</abbr>|null|string</td>
+                <td><abbr title="Neos\Neos\Routing\array&lt;string, mixed&gt;">array&lt;string, mixed&gt;</abbr>|null|string</td>
                 <td>$value</td>
                 <td><p>(contains action, controller and package of the module controller)</p></td>
             </tr>

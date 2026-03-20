@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../../../fonts/doctum-font.css">
         <script src="../../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../../doctum.js"></script>
         <script async defer src="../../../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../../../js/typeahead.min.js"></script>
-        <script src="../../../../../../doctum.js"></script>
+        <script async defer src="../../../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_Infrastructure_Property_Normalizer_ValueObjectStringDenormalizer" data-root-path="../../../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_Infrastructure_Property_Normalizer_ValueObjectStringDenormalizer" data-root-path="../../../../../../" data-search-index-url="../../../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,10 +90,10 @@
 
     
     <p>final         class
-    <strong>ValueObjectStringDenormalizer</strong>        implements
-        <abbr title="Symfony\Component\Serializer\Normalizer\DenormalizerInterface">DenormalizerInterface</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/Normalizer/ValueObjectStringDenormalizer.php">View source</a>)
+    <strong>ValueObjectStringDenormalizer</strong>        implements        <abbr title="Symfony\Component\Serializer\Normalizer\DenormalizerInterface">DenormalizerInterface</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/Normalizer/ValueObjectStringDenormalizer.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -98,7 +110,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_denormalize">denormalize</a>($data, $type, string $format = null, array $context = [])
+                    <a href="#method_denormalize">denormalize</a>($data, $type, string|null $format = null, array $context = [])
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -109,7 +121,7 @@
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_supportsDenormalization">supportsDenormalization</a>($data, $type, string $format = null)
+                    <a href="#method_supportsDenormalization">supportsDenormalization</a>($data, $type, string|null $format = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -125,10 +137,11 @@
                     <h3 id="method_denormalize">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/Normalizer/ValueObjectStringDenormalizer.php#L17">at line 17</a></div>
         <code>                    
-    <strong>denormalize</strong>($data, $type, string $format = null, array $context = [])
+    <strong>denormalize</strong>($data, $type, string|null $format = null, array $context = [])
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -151,7 +164,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$format</td>
                 <td></td>
             </tr>
@@ -174,10 +187,11 @@
                     <h3 id="method_supportsDenormalization">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Infrastructure/Property/Normalizer/ValueObjectStringDenormalizer.php#L22">at line 22</a></div>
         <code>                    bool
-    <strong>supportsDenormalization</strong>($data, $type, string $format = null)
+    <strong>supportsDenormalization</strong>($data, $type, string|null $format = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -200,7 +214,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$format</td>
                 <td></td>
             </tr>

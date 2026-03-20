@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
         <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
         <script async defer src="../../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../../js/typeahead.min.js"></script>
-        <script src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_Feature_NodeModification_NodeModification" data-root-path="../../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_Feature_NodeModification_NodeModification" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
                         <table>
             <tr>
@@ -101,7 +114,7 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr>
+                    <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a>
                 </div>
                 <div class="col-md-8">
                     <a href="#method_requireNodeType">requireNodeType</a>(<a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
@@ -112,10 +125,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr>
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_requireProjectedNodeAggregate">requireProjectedNodeAggregate</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <a href="#method_requireProjectedNodeAggregate">requireProjectedNodeAggregate</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -129,12 +142,13 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_requireNodeType">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/NodeModification.php#L38">at line 38</a></div>
-        <code>    abstract        protected        <abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/NodeModification.php#L39">at line 39</a></div>
+        <code>    abstract        protected        <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a>
     <strong>requireNodeType</strong>(<a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -158,7 +172,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeType.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeType">NodeType</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -172,12 +186,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_requireProjectedNodeAggregate">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/NodeModification.php#L40">at line 40</a></div>
-        <code>    abstract        protected        <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr>
-    <strong>requireProjectedNodeAggregate</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId, <abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Feature/NodeModification/NodeModification.php#L41">at line 41</a></div>
+        <code>    abstract        protected        <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a>
+    <strong>requireProjectedNodeAggregate</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a> $contentGraph, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -190,18 +205,13 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentGraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphInterface">ContentGraphInterface</abbr></a></td>
+                <td>$contentGraph</td>
                 <td></td>
             </tr>
                     <tr>
                 <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
                 <td>$nodeAggregateId</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></td>
-                <td>$contentRepository</td>
                 <td></td>
             </tr>
             </table>
@@ -211,7 +221,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a></td>
             <td></td>
         </tr>
     </table>

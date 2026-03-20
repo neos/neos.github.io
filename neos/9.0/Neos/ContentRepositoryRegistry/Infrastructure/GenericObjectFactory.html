@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepositoryRegistry_Infrastructure_GenericObjectFactory" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_ContentRepositoryRegistry_Infrastructure_GenericObjectFactory" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -94,10 +107,10 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    object
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_create">create</a>(string $className, ...$arguments)
+                    <a href="#method_create">create</a>(string $className, mixed ...$arguments)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -111,12 +124,13 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepositoryRegistry/Classes/Infrastructure/GenericObjectFactory.php#L22">at line 22</a></div>
-        <code>                    
-    <strong>create</strong>(string $className, ...$arguments)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepositoryRegistry/Classes/Infrastructure/GenericObjectFactory.php#L25">at line 25</a></div>
+        <code>                    object
+    <strong>create</strong>(string $className, mixed ...$arguments)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -134,13 +148,22 @@
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>mixed</td>
                 <td>...$arguments</td>
                 <td></td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
             

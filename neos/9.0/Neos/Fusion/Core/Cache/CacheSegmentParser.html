@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Fusion_Core_Cache_CacheSegmentParser" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Fusion_Core_Cache_CacheSegmentParser" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -81,6 +93,7 @@
     <strong>CacheSegmentParser</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -209,7 +222,7 @@ be retrieved via getCacheSegments() and stored in a cache.</p></p>              
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_extractContent">extractContent</a>(int $fromPosition, int $toPosition = null)
+                    <a href="#method_extractContent">extractContent</a>(int $fromPosition, int|null $toPosition = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -227,7 +240,7 @@ be retrieved via getCacheSegments() and stored in a cache.</p></p>              
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int|bool
+                    int|false
                 </div>
                 <div class="col-md-8">
                     <a href="#method_calculateNextTokenPosition">calculateNextTokenPosition</a>(int $currentPosition, string $token)
@@ -287,12 +300,13 @@ be used for their entries when the segments are stored in a persistent cache.</p
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L66">at line 66</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L69">at line 69</a></div>
         <code>                    
     <strong>__construct</strong>(string $content, string $randomCacheMarker = &#039;&#039;)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -335,12 +349,13 @@ be retrieved via getCacheSegments() and stored in a cache.</p></p>              
             </div>
                     <div class="method-item">
                     <h3 id="method_parseSegment">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L114">at line 114</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L117">at line 117</a></div>
         <code>            protected        array
     <strong>parseSegment</strong>(int $currentPosition)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -395,12 +410,13 @@ be retrieved via getCacheSegments() and stored in a cache.</p></p>              
             </div>
                     <div class="method-item">
                     <h3 id="method_extractContentAndSubSegments">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L182">at line 182</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L185">at line 185</a></div>
         <code>            protected        array
     <strong>extractContentAndSubSegments</strong>(int $currentPosition, array $segmentData)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -443,12 +459,13 @@ be retrieved via getCacheSegments() and stored in a cache.</p></p>              
             </div>
                     <div class="method-item">
                     <h3 id="method_reduceSegmentDataToCacheRelevantInformation">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L225">at line 225</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L229">at line 229</a></div>
         <code>            protected        array
     <strong>reduceSegmentDataToCacheRelevantInformation</strong>(array $segmentData)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -485,12 +502,13 @@ be retrieved via getCacheSegments() and stored in a cache.</p></p>              
             </div>
                     <div class="method-item">
                     <h3 id="method_extractContent">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L240">at line 240</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L244">at line 244</a></div>
         <code>            protected        string
-    <strong>extractContent</strong>(int $fromPosition, int $toPosition = null)
+    <strong>extractContent</strong>(int $fromPosition, int|null $toPosition = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -508,7 +526,7 @@ be retrieved via getCacheSegments() and stored in a cache.</p></p>              
                 <td></td>
             </tr>
                     <tr>
-                <td>int</td>
+                <td>int|null</td>
                 <td>$toPosition</td>
                 <td></td>
             </tr>
@@ -533,12 +551,13 @@ be retrieved via getCacheSegments() and stored in a cache.</p></p>              
             </div>
                     <div class="method-item">
                     <h3 id="method_calculateCurrentPosition">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L256">at line 256</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L260">at line 260</a></div>
         <code>            protected        int
     <strong>calculateCurrentPosition</strong>(int $position)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -575,12 +594,13 @@ be retrieved via getCacheSegments() and stored in a cache.</p></p>              
             </div>
                     <div class="method-item">
                     <h3 id="method_calculateNextTokenPosition">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L268">at line 268</a></div>
-        <code>            protected        int|bool
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L272">at line 272</a></div>
+        <code>            protected        int|false
     <strong>calculateNextTokenPosition</strong>(int $currentPosition, string $token)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -608,7 +628,7 @@ be retrieved via getCacheSegments() and stored in a cache.</p></p>              
 
                     <table class="table table-condensed">
         <tr>
-            <td>int|bool</td>
+            <td>int|false</td>
             <td><p>Position of the token or false if the token was not found</p></td>
         </tr>
     </table>
@@ -622,12 +642,13 @@ be retrieved via getCacheSegments() and stored in a cache.</p></p>              
             </div>
                     <div class="method-item">
                     <h3 id="method_getOutput">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L279">at line 279</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L283">at line 283</a></div>
         <code>                    string
     <strong>getOutput</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -655,12 +676,13 @@ content is suitable for being used as output for the user.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCacheSegments">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L290">at line 290</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L294">at line 294</a></div>
         <code>                    array
     <strong>getCacheSegments</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -688,12 +710,13 @@ be used for their entries when the segments are stored in a persistent cache.</p
             </div>
                     <div class="method-item">
                     <h3 id="method_getUncachedPartCount">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L298">at line 298</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L302">at line 302</a></div>
         <code>                    int
     <strong>getUncachedPartCount</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -721,12 +744,13 @@ be used for their entries when the segments are stored in a persistent cache.</p
             </div>
                     <div class="method-item">
                     <h3 id="method_getOuterSegmentContent">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L306">at line 306</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/CacheSegmentParser.php#L310">at line 310</a></div>
         <code>                    string
     <strong>getOuterSegmentContent</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

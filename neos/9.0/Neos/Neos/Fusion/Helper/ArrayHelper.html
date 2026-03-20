@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_Fusion_Helper_ArrayHelper" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Neos_Fusion_Helper_ArrayHelper" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,10 +90,10 @@
 
     
     <p>        class
-    <strong>ArrayHelper</strong>        implements
-        <abbr title="Neos\Eel\ProtectedContextAwareInterface">ProtectedContextAwareInterface</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/ArrayHelper.php">View source</a>)
+    <strong>ArrayHelper</strong>        implements        <abbr title="Neos\Eel\ProtectedContextAwareInterface">ProtectedContextAwareInterface</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/ArrayHelper.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -89,7 +101,17 @@
             <div class="description">
             <p><p>Some Functional Programming Array helpers for Eel contexts</p></p>            <p><p>These helpers are <em>WORK IN PROGRESS</em> and <em>NOT STABLE YET</em></p></p>        </div>
             
+                <h2>Traits</h2>
+
         
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../../Neos/Fusion/Service/RenderAttributesTrait.html"><abbr title="Neos\Fusion\Service\RenderAttributesTrait">RenderAttributesTrait</abbr></a>    </div>
+                <div class="col-md-6"></div>
+            </div>
+            </div>
+    
     
     
             <h2>Methods</h2>
@@ -97,32 +119,54 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_filter">filter</a>(array|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string,mixed&gt;">string,mixed&gt;</abbr> $set, string $filterProperty)
+                    <a href="#method_renderAttributes">renderAttributes</a>(<abbr title="Neos\Fusion\Service\iterable">iterable</abbr> $attributes, bool $allowEmpty = true)
+        
+                                            <p><p>Render the tag attributes for the given key-&gt;values as string,
+if a value is an iterable it will be concatenated with spaces as separator</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../Neos/Fusion/Service/RenderAttributesTrait.html#method_renderAttributes">
+<abbr title="Neos\Fusion\Service\RenderAttributesTrait">RenderAttributesTrait</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_filter">filter</a>(mixed[]|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string, mixed&gt;">string, mixed&gt;</abbr> $set, string $filterProperty)
         
                                             <p><p>Filter an array of objects, by only keeping the elements where each object's $filterProperty evaluates to true.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    mixed[]
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_filterNegated">filterNegated</a>(array|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string,mixed&gt;">string,mixed&gt;</abbr> $set, string $filterProperty)
+                    <a href="#method_filterNegated">filterNegated</a>(mixed[]|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string, mixed&gt;">string, mixed&gt;</abbr> $set, string $filterProperty)
         
                                             <p><p>Filter an array of objects, by only keeping the elements where each object's $filterProperty evaluates to false.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    mixed[]
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_filterInternal">filterInternal</a>(array|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string,mixed&gt;">string,mixed&gt;</abbr> $set, string $filterProperty, bool $negate)
+                    <a href="#method_filterInternal">filterInternal</a>(mixed[]|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string, mixed&gt;">string, mixed&gt;</abbr> $set, string $filterProperty, bool $negate)
         
                                             <p><p>Internal method for filtering</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed[]
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_groupBy">groupBy</a>(mixed[]|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string, mixed&gt;">string, mixed&gt;</abbr> $set, string $groupingKey)
+        
+                                            <p><p>The input is assumed to be an array or Collection of objects.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -130,9 +174,19 @@
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_groupBy">groupBy</a>(array|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string,mixed&gt;">string,mixed&gt;</abbr> $set, string $groupingKey)
+                    <a href="#method_sortByPropertyPath">sortByPropertyPath</a>(array $set, string $positionPropertyPath = &#039;position&#039;)
         
-                                            <p><p>The input is assumed to be an array or Collection of objects.</p></p>                </div>
+                                            <p><p>Sorts the input array by the $positionProperty of each element.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_toHtmlAttributesString">toHtmlAttributesString</a>(array $attributes)
+        
+                                            <p><p>Converts an array into an HTML attributes string like 'class=&quot;foo&quot; id=&quot;bar&quot;'</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -152,13 +206,64 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_filter">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/ArrayHelper.php#L38">at line 38</a></div>
-        <code>                    array
-    <strong>filter</strong>(array|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string,mixed&gt;">string,mixed&gt;</abbr> $set, string $filterProperty)
+                    <h3 id="method_renderAttributes">
+        <div class="location">in <a href="../../../../Neos/Fusion/Service/RenderAttributesTrait.html#method_renderAttributes">
+<abbr title="Neos\Fusion\Service\RenderAttributesTrait">RenderAttributesTrait</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Service/RenderAttributesTrait.php#L28">at line 28</a></div>
+        <code>            protected        string
+    <strong>renderAttributes</strong>(<abbr title="Neos\Fusion\Service\iterable">iterable</abbr> $attributes, bool $allowEmpty = true)
         </code>
     </h3>
     <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Render the tag attributes for the given key-&gt;values as string,
+if a value is an iterable it will be concatenated with spaces as separator</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Fusion\Service\iterable">iterable</abbr></td>
+                <td>$attributes</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$allowEmpty</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_filter">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/ArrayHelper.php#L42">at line 42</a></div>
+        <code>                    mixed[]
+    <strong>filter</strong>(mixed[]|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string, mixed&gt;">string, mixed&gt;</abbr> $set, string $filterProperty)
+        </code>
+    </h3>
+    <div class="details">    
+            
     
             
 
@@ -170,7 +275,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string,mixed&gt;">string,mixed&gt;</abbr></td>
+                <td>mixed[]|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string, mixed&gt;">string, mixed&gt;</abbr></td>
                 <td>$set</td>
                 <td></td>
             </tr>
@@ -186,7 +291,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
+            <td>mixed[]</td>
             <td></td>
         </tr>
     </table>
@@ -200,12 +305,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_filterNegated">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/ArrayHelper.php#L50">at line 50</a></div>
-        <code>                    array
-    <strong>filterNegated</strong>(array|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string,mixed&gt;">string,mixed&gt;</abbr> $set, string $filterProperty)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/ArrayHelper.php#L54">at line 54</a></div>
+        <code>                    mixed[]
+    <strong>filterNegated</strong>(mixed[]|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string, mixed&gt;">string, mixed&gt;</abbr> $set, string $filterProperty)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -217,7 +323,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string,mixed&gt;">string,mixed&gt;</abbr></td>
+                <td>mixed[]|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string, mixed&gt;">string, mixed&gt;</abbr></td>
                 <td>$set</td>
                 <td></td>
             </tr>
@@ -233,7 +339,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
+            <td>mixed[]</td>
             <td></td>
         </tr>
     </table>
@@ -247,12 +353,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_filterInternal">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/ArrayHelper.php#L63">at line 63</a></div>
-        <code>            protected        array
-    <strong>filterInternal</strong>(array|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string,mixed&gt;">string,mixed&gt;</abbr> $set, string $filterProperty, bool $negate)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/ArrayHelper.php#L67">at line 67</a></div>
+        <code>            protected        mixed[]
+    <strong>filterInternal</strong>(mixed[]|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string, mixed&gt;">string, mixed&gt;</abbr> $set, string $filterProperty, bool $negate)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -264,7 +371,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string,mixed&gt;">string,mixed&gt;</abbr></td>
+                <td>mixed[]|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string, mixed&gt;">string, mixed&gt;</abbr></td>
                 <td>$set</td>
                 <td></td>
             </tr>
@@ -285,7 +392,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
+            <td>mixed[]</td>
             <td></td>
         </tr>
     </table>
@@ -299,12 +406,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_groupBy">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/ArrayHelper.php#L87">at line 87</a></div>
-        <code>                    array
-    <strong>groupBy</strong>(array|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string,mixed&gt;">string,mixed&gt;</abbr> $set, string $groupingKey)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/ArrayHelper.php#L91">at line 91</a></div>
+        <code>                    mixed[]
+    <strong>groupBy</strong>(mixed[]|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string, mixed&gt;">string, mixed&gt;</abbr> $set, string $groupingKey)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -316,13 +424,61 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td>array|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string,mixed&gt;">string,mixed&gt;</abbr></td>
+                <td>mixed[]|<abbr title="Doctrine\Common\Collections\Collection&lt;int">Collection&lt;int</abbr>|<abbr title="Neos\Neos\Fusion\Helper\string, mixed&gt;">string, mixed&gt;</abbr></td>
                 <td>$set</td>
                 <td></td>
             </tr>
                     <tr>
                 <td>string</td>
                 <td>$groupingKey</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed[]</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_sortByPropertyPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/ArrayHelper.php#L106">at line 106</a></div>
+        <code>                    array
+    <strong>sortByPropertyPath</strong>(array $set, string $positionPropertyPath = &#039;position&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Sorts the input array by the $positionProperty of each element.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$set</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$positionPropertyPath</td>
                 <td></td>
             </tr>
             </table>
@@ -345,13 +501,57 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_toHtmlAttributesString">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/ArrayHelper.php#L116">at line 116</a></div>
+        <code>                    string
+    <strong>toHtmlAttributesString</strong>(array $attributes)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Converts an array into an HTML attributes string like 'class=&quot;foo&quot; id=&quot;bar&quot;'</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$attributes</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_allowsCallOfMethod">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/ArrayHelper.php#L103">at line 103</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/Helper/ArrayHelper.php#L127">at line 127</a></div>
         <code>                    bool
     <strong>allowsCallOfMethod</strong>(string $methodName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

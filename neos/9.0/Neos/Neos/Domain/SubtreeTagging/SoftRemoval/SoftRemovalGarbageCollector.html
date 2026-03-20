@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\Neos\Domain\SubtreeTagging\SoftRemoval\SoftRemovalGarbageCollector | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
+        <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (9.0)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_Neos_Domain_SubtreeTagging_SoftRemoval_SoftRemovalGarbageCollector" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/Neos/Domain.html">Domain</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/Neos/Domain/SubtreeTagging.html">SubtreeTagging</a></li><li class="backslash">\</li><li><a href="../../../../../Neos/Neos/Domain/SubtreeTagging/SoftRemoval.html">SoftRemoval</a></li><li class="backslash">\</li><li>SoftRemovalGarbageCollector</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>SoftRemovalGarbageCollector    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>SoftRemovalGarbageCollector</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/SubtreeTagging/SoftRemoval/SoftRemovalGarbageCollector.php">View source</a>)
+</p>
+
+        
+        
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;safe to run at any time, but manual runs should be unnecessary</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+            <div class="description">
+            <p><p>Service that detects which soft removals in a content repository can be safely transformed to hard removals
+and executes those.</p></p>            <p><p><em>Invalidation</em></p>
+<p>Triggering of the soft removal garbage collection is done via the {\Neos\Neos\Domain\Service\WorkspacePublishingService}</p>
+<p>For these commands the contents of the workspace change and afterward there are less pending changes - e.g. less impending conflicts.
+Which means that we can trigger the garbage collection in hope to have something cleaned up.</p>
+<ul>
+<li>PublishWorkspace</li>
+<li>PublishIndividualNodesFromWorkspace</li>
+<li>DiscardIndividualNodesFromWorkspace</li>
+<li>DiscardWorkspace</li>
+<li>DeleteWorkspace</li>
+<li>RebaseWorkspace</li>
+</ul>
+<p>The command <code>RebaseWorkspace</code> is a special case. Because (expect for force-rebase with dropped changes) no changes are expected to be dropped
+and thus there are no subtractions from the impending conflicts. Instead, the rebase takes care of synchronizing the new soft removals into the workspace.
+New soft removals can either cause new impending conflicts or free the claim of the workspace as the node will no longer be visible.</p>
+<p><em>Implementation</em></p>
+<p>The detection/execution is done in the following steps:
+1) find all soft removals in the root workspace live {\Neos\Neos\Domain\SubtreeTagging\SoftRemoval\self::findNodeAggregatesInWorkspaceByExplicitRemovedTag()}
+For each soft removal:
+2) check if any workspace objects to the transformation
+2.a) by not knowing about the soft removal yet {\Neos\Neos\Domain\SubtreeTagging\SoftRemoval\self::withVisibleInDependingWorkspacesConflicts()}
+2.b) by having pending changes inside the synchronized soft removal {\Neos\Neos\Domain\SubtreeTagging\SoftRemoval\self::withImpendingHardRemovalConflicts()}
+3) if there are no impending conflicts, execute the hard removal on the root workspace {\Neos\Neos\Domain\SubtreeTagging\SoftRemoval\self::hardRemoveNodesInDimensionsThatImposeNoConflicts}
+4) the hard removal will then propagate to the other workspace automatically via rebase</p>
+<p><em>Sync vs async</em></p>
+<p>In the future we could allow to disable the garbage collection being run synchronously but offer an async job.</p>
+<p><em>Impediments</em></p>
+<p>In a single user system the garbage collection will immediately turn the users workspace outdated after publishing a non-conflicting removal.</p></p>        </div>
+            
+        
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<a href="../../../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a> $contentRepositoryRegistry, <a href="../../../../../Neos/Neos/Domain/SubtreeTagging/SoftRemoval/ImpendingHardRemovalConflictRepository.html"><abbr title="Neos\Neos\Domain\SubtreeTagging\SoftRemoval\ImpendingHardRemovalConflictRepository">ImpendingHardRemovalConflictRepository</abbr></a> $impendingConflictRepository, <abbr title="Neos\Flow\Security\Context">Context</abbr> $securityContext)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_run">run</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/ContentRepository/ContentRepositoryId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId">ContentRepositoryId</abbr></a> $contentRepositoryId)
+        
+                                            <p><p>Entry point to trigger the hard removal</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/SubtreeTagging/SoftRemoval/SoftRemovalGarbageCollector.php#L76">at line 76</a></div>
+        <code>                    
+    <strong>__construct</strong>(<a href="../../../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a> $contentRepositoryRegistry, <a href="../../../../../Neos/Neos/Domain/SubtreeTagging/SoftRemoval/ImpendingHardRemovalConflictRepository.html"><abbr title="Neos\Neos\Domain\SubtreeTagging\SoftRemoval\ImpendingHardRemovalConflictRepository">ImpendingHardRemovalConflictRepository</abbr></a> $impendingConflictRepository, <abbr title="Neos\Flow\Security\Context">Context</abbr> $securityContext)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a></td>
+                <td>$contentRepositoryRegistry</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a href="../../../../../Neos/Neos/Domain/SubtreeTagging/SoftRemoval/ImpendingHardRemovalConflictRepository.html"><abbr title="Neos\Neos\Domain\SubtreeTagging\SoftRemoval\ImpendingHardRemovalConflictRepository">ImpendingHardRemovalConflictRepository</abbr></a></td>
+                <td>$impendingConflictRepository</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\Security\Context">Context</abbr></td>
+                <td>$securityContext</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_run">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Domain/SubtreeTagging/SoftRemoval/SoftRemovalGarbageCollector.php#L86">at line 86</a></div>
+        <code>                    void
+    <strong>run</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/ContentRepository/ContentRepositoryId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId">ContentRepositoryId</abbr></a> $contentRepositoryId)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Entry point to trigger the hard removal</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/ContentRepository/ContentRepositoryId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId">ContentRepositoryId</abbr></a></td>
+                <td>$contentRepositoryId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>

@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
         <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
         <script async defer src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/typeahead.min.js"></script>
-        <script src="../../doctum.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="namespace" data-name="namespace:Neos_Fusion_FusionObjects" data-root-path="../../">
+    <body id="namespace" data-name="namespace:Neos_Fusion_FusionObjects" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -88,11 +100,6 @@
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                    <a href="../../Neos/Fusion/FusionObjects/AbstractCollectionImplementation.html"><abbr title="Neos\Fusion\FusionObjects\AbstractCollectionImplementation">AbstractCollectionImplementation</abbr></a>    <small><span class="label label-danger">deprecated</span></small></div>
-                <div class="col-md-6"><p>Abstract implementation of a collection renderer for Fusion.</p></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
                     <a href="../../Neos/Fusion/FusionObjects/AbstractFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a>    </div>
                 <div class="col-md-6"><p>Base class for all Fusion objects</p></div>
             </div>
@@ -100,16 +107,6 @@
                 <div class="col-md-6">
                     <a href="../../Neos/Fusion/FusionObjects/ActionUriImplementation.html"><abbr title="Neos\Fusion\FusionObjects\ActionUriImplementation">ActionUriImplementation</abbr></a>    </div>
                 <div class="col-md-6"><p>A Fusion ActionUri object</p></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
-                    <a href="../../Neos/Fusion/FusionObjects/ArrayImplementation.html"><abbr title="Neos\Fusion\FusionObjects\ArrayImplementation">ArrayImplementation</abbr></a>    <small><span class="label label-danger">deprecated</span></small></div>
-                <div class="col-md-6"><p>The old &quot;COA&quot; object</p></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
-                    <a href="../../Neos/Fusion/FusionObjects/AttributesImplementation.html"><abbr title="Neos\Fusion\FusionObjects\AttributesImplementation">AttributesImplementation</abbr></a>    <small><span class="label label-danger">deprecated</span></small></div>
-                <div class="col-md-6"><p>Renders a string of xml attributes from the properties of this Fusion object.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -125,11 +122,6 @@
                 <div class="col-md-6">
                     <a href="../../Neos/Fusion/FusionObjects/CaseImplementation.html"><abbr title="Neos\Fusion\FusionObjects\CaseImplementation">CaseImplementation</abbr></a>    </div>
                 <div class="col-md-6"><p>Case Fusion Object</p></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
-                    <a href="../../Neos/Fusion/FusionObjects/CollectionImplementation.html"><abbr title="Neos\Fusion\FusionObjects\CollectionImplementation">CollectionImplementation</abbr></a>    <small><span class="label label-danger">deprecated</span></small></div>
-                <div class="col-md-6"><p>Render a Fusion collection of nodes</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -190,16 +182,6 @@
                 <div class="col-md-6">
                     <a href="../../Neos/Fusion/FusionObjects/MemoImplementation.html"><abbr title="Neos\Fusion\FusionObjects\MemoImplementation">MemoImplementation</abbr></a>    </div>
                 <div class="col-md-6"><p>Memo object that returns the result of previous calls with the same &quot;discriminator&quot;</p></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
-                    <a href="../../Neos/Fusion/FusionObjects/RawArrayImplementation.html"><abbr title="Neos\Fusion\FusionObjects\RawArrayImplementation">RawArrayImplementation</abbr></a>    <small><span class="label label-danger">deprecated</span></small></div>
-                <div class="col-md-6"><p>Evaluate sub objects to an array (instead of a string as ArrayImplementation does)</p></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
-                    <a href="../../Neos/Fusion/FusionObjects/RawCollectionImplementation.html"><abbr title="Neos\Fusion\FusionObjects\RawCollectionImplementation">RawCollectionImplementation</abbr></a>    <small><span class="label label-danger">deprecated</span></small></div>
-                <div class="col-md-6"><p>Render a Fusion collection of nodes as an array</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">

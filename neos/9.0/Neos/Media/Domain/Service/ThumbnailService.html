@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Media_Domain_Service_ThumbnailService" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Media_Domain_Service_ThumbnailService" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -81,6 +93,7 @@
     <strong>ThumbnailService</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -173,7 +186,7 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Media\Domain\Service\Neos\Media\Domain\Model\ImageInterface">ImageInterface</abbr>|null
+                    <a href="../../../../Neos/Media/Domain/Model/ImageInterface.html"><abbr title="Neos\Media\Domain\Model\ImageInterface">ImageInterface</abbr></a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getThumbnail">getThumbnail</a>(<a href="../../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a> $asset, <a href="../../../../Neos/Media/Domain/Model/ThumbnailConfiguration.html"><abbr title="Neos\Media\Domain\Model\ThumbnailConfiguration">ThumbnailConfiguration</abbr></a> $configuration)
@@ -274,11 +287,12 @@ to the given one PLUS setting of the target-format</p></p>                </div>
                     <div class="method-item">
                     <h3 id="method_getThumbnail">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L98">at line 98</a></div>
-        <code>                    <abbr title="Neos\Media\Domain\Service\Neos\Media\Domain\Model\ImageInterface">ImageInterface</abbr>|null
+        <code>                    <a href="../../../../Neos/Media/Domain/Model/ImageInterface.html"><abbr title="Neos\Media\Domain\Model\ImageInterface">ImageInterface</abbr></a>|null
     <strong>getThumbnail</strong>(<a href="../../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a> $asset, <a href="../../../../Neos/Media/Domain/Model/ThumbnailConfiguration.html"><abbr title="Neos\Media\Domain\Model\ThumbnailConfiguration">ThumbnailConfiguration</abbr></a> $configuration)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -307,7 +321,7 @@ the original asset is used.</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Media\Domain\Service\Neos\Media\Domain\Model\ImageInterface">ImageInterface</abbr>|null</td>
+            <td><a href="../../../../Neos/Media/Domain/Model/ImageInterface.html"><abbr title="Neos\Media\Domain\Model\ImageInterface">ImageInterface</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -330,12 +344,13 @@ the original asset is used.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPresets">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L167">at line 167</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L175">at line 175</a></div>
         <code>                    array
     <strong>getPresets</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -363,12 +378,13 @@ the original asset is used.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getThumbnailConfigurationForPreset">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L178">at line 178</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L186">at line 186</a></div>
         <code>                    <a href="../../../../Neos/Media/Domain/Model/ThumbnailConfiguration.html"><abbr title="Neos\Media\Domain\Model\ThumbnailConfiguration">ThumbnailConfiguration</abbr></a>
     <strong>getThumbnailConfigurationForPreset</strong>(string $preset, bool $async = false)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -420,12 +436,13 @@ the original asset is used.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_applyFormatToThumbnailConfiguration">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L205">at line 205</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L213">at line 213</a></div>
         <code>            protected        <a href="../../../../Neos/Media/Domain/Model/ThumbnailConfiguration.html"><abbr title="Neos\Media\Domain\Model\ThumbnailConfiguration">ThumbnailConfiguration</abbr></a>
     <strong>applyFormatToThumbnailConfiguration</strong>(<a href="../../../../Neos/Media/Domain/Model/ThumbnailConfiguration.html"><abbr title="Neos\Media\Domain\Model\ThumbnailConfiguration">ThumbnailConfiguration</abbr></a> $configuration, string $targetFormat)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -468,12 +485,13 @@ to the given one PLUS setting of the target-format</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_refreshThumbnail">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L231">at line 231</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L239">at line 239</a></div>
         <code>                    void
     <strong>refreshThumbnail</strong>(<a href="../../../../Neos/Media/Domain/Model/Thumbnail.html"><abbr title="Neos\Media\Domain\Model\Thumbnail">Thumbnail</abbr></a> $thumbnail)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -519,12 +537,13 @@ to the given one PLUS setting of the target-format</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getUriForThumbnail">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L246">at line 246</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L254">at line 254</a></div>
         <code>                    string
     <strong>getUriForThumbnail</strong>(<a href="../../../../Neos/Media/Domain/Model/ImageInterface.html"><abbr title="Neos\Media\Domain\Model\ImageInterface">ImageInterface</abbr></a> $thumbnail)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -571,12 +590,13 @@ to the given one PLUS setting of the target-format</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_emitThumbnailRefreshed">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L271">at line 271</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L287">at line 287</a></div>
         <code>                    void
     <strong>emitThumbnailRefreshed</strong>(<a href="../../../../Neos/Media/Domain/Model/Thumbnail.html"><abbr title="Neos\Media\Domain\Model\Thumbnail">Thumbnail</abbr></a> $thumbnail)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -613,12 +633,13 @@ to the given one PLUS setting of the target-format</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_emitThumbnailPersisted">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L282">at line 282</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L298">at line 298</a></div>
         <code>                    void
     <strong>emitThumbnailPersisted</strong>(<a href="../../../../Neos/Media/Domain/Model/Thumbnail.html"><abbr title="Neos\Media\Domain\Model\Thumbnail">Thumbnail</abbr></a> $thumbnail)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -655,12 +676,13 @@ to the given one PLUS setting of the target-format</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_emitThumbnailCreated">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L293">at line 293</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Domain/Service/ThumbnailService.php#L309">at line 309</a></div>
         <code>            protected        void
     <strong>emitThumbnailCreated</strong>(<a href="../../../../Neos/Media/Domain/Model/Thumbnail.html"><abbr title="Neos\Media\Domain\Model\Thumbnail">Thumbnail</abbr></a> $thumbnail)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_FrontendRouting_Projection_DocumentNodeInfo" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Neos_FrontendRouting_Projection_DocumentNodeInfo" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,8 +94,16 @@
 </p>
 
         
-    
         
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;implementation detail to manage document node uris. For resolving please use the NodeUriBuilder and for matching the Router.</td>
+            </tr>
+        </table>
+                &nbsp;
+    
 
             
         
@@ -131,6 +151,28 @@
                 </div>
                 <div class="col-md-8">
                     <a href="#method_withOriginDimensionSpacePoint">withOriginDimensionSpacePoint</a>(<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $originDimensionSpacePoint)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Neos/FrontendRouting/Projection/DocumentNodeInfo.html"><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo">DocumentNodeInfo</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_withUriPath">withUriPath</a>(string $uriPath)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../Neos/Neos/FrontendRouting/Projection/DocumentNodeInfo.html"><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo">DocumentNodeInfo</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_withoutSiblings">withoutSiblings</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -280,10 +322,32 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isRemoved">isRemoved</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     int
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getDisableLevel">getDisableLevel</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getRemovedLevel">getRemovedLevel</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -313,6 +377,17 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    <a href="../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getNodeTypeName">getNodeTypeName</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <abbr title="Neos\Flow\Mvc\Routing\Dto\RouteTags">RouteTags</abbr>
                 </div>
                 <div class="col-md-8">
@@ -324,7 +399,7 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Neos\Domain\Model\SiteNodeName">SiteNodeName</abbr>
+                    <a href="../../../../Neos/Neos/Domain/Model/SiteNodeName.html"><abbr title="Neos\Neos\Domain\Model\SiteNodeName">SiteNodeName</abbr></a>
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getSiteNodeName">getSiteNodeName</a>()
@@ -374,12 +449,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L44">at line 44</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L46">at line 46</a></div>
         <code>                    
     <strong>__construct</strong>(array $source)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -408,12 +484,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_fromDatabaseRow">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L52">at line 52</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L54">at line 54</a></div>
         <code>        static            <a href="../../../../Neos/Neos/FrontendRouting/Projection/DocumentNodeInfo.html"><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo">DocumentNodeInfo</abbr></a>
     <strong>fromDatabaseRow</strong>(array $row)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -451,12 +528,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_withDimensionSpacePoint">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L57">at line 57</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L59">at line 59</a></div>
         <code>                    <a href="../../../../Neos/Neos/FrontendRouting/Projection/DocumentNodeInfo.html"><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo">DocumentNodeInfo</abbr></a>
     <strong>withDimensionSpacePoint</strong>(<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -494,12 +572,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_withOriginDimensionSpacePoint">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L65">at line 65</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L67">at line 67</a></div>
         <code>                    <a href="../../../../Neos/Neos/FrontendRouting/Projection/DocumentNodeInfo.html"><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo">DocumentNodeInfo</abbr></a>
     <strong>withOriginDimensionSpacePoint</strong>(<a href="../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $originDimensionSpacePoint)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -536,13 +615,92 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_withUriPath">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L75">at line 75</a></div>
+        <code>                    <a href="../../../../Neos/Neos/FrontendRouting/Projection/DocumentNodeInfo.html"><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo">DocumentNodeInfo</abbr></a>
+    <strong>withUriPath</strong>(string $uriPath)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$uriPath</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Neos/FrontendRouting/Projection/DocumentNodeInfo.html"><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo">DocumentNodeInfo</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_withoutSiblings">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L83">at line 83</a></div>
+        <code>                    <a href="../../../../Neos/Neos/FrontendRouting/Projection/DocumentNodeInfo.html"><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo">DocumentNodeInfo</abbr></a>
+    <strong>withoutSiblings</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/Neos/FrontendRouting/Projection/DocumentNodeInfo.html"><abbr title="Neos\Neos\FrontendRouting\Projection\DocumentNodeInfo">DocumentNodeInfo</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getNodeAggregateId">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L73">at line 73</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L92">at line 92</a></div>
         <code>                    <a href="../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>
     <strong>getNodeAggregateId</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -570,12 +728,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_isRoot">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L78">at line 78</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L97">at line 97</a></div>
         <code>                    bool
     <strong>isRoot</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -603,12 +762,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_getParentNodeAggregateId">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L83">at line 83</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L102">at line 102</a></div>
         <code>                    <a href="../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>
     <strong>getParentNodeAggregateId</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -636,12 +796,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_hasPrecedingNodeAggregateId">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L88">at line 88</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L107">at line 107</a></div>
         <code>                    bool
     <strong>hasPrecedingNodeAggregateId</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -669,12 +830,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_getPrecedingNodeAggregateId">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L93">at line 93</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L112">at line 112</a></div>
         <code>                    <a href="../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>
     <strong>getPrecedingNodeAggregateId</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -702,12 +864,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_hasSucceedingNodeAggregateId">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L98">at line 98</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L117">at line 117</a></div>
         <code>                    bool
     <strong>hasSucceedingNodeAggregateId</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -735,12 +898,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_getSucceedingNodeAggregateId">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L103">at line 103</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L122">at line 122</a></div>
         <code>                    <a href="../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>
     <strong>getSucceedingNodeAggregateId</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -768,12 +932,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_getDimensionSpacePointHash">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L108">at line 108</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L127">at line 127</a></div>
         <code>                    string
     <strong>getDimensionSpacePointHash</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -801,12 +966,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_getNodeAggregateIdPath">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L118">at line 118</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L137">at line 137</a></div>
         <code>                    string
     <strong>getNodeAggregateIdPath</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -833,12 +999,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_getUriPath">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L123">at line 123</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L142">at line 142</a></div>
         <code>                    string
     <strong>getUriPath</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -866,12 +1033,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_hasUriPath">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L128">at line 128</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L147">at line 147</a></div>
         <code>                    bool
     <strong>hasUriPath</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -899,12 +1067,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_isShortcut">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L133">at line 133</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L152">at line 152</a></div>
         <code>                    bool
     <strong>isShortcut</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -932,12 +1101,47 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_isDisabled">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L138">at line 138</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L157">at line 157</a></div>
         <code>                    bool
     <strong>isDisabled</strong>()
         </code>
     </h3>
     <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isRemoved">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L162">at line 162</a></div>
+        <code>                    bool
+    <strong>isRemoved</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
     
             
 
@@ -965,12 +1169,47 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_getDisableLevel">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L143">at line 143</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L167">at line 167</a></div>
         <code>                    int
     <strong>getDisableLevel</strong>()
         </code>
     </h3>
     <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getRemovedLevel">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L172">at line 172</a></div>
+        <code>                    int
+    <strong>getRemovedLevel</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
     
             
 
@@ -998,12 +1237,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_getShortcutMode">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L148">at line 148</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L177">at line 177</a></div>
         <code>                    string
     <strong>getShortcutMode</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1031,12 +1271,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_getShortcutTargetUri">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L156">at line 156</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L185">at line 185</a></div>
         <code>                    <abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr>
     <strong>getShortcutTargetUri</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1063,13 +1304,48 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getNodeTypeName">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L196">at line 196</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a>
+    <strong>getNodeTypeName</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getRouteTags">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L174">at line 174</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L207">at line 207</a></div>
         <code>                    <abbr title="Neos\Flow\Mvc\Routing\Dto\RouteTags">RouteTags</abbr>
     <strong>getRouteTags</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1097,12 +1373,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_getSiteNodeName">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L181">at line 181</a></div>
-        <code>                    <abbr title="Neos\Neos\Domain\Model\SiteNodeName">SiteNodeName</abbr>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L214">at line 214</a></div>
+        <code>                    <a href="../../../../Neos/Neos/Domain/Model/SiteNodeName.html"><abbr title="Neos\Neos\Domain\Model\SiteNodeName">SiteNodeName</abbr></a>
     <strong>getSiteNodeName</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1116,7 +1393,7 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Neos\Domain\Model\SiteNodeName">SiteNodeName</abbr></td>
+            <td><a href="../../../../Neos/Neos/Domain/Model/SiteNodeName.html"><abbr title="Neos\Neos\Domain\Model\SiteNodeName">SiteNodeName</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -1130,12 +1407,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_getShortcutTarget">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L189">at line 189</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L222">at line 222</a></div>
         <code>                    array
     <strong>getShortcutTarget</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1163,12 +1441,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method_toArray">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L211">at line 211</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L244">at line 244</a></div>
         <code>                    array
     <strong>toArray</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1196,12 +1475,13 @@ we can extract this from the &quot;nodeAggregateIdPath&quot;, which contains the
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L216">at line 216</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/FrontendRouting/Projection/DocumentNodeInfo.php#L249">at line 249</a></div>
         <code>                    string
     <strong>__toString</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

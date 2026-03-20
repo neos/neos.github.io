@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Media_Imagine_Box" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Media_Imagine_Box" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,10 +90,10 @@
 
     
     <p>        class
-    <strong>Box</strong>        implements
-        <abbr title="Imagine\Image\BoxInterface">BoxInterface</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php">View source</a>)
+    <strong>Box</strong>        implements        <abbr title="Imagine\Image\BoxInterface">BoxInterface</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -110,7 +122,7 @@
                 <div class="col-md-8">
                     <a href="#method_getWidth">getWidth</a>()
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -120,7 +132,7 @@
                 <div class="col-md-8">
                     <a href="#method_getHeight">getHeight</a>()
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -130,7 +142,7 @@
                 <div class="col-md-8">
                     <a href="#method_scale">scale</a>($ratio)
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -140,7 +152,7 @@
                 <div class="col-md-8">
                     <a href="#method_increase">increase</a>($size)
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -148,9 +160,9 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_contains">contains</a>(<abbr title="Imagine\Image\BoxInterface">BoxInterface</abbr> $box, <abbr title="Imagine\Image\PointInterface">PointInterface</abbr> $start = null)
+                    <a href="#method_contains">contains</a>(<abbr title="Imagine\Image\BoxInterface">BoxInterface</abbr> $box, <abbr title="Imagine\Image\PointInterface">PointInterface</abbr>|null $start = null)
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -160,7 +172,7 @@
                 <div class="col-md-8">
                     <a href="#method_square">square</a>()
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -170,7 +182,7 @@
                 <div class="col-md-8">
                     <a href="#method___toString">__toString</a>()
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -180,7 +192,7 @@
                 <div class="col-md-8">
                     <a href="#method_widen">widen</a>($width)
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -190,7 +202,7 @@
                 <div class="col-md-8">
                     <a href="#method_heighten">heighten</a>($height)
         
-                                            <p><p>{@inheritdoc}</p></p>                </div>
+                                            <p>{@inheritdoc}</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -201,12 +213,13 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L39">at line 39</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L41">at line 41</a></div>
         <code>                    
     <strong>__construct</strong>(int $width, int $height)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -248,17 +261,18 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getWidth">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L56">at line 56</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L58">at line 58</a></div>
         <code>                    
     <strong>getWidth</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
             
@@ -271,17 +285,18 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getHeight">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L64">at line 64</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L66">at line 66</a></div>
         <code>                    
     <strong>getHeight</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
             
@@ -294,17 +309,18 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_scale">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L72">at line 72</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L74">at line 74</a></div>
         <code>                    
     <strong>scale</strong>($ratio)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -327,17 +343,18 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_increase">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L80">at line 80</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L82">at line 82</a></div>
         <code>                    
     <strong>increase</strong>($size)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -360,17 +377,18 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_contains">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L88">at line 88</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L90">at line 90</a></div>
         <code>                    
-    <strong>contains</strong>(<abbr title="Imagine\Image\BoxInterface">BoxInterface</abbr> $box, <abbr title="Imagine\Image\PointInterface">PointInterface</abbr> $start = null)
+    <strong>contains</strong>(<abbr title="Imagine\Image\BoxInterface">BoxInterface</abbr> $box, <abbr title="Imagine\Image\PointInterface">PointInterface</abbr>|null $start = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -382,7 +400,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Imagine\Image\PointInterface">PointInterface</abbr></td>
+                <td><abbr title="Imagine\Image\PointInterface">PointInterface</abbr>|null</td>
                 <td>$start</td>
                 <td></td>
             </tr>
@@ -398,17 +416,18 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_square">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L98">at line 98</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L100">at line 100</a></div>
         <code>                    
     <strong>square</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
             
@@ -421,17 +440,18 @@
             </div>
                     <div class="method-item">
                     <h3 id="method___toString">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L106">at line 106</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L108">at line 108</a></div>
         <code>                    
     <strong>__toString</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
             
@@ -444,17 +464,18 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_widen">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L114">at line 114</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L116">at line 116</a></div>
         <code>                    
     <strong>widen</strong>($width)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -477,17 +498,18 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_heighten">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L122">at line 122</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Media/Classes/Imagine/Box.php#L124">at line 124</a></div>
         <code>                    
     <strong>heighten</strong>($height)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>{@inheritdoc}</p></p>                        
+                            <p>{@inheritdoc}</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>

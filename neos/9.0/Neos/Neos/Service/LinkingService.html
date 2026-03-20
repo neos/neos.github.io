@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_Service_LinkingService" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Neos_Service_LinkingService" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -72,7 +84,7 @@
         </div>
                 <div id="page-content">
     <div class="page-header">
-        <h1>LinkingService    
+        <h1>LinkingService    <small><span class="label label-danger">deprecated</span></small>
             </h1>
     </div>
 
@@ -82,6 +94,14 @@
 </p>
 
         
+        
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>with</td>
+                    <td>Neos 9. Please use the new {@see \Neos\Neos\FrontendRouting\NodeUriBuilder} instead and for resolving a relative node path {@see \Neos\Neos\Utility\NodePathResolver::resolveNodeAddressByPath()} or utilize the {@see \Neos\Neos\Fusion\Helper\LinkHelper} from Fusion</td>
+                </tr>
+                    </p>
     
         
 
@@ -95,9 +115,7 @@ Example: <code>/sites/acmecom/home/about/us</code></p>
 <p><em><code>node</code> does not start with <code>/</code>:</em>
 The given path is treated as a path relative to the current node.
 Examples: given that the current node is <code>/sites/acmecom/products/</code>,
-<code>stapler</code> results in <code>/sites/acmecom/products/stapler</code>,
-<code>../about</code> results in <code>/sites/acmecom/about/</code>,
-<code>./neos/info</code> results in <code>/sites/acmecom/products/neos/info</code>.</p>
+<code>stapler</code> results in <code>/sites/acmecom/products/stapler</code>,</p>
 <p><em><code>node</code> starts with a tilde character (<code>~</code>):</em>
 The given path is treated as a path relative to the current site node.
 Example: given that the current node is <code>/sites/acmecom/products/</code>,
@@ -105,61 +123,13 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
 <code>~</code> results in <code>/sites/acmecom</code>.</p></p>        </div>
             
         
-            <h2>Constants</h2>    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                                                                                                        PATTERN_SUPPORTED_URIS
-                                    </td>
-                <td class="last">
-                    <p><em><p>Pattern to match supported URIs.</p></em></p>
-                    <p></p>
-                </td>
-            </tr>
-            </table>
-
     
             <h2>Properties</h2>
 
             <table class="table table-condensed">
                     <tr>
-                <td class="type" id="property_assetRepository">
-                                        protected                                        <a href="../../../Neos/Media/Domain/Repository/AssetRepository.html"><abbr title="Neos\Media\Domain\Repository\AssetRepository">AssetRepository</abbr></a>
-                                                                                
-                                    </td>
-                <td>$assetRepository</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_resourceManager">
-                                        protected                                        <abbr title="Neos\Flow\ResourceManagement\ResourceManager">ResourceManager</abbr>
-                                                                                
-                                    </td>
-                <td>$resourceManager</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_nodeShortcutResolver">
-                                        protected                                        <a href="../../../Neos/Neos/FrontendRouting/NodeShortcutResolver.html"><abbr title="Neos\Neos\FrontendRouting\NodeShortcutResolver">NodeShortcutResolver</abbr></a>
-                                                                                
-                                    </td>
-                <td>$nodeShortcutResolver</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_propertyMapper">
-                                        protected                                        <abbr title="Neos\Flow\Property\PropertyMapper">PropertyMapper</abbr>
-                                                                                
-                                    </td>
-                <td>$propertyMapper</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td class="type" id="property_lastLinkedNode">
-                                        protected                                        
+                                        protected                                        <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
                                                                                 
                                     </td>
                 <td>$lastLinkedNode</td>
@@ -194,8 +164,35 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
                 <td></td>
             </tr>
                     <tr>
+                <td class="type" id="property_nodePathResolver">
+                                        protected                                        <a href="../../../Neos/Neos/Utility/NodePathResolver.html"><abbr title="Neos\Neos\Utility\NodePathResolver">NodePathResolver</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodePathResolver</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_legacyNodePathNormalizer">
+                                        protected                                        <a href="../../../Neos/Neos/Utility/LegacyNodePathNormalizer.html"><abbr title="Neos\Neos\Utility\LegacyNodePathNormalizer">LegacyNodePathNormalizer</abbr></a>
+                                                                                
+                                    </td>
+                <td>$legacyNodePathNormalizer</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_newLinkHelper">
+                                        protected                                        <a href="../../../Neos/Neos/Fusion/Helper/LinkHelper.html"><abbr title="Neos\Neos\Fusion\Helper\LinkHelper">LinkHelper</abbr></a>
+                                                                                
+                                    </td>
+                <td>$newLinkHelper</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
                 <td class="type" id="property_contentRepositoryRegistry">
-                                        protected                                        
+                                        protected                                        <a href="../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a>
                                                                                 
                                     </td>
                 <td>$contentRepositoryRegistry</td>
@@ -214,7 +211,7 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
                 </div>
                 <div class="col-md-8">
                     <a href="#method_hasSupportedScheme">hasSupportedScheme</a>(string|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr> $uri)
-        
+        <small><span class="label label-danger">deprecated</span></small>
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
@@ -225,7 +222,7 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getScheme">getScheme</a>(string|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr> $uri)
-        
+        <small><span class="label label-danger">deprecated</span></small>
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
@@ -235,8 +232,8 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
                     string|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_resolveNodeUri">resolveNodeUri</a>(string $uri, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $contextNode, <abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext, bool $absolute = false)
-        
+                    <a href="#method_resolveNodeUri">resolveNodeUri</a>(string $uri, <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $contextNode, <abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext, bool $absolute = false)
+        <small><span class="label label-danger">deprecated</span></small>
                                             <p><p>Resolves a given node:// URI to a &quot;normal&quot; HTTP(S) URI for the addressed node.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -246,17 +243,17 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
                 </div>
                 <div class="col-md-8">
                     <a href="#method_resolveAssetUri">resolveAssetUri</a>(string $uri)
-        
+        <small><span class="label label-danger">deprecated</span></small>
                                             <p><p>Resolves a given asset:// URI to a &quot;normal&quot; HTTP(S) URI for the addressed asset's resource.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|<a href="../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a>|null
+                    <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|<a href="../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a>|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_convertUriToObject">convertUriToObject</a>(string|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr> $uri, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $contextNode = null)
-        
+                    <a href="#method_convertUriToObject">convertUriToObject</a>(string|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr> $uri, <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null $contextNode = null)
+        <small><span class="label label-danger">deprecated</span></small>
                                             <p><p>Return the object the URI addresses or NULL.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -265,8 +262,8 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_createNodeUri">createNodeUri</a>(<abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext, mixed $node = null, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $baseNode = null, string $format = null, bool $absolute = false, array $arguments = [], string $section = &#039;&#039;, bool $addQueryString = false, array $argumentsToBeExcludedFromQueryString = [], bool $resolveShortcuts = true)
-        
+                    <a href="#method_createNodeUri">createNodeUri</a>(<abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext, <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|string|null $node = null, <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null $baseNode = null, string $format = null, bool $absolute = false, array $arguments = [], string $section = &#039;&#039;, bool $addQueryString = false, array $argumentsToBeExcludedFromQueryString = [], bool $resolveShortcuts = true)
+        <small><span class="label label-danger">deprecated</span></small>
                                             <p><p>Renders the URI to a given node instance or -path.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -276,18 +273,18 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
                 </div>
                 <div class="col-md-8">
                     <a href="#method_createSiteUri">createSiteUri</a>(<abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext, <a href="../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a> $site)
-        
+        <small><span class="label label-danger">deprecated</span></small>
                                             <p class="no-description">No description</p>
                                     </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Neos\Service\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+                    <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getLastLinkedNode">getLastLinkedNode</a>()
-        
+        <small><span class="label label-danger">deprecated</span></small>
                                             <p><p>Returns the node that was last used to resolve a link to.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -299,12 +296,20 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_hasSupportedScheme">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Service/LinkingService.php#L131">at line 131</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Service/LinkingService.php#L114">at line 114</a></div>
         <code>                    bool
     <strong>hasSupportedScheme</strong>(string|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr> $uri)
-        </code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>with</td>
+                    <td>Neos 9</td>
+                </tr>
+                    </p>
     
             
 
@@ -342,12 +347,20 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
             </div>
                     <div class="method-item">
                     <h3 id="method_getScheme">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Service/LinkingService.php#L144">at line 144</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Service/LinkingService.php#L124">at line 124</a></div>
         <code>                    string
     <strong>getScheme</strong>(string|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr> $uri)
-        </code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>with</td>
+                    <td>Neos 9</td>
+                </tr>
+                    </p>
     
             
 
@@ -385,12 +398,20 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
             </div>
                     <div class="method-item">
                     <h3 id="method_resolveNodeUri">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Service/LinkingService.php#L170">at line 170</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Service/LinkingService.php#L143">at line 143</a></div>
         <code>                    string|null
-    <strong>resolveNodeUri</strong>(string $uri, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $contextNode, <abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext, bool $absolute = false)
-        </code>
+    <strong>resolveNodeUri</strong>(string $uri, <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $contextNode, <abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext, bool $absolute = false)
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>with</td>
+                    <td>Neos 9</td>
+                </tr>
+                    </p>
     
             
 
@@ -407,7 +428,7 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
                 <td>$contextNode</td>
                 <td></td>
             </tr>
@@ -463,12 +484,20 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
             </div>
                     <div class="method-item">
                     <h3 id="method_resolveAssetUri">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Service/LinkingService.php#L195">at line 195</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Service/LinkingService.php#L173">at line 173</a></div>
         <code>                    string|null
     <strong>resolveAssetUri</strong>(string $uri)
-        </code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>with</td>
+                    <td>Neos 9</td>
+                </tr>
+                    </p>
     
             
 
@@ -505,12 +534,20 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
             </div>
                     <div class="method-item">
                     <h3 id="method_convertUriToObject">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Service/LinkingService.php#L221">at line 221</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|<a href="../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a>|null
-    <strong>convertUriToObject</strong>(string|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr> $uri, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $contextNode = null)
-        </code>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Service/LinkingService.php#L194">at line 194</a></div>
+        <code>                    <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|<a href="../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a>|null
+    <strong>convertUriToObject</strong>(string|<abbr title="Psr\Http\Message\UriInterface">UriInterface</abbr> $uri, <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null $contextNode = null)
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>with</td>
+                    <td>Neos 9</td>
+                </tr>
+                    </p>
     
             
 
@@ -527,7 +564,7 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null</td>
                 <td>$contextNode</td>
                 <td></td>
             </tr>
@@ -538,7 +575,7 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|<a href="../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a>|null</td>
+            <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|<a href="../../../Neos/Media/Domain/Model/AssetInterface.html"><abbr title="Neos\Media\Domain\Model\AssetInterface">AssetInterface</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -552,12 +589,20 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
             </div>
                     <div class="method-item">
                     <h3 id="method_createNodeUri">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Service/LinkingService.php#L277">at line 277</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Service/LinkingService.php#L225">at line 225</a></div>
         <code>                    string
-    <strong>createNodeUri</strong>(<abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext, mixed $node = null, <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $baseNode = null, string $format = null, bool $absolute = false, array $arguments = [], string $section = &#039;&#039;, bool $addQueryString = false, array $argumentsToBeExcludedFromQueryString = [], bool $resolveShortcuts = true)
-        </code>
+    <strong>createNodeUri</strong>(<abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext, <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|string|null $node = null, <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null $baseNode = null, string $format = null, bool $absolute = false, array $arguments = [], string $section = &#039;&#039;, bool $addQueryString = false, array $argumentsToBeExcludedFromQueryString = [], bool $resolveShortcuts = true)
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>with</td>
+                    <td>Neos 9</td>
+                </tr>
+                    </p>
     
             
 
@@ -574,13 +619,13 @@ Example: given that the current node is <code>/sites/acmecom/products/</code>,
                 <td></td>
             </tr>
                     <tr>
-                <td>mixed</td>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|string|null</td>
                 <td>$node</td>
                 <td><p>A node object or a string node path,
 if a relative path is provided the baseNode argument is required</p></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null</td>
                 <td>$baseNode</td>
                 <td></td>
             </tr>
@@ -608,13 +653,13 @@ if a relative path is provided the baseNode argument is required</p></td>
                     <tr>
                 <td>bool</td>
                 <td>$addQueryString</td>
-                <td><p>If set, the current query parameters will be kept in the URI</p></td>
+                <td><p>If set, the current query parameters will be kept in the URI @deprecated see <a href="https://github.com/neos/neos-development-collection/issues/5076">https://github.com/neos/neos-development-collection/issues/5076</a></p></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$argumentsToBeExcludedFromQueryString</td>
                 <td><p>arguments to be removed from the URI.
-Only active if $addQueryString = true</p></td>
+Only active if $addQueryString = true @deprecated see <a href="https://github.com/neos/neos-development-collection/issues/5076">https://github.com/neos/neos-development-collection/issues/5076</a></p></td>
             </tr>
                     <tr>
                 <td>bool</td>
@@ -640,7 +685,7 @@ and log a message if set to FALSE</p></td>
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../Neos/Neos/Exception.html"><abbr title="Neos\Neos\Exception">Exception</abbr></a></td>
-                <td><p>if no URI could be resolved for the given node</p></td>
+                <td></td>
             </tr>
                     <tr>
                 <td><abbr title="Neos\Flow\Mvc\Routing\Exception\MissingActionNameException">MissingActionNameException</abbr></td>
@@ -672,12 +717,20 @@ and log a message if set to FALSE</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_createSiteUri">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Service/LinkingService.php#L390">at line 390</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Service/LinkingService.php#L337">at line 337</a></div>
         <code>                    string
     <strong>createSiteUri</strong>(<abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext, <a href="../../../Neos/Neos/Domain/Model/Site.html"><abbr title="Neos\Neos\Domain\Model\Site">Site</abbr></a> $site)
-        </code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>with</td>
+                    <td>Neos 9 - todo find alternative</td>
+                </tr>
+                    </p>
     
             
 
@@ -733,12 +786,20 @@ and log a message if set to FALSE</p></td>
             </div>
                     <div class="method-item">
                     <h3 id="method_getLastLinkedNode">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Service/LinkingService.php#L420">at line 420</a></div>
-        <code>                    <abbr title="Neos\Neos\Service\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Service/LinkingService.php#L368">at line 368</a></div>
+        <code>                    <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
     <strong>getLastLinkedNode</strong>()
-        </code>
+        <small><span class="label label-danger">deprecated</span></small></code>
     </h3>
     <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>with</td>
+                    <td>Neos 9</td>
+                </tr>
+                    </p>
     
             
 
@@ -751,7 +812,7 @@ and log a message if set to FALSE</p></td>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Neos\Service\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null</td>
+            <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>

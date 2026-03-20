@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="namespace" data-name="namespace:Neos_ContentRepository_NodeAccess_FlowQueryOperations" data-root-path="../../../">
+    <body id="namespace" data-name="namespace:Neos_ContentRepository_NodeAccess_FlowQueryOperations" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -80,6 +92,16 @@
     <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/BackReferenceNodesOperation.html"><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\BackReferenceNodesOperation">BackReferenceNodesOperation</abbr></a>    </div>
+                <div class="col-md-6"><p>&quot;backReferenceNodes&quot; operation working on Nodes</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/BackReferencesOperation.html"><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\BackReferencesOperation">BackReferencesOperation</abbr></a>    </div>
+                <div class="col-md-6"><p>&quot;backReferences&quot; operation working on Nodes</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/ChildrenOperation.html"><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\ChildrenOperation">ChildrenOperation</abbr></a>    </div>
                 <div class="col-md-6"><p>&quot;children&quot; operation working on ContentRepository nodes. It iterates over all
 context elements and returns all child nodes or only those matching
@@ -91,6 +113,19 @@ the filter expression specified as optional argument.</p></div>
                 <div class="col-md-6"><p>&quot;closest&quot; operation working on ContentRepository nodes. For each node in the context,
 get the first node that matches the selector by testing the node itself and
 traversing up through its ancestors.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/ContextOperation.html"><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\ContextOperation">ContextOperation</abbr></a>    </div>
+                <div class="col-md-6"><p>&quot;context&quot; operation working on ContentRepository nodes. Modifies the ContentRepository Context of each
+node in the current FlowQuery context by the given properties and returns the same
+nodes by identifier if they can be accessed in the new Context (otherwise they
+will be skipped).</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/CreateNodeHashTrait.html"><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\CreateNodeHashTrait">CreateNodeHashTrait</abbr></a>    </div>
+                <div class="col-md-6"></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -171,10 +206,28 @@ and returns each preceding sibling until the matching sibling is found.</p></div
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                    <a href="../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/PropertyOperation.html"><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\PropertyOperation">PropertyOperation</abbr></a>    </div>
-                <div class="col-md-6"><p>Used to access properties of a ContentRepository Node. If the property mame is
-prefixed with _, internal node properties like start time, end time,
-hidden are accessed.</p></div>
+                    <a href="../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/PropertyOperation.html"><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\PropertyOperation">PropertyOperation</abbr></a>    <small><span class="label label-danger">deprecated</span></small></div>
+                <div class="col-md-6"><p>Used to access properties of a ContentRepository Node.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/ReferenceNodesOperation.html"><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\ReferenceNodesOperation">ReferenceNodesOperation</abbr></a>    </div>
+                <div class="col-md-6"><p>&quot;referenceNodes&quot; operation working on Nodes</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/ReferencePropertyOperation.html"><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\ReferencePropertyOperation">ReferencePropertyOperation</abbr></a>    </div>
+                <div class="col-md-6"><p>Used to access properties of a ContentRepository Reference</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/ReferencesOperation.html"><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\ReferencesOperation">ReferencesOperation</abbr></a>    </div>
+                <div class="col-md-6"><p>&quot;references&quot; operation working on Nodes</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/RemoveOperation.html"><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\RemoveOperation">RemoveOperation</abbr></a>    </div>
+                <div class="col-md-6"><p>Removes the given Node from the current context.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
@@ -182,6 +235,21 @@ hidden are accessed.</p></div>
                 <div class="col-md-6"><p>&quot;siblings&quot; operation working on ContentRepository nodes. It iterates over all
 context elements and returns all sibling nodes or only those matching
 the filter expression specified as optional argument.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/SortByTimestampOperation.html"><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\SortByTimestampOperation">SortByTimestampOperation</abbr></a>    </div>
+                <div class="col-md-6"><p>&quot;sortByTimestamp&quot; operation working on ContentRepository nodes.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/SortOperation.html"><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\SortOperation">SortOperation</abbr></a>    </div>
+                <div class="col-md-6"><p>&quot;sort&quot; operation working on ContentRepository nodes.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/ContentRepository/NodeAccess/FlowQueryOperations/UniqueOperation.html"><abbr title="Neos\ContentRepository\NodeAccess\FlowQueryOperations\UniqueOperation">UniqueOperation</abbr></a>    </div>
+                <div class="col-md-6"><p>&quot;unique&quot; operation working on Nodes</p></div>
             </div>
             </div>
     

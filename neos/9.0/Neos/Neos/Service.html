@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
         <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
         <script async defer src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/typeahead.min.js"></script>
-        <script src="../../doctum.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="namespace" data-name="namespace:Neos_Neos_Service" data-root-path="../../">
+    <body id="namespace" data-name="namespace:Neos_Neos_Service" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -77,7 +89,7 @@
 
             <h2>Namespaces</h2>
         <div class="namespace-list">
-            <a href="../../Neos/Neos/Service/Controller.html">Neos\Neos\Service\Controller</a><a href="../../Neos/Neos/Service/DataSource.html">Neos\Neos\Service\DataSource</a><a href="../../Neos/Neos/Service/Mapping.html">Neos\Neos\Service\Mapping</a><a href="../../Neos/Neos/Service/View.html">Neos\Neos\Service\View</a>        </div>
+            <a href="../../Neos/Neos/Service/Controller.html">Neos\Neos\Service\Controller</a><a href="../../Neos/Neos/Service/DataSource.html">Neos\Neos\Service\DataSource</a><a href="../../Neos/Neos/Service/Mapping.html">Neos\Neos\Service\Mapping</a>        </div>
     
             <h2>Classes</h2>
     <div class="container-fluid underlined">
@@ -102,11 +114,6 @@ of the Neos Backend.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                    <a href="../../Neos/Neos/Service/EditorContentStreamZookeeper.html"><abbr title="Neos\Neos\Service\EditorContentStreamZookeeper">EditorContentStreamZookeeper</abbr></a>    </div>
-                <div class="col-md-6"><p>The service for keeping track of editors' content streams</p></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-6">
                     <a href="../../Neos/Neos/Service/IconNameMappingService.html"><abbr title="Neos\Neos\Service\IconNameMappingService">IconNameMappingService</abbr></a>    </div>
                 <div class="col-md-6"></div>
             </div>
@@ -122,13 +129,14 @@ of the Neos Backend.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                    <a href="../../Neos/Neos/Service/LinkingService.html"><abbr title="Neos\Neos\Service\LinkingService">LinkingService</abbr></a>    </div>
+                    <a href="../../Neos/Neos/Service/LinkingService.html"><abbr title="Neos\Neos\Service\LinkingService">LinkingService</abbr></a>    <small><span class="label label-danger">deprecated</span></small></div>
                 <div class="col-md-6"><p>A service for creating URIs pointing to nodes and assets.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">
-                    <a href="../../Neos/Neos/Service/PluginService.html"><abbr title="Neos\Neos\Service\PluginService">PluginService</abbr></a>    </div>
-                <div class="col-md-6"><p>Central authority for interactions with plugins.</p></div>
+                    <a href="../../Neos/Neos/Service/NodeTypeSchemaBuilder.html"><abbr title="Neos\Neos\Service\NodeTypeSchemaBuilder">NodeTypeSchemaBuilder</abbr></a>    </div>
+                <div class="col-md-6"><p>Renders the Node Type Schema in a format the User Interface understands;
+additionally pre-calculating node constraints</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">

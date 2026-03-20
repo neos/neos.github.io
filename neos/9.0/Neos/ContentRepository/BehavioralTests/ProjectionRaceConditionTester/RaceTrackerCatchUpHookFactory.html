@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_BehavioralTests_ProjectionRaceConditionTester_RaceTrackerCatchUpHookFactory" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_BehavioralTests_ProjectionRaceConditionTester_RaceTrackerCatchUpHookFactory" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,10 +90,10 @@
 
     
     <p>final         class
-    <strong>RaceTrackerCatchUpHookFactory</strong>        implements
-        <a href="../../../../Neos/ContentRepository/Core/Projection/CatchUpHookFactoryInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\CatchUpHookFactoryInterface">CatchUpHookFactoryInterface</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.BehavioralTests/Classes/ProjectionRaceConditionTester/RaceTrackerCatchUpHookFactory.php">View source</a>)
+    <strong>RaceTrackerCatchUpHookFactory</strong>        implements        <a href="../../../../Neos/ContentRepository/Core/Projection/CatchUpHook/CatchUpHookFactoryInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\CatchUpHook\CatchUpHookFactoryInterface">CatchUpHookFactoryInterface</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.BehavioralTests/Classes/ProjectionRaceConditionTester/RaceTrackerCatchUpHookFactory.php">View source</a>)
 </p>
 
+        
         
     
                         <table>
@@ -104,13 +116,13 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a href="../../../../Neos/ContentRepository/Core/Projection/CatchUpHookInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\CatchUpHookInterface">CatchUpHookInterface</abbr></a>
+                    <a href="../../../../Neos/ContentRepository/Core/Projection/CatchUpHook/CatchUpHookInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\CatchUpHook\CatchUpHookInterface">CatchUpHookInterface</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_build">build</a>(<abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+                    <a href="#method_build">build</a>(<a href="../../../../Neos/ContentRepository/Core/Projection/CatchUpHook/CatchUpHookFactoryDependencies.html"><abbr title="Neos\ContentRepository\Core\Projection\CatchUpHook\CatchUpHookFactoryDependencies">CatchUpHookFactoryDependencies</abbr></a> $dependencies)
         
-                                            <p class="no-description">No description</p>
-                                    </div>
+                                            <p><p>Note that a catchup doesn't have access to the full content repository, as it would allow full recursion via handle and accessing other projections
+state is not safe as the other projection might not be behind - the order is undefined.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -121,27 +133,28 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_build">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.BehavioralTests/Classes/ProjectionRaceConditionTester/RaceTrackerCatchUpHookFactory.php#L28">at line 28</a></div>
-        <code>                    <a href="../../../../Neos/ContentRepository/Core/Projection/CatchUpHookInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\CatchUpHookInterface">CatchUpHookInterface</abbr></a>
-    <strong>build</strong>(<abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr> $contentRepository)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.BehavioralTests/Classes/ProjectionRaceConditionTester/RaceTrackerCatchUpHookFactory.php#L30">at line 30</a></div>
+        <code>                    <a href="../../../../Neos/ContentRepository/Core/Projection/CatchUpHook/CatchUpHookInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\CatchUpHook\CatchUpHookInterface">CatchUpHookInterface</abbr></a>
+    <strong>build</strong>(<a href="../../../../Neos/ContentRepository/Core/Projection/CatchUpHook/CatchUpHookFactoryDependencies.html"><abbr title="Neos\ContentRepository\Core\Projection\CatchUpHook\CatchUpHookFactoryDependencies">CatchUpHookFactoryDependencies</abbr></a> $dependencies)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
+                            <p><p>Note that a catchup doesn't have access to the full content repository, as it would allow full recursion via handle and accessing other projections
+state is not safe as the other projection might not be behind - the order is undefined.</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\ContentRepository">ContentRepository</abbr></td>
-                <td>$contentRepository</td>
-                <td></td>
+                <td><a href="../../../../Neos/ContentRepository/Core/Projection/CatchUpHook/CatchUpHookFactoryDependencies.html"><abbr title="Neos\ContentRepository\Core\Projection\CatchUpHook\CatchUpHookFactoryDependencies">CatchUpHookFactoryDependencies</abbr></a></td>
+                <td>$dependencies</td>
+                <td><p>available dependencies to intialise the catchup hook</p></td>
             </tr>
             </table>
 
@@ -150,7 +163,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a href="../../../../Neos/ContentRepository/Core/Projection/CatchUpHookInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\CatchUpHookInterface">CatchUpHookInterface</abbr></a></td>
+            <td><a href="../../../../Neos/ContentRepository/Core/Projection/CatchUpHook/CatchUpHookInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\CatchUpHook\CatchUpHookInterface">CatchUpHookInterface</abbr></a></td>
             <td></td>
         </tr>
     </table>

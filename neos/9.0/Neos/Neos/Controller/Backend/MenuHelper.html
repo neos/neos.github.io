@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_Controller_Backend_MenuHelper" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Neos_Controller_Backend_MenuHelper" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -95,7 +108,7 @@
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_moduleListFirstLevelCache">
-                                        protected                                        
+                                        protected                                        array|null
                                                                                 
                                     </td>
                 <td>$moduleListFirstLevelCache</td>
@@ -122,7 +135,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_settings">
-                                        protected                                        <abbr title="Neos\Neos\Controller\Backend\array&lt;string,mixed&gt;">array&lt;string,mixed&gt;</abbr>
+                                        protected                                        array
                                                                                 
                                     </td>
                 <td>$settings</td>
@@ -205,12 +218,13 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_injectSettings">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Backend/MenuHelper.php#L67">at line 67</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Backend/MenuHelper.php#L68">at line 68</a></div>
         <code>                    void
     <strong>injectSettings</strong>(array $settings)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -248,12 +262,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_buildSiteList">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Backend/MenuHelper.php#L78">at line 78</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Backend/MenuHelper.php#L80">at line 80</a></div>
         <code>                    array
     <strong>buildSiteList</strong>(<abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -282,6 +297,15 @@
     </table>
 
             
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\Mvc\Routing\Exception\MissingActionNameException|\Neos\Flow\Http\Exception">Exception</abbr></td>
+                <td></td>
+            </tr>
+            </table>
+
             
             
                     </div>
@@ -290,12 +314,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_buildModuleList">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Backend/MenuHelper.php#L135">at line 135</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Backend/MenuHelper.php#L140">at line 140</a></div>
         <code>                    array
     <strong>buildModuleList</strong>(<abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -329,11 +354,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\Flow\Http\Exception">Exception</abbr></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><abbr title="Neos\Flow\Mvc\Routing\Exception\MissingActionNameException">MissingActionNameException</abbr></td>
+                <td><abbr title="Neos\Flow\Http\Exception|\Neos\Flow\Mvc\Routing\Exception\MissingActionNameException">MissingActionNameException</abbr></td>
                 <td></td>
             </tr>
             </table>
@@ -346,12 +367,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isModuleEnabled">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Backend/MenuHelper.php#L209">at line 209</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Backend/MenuHelper.php#L196">at line 196</a></div>
         <code>                    bool
     <strong>isModuleEnabled</strong>(string $modulePath)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -388,12 +410,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_collectModuleData">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Backend/MenuHelper.php#L237">at line 237</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Controller/Backend/MenuHelper.php#L221">at line 221</a></div>
         <code>            protected        array
     <strong>collectModuleData</strong>(<abbr title="Neos\Flow\Mvc\Controller\ControllerContext">ControllerContext</abbr> $controllerContext, string $module, array $moduleConfiguration, string $modulePath)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

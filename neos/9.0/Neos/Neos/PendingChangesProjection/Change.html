@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_PendingChangesProjection_Change" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Neos_PendingChangesProjection_Change" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -77,87 +89,39 @@
     </div>
 
     
-    <p>        class
+    <p>final         class
     <strong>Change</strong>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/PendingChangesProjection/Change.php">View source</a>)
 </p>
 
         
-    
         
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;Only for consumption inside Neos. Not public api because the implementation will be refactored sooner or later: https://github.com/neos/neos-development-collection/issues/5493</td>
+            </tr>
+        </table>
+                &nbsp;
+    
 
             <div class="description">
-            <p><p>Change Read Model</p></p>            <p><p>!!! Still a bit unstable - might change in the future.</p></p>        </div>
+            <p><p>Read model for pending changes</p></p>                    </div>
             
         
-    
-            <h2>Properties</h2>
-
-            <table class="table table-condensed">
+            <h2>Constants</h2>    <table class="table table-condensed">
                     <tr>
-                <td class="type" id="property_contentStreamIdentifier">
-                                                                                <a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a>
-                                                                                
+                <td>
+                                                                                                                        AGGREGATE_DIMENSIONSPACEPOINT_HASH_PLACEHOLDER
                                     </td>
-                <td>$contentStreamIdentifier</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_nodeAggregateIdentifier">
-                                                                                <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>
-                                                                                
-                                    </td>
-                <td>$nodeAggregateIdentifier</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_originDimensionSpacePoint">
-                                                                                <a href="../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a>
-                                                                                
-                                    </td>
-                <td>$originDimensionSpacePoint</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_changed">
-                                                                                bool
-                                                                                
-                                    </td>
-                <td>$changed</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_moved">
-                                                                                bool
-                                                                                
-                                    </td>
-                <td>$moved</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_deleted">
-                                                                                bool
-                                                                                
-                                    </td>
-                <td>$deleted</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_removalAttachmentPoint">
-                                                                                
-                                                                                
-                                    </td>
-                <td>$removalAttachmentPoint</td>
-                <td class="last"><p>{RemoveNodeAggregate::$removalAttachmentPoint} for docs</p></td>
-                <td></td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
             </tr>
             </table>
 
+    
     
             <h2>Methods</h2>
 
@@ -167,10 +131,20 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamIdentifier, <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateIdentifier, <a href="../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $originDimensionSpacePoint, bool $changed, bool $moved, bool $deleted, <abbr title="Neos\Neos\PendingChangesProjection\Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr>|null $removalAttachmentPoint = null)
+                    <a href="#method___construct">__construct</a>(<a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId, <a href="../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a>|null $originDimensionSpacePoint, bool $created, bool $changed, bool $moved, bool $deleted, <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null $removalAttachmentPoint = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getLegacyRemovalAttachmentPoint">getLegacyRemovalAttachmentPoint</a>()
+        <small><span class="label label-danger">deprecated</span></small>
+                                            <p><p>Before soft removals the removalAttachmentPoint was metadata reached through from command to the final event.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -214,12 +188,13 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/PendingChangesProjection/Change.php#L67">at line 67</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/PendingChangesProjection/Change.php#L36">at line 36</a></div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamIdentifier, <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateIdentifier, <a href="../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $originDimensionSpacePoint, bool $changed, bool $moved, bool $deleted, <abbr title="Neos\Neos\PendingChangesProjection\Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr>|null $removalAttachmentPoint = null)
+    <strong>__construct</strong>(<a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId, <a href="../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a>|null $originDimensionSpacePoint, bool $created, bool $changed, bool $moved, bool $deleted, <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null $removalAttachmentPoint = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -233,17 +208,22 @@
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamIdentifier</td>
+                <td>$contentStreamId</td>
                 <td></td>
             </tr>
                     <tr>
                 <td><a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
-                <td>$nodeAggregateIdentifier</td>
+                <td>$nodeAggregateId</td>
                 <td></td>
             </tr>
                     <tr>
-                <td><a href="../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a></td>
+                <td><a href="../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a>|null</td>
                 <td>$originDimensionSpacePoint</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$created</td>
                 <td></td>
             </tr>
                     <tr>
@@ -262,7 +242,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\Neos\PendingChangesProjection\Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr>|null</td>
+                <td><a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null</td>
                 <td>$removalAttachmentPoint</td>
                 <td></td>
             </tr>
@@ -277,13 +257,57 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getLegacyRemovalAttachmentPoint">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/PendingChangesProjection/Change.php#L61">at line 61</a></div>
+        <code>                    <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null
+    <strong>getLegacyRemovalAttachmentPoint</strong>()
+        <small><span class="label label-danger">deprecated</span></small></code>
+    </h3>
+    <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>with</td>
+                    <td>Neos 9 Beta 19, obsolete via soft removals. Might be removed at any point.</td>
+                </tr>
+                    </p>
+    
+            
+
+        <div class="method-description">
+                            <p><p>Before soft removals the removalAttachmentPoint was metadata reached through from command to the final event.</p></p>                <p><p>It stored the document node id of the removed node, as that was needed later for the change display and publication.</p>
+<p>See also <a href="https://github.com/neos/neos-development-collection/issues/4487">https://github.com/neos/neos-development-collection/issues/4487</a></p>
+<p>We continue to have {<a href="../../../Neos/ContentRepository/Core/Feature/NodeRemoval/Command/RemoveNodeAggregate.html">\Neos\ContentRepository\Core\Feature\NodeRemoval\Command\RemoveNodeAggregate::$removalAttachmentPoint}</a> and {<a href="../../../Neos/ContentRepository/Core/Feature/NodeRemoval/Event/NodeAggregateWasRemoved.html">\Neos\ContentRepository\Core\Feature\NodeRemoval\Event\NodeAggregateWasRemoved::$removalAttachmentPoint}
+in</a> the core to allow publishing and rebasing the legacy removals as in previous betas.</p></p>        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_addToDatabase">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/PendingChangesProjection/Change.php#L89">at line 89</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/PendingChangesProjection/Change.php#L69">at line 69</a></div>
         <code>                    void
     <strong>addToDatabase</strong>(<abbr title="Doctrine\DBAL\Connection">Connection</abbr> $databaseConnection, string $tableName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -326,12 +350,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_updateToDatabase">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/PendingChangesProjection/Change.php#L103">at line 103</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/PendingChangesProjection/Change.php#L88">at line 88</a></div>
         <code>                    void
     <strong>updateToDatabase</strong>(<abbr title="Doctrine\DBAL\Connection">Connection</abbr> $databaseConnection, string $tableName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -374,12 +399,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fromDatabaseRow">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/PendingChangesProjection/Change.php#L125">at line 125</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/PendingChangesProjection/Change.php#L114">at line 114</a></div>
         <code>        static            <a href="../../../Neos/Neos/PendingChangesProjection/Change.html"><abbr title="Neos\Neos\PendingChangesProjection\Change">Change</abbr></a>
     <strong>fromDatabaseRow</strong>(array $databaseRow)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

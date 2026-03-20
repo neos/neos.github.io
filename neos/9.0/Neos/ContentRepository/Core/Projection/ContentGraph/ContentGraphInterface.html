@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
         <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
         <script async defer src="../../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../../js/typeahead.min.js"></script>
-        <script src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_Projection_ContentGraph_ContentGraphInterface" data-root-path="../../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_Projection_ContentGraph_ContentGraphInterface" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,10 +90,10 @@
 
     
     <p>        interface
-    <strong>ContentGraphInterface</strong>        implements
-        <a href="../../../../../Neos/ContentRepository/Core/Projection/ProjectionStateInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionStateInterface">ProjectionStateInterface</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php">View source</a>)
+    <strong>ContentGraphInterface</strong>        implements        <a href="../../../../../Neos/ContentRepository/Core/Projection/ProjectionStateInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ProjectionStateInterface">ProjectionStateInterface</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -99,10 +111,31 @@ where</a> you can access the most important read model, the {\Neos\ContentReposi
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/SharedModel/ContentRepository/ContentRepositoryId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId">ContentRepositoryId</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getContentRepositoryId">getContentRepositoryId</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/WorkspaceName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName">WorkspaceName</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getWorkspaceName">getWorkspaceName</a>()
+        
+                                            <p><p>The workspace this content graph is operating on</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentSubgraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentSubgraphInterface">ContentSubgraphInterface</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getSubgraph">getSubgraph</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/VisibilityConstraints.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\VisibilityConstraints">VisibilityConstraints</abbr></a> $visibilityConstraints)
+                    <a href="#method_getSubgraph">getSubgraph</a>(<a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/VisibilityConstraints.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\VisibilityConstraints">VisibilityConstraints</abbr></a> $visibilityConstraints)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -110,10 +143,10 @@ where</a> you can access the most important read model, the {\Neos\ContentReposi
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr>
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a>|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_findRootNodeAggregateByType">findRootNodeAggregateByType</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
+                    <a href="#method_findRootNodeAggregateByType">findRootNodeAggregateByType</a>(<a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -121,10 +154,10 @@ where</a> you can access the most important read model, the {\Neos\ContentReposi
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr>
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_findNodeAggregatesByType">findNodeAggregatesByType</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
+                    <a href="#method_findRootNodeAggregates">findRootNodeAggregates</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/FindRootNodeAggregatesFilter.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindRootNodeAggregatesFilter">FindRootNodeAggregatesFilter</abbr></a> $filter)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -132,10 +165,10 @@ where</a> you can access the most important read model, the {\Neos\ContentReposi
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr>|null
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_findNodeAggregateById">findNodeAggregateById</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId)
+                    <a href="#method_findNodeAggregatesByType">findNodeAggregatesByType</a>(<a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -143,7 +176,29 @@ where</a> you can access the most important read model, the {\Neos\ContentReposi
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr>
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findNodeAggregateById">findNodeAggregateById</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findNodeAggregatesByIds">findNodeAggregatesByIds</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a> $nodeAggregateIds)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a>
                 </div>
                 <div class="col-md-8">
                     <a href="#method_findUsedNodeTypeNames">findUsedNodeTypeNames</a>()
@@ -153,10 +208,10 @@ where</a> you can access the most important read model, the {\Neos\ContentReposi
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a>|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_findNodeByIdAndOriginDimensionSpacePoint">findNodeByIdAndOriginDimensionSpacePoint</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $originDimensionSpacePoint)
+                    <a href="#method_findParentNodeAggregateByChildOriginDimensionSpacePoint">findParentNodeAggregateByChildOriginDimensionSpacePoint</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $childNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $childOriginDimensionSpacePoint)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -164,10 +219,10 @@ where</a> you can access the most important read model, the {\Neos\ContentReposi
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr>|null
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_findParentNodeAggregateByChildOriginDimensionSpacePoint">findParentNodeAggregateByChildOriginDimensionSpacePoint</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $childNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $childOriginDimensionSpacePoint)
+                    <a href="#method_findParentNodeAggregates">findParentNodeAggregates</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $childNodeAggregateId)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -175,10 +230,10 @@ where</a> you can access the most important read model, the {\Neos\ContentReposi
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr>
+                    <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_findParentNodeAggregates">findParentNodeAggregates</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $childNodeAggregateId)
+                    <a href="#method_findAncestorNodeAggregateIds">findAncestorNodeAggregateIds</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $entryNodeAggregateId)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -186,10 +241,10 @@ where</a> you can access the most important read model, the {\Neos\ContentReposi
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr>
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_findChildNodeAggregates">findChildNodeAggregates</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId)
+                    <a href="#method_findChildNodeAggregates">findChildNodeAggregates</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -197,32 +252,20 @@ where</a> you can access the most important read model, the {\Neos\ContentReposi
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr>
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a>|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_findChildNodeAggregatesByName">findChildNodeAggregatesByName</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a> $name)
+                    <a href="#method_findChildNodeAggregateByName">findChildNodeAggregateByName</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a> $name)
         
-                                            <p><p>A node aggregate may have multiple child node aggregates with the same name
-as long as they do not share dimension space coverage</p></p>                </div>
+                                            <p><p>A node aggregate can have no or exactly one child node aggregate with a given name as enforced by constraint checks</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr>
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_findTetheredChildNodeAggregates">findTetheredChildNodeAggregates</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId)
-        
-                                            <p class="no-description">No description</p>
-                                    </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getDimensionSpacePointsOccupiedByChildNodeName">getDimensionSpacePointsOccupiedByChildNodeName</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a> $nodeName, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $parentNodeOriginDimensionSpacePoint, <abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr> $dimensionSpacePointsToCheck)
+                    <a href="#method_findTetheredChildNodeAggregates">findTetheredChildNodeAggregates</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -230,10 +273,32 @@ as long as they do not share dimension space coverage</p></p>                </d
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_countNodes">countNodes</a>()
+                    <a href="#method_getDimensionSpacePointsOccupiedByChildNodeName">getDimensionSpacePointsOccupiedByChildNodeName</a>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a> $nodeName, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $parentNodeOriginDimensionSpacePoint, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a> $dimensionSpacePointsToCheck)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findNodeAggregatesTaggedBy">findNodeAggregatesTaggedBy</a>(<a href="../../../../../Neos/ContentRepository/Core/Feature/SubtreeTagging/Dto/SubtreeTag.html"><abbr title="Neos\ContentRepository\Core\Feature\SubtreeTagging\Dto\SubtreeTag">SubtreeTag</abbr></a> $subtreeTag)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getContentStreamId">getContentStreamId</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -246,13 +311,81 @@ as long as they do not share dimension space coverage</p></p>                </d
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_getSubgraph">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L42">at line 42</a></div>
-        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentSubgraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentSubgraphInterface">ContentSubgraphInterface</abbr></a>
-    <strong>getSubgraph</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/VisibilityConstraints.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\VisibilityConstraints">VisibilityConstraints</abbr></a> $visibilityConstraints)
+                    <h3 id="method_getContentRepositoryId">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L46">at line 46</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/SharedModel/ContentRepository/ContentRepositoryId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId">ContentRepositoryId</abbr></a>
+    <strong>getContentRepositoryId</strong>()
         </code>
     </h3>
     <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/ContentRepository/ContentRepositoryId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId">ContentRepositoryId</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getWorkspaceName">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L52">at line 52</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/WorkspaceName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName">WorkspaceName</abbr></a>
+    <strong>getWorkspaceName</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The workspace this content graph is operating on</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/WorkspaceName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName">WorkspaceName</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getSubgraph">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L57">at line 57</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/ContentSubgraphInterface.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\ContentSubgraphInterface">ContentSubgraphInterface</abbr></a>
+    <strong>getSubgraph</strong>(<a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a> $dimensionSpacePoint, <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/VisibilityConstraints.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\VisibilityConstraints">VisibilityConstraints</abbr></a> $visibilityConstraints)
+        </code>
+    </h3>
+    <div class="details">    
+            
     
             
 
@@ -264,11 +397,6 @@ as long as they do not share dimension space coverage</p></p>                </d
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
-                <td></td>
-            </tr>
                     <tr>
                 <td><a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePoint">DimensionSpacePoint</abbr></a></td>
                 <td>$dimensionSpacePoint</td>
@@ -300,12 +428,13 @@ as long as they do not share dimension space coverage</p></p>                </d
             </div>
                     <div class="method-item">
                     <h3 id="method_findRootNodeAggregateByType">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L51">at line 51</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr>
-    <strong>findRootNodeAggregateByType</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L65">at line 65</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a>|null
+    <strong>findRootNodeAggregateByType</strong>(<a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -318,11 +447,6 @@ as long as they do not share dimension space coverage</p></p>                </d
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td><a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a></td>
                 <td>$nodeTypeName</td>
                 <td></td>
@@ -334,7 +458,51 @@ as long as they do not share dimension space coverage</p></p>                </d
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findRootNodeAggregates">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L72">at line 72</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a>
+    <strong>findRootNodeAggregates</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/FindRootNodeAggregatesFilter.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindRootNodeAggregatesFilter">FindRootNodeAggregatesFilter</abbr></a> $filter)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/FindRootNodeAggregatesFilter.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\FindRootNodeAggregatesFilter">FindRootNodeAggregatesFilter</abbr></a></td>
+                <td>$filter</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -348,12 +516,13 @@ as long as they do not share dimension space coverage</p></p>                </d
             </div>
                     <div class="method-item">
                     <h3 id="method_findNodeAggregatesByType">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L60">at line 60</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr>
-    <strong>findNodeAggregatesByType</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L79">at line 79</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a>
+    <strong>findNodeAggregatesByType</strong>(<a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a> $nodeTypeName)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -366,11 +535,6 @@ as long as they do not share dimension space coverage</p></p>                </d
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td><a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeName.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeName">NodeTypeName</abbr></a></td>
                 <td>$nodeTypeName</td>
                 <td></td>
@@ -382,7 +546,7 @@ as long as they do not share dimension space coverage</p></p>                </d
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr></td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -396,12 +560,13 @@ as long as they do not share dimension space coverage</p></p>                </d
             </div>
                     <div class="method-item">
                     <h3 id="method_findNodeAggregateById">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L69">at line 69</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr>|null
-    <strong>findNodeAggregateById</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L86">at line 86</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a>|null
+    <strong>findNodeAggregateById</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -414,11 +579,6 @@ as long as they do not share dimension space coverage</p></p>                </d
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
                 <td>$nodeAggregateId</td>
                 <td></td>
@@ -430,21 +590,56 @@ as long as they do not share dimension space coverage</p></p>                </d
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr>|null</td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
 
             
-                            <h4>Exceptions</h4>
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findNodeAggregatesByIds">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L94">at line 94</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a>
+    <strong>findNodeAggregatesByIds</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a> $nodeAggregateIds)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Exception/NodeAggregatesTypeIsAmbiguous.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Exception\NodeAggregatesTypeIsAmbiguous">NodeAggregatesTypeIsAmbiguous</abbr></a></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a></td>
+                <td>$nodeAggregateIds</td>
                 <td></td>
             </tr>
             </table>
 
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a></td>
+            <td><p>the node aggregates that exist in this graph. The order is not defined.</p></td>
+        </tr>
+    </table>
+
+            
             
             
                     </div>
@@ -453,12 +648,13 @@ as long as they do not share dimension space coverage</p></p>                </d
             </div>
                     <div class="method-item">
                     <h3 id="method_findUsedNodeTypeNames">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L80">at line 80</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L103">at line 103</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a>
     <strong>findUsedNodeTypeNames</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -471,67 +667,7 @@ as long as they do not share dimension space coverage</p></p>                </d
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_findNodeByIdAndOriginDimensionSpacePoint">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L85">at line 85</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
-    <strong>findNodeByIdAndOriginDimensionSpacePoint</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $nodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $originDimensionSpacePoint)
-        </code>
-    </h3>
-    <div class="details">    
-    
-                            <table>
-            <tr>
-                <td><span class="label label-warning">internal</span></td>
-                <td>&nbsp; </td>
-            </tr>
-        </table>
-                &nbsp;
-    
-
-        <div class="method-description">
-                            <p class="no-description">No description</p>
-                    
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
-                <td>$nodeAggregateId</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a></td>
-                <td>$originDimensionSpacePoint</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null</td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/NodeType/NodeTypeNames.html"><abbr title="Neos\ContentRepository\Core\NodeType\NodeTypeNames">NodeTypeNames</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -545,12 +681,13 @@ as long as they do not share dimension space coverage</p></p>                </d
             </div>
                     <div class="method-item">
                     <h3 id="method_findParentNodeAggregateByChildOriginDimensionSpacePoint">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L94">at line 94</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr>|null
-    <strong>findParentNodeAggregateByChildOriginDimensionSpacePoint</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $childNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $childOriginDimensionSpacePoint)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L108">at line 108</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a>|null
+    <strong>findParentNodeAggregateByChildOriginDimensionSpacePoint</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $childNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $childOriginDimensionSpacePoint)
         </code>
     </h3>
     <div class="details">    
+            
     
                             <table>
             <tr>
@@ -569,11 +706,6 @@ as long as they do not share dimension space coverage</p></p>                </d
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
-                <td></td>
-            </tr>
                     <tr>
                 <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
                 <td>$childNodeAggregateId</td>
@@ -591,7 +723,7 @@ as long as they do not share dimension space coverage</p></p>                </d
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr>|null</td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -605,12 +737,13 @@ as long as they do not share dimension space coverage</p></p>                </d
             </div>
                     <div class="method-item">
                     <h3 id="method_findParentNodeAggregates">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L104">at line 104</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr>
-    <strong>findParentNodeAggregates</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $childNodeAggregateId)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L116">at line 116</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a>
+    <strong>findParentNodeAggregates</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $childNodeAggregateId)
         </code>
     </h3>
     <div class="details">    
+            
     
                             <table>
             <tr>
@@ -630,11 +763,6 @@ as long as they do not share dimension space coverage</p></p>                </d
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
                 <td>$childNodeAggregateId</td>
                 <td></td>
@@ -646,7 +774,58 @@ as long as they do not share dimension space coverage</p></p>                </d
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr></td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findAncestorNodeAggregateIds">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L123">at line 123</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a>
+    <strong>findAncestorNodeAggregateIds</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $entryNodeAggregateId)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;the returned order of node aggregate ids is undefined and not to be relied upon</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
+                <td>$entryNodeAggregateId</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -660,12 +839,13 @@ as long as they do not share dimension space coverage</p></p>                </d
             </div>
                     <div class="method-item">
                     <h3 id="method_findChildNodeAggregates">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L113">at line 113</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr>
-    <strong>findChildNodeAggregates</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L130">at line 130</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a>
+    <strong>findChildNodeAggregates</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId)
         </code>
     </h3>
     <div class="details">    
+            
     
                             <table>
             <tr>
@@ -685,11 +865,6 @@ as long as they do not share dimension space coverage</p></p>                </d
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
                 <td>$parentNodeAggregateId</td>
                 <td></td>
@@ -701,7 +876,7 @@ as long as they do not share dimension space coverage</p></p>                </d
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr></td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -714,13 +889,14 @@ as long as they do not share dimension space coverage</p></p>                </d
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_findChildNodeAggregatesByName">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L125">at line 125</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr>
-    <strong>findChildNodeAggregatesByName</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a> $name)
+                    <h3 id="method_findChildNodeAggregateByName">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L139">at line 139</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a>|null
+    <strong>findChildNodeAggregateByName</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a> $name)
         </code>
     </h3>
     <div class="details">    
+            
     
                             <table>
             <tr>
@@ -732,18 +908,12 @@ as long as they do not share dimension space coverage</p></p>                </d
     
 
         <div class="method-description">
-                            <p><p>A node aggregate may have multiple child node aggregates with the same name
-as long as they do not share dimension space coverage</p></p>                        
+                            <p><p>A node aggregate can have no or exactly one child node aggregate with a given name as enforced by constraint checks</p></p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
-                <td></td>
-            </tr>
                     <tr>
                 <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
                 <td>$parentNodeAggregateId</td>
@@ -761,7 +931,7 @@ as long as they do not share dimension space coverage</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr></td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregate.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregate">NodeAggregate</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -775,12 +945,13 @@ as long as they do not share dimension space coverage</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_findTetheredChildNodeAggregates">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L135">at line 135</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr>
-    <strong>findTetheredChildNodeAggregates</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L147">at line 147</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a>
+    <strong>findTetheredChildNodeAggregates</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId)
         </code>
     </h3>
     <div class="details">    
+            
     
                             <table>
             <tr>
@@ -800,11 +971,6 @@ as long as they do not share dimension space coverage</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a></td>
                 <td>$parentNodeAggregateId</td>
                 <td></td>
@@ -816,7 +982,7 @@ as long as they do not share dimension space coverage</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\iterable">iterable</abbr></td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -830,12 +996,13 @@ as long as they do not share dimension space coverage</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getDimensionSpacePointsOccupiedByChildNodeName">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L143">at line 143</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr>
-    <strong>getDimensionSpacePointsOccupiedByChildNodeName</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a> $contentStreamId, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a> $nodeName, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $parentNodeOriginDimensionSpacePoint, <abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr> $dimensionSpacePointsToCheck)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L154">at line 154</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a>
+    <strong>getDimensionSpacePointsOccupiedByChildNodeName</strong>(<a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a> $nodeName, <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a> $parentNodeAggregateId, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/OriginDimensionSpacePoint.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\OriginDimensionSpacePoint">OriginDimensionSpacePoint</abbr></a> $parentNodeOriginDimensionSpacePoint, <a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a> $dimensionSpacePointsToCheck)
         </code>
     </h3>
     <div class="details">    
+            
     
                             <table>
             <tr>
@@ -854,11 +1021,6 @@ as long as they do not share dimension space coverage</p></p>
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
-                <td>$contentStreamId</td>
-                <td></td>
-            </tr>
                     <tr>
                 <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeName.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeName">NodeName</abbr></a></td>
                 <td>$nodeName</td>
@@ -875,7 +1037,7 @@ as long as they do not share dimension space coverage</p></p>
                 <td></td>
             </tr>
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a></td>
                 <td>$dimensionSpacePointsToCheck</td>
                 <td></td>
             </tr>
@@ -886,7 +1048,7 @@ as long as they do not share dimension space coverage</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/DimensionSpace/DimensionSpacePointSet.html"><abbr title="Neos\ContentRepository\Core\DimensionSpace\DimensionSpacePointSet">DimensionSpacePointSet</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -899,18 +1061,70 @@ as long as they do not share dimension space coverage</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_countNodes">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L154">at line 154</a></div>
-        <code>                    int
-    <strong>countNodes</strong>()
+                    <h3 id="method_findNodeAggregatesTaggedBy">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L164">at line 164</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a>
+    <strong>findNodeAggregatesTaggedBy</strong>(<a href="../../../../../Neos/ContentRepository/Core/Feature/SubtreeTagging/Dto/SubtreeTag.html"><abbr title="Neos\ContentRepository\Core\Feature\SubtreeTagging\Dto\SubtreeTag">SubtreeTag</abbr></a> $subtreeTag)
         </code>
     </h3>
     <div class="details">    
+            
     
                             <table>
             <tr>
                 <td><span class="label label-warning">internal</span></td>
-                <td>&nbsp;only for consumption in testcases</td>
+                <td>&nbsp;experimental api, the order of the returned node aggregates is undefined and does not follow the hierarchy</td>
+            </tr>
+        </table>
+                &nbsp;
+    
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Feature/SubtreeTagging/Dto/SubtreeTag.html"><abbr title="Neos\ContentRepository\Core\Feature\SubtreeTagging\Dto\SubtreeTag">SubtreeTag</abbr></a></td>
+                <td>$subtreeTag</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/NodeAggregates.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeAggregates">NodeAggregates</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getContentStreamId">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/ContentGraphInterface.php#L167">at line 167</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a>
+    <strong>getContentStreamId</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+                            <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;The content stream id where the workspace name points to for this instance</td>
             </tr>
         </table>
                 &nbsp;
@@ -926,7 +1140,7 @@ as long as they do not share dimension space coverage</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Workspace/ContentStreamId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Workspace\ContentStreamId">ContentStreamId</abbr></a></td>
             <td></td>
         </tr>
     </table>

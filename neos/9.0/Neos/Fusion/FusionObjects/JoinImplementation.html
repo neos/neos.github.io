@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Fusion_FusionObjects_JoinImplementation" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Fusion_FusionObjects_JoinImplementation" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -81,6 +93,7 @@
     <strong>JoinImplementation</strong>        extends <a href="../../../Neos/Fusion/FusionObjects/AbstractArrayFusionObject.html"><abbr title="Neos\Fusion\FusionObjects\AbstractArrayFusionObject">AbstractArrayFusionObject</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/JoinImplementation.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -171,7 +184,7 @@ b = ${this.a + 'bar'}
                 <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<a href="../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a> $runtime, string $path, string $fusionObjectName)
         
-                                            <p><p>Constructor</p></p>                </div>
+                                            <p>Constructor</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html#method___construct">
 <abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a></small></div>
             </div>
@@ -295,21 +308,6 @@ b = ${this.a + 'bar'}
                     array
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_sortNestedProperties">sortNestedProperties</a>()
-        <small><span class="label label-danger">deprecated</span></small>
-                                            <p><p>Sort the Fusion objects inside $this-&gt;properties depending on:</p>
-<ul>
-<li>numerical ordering</li>
-<li>position meta-property</li>
-</ul></p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Fusion/FusionObjects/AbstractArrayFusionObject.html#method_sortNestedProperties">
-<abbr title="Neos\Fusion\FusionObjects\AbstractArrayFusionObject">AbstractArrayFusionObject</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    array
-                </div>
-                <div class="col-md-8">
                     <a href="#method_preparePropertyKeys">preparePropertyKeys</a>(array $properties, array $ignoredProperties)
         
                                             <p class="no-description">No description</p>
@@ -345,7 +343,18 @@ b = ${this.a + 'bar'}
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_isUntyped">isUntyped</a>(<abbr title="Neos\Fusion\FusionObjects\string|int">string|int</abbr> $key)
+                    <a href="#method_isUnset">isUnset</a>(string|int $key)
+        
+                                            <p><p>Returns TRUE if the given fusion key has been removed via &quot;&gt;&quot;</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Fusion/FusionObjects/AbstractArrayFusionObject.html#method_isUnset">
+<abbr title="Neos\Fusion\FusionObjects\AbstractArrayFusionObject">AbstractArrayFusionObject</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isUntyped">isUntyped</a>(string|int $key)
         
                                             <p><p>Returns TRUE if the given fusion key has no type, meaning neither
 having a fusion objectType, eelExpression or value</p></p>                </div>
@@ -377,11 +386,12 @@ having a fusion objectType, eelExpression or value</p></p>                </div>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Constructor</p></p>                        
+                            <p>Constructor</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -414,12 +424,13 @@ having a fusion objectType, eelExpression or value</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_evaluate">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/JoinImplementation.php#L35">at line 35</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/JoinImplementation.php#L34">at line 34</a></div>
         <code>                    mixed
     <strong>evaluate</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -453,6 +464,7 @@ having a fusion objectType, eelExpression or value</p></p>                </div>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -486,6 +498,7 @@ having a fusion objectType, eelExpression or value</p></p>                </div>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -530,6 +543,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -574,6 +588,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -618,6 +633,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -667,6 +683,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -711,6 +728,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -755,6 +773,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -799,6 +818,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -856,84 +876,15 @@ first evaluated value will be cached in memory.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_sortNestedProperties">
-        <div class="location">in <a href="../../../Neos/Fusion/FusionObjects/AbstractArrayFusionObject.html#method_sortNestedProperties">
-<abbr title="Neos\Fusion\FusionObjects\AbstractArrayFusionObject">AbstractArrayFusionObject</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/AbstractArrayFusionObject.php#L156">at line 156</a></div>
-        <code>            protected        array
-    <strong>sortNestedProperties</strong>()
-        <small><span class="label label-danger">deprecated</span></small></code>
-    </h3>
-    <div class="details">    
-            <p>
-                <small><span class="label label-danger">deprecated</span></small>
-                            <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                    </p>
-    
-            
-
-        <div class="method-description">
-                            <p><p>Sort the Fusion objects inside $this-&gt;properties depending on:</p>
-<ul>
-<li>numerical ordering</li>
-<li>position meta-property</li>
-</ul></p>                <p><p>This will ignore all properties defined in &quot;@ignoreProperties&quot; in Fusion</p></p>        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td><p>an ordered list of key value pairs</p></td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
-                <td><p>if the positional string has an unsupported format</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>See also</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                            <abbr title="Neos\Utility\PositionalArraySorter">PositionalArraySorter</abbr>
-                                    </td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>
-                                            <abbr title="Neos\Fusion\FusionObjects\preparePropertyKeys()">preparePropertyKeys()</abbr>
-                                    </td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_preparePropertyKeys">
         <div class="location">in <a href="../../../Neos/Fusion/FusionObjects/AbstractArrayFusionObject.html#method_preparePropertyKeys">
-<abbr title="Neos\Fusion\FusionObjects\AbstractArrayFusionObject">AbstractArrayFusionObject</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/AbstractArrayFusionObject.php#L167">at line 167</a></div>
+<abbr title="Neos\Fusion\FusionObjects\AbstractArrayFusionObject">AbstractArrayFusionObject</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/AbstractArrayFusionObject.php#L151">at line 151</a></div>
         <code>            protected        array
     <strong>preparePropertyKeys</strong>(array $properties, array $ignoredProperties)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -986,12 +937,13 @@ first evaluated value will be cached in memory.</p></p>
                     <div class="method-item">
                     <h3 id="method_applyPositionalArraySorterToProperties">
         <div class="location">in <a href="../../../Neos/Fusion/FusionObjects/AbstractArrayFusionObject.html#method_applyPositionalArraySorterToProperties">
-<abbr title="Neos\Fusion\FusionObjects\AbstractArrayFusionObject">AbstractArrayFusionObject</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/AbstractArrayFusionObject.php#L179">at line 179</a></div>
+<abbr title="Neos\Fusion\FusionObjects\AbstractArrayFusionObject">AbstractArrayFusionObject</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/AbstractArrayFusionObject.php#L163">at line 163</a></div>
         <code>            protected        array
     <strong>applyPositionalArraySorterToProperties</strong>(array $properties)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1039,12 +991,13 @@ first evaluated value will be cached in memory.</p></p>
                     <div class="method-item">
                     <h3 id="method_filterIgnoredProperties">
         <div class="location">in <a href="../../../Neos/Fusion/FusionObjects/AbstractArrayFusionObject.html#method_filterIgnoredProperties">
-<abbr title="Neos\Fusion\FusionObjects\AbstractArrayFusionObject">AbstractArrayFusionObject</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/AbstractArrayFusionObject.php#L198">at line 198</a></div>
+<abbr title="Neos\Fusion\FusionObjects\AbstractArrayFusionObject">AbstractArrayFusionObject</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/AbstractArrayFusionObject.php#L182">at line 182</a></div>
         <code>            protected        array
     <strong>filterIgnoredProperties</strong>(array $properties, array $ignoredProperties)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1085,14 +1038,59 @@ first evaluated value will be cached in memory.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isUntyped">
-        <div class="location">in <a href="../../../Neos/Fusion/FusionObjects/AbstractArrayFusionObject.html#method_isUntyped">
-<abbr title="Neos\Fusion\FusionObjects\AbstractArrayFusionObject">AbstractArrayFusionObject</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/AbstractArrayFusionObject.php#L214">at line 214</a></div>
+                    <h3 id="method_isUnset">
+        <div class="location">in <a href="../../../Neos/Fusion/FusionObjects/AbstractArrayFusionObject.html#method_isUnset">
+<abbr title="Neos\Fusion\FusionObjects\AbstractArrayFusionObject">AbstractArrayFusionObject</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/AbstractArrayFusionObject.php#L197">at line 197</a></div>
         <code>            protected        bool
-    <strong>isUntyped</strong>(<abbr title="Neos\Fusion\FusionObjects\string|int">string|int</abbr> $key)
+    <strong>isUnset</strong>(string|int $key)
         </code>
     </h3>
     <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Returns TRUE if the given fusion key has been removed via &quot;&gt;&quot;</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|int</td>
+                <td>$key</td>
+                <td><p>fusion child key path to check</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isUntyped">
+        <div class="location">in <a href="../../../Neos/Fusion/FusionObjects/AbstractArrayFusionObject.html#method_isUntyped">
+<abbr title="Neos\Fusion\FusionObjects\AbstractArrayFusionObject">AbstractArrayFusionObject</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/AbstractArrayFusionObject.php#L209">at line 209</a></div>
+        <code>            protected        bool
+    <strong>isUntyped</strong>(string|int $key)
+        </code>
+    </h3>
+    <div class="details">    
+            
     
             
 
@@ -1105,7 +1103,7 @@ having a fusion objectType, eelExpression or value</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\Fusion\FusionObjects\string|int">string|int</abbr></td>
+                <td>string|int</td>
                 <td>$key</td>
                 <td><p>fusion child key path to check</p></td>
             </tr>
@@ -1130,12 +1128,13 @@ having a fusion objectType, eelExpression or value</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getGlue">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/JoinImplementation.php#L25">at line 25</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/FusionObjects/JoinImplementation.php#L24">at line 24</a></div>
         <code>                    string
     <strong>getGlue</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

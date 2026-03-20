@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Fusion_Core_Cache_ContentCache" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Fusion_Core_Cache_ContentCache" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,8 +94,16 @@
 </p>
 
         
-    
         
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp; </td>
+            </tr>
+        </table>
+                &nbsp;
+    
 
             <div class="description">
             <p><p>A wrapper around a Neos Flow cache which provides additional functionality for caching partial content (segments)
@@ -219,15 +239,6 @@ the application.</p></em></p>
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_propertyMapper">
-                                        protected                                        <abbr title="Neos\Flow\Property\PropertyMapper">PropertyMapper</abbr>
-                                                                                
-                                    </td>
-                <td>$propertyMapper</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td class="type" id="property_securityContext">
                                         protected                                        <abbr title="Neos\Flow\Security\Context">Context</abbr>
                                                                                 
@@ -276,7 +287,7 @@ the application.</p></em></p>
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_createUncachedSegment">createUncachedSegment</a>(string $content, string $fusionPath, array $contextVariables)
+                    <a href="#method_createUncachedSegment">createUncachedSegment</a>(string $content, string $fusionPath, array $serializedContext)
         
                                             <p><p>Similar to createCacheSegment() creates a content segment with markers added, but in contrast to that function
 this method is used for rendering a segment which is not supposed to be cached.</p></p>                </div>
@@ -287,7 +298,7 @@ this method is used for rendering a segment which is not supposed to be cached.<
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_createDynamicCachedSegment">createDynamicCachedSegment</a>(string $content, string $fusionPath, array $contextVariables, array $cacheIdentifierValues, array $tags, int $lifetime, string $cacheDiscriminator)
+                    <a href="#method_createDynamicCachedSegment">createDynamicCachedSegment</a>(string $content, string $fusionPath, array $serializedContext, array $cacheIdentifierValues, array $tags, int $lifetime, string $cacheDiscriminator)
         
                                             <p><p>Similar to createUncachedSegment() creates a content segment with markers added, but in contrast to that function
 this method is used for rendering a segment which will be evaluated at runtime but can still be cached.</p></p>                </div>
@@ -316,10 +327,10 @@ segments which can be cached to the actual cache and returns the cleaned up orig
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string|bool
+                    string|false
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getCachedSegment">getCachedSegment</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $uncachedCommandCallback, string $fusionPath, array $cacheIdentifierValues, bool $addCacheSegmentMarkersToPlaceholders = false, string|bool $cacheDiscriminator = null)
+                    <a href="#method_getCachedSegment">getCachedSegment</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $uncachedCommandCallback, string $fusionPath, array $cacheIdentifierValues, bool $addCacheSegmentMarkersToPlaceholders = false, string|false $cacheDiscriminator = null)
         
                                             <p><p>Tries to retrieve the specified content segment from the cache – further nested inline segments are retrieved
 as well and segments which were not cacheable are rendered.</p></p>                </div>
@@ -343,26 +354,6 @@ as well and segments which were not cacheable are rendered.</p></p>             
                     <a href="#method_replaceUncachedPlaceholders">replaceUncachedPlaceholders</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $uncachedCommandCallback, string $content)
         
                                             <p><p>Replace segments which are marked as not-cacheable by their actual content by invoking the Fusion Runtime.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    array
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_serializeContext">serializeContext</a>(array $contextVariables)
-        
-                                            <p><p>Generates an array of strings from the given array of context variables</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    string
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getTypeForContextValue">getTypeForContextValue</a>(mixed $contextValue)
-        
-                                            <p><p>TODO: Adapt to Flow change <a href="https://review.typo3.org/#/c/33138/">https://review.typo3.org/#/c/33138/</a></p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -423,12 +414,13 @@ as well and segments which were not cacheable are rendered.</p></p>             
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L94">at line 94</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L90">at line 90</a></div>
         <code>                    
     <strong>__construct</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -446,12 +438,13 @@ as well and segments which were not cacheable are rendered.</p></p>             
             </div>
                     <div class="method-item">
                     <h3 id="method_createCacheSegment">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L118">at line 118</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L114">at line 114</a></div>
         <code>                    string
     <strong>createCacheSegment</strong>(string $content, string $fusionPath, array $cacheIdentifierValues, array $tags = [], int $lifetime = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -513,12 +506,13 @@ as a string.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_createUncachedSegment">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L139">at line 139</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L135">at line 135</a></div>
         <code>                    string
-    <strong>createUncachedSegment</strong>(string $content, string $fusionPath, array $contextVariables)
+    <strong>createUncachedSegment</strong>(string $content, string $fusionPath, array $serializedContext)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -542,8 +536,8 @@ this method is used for rendering a segment which is not supposed to be cached.<
             </tr>
                     <tr>
                 <td>array</td>
-                <td>$contextVariables</td>
-                <td><p>Fusion context variables which are needed to correctly render the specified Fusion object</p></td>
+                <td>$serializedContext</td>
+                <td><p>Serialized Fusion context variables which are needed to correctly render the specified Fusion object</p></td>
             </tr>
             </table>
 
@@ -566,12 +560,13 @@ this method is used for rendering a segment which is not supposed to be cached.<
             </div>
                     <div class="method-item">
                     <h3 id="method_createDynamicCachedSegment">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L160">at line 160</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L155">at line 155</a></div>
         <code>                    string
-    <strong>createDynamicCachedSegment</strong>(string $content, string $fusionPath, array $contextVariables, array $cacheIdentifierValues, array $tags, int $lifetime, string $cacheDiscriminator)
+    <strong>createDynamicCachedSegment</strong>(string $content, string $fusionPath, array $serializedContext, array $cacheIdentifierValues, array $tags, int $lifetime, string $cacheDiscriminator)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -595,8 +590,8 @@ this method is used for rendering a segment which will be evaluated at runtime b
             </tr>
                     <tr>
                 <td>array</td>
-                <td>$contextVariables</td>
-                <td><p>Fusion context variables which are needed to correctly render the specified Fusion object</p></td>
+                <td>$serializedContext</td>
+                <td><p>Serialized Fusion context variables which are needed to correctly render the specified Fusion object</p></td>
             </tr>
                     <tr>
                 <td>array</td>
@@ -639,12 +634,13 @@ this method is used for rendering a segment which will be evaluated at runtime b
             </div>
                     <div class="method-item">
                     <h3 id="method_renderContentCacheEntryIdentifier">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L185">at line 185</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L180">at line 180</a></div>
         <code>            protected        string
     <strong>renderContentCacheEntryIdentifier</strong>(string $fusionPath, array $cacheIdentifierValues)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -683,7 +679,7 @@ this method is used for rendering a segment which will be evaluated at runtime b
                     <table class="table table-condensed">
                     <tr>
                 <td><a href="../../../../Neos/Fusion/Exception/CacheException.html"><abbr title="Neos\Fusion\Exception\CacheException">CacheException</abbr></a></td>
-                <td><p>If an invalid entry identifier value is given</p></td>
+                <td></td>
             </tr>
             </table>
 
@@ -695,12 +691,13 @@ this method is used for rendering a segment which will be evaluated at runtime b
             </div>
                     <div class="method-item">
                     <h3 id="method_processCacheSegments">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L214">at line 214</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L209">at line 209</a></div>
         <code>                    string
     <strong>processCacheSegments</strong>(string $content, bool $storeCacheEntries = true)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -743,12 +740,13 @@ segments which can be cached to the actual cache and returns the cleaned up orig
             </div>
                     <div class="method-item">
                     <h3 id="method_getCachedSegment">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L247">at line 247</a></div>
-        <code>                    string|bool
-    <strong>getCachedSegment</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $uncachedCommandCallback, string $fusionPath, array $cacheIdentifierValues, bool $addCacheSegmentMarkersToPlaceholders = false, string|bool $cacheDiscriminator = null)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L242">at line 242</a></div>
+        <code>                    string|false
+    <strong>getCachedSegment</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $uncachedCommandCallback, string $fusionPath, array $cacheIdentifierValues, bool $addCacheSegmentMarkersToPlaceholders = false, string|false $cacheDiscriminator = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -781,7 +779,7 @@ as well and segments which were not cacheable are rendered.</p></p>
                 <td><p>If cache segment markers should be added – this makes sense if the cached segment is about to be included in a not-yet-cached segment</p></td>
             </tr>
                     <tr>
-                <td>string|bool</td>
+                <td>string|false</td>
                 <td>$cacheDiscriminator</td>
                 <td><p>The evaluated cache discriminator value, if any and false if the cache discriminator is disabled for the current context</p></td>
             </tr>
@@ -792,7 +790,7 @@ as well and segments which were not cacheable are rendered.</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>string|bool</td>
+            <td>string|false</td>
             <td><p>The segment with replaced cache placeholders, or false if a segment was missing in the cache</p></td>
         </tr>
     </table>
@@ -815,12 +813,13 @@ as well and segments which were not cacheable are rendered.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_replaceCachePlaceholders">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L290">at line 290</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L285">at line 285</a></div>
         <code>            protected        int|bool
     <strong>replaceCachePlaceholders</strong>(string $content, bool $addCacheSegmentMarkersToPlaceholders)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -862,12 +861,13 @@ as well and segments which were not cacheable are rendered.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_replaceUncachedPlaceholders">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L321">at line 321</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L316">at line 316</a></div>
         <code>            protected        int
     <strong>replaceUncachedPlaceholders</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $uncachedCommandCallback, string $content)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -908,106 +908,14 @@ as well and segments which were not cacheable are rendered.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_serializeContext">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L340">at line 340</a></div>
-        <code>            protected        array
-    <strong>serializeContext</strong>(array $contextVariables)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Generates an array of strings from the given array of context variables</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>array</td>
-                <td>$contextVariables</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getTypeForContextValue">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L360">at line 360</a></div>
-        <code>            protected        string
-    <strong>getTypeForContextValue</strong>(mixed $contextValue)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>TODO: Adapt to Flow change <a href="https://review.typo3.org/#/c/33138/">https://review.typo3.org/#/c/33138/</a></p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>mixed</td>
-                <td>$contextValue</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>string</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_flushByTag">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L380">at line 380</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L334">at line 334</a></div>
         <code>                    int
     <strong>flushByTag</strong>(string $tag)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1044,12 +952,13 @@ as well and segments which were not cacheable are rendered.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_flushByTags">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L391">at line 391</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L345">at line 345</a></div>
         <code>                    int
     <strong>flushByTags</strong>(array $tags)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1086,12 +995,13 @@ as well and segments which were not cacheable are rendered.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_flush">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L401">at line 401</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L355">at line 355</a></div>
         <code>                    void
     <strong>flush</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1118,12 +1028,13 @@ as well and segments which were not cacheable are rendered.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sanitizeTag">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L412">at line 412</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L366">at line 366</a></div>
         <code>            protected        string
     <strong>sanitizeTag</strong>(string $tag)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1160,12 +1071,13 @@ as well and segments which were not cacheable are rendered.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_sanitizeTags">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L423">at line 423</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Cache/ContentCache.php#L377">at line 377</a></div>
         <code>            protected        array
     <strong>sanitizeTags</strong>(array $tags)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

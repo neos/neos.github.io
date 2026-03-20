@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Fusion_Core_Parser" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Fusion_Core_Parser" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,8 +94,17 @@
 </p>
 
         
-    
         
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp;The Fusion parsing is considered internal.
+For interacting with Fusion from the outside a FusionView should be used.</td>
+            </tr>
+        </table>
+                &nbsp;
+    
 
             <div class="description">
             <p><p>The Fusion Parser</p></p>                    </div>
@@ -95,7 +116,7 @@
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_reservedParseTreeKeys">
-                    static                                                            
+                    static                                                            <abbr title="Neos\Fusion\Core\list&lt;string&gt;">list&lt;string&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$reservedParseTreeKeys</td>
@@ -128,11 +149,22 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
+                    <a href="../../../Neos/Fusion/Core/FusionConfiguration.html"><abbr title="Neos\Fusion\Core\FusionConfiguration">FusionConfiguration</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_parseFromSource">parseFromSource</a>(<a href="../../../Neos/Fusion/Core/FusionSourceCodeCollection.html"><abbr title="Neos\Fusion\Core\FusionSourceCodeCollection">FusionSourceCodeCollection</abbr></a> $sourceCode)
+        
+                                            <p><p>Parses the given Fusion source code, resolves includes and returns a merged array tree
+as the result.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     array
                 </div>
                 <div class="col-md-8">
                     <a href="#method_parse">parse</a>(string $sourceCode, string|null $contextPathAndFilename = null, array $mergedArrayTreeUntilNow = [])
-        
+        <small><span class="label label-danger">deprecated</span></small>
                                             <p><p>Parses the given Fusion source code, resolves includes and returns a merged array tree
 as the result.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -150,7 +182,7 @@ as the result.</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    mixed
                 </div>
                 <div class="col-md-8">
                     <a href="#method_handleDslTranspile">handleDslTranspile</a>(string $identifier, string $code)
@@ -175,7 +207,7 @@ as the result.</p></p>                </div>
                     <a href="../../../Neos/Fusion/Core/ObjectTreeParser/Ast/FusionFile.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\FusionFile">FusionFile</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getFusionFile">getFusionFile</a>(string $sourceCode, string|null $contextPathAndFilename)
+                    <a href="#method_parseToFusionFile">parseToFusionFile</a>(<a href="../../../Neos/Fusion/Core/FusionSourceCode.html"><abbr title="Neos\Fusion\Core\FusionSourceCode">FusionSourceCode</abbr></a> $fusionCode)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -188,13 +220,74 @@ as the result.</p></p>                </div>
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_parse">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Parser.php#L60">at line 60</a></div>
-        <code>                    array
-    <strong>parse</strong>(string $sourceCode, string|null $contextPathAndFilename = null, array $mergedArrayTreeUntilNow = [])
+                    <h3 id="method_parseFromSource">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Parser.php#L59">at line 59</a></div>
+        <code>                    <a href="../../../Neos/Fusion/Core/FusionConfiguration.html"><abbr title="Neos\Fusion\Core\FusionConfiguration">FusionConfiguration</abbr></a>
+    <strong>parseFromSource</strong>(<a href="../../../Neos/Fusion/Core/FusionSourceCodeCollection.html"><abbr title="Neos\Fusion\Core\FusionSourceCodeCollection">FusionSourceCodeCollection</abbr></a> $sourceCode)
         </code>
     </h3>
     <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Parses the given Fusion source code, resolves includes and returns a merged array tree
+as the result.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Core/FusionSourceCodeCollection.html"><abbr title="Neos\Fusion\Core\FusionSourceCodeCollection">FusionSourceCodeCollection</abbr></a></td>
+                <td>$sourceCode</td>
+                <td><p>The Fusion source code to parse</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Fusion/Core/FusionConfiguration.html"><abbr title="Neos\Fusion\Core\FusionConfiguration">FusionConfiguration</abbr></a></td>
+            <td><p>The fusion configuration for the Fusion runtime</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Fusion/Exception.html"><abbr title="Neos\Fusion\Exception">Exception</abbr></a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_parse">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Parser.php#L84">at line 84</a></div>
+        <code>                    array
+    <strong>parse</strong>(string $sourceCode, string|null $contextPathAndFilename = null, array $mergedArrayTreeUntilNow = [])
+        <small><span class="label label-danger">deprecated</span></small></code>
+    </h3>
+    <div class="details">    
+            
+            <p>
+                <small><span class="label label-danger">deprecated</span></small>
+                            <tr>
+                    <td>with</td>
+                    <td>Neos 8.3 – will be removed with Neos 9.0, use {@link parseFromSource} instead</td>
+                </tr>
+                    </p>
     
             
 
@@ -251,12 +344,13 @@ as the result.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_handleFileInclude">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Parser.php#L72">at line 72</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Parser.php#L101">at line 101</a></div>
         <code>            protected        void
     <strong>handleFileInclude</strong>(<a href="../../../Neos/Fusion/Core/ObjectTreeParser/MergedArrayTree.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\MergedArrayTree">MergedArrayTree</abbr></a> $mergedArrayTree, string $filePattern, string|null $contextPathAndFilename)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -304,12 +398,13 @@ as the result.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_handleDslTranspile">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Parser.php#L88">at line 88</a></div>
-        <code>            protected        
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Parser.php#L117">at line 117</a></div>
+        <code>            protected        mixed
     <strong>handleDslTranspile</strong>(string $identifier, string $code)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -334,6 +429,15 @@ as the result.</p></p>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
             
@@ -343,12 +447,13 @@ as the result.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getMergedArrayTreeVisitor">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Parser.php#L111">at line 111</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Parser.php#L140">at line 140</a></div>
         <code>            protected        <a href="../../../Neos/Fusion/Core/ObjectTreeParser/MergedArrayTreeVisitor.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\MergedArrayTreeVisitor">MergedArrayTreeVisitor</abbr></a>
     <strong>getMergedArrayTreeVisitor</strong>(<a href="../../../Neos/Fusion/Core/ObjectTreeParser/MergedArrayTree.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\MergedArrayTree">MergedArrayTree</abbr></a> $mergedArrayTree)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -385,13 +490,14 @@ as the result.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getFusionFile">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Parser.php#L120">at line 120</a></div>
+                    <h3 id="method_parseToFusionFile">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/Parser.php#L149">at line 149</a></div>
         <code>            protected        <a href="../../../Neos/Fusion/Core/ObjectTreeParser/Ast/FusionFile.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\FusionFile">FusionFile</abbr></a>
-    <strong>getFusionFile</strong>(string $sourceCode, string|null $contextPathAndFilename)
+    <strong>parseToFusionFile</strong>(<a href="../../../Neos/Fusion/Core/FusionSourceCode.html"><abbr title="Neos\Fusion\Core\FusionSourceCode">FusionSourceCode</abbr></a> $fusionCode)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -404,13 +510,8 @@ as the result.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
-                <td>$sourceCode</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>string|null</td>
-                <td>$contextPathAndFilename</td>
+                <td><a href="../../../Neos/Fusion/Core/FusionSourceCode.html"><abbr title="Neos\Fusion\Core\FusionSourceCode">FusionSourceCode</abbr></a></td>
+                <td>$fusionCode</td>
                 <td></td>
             </tr>
             </table>

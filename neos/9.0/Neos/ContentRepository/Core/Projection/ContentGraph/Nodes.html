@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../../fonts/doctum-font.css">
         <script src="../../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../../doctum.js"></script>
         <script async defer src="../../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../../js/typeahead.min.js"></script>
-        <script src="../../../../../doctum.js"></script>
+        <script async defer src="../../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_ContentRepository_Core_Projection_ContentGraph_Nodes" data-root-path="../../../../../">
+    <body id="class" data-name="class:Neos_ContentRepository_Core_Projection_ContentGraph_Nodes" data-root-path="../../../../../" data-search-index-url="../../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,10 +90,10 @@
 
     
     <p>final         class
-    <strong>Nodes</strong>        implements
-        <a target="_blank" rel="noopener" href="https://www.php.net/IteratorAggregate">IteratorAggregate</a>, <a target="_blank" rel="noopener" href="https://www.php.net/ArrayAccess">ArrayAccess</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Countable">Countable</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php">View source</a>)
+    <strong>Nodes</strong>        implements        <a target="_blank" rel="noopener" href="https://www.php.net/IteratorAggregate">IteratorAggregate</a>, <a target="_blank" rel="noopener" href="https://www.php.net/ArrayAccess">ArrayAccess</a>, <a target="_blank" rel="noopener" href="https://www.php.net/Countable">Countable</a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -119,7 +131,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_offsetGet">offsetGet</a>(mixed $offset)
@@ -130,7 +142,7 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <a target="_blank" rel="noopener" href="https://www.php.net/ArrayIterator">ArrayIterator</a>
+                    <a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a>
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getIterator">getIterator</a>()
@@ -185,10 +197,21 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_first">first</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_last">last</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -200,6 +223,28 @@
                 </div>
                 <div class="col-md-8">
                     <a href="#method_merge">merge</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a> $other)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_prepend">prepend</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_append">append</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -229,10 +274,10 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_previous">previous</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $referenceNode)
+                    <a href="#method_previous">previous</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $referenceNode)
         
                                             <p><p>Returns the node before the given $referenceNode in this set.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -242,17 +287,17 @@
                     <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_previousAll">previousAll</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $referenceNode)
+                    <a href="#method_previousAll">previousAll</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $referenceNode)
         
                                             <p><p>Returns all nodes before the given $referenceNode in this set</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_next">next</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $referenceNode)
+                    <a href="#method_next">next</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $referenceNode)
         
                                             <p><p>Returns the node after the given $referenceNode in this set.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -262,9 +307,20 @@
                     <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_nextAll">nextAll</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $referenceNode)
+                    <a href="#method_nextAll">nextAll</a>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $referenceNode)
         
                                             <p><p>Returns all nodes after the given $referenceNode in this set</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_map">map</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -272,9 +328,21 @@
                     <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_until">until</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $referenceNode)
+                    <a href="#method_filter">filter</a>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback)
         
-                                            <p><p>Returns all nodes after the given $referenceNode in this set</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_toNodeAggregateIds">toNodeAggregateIds</a>()
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -285,12 +353,13 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_fromArray">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L54">at line 54</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L57">at line 57</a></div>
         <code>        static            <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
     <strong>fromArray</strong>(array $nodes)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -328,12 +397,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_createEmpty">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L59">at line 59</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L62">at line 62</a></div>
         <code>        static            <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
     <strong>createEmpty</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -361,12 +431,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_offsetGet">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L64">at line 64</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L67">at line 67</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
     <strong>offsetGet</strong>(mixed $offset)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -390,7 +461,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null</td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -405,11 +476,12 @@
                     <div class="method-item">
                     <h3 id="method_getIterator">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L72">at line 72</a></div>
-        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/ArrayIterator">ArrayIterator</a>
+        <code>                    <a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a>
     <strong>getIterator</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -423,7 +495,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><a target="_blank" rel="noopener" href="https://www.php.net/ArrayIterator">ArrayIterator</a></td>
+            <td><a target="_blank" rel="noopener" href="https://www.php.net/Traversable">Traversable</a></td>
             <td></td>
         </tr>
     </table>
@@ -443,6 +515,7 @@
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -486,6 +559,7 @@
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -534,6 +608,7 @@
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -577,6 +652,7 @@
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -605,11 +681,12 @@
                     <div class="method-item">
                     <h3 id="method_first">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L97">at line 97</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
     <strong>first</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -623,7 +700,41 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null</td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_last">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L107">at line 107</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
+    <strong>last</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -637,12 +748,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_merge">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L107">at line 107</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L117">at line 117</a></div>
         <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
     <strong>merge</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a> $other)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -679,13 +791,102 @@
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_prepend">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L124">at line 124</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
+    <strong>prepend</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_append">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L129">at line 129</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
+    <strong>append</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+                <td>$node</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_reverse">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L114">at line 114</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L134">at line 134</a></div>
         <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
     <strong>reverse</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -713,12 +914,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isEmpty">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L119">at line 119</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L143">at line 143</a></div>
         <code>                    bool
     <strong>isEmpty</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -746,12 +948,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_previous">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L144">at line 144</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
-    <strong>previous</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $referenceNode)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L165">at line 165</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
+    <strong>previous</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $referenceNode)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -763,7 +966,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
                 <td>$referenceNode</td>
                 <td></td>
             </tr>
@@ -774,7 +977,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null</td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -788,12 +991,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_previousAll">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L156">at line 156</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L177">at line 177</a></div>
         <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
-    <strong>previousAll</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $referenceNode)
+    <strong>previousAll</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $referenceNode)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -805,7 +1009,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
                 <td>$referenceNode</td>
                 <td></td>
             </tr>
@@ -830,12 +1034,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_next">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L167">at line 167</a></div>
-        <code>                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
-    <strong>next</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $referenceNode)
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L188">at line 188</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
+    <strong>next</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $referenceNode)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -847,7 +1052,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
                 <td>$referenceNode</td>
                 <td></td>
             </tr>
@@ -858,7 +1063,7 @@
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null</td>
+            <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -872,12 +1077,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_nextAll">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L180">at line 180</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L201">at line 201</a></div>
         <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
-    <strong>nextAll</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $referenceNode)
+    <strong>nextAll</strong>(<a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $referenceNode)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -889,7 +1095,7 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
                 <td>$referenceNode</td>
                 <td></td>
             </tr>
@@ -913,26 +1119,72 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_until">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L190">at line 190</a></div>
-        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
-    <strong>until</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $referenceNode)
+                    <h3 id="method_map">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L213">at line 213</a></div>
+        <code>                    array
+    <strong>map</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Returns all nodes after the given $referenceNode in this set</p></p>                        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
-                <td>$referenceNode</td>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$callback</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_filter">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L221">at line 221</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>
+    <strong>filter</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$callback</td>
                 <td></td>
             </tr>
             </table>
@@ -943,6 +1195,40 @@
                     <table class="table table-condensed">
         <tr>
             <td><a href="../../../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_toNodeAggregateIds">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.ContentRepository.Core/Classes/Projection/ContentGraph/Nodes.php#L226">at line 226</a></div>
+        <code>                    <a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a>
+    <strong>toNodeAggregateIds</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a></td>
             <td></td>
         </tr>
     </table>

@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Fusion_Core_ObjectTreeParser_MergedArrayTreeVisitor" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Fusion_Core_ObjectTreeParser_MergedArrayTreeVisitor" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -78,13 +90,20 @@
 
     
     <p>        class
-    <strong>MergedArrayTreeVisitor</strong>        implements
-        <a href="../../../../Neos/Fusion/Core/ObjectTreeParser/AstNodeVisitorInterface.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\AstNodeVisitorInterface">AstNodeVisitorInterface</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php">View source</a>)
+    <strong>MergedArrayTreeVisitor</strong>        implements        <a href="../../../../Neos/Fusion/Core/ObjectTreeParser/AstNodeVisitorInterface.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\AstNodeVisitorInterface">AstNodeVisitorInterface</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php">View source</a>)
 </p>
 
         
-    
         
+    
+                        <table>
+            <tr>
+                <td><span class="label label-warning">internal</span></td>
+                <td>&nbsp; </td>
+            </tr>
+        </table>
+                &nbsp;
+    
 
             <div class="description">
             <p><p>Builds the merged array tree for the Fusion runtime</p></p>                    </div>
@@ -96,7 +115,7 @@
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_currentObjectPathStack">
-                                        protected                                        
+                                        protected                                        array
                                                                                 
                                     </td>
                 <td>$currentObjectPathStack</td>
@@ -105,7 +124,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_contextPathAndFilename">
-                                        protected                                        
+                                        protected                                        string|null
                                                                                 
                                     </td>
                 <td>$contextPathAndFilename</td>
@@ -114,7 +133,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_currentObjectStatementCursor">
-                                        protected                                        
+                                        protected                                        int
                                                                                 
                                     </td>
                 <td>$currentObjectStatementCursor</td>
@@ -187,7 +206,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_visitBlock">visitBlock</a>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/Block.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\Block">Block</abbr></a> $block, array $currentPath = null)
+                    <a href="#method_visitBlock">visitBlock</a>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/Block.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\Block">Block</abbr></a> $block, array|null $currentPath = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -242,7 +261,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_visitValueAssignment">visitValueAssignment</a>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/ValueAssignment.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\ValueAssignment">ValueAssignment</abbr></a> $valueAssignment, array $currentPath = null)
+                    <a href="#method_visitValueAssignment">visitValueAssignment</a>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/ValueAssignment.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\ValueAssignment">ValueAssignment</abbr></a> $valueAssignment, array|null $currentPath = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -341,7 +360,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_visitValueCopy">visitValueCopy</a>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/ValueCopy.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\ValueCopy">ValueCopy</abbr></a> $valueCopy, array $currentPath = null)
+                    <a href="#method_visitValueCopy">visitValueCopy</a>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/ValueCopy.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\ValueCopy">ValueCopy</abbr></a> $valueCopy, array|null $currentPath = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -352,7 +371,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_visitAssignedObjectPath">visitAssignedObjectPath</a>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/AssignedObjectPath.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\AssignedObjectPath">AssignedObjectPath</abbr></a> $assignedObjectPath, $relativePath = [])
+                    <a href="#method_visitAssignedObjectPath">visitAssignedObjectPath</a>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/AssignedObjectPath.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\AssignedObjectPath">AssignedObjectPath</abbr></a> $assignedObjectPath, array $relativePath = [])
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -363,7 +382,7 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_visitValueUnset">visitValueUnset</a>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/ValueUnset.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\ValueUnset">ValueUnset</abbr></a> $valueUnset, array $currentPath = null)
+                    <a href="#method_visitValueUnset">visitValueUnset</a>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/ValueUnset.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\ValueUnset">ValueUnset</abbr></a> $valueUnset, array|null $currentPath = null)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -410,12 +429,13 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L54">at line 54</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L57">at line 57</a></div>
         <code>                    
     <strong>__construct</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/MergedArrayTree.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\MergedArrayTree">MergedArrayTree</abbr></a> $mergedArrayTree, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $handleFileInclude, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $handleDslTranspile)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -454,12 +474,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitFusionFile">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L61">at line 61</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L64">at line 64</a></div>
         <code>                    
     <strong>visitFusionFile</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/FusionFile.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\FusionFile">FusionFile</abbr></a> $fusionFile)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -488,12 +509,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitStatementList">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L68">at line 68</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L71">at line 71</a></div>
         <code>                    
     <strong>visitStatementList</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/StatementList.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\StatementList">StatementList</abbr></a> $statementList)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -522,12 +544,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitIncludeStatement">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L75">at line 75</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L78">at line 78</a></div>
         <code>                    
     <strong>visitIncludeStatement</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/IncludeStatement.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\IncludeStatement">IncludeStatement</abbr></a> $includeStatement)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -556,12 +579,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitObjectStatement">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L80">at line 80</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L96">at line 96</a></div>
         <code>                    
     <strong>visitObjectStatement</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/ObjectStatement.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\ObjectStatement">ObjectStatement</abbr></a> $objectStatement)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -590,12 +614,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitBlock">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L90">at line 90</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L112">at line 112</a></div>
         <code>                    
-    <strong>visitBlock</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/Block.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\Block">Block</abbr></a> $block, array $currentPath = null)
+    <strong>visitBlock</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/Block.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\Block">Block</abbr></a> $block, array|null $currentPath = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -613,7 +638,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td>array</td>
+                <td>array|null</td>
                 <td>$currentPath</td>
                 <td></td>
             </tr>
@@ -629,12 +654,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitObjectPath">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L101">at line 101</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L123">at line 123</a></div>
         <code>                    
     <strong>visitObjectPath</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/ObjectPath.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\ObjectPath">ObjectPath</abbr></a> $objectPath, array $objectPathPrefix = [])
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -668,12 +694,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitMetaPathSegment">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L110">at line 110</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L132">at line 132</a></div>
         <code>                    
     <strong>visitMetaPathSegment</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/MetaPathSegment.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\MetaPathSegment">MetaPathSegment</abbr></a> $metaPathSegment)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -702,12 +729,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitPrototypePathSegment">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L115">at line 115</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L143">at line 143</a></div>
         <code>                    
     <strong>visitPrototypePathSegment</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/PrototypePathSegment.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\PrototypePathSegment">PrototypePathSegment</abbr></a> $prototypePathSegment)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -736,12 +764,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitPathSegment">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L120">at line 120</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L148">at line 148</a></div>
         <code>                    
     <strong>visitPathSegment</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/PathSegment.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\PathSegment">PathSegment</abbr></a> $pathSegment)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -770,12 +799,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitValueAssignment">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L127">at line 127</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L155">at line 155</a></div>
         <code>                    
-    <strong>visitValueAssignment</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/ValueAssignment.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\ValueAssignment">ValueAssignment</abbr></a> $valueAssignment, array $currentPath = null)
+    <strong>visitValueAssignment</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/ValueAssignment.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\ValueAssignment">ValueAssignment</abbr></a> $valueAssignment, array|null $currentPath = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -793,7 +823,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td>array</td>
+                <td>array|null</td>
                 <td>$currentPath</td>
                 <td></td>
             </tr>
@@ -809,12 +839,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitFusionObjectValue">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L135">at line 135</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L163">at line 163</a></div>
         <code>                    
     <strong>visitFusionObjectValue</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/FusionObjectValue.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\FusionObjectValue">FusionObjectValue</abbr></a> $fusionObjectValue)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -843,12 +874,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitDslExpressionValue">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L142">at line 142</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L170">at line 170</a></div>
         <code>                    
     <strong>visitDslExpressionValue</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/DslExpressionValue.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\DslExpressionValue">DslExpressionValue</abbr></a> $dslExpressionValue)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -877,12 +909,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitEelExpressionValue">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L157">at line 157</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L185">at line 185</a></div>
         <code>                    
     <strong>visitEelExpressionValue</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/EelExpressionValue.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\EelExpressionValue">EelExpressionValue</abbr></a> $eelExpressionValue)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -911,12 +944,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitFloatValue">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L165">at line 165</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L193">at line 193</a></div>
         <code>                    
     <strong>visitFloatValue</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/FloatValue.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\FloatValue">FloatValue</abbr></a> $floatValue)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -945,12 +979,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitIntValue">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L170">at line 170</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L198">at line 198</a></div>
         <code>                    
     <strong>visitIntValue</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/IntValue.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\IntValue">IntValue</abbr></a> $intValue)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -979,12 +1014,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitBoolValue">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L175">at line 175</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L203">at line 203</a></div>
         <code>                    
     <strong>visitBoolValue</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/BoolValue.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\BoolValue">BoolValue</abbr></a> $boolValue)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1013,12 +1049,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitNullValue">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L180">at line 180</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L208">at line 208</a></div>
         <code>                    
     <strong>visitNullValue</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/NullValue.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\NullValue">NullValue</abbr></a> $nullValue)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1047,12 +1084,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitStringValue">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L185">at line 185</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L213">at line 213</a></div>
         <code>                    
     <strong>visitStringValue</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/StringValue.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\StringValue">StringValue</abbr></a> $stringValue)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1081,12 +1119,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitValueCopy">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L190">at line 190</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L218">at line 218</a></div>
         <code>                    
-    <strong>visitValueCopy</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/ValueCopy.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\ValueCopy">ValueCopy</abbr></a> $valueCopy, array $currentPath = null)
+    <strong>visitValueCopy</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/ValueCopy.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\ValueCopy">ValueCopy</abbr></a> $valueCopy, array|null $currentPath = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1104,7 +1143,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td>array</td>
+                <td>array|null</td>
                 <td>$currentPath</td>
                 <td></td>
             </tr>
@@ -1120,12 +1159,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitAssignedObjectPath">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L230">at line 230</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L258">at line 258</a></div>
         <code>                    
-    <strong>visitAssignedObjectPath</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/AssignedObjectPath.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\AssignedObjectPath">AssignedObjectPath</abbr></a> $assignedObjectPath, $relativePath = [])
+    <strong>visitAssignedObjectPath</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/AssignedObjectPath.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\AssignedObjectPath">AssignedObjectPath</abbr></a> $assignedObjectPath, array $relativePath = [])
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1143,7 +1183,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td></td>
+                <td>array</td>
                 <td>$relativePath</td>
                 <td></td>
             </tr>
@@ -1159,12 +1199,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_visitValueUnset">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L239">at line 239</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L267">at line 267</a></div>
         <code>                    
-    <strong>visitValueUnset</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/ValueUnset.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\ValueUnset">ValueUnset</abbr></a> $valueUnset, array $currentPath = null)
+    <strong>visitValueUnset</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Ast/ValueUnset.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Ast\ValueUnset">ValueUnset</abbr></a> $valueUnset, array|null $currentPath = null)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1182,7 +1223,7 @@
                 <td></td>
             </tr>
                     <tr>
-                <td>array</td>
+                <td>array|null</td>
                 <td>$currentPath</td>
                 <td></td>
             </tr>
@@ -1198,12 +1239,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getCurrentObjectPathPrefix">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L246">at line 246</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L274">at line 274</a></div>
         <code>            protected        array
     <strong>getCurrentObjectPathPrefix</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1231,12 +1273,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_validateParseTreeKey">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L252">at line 252</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L280">at line 280</a></div>
         <code>            protected        
     <strong>validateParseTreeKey</strong>(string $pathKey)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1265,12 +1308,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_prepareParserException">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L276">at line 276</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ObjectTreeParser/MergedArrayTreeVisitor.php#L304">at line 304</a></div>
         <code>            protected        <a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Exception/ParserException.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Exception\ParserException">ParserException</abbr></a>
     <strong>prepareParserException</strong>(<a href="../../../../Neos/Fusion/Core/ObjectTreeParser/Exception/ParserException.html"><abbr title="Neos\Fusion\Core\ObjectTreeParser\Exception\ParserException">ParserException</abbr></a> $parserException)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 

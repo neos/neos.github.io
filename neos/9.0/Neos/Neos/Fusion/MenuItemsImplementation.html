@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../fonts/doctum-font.css">
         <script src="../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../doctum.js"></script>
         <script async defer src="../../../js/bootstrap.min.js"></script>
-        <script src="../../../js/typeahead.min.js"></script>
-        <script src="../../../doctum.js"></script>
+        <script async defer src="../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Neos_Fusion_MenuItemsImplementation" data-root-path="../../../">
+    <body id="class" data-name="class:Neos_Neos_Fusion_MenuItemsImplementation" data-root-path="../../../" data-search-index-url="../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -82,6 +94,7 @@
 </p>
 
         
+        
     
         
 
@@ -90,42 +103,6 @@
             
         
             <h2>Constants</h2>    <table class="table table-condensed">
-                    <tr>
-                <td>
-                                                                                                                        STATE_NORMAL
-                                    </td>
-                <td class="last">
-                    <p><em></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                                                                                        STATE_CURRENT
-                                    </td>
-                <td class="last">
-                    <p><em></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                                                                                        STATE_ACTIVE
-                                    </td>
-                <td class="last">
-                    <p><em></em></p>
-                    <p></p>
-                </td>
-            </tr>
-                    <tr>
-                <td>
-                                                                                                                        STATE_ABSENT
-                                    </td>
-                <td class="last">
-                    <p><em></em></p>
-                    <p></p>
-                </td>
-            </tr>
                     <tr>
                 <td>
                                                                                                                         MAXIMUM_LEVELS_LIMIT
@@ -183,7 +160,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_items">
-                                        protected                                        <abbr title="Neos\Neos\Fusion\array&lt;int,\Neos\Neos\Fusion\MenuItem&gt;">MenuItem&gt;</abbr>
+                                        protected                                        <abbr title="Neos\Neos\Fusion\array&lt;int, \Neos\Neos\Fusion\MenuItem&gt;">MenuItem&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$items</td>
@@ -193,7 +170,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_currentNode">
-                                        protected                                        <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>
+                                        protected                                        <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>
                                                                                 
                                     </td>
                 <td>$currentNode</td>
@@ -202,38 +179,28 @@
 <abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></td>
             </tr>
                     <tr>
-                <td class="type" id="property_currentLevel">
-                                        protected                                        int
-                                                                                
-                                    </td>
-                <td>$currentLevel</td>
-                <td class="last"><p>Internal cache for the currentLevel tsValue.</p></td>
-                <td><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#property_currentLevel">
-<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_renderHiddenInIndex">
+                <td class="type" id="property_renderHiddenInMenu">
                                         protected                                        bool
                                                                                 
                                     </td>
-                <td>$renderHiddenInIndex</td>
-                <td class="last"><p>Internal cache for the renderHiddenInIndex property.</p></td>
-                <td><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#property_renderHiddenInIndex">
+                <td>$renderHiddenInMenu</td>
+                <td class="last"><p>Internal cache for the renderHiddenInMenu property.</p></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#property_renderHiddenInMenu">
 <abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></td>
             </tr>
                     <tr>
-                <td class="type" id="property_currentNodeRootline">
-                                        protected                                        <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>[]
+                <td class="type" id="property_calculateItemStates">
+                                        protected                                        bool
                                                                                 
                                     </td>
-                <td>$currentNodeRootline</td>
-                <td class="last"><p>Rootline of all nodes from the current node to the site root node, keys are depth of nodes.</p></td>
-                <td><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#property_currentNodeRootline">
+                <td>$calculateItemStates</td>
+                <td class="last"><p>Internal cache for the calculateItemStates property.</p></td>
+                <td><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#property_calculateItemStates">
 <abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></td>
             </tr>
                     <tr>
                 <td class="type" id="property_contentRepositoryRegistry">
-                                        protected                                        
+                                        protected                                        <a href="../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a>
                                                                                 
                                     </td>
                 <td>$contentRepositoryRegistry</td>
@@ -243,7 +210,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_startingPoint">
-                                        protected                                        <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>
+                                        protected                                        <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
                                                                                 
                                     </td>
                 <td>$startingPoint</td>
@@ -252,7 +219,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_lastLevel">
-                                        protected                                        int
+                                        protected                                        int|null
                                                                                 
                                     </td>
                 <td>$lastLevel</td>
@@ -261,7 +228,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_maximumLevels">
-                                        protected                                        int
+                                        protected                                        int|null
                                                                                 
                                     </td>
                 <td>$maximumLevels</td>
@@ -269,12 +236,30 @@
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_nodeTypeConstraints">
-                                        protected                                        
+                <td class="type" id="property_currentNodeRootlineAggregateIds">
+                                        protected                                        <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a>|null
                                                                                 
                                     </td>
-                <td>$nodeTypeConstraints</td>
-                <td class="last"><p>Runtime cache for the node type constraints to be applied</p></td>
+                <td>$currentNodeRootlineAggregateIds</td>
+                <td class="last"><p>Internal cache for the ancestors aggregate ids of the currentNode.</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeTypeCriteria">
+                                        protected                                        <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a>|null
+                                                                                
+                                    </td>
+                <td>$nodeTypeCriteria</td>
+                <td class="last"><p>Runtime cache for the node type criteria to be applied</p></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_nodeLabelGenerator">
+                                        protected                                        <a href="../../../Neos/Neos/Domain/NodeLabel/NodeLabelGeneratorInterface.html"><abbr title="Neos\Neos\Domain\NodeLabel\NodeLabelGeneratorInterface">NodeLabelGeneratorInterface</abbr></a>
+                                                                                
+                                    </td>
+                <td>$nodeLabelGenerator</td>
+                <td class="last"></td>
                 <td></td>
             </tr>
             </table>
@@ -290,7 +275,7 @@
                 <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<a href="../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a> $runtime, string $path, string $fusionObjectName)
         
-                                            <p><p>Constructor</p></p>                </div>
+                                            <p>Constructor</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Fusion/FusionObjects/AbstractFusionObject.html#method___construct">
 <abbr title="Neos\Fusion\FusionObjects\AbstractFusionObject">AbstractFusionObject</abbr></a></small></div>
             </div>
@@ -376,10 +361,33 @@
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getRenderHiddenInIndex">getRenderHiddenInIndex</a>()
+                    <a href="#method_isCalculateItemStatesEnabled">isCalculateItemStatesEnabled</a>()
         
-                                            <p><p>Should nodes that have &quot;hiddenInIndex&quot; set still be visible in this menu.</p></p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getRenderHiddenInIndex">
+                                            <p><p>Whether the active/current state of menu items is calculated on the server side.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_isCalculateItemStatesEnabled">
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getRenderHiddenInMenu">getRenderHiddenInMenu</a>()
+        
+                                            <p><p>Should nodes that have &quot;hiddenInMenu&quot; set still be visible in this menu.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getRenderHiddenInMenu">
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getCurrentNode">getCurrentNode</a>()
+        
+                                            <p><p>The node the menu is built from, all relative specifications will
+use this as a base</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getCurrentNode">
 <abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -409,33 +417,23 @@ configuration set for this Menu object.</p></p>                </div>
                     bool
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_isNodeHidden">isNodeHidden</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
+                    <a href="#method_isNodeHidden">isNodeHidden</a>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         
                                             <p><p>Return TRUE/FALSE if the node is currently hidden or not in the menu;
-taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion object into account.</p></p>                </div>
+taking the &quot;renderHiddenInMenu&quot; configuration of the Menu Fusion object into account.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_isNodeHidden">
 <abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getCurrentNodeRootline">getCurrentNodeRootline</a>()
+                    <a href="#method_buildUri">buildUri</a>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         
-                                            <p><p>Get the rootline from the current node up to the site node.</p></p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getCurrentNodeRootline">
-<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    int
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getNodeLevelInSite">getNodeLevelInSite</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
-        
-                                            <p><p>Node Level relative to site root node.</p></p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getNodeLevelInSite">
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_buildUri">
 <abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a></small></div>
             </div>
                     <div class="row">
@@ -470,7 +468,7 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    int
+                    int|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getLastLevel">getLastLevel</a>()
@@ -480,7 +478,7 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+                    <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getStartingPoint">getStartingPoint</a>()
@@ -491,7 +489,7 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array|null
+                    array|<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>|null
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getItemCollection">getItemCollection</a>()
@@ -505,7 +503,7 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
                     <a href="../../../Neos/Neos/Fusion/MenuItem.html"><abbr title="Neos\Neos\Fusion\MenuItem">MenuItem</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_traverseChildren">traverseChildren</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Subtree">Subtree</abbr> $subtree)
+                    <a href="#method_buildMenuItemFromNode">buildMenuItemFromNode</a>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -513,10 +511,21 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+                    <a href="../../../Neos/Neos/Fusion/MenuItem.html"><abbr title="Neos\Neos\Fusion\MenuItem">MenuItem</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_findMenuStartingPoint">findMenuStartingPoint</a>()
+                    <a href="#method_buildMenuItemFromSubtree">buildMenuItemFromSubtree</a>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Subtree.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Subtree">Subtree</abbr></a> $subtree, int $startLevel = 0)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_findMenuStartingPointAggregateId">findMenuStartingPointAggregateId</a>()
         
                                             <p><p>Find the starting point for this menu. depending on given startingPoint
 If startingPoint is given, this is taken as starting point for this menu level,
@@ -525,10 +534,10 @@ as a fallback the Fusion context variable node is used.</p></p>                <
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeTypeConstraints">NodeTypeConstraints</abbr>
+                    <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_getNodeTypeConstraints">getNodeTypeConstraints</a>()
+                    <a href="#method_getNodeTypeCriteria">getNodeTypeCriteria</a>()
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -536,21 +545,21 @@ as a fallback the Fusion context variable node is used.</p></p>                <
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    void
+                    <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_traverseUpUntilCondition">traverseUpUntilCondition</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback)
+                    <a href="#method_getCurrentNodeRootlineAggregateIds">getCurrentNodeRootlineAggregateIds</a>()
         
-                                            <p><p>the callback always gets the current Node passed as first parameter,
-and then its parent, and its parent etc etc.</p></p>                </div>
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    <abbr title="Neos\Neos\Fusion\MenuItemState">MenuItemState</abbr>
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_buildUri">buildUri</a>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
+                    <a href="#method_calculateItemState">calculateItemState</a>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -571,11 +580,12 @@ and then its parent, and its parent etc etc.</p></p>                </div>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Constructor</p></p>                        
+                            <p>Constructor</p>                        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -609,12 +619,13 @@ and then its parent, and its parent etc etc.</p></p>                </div>
                     <div class="method-item">
                     <h3 id="method_evaluate">
         <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_evaluate">
-<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L108">at line 108</a></div>
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L117">at line 117</a></div>
         <code>                    mixed
     <strong>evaluate</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -648,6 +659,7 @@ and then its parent, and its parent etc etc.</p></p>                </div>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -681,6 +693,7 @@ and then its parent, and its parent etc etc.</p></p>                </div>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -725,6 +738,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -768,6 +782,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -811,6 +826,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -859,6 +875,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -894,19 +911,20 @@ first evaluated value will be cached in memory.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getRenderHiddenInIndex">
-        <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getRenderHiddenInIndex">
-<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L77">at line 77</a></div>
+                    <h3 id="method_isCalculateItemStatesEnabled">
+        <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_isCalculateItemStatesEnabled">
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L64">at line 64</a></div>
         <code>                    bool
-    <strong>getRenderHiddenInIndex</strong>()
+    <strong>isCalculateItemStatesEnabled</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Should nodes that have &quot;hiddenInIndex&quot; set still be visible in this menu.</p></p>                        
+                            <p><p>Whether the active/current state of menu items is calculated on the server side.</p></p>                <p><p>This has an effect on performance and caching</p></p>        
         </div>
         <div class="tags">
             
@@ -927,14 +945,84 @@ first evaluated value will be cached in memory.</p></p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getRenderHiddenInMenu">
+        <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getRenderHiddenInMenu">
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L76">at line 76</a></div>
+        <code>                    bool
+    <strong>getRenderHiddenInMenu</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Should nodes that have &quot;hiddenInMenu&quot; set still be visible in this menu.</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getCurrentNode">
+        <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getCurrentNode">
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L89">at line 89</a></div>
+        <code>                    <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>
+    <strong>getCurrentNode</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>The node the menu is built from, all relative specifications will
+use this as a base</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getItems">
         <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getItems">
-<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L91">at line 91</a></div>
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L103">at line 103</a></div>
         <code>                    array
     <strong>getItems</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -967,6 +1055,7 @@ first evaluated value will be cached in memory.</p></p>
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1004,25 +1093,26 @@ configuration set for this Menu object.</p></p>
                     <div class="method-item">
                     <h3 id="method_isNodeHidden">
         <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_isNodeHidden">
-<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L133">at line 133</a></div>
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L142">at line 142</a></div>
         <code>            protected        bool
-    <strong>isNodeHidden</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
+    <strong>isNodeHidden</strong>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
                             <p><p>Return TRUE/FALSE if the node is currently hidden or not in the menu;
-taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion object into account.</p></p>                <p><p>This method needs to be called inside buildItems() in the subclasses.</p></p>        
+taking the &quot;renderHiddenInMenu&quot; configuration of the Menu Fusion object into account.</p></p>                <p><p>This method needs to be called inside buildItems() in the subclasses.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
                 <td>$node</td>
                 <td></td>
             </tr>
@@ -1046,59 +1136,28 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getCurrentNodeRootline">
-        <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getCurrentNodeRootline">
-<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L150">at line 150</a></div>
-        <code>            protected        array
-    <strong>getCurrentNodeRootline</strong>()
+                    <h3 id="method_buildUri">
+        <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_buildUri">
+<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L154">at line 154</a></div>
+        <code>            protected        string
+    <strong>buildUri</strong>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>Get the rootline from the current node up to the site node.</p></p>                        
-        </div>
-        <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>array</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_getNodeLevelInSite">
-        <div class="location">in <a href="../../../Neos/Neos/Fusion/AbstractMenuItemsImplementation.html#method_getNodeLevelInSite">
-<abbr title="Neos\Neos\Fusion\AbstractMenuItemsImplementation">AbstractMenuItemsImplementation</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/AbstractMenuItemsImplementation.php#L174">at line 174</a></div>
-        <code>            protected        int
-    <strong>getNodeLevelInSite</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
-        </code>
-    </h3>
-    <div class="details">    
-    
-            
-
-        <div class="method-description">
-                            <p><p>Node Level relative to site root node.</p></p>                <p><p>0 = Site root node</p></p>        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
                 <td>$node</td>
                 <td></td>
             </tr>
@@ -1109,7 +1168,7 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
+            <td>string</td>
             <td></td>
         </tr>
     </table>
@@ -1123,12 +1182,13 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
             </div>
                     <div class="method-item">
                     <h3 id="method_getEntryLevel">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L75">at line 75</a></div>
-        <code>                    int
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L81">at line 81</a></div>
+        <code>            protected        int
     <strong>getEntryLevel</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1161,12 +1221,13 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
             </div>
                     <div class="method-item">
                     <h3 id="method_getFilter">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L85">at line 85</a></div>
-        <code>                    string
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L89">at line 89</a></div>
+        <code>            protected        string
     <strong>getFilter</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1193,12 +1254,13 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
             </div>
                     <div class="method-item">
                     <h3 id="method_getMaximumLevels">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L100">at line 100</a></div>
-        <code>                    int
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L102">at line 102</a></div>
+        <code>            protected        int
     <strong>getMaximumLevels</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1226,11 +1288,12 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
                     <div class="method-item">
                     <h3 id="method_getLastLevel">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L117">at line 117</a></div>
-        <code>                    int
+        <code>            protected        int|null
     <strong>getLastLevel</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1243,7 +1306,7 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
 
                     <table class="table table-condensed">
         <tr>
-            <td>int</td>
+            <td>int|null</td>
             <td></td>
         </tr>
     </table>
@@ -1258,11 +1321,12 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
                     <div class="method-item">
                     <h3 id="method_getStartingPoint">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L129">at line 129</a></div>
-        <code>                    <abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
+        <code>            protected        <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null
     <strong>getStartingPoint</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1276,7 +1340,7 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null</td>
+            <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -1291,11 +1355,12 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
                     <div class="method-item">
                     <h3 id="method_getItemCollection">
         <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L141">at line 141</a></div>
-        <code>                    array|null
+        <code>            protected        array|<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>|null
     <strong>getItemCollection</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1309,7 +1374,7 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
 
                     <table class="table table-condensed">
         <tr>
-            <td>array|null</td>
+            <td>array|<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Nodes.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Nodes">Nodes</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -1322,13 +1387,14 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_traverseChildren">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L186">at line 186</a></div>
+                    <h3 id="method_buildMenuItemFromNode">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L218">at line 218</a></div>
         <code>            protected        <a href="../../../Neos/Neos/Fusion/MenuItem.html"><abbr title="Neos\Neos\Fusion\MenuItem">MenuItem</abbr></a>
-    <strong>traverseChildren</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Subtree">Subtree</abbr> $subtree)
+    <strong>buildMenuItemFromNode</strong>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1341,8 +1407,8 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Subtree">Subtree</abbr></td>
-                <td>$subtree</td>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
+                <td>$node</td>
                 <td></td>
             </tr>
             </table>
@@ -1365,13 +1431,63 @@ taking the &quot;renderHiddenInIndex&quot; configuration of the Menu Fusion obje
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_findMenuStartingPoint">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L220">at line 220</a></div>
-        <code>            protected        <abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null
-    <strong>findMenuStartingPoint</strong>()
+                    <h3 id="method_buildMenuItemFromSubtree">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L230">at line 230</a></div>
+        <code>            protected        <a href="../../../Neos/Neos/Fusion/MenuItem.html"><abbr title="Neos\Neos\Fusion\MenuItem">MenuItem</abbr></a>
+    <strong>buildMenuItemFromSubtree</strong>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Subtree.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Subtree">Subtree</abbr></a> $subtree, int $startLevel = 0)
         </code>
     </h3>
     <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Subtree.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Subtree">Subtree</abbr></a></td>
+                <td>$subtree</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$startLevel</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="../../../Neos/Neos/Fusion/MenuItem.html"><abbr title="Neos\Neos\Fusion\MenuItem">MenuItem</abbr></a></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_findMenuStartingPointAggregateId">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L264">at line 264</a></div>
+        <code>            protected        <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null
+    <strong>findMenuStartingPointAggregateId</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
     
             
 
@@ -1386,7 +1502,7 @@ as a fallback the Fusion context variable node is used.</p></p>                <
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\Neos\Fusion\Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr>|null</td>
+            <td><a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateId.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateId">NodeAggregateId</abbr></a>|null</td>
             <td></td>
         </tr>
     </table>
@@ -1408,13 +1524,14 @@ as a fallback the Fusion context variable node is used.</p></p>                <
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getNodeTypeConstraints">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L291">at line 291</a></div>
-        <code>            protected        <abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeTypeConstraints">NodeTypeConstraints</abbr>
-    <strong>getNodeTypeConstraints</strong>()
+                    <h3 id="method_getNodeTypeCriteria">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L288">at line 288</a></div>
+        <code>            protected        <a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a>
+    <strong>getNodeTypeCriteria</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1428,7 +1545,7 @@ as a fallback the Fusion context variable node is used.</p></p>                <
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\NodeTypeConstraints">NodeTypeConstraints</abbr></td>
+            <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Filter/NodeType/NodeTypeCriteria.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Filter\NodeType\NodeTypeCriteria">NodeTypeCriteria</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -1441,42 +1558,28 @@ as a fallback the Fusion context variable node is used.</p></p>                <
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_traverseUpUntilCondition">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L305">at line 305</a></div>
-        <code>            protected        void
-    <strong>traverseUpUntilCondition</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $callback)
+                    <h3 id="method_getCurrentNodeRootlineAggregateIds">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L296">at line 296</a></div>
+        <code>            protected        <a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a>
+    <strong>getCurrentNodeRootlineAggregateIds</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
         <div class="method-description">
-                            <p><p>the callback always gets the current Node passed as first parameter,
-and then its parent, and its parent etc etc.</p></p>                <p><p>Until it has reached the root, or the return value of the closure is FALSE.</p></p>        
+                            <p class="no-description">No description</p>
+                    
         </div>
         <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
-                <td>$node</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
-                <td>$callback</td>
-                <td></td>
-            </tr>
-            </table>
-
             
                             <h4>Return Value</h4>
 
                     <table class="table table-condensed">
         <tr>
-            <td>void</td>
+            <td><a href="../../../Neos/ContentRepository/Core/SharedModel/Node/NodeAggregateIds.html"><abbr title="Neos\ContentRepository\Core\SharedModel\Node\NodeAggregateIds">NodeAggregateIds</abbr></a></td>
             <td></td>
         </tr>
     </table>
@@ -1489,13 +1592,14 @@ and then its parent, and its parent etc etc.</p></p>                <p><p>Until 
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_buildUri">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L314">at line 314</a></div>
-        <code>            protected        string
-    <strong>buildUri</strong>(<abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr> $node)
+                    <h3 id="method_calculateItemState">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/MenuItemsImplementation.php#L319">at line 319</a></div>
+        <code>            protected        <abbr title="Neos\Neos\Fusion\MenuItemState">MenuItemState</abbr>
+    <strong>calculateItemState</strong>(<a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a> $node)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -1508,7 +1612,7 @@ and then its parent, and its parent etc etc.</p></p>                <p><p>Until 
 
                     <table class="table table-condensed">
                     <tr>
-                <td><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></td>
+                <td><a href="../../../Neos/ContentRepository/Core/Projection/ContentGraph/Node.html"><abbr title="Neos\ContentRepository\Core\Projection\ContentGraph\Node">Node</abbr></a></td>
                 <td>$node</td>
                 <td></td>
             </tr>
@@ -1519,7 +1623,7 @@ and then its parent, and its parent etc etc.</p></p>                <p><p>Until 
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td><abbr title="Neos\Neos\Fusion\MenuItemState">MenuItemState</abbr></td>
             <td></td>
         </tr>
     </table>

@@ -10,9 +10,9 @@
         <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
         <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
         <script async defer src="../../../../js/bootstrap.min.js"></script>
-        <script src="../../../../js/typeahead.min.js"></script>
-        <script src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
@@ -23,16 +23,28 @@
           title="Neos CMS (9.0)" />
     </head>
 
-    <body id="class" data-name="class:Neos_Fusion_Core_ExceptionHandlers_BubblingHandler" data-root-path="../../../../">
+    <body id="class" data-name="class:Neos_Fusion_Core_ExceptionHandlers_BubblingHandler" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -81,6 +93,7 @@
     <strong>BubblingHandler</strong>        extends <a href="../../../../Neos/Fusion/Core/ExceptionHandlers/AbstractRenderingExceptionHandler.html"><abbr title="Neos\Fusion\Core\ExceptionHandlers\AbstractRenderingExceptionHandler">AbstractRenderingExceptionHandler</abbr></a>        (<a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ExceptionHandlers/BubblingHandler.php">View source</a>)
 </p>
 
+        
         
     
         
@@ -146,7 +159,7 @@
                     string
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_handle">handle</a>(string $fusionPath, <a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a> $exception, int $referenceCode)
+                    <a href="#method_handle">handle</a>(string $fusionPath, <a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a> $exception, string|null $referenceCode)
         
                                             <p><p>Handles an Exception thrown while rendering Fusion</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -182,12 +195,13 @@
                     <div class="method-item">
                     <h3 id="method_setRuntime">
         <div class="location">in <a href="../../../../Neos/Fusion/Core/ExceptionHandlers/AbstractRenderingExceptionHandler.html#method_setRuntime">
-<abbr title="Neos\Fusion\Core\ExceptionHandlers\AbstractRenderingExceptionHandler">AbstractRenderingExceptionHandler</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ExceptionHandlers/AbstractRenderingExceptionHandler.php#L37">at line 37</a></div>
+<abbr title="Neos\Fusion\Core\ExceptionHandlers\AbstractRenderingExceptionHandler">AbstractRenderingExceptionHandler</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ExceptionHandlers/AbstractRenderingExceptionHandler.php#L40">at line 40</a></div>
         <code>                    void
     <strong>setRuntime</strong>(<a href="../../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a> $runtime)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -225,12 +239,13 @@
                     <div class="method-item">
                     <h3 id="method_getRuntime">
         <div class="location">in <a href="../../../../Neos/Fusion/Core/ExceptionHandlers/AbstractRenderingExceptionHandler.html#method_getRuntime">
-<abbr title="Neos\Fusion\Core\ExceptionHandlers\AbstractRenderingExceptionHandler">AbstractRenderingExceptionHandler</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ExceptionHandlers/AbstractRenderingExceptionHandler.php#L47">at line 47</a></div>
+<abbr title="Neos\Fusion\Core\ExceptionHandlers\AbstractRenderingExceptionHandler">AbstractRenderingExceptionHandler</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ExceptionHandlers/AbstractRenderingExceptionHandler.php#L50">at line 50</a></div>
         <code>            protected        <a href="../../../../Neos/Fusion/Core/Runtime.html"><abbr title="Neos\Fusion\Core\Runtime">Runtime</abbr></a>
     <strong>getRuntime</strong>()
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -257,12 +272,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_handleRenderingException">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ExceptionHandlers/BubblingHandler.php#L33">at line 33</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ExceptionHandlers/BubblingHandler.php#L36">at line 36</a></div>
         <code>                    string
     <strong>handleRenderingException</strong>(string $fusionPath, <a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a> $exception)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -321,12 +337,13 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_handle">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ExceptionHandlers/BubblingHandler.php#L50">at line 50</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ExceptionHandlers/BubblingHandler.php#L53">at line 53</a></div>
         <code>            protected        string
-    <strong>handle</strong>(string $fusionPath, <a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a> $exception, int $referenceCode)
+    <strong>handle</strong>(string $fusionPath, <a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a> $exception, string|null $referenceCode)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -348,7 +365,7 @@
                 <td><p>exception to handle</p></td>
             </tr>
                     <tr>
-                <td>int</td>
+                <td>string|null</td>
                 <td>$referenceCode</td>
                 <td></td>
             </tr>
@@ -374,12 +391,13 @@
                     <div class="method-item">
                     <h3 id="method_formatScriptPath">
         <div class="location">in <a href="../../../../Neos/Fusion/Core/ExceptionHandlers/AbstractRenderingExceptionHandler.html#method_formatScriptPath">
-<abbr title="Neos\Fusion\Core\ExceptionHandlers\AbstractRenderingExceptionHandler">AbstractRenderingExceptionHandler</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ExceptionHandlers/AbstractRenderingExceptionHandler.php#L104">at line 104</a></div>
+<abbr title="Neos\Fusion\Core\ExceptionHandlers\AbstractRenderingExceptionHandler">AbstractRenderingExceptionHandler</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ExceptionHandlers/AbstractRenderingExceptionHandler.php#L108">at line 108</a></div>
         <code>            protected        string
     <strong>formatScriptPath</strong>(string $fusionPath, string $delimiter, bool $escapeHtml = true)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
@@ -434,12 +452,13 @@ main<ContentCollection>'</p></p>
                     <div class="method-item">
                     <h3 id="method_exceptionDisablesCache">
         <div class="location">in <a href="../../../../Neos/Fusion/Core/ExceptionHandlers/AbstractRenderingExceptionHandler.html#method_exceptionDisablesCache">
-<abbr title="Neos\Fusion\Core\ExceptionHandlers\AbstractRenderingExceptionHandler">AbstractRenderingExceptionHandler</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ExceptionHandlers/AbstractRenderingExceptionHandler.php#L122">at line 122</a></div>
+<abbr title="Neos\Fusion\Core\ExceptionHandlers\AbstractRenderingExceptionHandler">AbstractRenderingExceptionHandler</abbr></a> <a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Fusion/Classes/Core/ExceptionHandlers/AbstractRenderingExceptionHandler.php#L126">at line 126</a></div>
         <code>            protected        bool
     <strong>exceptionDisablesCache</strong>(string $fusionPath, <a target="_blank" rel="noopener" href="https://www.php.net/Exception">Exception</a> $exception)
         </code>
     </h3>
     <div class="details">    
+            
     
             
 
