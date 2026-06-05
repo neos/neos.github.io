@@ -135,7 +135,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_constructor">
-                                        protected                                        <a href="../../../../Neos/Flow/ObjectManagement/Proxy/ProxyConstructorGenerator.html"><abbr title="Neos\Flow\ObjectManagement\Proxy\ProxyConstructorGenerator">ProxyConstructorGenerator</abbr></a>
+                                        protected                                        <a href="../../../../Neos/Flow/ObjectManagement/Proxy/ProxyConstructorGenerator.html"><abbr title="Neos\Flow\ObjectManagement\Proxy\ProxyConstructorGenerator">ProxyConstructorGenerator</abbr></a>|null
                                                                                 
                                     </td>
                 <td>$constructor</td>
@@ -144,7 +144,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_methods">
-                                        protected                                        array
+                                        protected                                        <abbr title="Neos\Flow\ObjectManagement\Proxy\array&lt;string, \Neos\Flow\ObjectManagement\Proxy\ProxyMethodGenerator&gt;">ProxyMethodGenerator&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$methods</td>
@@ -153,7 +153,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_constants">
-                                        protected                                        array
+                                        protected                                        <abbr title="Neos\Flow\ObjectManagement\Proxy\array&lt;string, string&gt;">array&lt;string, string&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$constants</td>
@@ -162,7 +162,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_interfaces">
-                                        protected                                        array
+                                        protected                                        <abbr title="Neos\Flow\ObjectManagement\Proxy\array&lt;int, string&gt;">array&lt;int, string&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$interfaces</td>
@@ -171,7 +171,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_traits">
-                                        protected                                        array
+                                        protected                                        <abbr title="Neos\Flow\ObjectManagement\Proxy\array&lt;int, string&gt;">array&lt;int, string&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$traits</td>
@@ -180,7 +180,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_properties">
-                                        protected                                        array
+                                        protected                                        <abbr title="Neos\Flow\ObjectManagement\Proxy\array&lt;string, array{initialValueCode: string">array&lt;string, array{initialValueCode: string</abbr>|<abbr title="Neos\Flow\ObjectManagement\Proxy\null, visibility: string, docComment: string}&gt;">null, visibility: string, docComment: string}&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$properties</td>
@@ -257,7 +257,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_addProperty">addProperty</a>(string $name, string $initialValueCode, string $visibility = &#039;private&#039;, string $docComment = &#039;&#039;)
+                    <a href="#method_addProperty">addProperty</a>(string $name, string|null $initialValueCode, string $visibility = &#039;private&#039;, string $docComment = &#039;&#039;)
         
                                             <p><p>Adds a class property to this proxy class</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -270,6 +270,16 @@
                     <a href="#method_addInterfaces">addInterfaces</a>(array $interfaceNames)
         
                                             <p><p>Adds one or more interfaces to the &quot;implements&quot; section of the class definition.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getInterfaces">getInterfaces</a>()
+        
+                                            <p><p>Inspect currently added interfaces for this proxy class</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -565,7 +575,7 @@
                     <h3 id="method_addProperty">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Proxy/ProxyClass.php#L173">at line 173</a></div>
         <code>                    void
-    <strong>addProperty</strong>(string $name, string $initialValueCode, string $visibility = &#039;private&#039;, string $docComment = &#039;&#039;)
+    <strong>addProperty</strong>(string $name, string|null $initialValueCode, string $visibility = &#039;private&#039;, string $docComment = &#039;&#039;)
         </code>
     </h3>
     <div class="details">    
@@ -586,7 +596,7 @@
                 <td><p>Name of the property</p></td>
             </tr>
                     <tr>
-                <td>string</td>
+                <td>string|null</td>
                 <td>$initialValueCode</td>
                 <td><p>PHP code of the initial value assignment</p></td>
             </tr>
@@ -664,8 +674,41 @@ for example &quot;\Neos\Flow\Foo\BarInterface&quot;.</p></p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getInterfaces">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Proxy/ProxyClass.php#L201">at line 201</a></div>
+        <code>                    array
+    <strong>getInterfaces</strong>()
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Inspect currently added interfaces for this proxy class</p></p>                        
+        </div>
+        <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_addTraits">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Proxy/ProxyClass.php#L206">at line 206</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Proxy/ProxyClass.php#L215">at line 215</a></div>
         <code>                    void
     <strong>addTraits</strong>(array $traitNames)
         </code>
@@ -709,7 +752,7 @@ for example &quot;\Neos\Flow\ObjectManagement\Proxy\PropertyInjectionTrait&quot;
             </div>
                     <div class="method-item">
                     <h3 id="method_render">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Proxy/ProxyClass.php#L217">at line 217</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Proxy/ProxyClass.php#L226">at line 226</a></div>
         <code>                    string
     <strong>render</strong>()
         </code>
@@ -751,7 +794,7 @@ for example &quot;\Neos\Flow\ObjectManagement\Proxy\PropertyInjectionTrait&quot;
             </div>
                     <div class="method-item">
                     <h3 id="method_buildClassDocumentation">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Proxy/ProxyClass.php#L273">at line 273</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Proxy/ProxyClass.php#L282">at line 282</a></div>
         <code>            protected        string
     <strong>buildClassDocumentation</strong>()
         </code>
@@ -784,7 +827,7 @@ for example &quot;\Neos\Flow\ObjectManagement\Proxy\PropertyInjectionTrait&quot;
             </div>
                     <div class="method-item">
                     <h3 id="method_renderConstantsCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Proxy/ProxyClass.php#L290">at line 290</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Proxy/ProxyClass.php#L299">at line 299</a></div>
         <code>            protected        string
     <strong>renderConstantsCode</strong>()
         </code>
@@ -817,7 +860,7 @@ for example &quot;\Neos\Flow\ObjectManagement\Proxy\PropertyInjectionTrait&quot;
             </div>
                     <div class="method-item">
                     <h3 id="method_renderPropertiesCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Proxy/ProxyClass.php#L304">at line 304</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Proxy/ProxyClass.php#L313">at line 313</a></div>
         <code>            protected        string
     <strong>renderPropertiesCode</strong>()
         </code>
@@ -850,7 +893,7 @@ for example &quot;\Neos\Flow\ObjectManagement\Proxy\PropertyInjectionTrait&quot;
             </div>
                     <div class="method-item">
                     <h3 id="method_renderTraitsCode">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Proxy/ProxyClass.php#L321">at line 321</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Proxy/ProxyClass.php#L330">at line 330</a></div>
         <code>            protected        string
     <strong>renderTraitsCode</strong>()
         </code>

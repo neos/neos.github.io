@@ -89,7 +89,7 @@
     </div>
 
     
-    <p>        class
+    <p>final         class
     <strong>ConfigurationProperty</strong>        (<a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php">View source</a>)
 </p>
 
@@ -142,65 +142,6 @@
             </table>
 
     
-            <h2>Properties</h2>
-
-            <table class="table table-condensed">
-                    <tr>
-                <td class="type" id="property_name">
-                                        protected                                        string
-                                                                                
-                                    </td>
-                <td>$name</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_value">
-                                        protected                                        mixed
-                                                                                
-                                    </td>
-                <td>$value</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_type">
-                                        protected                                        int
-                                                                                
-                                    </td>
-                <td>$type</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_objectConfiguration">
-                                        protected                                        <a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a>
-                                                                                
-                                    </td>
-                <td>$objectConfiguration</td>
-                <td class="last"><p>If specified, this configuration is used for instantiating / retrieving an property of type object</p></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_autowiring">
-                                        protected                                        int
-                                                                                
-                                    </td>
-                <td>$autowiring</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_lazyLoading">
-                                        protected                                        bool
-                                                                                
-                                    </td>
-                <td>$lazyLoading</td>
-                <td class="last"><p>Should this property be lazy loaded</p></td>
-                <td></td>
-            </tr>
-            </table>
-
     
             <h2>Methods</h2>
 
@@ -210,19 +151,9 @@
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(string $name, mixed $value, int $type = self::PROPERTY_TYPES_STRAIGHTVALUE, <a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration = null, bool $lazyLoading = true)
+                    <a href="#method___construct">__construct</a>(string $name, mixed $value, int $type = self::PROPERTY_TYPES_STRAIGHTVALUE, <a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a>|null $objectConfiguration = null, bool $lazyLoading = true, int $autowiring = Configuration::AUTOWIRING_MODE_ON)
         
                                             <p><p>Constructor - sets the name, type and value of the property</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    void
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_set">set</a>(string $name, mixed $value, int $type = self::PROPERTY_TYPES_STRAIGHTVALUE, <a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration = null, bool $lazyLoading = true)
-        
-                                            <p><p>Sets the name, type and value of the property</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -267,16 +198,6 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    void
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_setAutowiring">setAutowiring</a>(int $autowiring)
-        
-                                            <p><p>Sets autowiring for this property</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     int
                 </div>
                 <div class="col-md-8">
@@ -303,9 +224,9 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php#L70">at line 70</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php#L38">at line 38</a></div>
         <code>                    
-    <strong>__construct</strong>(string $name, mixed $value, int $type = self::PROPERTY_TYPES_STRAIGHTVALUE, <a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration = null, bool $lazyLoading = true)
+    <strong>__construct</strong>(string $name, mixed $value, int $type = self::PROPERTY_TYPES_STRAIGHTVALUE, <a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a>|null $objectConfiguration = null, bool $lazyLoading = true, int $autowiring = Configuration::AUTOWIRING_MODE_ON)
         </code>
     </h3>
     <div class="details">    
@@ -336,81 +257,23 @@
                 <td><p>Type of the property - one of the PROPERTY<em>TYPE</em>* constants</p></td>
             </tr>
                     <tr>
-                <td><a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a></td>
+                <td><a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a>|null</td>
                 <td>$objectConfiguration</td>
                 <td><p>If $type is OBJECT, a custom object configuration may be specified</p></td>
             </tr>
                     <tr>
                 <td>bool</td>
                 <td>$lazyLoading</td>
-                <td></td>
-            </tr>
-            </table>
-
-            
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_set">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php#L85">at line 85</a></div>
-        <code>                    void
-    <strong>set</strong>(string $name, mixed $value, int $type = self::PROPERTY_TYPES_STRAIGHTVALUE, <a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a> $objectConfiguration = null, bool $lazyLoading = true)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>Sets the name, type and value of the property</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$name</td>
-                <td><p>Name of the property</p></td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$value</td>
-                <td><p>Value of the property</p></td>
+                <td><p>Should this property be lazy loaded</p></td>
             </tr>
                     <tr>
                 <td>int</td>
-                <td>$type</td>
-                <td><p>Type of the property - one of the PROPERTY<em>TYPE</em>* constants</p></td>
-            </tr>
-                    <tr>
-                <td><a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a></td>
-                <td>$objectConfiguration</td>
-                <td><p>If $type is OBJECT, a custom object configuration may be specified</p></td>
-            </tr>
-                    <tr>
-                <td>bool</td>
-                <td>$lazyLoading</td>
+                <td>$autowiring</td>
                 <td></td>
             </tr>
             </table>
 
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>void</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
             
@@ -420,7 +283,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getName">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php#L99">at line 99</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php#L53">at line 53</a></div>
         <code>                    string
     <strong>getName</strong>()
         </code>
@@ -453,7 +316,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getValue">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php#L109">at line 109</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php#L63">at line 63</a></div>
         <code>                    mixed
     <strong>getValue</strong>()
         </code>
@@ -486,7 +349,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getType">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php#L119">at line 119</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php#L73">at line 73</a></div>
         <code>                    int
     <strong>getType</strong>()
         </code>
@@ -519,7 +382,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_getObjectConfiguration">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php#L129">at line 129</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php#L83">at line 83</a></div>
         <code>                    <a href="../../../../Neos/Flow/ObjectManagement/Configuration/Configuration.html"><abbr title="Neos\Flow\ObjectManagement\Configuration\Configuration">Configuration</abbr></a>|null
     <strong>getObjectConfiguration</strong>()
         </code>
@@ -551,51 +414,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_setAutowiring">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php#L140">at line 140</a></div>
-        <code>                    void
-    <strong>setAutowiring</strong>(int $autowiring)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>Sets autowiring for this property</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>int</td>
-                <td>$autowiring</td>
-                <td><p>One of the Configuration::AUTOWIRING<em>MODE</em>* constants</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>void</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_getAutowiring">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php#L150">at line 150</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php#L93">at line 93</a></div>
         <code>                    int
     <strong>getAutowiring</strong>()
         </code>
@@ -628,7 +448,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_isLazyLoading">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php#L160">at line 160</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.2/Neos.Flow/Classes/ObjectManagement/Configuration/ConfigurationProperty.php#L103">at line 103</a></div>
         <code>                    bool
     <strong>isLazyLoading</strong>()
         </code>
