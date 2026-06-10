@@ -145,6 +145,16 @@ And that the previous state will be reset as the projections logic might have ch
                     void
                 </div>
                 <div class="col-md-8">
+                    <a href="#method_catchUpActiveCommand">catchUpActiveCommand</a>(string $contentRepository = &#039;default&#039;, bool $quiet = false)
+        
+                                            <p><p>Catchup all active subscriptions</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
                     <a href="#method_replayAllCommand">replayAllCommand</a>(string $contentRepository = &#039;default&#039;, bool $force = false, bool $quiet = false)
         
                                             <p><p>Replays all projections of the specified Content Repository by resetting their states and performing a full catchup</p></p>                </div>
@@ -225,8 +235,59 @@ And that the previous state will be reset as the projections logic might have ch
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_catchUpActiveCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepositoryRegistry/Classes/Command/SubscriptionCommandController.php#L102">at line 102</a></div>
+        <code>                    void
+    <strong>catchUpActiveCommand</strong>(string $contentRepository = &#039;default&#039;, bool $quiet = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Catchup all active subscriptions</p></p>                <p><p>Allows explicit manual invocation for recovery
+All modifications via {\Neos\ContentRepositoryRegistry\Command\ContentRepository::handle()} already trigger a catchup internally
+It cannot be 100% guaranteed that the commited events are catchup as they are two transactions by design
+A lost database connection or killed PHP process can result in the event-store being ahead.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the Content Repository instance to operate on</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$quiet</td>
+                <td><p>If set only fatal errors are rendered to the output</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_replayAllCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepositoryRegistry/Classes/Command/SubscriptionCommandController.php#L98">at line 98</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepositoryRegistry/Classes/Command/SubscriptionCommandController.php#L144">at line 144</a></div>
         <code>                    void
     <strong>replayAllCommand</strong>(string $contentRepository = &#039;default&#039;, bool $force = false, bool $quiet = false)
         </code>
@@ -279,7 +340,7 @@ And that the previous state will be reset as the projections logic might have ch
             </div>
                     <div class="method-item">
                     <h3 id="method_reactivateCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepositoryRegistry/Classes/Command/SubscriptionCommandController.php#L155">at line 155</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.1/Neos.ContentRepositoryRegistry/Classes/Command/SubscriptionCommandController.php#L201">at line 201</a></div>
         <code>                    void
     <strong>reactivateCommand</strong>(string $subscription, string $contentRepository = &#039;default&#039;, bool $quiet = false)
         </code>
