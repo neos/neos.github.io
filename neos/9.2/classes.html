@@ -220,6 +220,17 @@
             </div>
                     <div class="row">
                 <div class="col-md-6">
+                    <a href="Neos/ContentRepositoryRegistry/Factory/PerformanceTracer/ReplayThroughputTracerFactory.html"><abbr title="Neos\ContentRepositoryRegistry\Factory\PerformanceTracer\ReplayThroughputTracerFactory">ReplayThroughputTracerFactory</abbr></a>    </div>
+                <div class="col-md-6"><p>Builds a {ReplayThroughputTracer} from settings. Each configured <code>sqlProbes</code> entry becomes a
+{SqlProbe} over the default Flow DB connection.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="Neos/ContentRepositoryRegistry/Factory/PerformanceTracer/SqlProbe.html"><abbr title="Neos\ContentRepositoryRegistry\Factory\PerformanceTracer\SqlProbe">SqlProbe</abbr></a>    </div>
+                <div class="col-md-6"><p>A {ProbeInterface} backed by an (arbitrary, read-only) SQL query, drawn as one chart. Can be used f.e.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
                     <a href="Neos/ContentRepositoryRegistry/Factory/SubscriptionStore/SubscriptionStoreFactory.html"><abbr title="Neos\ContentRepositoryRegistry\Factory\SubscriptionStore\SubscriptionStoreFactory">SubscriptionStoreFactory</abbr></a>    </div>
                 <div class="col-md-6"></div>
             </div>
@@ -1385,6 +1396,22 @@ Note: This event means that a tag and all inherited instances were removed. If t
                                             <em><a href="Neos/ContentRepository/Core/Infrastructure/PerformanceTracing/PerformanceTracerInterface.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\PerformanceTracing\PerformanceTracerInterface">PerformanceTracerInterface</abbr></a></em>
                         </div>
                 <div class="col-md-6"><p>Interface for tracing performance and execution flow in the Content Repository.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                                            <em><a href="Neos/ContentRepository/Core/Infrastructure/PerformanceTracing/ProbeInterface.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\PerformanceTracing\ProbeInterface">ProbeInterface</abbr></a></em>
+                        </div>
+                <div class="col-md-6"><p>A named measurement that can be read repeatedly while a trace is running, e.g. table row counts via SQL,
+the current memory usage, … Sampled by {ReplayThroughputTracer} at its (throttled) sampling interval
+and drawn as its own chart over time.</p></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="Neos/ContentRepository/Core/Infrastructure/PerformanceTracing/ReplayThroughputTracer.html"><abbr title="Neos\ContentRepository\Core\Infrastructure\PerformanceTracing\ReplayThroughputTracer">ReplayThroughputTracer</abbr></a>    </div>
+                <div class="col-md-6"><p>A {PerformanceTracerInterface} specialised for measuring replay/catchup throughput: it counts the distinct
+events applied while the {SubscriptionEngine} catches up and renders the result as a standalone SVG line
+chart. Intended as an ad-hoc before/after measurement tool; the typical use is <code>subscription:replay</code> with this
+tracer configured.</p></div>
             </div>
                     <div class="row">
                 <div class="col-md-6">

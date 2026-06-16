@@ -112,7 +112,7 @@
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_openSpan">openSpan</a>(string $name, array $params = [])
+                    <a href="#method_openSpan">openSpan</a>(string|<abbr title="Neos\ContentRepository\Core\Infrastructure\PerformanceTracing\TracePoint">TracePoint</abbr> $name, array $params = [])
         
                                             <p><p>Creates a named span that traces the execution until the corresponding {self::closeSpan()}
 is called. {self::openSpan()} and {self::closeSpan()} always need to be called
@@ -134,7 +134,7 @@ in pairs.</p></p>                </div>
                     void
                 </div>
                 <div class="col-md-8">
-                    <a href="#method_mark">mark</a>(string $name, array $params = [])
+                    <a href="#method_mark">mark</a>(string|<abbr title="Neos\ContentRepository\Core\Infrastructure\PerformanceTracing\TracePoint">TracePoint</abbr> $name, array $params = [])
         
                                             <p><p>Creates a point-in-time marker AFTER an operation completes, within the current span.</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -147,9 +147,9 @@ in pairs.</p></p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_openSpan">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepository.Core/Classes/Infrastructure/PerformanceTracing/PerformanceTracerInterface.php#L38">at line 38</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepository.Core/Classes/Infrastructure/PerformanceTracing/PerformanceTracerInterface.php#L39">at line 39</a></div>
         <code>                    void
-    <strong>openSpan</strong>(string $name, array $params = [])
+    <strong>openSpan</strong>(string|<abbr title="Neos\ContentRepository\Core\Infrastructure\PerformanceTracing\TracePoint">TracePoint</abbr> $name, array $params = [])
         </code>
     </h3>
     <div class="details">    
@@ -179,9 +179,10 @@ Spans can be nested, allowing for hierarchical performance analysis.</p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|<abbr title="Neos\ContentRepository\Core\Infrastructure\PerformanceTracing\TracePoint">TracePoint</abbr></td>
                 <td>$name</td>
-                <td><p>A descriptive name for this span (e.g., &quot;contentRepository::handle&quot;)</p></td>
+                <td><p>A descriptive name for this span; a {\Neos\ContentRepository\Core\Infrastructure\PerformanceTracing\TracePoint} for the points the
+Content Repository emits itself, or a plain string for ad-hoc instrumentation</p></td>
             </tr>
                     <tr>
                 <td>array</td>
@@ -209,7 +210,7 @@ Spans can be nested, allowing for hierarchical performance analysis.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_closeSpan">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepository.Core/Classes/Infrastructure/PerformanceTracing/PerformanceTracerInterface.php#L44">at line 44</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepository.Core/Classes/Infrastructure/PerformanceTracing/PerformanceTracerInterface.php#L45">at line 45</a></div>
         <code>                    void
     <strong>closeSpan</strong>()
         </code>
@@ -242,9 +243,9 @@ Spans can be nested, allowing for hierarchical performance analysis.</p>
             </div>
                     <div class="method-item">
                     <h3 id="method_mark">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepository.Core/Classes/Infrastructure/PerformanceTracing/PerformanceTracerInterface.php#L56">at line 56</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepository.Core/Classes/Infrastructure/PerformanceTracing/PerformanceTracerInterface.php#L59">at line 59</a></div>
         <code>                    void
-    <strong>mark</strong>(string $name, array $params = [])
+    <strong>mark</strong>(string|<abbr title="Neos\ContentRepository\Core\Infrastructure\PerformanceTracing\TracePoint">TracePoint</abbr> $name, array $params = [])
         </code>
     </h3>
     <div class="details">    
@@ -262,9 +263,11 @@ operation you want to measure.</p></p>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>string</td>
+                <td>string|<abbr title="Neos\ContentRepository\Core\Infrastructure\PerformanceTracing\TracePoint">TracePoint</abbr></td>
                 <td>$name</td>
-                <td><p>A descriptive name identifying the operation that just completed</p></td>
+                <td><p>A descriptive name identifying the operation that just completed; a
+{\Neos\ContentRepository\Core\Infrastructure\PerformanceTracing\TracePoint} for the points the Content Repository emits itself,
+or a plain string for ad-hoc instrumentation</p></td>
             </tr>
                     <tr>
                 <td>array</td>
