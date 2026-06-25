@@ -161,6 +161,16 @@ They can be used to draw inspiration how to write new migrations:
                                             <p><p>Optional upgrade to adjust event time stamps and node dates to UTC</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_eventsDeduplicateBaseWorkspaceChangesCommand">eventsDeduplicateBaseWorkspaceChangesCommand</a>(string $contentRepository = &#039;default&#039;, bool $dryRun = false, bool $force = false)
+        
+                                            <p><p>Upgrade to deduplicate parallel base workspace changes</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -169,7 +179,7 @@ They can be used to draw inspiration how to write new migrations:
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_resetupAndReplayContentGraphCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L78">at line 78</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L79">at line 79</a></div>
         <code>                    void
     <strong>resetupAndReplayContentGraphCommand</strong>(string $contentRepository = &#039;default&#039;, bool $force = false)
         </code>
@@ -264,7 +274,7 @@ and also minor upgrades from one existing schema to the desired like index chang
             </div>
                     <div class="method-item">
                     <h3 id="method_eventsRecordedAtToUtcCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L135">at line 135</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L136">at line 136</a></div>
         <code>                    void
     <strong>eventsRecordedAtToUtcCommand</strong>(string $contentRepository = &#039;default&#039;, bool $force = false)
         </code>
@@ -293,6 +303,74 @@ To prevent this from happening we compare the &quot;recordedAt&quot; and &quot;i
                 <td>string</td>
                 <td>$contentRepository</td>
                 <td><p>Identifier of the Content Repository to upgrade</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$force</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_eventsDeduplicateBaseWorkspaceChangesCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L184">at line 184</a></div>
+        <code>                    void
+    <strong>eventsDeduplicateBaseWorkspaceChangesCommand</strong>(string $contentRepository = &#039;default&#039;, bool $dryRun = false, bool $force = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Upgrade to deduplicate parallel base workspace changes</p></p>                <p><p><a href="https://github.com/neos/neos-development-collection/issues/5877">https://github.com/neos/neos-development-collection/issues/5877</a></p>
+<p>Workspace operations, also ChangeBaseWorkspace were not thread safe before the addition of workspace versioning
+in the read model and thus safe soft constraint checks.
+That resulted in the possibility that a single workspace was changed two or more times in parallel by the same user.
+Because each ChangeBaseWorkspace can be slow and cleans up at the end the content stream via ContentStreamWasRemoved,
+that results in possibly multiple illegal ContentStreamWasRemoved events and in total a fully illegal ChangeBaseWorkspace.</p>
+<p>The upgrade first identifies any duplicate ContentStreamWasRemoved events on a single stream.
+If found we assume check via their unique prefixed correlation id that they belong to a ChangeBaseWorkspace sequence.
+Then we find all events of the ChangeBaseWorkspace sequences and that occurred during these the content stream removals.
+If there ar no other concurrent changes on our workspace - which would have been illegal as well - and it's truly
+the race condition as understood with only the events a ChangeBaseWorkspace emits we continue.
+We identify the last and thus valid ChangeBaseWorkspace sequence and delete all events from the previous illegal sequence(s).
+The ChangeBaseWorkspace sequences can even be interlaced due to the race condition but the correlation id identifies the last sequence to keep uniquely.</p>
+<p>After the migration is applied the workspace will have the same new base workspace as without the migration,
+but we deduplicated any temporary changes that happened in a race condition. No content on the workspaces is affected.</p>
+<p>Included in June 2026 - part of the minor 9.2.0 release</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the Content Repository to migrate</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$dryRun</td>
+                <td></td>
             </tr>
                     <tr>
                 <td>bool</td>
