@@ -146,6 +146,16 @@ They can be used to draw inspiration how to write new migrations:
                     void
                 </div>
                 <div class="col-md-8">
+                    <a href="#method_resetupAndReplayContentGraphCommand">resetupAndReplayContentGraphCommand</a>(string $contentRepository = &#039;default&#039;, bool $force = false)
+        
+                                            <p><p>Upgrade to allow to empty, set up and replay the graph projection in one step</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
                     <a href="#method_eventsRecordedAtToUtcCommand">eventsRecordedAtToUtcCommand</a>(string $contentRepository = &#039;default&#039;, bool $force = false)
         
                                             <p><p>Optional upgrade to adjust event time stamps and node dates to UTC</p></p>                </div>
@@ -158,8 +168,103 @@ They can be used to draw inspiration how to write new migrations:
 
             <div id="method-details">
                     <div class="method-item">
+                    <h3 id="method_resetupAndReplayContentGraphCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L78">at line 78</a></div>
+        <code>                    void
+    <strong>resetupAndReplayContentGraphCommand</strong>(string $contentRepository = &#039;default&#039;, bool $force = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Upgrade to allow to empty, set up and replay the graph projection in one step</p></p>                <p><p>The CR provides a simple setup tooling via &quot;./flow cr:setup&quot; it allows to create the database schemas in the beginning
+and also minor upgrades from one existing schema to the desired like index changes or small renames.</p>
+<p>Some Neos versions will include changes which go beyond this as they heavily adjust the schema.</p>
+<ul>
+<li>
+<p>Neos 9.2.0 (June 2026)</p>
+<ul>
+<li>
+<p><a href="https://github.com/neos/neos-development-collection/pull/5488">https://github.com/neos/neos-development-collection/pull/5488</a></p>
+</li>
+<li>
+<p>new column workspace.version</p>
+</li>
+<li>
+<p><a href="https://github.com/neos/neos-development-collection/pull/5776">https://github.com/neos/neos-development-collection/pull/5776</a></p>
+</li>
+<li>
+<p>new column hierarchrelation.contentstreamlayer and id</p>
+</li>
+<li>
+<p>new table contentstreamlayer</p>
+</li>
+</ul>
+</li>
+<li>
+<p>[future version X ...]</p>
+</li>
+</ul>
+<p>The following upgrade is required</p>
+<ul>
+<li>
+<ol>
+<li>Reset (drop old tables),</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Setup (create new empty tables)</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Replay (refill new tables)</li>
+</ol>
+</li>
+</ul>
+<p>Attempting to upgrade with &quot;./flow cr:setup&quot; in step 2 without dropping the old content graph tables would fail.</p>
+<p>Included in June 2026 - part of the minor 9.2.0 release</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the Content Repository to upgrade</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$force</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_eventsRecordedAtToUtcCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L64">at line 64</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L135">at line 135</a></div>
         <code>                    void
     <strong>eventsRecordedAtToUtcCommand</strong>(string $contentRepository = &#039;default&#039;, bool $force = false)
         </code>
