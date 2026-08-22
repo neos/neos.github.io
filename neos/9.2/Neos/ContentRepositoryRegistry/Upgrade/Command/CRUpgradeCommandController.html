@@ -181,6 +181,16 @@ They can be used to draw inspiration how to write new migrations:
                                             <p><p>Upgrade to deduplicate parallel base workspace changes</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_eventsConcurrentWorkspaceRebasesCommand">eventsConcurrentWorkspaceRebasesCommand</a>(string $contentRepository = &#039;default&#039;, bool $dryRun = false, bool $force = false)
+        
+                                            <p><p>Upgrade to deduplicate illegal concurrent workspace rebases</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
             </div>
 
 
@@ -189,7 +199,7 @@ They can be used to draw inspiration how to write new migrations:
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_eventsStatusCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L54">at line 54</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L55">at line 55</a></div>
         <code>                    void
     <strong>eventsStatusCommand</strong>(string $contentRepository = &#039;default&#039;)
         </code>
@@ -232,7 +242,7 @@ They can be used to draw inspiration how to write new migrations:
             </div>
                     <div class="method-item">
                     <h3 id="method_resetupAndReplayContentGraphCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L153">at line 153</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L158">at line 158</a></div>
         <code>                    void
     <strong>resetupAndReplayContentGraphCommand</strong>(string $contentRepository = &#039;default&#039;, bool $force = false)
         </code>
@@ -327,7 +337,7 @@ and also minor upgrades from one existing schema to the desired like index chang
             </div>
                     <div class="method-item">
                     <h3 id="method_eventsRecordedAtToUtcCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L210">at line 210</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L215">at line 215</a></div>
         <code>                    void
     <strong>eventsRecordedAtToUtcCommand</strong>(string $contentRepository = &#039;default&#039;, bool $dryRun = false, bool $force = false)
         </code>
@@ -388,7 +398,7 @@ To prevent this from happening we compare the &quot;recordedAt&quot; and &quot;i
             </div>
                     <div class="method-item">
                     <h3 id="method_eventsDeduplicateBaseWorkspaceChangesCommand">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L264">at line 264</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L269">at line 269</a></div>
         <code>                    void
     <strong>eventsDeduplicateBaseWorkspaceChangesCommand</strong>(string $contentRepository = &#039;default&#039;, bool $dryRun = false, bool $force = false)
         </code>
@@ -415,6 +425,76 @@ The ChangeBaseWorkspace sequences can even be interlaced due to the race conditi
 <p>After the migration is applied the workspace will have the same new base workspace as without the migration,
 but we deduplicated any temporary changes that happened in a race condition. No content on the workspaces is affected.</p>
 <p>Included in June 2026 - part of the minor 9.2.0 release</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the Content Repository to migrate</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$dryRun</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$force</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_eventsConcurrentWorkspaceRebasesCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.2/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L324">at line 324</a></div>
+        <code>                    void
+    <strong>eventsConcurrentWorkspaceRebasesCommand</strong>(string $contentRepository = &#039;default&#039;, bool $dryRun = false, bool $force = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Upgrade to deduplicate illegal concurrent workspace rebases</p></p>                <p><p><a href="https://github.com/neos/neos-development-collection/issues/5849">https://github.com/neos/neos-development-collection/issues/5849</a></p>
+<p>Content stream forking was not thread safe before not expressing the assertion to the source content stream
+e.g. that the sourceContentStreamVersion should match the reality in the event store.
+This resulted in the possibility that a source content stream was not constraint from being forked when it was already removed.
+The resulting illegal ContentStreamWasForked event and its RebaseWorkspace sequence must be removed.</p>
+<p>The upgrade first determines any ContentStreamWasForked events where the source content stream was already removed via ContentStreamWasRemoved.
+We assume all illegally found forks are restricted to being caused by a RebaseWorkspace command (via correlation id).
+Further we expect a simple RebaseWorkspace without any changes on the &quot;user&quot; workspace but just an empty fork.
+On this empty fork we expect only a new second RebaseWorkspace, starting with a ContentStreamWasClosed or nothing if the event stream ended.
+This second RebaseWorkspace is either also illegal and to be removed or a valid rebase if the source content stream existed at that point.
+If valid we want to keep this rebase, but a rebase sequence refers to its previous content stream to remove it and indicate projections which was the last.
+The original information is no longer valid as we have removed the existence of the original previous content stream.
+Instead, we need to patch the events to use the previous content stream of the first illegal fork - the previous-previous content stream.
+Thus, we patch the field $previousContentStreamId of the WorkspaceWasRebased event and rewrite the ContentStreamWasClosed
+and ContentStreamWasRemoved events to affect the now new last content stream.</p>
+<p>After the migration is applied the workspace will have its last successfully rebased content stream as without the migration,
+but we deduplicated any temporary illegal rebases that happened in a race condition. No content on the workspaces is affected.</p>
+<p>Included in July 2026 - part of the minor 9.2.0 release</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
