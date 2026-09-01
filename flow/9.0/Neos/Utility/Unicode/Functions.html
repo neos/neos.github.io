@@ -196,10 +196,7 @@ to lowercase.</p></p>                </div>
                 <div class="col-md-8">
                     <a href="#method_pathinfo">pathinfo</a>(string $path, int|null $options = null)
         
-                                            <p><p>Unicode variant of pathinfo()
-pathinfo() function is not unicode-friendly
-if setlocale is not set. It's sufficient to set it
-to any UTF-8 locale to correctly handle unicode strings.</p></p>                </div>
+                                            <p><p>Unicode variant of pathinfo()</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -585,7 +582,7 @@ to lowercase.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_pathinfo">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Utility.Unicode/Classes/Functions.php#L161">at line 161</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Utility.Unicode/Classes/Functions.php#L165">at line 165</a></div>
         <code>        static            string|array
     <strong>pathinfo</strong>(string $path, int|null $options = null)
         </code>
@@ -596,14 +593,15 @@ to lowercase.</p></p>
             
 
         <div class="method-description">
-                            <p><p>Unicode variant of pathinfo()
-pathinfo() function is not unicode-friendly
-if setlocale is not set. It's sufficient to set it
-to any UTF-8 locale to correctly handle unicode strings.</p></p>                <p><p>This wrapper function temporarily sets locale to 'en_US.UTF-8'
-and then restores original locale.
-It's not necessary to use this function in cases,
-where only file extension is determined, as it's
-hard to imagine a unicode file extension.</p></p>        
+                            <p><p>Unicode variant of pathinfo()</p></p>                <p><p>Kept for backwards compatibility only — it delegates to the native function.
+pathinfo() is UTF-8 safe on its own: the only characters it splits on, '/' and '.',
+cannot occur inside a multi-byte UTF-8 sequence, and PHP no longer classifies path
+bytes through LC_CTYPE. Verified identical output under the C, ISO8859-1, SJIS and
+UTF-8 locales.</p>
+<p>This used to switch LC_CTYPE to 'en_US.UTF-8' for the duration of the call. That was
+both unnecessary and harmful: restoring the locale <em>string</em> afterwards does not
+restore PCRE's character tables, so from the first call onwards every regex without
+the /u modifier changed meaning process-wide — \w started matching bytes &gt;= 0x80.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -638,7 +636,7 @@ hard to imagine a unicode file extension.</p></p>
                     <table class="table table-condensed">
                     <tr>
                 <td>
-                                            <a href="http://www.php.net/manual/en/function.pathinfo.php">http://www.php.net/manual/en/function.pathinfo.php</a>
+                                            <a href="https://www.php.net/manual/en/function.pathinfo.php">https://www.php.net/manual/en/function.pathinfo.php</a>
                                     </td>
                 <td></td>
             </tr>
@@ -651,7 +649,7 @@ hard to imagine a unicode file extension.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_parse_url">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Utility.Unicode/Classes/Functions.php#L179">at line 179</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/9.0/Neos.Utility.Unicode/Classes/Functions.php#L177">at line 177</a></div>
         <code>        static            mixed
     <strong>parse_url</strong>(string $url, int $component = -1)
         </code>
