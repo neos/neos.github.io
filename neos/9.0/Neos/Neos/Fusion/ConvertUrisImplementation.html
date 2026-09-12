@@ -99,22 +99,27 @@
         
 
             <div class="description">
-            <p><p>A Fusion Object that converts link references in the format &quot;<type>://<UUID>&quot; to proper URIs</p></p>            <p><p>Right now node://<UUID> and asset://<UUID> are supported URI schemes.</p>
+            <p><p>A Fusion object that converts URIs in the format &quot;<type>://<identifier>&quot; to URLs</p></p>            <p><p>Currently, node://<identifier> and asset://<identifier> are supported URI schemes.</p>
+<p>Anchor tags with an unresolvable URI in their href attribute (for example because the target
+node is disabled) are replaced by their inner content. Unresolvable URIs
+outside of anchor tags are removed entirely.</p>
 <p>Usage::</p>
 <p>someTextProperty.@process.1 = Neos.Neos:ConvertUris</p>
-<p>The optional property <code>forceConversion</code> can be used to have the links converted even when not
-rendering the live workspace. This is used for links that are not inline editable (for
-example links on images)::</p>
+<p>The optional property <code>forceConversion</code> can be used to have the URIs converted even when
+rendering in edit mode. This is used for properties that are not inline editable (for
+example the link property of an image element, managed in the inspector)::</p>
 <p>someTextProperty.@process.1 = Neos.Neos:ConvertUris {
 forceConversion = true
 }</p>
 <p>The optional property <code>externalLinkTarget</code> can be modified to disable or change the target attribute of the
-link tag for links to external targets::</p>
+anchor tag for links to external targets::</p>
 <p>prototype(Neos.Neos:ConvertUris) {
 externalLinkTarget = '_blank'
 resourceLinkTarget = '_blank'
 }</p>
-<p>The optional property <code>absolute</code> can be used to convert node uris to absolute links::</p>
+<p>Anchor tags pointing to an external host additionally get <code>rel="noopener external"</code>, which can
+be disabled with the <code>setNoOpener</code> and <code>setExternal</code> options.</p>
+<p>The optional property <code>absolute</code> can be used to resolve URIs to absolute URLs::</p>
 <p>someTextProperty.@process.1 = Neos.Neos:ConvertUris {
 absolute = true
 }</p></p>        </div>
@@ -246,7 +251,8 @@ absolute = true
                 <div class="col-md-8">
                     <a href="#method_evaluate">evaluate</a>()
         
-                                            <p><p>Convert URIs matching a supported scheme with generated URIs</p></p>                </div>
+                                            <p><p>Convert URIs matching a supported scheme to their respective URLs and
+replace anchor tags whose URI cannot be resolved by their inner content.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -322,7 +328,7 @@ absolute = true
                 <div class="col-md-8">
                     <a href="#method_replaceLinkTargets">replaceLinkTargets</a>(string $processedContent)
         
-                                            <p><p>Replace the target attribute of link tags in processedContent with the target
+                                            <p><p>Replace the target attribute of anchor tags in processedContent with the target
 specified by externalLinkTarget and resourceLinkTarget options.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
@@ -379,7 +385,7 @@ specified by externalLinkTarget and resourceLinkTarget options.</p></p>         
             </div>
                     <div class="method-item">
                     <h3 id="method_evaluate">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/ConvertUrisImplementation.php#L111">at line 111</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/ConvertUrisImplementation.php#L121">at line 121</a></div>
         <code>                    mixed
     <strong>evaluate</strong>()
         </code>
@@ -390,8 +396,11 @@ specified by externalLinkTarget and resourceLinkTarget options.</p></p>         
             
 
         <div class="method-description">
-                            <p><p>Convert URIs matching a supported scheme with generated URIs</p></p>                <p><p>If the workspace of the current node context is not live, no replacement will be done unless forceConversion is
-set. This is needed to show the editable links with metadata in the content module.</p></p>        
+                            <p><p>Convert URIs matching a supported scheme to their respective URLs and
+replace anchor tags whose URI cannot be resolved by their inner content.</p></p>                <p><p>Additionally, the target and rel attributes of anchor tags are adjusted
+for external and resource links.</p>
+<p>When rendering in edit mode, no replacement will be done unless forceConversion is set.
+This is needed to show the editable links with metadata in the content module.</p></p>        
         </div>
         <div class="tags">
             
@@ -682,7 +691,7 @@ first evaluated value will be cached in memory.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_replaceLinkTargets">
-        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/ConvertUrisImplementation.php#L216">at line 216</a></div>
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.0/Neos.Neos/Classes/Fusion/ConvertUrisImplementation.php#L242">at line 242</a></div>
         <code>            protected        string
     <strong>replaceLinkTargets</strong>(string $processedContent)
         </code>
@@ -693,7 +702,7 @@ first evaluated value will be cached in memory.</p></p>
             
 
         <div class="method-description">
-                            <p><p>Replace the target attribute of link tags in processedContent with the target
+                            <p><p>Replace the target attribute of anchor tags in processedContent with the target
 specified by externalLinkTarget and resourceLinkTarget options.</p></p>                <p><p>Additionally set rel=&quot;noopener external&quot; for external links.</p></p>        
         </div>
         <div class="tags">
