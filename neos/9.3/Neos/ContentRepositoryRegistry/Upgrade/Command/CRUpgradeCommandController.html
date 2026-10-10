@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Neos\ContentRepositoryRegistry\Upgrade\Command\CRUpgradeCommandController | Neos CMS</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/doctum.css">
+        <link rel="stylesheet" type="text/css" href="../../../../fonts/doctum-font.css">
+        <script src="../../../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../../../doctum.js"></script>
+        <script async defer src="../../../../js/bootstrap.min.js"></script>
+        <script async defer src="../../../../js/autocomplete.min.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="shortcut icon" href="https://www.neos.io/favicon-32x32.png" />
+        <link rel="search"
+          type="application/opensearchdescription+xml"
+          href="https://neos.github.io/opensearch.xml"
+          title="Neos CMS (9.3)" />
+    </head>
+
+    <body id="class" data-name="class:Neos_ContentRepositoryRegistry_Upgrade_Command_CRUpgradeCommandController" data-root-path="../../../../" data-search-index-url="../../../../doctum-search.json">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../../../search.html">
+            <span class="icon icon-search"></span>
+            <input name="search"
+                   id="doctum-search-auto-complete"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">Neos CMS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                    <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                    <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                        <li><a href="../../../../Neos.html">Neos</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepositoryRegistry.html">ContentRepositoryRegistry</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepositoryRegistry/Upgrade.html">Upgrade</a></li><li class="backslash">\</li><li><a href="../../../../Neos/ContentRepositoryRegistry/Upgrade/Command.html">Command</a></li><li class="backslash">\</li><li>CRUpgradeCommandController</li>
+            </ol>
+        </div>
+                <div id="page-content">
+    <div class="page-header">
+        <h1>CRUpgradeCommandController    
+            </h1>
+    </div>
+
+    
+    <p>final         class
+    <strong>CRUpgradeCommandController</strong>        extends <abbr title="Neos\Flow\Cli\CommandController">CommandController</abbr>        (<a href="https://github.com/neos/neos-development-collection/blob/9.3/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php">View source</a>)
+</p>
+
+        
+        
+    
+        
+
+            <div class="description">
+            <p><p>Provides destructive tooling to upgrade the content repository database for a new Neos release.</p></p>            <p><p>While there is tooling for trivial schema adjustment see &quot;cr:setup&quot; the addition of new db columns without defaults
+requires adding values inferred by the event stream which is handled by these advanced upgrades.</p>
+<p>Also rewriting events of the DBAL event-store if deemed required is part of this upgrade tooling.</p>
+<p>~ ~ ~ ~ ~ ~ ~</p>
+<p>Please do ensure you have a backup of your database at hand.</p>
+<p>~ ~ ~ ~ ~ ~ ~</p>
+<p>By convention each upgrade specifies its release date to allow developers to determine if an upgrade is relevant.</p>
+<p>~ ~ ~ ~ ~ ~ ~</p>
+<p>Note regarding further event migrations</p>
+<p>Up until the last beta 9.0.0-beta20, many migrations were provided via the &quot;migrateevents&quot; Flow command.
+They can be used to draw inspiration how to write new migrations:
+<a href="https://github.com/neos/neos-development-collection/blob/9.0.0-beta20/Neos.ContentRepositoryRegistry/Classes/Service/EventMigrationService.php">https://github.com/neos/neos-development-collection/blob/9.0.0-beta20/Neos.ContentRepositoryRegistry/Classes/Service/EventMigrationService.php</a></p></p>        </div>
+            
+        
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_contentRepositoryRegistry">
+                                        protected                                        <a href="../../../../Neos/ContentRepositoryRegistry/ContentRepositoryRegistry.html"><abbr title="Neos\ContentRepositoryRegistry\ContentRepositoryRegistry">ContentRepositoryRegistry</abbr></a>
+                                                                                
+                                    </td>
+                <td>$contentRepositoryRegistry</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_upgradeContextFactory">
+                                        protected                                        <a href="../../../../Neos/ContentRepositoryRegistry/Upgrade/Command/CRUpgradeContextFactory.html"><abbr title="Neos\ContentRepositoryRegistry\Upgrade\Command\CRUpgradeContextFactory">CRUpgradeContextFactory</abbr></a>
+                                                                                
+                                    </td>
+                <td>$upgradeContextFactory</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_eventsStatusCommand">eventsStatusCommand</a>(string $contentRepository = &#039;default&#039;)
+        
+                                            <p><p>Analyses which event upgrades are available and which required</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_resetupAndReplayContentGraphCommand">resetupAndReplayContentGraphCommand</a>(string $contentRepository = &#039;default&#039;, bool $force = false)
+        
+                                            <p><p>Upgrade to allow to empty, set up and replay the graph projection in one step</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_eventsRecordedAtToUtcCommand">eventsRecordedAtToUtcCommand</a>(string $contentRepository = &#039;default&#039;, bool $dryRun = false, bool $force = false)
+        
+                                            <p><p>Optional upgrade to adjust event time stamps and node dates to UTC</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_eventsDeduplicateBaseWorkspaceChangesCommand">eventsDeduplicateBaseWorkspaceChangesCommand</a>(string $contentRepository = &#039;default&#039;, bool $dryRun = false, bool $force = false)
+        
+                                            <p><p>Upgrade to deduplicate parallel base workspace changes</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_eventsConcurrentWorkspaceRebasesCommand">eventsConcurrentWorkspaceRebasesCommand</a>(string $contentRepository = &#039;default&#039;, bool $dryRun = false, bool $force = false)
+        
+                                            <p><p>Upgrade to deduplicate illegal concurrent workspace rebases</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method_eventsStatusCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.3/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L55">at line 55</a></div>
+        <code>                    void
+    <strong>eventsStatusCommand</strong>(string $contentRepository = &#039;default&#039;)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Analyses which event upgrades are available and which required</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the Content Repository to test for event upgrades</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_resetupAndReplayContentGraphCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.3/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L158">at line 158</a></div>
+        <code>                    void
+    <strong>resetupAndReplayContentGraphCommand</strong>(string $contentRepository = &#039;default&#039;, bool $force = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Upgrade to allow to empty, set up and replay the graph projection in one step</p></p>                <p><p>The CR provides a simple setup tooling via &quot;./flow cr:setup&quot; it allows to create the database schemas in the beginning
+and also minor upgrades from one existing schema to the desired like index changes or small renames.</p>
+<p>Some Neos versions will include changes which go beyond this as they heavily adjust the schema.</p>
+<ul>
+<li>
+<p>Neos 9.2.0 (June 2026)</p>
+<ul>
+<li>
+<p><a href="https://github.com/neos/neos-development-collection/pull/5488">https://github.com/neos/neos-development-collection/pull/5488</a></p>
+</li>
+<li>
+<p>new column workspace.version</p>
+</li>
+<li>
+<p><a href="https://github.com/neos/neos-development-collection/pull/5776">https://github.com/neos/neos-development-collection/pull/5776</a></p>
+</li>
+<li>
+<p>new column hierarchrelation.contentstreamlayer and id</p>
+</li>
+<li>
+<p>new table contentstreamlayer</p>
+</li>
+</ul>
+</li>
+<li>
+<p>[future version X ...]</p>
+</li>
+</ul>
+<p>The following upgrade is required</p>
+<ul>
+<li>
+<ol>
+<li>Reset (drop old tables),</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Setup (create new empty tables)</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Replay (refill new tables)</li>
+</ol>
+</li>
+</ul>
+<p>Attempting to upgrade with &quot;./flow cr:setup&quot; in step 2 without dropping the old content graph tables would fail.</p>
+<p>Included in June 2026 - part of the minor 9.2.0 release</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the Content Repository to upgrade</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$force</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_eventsRecordedAtToUtcCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.3/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L215">at line 215</a></div>
+        <code>                    void
+    <strong>eventsRecordedAtToUtcCommand</strong>(string $contentRepository = &#039;default&#039;, bool $dryRun = false, bool $force = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Optional upgrade to adjust event time stamps and node dates to UTC</p></p>                <p><p><a href="https://github.com/neos/neos-development-collection/pull/5716">https://github.com/neos/neos-development-collection/pull/5716</a></p>
+<p>By storing &quot;recordedAt&quot; as datetime field we lost its original timezone information.
+But we can make the assumption that its timezone should be the same as the one encoded in the ATOM metadata field &quot;initiatingTimeStamp&quot;</p>
+<p>The upgrade first groups all events by the ATOM offset found in &quot;initiatingTimeStamp&quot;.
+If all events are UTC &quot;+00:00&quot; the upgrade is not necessary. For all non UTC groups we convert the &quot;recordedAt&quot; datetime field
+to the datetime in the UTC timezone.</p>
+<p>The upgrade must not be executed multiple times as it would remove the offset to match UTC again for the &quot;recordedAt&quot; datetime even if they are already meant to be UTC.
+To prevent this from happening we compare the &quot;recordedAt&quot; and &quot;initiatingTimeStamp&quot; and if they are equal considering timezones we know the upgrade was run.</p>
+<p>Included in June 2026 - part of the bugfix 9.0.13, 9.1.6 and minor 9.2.0 release</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the Content Repository to upgrade</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$dryRun</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$force</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_eventsDeduplicateBaseWorkspaceChangesCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.3/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L269">at line 269</a></div>
+        <code>                    void
+    <strong>eventsDeduplicateBaseWorkspaceChangesCommand</strong>(string $contentRepository = &#039;default&#039;, bool $dryRun = false, bool $force = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Upgrade to deduplicate parallel base workspace changes</p></p>                <p><p><a href="https://github.com/neos/neos-development-collection/issues/5877">https://github.com/neos/neos-development-collection/issues/5877</a></p>
+<p>Workspace operations, also ChangeBaseWorkspace were not thread safe before the addition of workspace versioning
+in the read model and thus safe soft constraint checks.
+That resulted in the possibility that a single workspace was changed two or more times in parallel by the same user.
+Because each ChangeBaseWorkspace can be slow and cleans up at the end the content stream via ContentStreamWasRemoved,
+that results in possibly multiple illegal ContentStreamWasRemoved events and in total a fully illegal ChangeBaseWorkspace.</p>
+<p>The upgrade first identifies any duplicate ContentStreamWasRemoved events on a single stream.
+If found we assume check via their unique prefixed correlation id that they belong to a ChangeBaseWorkspace sequence.
+Then we find all events of the ChangeBaseWorkspace sequences and that occurred during these the content stream removals.
+If there ar no other concurrent changes on our workspace - which would have been illegal as well - and it's truly
+the race condition as understood with only the events a ChangeBaseWorkspace emits we continue.
+We identify the last and thus valid ChangeBaseWorkspace sequence and delete all events from the previous illegal sequence(s).
+The ChangeBaseWorkspace sequences can even be interlaced due to the race condition but the correlation id identifies the last sequence to keep uniquely.</p>
+<p>After the migration is applied the workspace will have the same new base workspace as without the migration,
+but we deduplicated any temporary changes that happened in a race condition. No content on the workspaces is affected.</p>
+<p>Included in June 2026 - part of the minor 9.2.0 release</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the Content Repository to migrate</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$dryRun</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$force</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_eventsConcurrentWorkspaceRebasesCommand">
+        <div class="location"><a href="https://github.com/neos/neos-development-collection/blob/9.3/Neos.ContentRepositoryRegistry/Classes/Upgrade/Command/CRUpgradeCommandController.php#L324">at line 324</a></div>
+        <code>                    void
+    <strong>eventsConcurrentWorkspaceRebasesCommand</strong>(string $contentRepository = &#039;default&#039;, bool $dryRun = false, bool $force = false)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Upgrade to deduplicate illegal concurrent workspace rebases</p></p>                <p><p><a href="https://github.com/neos/neos-development-collection/issues/5849">https://github.com/neos/neos-development-collection/issues/5849</a></p>
+<p>Content stream forking was not thread safe before not expressing the assertion to the source content stream
+e.g. that the sourceContentStreamVersion should match the reality in the event store.
+This resulted in the possibility that a source content stream was not constraint from being forked when it was already removed.
+The resulting illegal ContentStreamWasForked event and its RebaseWorkspace sequence must be removed.</p>
+<p>The upgrade first determines any ContentStreamWasForked events where the source content stream was already removed via ContentStreamWasRemoved.
+We assume all illegally found forks are restricted to being caused by a RebaseWorkspace command (via correlation id).
+Further we expect a simple RebaseWorkspace without any changes on the &quot;user&quot; workspace but just an empty fork.
+On this empty fork we expect only a new second RebaseWorkspace, starting with a ContentStreamWasClosed or nothing if the event stream ended.
+This second RebaseWorkspace is either also illegal and to be removed or a valid rebase if the source content stream existed at that point.
+If valid we want to keep this rebase, but a rebase sequence refers to its previous content stream to remove it and indicate projections which was the last.
+The original information is no longer valid as we have removed the existence of the original previous content stream.
+Instead, we need to patch the events to use the previous content stream of the first illegal fork - the previous-previous content stream.
+Thus, we patch the field $previousContentStreamId of the WorkspaceWasRebased event and rewrite the ContentStreamWasClosed
+and ContentStreamWasRemoved events to affect the now new last content stream.</p>
+<p>After the migration is applied the workspace will have its last successfully rebased content stream as without the migration,
+but we deduplicated any temporary illegal rebases that happened in a race condition. No content on the workspaces is affected.</p>
+<p>Included in July 2026 - part of the minor 9.2.0 release</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$contentRepository</td>
+                <td><p>Identifier of the Content Repository to migrate</p></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$dryRun</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>bool</td>
+                <td>$force</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+</div><div id="footer">
+        Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.            <br/>Learn more about the <a href="https://www.neos.io" rel="noreferrer noopener" target="_blank">Neos Content Application Platform</a> if you like!</div></div>
+    </div>
+    </body>
+
+</html>
