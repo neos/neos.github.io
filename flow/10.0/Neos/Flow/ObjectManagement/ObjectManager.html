@@ -101,7 +101,17 @@
             <div class="description">
             <p><p>Object Manager</p></p>                    </div>
             
+                <h2>Traits</h2>
+
         
+    <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-6">
+                    <a href="../../../Neos/Flow/ObjectManagement/ObjectNameNormalization.html"><abbr title="Neos\Flow\ObjectManagement\ObjectNameNormalization">ObjectNameNormalization</abbr></a>    </div>
+                <div class="col-md-6"><p>Ensures object names are not used with backslashes.</p></div>
+            </div>
+            </div>
+    
             <h2>Constants</h2>    <table class="table table-condensed">
                     <tr>
                 <td>
@@ -133,6 +143,24 @@
                     <tr>
                 <td>
                                                             protected                                                            KEY_FACTORY_ARGUMENTS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            protected                                                            KEY_CONSTRUCTOR_ARGUMENTS
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
+                    <tr>
+                <td>
+                                                            protected                                                            KEY_AUTOWIRING_MODE
                                     </td>
                 <td class="last">
                     <p><em></em></p>
@@ -184,6 +212,15 @@
                     <p></p>
                 </td>
             </tr>
+                    <tr>
+                <td>
+                                                            protected                                                            KEY_OBJECTNAMES_PROVIDED
+                                    </td>
+                <td class="last">
+                    <p><em></em></p>
+                    <p></p>
+                </td>
+            </tr>
             </table>
 
     
@@ -191,26 +228,8 @@
 
             <table class="table table-condensed">
                     <tr>
-                <td class="type" id="property_context">
-                                        protected                                        <a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a>
-                                                                                
-                                    </td>
-                <td>$context</td>
-                <td class="last"><p>The configuration context for this Flow run</p></td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td class="type" id="property_allSettings">
-                                        protected                                        array
-                                                                                
-                                    </td>
-                <td>$allSettings</td>
-                <td class="last"><p>An array of settings of all packages, indexed by package key</p></td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td class="type" id="property_objects">
-                                        protected                                        array
+                                        protected                                        <abbr title="Neos\Flow\ObjectManagement\array&lt;class-string">array&lt;class-string</abbr>|<abbr title="Neos\Flow\ObjectManagement\string, \Neos\Flow\ObjectManagement\ObjectRecordShape&gt;">ObjectRecordShape&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$objects</td>
@@ -218,17 +237,8 @@
                 <td></td>
             </tr>
                     <tr>
-                <td class="type" id="property_dependencyProxies">
-                                        protected                                        <a href="../../../Neos/Flow/ObjectManagement/DependencyInjection/DependencyProxy.html"><abbr title="Neos\Flow\ObjectManagement\DependencyInjection\DependencyProxy">DependencyProxy</abbr></a>[]
-                                                                                
-                                    </td>
-                <td>$dependencyProxies</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
-                    <tr>
                 <td class="type" id="property_classesBeingInstantiated">
-                                        protected                                        array
+                                        protected                                        <abbr title="Neos\Flow\ObjectManagement\array&lt;string, bool&gt;">array&lt;string, bool&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$classesBeingInstantiated</td>
@@ -237,7 +247,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_cachedLowerCasedObjectNames">
-                                        protected                                        array
+                                        protected                                        <abbr title="Neos\Flow\ObjectManagement\array&lt;string, string&gt;">array&lt;string, string&gt;</abbr>
                                                                                 
                                     </td>
                 <td>$cachedLowerCasedObjectNames</td>
@@ -246,7 +256,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_shutdownObjects">
-                                        protected                                        <a target="_blank" rel="noopener" href="https://www.php.net/SplObjectStorage">SplObjectStorage</a>
+                                        protected                                        SplObjectStorage&lt;object, mixed&gt;
                                                                                 
                                     </td>
                 <td>$shutdownObjects</td>
@@ -256,7 +266,7 @@ shuts down. Each value of each entry is the respective shutdown method name.</p>
             </tr>
                     <tr>
                 <td class="type" id="property_internalShutdownObjects">
-                                        protected                                        <a target="_blank" rel="noopener" href="https://www.php.net/SplObjectStorage">SplObjectStorage</a>
+                                        protected                                        SplObjectStorage&lt;object, mixed&gt;
                                                                                 
                                     </td>
                 <td>$internalShutdownObjects</td>
@@ -271,10 +281,22 @@ shuts down. Each value of each entry is the respective shutdown method name.</p>
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_normalizeObjectName">normalizeObjectName</a>(string $objectName)
+        
+                                            <p><p>Object and class names are registered without a leading backslash, but may be passed
+as fully qualified for example from Configuration.</p></p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../Neos/Flow/ObjectManagement/ObjectNameNormalization.html#method_normalizeObjectName">
+<abbr title="Neos\Flow\ObjectManagement\ObjectNameNormalization">ObjectNameNormalization</abbr></a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     
                 </div>
                 <div class="col-md-8">
-                    <a href="#method___construct">__construct</a>(<a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a> $context)
+                    <a href="#method___construct">__construct</a>(<a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a> $context, <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
         
                                             <p><p>Constructor for this Object Container</p></p>                </div>
                 <div class="col-md-2"></div>
@@ -287,16 +309,6 @@ shuts down. Each value of each entry is the respective shutdown method name.</p>
                     <a href="#method_setObjects">setObjects</a>(array $objects)
         
                                             <p><p>Sets the objects array</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    void
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_injectAllSettings">injectAllSettings</a>(array $settings)
-        
-                                            <p><p>Injects the global settings array, indexed by package key.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -351,6 +363,51 @@ shuts down. Each value of each entry is the respective shutdown method name.</p>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    object
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_createLazyInstance">createLazyInstance</a>(string $objectName, string $className)
+        
+                                            <p><p>Creates the instance of a singleton or session scoped object as a lazy proxy. The actual
+object, and with it its dependencies, is only built once the proxy is used for the first time.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_registerInstance">registerInstance</a>(string $objectName, string $className, object $instance)
+        
+                                            <p><p>Registers the given instance for the object name and – if the implementation class is
+registered as a singleton of its own – for the class name and for all interfaces the class
+provides, so that requesting any of them returns the same instance.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_isPrototype">isPrototype</a>(string $objectName)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_autowireConstructorArguments">autowireConstructorArguments</a>(string $objectName, string $className, array $constructorArguments)
+        
+                                            <p><p>Resolves the constructor arguments configured for the given object – by object name and,
+if different, by class name – which were not passed explicitly.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     int
                 </div>
                 <div class="col-md-8">
@@ -383,7 +440,7 @@ false is returned.</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    <abbr title="Neos\Flow\ObjectManagement\class-string&lt;object&gt;">class-string&lt;object&gt;</abbr>|false
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getClassNameByObjectName">getClassNameByObjectName</a>(string $objectName)
@@ -393,7 +450,7 @@ false is returned.</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    string
+                    string|false
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getPackageKeyByObjectName">getPackageKeyByObjectName</a>(string $objectName)
@@ -435,32 +492,6 @@ registered yet.</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    object|null
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_getLazyDependencyByHash">getLazyDependencyByHash</a>(string $hash, mixed $propertyReferenceVariable)
-        
-                                            <p><p>This method is used internally to retrieve either an actual (singleton) instance
-of the specified dependency or, if no instance exists yet, a Dependency Proxy
-object which automatically triggers the creation of an instance as soon as
-it is used the first time.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    <a href="../../../Neos/Flow/ObjectManagement/DependencyInjection/DependencyProxy.html"><abbr title="Neos\Flow\ObjectManagement\DependencyInjection\DependencyProxy">DependencyProxy</abbr></a>
-                </div>
-                <div class="col-md-8">
-                    <a href="#method_createLazyDependency">createLazyDependency</a>(string $hash, mixed $propertyReferenceVariable, string $className, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $builder)
-        
-                                            <p><p>Creates a new DependencyProxy class for a dependency built through code
-identified through &quot;hash&quot; for a dependency of class $className. The
-closure in $builder contains code for actually creating the dependency
-instance once it needs to be materialized.</p></p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
                     void
                 </div>
                 <div class="col-md-8">
@@ -471,7 +502,7 @@ instance once it needs to be materialized.</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    array
+                    <abbr title="Neos\Flow\ObjectManagement\array&lt;int, object&gt;">array&lt;int, object&gt;</abbr>
                 </div>
                 <div class="col-md-8">
                     <a href="#method_getSessionInstances">getSessionInstances</a>()
@@ -514,12 +545,66 @@ passed to the factory method.</p></p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    bool
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_hasInternalClassInAncestry">hasInternalClassInAncestry</a>(string $className)
+        
+                                            <p><p>PHP cannot create lazy objects of internal classes, nor of classes which extend one.</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    object
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildLazyProxy">buildLazyProxy</a>(string $className, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $builder)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     object
                 </div>
                 <div class="col-md-8">
                     <a href="#method_instantiateClass">instantiateClass</a>(string $className, array $arguments)
         
                                             <p><p>Speed optimized alternative to ReflectionClass::newInstanceArgs()</p></p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_autowireArguments">autowireArguments</a>(<abbr title="Neos\Flow\ObjectManagement\array&lt;int">array&lt;int</abbr>|<abbr title="Neos\Flow\ObjectManagement\string, mixed&gt;">string, mixed&gt;</abbr> $configuration, <abbr title="Neos\Flow\ObjectManagement\array&lt;int">array&lt;int</abbr>|<abbr title="Neos\Flow\ObjectManagement\string, mixed&gt;">string, mixed&gt;</abbr> $existingArguments)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    mixed
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_getConfiguredArgument">getConfiguredArgument</a>(int $argumentType, mixed $argumentValue)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    array
+                </div>
+                <div class="col-md-8">
+                    <a href="#method_buildMethodArguments">buildMethodArguments</a>(array $argumentConfigurations)
+        
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -539,10 +624,55 @@ passed to the factory method.</p></p>                </div>
 
             <div id="method-details">
                     <div class="method-item">
+                    <h3 id="method_normalizeObjectName">
+        <div class="location">in <a href="../../../Neos/Flow/ObjectManagement/ObjectNameNormalization.html#method_normalizeObjectName">
+<abbr title="Neos\Flow\ObjectManagement\ObjectNameNormalization">ObjectNameNormalization</abbr></a> <a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectNameNormalization.php#L17">at line 17</a></div>
+        <code>            protected        string
+    <strong>normalizeObjectName</strong>(string $objectName)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Object and class names are registered without a leading backslash, but may be passed
+as fully qualified for example from Configuration.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L98">at line 98</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L99">at line 99</a></div>
         <code>                    
-    <strong>__construct</strong>(<a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a> $context)
+    <strong>__construct</strong>(<a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a> $context, <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr> $logger)
         </code>
     </h3>
     <div class="details">    
@@ -561,6 +691,11 @@ passed to the factory method.</p></p>                </div>
                 <td><a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a></td>
                 <td>$context</td>
                 <td><p>The configuration context for this Flow run</p></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr></td>
+                <td>$logger</td>
+                <td></td>
             </tr>
             </table>
 
@@ -616,49 +751,6 @@ passed to the factory method.</p></p>                </div>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_injectAllSettings">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L125">at line 125</a></div>
-        <code>                    void
-    <strong>injectAllSettings</strong>(array $settings)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>Injects the global settings array, indexed by package key.</p></p>                        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>array</td>
-                <td>$settings</td>
-                <td><p>The global settings</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>void</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_getContext">
         <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L135">at line 135</a></div>
         <code>                    <a href="../../../Neos/Flow/Core/ApplicationContext.html"><abbr title="Neos\Flow\Core\ApplicationContext">ApplicationContext</abbr></a>
@@ -693,7 +785,7 @@ passed to the factory method.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_isRegistered">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L148">at line 148</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L147">at line 147</a></div>
         <code>                    bool
     <strong>isRegistered</strong>(string $objectName)
         </code>
@@ -728,15 +820,6 @@ passed to the factory method.</p></p>                </div>
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
             
                     </div>
@@ -745,7 +828,7 @@ passed to the factory method.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_has">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L167">at line 167</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L159">at line 159</a></div>
         <code>                    bool
     <strong>has</strong>(string $objectName)
         </code>
@@ -788,7 +871,7 @@ passed to the factory method.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_registerShutdownObject">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L180">at line 180</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L172">at line 172</a></div>
         <code>                    void
     <strong>registerShutdownObject</strong>(object $object, string $shutdownLifecycleMethodName)
         </code>
@@ -836,7 +919,7 @@ passed to the factory method.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_get">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L203">at line 203</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L195">at line 195</a></div>
         <code>                    <abbr title="Neos\Flow\ObjectManagement\T">T</abbr>
     <strong>get</strong>(<abbr title="Neos\Flow\ObjectManagement\class-string&lt;\Neos\Flow\ObjectManagement\T&gt;">T&gt;</abbr>|string $objectName, mixed ...$constructorArguments)
         </code>
@@ -904,8 +987,228 @@ passed to the factory method.</p></p>                </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_createLazyInstance">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L261">at line 261</a></div>
+        <code>            protected        object
+    <strong>createLazyInstance</strong>(string $objectName, string $className)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Creates the instance of a singleton or session scoped object as a lazy proxy. The actual
+object, and with it its dependencies, is only built once the proxy is used for the first time.</p></p>                <p><p>Objects of these scopes may depend on each other, directly or through a chain of other
+objects. Because the proxy is registered before anything is built, a re-entrant call to
+get() for an object whose proxy is currently being initialized returns that very proxy
+instead of trying to build a second instance.</p>
+<p>Classes which are internal or extend an internal class cannot be made lazy by PHP, they
+are built right away.</p></p>        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td><p>Name of the object to instantiate</p></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td><p>Name of the class implementing the object</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object</td>
+            <td><p>The object, usually a lazy proxy</p></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a href="../../../Neos/Flow/ObjectManagement/Exception/CannotBuildObjectException.html"><abbr title="Neos\Flow\ObjectManagement\Exception\CannotBuildObjectException">CannotBuildObjectException</abbr></a></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionException">ReflectionException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_registerInstance">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L281">at line 281</a></div>
+        <code>            protected        void
+    <strong>registerInstance</strong>(string $objectName, string $className, object $instance)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Registers the given instance for the object name and – if the implementation class is
+registered as a singleton of its own – for the class name and for all interfaces the class
+provides, so that requesting any of them returns the same instance.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>object</td>
+                <td>$instance</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_isPrototype">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L298">at line 298</a></div>
+        <code>            protected        bool
+    <strong>isPrototype</strong>(string $objectName)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_autowireConstructorArguments">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L311">at line 311</a></div>
+        <code>            protected        array
+    <strong>autowireConstructorArguments</strong>(string $objectName, string $className, array $constructorArguments)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>Resolves the constructor arguments configured for the given object – by object name and,
+if different, by class name – which were not passed explicitly.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$objectName</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$constructorArguments</td>
+                <td><p>Arguments which were passed explicitly</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>The complete list of constructor arguments</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getScope">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L244">at line 244</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L330">at line 330</a></div>
         <code>                    int
     <strong>getScope</strong>(string $objectName)
         </code>
@@ -957,7 +1260,7 @@ passed to the factory method.</p></p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_getCaseSensitiveObjectName">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L267">at line 267</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L353">at line 353</a></div>
         <code>                    string|null
     <strong>getCaseSensitiveObjectName</strong>(string $caseInsensitiveObjectName)
         </code>
@@ -1012,7 +1315,7 @@ rare cases.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getObjectNameByClassName">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L295">at line 295</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L379">at line 379</a></div>
         <code>                    string|false
     <strong>getObjectNameByClassName</strong>(string $className)
         </code>
@@ -1047,15 +1350,6 @@ rare cases.</p></p>
     </table>
 
             
-                            <h4>Exceptions</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/InvalidArgumentException">InvalidArgumentException</a></td>
-                <td></td>
-            </tr>
-            </table>
-
             
             
                     </div>
@@ -1064,8 +1358,8 @@ rare cases.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getClassNameByObjectName">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L320">at line 320</a></div>
-        <code>                    string
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L401">at line 401</a></div>
+        <code>                    <abbr title="Neos\Flow\ObjectManagement\class-string&lt;object&gt;">class-string&lt;object&gt;</abbr>|false
     <strong>getClassNameByObjectName</strong>(string $objectName)
         </code>
     </h3>
@@ -1093,7 +1387,7 @@ rare cases.</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td><abbr title="Neos\Flow\ObjectManagement\class-string&lt;object&gt;">class-string&lt;object&gt;</abbr>|false</td>
             <td><p>The class name corresponding to the given object name or false if no such object is registered</p></td>
         </tr>
     </table>
@@ -1107,8 +1401,8 @@ rare cases.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getPackageKeyByObjectName">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L335">at line 335</a></div>
-        <code>                    string
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L415">at line 415</a></div>
+        <code>                    string|false
     <strong>getPackageKeyByObjectName</strong>(string $objectName)
         </code>
     </h3>
@@ -1143,7 +1437,7 @@ rare cases.</p></p>
 
                     <table class="table table-condensed">
         <tr>
-            <td>string</td>
+            <td>string|false</td>
             <td><p>The package key or false if no such object exists</p></td>
         </tr>
     </table>
@@ -1157,7 +1451,7 @@ rare cases.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_setInstance">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L352">at line 352</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L433">at line 433</a></div>
         <code>                    void
     <strong>setInstance</strong>(string $objectName, object $instance)
         </code>
@@ -1219,7 +1513,7 @@ lazy loading proxy.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_hasInstance">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L374">at line 374</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L457">at line 457</a></div>
         <code>                    bool
     <strong>hasInstance</strong>(string $objectName)
         </code>
@@ -1263,7 +1557,7 @@ object.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getInstance">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L388">at line 388</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L471">at line 471</a></div>
         <code>                    object|null
     <strong>getInstance</strong>(string $objectName)
         </code>
@@ -1306,120 +1600,8 @@ registered yet.</p></p>
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getLazyDependencyByHash">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L405">at line 405</a></div>
-        <code>                    object|null
-    <strong>getLazyDependencyByHash</strong>(string $hash, mixed $propertyReferenceVariable)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>This method is used internally to retrieve either an actual (singleton) instance
-of the specified dependency or, if no instance exists yet, a Dependency Proxy
-object which automatically triggers the creation of an instance as soon as
-it is used the first time.</p></p>                <p><p>Internally used by the injectProperties method of generated proxy classes.</p></p>        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$hash</td>
-                <td></td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$propertyReferenceVariable</td>
-                <td><p>Reference of the variable to inject into once the proxy is activated</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>object|null</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_createLazyDependency">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L428">at line 428</a></div>
-        <code>                    <a href="../../../Neos/Flow/ObjectManagement/DependencyInjection/DependencyProxy.html"><abbr title="Neos\Flow\ObjectManagement\DependencyInjection\DependencyProxy">DependencyProxy</abbr></a>
-    <strong>createLazyDependency</strong>(string $hash, mixed $propertyReferenceVariable, string $className, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $builder)
-        </code>
-    </h3>
-    <div class="details">    
-            
-    
-            
-
-        <div class="method-description">
-                            <p><p>Creates a new DependencyProxy class for a dependency built through code
-identified through &quot;hash&quot; for a dependency of class $className. The
-closure in $builder contains code for actually creating the dependency
-instance once it needs to be materialized.</p></p>                <p><p>Internally used by the injectProperties method of generated proxy classes.</p></p>        
-        </div>
-        <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td>string</td>
-                <td>$hash</td>
-                <td><p>An md5 hash over the code needed to actually build the dependency instance</p></td>
-            </tr>
-                    <tr>
-                <td>mixed</td>
-                <td>$propertyReferenceVariable</td>
-                <td><p>A first variable where the dependency needs to be injected into</p></td>
-            </tr>
-                    <tr>
-                <td>string</td>
-                <td>$className</td>
-                <td><p>Name of the class of the dependency which eventually will be instantiated</p></td>
-            </tr>
-                    <tr>
-                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
-                <td>$builder</td>
-                <td><p>An anonymous function which creates the instance to be injected</p></td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td><a href="../../../Neos/Flow/ObjectManagement/DependencyInjection/DependencyProxy.html"><abbr title="Neos\Flow\ObjectManagement\DependencyInjection\DependencyProxy">DependencyProxy</abbr></a></td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_forgetInstance">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L446">at line 446</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L486">at line 486</a></div>
         <code>                    void
     <strong>forgetInstance</strong>(string $objectName)
         </code>
@@ -1464,8 +1646,8 @@ this method should only be used in a setUp() method of a functional test case.</
             </div>
                     <div class="method-item">
                     <h3 id="method_getSessionInstances">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L456">at line 456</a></div>
-        <code>                    array
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L501">at line 501</a></div>
+        <code>                    <abbr title="Neos\Flow\ObjectManagement\array&lt;int, object&gt;">array&lt;int, object&gt;</abbr>
     <strong>getSessionInstances</strong>()
         </code>
     </h3>
@@ -1483,7 +1665,7 @@ this method should only be used in a setUp() method of a functional test case.</
 
                     <table class="table table-condensed">
         <tr>
-            <td>array</td>
+            <td><abbr title="Neos\Flow\ObjectManagement\array&lt;int, object&gt;">array&lt;int, object&gt;</abbr></td>
             <td></td>
         </tr>
     </table>
@@ -1497,7 +1679,7 @@ this method should only be used in a setUp() method of a functional test case.</
             </div>
                     <div class="method-item">
                     <h3 id="method_shutdown">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L477">at line 477</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L522">at line 522</a></div>
         <code>                    void
     <strong>shutdown</strong>()
         </code>
@@ -1552,7 +1734,7 @@ object instances which were configured to be shut down.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_getAllObjectConfigurations">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L498">at line 498</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L543">at line 543</a></div>
         <code>                    array
     <strong>getAllObjectConfigurations</strong>()
         </code>
@@ -1585,7 +1767,7 @@ object instances which were configured to be shut down.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_buildObjectByFactory">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L514">at line 514</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L563">at line 563</a></div>
         <code>            protected        object
     <strong>buildObjectByFactory</strong>(string $objectName)
         </code>
@@ -1598,7 +1780,8 @@ object instances which were configured to be shut down.</p></p>
         <div class="method-description">
                             <p><p>Invokes the Factory defined in the object configuration of the specified object in order
 to build an instance. Arguments which were defined in the object configuration are
-passed to the factory method.</p></p>                        
+passed to the factory method.</p></p>                <p><p>Singletons and session scoped objects are returned as a lazy proxy, if their class is
+known and can be made lazy: the factory is only invoked once the object is used.</p></p>        
         </div>
         <div class="tags">
                             <h4>Parameters</h4>
@@ -1637,6 +1820,120 @@ passed to the factory method.</p></p>
                 <td><a href="../../../Neos/Flow/ObjectManagement/Exception/CannotBuildObjectException.html"><abbr title="Neos\Flow\ObjectManagement\Exception\CannotBuildObjectException">CannotBuildObjectException</abbr></a></td>
                 <td></td>
             </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionException">ReflectionException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_hasInternalClassInAncestry">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L616">at line 616</a></div>
+        <code>            protected        bool
+    <strong>hasInternalClassInAncestry</strong>(string $className)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p><p>PHP cannot create lazy objects of internal classes, nor of classes which extend one.</p></p>                        
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>bool</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionException">ReflectionException</a></td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildLazyProxy">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L633">at line 633</a></div>
+        <code>            protected        object
+    <strong>buildLazyProxy</strong>(string $className, <a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a> $builder)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$className</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/Closure">Closure</a></td>
+                <td>$builder</td>
+                <td><p>Creates the actual instance once the proxy is used for the first time</p></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>object</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+                            <h4>Exceptions</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><a target="_blank" rel="noopener" href="https://www.php.net/ReflectionException">ReflectionException</a></td>
+                <td></td>
+            </tr>
             </table>
 
             
@@ -1647,7 +1944,7 @@ passed to the factory method.</p></p>
             </div>
                     <div class="method-item">
                     <h3 id="method_instantiateClass">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L550">at line 550</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L648">at line 648</a></div>
         <code>            protected        object
     <strong>instantiateClass</strong>(string $className, array $arguments)
         </code>
@@ -1707,8 +2004,150 @@ passed to the factory method.</p></p>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_autowireArguments">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L669">at line 669</a></div>
+        <code>            protected        array
+    <strong>autowireArguments</strong>(<abbr title="Neos\Flow\ObjectManagement\array&lt;int">array&lt;int</abbr>|<abbr title="Neos\Flow\ObjectManagement\string, mixed&gt;">string, mixed&gt;</abbr> $configuration, <abbr title="Neos\Flow\ObjectManagement\array&lt;int">array&lt;int</abbr>|<abbr title="Neos\Flow\ObjectManagement\string, mixed&gt;">string, mixed&gt;</abbr> $existingArguments)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td><abbr title="Neos\Flow\ObjectManagement\array&lt;int">array&lt;int</abbr>|<abbr title="Neos\Flow\ObjectManagement\string, mixed&gt;">string, mixed&gt;</abbr></td>
+                <td>$configuration</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td><abbr title="Neos\Flow\ObjectManagement\array&lt;int">array&lt;int</abbr>|<abbr title="Neos\Flow\ObjectManagement\string, mixed&gt;">string, mixed&gt;</abbr></td>
+                <td>$existingArguments</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getConfiguredArgument">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L688">at line 688</a></div>
+        <code>            protected        mixed
+    <strong>getConfiguredArgument</strong>(int $argumentType, mixed $argumentValue)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$argumentType</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>mixed</td>
+                <td>$argumentValue</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>mixed</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_buildMethodArguments">
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L730">at line 730</a></div>
+        <code>            protected        array
+    <strong>buildMethodArguments</strong>(array $argumentConfigurations)
+        </code>
+    </h3>
+    <div class="details">    
+            
+    
+            
+
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$argumentConfigurations</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td><p>the (auto)wired arguments</p></td>
+        </tr>
+    </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_callShutdownMethods">
-        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L572">at line 572</a></div>
+        <div class="location"><a href="https://github.com/neos/flow-development-collection/blob/10.0/Neos.Flow/Classes/ObjectManagement/ObjectManager.php#L748">at line 748</a></div>
         <code>            protected        void
     <strong>callShutdownMethods</strong>(<a target="_blank" rel="noopener" href="https://www.php.net/SplObjectStorage">SplObjectStorage</a> $shutdownObjects)
         </code>
